@@ -1,6 +1,6 @@
 # Learning: {Topic}
 
-> **Template — not a workspace.** Copy this directory to `learning/<topic-slug>/`, then replace every `{placeholder}`.
+> **Template — not a workspace.** Copy this directory to `learning/<domain>/<topic-slug>/`, then replace every `{placeholder}`.
 
 {1-3 sentences. The concrete real-world goal. What changes in your life or work when you have this skill? Not "to understand X" — the outcome underneath it.}
 

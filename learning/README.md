@@ -1,27 +1,36 @@
 # Learning Workspaces
 
-One directory per topic. Each is a self-contained workspace driven by the `teach` skill: a mission, an ordered set of lessons, and the reference material those lessons earned.
+Grouped by domain, one directory per topic. Each topic is a self-contained workspace driven by the `teach` skill: a mission, an ordered set of lessons, and the reference material those lessons earned.
 
 ## Topics
 
-| Topic | Mission | Lessons |
-|---|---|---|
-| _none yet_ | | |
+| Domain | Topic | Mission | Lessons |
+|---|---|---|---|
+| _none yet_ | | | |
 
 ## Starting a topic
 
 ```bash
-cp -r learning/_template learning/<topic-slug>
+cp -r templates/learning-workspace learning/<domain>/<topic-slug>
 ```
 
 Then run the `teach` skill and name the topic. It reads the workspace, fills in the mission by interviewing you, and writes the first lesson.
 
-`_template/` is a copy source, not a workspace — leave it out of the table above.
+A domain is a grouping, not a workspace — it holds topic directories and nothing else. Add a new one when a second topic would share it.
 
-## Workspace layout
+## Layout
 
 ```text
-learning/<topic>/
+learning/
+├── <domain>/              # programming, llm, …
+│   └── <topic>/           # one workspace per topic
+└── README.md              # this index
+```
+
+Each workspace:
+
+```text
+learning/<domain>/<topic>/
 ├── README.md              # mission, success criteria, lesson index
 ├── GLOSSARY.md            # canonical terms for this topic
 ├── RESOURCES.md           # trusted sources, communities, known gaps
@@ -31,5 +40,7 @@ learning/<topic>/
 ├── learning-records/      # NNNN-slug.md — what was demonstrably learned
 └── assets/                # diagrams, drill banks, printable cards
 ```
+
+Lessons number from `0001` within each workspace. Workspaces do not link to each other; a topic that needs another topic's material is one topic.
 
 The `teach` skill owns the format of every file here. Read its `SKILL.md` before hand-authoring one.

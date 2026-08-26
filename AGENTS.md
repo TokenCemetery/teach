@@ -2,7 +2,7 @@
 
 ## Repository
 
-A persistent learning workspace. `learning/<topic>/` holds one self-contained workspace per topic — mission, lessons, reference sheets, and a record of what was demonstrably learned. Teaching state lives in the workspace, not in the conversation, because a topic is taught across many sessions.
+A persistent learning workspace. `learning/<domain>/<topic>/` holds one self-contained workspace per topic — mission, lessons, reference sheets, and a record of what was demonstrably learned. Teaching state lives in the workspace, not in the conversation, because a topic is taught across many sessions.
 
 Most work here is teaching a lesson or maintaining workspace state. Treat repository chores — templates, CI, project docs — as the exception.
 
@@ -18,12 +18,13 @@ Agent memory is not learner state. What the user has learned, disclosed, or gott
 
 ## Learning Workspaces
 
-- The `teach` skill is the source of truth for every file under `learning/<topic>/`: layout, formats, lesson design, and what earns a learning record. Read it before authoring or editing one. Do not invent variants of its formats.
-- Workspaces live at `learning/<topic>/` in this repository. Do not create them elsewhere.
-- `learning/_template/` is a copy source, not a workspace. Never teach into it, never add it to an index.
+- The `teach` skill is the source of truth for every file inside a workspace: layout, formats, lesson design, and what earns a learning record. Read it before authoring or editing one. Do not invent variants of its formats.
+- Workspaces live at `learning/<domain>/<topic>/` in this repository — one level deeper than the skill's default `learning/*/`. Take this path over the skill's; do not create workspaces elsewhere.
+- A domain directory (`programming/`, `llm/`) is a grouping only. It holds topic directories, never lessons or a mission.
+- `templates/learning-workspace/` is a copy source, not a workspace. It is deliberately outside `learning/`. Never teach into it, never add it to an index.
 - Starting a topic means copying the template, then filling the mission by interviewing the user. A vague mission is worse than none — it silently misdirects every later lesson.
 - `learning/README.md` carries the topic index. Add a row when a workspace is created; an index that has drifted from the directories is worse than no index.
-- One topic per workspace. An unrelated second topic is a second workspace, not a second mission.
+- One topic per workspace. An unrelated second topic is a second workspace, not a second mission. Workspaces do not cross-link; duplication between them beats coupling.
 
 ## Repository Behavior
 
@@ -41,7 +42,7 @@ Before editing, state: requested outcome and scope, working assumptions, simples
 ## Artifact Quality
 
 - Every artifact must be complete, actionable, internally consistent, and specific enough to verify.
-- No placeholders, TODOs, unsupported claims, or missing required sections unless the user requests a draft. Placeholders are correct in `learning/_template/` and nowhere else.
+- No placeholders, TODOs, unsupported claims, or missing required sections unless the user requests a draft. Placeholders are correct in `templates/learning-workspace/` and nowhere else.
 - Every section, example, and abstraction must contribute to the outcome. Remove anything that does not.
 - Examples must be narrow, direct, complete, and consistent with actual repo conventions.
 - Introduce structure only when it reduces real complexity or follows an established pattern.

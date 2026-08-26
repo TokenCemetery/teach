@@ -7,7 +7,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | Domain | Topic | Mission | Lessons |
 |---|---|---|---|
 | programming | [Go](programming/golang/) | Own Go on a team: design, ship and operate a production service | 0 |
-| llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 0 |
+| llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 27 |
 
 ## Starting a topic
 

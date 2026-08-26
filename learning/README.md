@@ -6,7 +6,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 
 | Domain | Topic | Mission | Lessons |
 |---|---|---|---|
-| _none yet_ | | | |
+| programming | [Go](programming/golang/) | Own Go on a team: design, ship and operate a production service | 0 |
 
 ## Starting a topic
 

@@ -158,4 +158,6 @@ Early in training, AdamW's second-moment estimate is built from very few samples
 
 ---
 
-Stuck on any of this, or unsure whether an answer counts? Bring it back to the session — that's what your teacher is for.
+Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+
+If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

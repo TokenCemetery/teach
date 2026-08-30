@@ -18,6 +18,12 @@ markdown_extensions:
   # A `<details>` block interrupts the surrounding ordered list, so every
   # Practice item restarted at "1.". This carries the number across the break.
   - sane_lists
+  # GitHub renders a single newline as a line break; Python-Markdown folds it
+  # into the paragraph. That collapsed every lesson's header block, every
+  # glossary definition and the worked calculations in answer keys. Match
+  # GitHub, since the same files are read in both places. Safe here because no
+  # prose in `learning/` is hard-wrapped — checked before enabling.
+  - nl2br
   # The theme ships Pygments stylesheets but nothing was emitting Pygments
   # markup, so every code block rendered unhighlighted.
   - pymdownx.highlight

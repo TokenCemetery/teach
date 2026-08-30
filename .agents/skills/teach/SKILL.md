@@ -164,7 +164,8 @@ Before presenting the lesson, confirm:
 - Keep `markdown="1"` on every `<details>`. Python-Markdown needs it, through the `md_in_html` extension, to parse the answer inside. GitHub ignores the attribute, so the file stays correct in both.
 - Leave a blank line after `<summary>` and before `</details>`.
 - Keep the `<details>` block at column zero. Indenting it to nest inside a list item looks tidier and breaks the site: `md_in_html` does not parse HTML nested in a list, and the answer reverts to literal markdown. `sane_lists` carries the Practice numbering across the break instead.
-- `mkdocs.yml` owns the extensions these rules depend on: `md_in_html`, `sane_lists`, `pymdownx.highlight`, `pymdownx.superfences`. Removing one breaks every lesson at once.
+- A single newline is a line break, as it is on GitHub. Lesson header blocks, glossary definitions and worked calculations rely on it. This holds only because no prose here is hard-wrapped — keep it that way and write a paragraph on one line.
+- `mkdocs.yml` owns the extensions these rules depend on: `md_in_html`, `sane_lists`, `nl2br`, `pymdownx.highlight`, `pymdownx.superfences`. Removing one breaks every lesson at once.
 
 Not everything in a workspace is published. `mkdocs.yml` excludes `NOTES.md` and `learning-records/`: they hold the learner's state — preferences, disclosed background, corrected misconceptions — and stay out of the site whether or not the repository is public.
 

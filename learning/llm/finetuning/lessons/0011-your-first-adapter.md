@@ -1,3 +1,9 @@
+---
+title: 11 — Your First Adapter
+description: A run that proves the pipeline before it proves anything else
+type: lesson
+---
+
 # Lesson 11 — Your First Adapter
 
 **Mission link:** "Run it" is in the mission. Everything before this was the reading; this is the run.

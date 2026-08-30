@@ -1,3 +1,9 @@
+---
+title: 22 — Contamination and Held-Out Design
+description: Splitting by the right key, and sizing for the question
+type: lesson
+---
+
 # Lesson 22 — Contamination and Held-Out Design
 
 **Mission link:** A held-out set you cannot trust is worse than none, because it produces confident wrong decisions.

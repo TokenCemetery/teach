@@ -1,3 +1,9 @@
+---
+title: 6 — Gradients and Optimizer State
+description: Sixteen bytes per trainable parameter, two per frozen
+type: lesson
+---
+
 # Lesson 6 — Gradients and Optimizer State
 
 **Mission link:** This is the argument for adapters. Once you can derive the sixteen-bytes-per-parameter figure, LoRA stops being a trick and becomes the obvious response.

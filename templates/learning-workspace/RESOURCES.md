@@ -1,3 +1,9 @@
+---
+title: Resources
+description: "Trusted sources and communities for {topic}"
+type: resources
+---
+
 # {Topic} Resources
 
 ## Knowledge

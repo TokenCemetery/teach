@@ -1,3 +1,9 @@
+---
+title: 4 — What Training Actually Changes
+description: The four operations in one training step
+type: lesson
+---
+
 # Lesson 4 — What Training Actually Changes
 
 **Mission link:** Every memory argument, hyperparameter and failure mode in this workspace follows from what one training step does.

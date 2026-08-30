@@ -1,3 +1,9 @@
+---
+title: 13 — Merging, Saving and Shipping an Adapter
+description: Merged is exact; an adapter is a diff that needs its base
+type: lesson
+---
+
 # Lesson 13 — Merging, Saving and Shipping an Adapter
 
 **Mission link:** An adapter that only exists in a training script is not shipped. This closes stage 3.

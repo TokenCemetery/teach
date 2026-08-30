@@ -1,3 +1,9 @@
+---
+title: 15 — NF4 and Double Quantisation
+description: The two ideas QLoRA actually contributed
+type: lesson
+---
+
 # Lesson 15 — NF4 and Double Quantisation
 
 **Mission link:** These are the two ideas QLoRA contributed. Knowing them separates understanding the paper from having read the abstract.

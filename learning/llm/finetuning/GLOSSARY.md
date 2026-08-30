@@ -1,3 +1,9 @@
+---
+title: Glossary
+description: Canonical terms for adapter fine-tuning
+type: glossary
+---
+
 # Adapter Fine-Tuning Glossary
 
 Canonical terms for this workspace. A term lands here once it can be used correctly, not when it is first mentioned — so this grows as lessons are earned.

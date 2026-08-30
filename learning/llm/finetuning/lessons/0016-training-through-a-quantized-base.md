@@ -1,3 +1,9 @@
+---
+title: 16 — Training Through a Quantized Base
+description: How gradients flow through frozen 4-bit weights
+type: lesson
+---
+
 # Lesson 16 — Training Through a Quantized Base
 
 **Mission link:** QLoRA in practice. This is also the one lesson where the hardware you have genuinely changes what is available to you.

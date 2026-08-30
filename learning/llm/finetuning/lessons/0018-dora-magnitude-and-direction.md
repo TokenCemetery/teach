@@ -1,3 +1,9 @@
+---
+title: "18 — DoRA: Magnitude and Direction"
+description: Renormalisation decouples the two, and that is the method
+type: lesson
+---
+
 # Lesson 18 — DoRA: Magnitude and Direction
 
 **Mission link:** The third method named in the mission, and the one whose mechanism is most often described wrongly.

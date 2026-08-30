@@ -1,3 +1,9 @@
+---
+title: 23 — Metrics That Mean Something
+description: Loss selects checkpoints; task metrics make decisions
+type: lesson
+---
+
 # Lesson 23 — Metrics That Mean Something
 
 **Mission link:** "Prove it worked" is in the mission. A number you cannot defend is not proof.

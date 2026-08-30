@@ -1,3 +1,9 @@
+---
+title: Glossary
+description: Canonical terms for Go
+type: glossary
+---
+
 # Go Glossary
 
 Canonical terms for this workspace. A term lands here once it can be used correctly, not when it is first mentioned — so this grows as lessons are earned.

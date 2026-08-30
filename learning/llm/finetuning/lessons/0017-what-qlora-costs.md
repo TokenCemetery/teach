@@ -1,3 +1,9 @@
+---
+title: 17 — What QLoRA Actually Costs
+description: Separating base degradation from training degradation
+type: lesson
+---
+
 # Lesson 17 — What QLoRA Actually Costs
 
 **Mission link:** The mission says "explain the measured differences, not the advertised ones". This lesson is the measurement.

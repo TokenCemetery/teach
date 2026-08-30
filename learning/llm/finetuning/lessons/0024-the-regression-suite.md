@@ -1,3 +1,9 @@
+---
+title: 24 — The Regression Suite
+description: Catching the damage every other number hides
+type: lesson
+---
+
 # Lesson 24 — The Regression Suite
 
 **Mission link:** "Build an eval that catches a regression before shipping" is the mission's own wording. This is that lesson.

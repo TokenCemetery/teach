@@ -1,3 +1,9 @@
+---
+title: 10 — Choosing Target Modules
+description: Attention-only is a 2021 ablation, not a default
+type: lesson
+---
+
 # Lesson 10 — Choosing Target Modules
 
 **Mission link:** Target modules matter more than rank, and the received wisdom on them is out of date. This is a place where you can be measurably better than the average practitioner.

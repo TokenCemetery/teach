@@ -1,3 +1,9 @@
+---
+title: 14 — Quantisation from First Principles
+description: Blockwise scales, and why one outlier ruins a tensor
+type: lesson
+---
+
 # Lesson 14 — Quantisation from First Principles
 
 **Mission link:** QLoRA is LoRA plus one idea. This lesson is that idea, taught on its own so the next one is short.

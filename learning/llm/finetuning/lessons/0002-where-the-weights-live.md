@@ -1,3 +1,9 @@
+---
+title: 2 — Where the Weights Live
+description: Naming every projection an adapter could attach to
+type: lesson
+---
+
 # Lesson 2 — Where the Weights Live
 
 **Mission link:** An adapter attaches to specific weight matrices. You cannot choose which ones until you can name them and say what each one does.

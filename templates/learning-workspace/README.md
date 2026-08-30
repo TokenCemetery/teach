@@ -1,3 +1,9 @@
+---
+title: "{Topic}"
+description: "{One clause — the outcome this topic delivers}"
+type: topic
+---
+
 # Learning: {Topic}
 
 > **Template — not a workspace.** Copy this directory to `learning/<domain>/<topic-slug>/`, then replace every `{placeholder}`.

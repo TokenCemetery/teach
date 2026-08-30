@@ -1,3 +1,9 @@
+---
+title: Learning Workspaces
+description: Every topic in this repository, grouped by domain
+type: index
+---
+
 # Learning Workspaces
 
 Grouped by domain, one directory per topic. Each topic is a self-contained workspace driven by the `teach` skill: a mission, an ordered set of lessons, and the reference material those lessons earned.

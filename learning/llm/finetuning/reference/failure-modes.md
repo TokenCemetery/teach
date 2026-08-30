@@ -1,3 +1,9 @@
+---
+title: Failure Modes
+description: Symptom to cause, and the silent failures
+type: reference
+---
+
 # Failure Modes
 
 Diagnostic sheet. Keep it open during a run.

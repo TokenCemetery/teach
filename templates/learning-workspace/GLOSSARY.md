@@ -1,3 +1,9 @@
+---
+title: Glossary
+description: "Canonical terms for {topic}"
+type: glossary
+---
+
 # {Topic} Glossary
 
 {One or two sentences on what this glossary covers.}

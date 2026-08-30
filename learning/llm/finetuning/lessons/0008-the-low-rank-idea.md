@@ -1,3 +1,9 @@
+---
+title: 8 — The Low-Rank Idea
+description: "`ΔW = BA`, and counting an adapter"
+type: lesson
+---
+
 # Lesson 8 — The Low-Rank Idea
 
 **Mission link:** LoRA is the method the rest of the mission is built on. This lesson is the mechanism; the next two are the decisions.

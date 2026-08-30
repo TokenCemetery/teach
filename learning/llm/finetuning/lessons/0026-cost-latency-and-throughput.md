@@ -1,3 +1,9 @@
+---
+title: 26 — Cost, Latency and Throughput
+description: Prefill versus decode, and where the money actually goes
+type: lesson
+---
+
 # Lesson 26 — Cost, Latency and Throughput
 
 **Mission link:** "Measure what it cost in quality and latency" is on the success list. Fine-tuning is frequently a *cost* decision, and this is the arithmetic behind it.

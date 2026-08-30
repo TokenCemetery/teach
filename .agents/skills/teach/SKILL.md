@@ -170,7 +170,29 @@ Not everything in a workspace is published. `mkdocs.yml` excludes `NOTES.md` and
 
 Everything else is published, `RESOURCES.md` included. Workspace `README.md` files and lessons link to it, and a reader deserves the sources a claim rests on as much as the claim itself.
 
+## Front Matter
+
+Every published page opens with YAML front matter. `NOTES.md` and `learning-records/` are exempt: they never reach the site, and nothing but the teaching session reads them.
+
+```yaml
+---
+title: Short label, for the sidebar and the browser tab
+description: One clause — what a reader gets from this page
+type: index | topic | lesson | reference | glossary | resources
+---
+```
+
+- **`title`** is the short form, not a copy of the `#` heading. The two are read in different places: the site renders `title` as the visible page heading and hides the markdown `#`, while GitHub shows the `#` and never sees the front matter. So the `#` heading carries the long name for a GitHub reader, and `title` carries the short one for the sidebar, where a long name clips mid-word. A lesson drops the word "Lesson" — it already sits under `Lessons`.
+- **`description`** is one clause, no trailing period. For a lesson it is the same clause as its row in the workspace `README.md` table, and the front matter is canonical: change it here first, then match the table.
+- **`type`** names the shape of the page, so a reader — human or machine — knows what it is before reading it. Use exactly one of the six values.
+
+Do not add a date. The site derives `created_at` and `updated_at` from git history, and a hand-written date goes stale the first time someone forgets it.
+
+`order` is read by the theme and overrides a page's position in the navigation. Leave it out while lesson filenames still sort correctly on their own number.
+
 ## Formats
+
+Every template below omits the front matter for brevity. It is still required; see Front Matter.
 
 ### `README.md`
 

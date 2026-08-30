@@ -1,3 +1,9 @@
+---
+title: 1 — What a Base Model Actually Is
+description: The model is one next-token function; base is not instruct
+type: lesson
+---
+
 # Lesson 1 — What a Base Model Actually Is
 
 **Mission link:** You cannot judge whether fine-tuning is the right answer until you know exactly what the model does when you leave it alone.

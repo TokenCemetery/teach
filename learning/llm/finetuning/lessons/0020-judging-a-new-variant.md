@@ -1,3 +1,9 @@
+---
+title: 20 — Judging a New PEFT Variant
+description: Six triage questions, and the baseline to beat
+type: lesson
+---
+
 # Lesson 20 — Judging a New PEFT Variant
 
 **Mission link:** "Read a new PEFT paper and judge whether its claimed win would survive on your own task" is the last item on the success list. This lesson is that skill.

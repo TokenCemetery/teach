@@ -1,3 +1,9 @@
+---
+title: Adapter Fine-Tuning
+description: Decide whether to fine-tune, run it, prove it worked, ship it
+type: topic
+---
+
 # Learning: Adapter Fine-Tuning (LoRA, QLoRA, DoRA)
 
 Be the person who can take a base model and a task, decide whether adapter fine-tuning is the right answer at all, run it, prove it worked with an eval that would catch a regression, and ship it — and who can argue convincingly for prompting or retrieval instead when those would do the job better.

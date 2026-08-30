@@ -1,3 +1,9 @@
+---
+title: 3 — Tokenizers and Chat Templates
+description: Train on the rendering you will serve
+type: lesson
+---
+
 # Lesson 3 — Tokenizers and Chat Templates
 
 **Mission link:** The most common cause of a fine-tune that trains cleanly and behaves badly is a template mismatch, not a hyperparameter.

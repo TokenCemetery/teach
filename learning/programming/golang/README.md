@@ -1,3 +1,9 @@
+---
+title: Go
+description: "Own Go on a team: design, ship and operate a production service"
+type: topic
+---
+
 # Learning: Go
 
 Become the engineer trusted to own Go on a team — able to design, ship and operate a production Go service, review someone else's Go and name concretely why a design is wrong, and recognise when a design imported from another language is fighting Go rather than using it.

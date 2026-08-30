@@ -1,3 +1,9 @@
+---
+title: 12 — Reading a Training Run
+description: Diagnosing by curve shape, and what loss cannot see
+type: lesson
+---
+
 # Lesson 12 — Reading a Training Run
 
 **Mission link:** "Diagnose a failed run and name the cause" is on the success list. Most people read a loss curve and guess.

@@ -1,3 +1,9 @@
+---
+title: 25 — Serving Adapters
+description: Merge for one task, route for many
+type: lesson
+---
+
 # Lesson 25 — Serving Adapters
 
 **Mission link:** "Ship it" is in the mission. An adapter in a directory is not shipped.

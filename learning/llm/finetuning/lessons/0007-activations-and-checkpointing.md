@@ -1,3 +1,9 @@
+---
+title: 7 — Activations, Batch Size and Checkpointing
+description: Why an adapter run still runs out of memory
+type: lesson
+---
+
 # Lesson 7 — Activations, Batch Size and Checkpointing
 
 **Mission link:** Adapters remove the optimizer cost but not the activation cost, which is why a LoRA run can still run out of memory. This is the part people are surprised by.

@@ -1,3 +1,9 @@
+---
+title: 21 — Building the Dataset
+description: Data beats every hyperparameter in this workspace
+type: lesson
+---
+
 # Lesson 21 — Building the Dataset
 
 **Mission link:** Data quality dominates every hyperparameter in this workspace. Stage 3 taught you to turn a knob; this stage teaches you what actually moves the result.

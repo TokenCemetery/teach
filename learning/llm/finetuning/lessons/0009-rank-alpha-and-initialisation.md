@@ -1,3 +1,9 @@
+---
+title: 9 — Rank, Alpha and Initialisation
+description: "Only `α/r` matters, and why `B` starts at zero"
+type: lesson
+---
+
 # Lesson 9 — Rank, Alpha and Initialisation
 
 **Mission link:** The mission asks you to justify every hyperparameter from the task. These three are where most people repeat folklore instead.

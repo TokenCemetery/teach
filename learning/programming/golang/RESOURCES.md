@@ -1,3 +1,9 @@
+---
+title: Resources
+description: Trusted sources and communities for Go
+type: resources
+---
+
 # Go Resources
 
 ## Knowledge

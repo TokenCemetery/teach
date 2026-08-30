@@ -1,3 +1,9 @@
+---
+title: 19 — When DoRA Wins, and When It Doesn't
+description: Predicting the win before running it
+type: lesson
+---
+
 # Lesson 19 — When DoRA Wins, and When It Doesn't
 
 **Mission link:** "Can predict when DoRA beats LoRA before running it" is the bar for this stage. Prediction, not experiment.

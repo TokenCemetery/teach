@@ -1,3 +1,9 @@
+---
+title: 27 — When Not to Fine-Tune
+description: Fine-tuning is sixth on the list, and why that matters
+type: lesson
+---
+
 # Lesson 27 — When Not to Fine-Tune
 
 **Mission link:** The mission ends here: *"who can argue convincingly for prompting or retrieval instead when those would do the job better."* The senior skill is declining the work.

@@ -1,3 +1,9 @@
+---
+title: 5 — Counting Parameters and Bytes
+description: Turning a model config into gigabytes
+type: lesson
+---
+
 # Lesson 5 — Counting Parameters and Bytes
 
 **Mission link:** "Account for every byte" is in the mission. This is the lesson where you learn to do the arithmetic instead of guessing.

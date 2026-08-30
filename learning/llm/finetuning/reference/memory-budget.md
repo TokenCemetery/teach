@@ -1,3 +1,9 @@
+---
+title: Memory Budget
+description: Byte accounting, and what to try when a run will not fit
+type: reference
+---
+
 # Memory Budget
 
 Byte accounting for adapter fine-tuning. Built for lookup during a run.

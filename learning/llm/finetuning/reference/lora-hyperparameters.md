@@ -1,3 +1,9 @@
+---
+title: LoRA Hyperparameters
+description: Rank, alpha, targets, learning rate, variants
+type: reference
+---
+
 # LoRA Hyperparameters
 
 Decision sheet. Read the installed library version for exact parameter names — this surface changes between releases.

@@ -1,3 +1,9 @@
+---
+title: Resources
+description: Trusted sources and communities for adapter fine-tuning
+type: resources
+---
+
 # Adapter Fine-Tuning Resources
 
 ## Knowledge

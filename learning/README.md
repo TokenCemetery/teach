@@ -44,6 +44,6 @@ learning/<domain>/<topic>/
 └── assets/                # diagrams, drill banks, printable cards
 ```
 
-Lessons number from `0001` within each workspace. Workspaces do not link to each other; a topic that needs another topic's material is one topic.
+Lessons number from `0001` within each workspace. Workspaces may link to each other, but a link is a pointer rather than an inclusion: it does not pull another topic's material into this mission. Prefer linking a glossary term or a reference sheet over a lesson — those are written for lookup and land on any reader.
 
-The `teach` skill owns the format of every file here. Read its `SKILL.md` before hand-authoring one.
+The `teach` skill owns the format of every file here. Read [its spec](https://github.com/TokenCemetery/teach/blob/main/.agents/skills/teach/SKILL.md) before hand-authoring one.

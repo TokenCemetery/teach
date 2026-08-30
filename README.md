@@ -12,7 +12,8 @@ Topics live under [`learning/`](learning/), grouped by domain. Each is a workspa
 
 ### Prerequisites
 
-- An agent with the `teach` skill available.
+- An agent that can read [`AGENTS.md`](AGENTS.md). The `teach` skill it needs
+  ships with the repository, at [`.agents/skills/teach/`](.agents/skills/teach/SKILL.md).
 
 ### Starting a topic
 
@@ -35,7 +36,9 @@ Run the `teach` skill again. It picks up from the workspace state — no need to
 │   └── <domain>/<topic>/  # one workspace per topic
 ├── templates/
 │   └── learning-workspace/ # copy source for a new topic
-└── .agents/memory/        # agent working memory
+└── .agents/
+    ├── skills/teach/      # the format spec every workspace follows
+    └── memory/            # agent working memory
 ```
 
 Conventions for agent behavior live in [`AGENTS.md`](AGENTS.md).

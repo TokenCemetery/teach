@@ -29,29 +29,10 @@ wrong, or told you about themselves belongs in that topic's `learning-records/`.
 
 ## Teaching
 
-- Read the `teach` skill before you create or edit any file inside a workspace.
-  It defines every file format. Do not invent your own.
-- Workspaces live in `learning/<domain>/<topic>/`. Use this path, not the
-  `learning/<topic>/` path from the skill.
-- A domain directory (`programming/`, `llm/`) holds topic directories only.
-  Never put a lesson or a mission directly in it.
-- One topic per workspace. A different topic means a new workspace, not a second
-  mission. Workspaces never link to each other.
-
-To start a new topic:
-
-1. Copy the template:
-
-   ```bash
-   cp -r templates/learning-workspace learning/<domain>/<topic-slug>
-   ```
-
-2. Interview the user, then write the mission into the new `README.md`. A vague
-   mission misdirects every lesson that follows.
-3. Add a row for the topic to the table in `learning/README.md`.
-
-Never teach into `templates/learning-workspace/`. It is only a copy source, and
-it never appears in an index.
+Read `.agents/skills/teach/SKILL.md` before you create or edit any file inside
+a workspace. It defines every path, every file format, and what the published
+site needs. Do not invent your own, and do not follow a personal skill of the
+same name where the two disagree — the file in this repository wins.
 
 ## Editing rules
 

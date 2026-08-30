@@ -36,7 +36,7 @@ These are where Java and TypeScript habits actively mislead, so they deserve the
 - Zero values are usable. Java trains you to expect `null` and to guard for it.
 - Interfaces are satisfied implicitly and belong to the consumer. Java trains you to declare them up front, next to the implementation.
 - Composition via embedding is not an inheritance workaround; there is no inheritance to work around.
-- Goroutines vs Java 21 virtual threads — a genuinely illuminating comparison, and available here because Java 21 is already known. Keep it inside this workspace as a note; do not link across workspaces.
+- Goroutines vs Java 21 virtual threads — a genuinely illuminating comparison, and available here because Java 21 is already known. Keep it inside this workspace as a note; there is no Java workspace to defer it to.
 - `context` cancellation has no Java or Promise analogue that transfers cleanly.
 
 ## Open threads

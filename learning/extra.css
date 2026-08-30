@@ -1,0 +1,9 @@
+/* Lesson and topic titles run longer than the theme's default sidebar
+   width expects, so they get clipped mid-word. Widen the sidebar column. */
+[data-slot="sidebar-wrapper"] {
+  --sidebar-width: 300px !important;
+}
+
+[data-slot="sidebar"] {
+  --sidebar-menu-width: 300px !important;
+}

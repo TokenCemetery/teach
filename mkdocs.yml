@@ -7,6 +7,9 @@ site_dir: site
 theme:
   name: shadcn
 
+extra_css:
+  - extra.css
+
 plugins:
   - search
   - awesome-nav

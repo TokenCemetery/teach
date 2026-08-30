@@ -1,6 +1,6 @@
 ---
 title: Resources
-description: Trusted sources and communities for Go
+description: Trusted sources for Go, each annotated with what it covers
 type: resources
 ---
 
@@ -32,19 +32,36 @@ type: resources
 - [Style guide: "Uber Go Style Guide" — Uber Engineering](https://github.com/uber-go/guide/blob/master/style.md)
   Opinionated team-scale conventions with rationale. Use for: decisions Effective Go leaves open.
 
-## Wisdom (Communities)
+- [Docs: "Go Doc Comments" — The Go Authors, go.dev](https://go.dev/doc/comment)
+  The rules `go doc` and pkg.go.dev actually apply, including deprecation markers. Use for: writing an API that documents itself.
 
-- [r/golang](https://www.reddit.com/r/golang/)
-  Active and quick to correct un-idiomatic code. Use for: "is this the Go way" design questions.
+- [Docs: "Go Modules Reference" — The Go Authors, go.dev](https://go.dev/ref/mod)
+  Minimal version selection, the major-version path rule, proxies and checksums. Use for: anything about `go.mod` behaviour.
 
-- [Gophers Slack](https://invite.slack.golangbridge.org/)
-  Large practitioner community with topic channels, including `#performance` and `#reviews`. Use for: review of real code and narrow tooling problems.
+- [Docs: "Go 1 and the Future of Go Programs" — The Go Authors, go.dev](https://go.dev/doc/go1compat)
+  The compatibility promise, and by extension the model for your own packages. Use for: deciding whether a change is breaking.
 
-- [Go Forum](https://forum.golangbridge.org/)
-  Threaded and searchable, so answers survive. Use for: longer design questions worth a written answer.
+- [Docs: "Frequently Asked Questions" — The Go Authors, go.dev](https://go.dev/doc/faq)
+  Short, authoritative answers on receivers, nil errors, and stack-versus-heap. Use for: settling a question the spec answers too formally.
+
+- [Docs: "Diagnostics" — The Go Authors, go.dev](https://go.dev/doc/diagnostics)
+  Profiling, tracing, debugging and runtime instrumentation in one page. Use for: choosing the right tool before an investigation.
+
+- [Docs: "Release History" and the per-release notes — The Go Authors, go.dev](https://go.dev/doc/devel/release)
+  Exactly what changed in each release, and which versions are still supported. Use for: checking any version-sensitive claim before teaching it.
+
+- [Article: "Go for Industrial Programming" — Peter Bourgon](https://peter.bourgon.org/go-for-industrial-programming/)
+  Package boundaries, explicit wiring and observability in services that are operated. Use for: stage 4 structure decisions.
+
+- [Article: "How I write HTTP services in Go" — Mat Ryer, Grafana Labs](https://grafana.com/blog/2024/02/09/how-i-write-http-services-in-go-after-13-years/)
+  A working service layout revised over thirteen years, with the reasoning kept. Use for: handler shape, `run` functions, testing a server.
+
+- [Reference: "Go Proverbs" — Rob Pike](https://go-proverbs.github.io/)
+  The short forms of Go's design values, each linked to the talk behind it. Use for: review vocabulary, and for the arguments about restraint.
 
 ## Gaps
 
-- Go's release cadence outpaces every book listed here. Version-sensitive claims need checking against the release notes before being taught as current.
-- No trusted source chosen yet for production service architecture in Go — stage 4 needs one.
-- No source chosen yet for gRPC specifically, if stage 4 goes that way.
+- Go's release cadence outpaces every book listed here. Version-sensitive claims are checked against the release notes above rather than against a book, and any lesson naming a release states which one.
+- Observability beyond logging — metrics, tracing, OpenTelemetry — has no lesson and no source chosen. Stage 4 covers `slog` and health checks only.
+- gRPC has no source and no lesson. Stage 4 went HTTP-first; this stays open in case the mission needs gRPC later.
+- No source chosen for the Go scheduler in depth. Lesson 15 teaches only as much as predicts program behaviour, which the mission caps deliberately.

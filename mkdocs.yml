@@ -7,8 +7,18 @@ site_dir: site
 theme:
   name: shadcn
 
-# mkdocs-static-i18n is not added yet: it currently breaks mkdocs-shadcn
-# (https://github.com/asiffer/mkdocs-shadcn/issues/105). Add it back once fixed.
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: ru
+          name: Russian
+          build: true
 
 exclude_docs: |
   **/NOTES.md

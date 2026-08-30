@@ -25,6 +25,7 @@ A domain is a grouping, not a workspace — it holds topic directories and nothi
 learning/
 ├── <domain>/              # programming, llm, …
 │   └── <topic>/           # one workspace per topic
+├── .nav.yml               # sidebar order/titles for the published site
 └── README.md              # this index
 ```
 

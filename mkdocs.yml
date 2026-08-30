@@ -9,6 +9,7 @@ theme:
 
 plugins:
   - search
+  - awesome-nav
   - i18n:
       docs_structure: suffix
       languages:

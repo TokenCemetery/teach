@@ -1,51 +1,91 @@
 # AGENTS.md
 
-## Repository
+## What this repository is
 
-A persistent learning workspace. `learning/<domain>/<topic>/` holds one self-contained workspace per topic — mission, lessons, reference sheets, and a record of what was demonstrably learned. Teaching state lives in the workspace, not in the conversation, because a topic is taught across many sessions.
+A place to learn topics over many sessions. One topic lives in one directory:
+`learning/<domain>/<topic>/`.
 
-Most work here is teaching a lesson or maintaining workspace state. Treat repository chores — templates, CI, project docs — as the exception.
+All teaching state is kept in files, not in the conversation, because a topic is
+taught across many sessions.
 
-## Session Start
+Almost every task here is one of two things: teach a lesson, or update workspace
+files. Anything else (templates, CI, project docs) is rare.
 
-Before any work, read `.agents/memory/MEMORY.md` and `.agents/memory/$(date -u +%Y-%m-%d).md`. Create missing files or the `.agents/memory/` directory if needed; never overwrite existing memory.
+## Start of every session
 
-- `MEMORY.md` — durable project facts. Treat as low-confidence; verify against repo before acting.
-- `YYYY-MM-DD.md` — daily task notes (UTC dates). Use for checklists and completed implementation notes.
-- For substantial work needing durable documentation, create `docs/YYYY-MM-DD-task-name/` instead.
+1. Read `.agents/memory/MEMORY.md`.
+2. Read `.agents/memory/YYYY-MM-DD.md` using today's UTC date.
+3. If the directory or a file is missing, create it. Never overwrite memory that
+   already exists.
 
-Agent memory is not learner state. What the user has learned, disclosed, or gotten wrong belongs in that topic's `learning-records/`, never in `.agents/memory/`.
+What the files hold:
 
-## Learning Workspaces
+- `MEMORY.md` — durable project facts. May be out of date. Check the repository
+  before trusting it.
+- `YYYY-MM-DD.md` — today's task notes and checklists.
 
-- The `teach` skill is the source of truth for every file inside a workspace: layout, formats, lesson design, and what earns a learning record. Read it before authoring or editing one. Do not invent variants of its formats.
-- Workspaces live at `learning/<domain>/<topic>/` in this repository — one level deeper than the skill's default `learning/*/`. Take this path over the skill's; do not create workspaces elsewhere.
-- A domain directory (`programming/`, `llm/`) is a grouping only. It holds topic directories, never lessons or a mission.
-- `templates/learning-workspace/` is a copy source, not a workspace. It is deliberately outside `learning/`. Never teach into it, never add it to an index.
-- Starting a topic means copying the template, then filling the mission by interviewing the user. A vague mission is worse than none — it silently misdirects every later lesson.
-- `learning/README.md` carries the topic index. Add a row when a workspace is created; an index that has drifted from the directories is worse than no index.
-- One topic per workspace. An unrelated second topic is a second workspace, not a second mission. Workspaces do not cross-link; duplication between them beats coupling.
+Never write learner state into `.agents/memory/`. What the user learned, got
+wrong, or told you about themselves belongs in that topic's `learning-records/`.
 
-## Repository Behavior
+## Teaching
 
-- Repo is source of truth. Verify memory and prior notes against it before acting.
-- Limit changes to the minimum required. Do not restructure, reformat, or improve unrelated content without explicit approval.
-- Update project-scoped documents in the same change if behavior they describe is affected.
-- Final response must state: what changed, what verification ran, and any residual risk.
+- Read the `teach` skill before you create or edit any file inside a workspace.
+  It defines every file format. Do not invent your own.
+- Workspaces live in `learning/<domain>/<topic>/`. Use this path, not the
+  `learning/<topic>/` path from the skill.
+- A domain directory (`programming/`, `llm/`) holds topic directories only.
+  Never put a lesson or a mission directly in it.
+- One topic per workspace. A different topic means a new workspace, not a second
+  mission. Workspaces never link to each other.
 
-## Before Editing (Non-Trivial Changes)
+To start a new topic:
 
-A change is non-trivial when it affects behavior, multiple files, shared conventions, structure, dependencies, generated artifacts, or project docs. Writing one lesson into an existing workspace is not non-trivial; changing how workspaces are structured is.
+1. Copy the template:
 
-Before editing, state: requested outcome and scope, working assumptions, simplest viable approach, verification plan, and any material ambiguity. If an ambiguity could materially change scope, ask one concise question first.
+   ```bash
+   cp -r templates/learning-workspace learning/<domain>/<topic-slug>
+   ```
 
-## Artifact Quality
+2. Interview the user, then write the mission into the new `README.md`. A vague
+   mission misdirects every lesson that follows.
+3. Add a row for the topic to the table in `learning/README.md`.
 
-- Every artifact must be complete, actionable, internally consistent, and specific enough to verify.
-- No placeholders, TODOs, unsupported claims, or missing required sections unless the user requests a draft. Placeholders are correct in `templates/learning-workspace/` and nowhere else.
-- Every section, example, and abstraction must contribute to the outcome. Remove anything that does not.
-- Examples must be narrow, direct, complete, and consistent with actual repo conventions.
-- Introduce structure only when it reduces real complexity or follows an established pattern.
-- No speculative features, unused extension points, or unrequested configurability.
-- KISS: prefer the simplest complete solution. If an artifact grows beyond what the problem requires, simplify before finalizing.
-- Self-review every non-trivial artifact for placeholders, contradictions, scope drift, and missing verification. Fix issues before presenting.
+Never teach into `templates/learning-workspace/`. It is only a copy source, and
+it never appears in an index.
+
+## Editing rules
+
+- The repository is the source of truth. Check files before acting on memory or
+  old notes.
+- Change as little as possible. Do not restructure, reformat, or improve
+  unrelated content unless asked.
+- If your change makes a project document wrong, fix that document in the same
+  change.
+
+Before a change that touches behavior, several files, shared conventions,
+structure, dependencies, or project docs, first state: what you will change,
+how you will check it, and any real ambiguity. Ask one short question if the
+answer would change the scope. Writing one lesson into an existing workspace
+does not need this step.
+
+## Quality bar for anything you write
+
+- Complete, specific, and consistent with itself.
+- No placeholders and no TODOs. The only exception is
+  `templates/learning-workspace/`.
+- No claims you cannot support.
+- Every section and example must serve the goal. Delete the rest.
+- Examples must be short, complete, and match how this repository actually
+  works.
+- Choose the simplest version that fully solves the task. Do not add
+  abstractions, options, or features nobody asked for.
+- Re-read what you wrote before showing it. Fix contradictions, placeholders,
+  and anything outside the request.
+
+## Final answer
+
+End the task by stating:
+
+1. What you changed.
+2. What you checked, and how.
+3. Anything still risky or unverified.

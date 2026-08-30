@@ -7,10 +7,11 @@ Working notes for the teaching session. Not linked from `README.md`.
 - Mission is the full arc: zero to senior specialist. Curriculum spans everything; lesson placement is set by calibration, not by starting at stage 1 by default.
 - Coming from Java 21 (professional) and TypeScript (heavy daily use). Use that as leverage — teach Go idiom as a contrast with what Java taught, since the wrong Java instinct compiles cleanly in Go.
 - Reps must fit an evening.
+- **Links go to sources of information, not to places to ask.** Stated 2026-08-30. Documentation, books, articles and style guides qualify; chats, forums and subreddits do not, however well moderated. The `## Wisdom (Communities)` section was deleted from `RESOURCES.md` and the community link removed from lesson 0036. Do not propose a community again — this overrides the Wisdom section of `SKILL.md`, which anticipates exactly this preference and says to record it here.
 
-## Calibration needed before lesson 0001
+## Calibration needed before the first teaching session
 
-Stage 1 and parts of stage 2 may already be solid. Confirm with retrieval rather than by asking, then write a learning record for whatever is established so it is not re-taught. Cheapest probes:
+The full arc is written, so the open question is not what to write but where to start. Stage 1 and parts of stage 2 may already be solid. Confirm with retrieval rather than by asking, then write a learning record for whatever is established so it is not re-taught. Cheapest probes:
 
 - Slice aliasing after `append` — the answer separates "reads Go" from "writes Go".
 - Whether a `nil` interface holding a `nil` pointer is `nil`.
@@ -28,5 +29,7 @@ These are where Java and TypeScript habits actively mislead, so they deserve the
 
 ## Open threads
 
-- Which stage 4 target: HTTP or gRPC first? Depends on what gets shipped, and nothing has been chosen yet.
+- Stage 4 went HTTP-first (lessons 0022–0027); gRPC has no lesson and no source. Revisit only if what gets shipped needs it — the arc and `RESOURCES.md` both say so now.
+- Observability past `slog` — metrics and tracing — is unwritten and listed as a gap. It is the most likely place the arc grows.
 - No decision yet on whether reps land in a scratch repo or in an existing project.
+- The Java 21 contrast is currently concentrated in lesson 0015 (goroutines versus virtual threads). If it needs more room, 0018 on `context` is the other place it would earn a section.

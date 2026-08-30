@@ -7,3 +7,17 @@
 [data-slot="sidebar"] {
   --sidebar-menu-width: 300px !important;
 }
+
+/* Drop the theme's fixed top spacer above the sidebar's first item —
+   it's decorative, not needed for our simpler single top-level page. */
+[data-slot="sidebar"] > .h-9 {
+  height: 0;
+}
+
+/* That spacer used to hold the top fade-out overlay clear of any real
+   item. Now that it's gone, the overlay sits right on top of the
+   first nav item and blurs it — hide the overlay instead. */
+[data-slot="sidebar"] > .blur-xs {
+  display: none;
+}
+

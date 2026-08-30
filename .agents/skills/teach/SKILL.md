@@ -75,8 +75,11 @@ learning/<domain>/<topic>/
 |`reference/*.md`|Cheat sheets: syntax, algorithms, sequences, poses, routines.|
 |`learning-records/NNNN-*.md`|Evidence-grade insights that set what to teach next. The ADRs of learning.|
 |`assets/*`|Reusable artifacts lessons link to — diagrams, drill banks, printable cards.|
+|`NOTES.md`|What is true about *this learner*, and nothing else.|
 
 Create each lazily, on first need. Reuse is the default: read `reference/` and `assets/` before authoring, and build on what is there.
+
+`NOTES.md` is the easiest file to abuse, because it is the only one with no reader to answer to. Hold it to one test: **would this still be true if someone else were learning this topic?** If yes, it is not a note — it is content, and it belongs in a published file where a reader can use it. Preferences, disclosed background, calibration plans, environment blockers and open questions stay. A curriculum arc, a corrected fact, a source worth trusting and a term worth pinning do not.
 
 Lessons number from `0001` within each workspace.
 
@@ -218,6 +221,14 @@ The landing page a visitor opens, on GitHub and on the site. Carries the mission
 
 - {Adjacent topics the user does not want to chase now}
 
+## The arc
+
+{N} stages. Not a lesson list — a stage takes several lessons, and the boundaries are soft.
+
+|Stage|Covers|Done when|
+|---|---|---|
+|1. {Name}|{What it covers}|{The capability that closes the stage}|
+
 ## Lessons
 
 Work through these in order.
@@ -240,7 +251,8 @@ Each lesson is short and self-contained. Answer keys are collapsed — recall fi
 Rules:
 
 - Concrete beats abstract: "Run a half marathon by October" over "get fitter"; "Ship a Rust CLI to my team" over "learn Rust".
-- Keep the mission above the lesson table under a screen. Past that it has stopped being a compass.
+- Keep the mission itself under a screen. Past that it has stopped being a compass. The arc may sit between it and the lesson table: stages answer "how far along am I", which the flat index cannot.
+- The arc is the shape of the course, so it is public. It is not a plan of what to teach next — that is a working note.
 - Keep each table row to number, title, and one clause. This is an index, not a summary. A table that has drifted from `lessons/` is worse than no table.
 - Do not link `NOTES.md` or `learning-records/` from here. Working notes and a record of the user's corrected misconceptions stay unadvertised, whether or not the repository is public.
 

@@ -24,6 +24,14 @@ type: topic
 
 - {Adjacent topics you do not want to chase now}
 
+## The arc
+
+{N} stages, {start} to {end}. Not a lesson list — a stage takes several lessons, and the boundaries are soft.
+
+| Stage | Covers | Done when |
+|---|---|---|
+| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+
 ## Lessons
 
 Work through these in order.

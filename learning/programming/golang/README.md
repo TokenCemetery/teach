@@ -33,6 +33,19 @@ Become the engineer trusted to own Go on a team — able to design, ship and ope
 - Kubernetes and infrastructure beyond what one Go service needs to run.
 - Compiler and runtime internals past the point where they stop predicting program behaviour.
 
+## The arc
+
+Six stages, zero to senior. Not a lesson list — a stage takes several lessons, and the boundaries are soft.
+
+| Stage | Covers | Done when |
+|---|---|---|
+| 1. Foundations | Types, zero values, value vs pointer semantics, slice and map mechanics including aliasing, strings vs runes vs bytes, package basics | Can predict aliasing and copy behaviour without running the code |
+| 2. Idiom | Errors as values, wrapping with `%w`, `errors.Is`/`As`, implicit interface satisfaction, small interfaces, struct embedding, package layout and naming | Writes Go that a reviewer would not describe as "Java in Go syntax" |
+| 3. Concurrency | Goroutines, channels, `select`, `sync` primitives, `context` cancellation, `errgroup`, the race detector, the memory model, leak patterns | Can find a leak and a race in unfamiliar code and explain the guarantee that was violated |
+| 4. Production | HTTP and gRPC services, config, `slog`, graceful shutdown, observability, database access, generics where they earn their keep | Has shipped a service that survives being operated |
+| 5. Performance and tooling | Table-driven tests, fuzzing, benchmarks, `pprof`, escape analysis, allocation reduction, modules and versioning, release builds | Optimises from a profile and proves the win with `benchstat` |
+| 6. Judgment | API design and compatibility, when *not* to use a goroutine, review, mentoring, reading stdlib source for answers | Trusted to make the call and to explain it to someone else |
+
 ## Lessons
 
 Work through these in order.

@@ -38,6 +38,20 @@ Be the person who can take a base model and a task, decide whether adapter fine-
 - Building serving infrastructure, beyond running an adapter through an existing stack.
 - Training a model from scratch.
 
+## The arc
+
+Seven stages, zero to senior. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Ground floor | 0001–0004 | What a forward pass computes, where the weight matrices live, tokenizers, chat templates, what training changes | Can point at which tensors an adapter would touch and why |
+| 2. The memory argument | 0005–0007 | Parameters vs gradients vs optimizer state, AdamW's two moments, activation memory, gradient checkpointing | Can compute why full fine-tuning fails on a given device, in bytes |
+| 3. LoRA | 0008–0013 | `ΔW = BA`, rank, alpha and scaling, initialisation, target module choice, running it, reading the run, merging | Trains an adapter and can defend every hyperparameter |
+| 4. Quantisation and QLoRA | 0014–0017 | int8/int4, NF4, double quantisation, backprop through a frozen quantized base, what degrades | Ran real NF4 and can say what it cost in quality |
+| 5. DoRA and the variant landscape | 0018–0020 | Magnitude/direction decomposition, why it helps most at low rank, how to assess a new variant's claim | Can predict when DoRA beats LoRA before running it |
+| 6. Data and evaluation | 0021–0024 | Dataset construction, contamination, held-out design, task metrics vs loss, regression suites | Has an eval that has actually caught a regression |
+| 7. Operate and judge | 0025–0027 | Serving adapters vs merged, multi-adapter serving, cost and latency, when *not* to fine-tune | Trusted to decide whether a task should be fine-tuned at all |
+
 ## Lessons
 
 Work through these in order.

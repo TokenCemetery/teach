@@ -35,11 +35,10 @@ Run the `teach` skill again. It picks up from the workspace state — no need to
 │   └── <domain>/<topic>/  # one workspace per topic
 ├── templates/
 │   └── learning-workspace/ # copy source for a new topic
-├── docs/                  # project-level design and task docs
 └── .agents/memory/        # agent working memory
 ```
 
-Conventions for agent behavior live in [`AGENTS.md`](AGENTS.md); documentation conventions in [`docs/AGENTS.md`](docs/AGENTS.md).
+Conventions for agent behavior live in [`AGENTS.md`](AGENTS.md).
 
 ## Contributing
 

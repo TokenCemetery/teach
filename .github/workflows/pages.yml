@@ -22,7 +22,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - run: pip install mkdocs mkdocs-shadcn mkdocs-static-i18n mkdocs-awesome-nav pymdown-extensions Pygments
+      # mkdocs-shadcn from our fork's `main`: includes sidebar fixes not yet
+      # released upstream (asiffer/mkdocs-shadcn#107). Switch back to the
+      # PyPI package once that PR is merged and released.
+      - run: pip install mkdocs "mkdocs-shadcn @ git+https://github.com/olegshulyakov/mkdocs-shadcn@main" mkdocs-static-i18n mkdocs-awesome-nav pymdown-extensions Pygments
       - run: mkdocs build
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -49,4 +49,15 @@ See the org-wide [CONTRIBUTING.md](https://github.com/PromptPasture/.github/blob
 
 ## License
 
-Apache-2.0 — see [LICENSE](LICENSE).
+Two licenses, because the repository holds two different things.
+
+- **Learning content** — everything under `learning/` and `templates/`:
+  [CC BY 4.0](LICENSE-CONTENT). Copy it, translate it, teach from it, build on
+  it, commercially or not. Just say where it came from.
+- **Software and configuration** — build config, workflows, stylesheets:
+  [Apache-2.0](LICENSE).
+
+One exception: [`.agents/skills/teach/SKILL.md`](.agents/skills/teach/SKILL.md)
+is MIT, derived from [mattpocock/skills](https://github.com/mattpocock/skills)
+via [PromptPasture/agent.md](https://github.com/PromptPasture/agent.md). Its
+attribution lives in the file's front matter.

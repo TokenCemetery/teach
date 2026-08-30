@@ -53,3 +53,7 @@ learning/<domain>/<topic>/
 Lessons number from `0001` within each workspace. Workspaces may link to each other, but a link is a pointer rather than an inclusion: it does not pull another topic's material into this mission. Prefer linking a glossary term or a reference sheet over a lesson — those are written for lookup and land on any reader.
 
 The `teach` skill owns the format of every file here. Read [its spec](https://github.com/TokenCemetery/teach/blob/main/.agents/skills/teach/SKILL.md) before hand-authoring one.
+
+## License
+
+Everything on this site is [CC BY 4.0](https://github.com/TokenCemetery/teach/blob/main/LICENSE-CONTENT). Copy it, translate it, teach from it, build on it — commercially or not. Just say where it came from.

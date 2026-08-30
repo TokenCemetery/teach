@@ -1,0 +1,16 @@
+site_name: teach
+site_description: Учебные материалы — уроки и справочники для самостоятельного изучения
+repo_url: https://github.com/TokenCemetery/teach
+docs_dir: learning
+site_dir: site
+
+theme:
+  name: shadcn
+
+# mkdocs-static-i18n is not added yet: it currently breaks mkdocs-shadcn
+# (https://github.com/asiffer/mkdocs-shadcn/issues/105). Add it back once fixed.
+
+exclude_docs: |
+  **/NOTES.md
+  **/RESOURCES.md
+  **/learning-records/

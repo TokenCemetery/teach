@@ -10,6 +10,19 @@ theme:
 extra_css:
   - extra.css
 
+markdown_extensions:
+  # Lessons collapse their answer keys into `<details markdown="1">`. Without
+  # this, Python-Markdown passes the block through raw and the answer renders
+  # as literal markdown — backticks, bold and all.
+  - md_in_html
+  # A `<details>` block interrupts the surrounding ordered list, so every
+  # Practice item restarted at "1.". This carries the number across the break.
+  - sane_lists
+  # The theme ships Pygments stylesheets but nothing was emitting Pygments
+  # markup, so every code block rendered unhighlighted.
+  - pymdownx.highlight
+  - pymdownx.superfences
+
 plugins:
   - search
   - awesome-nav

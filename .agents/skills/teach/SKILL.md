@@ -117,6 +117,7 @@ Separate **fluency strength** (in-the-moment retrieval) from **storage strength*
 - **Only the knowledge the skill needs.** Teach that, then have the user practice it.
 - **Self-contained feedback.** Practice carries its own answer key: recall prompts with collapsed answers, and real-world reps the user performs away from the screen. Close by inviting the user to bring answers or sticking points back to the session.
 - **Answer-key discipline.** Keep answers collapsed. Hold every multiple-choice option to the same word count, and character count where possible — formatting must not leak the answer.
+- **Graduated hints, where a nudge is enough.** A prediction or a debugging prompt may carry a collapsed `Hint` before its `Check`, as a sibling block rather than nested inside the answer: a hint reachable only by opening the answer is not a hint. Use it where one push gets the learner unstuck, and leave it off recall prompts, where a hint is the answer arriving early.
 - **Spacing and interleaving.** Open with two or three recall items from earlier lessons, and mix related skills into practice sets rather than drilling one in isolation.
 - **Linked.** Link the `reference/` sheets, glossary terms, and prior lessons a reader would want next.
 - **One primary source.** Name the single best source found for the user to read or watch.

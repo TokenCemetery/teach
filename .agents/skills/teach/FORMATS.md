@@ -149,6 +149,12 @@ That is the whole format — a single paragraph is a complete record. Add **Evid
 
 1. ▢ {Prompt}
 
+<details markdown="1"><summary>Hint</summary>
+
+{A nudge that gets them unstuck without answering. Drop this block where a hint would just be the answer early.}
+
+</details>
+
 <details markdown="1"><summary>Check</summary>
 
 {Answer, plus why the wrong instinct is wrong.}

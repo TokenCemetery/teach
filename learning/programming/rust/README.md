@@ -8,7 +8,8 @@ type: topic
 
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
-**Latest lesson:** _none yet_
+**Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
+**Latest lesson:** [0006. Reading a Borrow Error](lessons/0006-reading-a-borrow-error.md)
 
 ## Success looks like
 
@@ -59,12 +60,18 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-ownership-and-drop.md) | Ownership and Drop | Every value has exactly one owner, and the compiler frees it when that owner goes out of scope |
+| [0002](lessons/0002-moves-and-copy.md) | Moves and Copy | Assignment moves ownership unless the type is Copy, which is why the old name stops working |
+| [0003](lessons/0003-borrowing.md) | Borrowing | Many shared borrows or one mutable borrow, never both, and a borrow ends at its last use |
+| [0004](lessons/0004-slices-string-and-str.md) | Slices, String and str | A slice is a borrowed view with a length, and taking &str in an API costs callers nothing |
+| [0005](lessons/0005-bindings-and-mutability.md) | Bindings and Mutability | Immutable by default, mut is per binding, and shadowing is a new binding rather than a change |
+| [0006](lessons/0006-reading-a-borrow-error.md) | Reading a Borrow Error | Five error codes cover most of stage 1, and each one has an honest fix and a workaround |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
+- [Ownership and borrowing](reference/ownership-and-borrowing.md): the rules, the Copy list, the error codes, and the honest fix for each
 
 ## How this works
 

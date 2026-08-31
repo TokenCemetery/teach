@@ -30,4 +30,34 @@ _Avoid_: unchecked, dangerous, raw, escape hatch
 
 ## Terms
 
-_Added as lessons establish them._
+**Copy**:
+A marker trait for types that are duplicated rather than moved on assignment, because they are plain data with nothing to free. It requires `Clone` and is incompatible with `Drop`, and `&T` has it while `&mut T` deliberately does not.
+_Avoid_: value type, primitive, cheap type
+
+**Deref coercion**:
+The compiler's automatic conversion from a reference to an owning type into a reference to what it derefs to, such as `&String` into `&str`. It is why taking the borrowed type in a signature costs callers nothing.
+_Avoid_: implicit cast, auto-conversion, upcasting
+
+**Drop**:
+The point at which a value's owner goes out of scope and its destructor runs, releasing whatever it owns. It happens in reverse declaration order within a scope, which makes it the defined moment a lock is released or a file is closed.
+_Avoid_: free, garbage collection, finalisation
+
+**Move**:
+The transfer of ownership that assignment or argument passing performs on a non-**Copy** type, after which the source binding is unusable. It is compile-time bookkeeping rather than a runtime operation.
+_Avoid_: transfer, copy, reassignment
+
+**Non-lexical lifetimes**:
+The analysis under which a borrow ends at its last use rather than at the end of its enclosing scope. It is why many borrow errors are fixed by moving one line instead of restructuring.
+_Avoid_: scope-based borrows, lexical scoping
+
+**Reborrow**:
+Producing a new borrow from an existing one, which the compiler inserts implicitly when a `&mut T` is passed to a function so the original stays usable. Where it does not fire, such as storing a `&mut` in a struct, the move is real.
+_Avoid_: copy, pass-through, nested borrow
+
+**Slice**:
+A borrowed view into a contiguous sequence, carrying a pointer and a length and owning nothing. `&str` and `&[T]` are the two that appear constantly, and both are what a signature should ask for.
+_Avoid_: array, view, range, substring
+
+**Shadowing**:
+Declaring a new binding with the name of an existing one, so the earlier binding becomes unreachable. It is not mutation: the type may change, and no `mut` is required.
+_Avoid_: reassignment, overwriting, redeclaration

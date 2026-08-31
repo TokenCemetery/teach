@@ -11,7 +11,11 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## State
 
-The workspace was prepared in one pass: mission, arc and sources. No lesson has been written yet, so the lesson table is empty rather than drifted, and `GLOSSARY.md` holds only the four pinned usage terms.
+Stage 1 is written: lessons 0001 to 0006, plus the `reference/ownership-and-borrowing.md` sheet every lesson in the stage points at. Stages 2 to 8 are unwritten.
+
+Lesson 0006 is the stage's capstone and the piece worth protecting. It teaches reading the compiler's three spans, the five error codes stage 1 actually produces, and the four honest fixes against the four workarounds. It is the direct answer to the stage's success criterion, and it is also where the "what not to do here" rule below is made explicit for a reader rather than kept as a note.
+
+**How the glossary is populated here.** The skill's test, that a term lands once it can be used correctly, is about a learner's demonstration. These lessons have no single learner, so the test is applied to the material: a term lands when a lesson has taught it well enough for a reader to use it. Stage 1 added eight terms alongside the four pinned ones. Keep doing this per stage, and do not add a term the lessons have not earned.
 
 ## On the arc
 

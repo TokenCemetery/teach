@@ -1,10 +1,10 @@
 ---
-title: 7 — Packages and Modules
+title: 7. Packages and Modules
 description: A directory is a package, a capital letter is the whole visibility system, and internal is enforced
 type: lesson
 ---
 
-# Lesson 7 — Packages and Modules
+# Lesson 7. Packages and Modules
 
 **Mission link:** Go's unit of encapsulation is the directory, not the type. Getting this wrong produces a repository that fights every import you write, and it is hard to undo later.
 **Primary source:** [How to Write Go Code — The Go Authors](https://go.dev/doc/code)
@@ -170,6 +170,6 @@ Explicit construction in `main` gives you an error to handle, a dependency to su
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

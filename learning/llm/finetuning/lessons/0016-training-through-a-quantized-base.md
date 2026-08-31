@@ -1,10 +1,10 @@
 ---
-title: 16 — Training Through a Quantized Base
+title: 16. Training Through a Quantized Base
 description: How gradients flow through frozen 4-bit weights
 type: lesson
 ---
 
-# Lesson 16 — Training Through a Quantized Base
+# Lesson 16. Training Through a Quantized Base
 
 **Mission link:** QLoRA in practice. This is also the one lesson where the hardware you have genuinely changes what is available to you.
 **Primary source:** [Docs: bitsandbytes quantization — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/quantization/bitsandbytes)
@@ -195,6 +195,6 @@ Merging into the 4-bit base requires dequantise-add-requantise and loses quality
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

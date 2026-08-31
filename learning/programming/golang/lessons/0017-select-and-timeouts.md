@@ -1,10 +1,10 @@
 ---
-title: 17 — select and Timeouts
+title: 17. select and Timeouts
 description: Waiting on several channels at once, choosing randomly among the ready, and disabling a case with nil
 type: lesson
 ---
 
-# Lesson 17 — select and Timeouts
+# Lesson 17. select and Timeouts
 
 **Mission link:** `select` is what turns channels from a queue into a coordination language. Every shutdown path, timeout and worker loop in a Go service is built from it.
 **Primary source:** [Go Concurrency Patterns: Pipelines and cancellation — The Go Blog](https://go.dev/blog/pipelines)
@@ -202,6 +202,6 @@ The moment someone adds graceful shutdown — and stage 4 does — a worker with
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

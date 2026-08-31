@@ -1,10 +1,10 @@
 ---
-title: 13 — Merging, Saving and Shipping an Adapter
+title: 13. Merging, Saving and Shipping an Adapter
 description: Merged is exact; an adapter is a diff that needs its base
 type: lesson
 ---
 
-# Lesson 13 — Merging, Saving and Shipping an Adapter
+# Lesson 13. Merging, Saving and Shipping an Adapter
 
 **Mission link:** An adapter that only exists in a training script is not shipped. This closes stage 3.
 **Primary source:** [Docs: LoRA merging — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
@@ -216,6 +216,6 @@ It sometimes works well and is worth trying. It is never something to assume —
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

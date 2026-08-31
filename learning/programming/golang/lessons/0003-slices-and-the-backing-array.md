@@ -1,10 +1,10 @@
 ---
-title: 3 — Slices and the Backing Array
+title: 3. Slices and the Backing Array
 description: A slice is a three-word header over an array someone else may also be holding
 type: lesson
 ---
 
-# Lesson 3 — Slices and the Backing Array
+# Lesson 3. Slices and the Backing Array
 
 **Mission link:** Slice aliasing is the bug that separates people who read Go from people who write it. It produces corrupted data with no panic, no race, and no stack trace.
 **Primary source:** [Go Slices: usage and internals — The Go Blog](https://go.dev/blog/slices-intro)
@@ -189,6 +189,6 @@ Add the check only if nil and empty mean genuinely different things to the calle
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

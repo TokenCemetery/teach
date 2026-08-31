@@ -1,10 +1,10 @@
 ---
-title: 27 — Generics That Earn Their Keep
+title: 27. Generics That Earn Their Keep
 description: Type parameters remove duplication across types, and an interface is still the right answer for behaviour
 type: lesson
 ---
 
-# Lesson 27 — Generics That Earn Their Keep
+# Lesson 27. Generics That Earn Their Keep
 
 **Mission link:** Generics arrived after most Go idiom was settled, so the judgment about when *not* to use them is the part that distinguishes a senior reviewer.
 **Primary source:** [When To Use Generics — The Go Blog](https://go.dev/blog/when-generics)
@@ -179,6 +179,6 @@ This is the zero-value rule paying off in the type system: generic code can cons
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

@@ -1,10 +1,10 @@
 ---
-title: 20 — Judging a New PEFT Variant
+title: 20. Judging a New PEFT Variant
 description: Six triage questions, and the baseline to beat
 type: lesson
 ---
 
-# Lesson 20 — Judging a New PEFT Variant
+# Lesson 20. Judging a New PEFT Variant
 
 **Mission link:** "Read a new PEFT paper and judge whether its claimed win would survive on your own task" is the last item on the success list. This lesson is that skill.
 **Primary source:** [Docs: LoRA variants — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
@@ -173,6 +173,6 @@ It is hard because it already has enough capacity and coverage to approach full 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

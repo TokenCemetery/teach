@@ -8,8 +8,8 @@ type: topic
 
 Be the person who can take a base model and a task, decide whether adapter fine-tuning is the right answer at all, run it, prove it worked with an eval that would catch a regression, and ship it — and who can argue convincingly for prompting or retrieval instead when those would do the job better.
 
-**Start here:** [0001 — What a Base Model Actually Is](lessons/0001-what-a-base-model-is.md)
-**Latest lesson:** [0027 — When Not to Fine-Tune](lessons/0027-when-not-to-fine-tune.md)
+**Start here:** [0001. What a Base Model Actually Is](lessons/0001-what-a-base-model-is.md)
+**Latest lesson:** [0027. When Not to Fine-Tune](lessons/0027-when-not-to-fine-tune.md)
 
 ## Success looks like
 

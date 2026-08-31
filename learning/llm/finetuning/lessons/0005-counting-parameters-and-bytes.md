@@ -1,10 +1,10 @@
 ---
-title: 5 — Counting Parameters and Bytes
+title: 5. Counting Parameters and Bytes
 description: Turning a model config into gigabytes
 type: lesson
 ---
 
-# Lesson 5 — Counting Parameters and Bytes
+# Lesson 5. Counting Parameters and Bytes
 
 **Mission link:** "Account for every byte" is in the mission. This is the lesson where you learn to do the arithmetic instead of guessing.
 **Primary source:** [Docs: Model memory anatomy — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/model_memory_anatomy)
@@ -176,6 +176,6 @@ The next lesson turns this into an exact number, and the answer is not close.
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

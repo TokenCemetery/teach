@@ -1,10 +1,10 @@
 ---
-title: 19 — When DoRA Wins, and When It Doesn't
+title: 19. When DoRA Wins, and When It Doesn't
 description: Predicting the win before running it
 type: lesson
 ---
 
-# Lesson 19 — When DoRA Wins, and When It Doesn't
+# Lesson 19. When DoRA Wins, and When It Doesn't
 
 **Mission link:** "Can predict when DoRA beats LoRA before running it" is the bar for this stage. Prediction, not experiment.
 **Primary source:** [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation" — Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
@@ -172,6 +172,6 @@ Either run enough seeds to resolve a difference that small — which may be many
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

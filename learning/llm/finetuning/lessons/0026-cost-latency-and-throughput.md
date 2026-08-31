@@ -1,10 +1,10 @@
 ---
-title: 26 — Cost, Latency and Throughput
+title: 26. Cost, Latency and Throughput
 description: Prefill versus decode, and where the money actually goes
 type: lesson
 ---
 
-# Lesson 26 — Cost, Latency and Throughput
+# Lesson 26. Cost, Latency and Throughput
 
 **Mission link:** "Measure what it cost in quality and latency" is on the success list. Fine-tuning is frequently a *cost* decision, and this is the arithmetic behind it.
 **Primary source:** [Blog: "LLM Inference Performance Engineering: Best Practices" — Databricks](https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices)
@@ -197,6 +197,6 @@ At 500 a day the recurring human cost almost certainly dominates. At 5 million i
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

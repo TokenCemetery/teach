@@ -1,10 +1,10 @@
 ---
-title: 6 — Gradients and Optimizer State
+title: 6. Gradients and Optimizer State
 description: Sixteen bytes per trainable parameter, two per frozen
 type: lesson
 ---
 
-# Lesson 6 — Gradients and Optimizer State
+# Lesson 6. Gradients and Optimizer State
 
 **Mission link:** This is the argument for adapters. Once you can derive the sixteen-bytes-per-parameter figure, LoRA stops being a trick and becomes the obvious response.
 **Primary source:** [Paper: "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models" — Rajbhandari et al., arXiv:1910.02054](https://arxiv.org/abs/1910.02054)
@@ -179,6 +179,6 @@ A frozen parameter needs only its own value stored for the forward pass, while a
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

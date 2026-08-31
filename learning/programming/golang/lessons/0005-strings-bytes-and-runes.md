@@ -1,10 +1,10 @@
 ---
-title: 5 — Strings, Bytes and Runes
+title: 5. Strings, Bytes and Runes
 description: A string is immutable UTF-8 bytes, so len is not a character count and indexing is not a character
 type: lesson
 ---
 
-# Lesson 5 — Strings, Bytes and Runes
+# Lesson 5. Strings, Bytes and Runes
 
 **Mission link:** Every service parses, slices and logs strings. Treating them as arrays of characters produces output that is fine in tests and mangled the first time a real name arrives.
 **Primary source:** [Strings, bytes, runes and characters in Go — The Go Blog](https://go.dev/blog/strings)
@@ -170,6 +170,6 @@ Slicing a string, `s[1:3]`, does *not* copy: it produces a new string header ove
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

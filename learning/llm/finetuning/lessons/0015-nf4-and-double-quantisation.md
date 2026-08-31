@@ -1,10 +1,10 @@
 ---
-title: 15 — NF4 and Double Quantisation
+title: 15. NF4 and Double Quantisation
 description: The two ideas QLoRA actually contributed
 type: lesson
 ---
 
-# Lesson 15 — NF4 and Double Quantisation
+# Lesson 15. NF4 and Double Quantisation
 
 **Mission link:** These are the two ideas QLoRA contributed. Knowing them separates understanding the paper from having read the abstract.
 **Primary source:** [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs" — Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
@@ -202,6 +202,6 @@ Set it to bf16 deliberately. Storage precision and compute precision are separat
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

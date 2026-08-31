@@ -1,10 +1,10 @@
 ---
-title: 31 — Reading a pprof Profile
+title: 31. Reading a pprof Profile
 description: Find where the time and the memory actually go, before changing a single line
 type: lesson
 ---
 
-# Lesson 31 — Reading a pprof Profile
+# Lesson 31. Reading a pprof Profile
 
 **Mission link:** Optimising from a profile rather than from a hunch is the habit that separates a performance claim from a performance result.
 **Primary source:** [Profiling Go Programs — The Go Blog](https://go.dev/blog/pprof)
@@ -176,6 +176,6 @@ The window is short, so it is worth having the pprof endpoint already wired and 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

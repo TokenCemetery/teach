@@ -1,10 +1,10 @@
 ---
-title: 24 — Structured Logging with slog
+title: 24. Structured Logging with slog
 description: Key-value attributes, one logger passed as a dependency, and levels you can change without a deploy
 type: lesson
 ---
 
-# Lesson 24 — Structured Logging with slog
+# Lesson 24. Structured Logging with slog
 
 **Mission link:** Logs are the first thing you reach for at 3am and the last thing anyone designs. Structured output is what makes a log searchable instead of grep-able.
 **Primary source:** [Structured Logging with slog — The Go Blog](https://go.dev/blog/slog)
@@ -174,6 +174,6 @@ This is the legitimate use of `context.Value` from Lesson 18: request-scoped met
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

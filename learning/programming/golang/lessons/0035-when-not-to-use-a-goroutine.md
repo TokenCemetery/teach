@@ -1,10 +1,10 @@
 ---
-title: 35 — When Not to Use a Goroutine
+title: 35. When Not to Use a Goroutine
 description: Concurrency is a structure, not a speedup, and the sequential version is often the right answer
 type: lesson
 ---
 
-# Lesson 35 — When Not to Use a Goroutine
+# Lesson 35. When Not to Use a Goroutine
 
 **Mission link:** Knowing when *not* to reach for a goroutine is named in the mission. It is the judgment that separates someone who can use Go's concurrency from someone who should be trusted with it.
 **Primary source:** [Concurrency is not parallelism — Rob Pike](https://go.dev/blog/waza-talk)
@@ -153,6 +153,6 @@ That is three things to get right per goroutine, which is why `errgroup` and a s
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

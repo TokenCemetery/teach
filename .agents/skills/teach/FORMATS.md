@@ -13,7 +13,7 @@ The landing page a visitor opens, on GitHub and on the site. Carries the mission
 
 {1-3 sentences. The concrete real-world goal. What changes in the user's life or work when they have this skill? Avoid "to understand X"; push for the outcome underneath.}
 
-**Latest lesson:** [{NNNN} — {Title}](lessons/NNNN-slug.md)
+**Latest lesson:** [{NNNN}. {Title}](lessons/NNNN-slug.md)
 
 ## Success looks like
 
@@ -129,7 +129,7 @@ That is the whole format: a single paragraph is a complete record. Add **Evidenc
 `lessons/NNNN-<slug>.md`, numbered one above the highest existing lesson.
 
 ```md
-# Lesson {N} — {Title}
+# Lesson {N}. {Title}
 
 **Mission link:** {the one line connecting this to the mission}
 **Primary source:** [{title}]({url})
@@ -174,7 +174,7 @@ That is the whole format: a single paragraph is a complete record. Add **Evidenc
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).
 ```

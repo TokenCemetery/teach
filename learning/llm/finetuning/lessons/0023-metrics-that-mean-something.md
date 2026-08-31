@@ -1,10 +1,10 @@
 ---
-title: 23 — Metrics That Mean Something
+title: 23. Metrics That Mean Something
 description: Loss selects checkpoints; task metrics make decisions
 type: lesson
 ---
 
-# Lesson 23 — Metrics That Mean Something
+# Lesson 23. Metrics That Mean Something
 
 **Mission link:** "Prove it worked" is in the mission. A number you cannot defend is not proof.
 **Primary source:** [Paper: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — Zheng et al., arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
@@ -184,6 +184,6 @@ Report per-class precision and recall, or a balanced metric. Accuracy on imbalan
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

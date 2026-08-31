@@ -1,10 +1,10 @@
 ---
-title: 14 — Designing a Package
+title: 14. Designing a Package
 description: Doc comments, a small exported surface, and a dependency arrow that points one way
 type: lesson
 ---
 
-# Lesson 14 — Designing a Package
+# Lesson 14. Designing a Package
 
 **Mission link:** Reviewing someone's Go and naming why a design is wrong starts here. Most package-level mistakes are visible before you read a single function body.
 **Primary source:** [Go Doc Comments — The Go Authors](https://go.dev/doc/comment)
@@ -207,6 +207,6 @@ Errors you do not document are free to change. This is the cheapest way to keep 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

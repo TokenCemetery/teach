@@ -1,10 +1,10 @@
 ---
-title: 10 — Choosing Target Modules
+title: 10. Choosing Target Modules
 description: Attention-only is a 2021 ablation, not a default
 type: lesson
 ---
 
-# Lesson 10 — Choosing Target Modules
+# Lesson 10. Choosing Target Modules
 
 **Mission link:** Target modules matter more than rank, and the received wisdom on them is out of date. This is a place where you can be measurably better than the average practitioner.
 **Primary source:** [Docs: "LoRA Without Regret" — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
@@ -181,6 +181,6 @@ Its cost is loss of precision — verify what it matched, and note that it may i
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

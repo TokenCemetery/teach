@@ -1,10 +1,10 @@
 ---
-title: 7 — Activations, Batch Size and Checkpointing
+title: 7. Activations, Batch Size and Checkpointing
 description: Why an adapter run still runs out of memory
 type: lesson
 ---
 
-# Lesson 7 — Activations, Batch Size and Checkpointing
+# Lesson 7. Activations, Batch Size and Checkpointing
 
 **Mission link:** Adapters remove the optimizer cost but not the activation cost, which is why a LoRA run can still run out of memory. This is the part people are surprised by.
 **Primary source:** [Paper: "Training Deep Nets with Sublinear Memory Cost" — Chen et al., arXiv:1604.06174](https://arxiv.org/abs/1604.06174)
@@ -181,6 +181,6 @@ Verify that `-100` labels are preserved through the packing step and that the im
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

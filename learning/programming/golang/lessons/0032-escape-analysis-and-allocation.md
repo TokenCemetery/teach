@@ -1,10 +1,10 @@
 ---
-title: 32 — Escape Analysis and Allocation
+title: 32. Escape Analysis and Allocation
 description: Why a value lands on the heap, how to ask the compiler, and which fixes actually pay
 type: lesson
 ---
 
-# Lesson 32 — Escape Analysis and Allocation
+# Lesson 32. Escape Analysis and Allocation
 
 **Mission link:** Cutting allocations with evidence is a stage 5 success criterion. Escape analysis is the mechanism underneath the `allocs/op` number, and the compiler will tell you its reasoning.
 **Primary source:** [Go FAQ — Stack or heap?](https://go.dev/doc/faq#stack_or_heap)
@@ -159,6 +159,6 @@ Guessing from the table of causes is a starting point; the compiler's own explan
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

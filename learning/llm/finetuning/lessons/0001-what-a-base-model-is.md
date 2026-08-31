@@ -1,10 +1,10 @@
 ---
-title: 1 — What a Base Model Actually Is
+title: 1. What a Base Model Actually Is
 description: The model is one next-token function; base is not instruct
 type: lesson
 ---
 
-# Lesson 1 — What a Base Model Actually Is
+# Lesson 1. What a Base Model Actually Is
 
 **Mission link:** You cannot judge whether fine-tuning is the right answer until you know exactly what the model does when you leave it alone.
 **Primary source:** [LLM Visualization — Brendan Bycroft](https://bbycroft.net/llm)
@@ -115,6 +115,6 @@ Start from base when your task's output format is so unlike ordinary chat that i
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

@@ -1,10 +1,10 @@
 ---
-title: 29 — Fuzzing
+title: 29. Fuzzing
 description: State a property that must always hold, then let the toolchain search for the input that breaks it
 type: lesson
 ---
 
-# Lesson 29 — Fuzzing
+# Lesson 29. Fuzzing
 
 **Mission link:** Table tests check the cases you thought of. Fuzzing finds the ones you did not, which is exactly the category that reaches production.
 **Primary source:** [Tutorial: Getting started with fuzzing — The Go Authors](https://go.dev/doc/tutorial/fuzz)
@@ -160,6 +160,6 @@ Lesson 5's rule — `len` is bytes, indexing is bytes, only `range` decodes — 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

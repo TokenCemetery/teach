@@ -1,10 +1,10 @@
 ---
-title: 15 — Goroutines and What They Cost
+title: 15. Goroutines and What They Cost
 description: Cheap enough to start thousands, never free enough to start without a plan to stop
 type: lesson
 ---
 
-# Lesson 15 — Goroutines and What They Cost
+# Lesson 15. Goroutines and What They Cost
 
 **Mission link:** Predicting what a concurrent program does starts with knowing what `go` actually creates, what schedules it, and what happens to it when `main` returns.
 **Primary source:** [Concurrency is not parallelism — Rob Pike](https://go.dev/blog/waza-talk)
@@ -173,6 +173,6 @@ It is not safe for anything else the closure captures: a shared map, a slice bei
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

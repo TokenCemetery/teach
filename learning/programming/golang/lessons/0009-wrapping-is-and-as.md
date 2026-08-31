@@ -1,10 +1,10 @@
 ---
-title: 9 — Wrapping, Is and As
+title: 9. Wrapping, Is and As
 description: %w builds a chain, Is and As search it, and wrapping is an API commitment
 type: lesson
 ---
 
-# Lesson 9 — Wrapping, Is and As
+# Lesson 9. Wrapping, Is and As
 
 **Mission link:** An error that arrives at your log line with no context wastes an on-call hour. An error wrapped at every layer with no thought wastes the same hour differently. This is the difference.
 **Primary source:** [Working with Errors in Go 1.13 — The Go Blog](https://go.dev/blog/go1.13-errors)
@@ -190,6 +190,6 @@ Return the error with context, and log at the single place where the error stops
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

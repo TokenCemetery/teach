@@ -1,10 +1,10 @@
 ---
-title: 2 — Where the Weights Live
+title: 2. Where the Weights Live
 description: Naming every projection an adapter could attach to
 type: lesson
 ---
 
-# Lesson 2 — Where the Weights Live
+# Lesson 2. Where the Weights Live
 
 **Mission link:** An adapter attaches to specific weight matrices. You cannot choose which ones until you can name them and say what each one does.
 **Primary source:** [The Illustrated Transformer — Jay Alammar](https://jalammar.github.io/illustrated-transformer/)
@@ -150,6 +150,6 @@ So attention holds about 2 × 2048² + 2 × 2048 × 256 ≈ 9.4M per layer, not 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

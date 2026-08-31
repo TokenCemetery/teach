@@ -1,10 +1,10 @@
 ---
-title: 18 — context and Cancellation
+title: 18. context and Cancellation
 description: One value that carries a deadline and a stop signal down every call it touches
 type: lesson
 ---
 
-# Lesson 18 — context and Cancellation
+# Lesson 18. context and Cancellation
 
 **Mission link:** Cancellation that propagates is the difference between a service that sheds load and one that piles up goroutines until it dies. Nothing in Java or Promise-land transfers cleanly.
 **Primary source:** [Go Concurrency Patterns: Context — The Go Blog](https://go.dev/blog/context)
@@ -169,6 +169,6 @@ Distinguishing it matters operationally: a deadline means you gave up, and a `co
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

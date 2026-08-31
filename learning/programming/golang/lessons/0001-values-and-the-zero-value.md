@@ -1,10 +1,10 @@
 ---
-title: 1 — Values and the Zero Value
+title: 1. Values and the Zero Value
 description: Every declared variable is already usable, and nil is a value rather than an absence
 type: lesson
 ---
 
-# Lesson 1 — Values and the Zero Value
+# Lesson 1. Values and the Zero Value
 
 **Mission link:** Go's defaults are load-bearing. Code that defends against uninitialised state is fighting the language before it has expressed any logic.
 **Primary source:** [Effective Go — The Go Authors](https://go.dev/doc/effective_go)
@@ -161,6 +161,6 @@ The warning is about copying rather than construction: once a `sync.Mutex` has b
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

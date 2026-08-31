@@ -1,10 +1,10 @@
 ---
-title: 25 — Graceful Shutdown and Health
+title: 25. Graceful Shutdown and Health
 description: Catch the signal, stop accepting, drain in-flight work, then close dependencies in order
 type: lesson
 ---
 
-# Lesson 25 — Graceful Shutdown and Health
+# Lesson 25. Graceful Shutdown and Health
 
 **Mission link:** A deploy restarts every instance. If shutdown drops in-flight requests, every deploy is a small outage — and this is the code that decides.
 **Primary source:** [`http.Server.Shutdown`](https://pkg.go.dev/net/http#Server.Shutdown)
@@ -187,6 +187,6 @@ The goroutine profile at the moment of the hang names it. This is the concrete c
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

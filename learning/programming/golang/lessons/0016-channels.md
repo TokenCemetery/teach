@@ -1,10 +1,10 @@
 ---
-title: 16 — Channels
+title: 16. Channels
 description: Unbuffered means rendezvous, closing is a broadcast, and only the sender may close
 type: lesson
 ---
 
-# Lesson 16 — Channels
+# Lesson 16. Channels
 
 **Mission link:** A channel is Go's synchronisation primitive as well as its queue. Using it as only a queue is how deadlocks and leaks get written.
 **Primary source:** [Effective Go — Channels](https://go.dev/doc/effective_go#channels)
@@ -169,6 +169,6 @@ The difference is coverage. The map detector fires whenever it observes the misu
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

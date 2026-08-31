@@ -1,10 +1,10 @@
 ---
-title: 2 — Value Semantics and Pointers
+title: 2. Value Semantics and Pointers
 description: Every assignment and every argument is a copy, and a pointer is how you opt out
 type: lesson
 ---
 
-# Lesson 2 — Value Semantics and Pointers
+# Lesson 2. Value Semantics and Pointers
 
 **Mission link:** Almost every "why didn't my change stick" bug in early Go is a copy the author did not see. Seeing copies is the prerequisite for reading slices, maps and method sets correctly.
 **Primary source:** [Effective Go — Data, allocation with `new` and `make`](https://go.dev/doc/effective_go#allocation_new)
@@ -182,6 +182,6 @@ The compiler stays silent because nothing is ill-typed — incrementing a field 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

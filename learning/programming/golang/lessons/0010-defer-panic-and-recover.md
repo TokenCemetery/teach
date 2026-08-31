@@ -1,10 +1,10 @@
 ---
-title: 10 — defer, panic and recover
+title: 10. defer, panic and recover
 description: Arguments freeze at the defer statement, and panic is for bugs rather than for failures
 type: lesson
 ---
 
-# Lesson 10 — defer, panic and recover
+# Lesson 10. defer, panic and recover
 
 **Mission link:** `defer` is how a Go service releases what it acquired, and its two surprises — argument evaluation and loop accumulation — leak resources quietly under load.
 **Primary source:** [Defer, Panic, and Recover — The Go Blog](https://go.dev/blog/defer-panic-and-recover)
@@ -234,6 +234,6 @@ Naming the result gives the closure a variable that is still live during unwindi
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

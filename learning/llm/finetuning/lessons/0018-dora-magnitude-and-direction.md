@@ -1,10 +1,10 @@
 ---
-title: "18 — DoRA: Magnitude and Direction"
+title: "18. DoRA: Magnitude and Direction"
 description: Renormalisation decouples the two, and that is the method
 type: lesson
 ---
 
-# Lesson 18 — DoRA: Magnitude and Direction
+# Lesson 18. DoRA: Magnitude and Direction
 
 **Mission link:** The third method named in the mission, and the one whose mechanism is most often described wrongly.
 **Primary source:** [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation" — Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
@@ -180,6 +180,6 @@ There is no second low-rank factor. The update is not full-rank. The normalisati
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

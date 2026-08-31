@@ -1,10 +1,10 @@
 ---
-title: 8 — Errors Are Values
+title: 8. Errors Are Values
 description: error is an ordinary interface, so failures are data you handle rather than control flow that escapes
 type: lesson
 ---
 
-# Lesson 8 — Errors Are Values
+# Lesson 8. Errors Are Values
 
 **Mission link:** Error handling is the largest single difference between Go you can operate and Go you cannot. It is also where a habit of throwing exceptions does the most damage.
 **Primary source:** [Errors are values — The Go Blog](https://go.dev/blog/errors-are-values)
@@ -197,6 +197,6 @@ If "no user" is a normal outcome, express it — return `ErrNotFound`, or return
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

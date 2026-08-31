@@ -1,10 +1,10 @@
 ---
-title: 33 — Modules and Release Builds
+title: 33. Modules and Release Builds
 description: Minimal version selection, the v2 path rule, and the flags that make a binary reproducible
 type: lesson
 ---
 
-# Lesson 33 — Modules and Release Builds
+# Lesson 33. Modules and Release Builds
 
 **Mission link:** Shipping means someone else builds your code and someone else runs the binary. Both depend on decisions in `go.mod` and on four build flags.
 **Primary source:** [Go Modules Reference — The Go Authors](https://go.dev/ref/mod)
@@ -178,6 +178,6 @@ This is the compatibility mechanism working as designed: upgrading the toolchain
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

@@ -1,10 +1,10 @@
 ---
-title: 23 — Configuration and Startup
+title: 23. Configuration and Startup
 description: A main that only wires, a run function that returns an error, and validation before the first request
 type: lesson
 ---
 
-# Lesson 23 — Configuration and Startup
+# Lesson 23. Configuration and Startup
 
 **Mission link:** Most "it works on my machine" incidents are startup problems. A service that validates its configuration before accepting traffic fails in the deploy instead of in production.
 **Primary source:** [Go for Industrial Programming — Peter Bourgon](https://peter.bourgon.org/go-for-industrial-programming/)
@@ -189,6 +189,6 @@ In practice `main` passes `context.Background()` and `run` immediately wraps it 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

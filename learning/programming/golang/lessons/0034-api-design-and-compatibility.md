@@ -1,10 +1,10 @@
 ---
-title: 34 — API Design and Compatibility
+title: 34. API Design and Compatibility
 description: What you can add without breaking callers, and the three changes that always do
 type: lesson
 ---
 
-# Lesson 34 — API Design and Compatibility
+# Lesson 34. API Design and Compatibility
 
 **Mission link:** Designing a package API you can keep backwards-compatible is a stated success criterion. The rules are short, and two of them are counterintuitive enough that most people learn them by breaking something.
 **Primary source:** [Go 1 and the Future of Go Programs — The Go Authors](https://go.dev/doc/go1compat)
@@ -184,6 +184,6 @@ So documenting which errors are matchable is a commitment, and it is why Lesson 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

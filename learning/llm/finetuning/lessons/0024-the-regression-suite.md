@@ -1,10 +1,10 @@
 ---
-title: 24 — The Regression Suite
+title: 24. The Regression Suite
 description: Catching the damage every other number hides
 type: lesson
 ---
 
-# Lesson 24 — The Regression Suite
+# Lesson 24. The Regression Suite
 
 **Mission link:** "Build an eval that catches a regression before shipping" is the mission's own wording. This is that lesson.
 **Primary source:** [Paper: "An Empirical Study of Catastrophic Forgetting in Large Language Models During Continual Fine-tuning" — Luo et al., arXiv:2308.08747](https://arxiv.org/abs/2308.08747)
@@ -194,6 +194,6 @@ So that a difference from the baseline is attributable to changed weights rather
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

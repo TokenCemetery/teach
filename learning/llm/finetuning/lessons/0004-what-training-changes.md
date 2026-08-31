@@ -1,10 +1,10 @@
 ---
-title: 4 — What Training Actually Changes
+title: 4. What Training Actually Changes
 description: The four operations in one training step
 type: lesson
 ---
 
-# Lesson 4 — What Training Actually Changes
+# Lesson 4. What Training Actually Changes
 
 **Mission link:** Every memory argument, hyperparameter and failure mode in this workspace follows from what one training step does.
 **Primary source:** [Paper: "Decoupled Weight Decay Regularization" (AdamW) — Loshchilov & Hutter, arXiv:1711.05101](https://arxiv.org/abs/1711.05101)
@@ -158,6 +158,6 @@ Early in training, AdamW's second-moment estimate is built from very few samples
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

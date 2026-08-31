@@ -1,10 +1,10 @@
 ---
-title: 20 — The Memory Model and Races
+title: 20. The Memory Model and Races
 description: A data race is undefined behaviour, not a coin flip, and the detector only sees what runs
 type: lesson
 ---
 
-# Lesson 20 — The Memory Model and Races
+# Lesson 20. The Memory Model and Races
 
 **Mission link:** Reasoning about concurrency from the memory model instead of from experiment is what lets you say a design is wrong before it has failed in production.
 **Primary source:** [The Go Memory Model — The Go Authors](https://go.dev/ref/mem)
@@ -164,6 +164,6 @@ Next step is a test that hits the map from several goroutines under `-race`, whi
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

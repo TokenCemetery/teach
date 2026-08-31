@@ -1,10 +1,10 @@
 ---
-title: 11 — Your First Adapter
+title: 11. Your First Adapter
 description: A run that proves the pipeline before it proves anything else
 type: lesson
 ---
 
-# Lesson 11 — Your First Adapter
+# Lesson 11. Your First Adapter
 
 **Mission link:** "Run it" is in the mission. Everything before this was the reading; this is the run.
 **Primary source:** [Docs: SFTTrainer — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/sft_trainer)
@@ -218,6 +218,6 @@ Report this number, not the per-device one. Comparing runs by per-device batch s
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

@@ -1,10 +1,10 @@
 ---
-title: 17 — What QLoRA Actually Costs
+title: 17. What QLoRA Actually Costs
 description: Separating base degradation from training degradation
 type: lesson
 ---
 
-# Lesson 17 — What QLoRA Actually Costs
+# Lesson 17. What QLoRA Actually Costs
 
 **Mission link:** The mission says "explain the measured differences, not the advertised ones". This lesson is the measurement.
 **Primary source:** [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs" — Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
@@ -187,6 +187,6 @@ Both results can be right. That is precisely why the mission asks for measured r
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

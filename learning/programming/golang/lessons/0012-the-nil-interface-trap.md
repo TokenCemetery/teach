@@ -1,10 +1,10 @@
 ---
-title: 12 — The Nil Interface Trap
+title: 12. The Nil Interface Trap
 description: An interface holds a type and a value, so a nil pointer inside it is not a nil interface
 type: lesson
 ---
 
-# Lesson 12 — The Nil Interface Trap
+# Lesson 12. The Nil Interface Trap
 
 **Mission link:** This one bug has shipped in more Go services than any other on this list. It turns a success path into an error path, and the code that causes it reads as obviously correct.
 **Primary source:** [Go FAQ — Why is my nil error value not equal to nil?](https://go.dev/doc/faq#nil_error)
@@ -207,6 +207,6 @@ They meet only in that both come from the same fact — an interface holds a cop
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

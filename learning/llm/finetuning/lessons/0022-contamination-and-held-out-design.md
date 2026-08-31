@@ -1,10 +1,10 @@
 ---
-title: 22 — Contamination and Held-Out Design
+title: 22. Contamination and Held-Out Design
 description: Splitting by the right key, and sizing for the question
 type: lesson
 ---
 
-# Lesson 22 — Contamination and Held-Out Design
+# Lesson 22. Contamination and Held-Out Design
 
 **Mission link:** A held-out set you cannot trust is worse than none, because it produces confident wrong decisions.
 **Primary source:** [Code: lm-evaluation-harness — EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness)
@@ -185,6 +185,6 @@ It also produces the more useful artifact: which specific examples improved and 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

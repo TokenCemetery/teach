@@ -1,10 +1,10 @@
 ---
-title: 26 — Talking to a Database
+title: 26. Talking to a Database
 description: sql.DB is a pool, every call takes a context, and an unclosed Rows holds a connection
 type: lesson
 ---
 
-# Lesson 26 — Talking to a Database
+# Lesson 26. Talking to a Database
 
 **Mission link:** The database is where a Go service's concurrency model meets a resource with a hard limit. Most production database incidents are pool configuration and unclosed rows, not queries.
 **Primary source:** [Accessing relational databases — The Go Authors](https://go.dev/doc/database/)
@@ -192,6 +192,6 @@ Translate at the boundary: match `sql.ErrNoRows` inside the repository and retur
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

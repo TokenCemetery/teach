@@ -1,10 +1,10 @@
 ---
-title: 3 — Tokenizers and Chat Templates
+title: 3. Tokenizers and Chat Templates
 description: Train on the rendering you will serve
 type: lesson
 ---
 
-# Lesson 3 — Tokenizers and Chat Templates
+# Lesson 3. Tokenizers and Chat Templates
 
 **Mission link:** The most common cause of a fine-tune that trains cleanly and behaves badly is a template mismatch, not a hyperparameter.
 **Primary source:** [Docs: Chat Templates — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/chat_templating)
@@ -169,6 +169,6 @@ Temperature is applied after the model produces its distribution, so it is a ser
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

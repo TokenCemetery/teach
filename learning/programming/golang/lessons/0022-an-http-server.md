@@ -1,10 +1,10 @@
 ---
-title: 22 — An HTTP Server Worth Operating
+title: 22. An HTTP Server Worth Operating
 description: Handlers, routing patterns and the four timeouts the default server does not set
 type: lesson
 ---
 
-# Lesson 22 — An HTTP Server Worth Operating
+# Lesson 22. An HTTP Server Worth Operating
 
 **Mission link:** This is the first lesson of the service you will ship. The default `http.ListenAndServe` is a demo; the difference is four fields and a routing decision.
 **Primary source:** [Routing Enhancements for Go 1.22 — The Go Blog](https://go.dev/blog/routing-enhancements)
@@ -201,6 +201,6 @@ Mapping inline in each handler duplicates the policy and drifts — the same con
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

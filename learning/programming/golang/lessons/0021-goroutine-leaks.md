@@ -1,10 +1,10 @@
 ---
-title: 21 — Goroutine Leaks
+title: 21. Goroutine Leaks
 description: A goroutine blocked forever is never collected, and neither is anything it holds
 type: lesson
 ---
 
-# Lesson 21 — Goroutine Leaks
+# Lesson 21. Goroutine Leaks
 
 **Mission link:** This is the failure that closes stage 3: finding a leak in code you did not write, and naming the guarantee that was missed. It is also the most common Go production bug.
 **Primary source:** [Never start a goroutine without knowing how it will stop — Dave Cheney](https://dave.cheney.net/2016/12/22/never-start-a-goroutine-without-knowing-how-it-will-stop)
@@ -161,6 +161,6 @@ They will eventually exit, so a goroutine profile taken once looks fine. Two pro
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

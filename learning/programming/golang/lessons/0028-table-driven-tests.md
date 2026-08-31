@@ -1,10 +1,10 @@
 ---
-title: 28 — Table-Driven Tests
+title: 28. Table-Driven Tests
 description: One test function, a slice of cases, subtests that name themselves and fail independently
 type: lesson
 ---
 
-# Lesson 28 — Table-Driven Tests
+# Lesson 28. Table-Driven Tests
 
 **Mission link:** Go's testing package has no assertions and no framework, and the tests are better for it. The table is the idiom that makes that work at scale.
 **Primary source:** [Using Subtests and Sub-benchmarks — The Go Blog](https://go.dev/blog/subtests)
@@ -209,6 +209,6 @@ This is the payoff for declaring the interface in the consumer and keeping it sm
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

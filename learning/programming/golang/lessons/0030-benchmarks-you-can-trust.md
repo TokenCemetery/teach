@@ -1,10 +1,10 @@
 ---
-title: 30 — Benchmarks You Can Trust
+title: 30. Benchmarks You Can Trust
 description: b.Loop, repeated runs and benchstat, because one number from one run is not a measurement
 type: lesson
 ---
 
-# Lesson 30 — Benchmarks You Can Trust
+# Lesson 30. Benchmarks You Can Trust
 
 **Mission link:** "Optimises from a profile and proves the win with benchstat" is the stage 5 exit criterion. This is the proving half, and most benchmarks people write do not prove anything.
 **Primary source:** [`testing` package — Benchmarks](https://pkg.go.dev/testing#hdr-Benchmarks)
@@ -172,6 +172,6 @@ Use `b.RunParallel` — or a benchmark that starts a realistic number of gorouti
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

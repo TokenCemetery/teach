@@ -1,10 +1,10 @@
 ---
-title: 11 — Interfaces Are Satisfied Implicitly
+title: 11. Interfaces Are Satisfied Implicitly
 description: The consumer declares the interface, the implementation never mentions it, and small is the point
 type: lesson
 ---
 
-# Lesson 11 — Interfaces Are Satisfied Implicitly
+# Lesson 11. Interfaces Are Satisfied Implicitly
 
 **Mission link:** This is the habit Java punishes hardest. Declaring interfaces next to implementations produces Go that compiles, works, and that every reviewer will describe as written in the wrong language.
 **Primary source:** [Effective Go — Interfaces](https://go.dev/doc/effective_go#interfaces)
@@ -175,6 +175,6 @@ This is the most common way method sets bite in real code: the interface is fine
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

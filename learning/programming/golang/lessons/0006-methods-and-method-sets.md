@@ -1,10 +1,10 @@
 ---
-title: 6 — Methods and Method Sets
+title: 6. Methods and Method Sets
 description: Which receiver you pick decides which types satisfy an interface, not just who can mutate
 type: lesson
 ---
 
-# Lesson 6 — Methods and Method Sets
+# Lesson 6. Methods and Method Sets
 
 **Mission link:** The receiver choice looks like a mutation question and is really a type question. It decides, silently, whether your type satisfies the interface you are about to write.
 **Primary source:** [Go FAQ — Should I define methods on values or pointers?](https://go.dev/doc/faq#methods_on_values_or_pointers)
@@ -166,6 +166,6 @@ The zero-value rule and the receiver rule meet here: the type is usable unconstr
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

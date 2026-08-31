@@ -1,10 +1,10 @@
 ---
-title: 9 — Rank, Alpha and Initialisation
+title: 9. Rank, Alpha and Initialisation
 description: "Only `α/r` matters, and why `B` starts at zero"
 type: lesson
 ---
 
-# Lesson 9 — Rank, Alpha and Initialisation
+# Lesson 9. Rank, Alpha and Initialisation
 
 **Mission link:** The mission asks you to justify every hyperparameter from the task. These three are where most people repeat folklore instead.
 **Primary source:** [Docs: LoRA — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
@@ -198,6 +198,6 @@ The right response there is more or better data, or a narrower task — not a bi
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

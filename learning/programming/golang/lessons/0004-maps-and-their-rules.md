@@ -1,10 +1,10 @@
 ---
-title: 4 — Maps and Their Rules
+title: 4. Maps and Their Rules
 description: Comma-ok, unaddressable elements, randomised iteration, and the fatal error a shared map throws
 type: lesson
 ---
 
-# Lesson 4 — Maps and Their Rules
+# Lesson 4. Maps and Their Rules
 
 **Mission link:** A map is the default data structure in a Go service, and three of its rules have no equivalent in Java or TypeScript — including one that kills the process rather than raising an error.
 **Primary source:** [Go maps in action — The Go Blog](https://go.dev/blog/maps)
@@ -193,6 +193,6 @@ A nil map is a usable empty map for every read-shaped operation, including `dele
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

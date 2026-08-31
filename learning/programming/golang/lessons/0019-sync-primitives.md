@@ -1,10 +1,10 @@
 ---
-title: 19 — sync and errgroup
+title: 19. sync and errgroup
 description: When sharing memory beats passing it, and the four primitives that cover almost everything
 type: lesson
 ---
 
-# Lesson 19 — sync and errgroup
+# Lesson 19. sync and errgroup
 
 **Mission link:** "Share memory by communicating" is good advice and a bad absolute. Knowing when a mutex is the simpler answer is part of being trusted with the design.
 **Primary source:** [`sync` package documentation](https://pkg.go.dev/sync)
@@ -198,6 +198,6 @@ Run the benchmark both ways under realistic concurrency — stage 5 gives you `b
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

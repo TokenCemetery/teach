@@ -1,10 +1,10 @@
 ---
-title: 25 — Serving Adapters
+title: 25. Serving Adapters
 description: Merge for one task, route for many
 type: lesson
 ---
 
-# Lesson 25 — Serving Adapters
+# Lesson 25. Serving Adapters
 
 **Mission link:** "Ship it" is in the mission. An adapter in a directory is not shipped.
 **Primary source:** [Docs: LoRA adapters — vLLM](https://docs.vllm.ai/en/latest/features/lora.html)
@@ -187,6 +187,6 @@ Evaluate the artifact you ship. Always.
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

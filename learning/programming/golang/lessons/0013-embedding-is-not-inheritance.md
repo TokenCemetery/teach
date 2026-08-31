@@ -1,10 +1,10 @@
 ---
-title: 13 — Embedding Is Not Inheritance
+title: 13. Embedding Is Not Inheritance
 description: Promotion looks like subclassing until an embedded method refuses to call your override
 type: lesson
 ---
 
-# Lesson 13 — Embedding Is Not Inheritance
+# Lesson 13. Embedding Is Not Inheritance
 
 **Mission link:** Embedding is the feature most often mistaken for something it is not. The mistake produces code that behaves correctly in every test you thought to write and wrongly in the one you did not.
 **Primary source:** [Effective Go — Embedding](https://go.dev/doc/effective_go#embedding)
@@ -190,6 +190,6 @@ The template-method pattern relies on the base calling an overridden method, whi
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

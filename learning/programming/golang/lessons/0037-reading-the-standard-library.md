@@ -1,10 +1,10 @@
 ---
-title: 37 — Reading the Standard Library
+title: 37. Reading the Standard Library
 description: The source is on your machine, it settles arguments the docs cannot, and it is the style reference
 type: lesson
 ---
 
-# Lesson 37 — Reading the Standard Library
+# Lesson 37. Reading the Standard Library
 
 **Mission link:** The last skill in the arc is self-sufficiency: when the documentation is ambiguous and the blog posts disagree, you read the source and settle it.
 **Primary source:** [`io.Copy` source — go.dev](https://go.dev/src/io/io.go)
@@ -169,6 +169,6 @@ This is the strongest available argument for "the bigger the interface, the weak
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

@@ -1,10 +1,10 @@
 ---
-title: 12 — Reading a Training Run
+title: 12. Reading a Training Run
 description: Diagnosing by curve shape, and what loss cannot see
 type: lesson
 ---
 
-# Lesson 12 — Reading a Training Run
+# Lesson 12. Reading a Training Run
 
 **Mission link:** "Diagnose a failed run and name the cause" is on the success list. Most people read a loss curve and guess.
 **Primary source:** [Blog: "A Recipe for Training Neural Networks" — Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
@@ -181,6 +181,6 @@ Check held-out loss, which is likely flat or rising, and reduce epochs or capaci
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

@@ -1,10 +1,10 @@
 ---
-title: 21 — Building the Dataset
+title: 21. Building the Dataset
 description: Data beats every hyperparameter in this workspace
 type: lesson
 ---
 
-# Lesson 21 — Building the Dataset
+# Lesson 21. Building the Dataset
 
 **Mission link:** Data quality dominates every hyperparameter in this workspace. Stage 3 taught you to turn a knob; this stage teaches you what actually moves the result.
 **Primary source:** [Paper: "LIMA: Less Is More for Alignment" — Zhou et al., arXiv:2305.11206](https://arxiv.org/abs/2305.11206)
@@ -189,6 +189,6 @@ Then check what truncation actually does to the examples above the limit. If it 
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

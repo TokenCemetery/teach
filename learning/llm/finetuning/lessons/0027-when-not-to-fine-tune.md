@@ -1,10 +1,10 @@
 ---
-title: 27 — When Not to Fine-Tune
+title: 27. When Not to Fine-Tune
 description: Fine-tuning is sixth on the list, and why that matters
 type: lesson
 ---
 
-# Lesson 27 — When Not to Fine-Tune
+# Lesson 27. When Not to Fine-Tune
 
 **Mission link:** The mission ends here: *"who can argue convincingly for prompting or retrieval instead when those would do the job better."* The senior skill is declining the work.
 **Primary source:** [Docs: "LoRA Without Regret" — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
@@ -194,6 +194,6 @@ The problem is behavioural: grounding in provided context, respecting it, citing
 
 That is the arc. From here the work is reps on real tasks — and the mission's last line is the one to keep: being able to argue convincingly *against* fine-tuning is what makes the argument *for* it worth anything.
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

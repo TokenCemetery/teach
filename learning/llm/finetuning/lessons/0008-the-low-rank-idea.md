@@ -1,10 +1,10 @@
 ---
-title: 8 — The Low-Rank Idea
+title: 8. The Low-Rank Idea
 description: "`ΔW = BA`, and counting an adapter"
 type: lesson
 ---
 
-# Lesson 8 — The Low-Rank Idea
+# Lesson 8. The Low-Rank Idea
 
 **Mission link:** LoRA is the method the rest of the mission is built on. This lesson is the mechanism; the next two are the decisions.
 **Primary source:** [Paper: "LoRA: Low-Rank Adaptation of Large Language Models" — Hu et al., arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
@@ -189,6 +189,6 @@ The adapter cost is driven by the sum of dimensions, so it is dominated by the l
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

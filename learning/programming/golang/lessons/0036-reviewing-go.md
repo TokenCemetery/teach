@@ -1,10 +1,10 @@
 ---
-title: 36 — Reviewing Go
+title: 36. Reviewing Go
 description: Let the tools find style, spend your attention on lifecycle, boundaries and what the compiler cannot check
 type: lesson
 ---
 
-# Lesson 36 — Reviewing Go
+# Lesson 36. Reviewing Go
 
 **Mission link:** Reviewing a colleague's PR and saying precisely why a design is wrong is the mission's own wording. This lesson is the vocabulary and the order to look in.
 **Primary source:** [Go Code Review Comments — The Go Authors](https://go.dev/wiki/CodeReviewComments)
@@ -162,6 +162,6 @@ The fix is `s[0:2:2]` or `slices.Clone`. This is worth checking every time becau
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

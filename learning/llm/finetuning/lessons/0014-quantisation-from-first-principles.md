@@ -1,10 +1,10 @@
 ---
-title: 14 — Quantisation from First Principles
+title: 14. Quantisation from First Principles
 description: Blockwise scales, and why one outlier ruins a tensor
 type: lesson
 ---
 
-# Lesson 14 — Quantisation from First Principles
+# Lesson 14. Quantisation from First Principles
 
 **Mission link:** QLoRA is LoRA plus one idea. This lesson is that idea, taught on its own so the next one is short.
 **Primary source:** [Paper: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale" — Dettmers et al., arXiv:2208.07339](https://arxiv.org/abs/2208.07339)
@@ -189,6 +189,6 @@ For training, quantising the frozen base is a memory budget decision. The adapte
 
 ---
 
-Not landing? Reread the primary source at the top — this lesson compresses it, and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
+Not landing? Reread the primary source at the top, since this lesson compresses it and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) for any term that felt slippery.
 
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).

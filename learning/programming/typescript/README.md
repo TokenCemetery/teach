@@ -8,7 +8,8 @@ type: topic
 
 Become the engineer trusted to own a TypeScript codebase on a team: able to model a domain so the compiler rejects the states that should not exist, keep type assertions out of code that carries weight, validate what crosses a runtime boundary rather than assuming the types held, and review someone's types and say concretely why a clever generic is costing more than it gives.
 
-**Latest lesson:** _none yet_
+**Start here:** [0001. Values and Coercion](lessons/0001-values-and-coercion.md)
+**Latest lesson:** [0007. Modules](lessons/0007-modules.md)
 
 ## Success looks like
 
@@ -57,12 +58,20 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-values-and-coercion.md) | Values and Coercion | Seven primitives, two empties, and an equality operator that converts before comparing |
+| [0002](lessons/0002-objects-are-references.md) | Objects Are References | const stops rebinding, spread copies one level, and readonly disappears at run time |
+| [0003](lessons/0003-prototypes-and-classes.md) | Prototypes and Classes | Property lookup walks a chain, and class syntax is one way to build that chain |
+| [0004](lessons/0004-this-and-the-call-site.md) | this Is Decided by the Call | this comes from how a function is called, so extracting a method throws it away |
+| [0005](lessons/0005-scope-and-closures.md) | Scope and Closures | A closure captures the binding rather than the value, and let makes one per iteration |
+| [0006](lessons/0006-event-loop-and-promises.md) | The Event Loop, Promises and await | Microtasks drain before the next timer, and two awaits in a row are sequential |
+| [0007](lessons/0007-modules.md) | Modules | Imports are hoisted and bound live, and a file with no import or export is not a module |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
+- [Coercion and equality](reference/coercion-and-equality.md): falsy values, what `==` converts, which default operator to write
+- [Event loop and promises](reference/event-loop-and-promises.md): queue ordering, combinators, and the async mistakes no compiler reports
 
 ## How this works
 

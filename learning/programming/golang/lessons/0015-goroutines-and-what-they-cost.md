@@ -24,7 +24,7 @@ Exported `Lock` and `Unlock` methods, callable by anyone. Use a named `mu sync.M
 
 <details markdown="1"><summary>Check</summary>
 
-In the doc comment of the function that returns them. Once documented they are API — callers match on them with `errors.Is`, and changing them is a breaking change nothing will catch at compile time.
+In the doc comment of the function that returns them. Once documented they are API: callers match on them with `errors.Is`, and changing them is a breaking change nothing will catch at compile time.
 
 </details>
 
@@ -36,7 +36,7 @@ In the doc comment of the function that returns them. Once documented they are A
 go handle(conn)   // returns now; handle runs somewhere
 ```
 
-The runtime multiplexes many goroutines onto few OS threads. `GOMAXPROCS` sets how many can run Go code simultaneously and defaults to the CPUs available to the process. A goroutine that blocks on a channel, a mutex or a syscall does not hold a thread hostage — the scheduler parks it and runs something else. Since Go 1.14 preemption is asynchronous, so even a tight loop with no function calls can be interrupted.
+The runtime multiplexes many goroutines onto few OS threads. `GOMAXPROCS` sets how many can run Go code simultaneously and defaults to the CPUs available to the process. A goroutine that blocks on a channel, a mutex or a syscall does not hold a thread hostage. The scheduler parks it and runs something else. Since Go 1.14 preemption is asynchronous, so even a tight loop with no function calls can be interrupted.
 
 The cost is a few kilobytes of stack, which grows and shrinks on demand rather than being reserved up front. Ten thousand goroutines is ordinary; one per incoming request is what `net/http` already does for you.
 
@@ -44,7 +44,7 @@ The cost is a few kilobytes of stack, which grows and shrinks on demand rather t
 
 Cheap per goroutine is not free in aggregate, and three costs bite in production:
 
-- **Memory.** Each goroutine holds its stack plus everything the stack references. A million blocked goroutines each holding a 4 KB buffer is four gigabytes — the buffers are the problem, not the goroutines.
+- **Memory.** Each goroutine holds its stack plus everything the stack references. A million blocked goroutines each holding a 4 KB buffer is four gigabytes, so the buffers are the problem rather than the goroutines.
 - **Unbounded fan-out.** `for _, item := range items { go process(item) }` over a caller-controlled list is a denial of service you wrote yourself. Bound it with a worker pool or `errgroup.SetLimit`.
 - **Leaks.** A goroutine blocked forever is never collected, and neither is anything it references. That is [Lesson 21](0021-goroutine-leaks.md), and it is the most common Go production bug there is.
 
@@ -60,7 +60,7 @@ func main() {
 }
 ```
 
-There is no `Join`. Coordination is explicit — a channel, a `sync.WaitGroup`, or an `errgroup` — and choosing between them is most of stage 3.
+There is no `Join`. Coordination is explicit, through a channel, a `sync.WaitGroup` or an `errgroup`, and choosing between them is most of stage 3.
 
 ### Coming from Java 21
 
@@ -90,7 +90,7 @@ for _, v := range items {
 }
 ```
 
-Before Go 1.22 `v` was a single variable reused by every iteration, so the goroutines usually all printed the last item. The workarounds — `v := v` shadowing, or passing `v` as an argument — are everywhere in existing codebases.
+Before Go 1.22 `v` was a single variable reused by every iteration, so the goroutines usually all printed the last item. The workarounds, `v := v` shadowing or passing `v` as an argument, are everywhere in existing codebases.
 
 Since [Go 1.22](https://go.dev/doc/go1.22#language) each iteration creates a new variable and this code is correct. The semantics are selected by the `go` directive in `go.mod`, so a module still declaring `go 1.21` gets the old behaviour from a new toolchain. Check the directive before trusting the loop.
 
@@ -106,7 +106,7 @@ Since [Go 1.22](https://go.dev/doc/go1.22#language) each iteration creates a new
 
 <details markdown="1"><summary>Check</summary>
 
-`main` returns immediately, and when `main` returns the process exits — killing every other goroutine wherever it happens to be, without running deferred functions.
+`main` returns immediately, and when `main` returns the process exits, killing every other goroutine wherever it happens to be, without running deferred functions.
 
 "Usually" rather than "always" because the goroutine occasionally gets scheduled first. That non-determinism is the point: adding a `time.Sleep` makes it print and is still wrong, because it is a race you happened to win.
 
@@ -133,7 +133,7 @@ Bounded alternatives: a worker pool of fixed size reading from a channel, or `er
 
 **b)** Each one starts small and grows its stack on demand.
 
-Goroutines are multiplexed onto threads rather than mapped to them, so a describes the model they exist to avoid. There is no goroutine pool in the runtime, and nothing is free — the aggregate memory of what the stacks reference is what shows up in a heap profile.
+Goroutines are multiplexed onto threads rather than mapped to them, so a describes the model they exist to avoid. There is no goroutine pool in the runtime, and nothing is free: the aggregate memory of what the stacks reference is what shows up in a heap profile.
 
 </details>
 
@@ -141,7 +141,7 @@ Goroutines are multiplexed onto threads rather than mapped to them, so a describ
 
 <details markdown="1"><summary>Check</summary>
 
-Into `context.Context` when it is genuinely request-scoped metadata — a request id, a deadline, an auth subject — and into an ordinary parameter or struct field for everything else.
+Into `context.Context` when it is genuinely request-scoped metadata, such as a request id, a deadline or an auth subject, and into an ordinary parameter or struct field for everything else.
 
 The absence is deliberate. Implicit task-local state makes dependencies invisible, which is exactly what makes it hard to reason about who reads what. Go pays for the explicitness with longer signatures and buys back the ability to see the dependency at the call site. Lesson 18 covers what may and may not live in a context.
 
@@ -151,7 +151,7 @@ The absence is deliberate. Implicit task-local state makes dependencies invisibl
 
 <details markdown="1"><summary>Check</summary>
 
-Yes for the loop variable — each iteration now has its own `v`, so nothing is shared between iterations.
+Yes for the loop variable: each iteration now has its own `v`, so nothing is shared between iterations.
 
 It is not safe for anything else the closure captures: a shared map, a slice being appended to, a counter. The loop-variable fix removed one specific bug, not the need to think about what a closure captures. And if `go.mod` says `go 1.21` or lower, even the loop variable is still shared.
 

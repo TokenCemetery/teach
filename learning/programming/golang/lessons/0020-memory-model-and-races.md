@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-Because a slow dependency becomes a total stall — every goroutine wanting the lock queues behind one remote call. Copy what you need, unlock, then make the call.
+Because a slow dependency becomes a total stall: every goroutine wanting the lock queues behind one remote call. Copy what you need, unlock, then make the call.
 
 </details>
 
@@ -32,7 +32,7 @@ The first error cancels the shared context so the other goroutines stop, and `Wa
 
 A **data race** is: two goroutines access the same memory location, at least one access is a write, and there is no synchronisation ordering them.
 
-All three parts matter. Concurrent reads are fine. Writes to *different* variables are fine. A write and a read with a happens-before edge between them are fine — and providing that edge is what every primitive in Lesson 19 is for.
+All three parts matter. Concurrent reads are fine. Writes to *different* variables are fine. A write and a read with a happens-before edge between them are fine, and providing that edge is what every primitive in Lesson 19 is for.
 
 ### A race is undefined behaviour
 
@@ -40,7 +40,7 @@ The instinct to resist is that a racy counter "loses some increments" or that a 
 
 - reorder reads and writes, because nothing said they were ordered;
 - keep a variable in a register across a loop, so an update from another goroutine is never observed and the loop never ends;
-- tear a multi-word value — a slice header or an interface — so a reader sees a new pointer with an old length.
+- tear a multi-word value, a slice header or an interface, so a reader sees a new pointer with an old length.
 
 That last one is why a raced interface or slice can produce a segmentation fault rather than a wrong answer. "It has worked so far" is a statement about one compiler version on one architecture under one load.
 
@@ -60,7 +60,7 @@ The memory model defines when one goroutine is guaranteed to observe another's w
 
 Everything the writing goroutine did *before* the edge is visible to the reader *after* it. That is the guarantee, and it is why sending a pointer over a channel safely transfers everything it points to.
 
-`sync/atomic` operations are sequentially consistent, documented as such since the 2022 revision of the memory model. So an `atomic.Bool` flag genuinely does establish ordering — unlike a plain `bool`, where the compiler may never reread it at all.
+`sync/atomic` operations are sequentially consistent, documented as such since the 2022 revision of the memory model. So an `atomic.Bool` flag genuinely does establish ordering, unlike a plain `bool`, where the compiler may never reread it at all.
 
 ### The race detector
 
@@ -73,7 +73,7 @@ It is a dynamic analysis built on ThreadSanitizer. Two properties define how to 
 - **No false positives.** When it reports a race, there is a race. Do not argue with it.
 - **Only what executes.** It sees the accesses that actually happened in that run. Code paths not taken, and interleavings that did not occur, are invisible. A clean run is evidence, not proof.
 
-Cost is real — roughly 2–20× slower and 5–10× more memory — so it belongs in CI and in load tests against a staging build, not in production. Because coverage is the limiting factor, a race detector run over a *test suite that exercises concurrency* is worth far more than one over unit tests that run everything on one goroutine.
+Cost is real, roughly 2–20× slower and 5–10× more memory, so it belongs in CI and in load tests against a staging build rather than in production. Because coverage is the limiting factor, a race detector run over a *test suite that exercises concurrency* is worth far more than one over unit tests that run everything on one goroutine.
 
 ### Making concurrent tests deterministic
 
@@ -87,7 +87,7 @@ func TestTimeout(t *testing.T) {
 }
 ```
 
-This removes the two worst habits in concurrent tests — `time.Sleep` to "let it settle", and generous timeouts that turn a real failure into a flake.
+This removes the two worst habits in concurrent tests: `time.Sleep` to "let it settle", and generous timeouts that turn a real failure into a flake.
 
 ## Practice
 
@@ -95,7 +95,7 @@ This removes the two worst habits in concurrent tests — `time.Sleep` to "let i
 
 <details markdown="1"><summary>Check</summary>
 
-Undefined. Not "somewhere between 1000 and 2000" — that is a mental model of an interleaved read-modify-write, and it assumes an ordering the language does not provide.
+Undefined. Not "somewhere between 1000 and 2000", which is a mental model of an interleaved read-modify-write and it assumes an ordering the language does not provide.
 
 In practice you will often see a number in that range, which is exactly what makes the bug survive review. The correct statement is that the program has no defined behaviour, and the correct fix is an `atomic.Int64` or a mutex.
 
@@ -105,7 +105,7 @@ In practice you will often see a number in that range, which is exactly what mak
 
 <details markdown="1"><summary>Check</summary>
 
-Nothing orders the write against the read, so the compiler is free to load `done` once into a register and reuse it — the loop tests a value that can never change.
+Nothing orders the write against the read, so the compiler is free to load `done` once into a register and reuse it, leaving the loop testing a value that can never change.
 
 Fix with an `atomic.Bool`, or better, with a channel closed to signal completion. This is the concrete reason "it is only a bool, a race cannot hurt" is wrong.
 
@@ -122,7 +122,7 @@ Fix with an `atomic.Bool`, or better, with a channel closed to signal completion
 
 **b)** No race occurred in the paths that ran.
 
-The detector has no false positives, so a report is always real — but it observes only executed accesses in one interleaving. Claims a and d overstate a dynamic tool, and c misdescribes it: it never tolerates a race it sees.
+The detector has no false positives, so a report is always real, but it observes only executed accesses in one interleaving. Claims a and d overstate a dynamic tool, and c misdescribes it: it never tolerates a race it sees.
 
 The practical consequence is that improving concurrent test coverage improves the detector's reach more than rerunning it does.
 
@@ -134,7 +134,7 @@ The practical consequence is that improving concurrent test coverage improves th
 
 No, provided the sender does not touch it afterwards. The send happens before the receive completes, so everything the sender wrote to that struct before sending is visible to the receiver.
 
-It becomes a race the moment the sender keeps the pointer and writes to it again. Sending a pointer transfers ownership by convention, and the convention is the only thing enforcing it — the compiler will not stop you writing to it.
+It becomes a race the moment the sender keeps the pointer and writes to it again. Sending a pointer transfers ownership by convention, and the convention is the only thing enforcing it: the compiler will not stop you writing to it.
 
 </details>
 
@@ -144,14 +144,14 @@ It becomes a race the moment the sender keeps the pointer and writes to it again
 
 That the tests never exercise the concurrent path, not that the race is absent. The runtime's map detector fired on real traffic; the race detector had no such interleaving to observe.
 
-Next step is a test that hits the map from several goroutines under `-race`, which will find it in seconds. The production crash already told you where to look — the fatal error names the goroutines' stacks.
+Next step is a test that hits the map from several goroutines under `-race`, which will find it in seconds. The production crash already told you where to look, since the fatal error names the goroutines' stacks.
 
 </details>
 
 ## Real-world reps
 
 - [ ] Write the two-goroutine counter with no synchronisation, run it under `-race`, and read the report. Note that it names both stacks and the variable.
-- [ ] Write the `for !done {}` spin loop and run it with optimisations on. If it exits, try it with more work in the loop — then fix it with a channel and stop relying on luck.
+- [ ] Write the `for !done {}` spin loop and run it with optimisations on. If it exits, try it with more work in the loop, then fix it with a channel and stop relying on luck.
 - [ ] Tomorrow: check whether `-race` runs in your CI. If it does not, that is a one-line change with a larger payoff than most refactors.
 
 ## Going further

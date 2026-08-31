@@ -64,7 +64,7 @@ The goroutine profile is the first tool, and it works on a running service:
 curl 'http://localhost:6060/debug/pprof/goroutine?debug=2' > goroutines.txt
 ```
 
-`debug=2` prints every goroutine's full stack with how long it has been blocked. A leak looks like ten thousand goroutines parked on the same line of your code. Take two profiles ten minutes apart and diff the counts — a leak grows, normal load does not.
+`debug=2` prints every goroutine's full stack with how long it has been blocked. A leak looks like ten thousand goroutines parked on the same line of your code. Take two profiles ten minutes apart and diff the counts: a leak grows, normal load does not.
 
 Since [Go 1.27](https://go.dev/doc/go1.27) there is a purpose-built profile: `goroutineleak`, in `runtime/pprof` and at `/debug/pprof/goroutineleak`. The runtime uses the garbage collector to find goroutines blocked on a primitive that is unreachable from any runnable goroutine, which cannot possibly be unblocked, and is therefore leaked rather than merely slow. It was an experiment in Go 1.26 and is generally available in 1.27. It does not find every leak: a channel still reachable through a global, or through a running goroutine's locals, looks live to the collector.
 
@@ -95,7 +95,7 @@ The question to ask in review is the one in the title of the primary source: **h
 
 The channel is unbuffered and only one value is received. Every other goroutine blocks on its send forever, holding its stack, its captured `q`, and whatever `lookup` allocated.
 
-Two fixes. `make(chan string, len(queries))` lets every send complete so each goroutine exits after sending. Or derive a cancellable context, `select` on `ctx.Done()` in the send, and cancel once you have your answer — which also stops the redundant `lookup` calls.
+Two fixes. `make(chan string, len(queries))` lets every send complete so each goroutine exits after sending. Or derive a cancellable context, `select` on `ctx.Done()` in the send, and cancel once you have your answer, which also stops the redundant `lookup` calls.
 
 </details>
 
@@ -105,7 +105,7 @@ Two fixes. `make(chan string, len(queries))` lets every send complete so each go
 
 That check fires only when *every* goroutine in the process is blocked. Here `main` returned a value and carried on, and in a real service the HTTP listener is always runnable.
 
-This asymmetry is why leaks are found with profiles rather than crashes — the program keeps working correctly while consuming more memory every minute.
+This asymmetry is why leaks are found with profiles rather than crashes: the program keeps working correctly while consuming more memory every minute.
 
 </details>
 
@@ -128,7 +128,7 @@ The race detector finds unsynchronised access, not blocked goroutines. `-gcflags
 
 <details markdown="1"><summary>Check</summary>
 
-Shutdown cancels the context, but the worker never looks at it — its `select` has one case, and the job channel is empty, so it stays blocked. Whatever is waiting for the worker to finish waits forever, until the shutdown timeout expires and the supervisor kills the process.
+Shutdown cancels the context, but the worker never looks at it. Its `select` has one case, and the job channel is empty, so it stays blocked. Whatever is waiting for the worker to finish waits forever, until the shutdown timeout expires and the supervisor kills the process.
 
 The cost is not just the delay: killing mid-flight skips every deferred cleanup, so in-flight requests are dropped rather than drained. Adding `case <-ctx.Done(): return ctx.Err()` fixes both.
 
@@ -138,7 +138,7 @@ The cost is not just the delay: killing mid-flight skips every deferred cleanup,
 
 <details markdown="1"><summary>Check</summary>
 
-Yes, in the sense that matters — work continues that nobody will use, holding memory and consuming CPU under load that is already failing.
+Yes, in the sense that matters: work continues that nobody will use, holding memory and consuming CPU under load that is already failing.
 
 They will eventually exit, so a goroutine profile taken once looks fine. Two profiles under sustained load will not: the count climbs with request rate and stays high. The cause is a goroutine that did not receive the request's context, or received `context.Background()` instead.
 

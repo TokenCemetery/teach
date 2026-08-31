@@ -50,7 +50,7 @@ func (c *Cache) Get(k string) (int, bool) {
 }
 ```
 
-The field sits directly above what it guards, and a comment naming what it guards is worth writing when it is not obvious. `defer c.mu.Unlock()` immediately after `Lock` is the standard shape — it survives every early return and every panic.
+The field sits directly above what it guards, and a comment naming what it guards is worth writing when it is not obvious. `defer c.mu.Unlock()` immediately after `Lock` is the standard shape: it survives every early return and every panic.
 
 Two rules that prevent most mutex incidents:
 
@@ -66,7 +66,7 @@ var once sync.Once
 once.Do(func() { conn = connect() })
 ```
 
-Runs exactly once, however many goroutines arrive, and every caller blocks until the first completes. Useful for lazy initialisation. It is not useful for anything that can fail and should be retried — `Do` will not run again, and the error handling has to live outside.
+Runs exactly once, however many goroutines arrive, and every caller blocks until the first completes. Useful for lazy initialisation. It is not useful for anything that can fail and should be retried, because `Do` will not run again and the error handling has to live outside.
 
 ### WaitGroup
 
@@ -80,7 +80,7 @@ wg.Wait()
 
 `WaitGroup.Go` arrived in [Go 1.25](https://go.dev/doc/go1.25) and replaces the three-line `wg.Add(1)` / `go func()` / `defer wg.Done()` dance that every codebase has. On an older toolchain, write that dance and put `defer wg.Done()` as the first line of the goroutine.
 
-A `WaitGroup` must not be copied after first use — pass `*sync.WaitGroup`, or capture it in a closure.
+A `WaitGroup` must not be copied after first use, so pass `*sync.WaitGroup` or capture it in a closure.
 
 ### atomic
 
@@ -92,13 +92,13 @@ requests.Add(1)
 fmt.Println(requests.Load())
 ```
 
-The typed forms — `atomic.Int64`, `atomic.Bool`, `atomic.Pointer[T]` — arrived in Go 1.19 and should be preferred over the older `atomic.AddInt64(&n, 1)` functions, which require you to remember alignment rules on 32-bit platforms.
+The typed forms `atomic.Int64`, `atomic.Bool` and `atomic.Pointer[T]` arrived in Go 1.19 and should be preferred over the older `atomic.AddInt64(&n, 1)` functions, which require you to remember alignment rules on 32-bit platforms.
 
 Atomics protect *one* variable. Two atomics updated together are not consistent with each other, and reaching for a second one is the signal to use a mutex instead.
 
 ### sync.Map is narrower than it looks
 
-`sync.Map` is not "a map with a lock". It is optimised for two specific patterns: keys written once and read many times, and disjoint key sets per goroutine. Outside those, a plain map behind a `sync.Mutex` is typically faster and always clearer — and it keeps static types, which `sync.Map`'s `any` interface gives up.
+`sync.Map` is not "a map with a lock". It is optimised for two specific patterns: keys written once and read many times, and disjoint key sets per goroutine. Outside those, a plain map behind a `sync.Mutex` is typically faster and always clearer, and it keeps static types, which `sync.Map`'s `any` interface gives up.
 
 ### errgroup
 
@@ -120,7 +120,7 @@ if err := g.Wait(); err != nil {         // first non-nil error
 
 `WithContext` cancels the derived context as soon as any goroutine returns an error, so the rest stop instead of finishing work nobody wants. `SetLimit` bounds the fan-out from Lesson 15. `Wait` returns the first error and waits for every goroutine either way.
 
-This is the closest thing Go has to structured concurrency, and it is a library rather than a language feature — which is the shape of most concurrency machinery in Go.
+This is the closest thing Go has to structured concurrency, and it is a library rather than a language feature, which is the shape of most concurrency machinery in Go.
 
 ## Practice
 
@@ -128,7 +128,7 @@ This is the closest thing Go has to structured concurrency, and it is a library 
 
 <details markdown="1"><summary>Check</summary>
 
-So it cannot be skipped. Every early return, and every panic that unwinds through the function, still releases the lock — and a lock leaked by an error path is a deadlock that only appears when something else has already gone wrong.
+So it cannot be skipped. Every early return, and every panic that unwinds through the function, still releases the lock, and a lock leaked by an error path is a deadlock that only appears when something else has already gone wrong.
 
 Writing it adjacent to the `Lock` also makes the pairing visible in review, which is worth more than the couple of nanoseconds `defer` costs.
 
@@ -140,7 +140,7 @@ Writing it adjacent to the `Lock` also makes the pairing visible in review, whic
 
 Deadlock. Go's mutexes are not reentrant, and the second `Lock` blocks forever waiting for a lock its own goroutine holds.
 
-The fix is an unexported helper that assumes the lock is held — conventionally named `getLocked` or similar — called by both the exported method and the other caller. Recursive locking is not a feature Go withholds by accident: it makes the critical section's extent impossible to see.
+The fix is an unexported helper that assumes the lock is held, conventionally named `getLocked` or similar, called by both the exported method and the other caller. Recursive locking is not a feature Go withholds by accident: it makes the critical section's extent impossible to see.
 
 </details>
 
@@ -155,7 +155,7 @@ The fix is an unexported helper that assumes the lock is held — conventionally
 
 **b)** An `atomic.Int64` incremented with `Add`.
 
-One variable, one operation — exactly what atomics are for, with less code and less contention than a mutex. Option a works and is heavier. Option c adds a goroutine and a channel to increment a number. Option d misuses a structure built for a different access pattern.
+One variable, one operation: exactly what atomics are for, with less code and less contention than a mutex. Option a works and is heavier. Option c adds a goroutine and a channel to increment a number. Option d misuses a structure built for a different access pattern.
 
 The answer changes the moment you need two numbers to agree: then it is a mutex.
 
@@ -167,7 +167,7 @@ The answer changes the moment you need two numbers to agree: then it is a mutex.
 
 Error propagation and cancellation. The first goroutine to return an error cancels the derived context, so the others stop rather than finishing work whose result will be discarded, and `Wait` returns that error.
 
-A `WaitGroup` only counts. Collecting errors from it means a channel or a mutex-guarded slice, and there is no mechanism to tell the survivors to stop — which is why hand-rolled versions of this are usually where a leak lives.
+A `WaitGroup` only counts. Collecting errors from it means a channel or a mutex-guarded slice, and there is no mechanism to tell the survivors to stop, which is why hand-rolled versions of this are usually where a leak lives.
 
 </details>
 
@@ -177,7 +177,7 @@ A `WaitGroup` only counts. Collecting errors from it means a channel or a mutex-
 
 Maybe, and only with a measurement. `RWMutex` wins when reads dominate *and* the critical section is long enough for the extra bookkeeping to pay off. A map lookup is nanoseconds, so a plain `Mutex` frequently beats it.
 
-Run the benchmark both ways under realistic concurrency — stage 5 gives you `benchstat` for exactly this. The trap is that a change justified by a plausible story often measures worse, and nobody goes back to check.
+Run the benchmark both ways under realistic concurrency; stage 5 gives you `benchstat` for exactly this. The trap is that a change justified by a plausible story often measures worse, and nobody goes back to check.
 
 </details>
 

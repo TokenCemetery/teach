@@ -36,7 +36,7 @@ Makes it non-blocking: it takes a ready case if there is one, otherwise `default
 func (c Context) Done() <-chan struct{}
 ```
 
-A channel that is **closed** when the work should stop. Closing broadcasts to every receiver at once — the property from Lesson 16 — which is what makes one cancel reach a hundred goroutines.
+A channel that is **closed** when the work should stop. Closing broadcasts to every receiver at once, the property from Lesson 16, which is what makes one cancel reach a hundred goroutines.
 
 ### The tree
 
@@ -54,18 +54,18 @@ rows, err := db.QueryContext(ctx, q)   // the query observes the same deadline
 | `WithCancel(parent)` | you call `cancel`, or the parent is cancelled |
 | `WithTimeout(parent, d)` | after `d`, or you call `cancel`, or the parent is cancelled |
 | `WithDeadline(parent, t)` | at `t`, or you call `cancel`, or the parent is cancelled |
-| `WithValue(parent, k, v)` | never — it only carries a value |
+| `WithValue(parent, k, v)` | never, it only carries a value |
 
 **Always call `cancel`.** `defer cancel()` immediately after the constructor is not optional politeness: until cancel runs, the child stays attached to the parent and the timer stays live. `go vet`'s `lostcancel` check reports the ones it can see.
 
-`ctx.Err()` says why it stopped — `context.Canceled` or `context.DeadlineExceeded` — and both are matchable with `errors.Is` through any amount of wrapping.
+`ctx.Err()` says why it stopped, either `context.Canceled` or `context.DeadlineExceeded`, and both are matchable with `errors.Is` through any amount of wrapping.
 
 ### The conventions
 
 - **First parameter, named `ctx`, typed `context.Context`.** `func Get(ctx context.Context, id string) (*User, error)`. It goes first in every function that takes one.
 - **Do not store it in a struct.** A context describes one operation's lifetime; a struct outlives the operation. The narrow exception is a type whose whole purpose is one request, and it is rarer than people assume.
 - **Never pass nil.** Use `context.Background()` at the top of `main` and in tests, and `context.TODO()` to mark a call site you have not wired up yet.
-- **Values are for request-scoped metadata, not for dependencies.** A request id, a trace span, an authenticated subject. Not your database handle, your logger's configuration, or an optional argument — those go in parameters or struct fields, where the compiler can see them.
+- **Values are for request-scoped metadata, not for dependencies.** A request id, a trace span, an authenticated subject. Not your database handle, your logger's configuration, or an optional argument. Those go in parameters or struct fields, where the compiler can see them.
 - **Keys must be an unexported type.** `type ctxKey struct{}` avoids collisions with other packages using the same string.
 
 ### Cancellation is cooperative
@@ -83,11 +83,11 @@ for _, item := range items {
 }
 ```
 
-This is where the Java instinct misleads. `Thread.interrupt` sets a flag the runtime honours at defined interruption points, and `Future.cancel(true)` acts on the task from the outside. A Go context has no reach into a running goroutine at all — cancellation propagates only as far as your code chooses to look.
+This is where the Java instinct misleads. `Thread.interrupt` sets a flag the runtime honours at defined interruption points, and `Future.cancel(true)` acts on the task from the outside. A Go context has no reach into a running goroutine at all: cancellation propagates only as far as your code chooses to look.
 
 ### Worth knowing
 
-`context.WithCancelCause` (Go 1.20) attaches a reason, retrieved with `context.Cause(ctx)`, so a timeout can say *which* timeout. `context.WithoutCancel` (Go 1.21) derives a context that keeps the values but drops the cancellation — for the audit write that must finish after the request is abandoned. `context.AfterFunc` (Go 1.21) registers a callback to run on cancellation, which is how you attach cleanup without a goroutine parked in a `select`.
+`context.WithCancelCause` (Go 1.20) attaches a reason, retrieved with `context.Cause(ctx)`, so a timeout can say *which* timeout. `context.WithoutCancel` (Go 1.21) derives a context that keeps the values but drops the cancellation, for the audit write that must finish after the request is abandoned. `context.AfterFunc` (Go 1.21) registers a callback to run on cancellation, which is how you attach cleanup without a goroutine parked in a `select`.
 
 ## Practice
 
@@ -100,7 +100,7 @@ This is where the Java instinct misleads. `Thread.interrupt` sets a flag the run
 
 <details markdown="1"><summary>Check</summary>
 
-The cancel function is discarded, so the context stays attached to its parent and its timer stays live until the deadline passes. In a per-request path that accumulates — a leak that grows with traffic and disappears when traffic stops, which makes it hard to reproduce.
+The cancel function is discarded, so the context stays attached to its parent and its timer stays live until the deadline passes. In a per-request path that accumulates into a leak, growing with traffic and disappearing when traffic stops, which makes it hard to reproduce.
 
 Write `ctx, cancel := ...` followed by `defer cancel()`. `go vet` reports this one as `lostcancel`.
 
@@ -112,7 +112,7 @@ Write `ctx, cancel := ...` followed by `defer cancel()`. `go vet` reports this o
 
 The loop runs to completion. Cancellation closes a channel; it does not interrupt anything.
 
-To respond to it, the loop has to check `ctx.Err()` — or `ctx.Done()` in a `select` — at a granularity that makes sense for the work. This is the single most important difference from `Thread.interrupt`, which the runtime honours at defined points without the author writing anything.
+To respond to it, the loop has to check `ctx.Err()`, or `ctx.Done()` in a `select`, at a granularity that makes sense for the work. This is the single most important difference from `Thread.interrupt`, which the runtime honours at defined points without the author writing anything.
 
 </details>
 
@@ -129,7 +129,7 @@ To respond to it, the loop has to check `ctx.Err()` — or `ctx.Done()` in a `se
 
 It is metadata about this one operation, it crosses layers that do not care about it, and no signature needs to mention it. The other three are dependencies or configuration: they belong in parameters or struct fields, where the compiler checks them and a reader can see them.
 
-The rule of thumb — if leaving it out would be a compile error in a well-designed API, it does not belong in a context.
+The rule of thumb: if leaving it out would be a compile error in a well-designed API, it does not belong in a context.
 
 </details>
 
@@ -139,7 +139,7 @@ The rule of thumb — if leaving it out would be a compile error in a well-desig
 
 The goroutine was not given the context, or was given one derived from `context.Background()` instead of the request's.
 
-Both break the tree, so cancellation stops at the boundary. Detaching is sometimes deliberate — work that must outlive the request — and then the right tool is `context.WithoutCancel(ctx)`, which says so explicitly and keeps the values.
+Both break the tree, so cancellation stops at the boundary. Detaching is sometimes deliberate, for work that must outlive the request, and then the right tool is `context.WithoutCancel(ctx)`, which says so explicitly and keeps the values.
 
 </details>
 
@@ -156,7 +156,7 @@ Distinguishing it matters operationally: a deadline means you gave up, and a `co
 ## Real-world reps
 
 - [ ] Write a handler that does a 5-second sleep in a loop, checking `ctx.Err()` each second. Curl it and press ctrl-c mid-request. Watch it stop.
-- [ ] Remove the `ctx.Err()` check and repeat. The handler now runs to completion after the client has gone — that is the shape of a service that cannot shed load.
+- [ ] Remove the `ctx.Err()` check and repeat. The handler now runs to completion after the client has gone. That is the shape of a service that cannot shed load.
 - [ ] Tomorrow: find a `go someWork()` in a codebase you work with and check which context it receives. If it is `context.Background()`, ask whether that was a decision.
 
 ## Going further

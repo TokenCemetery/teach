@@ -28,7 +28,7 @@ All linear layers, at generous rank. Adapter parameters are negligible against a
 
 </details>
 
-3. ▢ Training or inference — where does `add_generation_prompt=True` belong?
+3. ▢ Training or inference: where does `add_generation_prompt=True` belong?
 
 <details markdown="1"><summary>Check</summary>
 
@@ -93,13 +93,13 @@ trainer.train()
 trainer.save_model("runs/first-adapter/final")
 ```
 
-Two notes on this API surface. `SFTTrainer` accepts a model *string* and will load it for you. Sequence length is `max_length` on `SFTConfig`. Both of these have changed across releases — **read the installed version's documentation rather than trusting this snippet or your memory.** That instruction is not boilerplate; it is the most reliable source of wasted afternoons in this whole workspace.
+Two notes on this API surface. `SFTTrainer` accepts a model *string* and will load it for you. Sequence length is `max_length` on `SFTConfig`. Both of these have changed across releases, so **read the installed version's documentation rather than trusting this snippet or your memory.** That instruction is not boilerplate; it is the most reliable source of wasted afternoons in this whole workspace.
 
 ### Precision, hardware, and what actually varies
 
 `bf16=True` requires hardware support for bfloat16, which is widespread on modern accelerators but not universal. On older devices you may need fp16 with loss scaling, and on some backends full fp32 is the only option. The principle from Lesson 5 is unchanged; only the available formats differ.
 
-Similarly, the specific accelerator behind this script is not part of the method. The concepts, the arithmetic and the failure modes are identical across CUDA, ROCm, Intel, Apple Silicon and CPU. What differs is which kernels are optimised, which precisions are supported, and how fast a step takes. Where a backend genuinely constrains the method, this workspace says so explicitly — see [Lesson 16](0016-training-through-a-quantized-base.md).
+Similarly, the specific accelerator behind this script is not part of the method. The concepts, the arithmetic and the failure modes are identical across CUDA, ROCm, Intel, Apple Silicon and CPU. What differs is which kernels are optimised, which precisions are supported, and how fast a step takes. Where a backend genuinely constrains the method, this workspace says so explicitly; see [Lesson 16](0016-training-through-a-quantized-base.md).
 
 ### The four checks, in order
 
@@ -122,7 +122,7 @@ labels = example["labels"]
 print(sum(1 for l in labels if l != -100), "of", len(labels), "positions scored")
 ```
 
-Decode one real training example and read it. This one check catches template mismatches, missing end-of-turn tokens, a masking bug, and truncation mid-answer — four of the five most common causes of a bad fine-tune. **Do not skip it.** It is the highest-value ten seconds in the process.
+Decode one real training example and read it. This one check catches template mismatches, missing end-of-turn tokens, a masking bug, and truncation mid-answer: four of the five most common causes of a bad fine-tune. **Do not skip it.** It is the highest-value ten seconds in the process.
 
 **3. Does loss move?**
 
@@ -130,11 +130,11 @@ Over 50 steps with `logging_steps=1`, loss should visibly fall. Flat loss from s
 
 **4. Can it overfit two examples?**
 
-The strongest smoke test available. Train on two examples for a hundred steps. Loss should approach zero. If it cannot memorise two examples, the pipeline is broken — and you have learned that in two minutes rather than after a six-hour run.
+The strongest smoke test available. Train on two examples for a hundred steps. Loss should approach zero. If it cannot memorise two examples, the pipeline is broken, and you have learned that in two minutes rather than after a six-hour run.
 
 ### Save what you will need to reproduce it
 
-The adapter directory is small — usually single-digit to low-hundreds of megabytes — and contains only the adapter weights plus a config recording the base model, rank, alpha and target modules. It is useless without that exact base model, so record the base model identifier and its revision alongside it.
+The adapter directory is small, usually single-digit to low-hundreds of megabytes, and contains only the adapter weights plus a config recording the base model, rank, alpha and target modules. It is useless without that exact base model, so record the base model identifier and its revision alongside it.
 
 Also record the library versions. A config that trained cleanly six months ago may not load the same way, and "which version was this" is not recoverable after the fact.
 
@@ -144,7 +144,7 @@ Also record the library versions. A config that trained cleanly six months ago m
 
 <details markdown="1"><summary>Check</summary>
 
-Because the first run's job is to prove the pipeline, and a long expensive run gives the same information as a short cheap one — just much later and at higher cost.
+Because the first run's job is to prove the pipeline, and a long expensive run gives the same information as a short cheap one, just much later and at higher cost.
 
 Worse, if something is wrong you learn it after hours instead of minutes, and you cannot tell which of several changes mattered.
 
@@ -154,9 +154,9 @@ Worse, if something is wrong you learn it after hours instead of minutes, and yo
 
 <details markdown="1"><summary>Check</summary>
 
-1. The adapter attached to nothing — check `print_trainable_parameters()`.
-2. Every label is `-100`, so nothing is being scored — check the label count on a real example.
-3. The learning rate is orders of magnitude too low — check it is around `1e-4`, not `1e-5` or lower.
+1. The adapter attached to nothing; check `print_trainable_parameters()`.
+2. Every label is `-100`, so nothing is being scored; check the label count on a real example.
+3. The learning rate is orders of magnitude too low; check it is around `1e-4`, not `1e-5` or lower.
 
 All three are one line to rule out, which is why they come before anything subtle.
 
@@ -186,7 +186,7 @@ Look for an unattached adapter, fully masked labels, a learning rate near zero, 
 
 <details markdown="1"><summary>Check</summary>
 
-Only if you can identify the exact base model it was trained against, which the adapter config records by name. Applied to a different base — even another checkpoint of the same family — the result is at best degraded and at worst nonsense.
+Only if you can identify the exact base model it was trained against, which the adapter config records by name. Applied to a different base, even another checkpoint of the same family, the result is at best degraded and at worst nonsense.
 
 Record the base model identifier, its revision, and your library versions. An adapter is a diff, and a diff needs its base.
 

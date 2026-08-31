@@ -59,7 +59,7 @@ trainer = SFTTrainer(..., train_dataset=split["train"], eval_dataset=split["test
 | Falls to ~0 fast | Rises immediately | Memorising | Dataset far too small for this capacity |
 | Flattens high | Flattens high | Underfitting | More rank, more target modules, higher learning rate |
 | Flat from step 1 | Flat | Broken pipeline | Lesson 11's four checks |
-| Spikes, or `NaN` | — | Instability | Lower learning rate; check for fp16 overflow; add warm-up |
+| Spikes, or `NaN` | irrelevant | Instability | Lower learning rate; check for fp16 overflow; add warm-up |
 
 The **held-out minimum** is the useful checkpoint, not the final step. Save checkpoints periodically and keep the best one; a run that ends at step 1000 when held-out loss bottomed at step 400 has trained 600 steps of damage.
 
@@ -67,7 +67,7 @@ The **held-out minimum** is the useful checkpoint, not the final step. Save chec
 
 **A loss floor that more training will not lower** is a capacity ceiling. The adapter cannot express the update the task needs. Adding epochs cannot fix it; adding rank or target modules can.
 
-**Loss that spikes and recovers** is usually a batch containing something unusual — an outlier-length example, corrupted text, a duplicated block. Find it. A single pathological example can move a small-dataset run.
+**Loss that spikes and recovers** is usually a batch containing something unusual: an outlier-length example, corrupted text, a duplicated block. Find it. A single pathological example can move a small-dataset run.
 
 **Loss that becomes `NaN`** is overflow. In fp16 this is common and is what loss scaling exists to prevent; in bf16 it usually indicates something worse, like a division by zero in the data pipeline or a learning rate high enough to send weights to infinity.
 
@@ -80,7 +80,7 @@ This is the important part of the lesson.
 Cross-entropy scores next-token prediction on your data distribution. It is silent on:
 
 - **Whether generations are usable.** A model can score well and produce output that never stops, or that ignores the requested format.
-- **Whether anything else broke.** [Catastrophic forgetting](../GLOSSARY.md) — degradation of abilities unrelated to your task — does not appear in your task's loss at all. Your held-out loss can improve monotonically while the model becomes worse at everything else it could do.
+- **Whether anything else broke.** [Catastrophic forgetting](../GLOSSARY.md), the degradation of abilities unrelated to your task, does not appear in your task's loss at all. Your held-out loss can improve monotonically while the model becomes worse at everything else it could do.
 - **Whether the improvement is real or contamination.** If your held-out examples are near-duplicates of training examples, held-out loss is measuring memorisation and calling it generalisation.
 
 So: **generate, every time.** Fix a small set of prompts before training. Run them through the base model and save the outputs. Run them through the adapted model at the same sampling settings and diff. Ten minutes of reading real generations catches things no metric on your curve will.
@@ -119,7 +119,7 @@ Ship the checkpoint from the held-out minimum, roughly two hundred steps back. T
 
 Change capacity: extend targets to all linear layers, and raise rank. Consider whether the learning rate is too low.
 
-Do not add epochs. A capacity ceiling does not move with more passes over the same data — that is the definition of the diagnosis.
+Do not add epochs. A capacity ceiling does not move with more passes over the same data. That is the definition of the diagnosis.
 
 </details>
 
@@ -129,7 +129,7 @@ Do not add epochs. A capacity ceiling does not move with more passes over the sa
 
 Catastrophic forgetting. Your held-out set is drawn from your task's distribution, so it cannot see degradation on capabilities outside that distribution.
 
-The fix is a regression suite covering abilities you are not training — general instruction following, refusal behaviour, other formats. That is Lesson 24, and this failure is why it exists.
+The fix is a regression suite covering abilities you are not training: general instruction following, refusal behaviour, other formats. That is Lesson 24, and this failure is why it exists.
 
 </details>
 
@@ -144,7 +144,7 @@ The fix is a regression suite covering abilities you are not training — genera
 
 **b)** The loss is exactly unchanged across all fifty steps.
 
-A plateau is underfitting, a diverging pair is overfitting, and a spike is usually one bad batch — all real training behaviours. Loss that does not move *at all* means no gradient is reaching any parameter, which is a wiring fault.
+A plateau is underfitting, a diverging pair is overfitting, and a spike is usually one bad batch, which are all real training behaviours. Loss that does not move *at all* means no gradient is reaching any parameter, which is a wiring fault.
 
 </details>
 
@@ -160,7 +160,7 @@ Because it is the only cheap way to notice forgetting during a run. Task-related
 
 <details markdown="1"><summary>Check</summary>
 
-The model is recognising examples it has already seen — memorisation, visible directly in the curve. Each new epoch produces a step down because the data is no longer novel.
+The model is recognising examples it has already seen. That is memorisation, visible directly in the curve. Each new epoch produces a step down because the data is no longer novel.
 
 Check held-out loss, which is likely flat or rising, and reduce epochs or capacity.
 
@@ -171,7 +171,7 @@ Check held-out loss, which is likely flat or rising, and reduce epochs or capaci
 - [ ] Add a held-out split and periodic evaluation to your run from Lesson 11. Find the held-out minimum.
 - [ ] Write three generation probes, one of them unrelated to your task. Save base-model outputs before training.
 - [ ] Deliberately overfit: train a generously ranked adapter on 50 examples for many epochs and watch the two curves separate. Keep the plot.
-- [ ] Tomorrow: write a one-page run record for a real run — base model, revision, data, split, seed, every hyperparameter, library versions.
+- [ ] Tomorrow: write a one-page run record for a real run: base model, revision, data, split, seed, every hyperparameter, library versions.
 
 ## Going further
 

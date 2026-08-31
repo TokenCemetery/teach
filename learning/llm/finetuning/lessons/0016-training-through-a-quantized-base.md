@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-Its 16 representable levels, so each covers equal probability mass rather than equal range — matching where normally distributed weights actually cluster.
+Its 16 representable levels, so each covers equal probability mass rather than equal range, matching where normally distributed weights actually cluster.
 
 </details>
 
@@ -48,9 +48,9 @@ It works because **the base weights are not being trained.** Trace one adapted l
 forward:   h = W₀_dequant(x) + (α/r) · B A x
 ```
 
-`W₀` is dequantised to bf16 for the matmul and the dequantised copy is discarded. The backward pass needs the gradient of the loss with respect to `A` and `B`, and to compute that it needs the *activations* flowing through the layer — which are bf16 — and the gradient arriving from above, which is also bf16.
+`W₀` is dequantised to bf16 for the matmul and the dequantised copy is discarded. The backward pass needs the gradient of the loss with respect to `A` and `B`, and to compute that it needs the *activations* flowing through the layer, which are bf16, and the gradient arriving from above, which is also bf16.
 
-The frozen weights participate in the backward pass only by **passing gradient through** to earlier layers. That requires multiplying by `W₀`, which requires dequantising it again — not differentiating with respect to it. No gradient is ever stored for a base weight, because none is requested.
+The frozen weights participate in the backward pass only by **passing gradient through** to earlier layers. That requires multiplying by `W₀`, which requires dequantising it again rather than differentiating with respect to it. No gradient is ever stored for a base weight, because none is requested.
 
 So there is nothing exotic here. The quantized base is a constant in the computation graph. It has to be read at high precision, but it never has to be updated, and updating is the expensive part.
 
@@ -82,7 +82,7 @@ model.print_trainable_parameters()
 
 ### Everything else is unchanged
 
-Rank, alpha, target modules, learning rate, schedule, held-out split, generation probes, the four checks from Lesson 11 — all identical. **QLoRA is LoRA with a cheaper base.** It is not a different method with its own hyperparameter folklore, and treating it as one is a common source of confusion.
+Rank, alpha, target modules, learning rate, schedule, held-out split, generation probes, the four checks from Lesson 11: all identical. **QLoRA is LoRA with a cheaper base.** It is not a different method with its own hyperparameter folklore, and treating it as one is a common source of confusion.
 
 The one adjustment worth mentioning: because the base is noisier, some practitioners use slightly more rank than they would with a bf16 base, on the theory that the adapter has to compensate for quantisation error as well as learn the task. Treat that as a hypothesis to test on your task, not a rule.
 
@@ -90,25 +90,25 @@ The one adjustment worth mentioning: because the base is noisier, some practitio
 
 This deserves care, because the widely repeated version of it is out of date.
 
-`bitsandbytes` began as CUDA-only, and for several years "QLoRA needs an NVIDIA GPU" was simply accurate. The library has since moved to a multi-backend architecture, with dispatch for **CUDA (also covering AMD ROCm), CPU, Intel XPU, Intel Gaudi, and Apple MPS**, alongside pure-PyTorch fallbacks. The 4-bit operations — quantise, dequantise, and the 4-bit matrix-vector product — have backend implementations beyond CUDA, dispatched when the block size is one the compiled kernel supports and falling back to slower generic paths otherwise.
+`bitsandbytes` began as CUDA-only, and for several years "QLoRA needs an NVIDIA GPU" was simply accurate. The library has since moved to a multi-backend architecture, with dispatch for **CUDA (also covering AMD ROCm), CPU, Intel XPU, Intel Gaudi, and Apple MPS**, alongside pure-PyTorch fallbacks. The 4-bit operations, quantise and dequantise and the 4-bit matrix-vector product, have backend implementations beyond CUDA, dispatched when the block size is one the compiled kernel supports and falling back to slower generic paths otherwise.
 
 What follows for you:
 
 - **CUDA remains the most complete and best optimised path.** If you have it, use it, and expect published numbers to be reproducible.
 - **Other backends are viable and improving, with caveats.** Coverage varies by operation, block size and library version. Expect slower steps, and expect to check whether a specific configuration hits an optimised kernel or a fallback.
-- **Paged optimizers are the genuinely CUDA-specific piece.** They rely on NVIDIA unified memory to spill optimizer state to host memory during transient spikes, avoiding an out-of-memory crash at a peak. That is a hardware feature, not a portable algorithm. It also matters least in adapter training, where optimizer state is tiny — its original purpose was full fine-tuning-scale state.
+- **Paged optimizers are the genuinely CUDA-specific piece.** They rely on NVIDIA unified memory to spill optimizer state to host memory during transient spikes, avoiding an out-of-memory crash at a peak. That is a hardware feature, not a portable algorithm. It also matters least in adapter training, where optimizer state is tiny; its original purpose was full fine-tuning-scale state.
 - **Verify against your installed version rather than any document.** This area has changed repeatedly and will change again. `bitsandbytes` is not the only route to 4-bit either; other quantisation backends exist with different hardware coverage.
 
-The concepts in Lessons 14 and 15 — blockwise scales, normal-quantile levels, quantising the constants, storage precision versus compute precision — are arithmetic and are identical on every backend. Only the kernel availability and the speed differ.
+The concepts in Lessons 14 and 15, being blockwise scales, normal-quantile levels, quantising the constants and storage precision versus compute precision, are arithmetic and are identical on every backend. Only the kernel availability and the speed differ.
 
 ### What to expect from the run
 
 | Against a bf16 base | Effect |
 |---|---|
 | Fixed memory | Roughly 4× lower for the base |
-| Step time | Slower — dequantisation on every forward and backward |
+| Step time | Slower, dequantisation on every forward and backward |
 | Loss curve shape | Very similar; may sit marginally higher |
-| Final quality | Slightly lower, task-dependent — measure it (Lesson 17) |
+| Final quality | Slightly lower, task-dependent, so measure it (Lesson 17) |
 
 And the merge rule from Lesson 13 still holds, more importantly than ever: **merge into the full-precision base, not the quantized one.** Train against 4-bit, then load the base in bf16, apply the adapter, merge there. Merging into quantized weights adds a requantisation loss you have no reason to accept.
 
@@ -118,7 +118,7 @@ And the merge rule from Lesson 13 still holds, more importantly than ever: **mer
 
 <details markdown="1"><summary>Check</summary>
 
-No gradient is ever taken with respect to a base weight — they are frozen constants. Gradients are taken with respect to `A` and `B`, which are high precision.
+No gradient is ever taken with respect to a base weight: they are frozen constants. Gradients are taken with respect to `A` and `B`, which are high precision.
 
 The frozen weights are needed to *propagate* gradient to earlier layers, which requires dequantising them for the multiply, not differentiating them.
 
@@ -128,7 +128,7 @@ The frozen weights are needed to *propagate* gradient to earlier layers, which r
 
 <details markdown="1"><summary>Check</summary>
 
-It casts modules that need stability — layer norms, the output head — to a higher precision, enables gradient checkpointing and input gradients, and ensures nothing that must stay high-precision was quantized.
+It casts modules that need stability, such as layer norms and the output head, to a higher precision, enables gradient checkpointing and input gradients, and ensures nothing that must stay high-precision was quantized.
 
 Skipping it typically gives an unstable run or an error about gradients not being required, with a message that does not point at the cause.
 
@@ -150,7 +150,7 @@ It matters little for adapter training, where optimizer state is megabytes. It w
 
 Not as an absolute. `bitsandbytes` now dispatches 4-bit operations across CUDA/ROCm, CPU, Intel XPU, Intel Gaudi and Apple MPS, with PyTorch fallbacks where a compiled kernel is unavailable.
 
-CUDA is still the most complete and fastest path, and coverage on other backends varies by operation, block size and version. So the correct statement is "CUDA is the best-supported path", not "CUDA is the only path" — and you verify against your installed version rather than any tutorial.
+CUDA is still the most complete and fastest path, and coverage on other backends varies by operation, block size and version. So the correct statement is "CUDA is the best-supported path", not "CUDA is the only path", and you verify against your installed version rather than any tutorial.
 
 </details>
 
@@ -158,12 +158,12 @@ CUDA is still the most complete and fastest path, and coverage on other backends
 
    - a) The learning rate, which must be lowered substantially
    - b) The alpha value, which must be raised to compensate
-   - c) None of them — the base precision is a separate concern
+   - c) None of them, the base precision is a separate concern
    - d) The batch size, which must be raised to stay stable
 
 <details markdown="1"><summary>Check</summary>
 
-**c)** None of them — the base precision is a separate concern.
+**c)** None of them. The base precision is a separate concern.
 
 QLoRA is LoRA with a cheaper base. Some practitioners try slightly more rank to absorb quantisation noise, but that is a hypothesis to test, not a required change.
 

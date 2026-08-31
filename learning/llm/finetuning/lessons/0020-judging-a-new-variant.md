@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-When rank is pinned low by something you cannot remove — usually overfitting risk on a small dataset.
+When rank is pinned low by something you cannot remove, usually overfitting risk on a small dataset.
 
 </details>
 
@@ -53,7 +53,7 @@ Rather than memorising methods, learn the axes. Almost every variant modifies on
 - **OLoRA** initialises via QR decomposition of `W₀`.
 - **LoftQ** ([arXiv:2310.08659](https://arxiv.org/abs/2310.08659)) initialises the adapter to compensate for quantisation error, specifically for the QLoRA setting.
 
-Note that these all give up the zero-initialisation property from Lesson 9 — the model no longer starts identical to the base. That is a deliberate trade, and it is the thing to scrutinise.
+Note that these all give up the zero-initialisation property from Lesson 9: the model no longer starts identical to the base. That is a deliberate trade, and it is the thing to scrutinise.
 
 **The structure.**
 - **AdaLoRA** ([arXiv:2303.10512](https://arxiv.org/abs/2303.10512)) allocates rank adaptively across layers instead of using one rank everywhere, on the grounds that layers differ in how much adaptation they need.
@@ -88,7 +88,7 @@ When a new method appears, ask these in order. You can usually stop early.
 
 **LoRA at adequate rank on all linear layers, with a tuned learning rate, is a strong baseline that is hard to beat by much.** That is the practical upshot of the "LoRA without regret" line of work, and it should be your starting point and your comparison.
 
-A new variant needs to beat *that*, on your task, by more than your seed noise, for less cost than raising rank would have. Most do not clear the bar. Knowing this is not cynicism — it is what lets you spend attention on the few that do.
+A new variant needs to beat *that*, on your task, by more than your seed noise, for less cost than raising rank would have. Most do not clear the bar. Knowing this is not cynicism. It is what lets you spend attention on the few that do.
 
 ## Practice
 
@@ -133,7 +133,7 @@ Without a spread, a 1.5-point gain cannot be distinguished from run-to-run noise
 
 It should help when training against a quantized base, most visibly at aggressive quantisation and on smaller models where quantisation error is proportionally more damaging.
 
-It should do nothing for an unquantized bf16 base — there is no quantisation error to compensate for, so the mechanism has no purchase.
+It should do nothing for an unquantized bf16 base, because there is no quantisation error to compensate for, so the mechanism has no purchase.
 
 </details>
 
@@ -143,7 +143,7 @@ It should do nothing for an unquantized bf16 base — there is no quantisation e
 
 Zero initialisation guarantees the adapted model starts identical to the base, so training begins from known-good weights and any degradation is attributable to training.
 
-Giving that up means the model starts perturbed. Check for early instability, and check whether the perturbation has damaged capabilities outside your task — a regression suite (Lesson 24) run at step zero, before training, is the direct test.
+Giving that up means the model starts perturbed. Check for early instability, and check whether the perturbation has damaged capabilities outside your task. A regression suite (Lesson 24) run at step zero, before training, is the direct test.
 
 </details>
 

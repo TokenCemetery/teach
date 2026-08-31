@@ -48,7 +48,7 @@ adapter_config.json         # base model name, r, alpha, target_modules, task_ty
 README.md                   # generated model card
 ```
 
-Small — often tens of megabytes. And **incomplete by design**: it is a diff, meaningless without the exact base model named in its config. Losing track of the base, or of which revision of it, makes the adapter garbage.
+Small, often tens of megabytes. And **incomplete by design**: it is a diff, meaningless without the exact base model named in its config. Losing track of the base, or of which revision of it, makes the adapter garbage.
 
 ### Two ways to ship
 
@@ -84,15 +84,15 @@ Save the tokenizer alongside. A model directory without its tokenizer is a suppo
 
 The rule of thumb: **merge for a single-purpose deployment, stay unmerged when serving several tasks from one base.** Lesson 25 goes into multi-adapter serving properly.
 
-### Merging is exact — with two exceptions
+### Merging is exact, with two exceptions
 
 Because the update is additive and linear, merging is arithmetically exact. `W₀ + (α/r)BA` is the same function the unmerged model computed. There is no approximation and no quality loss.
 
 Except in two cases, both worth knowing:
 
-**Merging into a quantized base is lossy.** If the base is 4-bit, adding a bf16 update requires dequantising, adding, and requantising — and the requantisation step loses information. The correct order is: train against the quantized base, then merge into the *full-precision* base, then quantise the merged result if you need to. Merging directly into the quantized weights degrades quality for no reason. Stage 4 returns to this.
+**Merging into a quantized base is lossy.** If the base is 4-bit, adding a bf16 update requires dequantising, adding, and requantising, and the requantisation step loses information. The correct order is: train against the quantized base, then merge into the *full-precision* base, then quantise the merged result if you need to. Merging directly into the quantized weights degrades quality for no reason. Stage 4 returns to this.
 
-**Dropout changes the effective scale.** `lora_dropout` is active during training and inactive at inference. This is standard dropout behaviour and normally harmless, but it means the merged weight reflects the no-dropout path — which is the correct one.
+**Dropout changes the effective scale.** `lora_dropout` is active during training and inactive at inference. This is standard dropout behaviour and normally harmless, but it means the merged weight reflects the no-dropout path, which is the correct one.
 
 ### Verify the merge
 
@@ -129,7 +129,7 @@ Everything needed to reproduce and to debug later:
 - Adapter config, verbatim
 - Dataset identity and the exact split
 - Seed, effective batch size, learning rate, schedule, steps
-- Which checkpoint you chose and why — the held-out number that justified it
+- Which checkpoint you chose and why, meaning the held-out number that justified it
 - Library versions
 - Evaluation results, including the regression probes
 
@@ -141,7 +141,7 @@ This is not process for its own sake. Six months from now the question "why is t
 
 <details markdown="1"><summary>Check</summary>
 
-It contains only the `A` and `B` matrices — a diff against a specific set of base weights. Without that exact base model and revision it cannot be applied, and applied to a near-miss base it silently degrades.
+It contains only the `A` and `B` matrices: a diff against a specific set of base weights. Without that exact base model and revision it cannot be applied, and applied to a near-miss base it silently degrades.
 
 </details>
 
@@ -186,7 +186,7 @@ Compare with greedy decoding, where any divergence is attributable to the weight
 
 **a)** It is exact and costs nothing at inference time.
 
-The update is additive and linear, so it folds into an ordinary weight matrix — same function, same memory, no extra matmuls. This property is what distinguished LoRA from the adapter-layer methods before it.
+The update is additive and linear, so it folds into an ordinary weight matrix, with the same function, the same memory and no extra matmuls. This property is what distinguished LoRA from the adapter-layer methods before it.
 
 </details>
 
@@ -196,7 +196,7 @@ The update is additive and linear, so it folds into an ordinary weight matrix �
 
 No. Independently trained low-rank updates occupy unrelated subspaces, and their weighted sum is not guaranteed to be a good update for either task, let alone both.
 
-It sometimes works well and is worth trying. It is never something to assume — measure it against each adapter alone.
+It sometimes works well and is worth trying. It is never something to assume; measure it against each adapter alone.
 
 </details>
 

@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-Four, two, and one half — plus quantisation constants in the 4-bit case, which this lesson explains.
+Four, two, and one half, plus quantisation constants in the 4-bit case, which this lesson explains.
 
 </details>
 
@@ -24,7 +24,7 @@ Four, two, and one half — plus quantisation constants in the 4-bit case, which
 
 <details markdown="1"><summary>Check</summary>
 
-14 GB frozen base weights, ~0.3 GB adapter state, and activations that can exceed both. The frozen base is the largest fixed term — and this stage attacks it.
+14 GB frozen base weights, ~0.3 GB adapter state, and activations that can exceed both. The frozen base is the largest fixed term, and this stage attacks it.
 
 </details>
 
@@ -72,7 +72,7 @@ This is not hypothetical. Transformer activations develop systematic large-magni
 
 ### Blockwise quantisation, the fix
 
-Do not quantise a whole tensor with one scale. Split it into small contiguous **blocks** — 64, 128 or 256 elements — and give each block its own scale.
+Do not quantise a whole tensor with one scale. Split it into small contiguous **blocks** of 64, 128 or 256 elements, and give each block its own scale.
 
 ```text
 per-tensor:  one absmax  → one outlier ruins everything
@@ -101,7 +101,7 @@ stored:   4-bit + per-block scale
 computed: bf16
 ```
 
-So quantisation buys memory, and costs compute — a dequantisation step per block, per forward pass. Whether the net effect is faster or slower depends entirely on whether you were memory-bound or compute-bound, and on how well the dequantisation kernel is optimised for the hardware you are on.
+So quantisation buys memory, and costs compute: a dequantisation step per block, per forward pass. Whether the net effect is faster or slower depends entirely on whether you were memory-bound or compute-bound, and on how well the dequantisation kernel is optimised for the hardware you are on.
 
 That last point is where hardware genuinely enters. The *arithmetic* is identical everywhere. What differs by backend is whether a fused, optimised kernel exists for a given bit-width and block size, or whether the library falls back to a slower generic path. Lesson 16 gives the current picture.
 
@@ -111,7 +111,7 @@ Two uses that must not be confused:
 
 **Quantisation for inference** shrinks a model so it fits and serves cheaply. The weights are quantized and that is the artifact you ship. This is out of scope for this workspace as a topic in its own right.
 
-**Quantisation for training** — what QLoRA does — shrinks the *frozen base* so that adapter training fits. The adapter stays at higher precision, and the artifact you ship may be merged into a full-precision base afterwards. The base's precision is a training-time budget decision, not a property of the result.
+**Quantisation for training**, which is what QLoRA does, shrinks the *frozen base* so that adapter training fits. The adapter stays at higher precision, and the artifact you ship may be merged into a full-precision base afterwards. The base's precision is a training-time budget decision, not a property of the result.
 
 ## Practice
 
@@ -121,7 +121,7 @@ Two uses that must not be confused:
 
 `absmax = 8.0`, so `s = 8.0/127 ≈ 0.063`. The values map to `round(0.1/0.063) = 2`, `round(−0.3/0.063) = −5`, `round(0.2/0.063) = 3`, and `127`.
 
-Recovered: 0.126, −0.315, 0.189, 8.0. The small values now carry substantial relative error, because one outlier consumed the range. At 4-bit — sixteen levels — the first three would collapse to nearly the same value.
+Recovered: 0.126, −0.315, 0.189, 8.0. The small values now carry substantial relative error, because one outlier consumed the range. At 4-bit, with sixteen levels, the first three would collapse to nearly the same value.
 
 </details>
 
@@ -131,7 +131,7 @@ Recovered: 0.126, −0.315, 0.189, 8.0. The small values now carry substantial r
 
 An outlier only sets the scale for its own block, so it damages 64 values instead of the whole tensor.
 
-The cost is storing one scale per block. At block size 64 with fp32 scales, that is 0.0625 bytes per parameter — about 12% overhead on a 4-bit budget.
+The cost is storing one scale per block. At block size 64 with fp32 scales, that is 0.0625 bytes per parameter, about 12% overhead on a 4-bit budget.
 
 </details>
 
@@ -149,7 +149,7 @@ Larger blocks mean less scale overhead and worse outlier containment. That is th
 
 <details markdown="1"><summary>Check</summary>
 
-A higher one — typically bf16. Each block is dequantised to bf16, multiplied, and the dequantized copy discarded.
+A higher one, typically bf16. Each block is dequantised to bf16, multiplied, and the dequantized copy discarded.
 
 Quantisation is a *storage* decision. The compute precision is separate and is configured separately.
 
@@ -159,7 +159,7 @@ Quantisation is a *storage* decision. The compute precision is separate and is c
 
 <details markdown="1"><summary>Check</summary>
 
-Because of systematic outlier features. A few dimensions carry very large magnitudes and disproportionate importance, so a scheme that treats all values as interchangeable — one scale per tensor — destroys the ordinary values while preserving the outliers.
+Because of systematic outlier features. A few dimensions carry very large magnitudes and disproportionate importance, so a scheme that treats all values as interchangeable, with one scale per tensor, destroys the ordinary values while preserving the outliers.
 
 Blockwise quantisation, and in LLM.int8()'s case separating outlier dimensions into higher precision entirely, is the response.
 
@@ -169,7 +169,7 @@ Blockwise quantisation, and in LLM.int8()'s case separating outlier dimensions i
 
 <details markdown="1"><summary>Check</summary>
 
-For inference, the quantized weights *are* the artifact — you ship them, and the quality cost is permanent.
+For inference, the quantized weights *are* the artifact: you ship them, and the quality cost is permanent.
 
 For training, quantising the frozen base is a memory budget decision. The adapter stays high-precision, and the shipped result can be merged into a full-precision base, so the quantisation cost need not survive into the artifact at all.
 

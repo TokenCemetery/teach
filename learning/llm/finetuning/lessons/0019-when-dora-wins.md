@@ -59,16 +59,16 @@ So the prediction rule is not "DoRA is better" but:
 | You could just raise rank instead | Raise the rank | Cheaper in wall-clock than DoRA's per-step cost |
 | Step time is your constraint | Skip DoRA | You are paying tens of percent for a small gain |
 
-That fifth row is the one worth internalising. If rank is a free variable, **raising rank is usually the better move than switching to DoRA**, because extra rank costs almost no memory (Lesson 7) and almost no time, while DoRA costs real time on every step. DoRA earns its place when rank is *not* free — when something other than memory is holding it down.
+That fifth row is the one worth internalising. If rank is a free variable, **raising rank is usually the better move than switching to DoRA**, because extra rank costs almost no memory (Lesson 7) and almost no time, while DoRA costs real time on every step. DoRA earns its place when rank is *not* free, when something other than memory is holding it down.
 
 ### What actually holds rank down
 
 Worth being concrete, since the whole recommendation hinges on it:
 
-- **Overfitting on a small dataset.** More rank means more memorisation. Here you genuinely cannot raise rank, and DoRA is a real option — you get better use of a rank you are deliberately keeping small.
+- **Overfitting on a small dataset.** More rank means more memorisation. Here you genuinely cannot raise rank, and DoRA is a real option: you get better use of a rank you are deliberately keeping small.
 - **A serving constraint on adapter size.** Rare, but if you distribute adapters or hold many in memory at once, size can bind.
 - **Reproducing a published configuration.** You are pinned to their rank.
-- **Total training time budget.** Note this one cuts *against* DoRA, not for it — DoRA is slower per step.
+- **Total training time budget.** Note this one cuts *against* DoRA rather than for it, because DoRA is slower per step.
 
 If none of these apply, rank is free, and the simpler action is available.
 
@@ -78,7 +78,7 @@ The DoRA paper reports gains across several tasks and model families, with the m
 
 Three things to hold in mind:
 
-**Reported gains are often small in absolute terms** — a point or two on a benchmark. Compare that against your seed noise before treating it as real on your task.
+**Reported gains are often small in absolute terms**, a point or two on a benchmark. Compare that against your seed noise before treating it as real on your task.
 
 **The comparison baseline matters.** DoRA at rank 8 versus LoRA at rank 8 is the paper's comparison and is the right one for isolating the mechanism. DoRA at rank 8 versus LoRA at rank 32 is the comparison *you* face when deciding what to run, and it is a different question with possibly a different answer.
 
@@ -109,7 +109,7 @@ Its benefit is freeing low-rank capacity from having to represent magnitude chan
 
 More rank. It costs almost no memory and almost no time, whereas DoRA costs a per-step penalty on every step of every future run.
 
-Reach for DoRA when rank is pinned by something — usually overfitting risk on a small dataset — not when it is a free variable.
+Reach for DoRA when rank is pinned by something, usually overfitting risk on a small dataset, and not when it is a free variable.
 
 </details>
 
@@ -129,7 +129,7 @@ Measure it against LoRA at the same rank with several seeds, since the expected 
 
 The paper compares DoRA and LoRA at matched rank, which correctly isolates the mechanism.
 
-Your decision is between DoRA at the rank you can afford and LoRA at the rank you can afford — and since LoRA is faster per step, you may be able to afford more rank with it. Same numbers, different question.
+Your decision is between DoRA at the rank you can afford and LoRA at the rank you can afford, and since LoRA is faster per step you may be able to afford more rank with it. Same numbers, different question.
 
 </details>
 
@@ -154,7 +154,7 @@ Dataset size, base precision and target module coverage are all orthogonal to th
 
 That you have not detected an effect. The difference is well inside noise.
 
-Either run enough seeds to resolve a difference that small — which may be many — or accept that the effect is too small to matter here and take the faster method. Deciding it is not worth resolving is a legitimate and often correct outcome.
+Either run enough seeds to resolve a difference that small, which may be many, or accept that the effect is too small to matter here and take the faster method. Deciding it is not worth resolving is a legitimate and often correct outcome.
 
 </details>
 

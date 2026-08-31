@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-It is a constant in the graph. Propagating gradient requires reading it at high precision, not differentiating with respect to it — and no gradient is stored for it.
+It is a constant in the graph. Propagating gradient requires reading it at high precision, not differentiating with respect to it, and no gradient is stored for it.
 
 </details>
 
@@ -54,21 +54,21 @@ Reading a paper's claim as "quantisation is free" is exactly the failure mode th
 
 There are two distinct quality questions and conflating them makes results uninterpretable.
 
-**Cost 1 — the quantized base is a worse model, before any training.** Purely a property of the representation.
+**Cost 1. The quantized base is a worse model, before any training.** Purely a property of the representation.
 
-**Cost 2 — training against a quantized base yields a worse adapter.** A property of the training process, on top of cost 1.
+**Cost 2. Training against a quantized base yields a worse adapter.** A property of the training process, on top of cost 1.
 
 Measure them separately:
 
 | Configuration | Isolates |
 |---|---|
 | bf16 base, no adapter | The reference point |
-| 4-bit base, no adapter | Cost 1 — quantisation damage alone |
+| 4-bit base, no adapter | Cost 1, quantisation damage alone |
 | bf16 base + adapter | The training ceiling |
 | 4-bit base + adapter | Cost 1 and 2 combined |
 | 4-bit-trained adapter merged into bf16 base | Whether cost 1 survives into the artifact |
 
-That last row is the interesting one and it is routinely skipped. You trained against a degraded base, but you can *deploy* against the full-precision one. Whether the adapter learned to compensate for quantisation error — and so is mismatched when the error disappears — is an empirical question with a real answer for your task. Measure it rather than assuming either way.
+That last row is the interesting one and it is routinely skipped. You trained against a degraded base, but you can *deploy* against the full-precision one. Whether the adapter learned to compensate for quantisation error, and so is mismatched when the error disappears, is an empirical question with a real answer for your task. Measure it rather than assuming either way.
 
 ### How to measure it honestly
 
@@ -76,7 +76,7 @@ That last row is the interesting one and it is routinely skipped. You trained ag
 
 **Use a task metric, not loss.** Loss is not comparable across configurations in the way you want, and it is not what you care about. Lesson 23 covers metric choice.
 
-**Report a spread, not a point.** Run each configuration with three seeds. If your seed-to-seed variation is 2 points and your quantisation effect is 1 point, you have measured nothing — and this happens constantly. A single-seed comparison of two configurations is an anecdote.
+**Report a spread, not a point.** Run each configuration with three seeds. If your seed-to-seed variation is 2 points and your quantisation effect is 1 point, you have measured nothing, and this happens constantly. A single-seed comparison of two configurations is an anecdote.
 
 **Measure speed and memory too.** They are the reason you are considering quantisation, so they belong in the same table as quality.
 
@@ -94,7 +94,7 @@ Filling this in once, on a task you care about, is worth more than any amount of
 
 ### What to expect, so you can be surprised
 
-Rough expectations from the literature and common practice — as a prior to be updated, not a result:
+Rough expectations from the literature and common practice, as a prior to be updated rather than a result:
 
 - **Memory:** roughly 4× reduction on base weights. Reliable, it is arithmetic.
 - **Speed:** slower per step, often noticeably. Dequantisation is real work.
@@ -106,7 +106,7 @@ If your measurements disagree sharply with these, that is worth investigating ra
 
 ### When to reach for QLoRA
 
-**Use it when memory is the binding constraint** — when a bf16 base plus activations does not fit and the alternative is not training at all, or training a smaller model. A 4-bit large model usually beats a bf16 small one.
+**Use it when memory is the binding constraint**, meaning when a bf16 base plus activations does not fit and the alternative is not training at all, or training a smaller model. A 4-bit large model usually beats a bf16 small one.
 
 **Do not use it when memory is not the constraint.** If bf16 fits, quantising costs you speed and a little quality for nothing. The tutorial reflex of always loading in 4-bit is a cost with no benefit when you had the memory anyway.
 
@@ -126,9 +126,9 @@ Does not establish: that this holds on your task and distribution, that it holds
 
 <details markdown="1"><summary>Check</summary>
 
-Cost 1: the quantized base is a worse model before training — measure the base with no adapter, quantized versus not.
+Cost 1: the quantized base is a worse model before training, so measure the base with no adapter, quantized versus not.
 
-Cost 2: training against a quantized base yields a worse adapter — compare adapters trained on quantized versus full-precision bases, everything else held fixed.
+Cost 2: training against a quantized base yields a worse adapter, so compare adapters trained on quantized versus full-precision bases, everything else held fixed.
 
 </details>
 
@@ -148,7 +148,7 @@ Run three seeds per configuration and compare distributions. A single-seed diffe
 
 Evaluating a 4-bit-trained adapter merged into the full-precision base.
 
-It tells you whether the quantisation cost has to survive into your deployed artifact at all — you trained cheaply, but nothing forces you to serve cheaply. It also reveals whether the adapter adapted to the quantisation error itself.
+It tells you whether the quantisation cost has to survive into your deployed artifact at all. You trained cheaply, but nothing forces you to serve cheaply. It also reveals whether the adapter adapted to the quantisation error itself.
 
 </details>
 
@@ -158,7 +158,7 @@ It tells you whether the quantisation cost has to survive into your deployed art
 
 No. You would pay slower steps and a small quality risk to save memory you were not short of.
 
-Quantisation is a response to a binding memory constraint. Applying it by reflex — because the tutorial did — is a cost with no corresponding benefit.
+Quantisation is a response to a binding memory constraint. Applying it by reflex, because the tutorial did, is a cost with no corresponding benefit.
 
 </details>
 

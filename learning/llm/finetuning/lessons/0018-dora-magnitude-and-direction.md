@@ -46,7 +46,7 @@ Any weight matrix can be decomposed into a **magnitude** and a **direction**. Ta
 W = m · (V / ‖V‖_c)
 ```
 
-where `‖·‖_c` is the per-column norm, `V / ‖V‖_c` is a matrix of unit-norm columns — pure direction — and `m` is a vector of one scalar per column, carrying magnitude.
+where `‖·‖_c` is the per-column norm, `V / ‖V‖_c` is a matrix of unit-norm columns, which is pure direction, and `m` is a vector of one scalar per column, carrying magnitude.
 
 The DoRA authors analysed how full fine-tuning and LoRA move each of these two quantities during training, and found the patterns differ. Full fine-tuning tends to make relatively large directional changes with comparatively modest magnitude changes, and shows a distinctive relationship between the two. LoRA's updates move magnitude and direction together in a more coupled way, because a single low-rank additive term changes both at once and has no way to adjust them independently.
 
@@ -56,7 +56,7 @@ The hypothesis: that coupling is a limitation, and decoupling the two should giv
 
 Decompose the frozen `W₀` into its magnitude and direction. Then:
 
-- Make the **magnitude vector `m` trainable directly.** It is one scalar per column — `d_out` parameters, negligible.
+- Make the **magnitude vector `m` trainable directly.** It is one scalar per column, so `d_out` parameters, negligible.
 - Apply the **low-rank update to the direction**, and renormalise afterwards.
 
 ```text
@@ -65,15 +65,15 @@ W' = m · (W₀ + BA) / ‖W₀ + BA‖_c
 
 Read that carefully, because it is where descriptions go wrong. `BA` is added to the weight and then the result is **renormalised to unit columns**, which strips out whatever magnitude change `BA` introduced. Magnitude is then supplied separately and explicitly by the trainable `m`.
 
-So `BA` can no longer change magnitude even accidentally — it only steers direction — and `m` handles scale. That is the decoupling, and it is the entire contribution.
+So `BA` can no longer change magnitude even accidentally, since it only steers direction, and `m` handles scale. That is the decoupling, and it is the entire contribution.
 
 ### What it costs
 
 **Parameters:** one extra vector per adapted layer, of length `d_out`. For a 4096-wide layer that is 4096 numbers against a rank-16 adapter's 131,072. Essentially free.
 
-**Compute:** not free. The column norm of `W₀ + BA` must be computed, and it depends on `BA`, so it changes every step and cannot be cached across updates. This makes DoRA measurably slower per step than LoRA — commonly on the order of tens of percent, varying by implementation and how much of the work the library manages to fuse or cache.
+**Compute:** not free. The column norm of `W₀ + BA` must be computed, and it depends on `BA`, so it changes every step and cannot be cached across updates. This makes DoRA measurably slower per step than LoRA, commonly on the order of tens of percent, varying by implementation and how much of the work the library manages to fuse or cache.
 
-**Complexity:** merging is more involved. The merged weight is `m · (W₀ + BA)/‖W₀ + BA‖_c`, still an ordinary matrix — so a merged DoRA is exact and has zero inference overhead, exactly like LoRA. But the arithmetic to get there is not a simple addition, and the implementation matters.
+**Complexity:** merging is more involved. The merged weight is `m · (W₀ + BA)/‖W₀ + BA‖_c`, still an ordinary matrix, so a merged DoRA is exact and has zero inference overhead, exactly like LoRA. But the arithmetic to get there is not a simple addition, and the implementation matters.
 
 ### Using it
 
@@ -95,7 +95,7 @@ config = LoraConfig(
 
 Everything you know about rank, alpha, target modules and learning rate carries over. It is a modification to how the update is applied, not a new set of decisions. Confirm the flag name against the installed version, as always.
 
-DoRA also composes with quantisation — a quantized base plus a DoRA adapter, sometimes called QDoRA. The interaction is worth measuring rather than assuming: the renormalisation now operates on dequantised weights carrying quantisation error, which is not obviously harmless.
+DoRA also composes with quantisation: a quantized base plus a DoRA adapter, sometimes called QDoRA. The interaction is worth measuring rather than assuming: the renormalisation now operates on dequantised weights carrying quantisation error, which is not obviously harmless.
 
 ### The honest summary
 
@@ -135,7 +135,7 @@ The column norm of `W₀ + BA` must be computed, and because it depends on `BA` 
 
 <details markdown="1"><summary>Check</summary>
 
-4096 — one magnitude scalar per output column.
+4096, one magnitude scalar per output column.
 
 Rank-16 LoRA on that layer is 16 × (4096 + 4096) = 131,072. So DoRA's addition is about 3% on top, which is not the reason to hesitate. The step time is.
 

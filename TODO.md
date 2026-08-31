@@ -14,13 +14,11 @@ Each phase is written to be run on its own, in its own session, without the conv
 
 ## Open decisions
 
-Two questions are unresolved. They block the phases named, and a session that reaches one should ask rather than choose.
+D2 is closed, see Done. D1 is decided: both workspaces.
 
-**D1: how far does the em dash cleanup reach?** Wave 1 is done and the documentation and templates are at zero. What is left is 781 dashes in the Go workspace (46 files) and 576 in the fine-tuning workspace (34 files). Measured rather than estimated, across all 1357: 1058 are prose and need a sentence rewritten; the other 299 are mechanical shapes with one obvious replacement each, being 87 annotated link lines, 67 headings, 64 front matter titles and descriptions, 46 tree and code comments, and 35 rep checkboxes. So the plan's "these are sentence rewrites, not a `sed` run" holds for four fifths of the work.
+**D1, decided 2026-08-31: both workspaces.** Wave 1 is done and the documentation and templates are at zero. What is left is 781 dashes in the Go workspace (46 files) and 576 in the fine-tuning workspace (34 files). Measured rather than estimated, across all 1357: 1058 are prose and need a sentence rewritten; the other 299 are mechanical shapes with one obvious replacement each, being 87 annotated link lines, 67 headings, 64 front matter titles and descriptions, 46 tree and code comments, and 35 rep checkboxes. So the plan's "these are sentence rewrites, not a `sed` run" holds for four fifths of the work.
 
 Three dashes are held in the `FORMATS.md` lesson template on purpose: the `# Lesson {N} — {Title}` heading, the `**Latest lesson:**` pointer, and the fixed closing block. Each is shared verbatim with 64 published lessons, so the template and the workspace have to change in one commit. Whichever workspace is converted first pays for the template too.
-
-**D2: does the linking rule apply to `learning/llm/finetuning/`?** `SKILL.md` now states that every link must lead to a source a reader can read, never to a venue for asking. The Go workspace follows it. The fine-tuning workspace does not: it has a `## Wisdom (Communities)` section in `RESOURCES.md`, a matching front matter description, a line in its `README.md`, and links to EleutherAI Discord and r/LocalLLaMA in lessons 0017, 0020 and 0027. In lesson 0020 the body text itself leans on consulting a community, so it is not a link deletion. Until this is decided, that workspace is knowingly non-compliant with its own skill. Independent of phase 5, but if D1 reaches the fine-tuning workspace, both should be closed in one pass.
 
 ---
 
@@ -28,7 +26,7 @@ Three dashes are held in the `FORMATS.md` lesson template on purpose: the `# Les
 
 **Why.** Upstream removed every em dash from its prose and recorded the rule in its own `AGENTS.md`: rewrite the sentence with a comma, colon, period, parentheses or a conjunction, whichever the sentence actually wants, and never do a blind character substitution. Our fork predates that and is saturated. There is a second, independent argument: a heavy em dash rate reads as a machine writing tell, and 781 dashes across 37 Go lessons is roughly 19 per lesson.
 
-**Scope.** Wave 1 is done. The two workspaces are blocked on D1.
+**Scope.** Wave 1 is done. Both workspaces are in scope, per D1.
 
 | Area | Dashes | Files |
 |---|---|---|
@@ -45,8 +43,6 @@ Three dashes are held in the `FORMATS.md` lesson template on purpose: the `# Les
 One workspace per pass, with `mkdocs build --strict` and a structural lint after each. Do not mix a workspace's dash cleanup with any other change: a diff of a few hundred prose rewrites is unreviewable if something else is hiding in it.
 
 The exception is the three held template dashes above, which must move in the same commit as the workspace that stops matching them.
-
-Blocked on D1.
 
 ---
 
@@ -106,3 +102,13 @@ Three commits: the rule, then the six documentation and template files, then the
 - What the rewrites actually needed: a colon where the second half explains the first, which covered most of them; parentheses for a mid-sentence aside; a conjunction or a full stop for the rest. No instance wanted the same replacement as its neighbour, which is the argument against a scripted pass in one line.
 - Two traps found, both in YAML. `site_description` in `mkdocs.yml` needed quoting once it contained a colon and a space, and the same rewrite in the front matter template of `PUBLISHING.md` would have shipped an example that does not parse. It reads "One clause saying what" now.
 - Held deliberately: see the note under D1.
+
+### D2: the linking rule and communities, decided 2026-08-31
+
+Softened, and the softening changed the axis rather than carving an exception. The old rule banned communities on three objections: an account, a delay, and an answer nobody can retrieve. Only the third is inherent to the venue. The other two describe posting a question, not reading what is already there.
+
+So the test is now how the destination is used. A subreddit read as an archive of practitioner reports is a source; the same subreddit framed as somewhere to post and wait is not. `RESOURCES.md` may carry a `## Wisdom (Communities)` section, with the annotation naming what is there to read.
+
+- Three of the four fine-tuning entries pass unchanged in substance and had their annotations rewritten to say why: r/LocalLLaMA, the Hugging Face forums, MLX Discussions.
+- The EleutherAI Discord fails on retrievability and was replaced with the EleutherAI blog, in `RESOURCES.md` and in lessons 0020 and 0027. The entry states the omission so a later session does not add it back as an oversight.
+- Nothing came back in the Go workspace. The link removed there was the Gophers Slack, a closed chat, which fails the softened rule for the same reason it failed the strict one. That is the check worth repeating when a rule is relaxed: confirm the earlier deletions were not collateral.

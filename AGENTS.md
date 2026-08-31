@@ -10,7 +10,7 @@ across many sessions and no session remembers the last one. What the user
 demonstrably learned goes in that topic's `learning-records/`; what is true
 about them goes in its `NOTES.md`; anything a future session needs to know
 about the repository itself belongs in this file or in the teach skill, which
-are committed and read by everyone. There is no scratch file for durable facts —
+are committed and read by everyone. There is no scratch file for durable facts:
 if it is worth keeping, it is worth putting where it is already read.
 
 Almost every task here is one of two things: teach a lesson, or update workspace
@@ -23,7 +23,7 @@ a workspace. It is the entry point: it defines every path and the teaching
 workflow, and points at `FORMATS.md` for what each file must contain and
 `PUBLISHING.md` for front matter, rendering and what the published site needs.
 Do not invent your own, and do not follow a personal skill of the same name
-where the two disagree — the file in this repository wins.
+where the two disagree. The file in this repository wins.
 
 ## Editing rules
 
@@ -49,7 +49,7 @@ with the repository virtualenv:
 .venv/bin/mkdocs build --strict
 ```
 
-A clean strict build is necessary and not sufficient — it validates front matter
+A clean strict build is necessary and not sufficient. It validates front matter
 and navigation, and cannot see a collapsed answer that failed to render.
 `.agents/skills/teach/PUBLISHING.md` lists what it misses and how to check the
 rest.

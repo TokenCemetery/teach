@@ -1,5 +1,5 @@
 site_name: teach
-site_description: Учебные материалы — уроки и справочники для самостоятельного изучения
+site_description: "Учебные материалы: уроки и справочники для самостоятельного изучения"
 repo_url: https://github.com/TokenCemetery/teach
 docs_dir: learning
 site_dir: site
@@ -13,7 +13,7 @@ extra_css:
 markdown_extensions:
   # Lessons collapse their answer keys into `<details markdown="1">`. Without
   # this, Python-Markdown passes the block through raw and the answer renders
-  # as literal markdown — backticks, bold and all.
+  # as literal markdown: backticks, bold and all.
   - md_in_html
   # A `<details>` block interrupts the surrounding ordered list, so every
   # Practice item restarted at "1.". This carries the number across the break.
@@ -22,7 +22,7 @@ markdown_extensions:
   # into the paragraph. That collapsed every lesson's header block, every
   # glossary definition and the worked calculations in answer keys. Match
   # GitHub, since the same files are read in both places. Safe here because no
-  # prose in `learning/` is hard-wrapped — checked before enabling.
+  # prose in `learning/` is hard-wrapped, checked before enabling.
   - nl2br
   # The theme ships Pygments stylesheets but nothing was emitting Pygments
   # markup, so every code block rendered unhighlighted.

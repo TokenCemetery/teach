@@ -8,7 +8,7 @@ type: resources
 
 ## Knowledge
 
-- [{Type}: "{Title}" — {Author}, {Publication}]({url})
+- [{Type}: "{Title}", {Author}, {Publication}]({url})
   {What it covers.} Use for: {when to reach for it}.
 
 ## Gaps

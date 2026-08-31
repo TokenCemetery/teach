@@ -25,7 +25,7 @@ Then run the `teach` skill and name the topic. It interviews you for the mission
 
 ### Continuing a topic
 
-Run the `teach` skill again. It picks up from the workspace state — no need to recap what you covered last time.
+Run the `teach` skill again. It picks up from the workspace state, so there is no need to recap what you covered last time.
 
 ## Layout
 
@@ -50,10 +50,10 @@ See the org-wide [CONTRIBUTING.md](https://github.com/PromptPasture/.github/blob
 
 Two licenses, because the repository holds two different things.
 
-- **Learning content** — everything under `learning/` and `templates/`:
+- **Learning content** (everything under `learning/` and `templates/`):
   [CC BY 4.0](LICENSE-CONTENT). Copy it, translate it, teach from it, build on
   it, commercially or not. Just say where it came from.
-- **Software and configuration** — build config, workflows, stylesheets:
+- **Software and configuration** (build config, workflows, stylesheets):
   [Apache-2.0](LICENSE).
 
 One exception: everything under

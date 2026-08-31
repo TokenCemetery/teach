@@ -37,8 +37,7 @@ Run the `teach` skill again. It picks up from the workspace state — no need to
 ├── templates/
 │   └── learning-workspace/ # copy source for a new topic
 └── .agents/
-    ├── skills/teach/      # the format spec every workspace follows
-    └── memory/            # agent working memory
+    └── skills/teach/      # the format spec every workspace follows
 ```
 
 Conventions for agent behavior live in [`AGENTS.md`](AGENTS.md).

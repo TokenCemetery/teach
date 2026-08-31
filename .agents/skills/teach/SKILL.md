@@ -320,6 +320,7 @@ Rules:
 - Definitions are one or two sentences and say what the term **is**, not how to do it.
 - Use glossary terms inside glossary definitions.
 - Resolve loose field usage explicitly: "In this workspace, 'set' always means a working set."
+- Group under subheadings when natural clusters emerge, such as `## Anatomy` or `## Syntax`. A flat list under `## Terms` is right until it stops being scannable.
 - Revise in place as understanding deepens.
 
 ### `learning-records/`

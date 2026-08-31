@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Python on a team: able to ship a typed, tested, packaged Python service or tool, take a traceback or a profile to its root cause instead of guessing, and say concretely why someone's clever use of Python's dynamism is going to hurt them.
 
 **Start here:** [0001. Names Are Bindings, Not Boxes](lessons/0001-names-are-bindings.md)
-**Latest lesson:** [0021. Lint and Format](lessons/0021-lint-and-format.md)
+**Latest lesson:** [0027. Metaclasses, and Why Not](lessons/0027-metaclasses-and-why-not.md)
 
 ## Success looks like
 
@@ -79,6 +79,12 @@ Work through these in order.
 | [0019](lessons/0019-environments-and-dependencies.md) | Environments and Dependencies | Isolation per project, the difference between a requirement and a lock, and who pins what |
 | [0020](lessons/0020-building-a-package.md) | Building a Package | What a wheel is, what the metadata has to say, and proving the artefact installs |
 | [0021](lessons/0021-lint-and-format.md) | Lint and Format | Ending the style argument, and the rule families that find real defects |
+| [0022](lessons/0022-attribute-lookup.md) | Attribute Lookup | Where dot notation actually looks, and why a class attribute is shared by every instance |
+| [0023](lessons/0023-properties-and-descriptors.md) | Properties and Descriptors | Turning an attribute into code without changing a single caller |
+| [0024](lessons/0024-dunder-methods.md) | Dunder Methods | Which protocols a type should implement, and which ones fall back to others |
+| [0025](lessons/0025-construction.md) | Construction | What __init__ does not control, when __new__ is required, and naming your constructors |
+| [0026](lessons/0026-inheritance-and-mro.md) | Inheritance and the MRO | What super actually does, why the order is computed, and when composition wins |
+| [0027](lessons/0027-metaclasses-and-why-not.md) | Metaclasses, and Why Not | What a class statement actually does, and the four hooks that replace almost every metaclass |
 
 ## Reference
 
@@ -89,6 +95,7 @@ Work through these in order.
 - [Exceptions and cleanup](reference/exceptions-and-cleanup.md): the hierarchy, what each clause guarantees, and which built-in to raise
 - [Typing](reference/typing.md): current spellings, narrowing forms, error codes, and which shape to use at a boundary
 - [Project and packaging](reference/project-and-packaging.md): one pyproject.toml annotated, the specifier grammar, and the checks before publishing
+- [Data model](reference/data-model.md): attribute lookup order, the dunder map, the descriptor protocol, and which hook replaces a metaclass
 
 ## How this works
 

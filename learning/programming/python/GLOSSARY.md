@@ -30,9 +30,25 @@ _Avoid_: generator (which is one specific kind), stream, sequence
 The situation where two or more **names** refer to one object, which is what assignment always produces. Mutating through either name is observable through all of them.
 _Avoid_: sharing, pointing, referencing
 
+**Bound method**:
+What attribute access on an instance returns for a method: a new object pairing the function with that instance, produced by the function's `__get__`. `Cls.method` gives the plain function instead, which is why the two are not interchangeable.
+_Avoid_: method, function, callable, closure
+
+**Class attribute**:
+A name in the class's namespace rather than any instance's, so one object exists for every instance. Reading falls through to it; assigning through an instance creates a shadowing instance attribute and stops the sharing.
+_Avoid_: static field, constant, default, instance variable
+
 **Context manager**:
 An object with `__enter__` and `__exit__`, used through `with`, whose exit runs on every path out of the block. `as` binds whatever `__enter__` returned, which is not always the manager itself.
 _Avoid_: resource, wrapper, `try/finally` (which it replaces rather than names)
+
+**Data descriptor**:
+A class attribute defining both `__get__` and `__set__`, which makes it beat the instance dict on both read and write. A `property` is one, which is why assigning to a property runs its setter instead of creating an attribute.
+_Avoid_: property, getter, accessor, field
+
+**Dunder method**:
+A method with a reserved double-underscore name that a language construct calls: `len(x)` calls `__len__`, `for` calls `__iter__`. Implement one when the type genuinely is that kind of thing, and note that several are derived from others when absent.
+_Avoid_: magic method, operator overload, special case, hook
 
 **EAFP**:
 Easier to ask forgiveness than permission: attempt the operation and handle the exception, rather than testing first. Preferred in Python because a `try` that does not raise is nearly free, and because a check and the action it guards can disagree.
@@ -73,6 +89,18 @@ _Avoid_: lazy evaluation, capture by reference
 **Lock file**:
 The exact set of package versions a resolver computed, including transitive ones, with hashes. Distinct from a **requirement**, which is a range: the requirement travels to other people's resolvers, the lock reproduces one install.
 _Avoid_: requirements file, pinned dependencies, manifest
+
+**Metaclass**:
+The type of a class, which is `type` unless replaced, and which therefore controls class creation. Required only for a non-dict class-body namespace, custom `isinstance` behaviour, customising the class object itself, or reaching a hierarchy whose base has no hook; two bases with different ones cannot be combined.
+_Avoid_: base class, decorator, factory, abstract class
+
+**Method resolution order**:
+The flat, computed sequence of classes that attribute lookup walks, available as `Cls.__mro__`. `super()` means the next class after the current one **in this sequence**, which is not necessarily a base of the class the code was written in.
+_Avoid_: inheritance chain, class hierarchy, parent order
+
+**Mixin**:
+A class that adds one piece of behaviour and is never instantiated alone, placed before the base class so it precedes it in the **method resolution order**. Any attribute it expects the host class to provide is a hidden dependency, and belongs in an annotation plus a class-creation check.
+_Avoid_: interface, trait, helper, abstract class
 
 **Module**:
 One `.py` file, executed once per process and cached in `sys.modules`. Importing it binds a name to that single module object, so module-level state is process-wide state.

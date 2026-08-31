@@ -69,7 +69,7 @@ type: resources
 
 ## Gaps
 
-- The memory model has no gentle authoritative source. Chapter 17 is formal and "Java Concurrency in Practice" predates virtual threads, `VarHandle` and structured concurrency, so stage 4 uses the book for the model and the current specification and JEPs for the API.
+- The memory model has no gentle authoritative source. Chapter 17 is formal and "Java Concurrency in Practice" predates virtual threads, `VarHandle` and structured concurrency, so stage 4 uses the book for the model and the current specification and JEPs for the API. That split worked, with one caveat found while writing the stage: **a JEP describes the release it shipped in and is not revised when a later JEP changes the behaviour.** JEP 444 still states that `synchronized` pins a carrier thread, which JEP 491 changed. Read a JEP for intent and design rationale, and confirm current behaviour by running it.
 - Garbage-collection tuning in depth rests on Shipilëv's posts and the virtual-machine guides. No single book is listed, and one may be needed before stage 6 is written.
 - The six-month release cadence outpaces every book here. Version-sensitive claims go to the specification, the API documentation or the JEP index, and any lesson naming a release says which one.
 - Frameworks have no source by design. When stage 7 judges whether a framework earns its place, that judgment needs a source and this list does not yet have one.

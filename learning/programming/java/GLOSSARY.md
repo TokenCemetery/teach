@@ -38,6 +38,10 @@ _Avoid_: casting, wrapping, promotion
 The constructor whose parameters are exactly a record's components, in declaration order. It is generated unless you declare it, and every other constructor on the record has to delegate to it, which is why validation placed there cannot be bypassed.
 _Avoid_: default constructor, primary constructor, main constructor
 
+**Carrier thread**:
+The platform thread a virtual thread is currently mounted on and running against. A virtual thread unmounts from its carrier while it is blocked, which is what makes blocking cheap, and failing to unmount is what pinning means.
+_Avoid_: host thread, worker, OS thread
+
 **Checked exception**:
 A `Throwable` outside `RuntimeException` and `Error`, which the compiler forces every caller to catch or declare. It earns its place only when a reasonable caller can act on the failure, because a caller who can only give up will wrap it or swallow it instead.
 _Avoid_: compile-time exception, declared error, fatal exception
@@ -53,6 +57,22 @@ _Avoid_: compact form, short constructor, implicit constructor
 **Covariance (of arrays)**:
 The rule that `String[]` is usable as an `Object[]`, which lets a type error survive compilation and surface as `ArrayStoreException`. Generics are invariant precisely to close this hole.
 _Avoid_: polymorphism, subtyping, generics compatibility
+
+**Critical section**:
+The region of code that runs while a lock is held. Its extent is a design decision rather than an accident: it should be exactly the span over which the invariant the lock protects is temporarily untrue, which is usually smaller than the method it sits in.
+_Avoid_: locked block, synchronised region, atomic section
+
+**Daemon thread**:
+A thread the JVM does not wait for once the last non-daemon thread finishes, so the process exits with that work unfinished and nothing reported. The status is inherited from the creating thread and can only be set before `start`.
+_Avoid_: background thread, worker thread, service thread
+
+**Data race**:
+Two accesses to one variable from different threads, at least one of them a write, with no happens-before edge between them. Its presence withdraws the guarantee of sequentially consistent behaviour from the entire execution rather than only from that variable, which is stronger than "sometimes wrong".
+_Avoid_: race condition, concurrency bug, contention
+
+**Deadlock**:
+A cycle of threads each waiting for a lock the next one in the cycle holds, so none proceeds and none of the locks is ever released. One consistent acquisition order across the program prevents it, and the JVM will name the cycle from inside the running process.
+_Avoid_: hang, freeze, lock contention
 
 **Defensive copy**:
 A copy taken so that a reference cannot be used to change an object from outside it: on the way in so a caller's later mutation cannot reach a field, and on the way out so a returned reference cannot either. The second half is the half that gets forgotten.
@@ -74,6 +94,10 @@ _Avoid_: type deletion, unboxing, runtime generics
 A `switch` whose labels the compiler can prove cover every possible value, which is what permits omitting `default`. Omitting it is the point rather than an oversight, because adding an alternative then fails compilation at every place that has to decide again.
 _Avoid_: complete switch, total switch, default-free switch
 
+**Final field freeze**:
+The guarantee that a thread obtaining a reference only after construction has finished sees that object's `final` fields correctly initialised. It holds even when the reference itself was published through a data race, which is why a properly built immutable object can be shared with no synchronisation at all.
+_Avoid_: immutability guarantee, constructor barrier, safe init
+
 **Fragile base class problem**:
 The coupling inheritance creates in both directions: a superclass author breaks subclasses by changing behaviour that looked internal, and a subclass author breaks by depending on more than the superclass promised. It is why every `protected` member is published API.
 _Avoid_: tight coupling, bad inheritance, base class rot
@@ -81,6 +105,10 @@ _Avoid_: tight coupling, bad inheritance, base class rot
 **Functional interface**:
 An interface with exactly one abstract method, which is what lets a lambda or a method reference stand in for an instance of it. The `@FunctionalInterface` annotation states and enforces the intent, and is never required for the lambda to work.
 _Avoid_: lambda interface, callback, SAM type
+
+**Happens-before**:
+The ordering relation that makes one action's effects visible to, and ordered before, another's. It is the only thing that makes a concurrent read and write pair safe, so every synchronisation construct is worth precisely the edges it creates and nothing more.
+_Avoid_: before, ordering, synchronisation
 
 **Hiding**:
 A subclass declaring a `static` method or a field with the same name as one in the superclass. It resolves on the declared type of the reference rather than the runtime type of the object, which is the opposite of overriding and looks identical in the source.
@@ -98,6 +126,10 @@ _Avoid_: strictness, missing polymorphism, type mismatch
 A value naming a reading on a calendar or a wall clock with no zone attached, which is what `LocalDate`, `LocalTime` and `LocalDateTime` are. None of them is a point on the universal timeline, so none converts to an `Instant` without being told a zone, and using one as a timestamp is the most common mistake in the time API.
 _Avoid_: naive time, zoneless, floating time
 
+**Monitor**:
+The intrinsic lock and wait set that every object carries, entered by a `synchronized` method or block and released on exit or on a call to `wait`. Locking on an object anyone else can reach publishes its monitor, and then anyone else can hold it.
+_Avoid_: lock object, mutex, semaphore
+
 **Natural ordering**:
 The ordering a type defines for itself by implementing `Comparable`. A sorted collection uses it instead of `equals`, so two elements that compare as zero are one element as far as a `TreeSet` is concerned.
 _Avoid_: default sort, comparison, ranking
@@ -105,6 +137,18 @@ _Avoid_: default sort, comparison, ranking
 **PECS**:
 Producer extends, consumer super: `? extends T` for a structure you only read from, `? super T` for one you only write to. A parameter that must do both takes a plain `T` and gives up the flexibility, which is the trade rather than a defect.
 _Avoid_: wildcards, variance, bounded generics
+
+**Pinning**:
+A virtual thread blocking without being able to unmount, so it keeps its carrier thread occupied and removes it from service for the duration. What causes pinning has changed across releases, so it is established by measuring on the release being deployed rather than from anything written about an earlier one.
+_Avoid_: blocking, sticking, thread affinity
+
+**Platform thread**:
+A thread backed one to one by an operating-system thread and its stack, which is what `new Thread` has always produced. The stack is why they are counted in thousands rather than millions, and why pools exist at all.
+_Avoid_: real thread, native thread, kernel thread
+
+**Probe effect**:
+The change in a concurrent program's behaviour caused by observing it, such as a log line shifting the scheduling enough to hide the very race it was added to catch. It is the reason a concurrency bug is made to reproduce reliably before anything is changed.
+_Avoid_: heisenbug, observer effect, timing issue
 
 **Raw type**:
 A generic type used with no type argument, such as `List` in place of `List<String>`. It switches off checking for every member whose signature mentions the parameter, which is how a wrong element gets in silently and surfaces as a cast failure somewhere else entirely.

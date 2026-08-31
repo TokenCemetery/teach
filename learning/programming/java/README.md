@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0021. Strings and Text](lessons/0021-strings-and-text.md)
+**Latest lesson:** [0028. Choosing a Model](lessons/0028-choosing-a-model.md)
 
 ## Success looks like
 
@@ -80,6 +80,13 @@ Work through these in order.
 | [0019](lessons/0019-files-and-paths.md) | Files and Paths | Paths that are not strings, streams that must be closed, and a charset that is finally a default worth having |
 | [0020](lessons/0020-dates-and-times.md) | Dates and Times | Which of the six time types you actually meant, and the three that are not a point in time |
 | [0021](lessons/0021-strings-and-text.md) | Strings and Text | Text blocks, the formatting you should use, and why length is not the number of characters |
+| [0022](lessons/0022-threads.md) | Threads | A thread is a scheduled call stack, and almost every mistake in this stage starts with treating one as free |
+| [0023](lessons/0023-the-memory-model.md) | The Memory Model | Why a value written by one thread may never be seen by another, and the exact rule that fixes it |
+| [0024](lessons/0024-mutual-exclusion.md) | Mutual Exclusion | One thread at a time, the two ways to say it, and the deadlock you can find before it happens |
+| [0025](lessons/0025-concurrent-collections-and-atomics.md) | Concurrent Collections and Atomics | The collections that survive concurrent access, and the check-then-act that defeats every one of them |
+| [0026](lessons/0026-executors-and-futures.md) | Executors and Futures | Submit work instead of creating threads, and find the exception that submit swallowed |
+| [0027](lessons/0027-virtual-threads.md) | Virtual Threads | Threads cheap enough to block, and the pooling habit you now have to unlearn |
+| [0028](lessons/0028-choosing-a-model.md) | Choosing a Model | One question picks the model, and the failure you are looking at names the guarantee it broke |
 
 ## Reference
 
@@ -88,6 +95,7 @@ Work through these in order.
 - [Equality, hashing and ordering](reference/equality-hashing-and-ordering.md): the three contracts, and which comparison to write
 - [Modelling](reference/modelling.md): which construct to reach for, what each one commits you to, and the rules that are easy to misremember
 - [Idiom and the library](reference/idiom-and-library.md): the library decisions a reviewer notices, and the traps that throw where nobody looks
+- [Concurrency](reference/concurrency.md): which guarantee each construct gives, which model fits the workload, and what the symptom in front of you means
 
 ## How this works
 

@@ -11,7 +11,7 @@ The landing page a visitor opens, on GitHub and on the site. Carries the mission
 ```md
 # Learning: {Topic}
 
-{1-3 sentences. The concrete real-world goal. What changes in the user's life or work when they have this skill? Avoid "to understand X" — push for the outcome underneath.}
+{1-3 sentences. The concrete real-world goal. What changes in the user's life or work when they have this skill? Avoid "to understand X"; push for the outcome underneath.}
 
 **Latest lesson:** [{NNNN} — {Title}](lessons/NNNN-slug.md)
 
@@ -21,7 +21,7 @@ The landing page a visitor opens, on GitHub and on the site. Carries the mission
 
 ## Constraints
 
-- {Time, budget, prior commitments, learning preferences — anything that bounds the approach}
+- {Time, budget, prior commitments, learning preferences: anything that bounds the approach}
 
 ## Out of scope
 
@@ -29,7 +29,7 @@ The landing page a visitor opens, on GitHub and on the site. Carries the mission
 
 ## The arc
 
-{N} stages. Not a lesson list — a stage takes several lessons, and the boundaries are soft.
+{N} stages. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
 |Stage|Covers|Done when|
 |---|---|---|
@@ -45,20 +45,20 @@ Work through these in order.
 
 ## Reference
 
-- [Glossary](GLOSSARY.md) — canonical terms for this topic
-- [Resources](RESOURCES.md) — trusted sources, each annotated with what it covers
-- [{Cheat sheet}](reference/slug.md) — {when to reach for it}
+- [Glossary](GLOSSARY.md): canonical terms for this topic
+- [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
+- [{Cheat sheet}](reference/slug.md): {when to reach for it}
 
 ## How this works
 
-Each lesson is short and self-contained. Answer keys are collapsed — recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Bring anything unclear back to the teaching session.
+Each lesson is short and self-contained. Answer keys are collapsed: recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Bring anything unclear back to the teaching session.
 ```
 
 Rules:
 
 - Concrete beats abstract: "Run a half marathon by October" over "get fitter"; "Ship a Rust CLI to my team" over "learn Rust".
 - Keep the mission itself under a screen. Past that it has stopped being a compass. The arc may sit between it and the lesson table: stages answer "how far along am I", which the flat index cannot.
-- The arc is the shape of the course, so it is public. It is not a plan of what to teach next — that is a working note.
+- The arc is the shape of the course, so it is public. It is not a plan of what to teach next; that is a working note.
 - Keep each table row to number, title, and one clause. This is an index, not a summary. A table that has drifted from `lessons/` is worse than no table.
 - Do not link `NOTES.md` or `learning-records/` from here. Working notes and a record of the user's corrected misconceptions stay unadvertised, whether or not the repository is public.
 
@@ -71,7 +71,7 @@ The curated set of trusted sources. Every claim in a lesson can be traced back t
 
 ## Knowledge
 
-- [Article: "How Much Should I Train?" — Greg Nuckols, Stronger By Science](https://example.com)
+- [Article: "How Much Should I Train?", Greg Nuckols, Stronger By Science](https://example.com)
   Evidence-based review of volume landmarks. Use for: weekly set targets per muscle group.
 
 ## Gaps
@@ -82,7 +82,7 @@ The curated set of trusted sources. Every claim in a lesson can be traced back t
 Rules:
 
 - High-trust only. Primary sources, recognised experts, peer-reviewed work, official documentation. Marketing dressed as education stays out.
-- Readable sources only — see Wisdom in [`SKILL.md`](SKILL.md). A community is not a source, however good it is.
+- Readable sources only, see Wisdom in [`SKILL.md`](SKILL.md). A community is not a source, however good it is.
 - Annotate every entry with one line: what it covers, when to reach for it. A bare link is useless in three months.
 - Check that every link resolves before listing it, and prune sources that turn out to be shallow, wrong, or off-mission.
 
@@ -122,7 +122,7 @@ Rules:
 {1-3 sentences: what was learned, or what prior knowledge was established, and why it changes what to teach next.}
 ```
 
-That is the whole format — a single paragraph is a complete record. Add **Evidence** (how the user demonstrated it) or **Implications** (what it unlocks or rules out) only when non-obvious.
+That is the whole format: a single paragraph is a complete record. Add **Evidence** (how the user demonstrated it) or **Implications** (what it unlocks or rules out) only when non-obvious.
 
 ## `lessons/`
 
@@ -164,7 +164,7 @@ That is the whole format — a single paragraph is a complete record. Add **Evid
 ## Real-world reps
 
 - [ ] {Something to do today, away from the screen}
-- [ ] {Something to do tomorrow — spacing is the point}
+- [ ] {Something to do tomorrow, since spacing is the point}
 
 ## Going further
 
@@ -179,7 +179,7 @@ Not landing? Reread the primary source at the top — this lesson compresses it,
 If the lesson itself is unclear rather than the material, that is a defect: [open an issue](https://github.com/TokenCemetery/teach/issues).
 ```
 
-The closing block is fixed text — copy it verbatim. Lessons are read by people with no teaching session attached to them, so it points at the material and at the issue tracker rather than at a teacher.
+The closing block is fixed text: copy it verbatim. Lessons are read by people with no teaching session attached to them, so it points at the material and at the issue tracker rather than at a teacher.
 
 See [Rendering](PUBLISHING.md#rendering) for the constraints the `<details>` blocks have to satisfy.
 
@@ -187,6 +187,6 @@ See [Rendering](PUBLISHING.md#rendering) for the constraints the `<details>` blo
 
 `reference/<slug>.md`. The compressed essence of what lessons taught, built for quick lookup: syntax tables, algorithms, flowcharts, pose sequences, routines, checklists.
 
-Lessons are rarely revisited; these are. Optimise for scanning — tables and short lists over prose — and keep them printable.
+Lessons are rarely revisited; these are. Optimise for scanning (tables and short lists over prose) and keep them printable.
 
 A **drill bank** is one of these sheets: retrieval questions covering a stage, answers collapsed the same way Practice collapses them, written to be dipped into repeatedly rather than worked through once. It is the exception to scanning, and the one sheet a session may open before teaching, to pull warm-up items from without rereading every lesson.

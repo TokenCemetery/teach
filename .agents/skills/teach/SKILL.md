@@ -18,7 +18,7 @@ metadata:
 
 Teaching is stateful. The user intends to learn this topic over many sessions, so each session reads the workspace, produces one short lesson, and records only what the session earned.
 
-Any topic qualifies — a language, a framework, thermodynamics, yoga, sourdough.
+Any topic qualifies: a language, a framework, thermodynamics, yoga, sourdough.
 
 This copy is the authoritative format for this repository. It is forked from the upstream skill and carries rules the generic version cannot know: where workspaces live, how they link, and what the published site needs. Where a personal skill of the same name disagrees, this file wins.
 
@@ -32,18 +32,18 @@ One lesson written to `lessons/NNNN-<slug>.md`, tied to the mission and inside t
 
 ### Setup
 
-1. Locate the workspace: `learning/<domain>/<topic>/` — a `README.md` sitting beside a `lessons/` directory. If the topic has no workspace yet, create one; see New Topic.
+1. Locate the workspace: `learning/<domain>/<topic>/`, which is a `README.md` sitting beside a `lessons/` directory. If the topic has no workspace yet, create one; see New Topic.
 2. Read `README.md`, `NOTES.md`, `GLOSSARY.md`, `RESOURCES.md`, and `learning-records/`. List `lessons/` and `reference/` to see what has been taught, and to catch a drifted lesson table. Directories are created lazily, so a missing `learning-records/` means no record has been earned yet, not that something is broken.
 3. If the mission in `README.md` is vague, interview the user on why they want this before teaching anything, then rewrite it and confirm. A bad mission is worse than no mission.
-4. Choose the lesson target: what the user asked for, otherwise derive it — see Zone of Proximal Development. If no listed source covers that target, close the gap first, see Grounding.
+4. Choose the lesson target: what the user asked for, otherwise derive it, see Zone of Proximal Development. If no listed source covers that target, close the gap first, see Grounding.
 
 ### Loop
 
-1. Ground the knowledge — see Grounding. Add any new source to `RESOURCES.md` with its annotation.
-2. Draft one lesson — see Lesson Design and the [`lessons/` template](FORMATS.md#lessons). Number it above the highest existing lesson.
+1. Ground the knowledge, see Grounding. Add any new source to `RESOURCES.md` with its annotation.
+2. Draft one lesson, see Lesson Design and the [`lessons/` template](FORMATS.md#lessons). Number it above the highest existing lesson.
 3. Write the lesson file, add its row to the `README.md` lesson table, move the **Latest lesson** pointer, then offer to open it.
 4. Promote durable knowledge out of the lesson: a `reference/` sheet when the material will be consulted again, a `GLOSSARY.md` term once the user can use it correctly.
-5. Write a learning record only if the session earned one — see Learning Records.
+5. Write a learning record only if the session earned one, see Learning Records.
 
 ### Exit
 
@@ -55,7 +55,7 @@ The lesson path, what it teaches, how it serves the mission, its primary source,
 
 ## Layout
 
-Workspaces live at `learning/<domain>/<topic>/`. A domain directory — `programming/`, `llm/` — holds topic directories and nothing else. Never put a lesson, a mission, or a stray file directly in one.
+Workspaces live at `learning/<domain>/<topic>/`. A domain directory, such as `programming/` or `llm/`, holds topic directories and nothing else. Never put a lesson, a mission, or a stray file directly in one.
 
 ```text
 learning/<domain>/<topic>/
@@ -63,9 +63,9 @@ learning/<domain>/<topic>/
 ├── GLOSSARY.md            # canonical terms for this topic
 ├── RESOURCES.md           # trusted sources, known gaps
 ├── NOTES.md               # preferences and working notes
-├── lessons/               # NNNN-slug.md — one tight win each
+├── lessons/               # NNNN-slug.md, one tight win each
 ├── reference/             # cheat sheets, built for lookup
-└── learning-records/      # NNNN-slug.md — what was demonstrably learned
+└── learning-records/      # NNNN-slug.md, what was demonstrably learned
 ```
 
 |Path|Holds|
@@ -80,7 +80,7 @@ learning/<domain>/<topic>/
 
 Create each lazily, on first need. Reuse is the default: read `reference/` before authoring, and build on what is there.
 
-`NOTES.md` is the easiest file to abuse, because it is the only one with no reader to answer to. Hold it to one test: **would this still be true if someone else were learning this topic?** If yes, it is not a note — it is content, and it belongs in a published file where a reader can use it. Preferences, disclosed background, calibration plans, environment blockers and open questions stay. A curriculum arc, a corrected fact, a source worth trusting and a term worth pinning do not.
+`NOTES.md` is the easiest file to abuse, because it is the only one with no reader to answer to. Hold it to one test: **would this still be true if someone else were learning this topic?** If yes, it is not a note: it is content, and it belongs in a published file where a reader can use it. Preferences, disclosed background, calibration plans, environment blockers and open questions stay. A curriculum arc, a corrected fact, a source worth trusting and a term worth pinning do not.
 
 Lessons number from `0001` within each workspace.
 
@@ -103,20 +103,20 @@ Workspaces may link to each other. A link is a pointer, not an inclusion: it doe
 
 Prefer the most stable target. A `GLOSSARY.md` term or a `reference/` sheet is written for lookup and lands on any reader. Lessons are ordered and assume their own prerequisites, so a link into the middle of another workspace's arc reaches someone who has not earned it. Say what the reader will find there and why they would want it.
 
-One topic per workspace still holds. A different topic is a new workspace, not a second mission — linking is how the two connect.
+One topic per workspace still holds. A different topic is a new workspace, not a second mission; linking is how the two connect.
 
 ## Philosophy
 
-Deep learning needs **knowledge** from high-trust sources, **skills** from practice the user actually performs, and **wisdom** from the real world. Some topics lean knowledge-heavy (theoretical physics), others skill-heavy (yoga) — calibrate.
+Deep learning needs **knowledge** from high-trust sources, **skills** from practice the user actually performs, and **wisdom** from the real world. Some topics lean knowledge-heavy (theoretical physics), others skill-heavy (yoga), so calibrate.
 
-Separate **fluency strength** (in-the-moment retrieval) from **storage strength** (long-term retention). Fluency feels like mastery and isn't. Build storage strength through desirable difficulty: retrieval practice, spacing across sessions, interleaving related skills. For acquiring knowledge, difficulty is the enemy — it eats the working memory needed to understand. For practicing skills, difficulty is the tool.
+Separate **fluency strength** (in-the-moment retrieval) from **storage strength** (long-term retention). Fluency feels like mastery and isn't. Build storage strength through desirable difficulty: retrieval practice, spacing across sessions, interleaving related skills. For acquiring knowledge, difficulty is the enemy: it eats the working memory needed to understand. For practicing skills, difficulty is the tool.
 
 ## Lesson Design
 
 - **Short.** Completable in one sitting. Working memory is small; one tangible win per lesson.
 - **Only the knowledge the skill needs.** Teach that, then have the user practice it.
 - **Self-contained feedback.** Practice carries its own answer key: recall prompts with collapsed answers, and real-world reps the user performs away from the screen. Close by inviting the user to bring answers or sticking points back to the session.
-- **Answer-key discipline.** Keep answers collapsed. Hold every multiple-choice option to the same word count, and character count where possible — formatting must not leak the answer.
+- **Answer-key discipline.** Keep answers collapsed. Hold every multiple-choice option to the same word count, and character count where possible. Formatting must not leak the answer.
 - **Graduated hints, where a nudge is enough.** A prediction or a debugging prompt may carry a collapsed `Hint` before its `Check`, as a sibling block rather than nested inside the answer: a hint reachable only by opening the answer is not a hint. Use it where one push gets the learner unstuck, and leave it off recall prompts, where a hint is the answer arriving early.
 - **Spacing and interleaving.** Open with two or three recall items from earlier lessons, and mix related skills into practice sets rather than drilling one in isolation.
 - **Predict, then run.** Where the material has a runnable or observable form, show it, ask what will happen before the user finds out, then make finding out a real-world rep. The gap between the prediction and the result is what teaches; a demonstration the user watched teaches much less.
@@ -132,7 +132,7 @@ Read `RESOURCES.md` before reaching for parametric knowledge. When a claim is fa
 
 **When `RESOURCES.md` is thin, finding sources is the work.** On a new workspace, or in an area the listed sources do not cover, spend the session locating and annotating high-trust sources instead of teaching from none. A session that produced no lesson is recoverable. A lesson grounded in nothing is not visibly missing anything, which is why it survives.
 
-When lookup is unavailable or the material is stable and uncontested, teach from model knowledge — but never dress an uncited claim as sourced, and record what is missing under `## Gaps` so a later session can close it. Prune sources that turn out to be shallow, wrong, or off-mission.
+When lookup is unavailable or the material is stable and uncontested, teach from model knowledge, but never dress an uncited claim as sourced, and record what is missing under `## Gaps` so a later session can close it. Prune sources that turn out to be shallow, wrong, or off-mission.
 
 ## Zone of Proximal Development
 
@@ -144,16 +144,16 @@ Write one when the session produced any of:
 
 - Evidence the user can use a non-trivial concept correctly, not merely that it was covered.
 - Prior knowledge the user disclosed, including the depth claimed, so it isn't re-taught.
-- A corrected misconception — these predict future stumbling blocks.
+- A corrected misconception. These predict future stumbling blocks.
 - A shift in the mission driven by what the user learned.
 
 Coverage is not learning. Do not log session activity, and do not restate a definition that already lives in `GLOSSARY.md`. When a later record overturns an earlier one, mark the old one `Status: superseded by LR-NNNN` rather than deleting it.
 
 ## Wisdom
 
-When a question needs judgment rather than facts, answer it as well as you can, say what the answer rests on, and name what would change it. Then point the user at where that judgment is already written down — a style guide, a review checklist, a specification, a practitioner's post arguing the case — and at the real-world reps, which is where they test it themselves.
+When a question needs judgment rather than facts, answer it as well as you can, say what the answer rests on, and name what would change it. Then point the user at where that judgment is already written down (a style guide, a review checklist, a specification, a practitioner's post arguing the case) and at the real-world reps, which is where they test it themselves.
 
-**Every link leads to a source someone can read.** The test is the annotation you would write for it: "Use for: reading X" belongs, "Use for: asking X" does not. Chats, forums and subreddits fail it however well moderated — they need an account, they answer on their own schedule, and what was said is rarely retrievable later. Documentation, specifications, books, articles and style guides pass.
+**Every link leads to a source someone can read.** The test is the annotation you would write for it: "Use for: reading X" belongs, "Use for: asking X" does not. Chats, forums and subreddits fail it however well moderated: they need an account, they answer on their own schedule, and what was said is rarely retrievable later. Documentation, specifications, books, articles and style guides pass.
 
 This is why `RESOURCES.md` has no communities section, and why a lesson's **Going further** links sources rather than places.
 

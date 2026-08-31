@@ -24,21 +24,21 @@ So v1 and v2 are different packages and can coexist in one build. Without the su
 
 <details markdown="1"><summary>Check</summary>
 
-The highest of the minimum versions required across the graph — not the newest published. Upgrades happen only when a `go.mod` changes.
+The highest of the minimum versions required across the graph, not the newest published. Upgrades happen only when a `go.mod` changes.
 
 </details>
 
 ## Know this
 
-Go's own compatibility promise is the model: code that builds with one Go 1 release should build and run with later ones. It is not a slogan — it constrains what the Go team ships, and it is why upgrading a Go toolchain is boring. Aim your own packages at the same bar.
+Go's own compatibility promise is the model: code that builds with one Go 1 release should build and run with later ones. It is not a slogan: it constrains what the Go team ships, and it is why upgrading a Go toolchain is boring. Aim your own packages at the same bar.
 
 ### The three changes that always break
 
 **Removing or renaming an exported identifier.** Obvious, and the only one people reliably remember.
 
-**Changing a function signature.** Adding a parameter, changing a type, changing the number of results. Add a new function instead — `QueryContext` beside `Query` is the standard library doing exactly this.
+**Changing a function signature.** Adding a parameter, changing a type, changing the number of results. Add a new function instead. `QueryContext` beside `Query` is the standard library doing exactly this.
 
-**Adding a method to an interface.** Every implementation outside your module stops compiling, including test doubles. This is the one that catches people, because adding a method feels additive. It is not — an interface is a contract on implementers, so it can only shrink safely.
+**Adding a method to an interface.** Every implementation outside your module stops compiling, including test doubles. This is the one that catches people, because adding a method feels additive. It is not: an interface is a contract on implementers, so it can only shrink safely.
 
 If an interface must grow, define a new one and detect it:
 
@@ -54,7 +54,7 @@ That is how `net/http` grew `Hijacker`, `Flusher` and `Pusher` without breaking 
 
 ### The subtle one: struct fields
 
-Adding a field to an exported struct is *usually* safe — unless a caller writes an unkeyed composite literal:
+Adding a field to an exported struct is *usually* safe, unless a caller writes an unkeyed composite literal:
 
 ```go
 p := Point{1, 2}          // breaks the moment Point gains a third field
@@ -88,13 +88,13 @@ func WithTimeout(d time.Duration) Option {
 }
 ```
 
-New options are new functions — purely additive, and the zero configuration stays valid. The cost is one function per setting plus indirection, so for two or three settings an `Options` struct with a documented zero value is simpler and just as extensible. Use functional options when the set will keep growing and the compatibility horizon is long, which is the situation libraries are in and most services are not.
+New options are new functions, purely additive, and the zero configuration stays valid. The cost is one function per setting plus indirection, so for two or three settings an `Options` struct with a documented zero value is simpler and just as extensible. Use functional options when the set will keep growing and the compatibility horizon is long, which is the situation libraries are in and most services are not.
 
 **Document what is not guaranteed.** Error message text, map iteration order, the exact number of goroutines, whether a returned slice is retained. If you do not say, someone will depend on it, and their bug report will be about your change.
 
 ### Deprecating
 
-Go has no `@Deprecated` attribute — the convention is a paragraph in the doc comment starting with the exact word:
+Go has no `@Deprecated` attribute. The convention is a paragraph in the doc comment starting with the exact word:
 
 ```go
 // Query runs the query without a context.
@@ -107,7 +107,7 @@ Tooling recognises the marker: editors strike it through, and linters report use
 
 ### When you genuinely must break
 
-Cut a new major version with a new module path. It is more work than breaking quietly, and that asymmetry is the point — it makes "just change it" cost something.
+Cut a new major version with a new module path. It is more work than breaking quietly, and that asymmetry is the point: it makes "just change it" cost something.
 
 For behaviour changes that are not type changes, Go itself uses `GODEBUG` settings: the new behaviour is the default, and the old one is recoverable with a documented flag while callers migrate. It is a good pattern to copy for a widely-used internal library.
 
@@ -117,7 +117,7 @@ For behaviour changes that are not type changes, Go itself uses `GODEBUG` settin
 
 <details markdown="1"><summary>Check</summary>
 
-Every implementation you do not control — including every test double a consumer wrote.
+Every implementation you do not control, including every test double a consumer wrote.
 
 An interface constrains implementers, so growing it is a breaking change even though it looks additive. Define a second interface and type-assert for it, which is how `net/http` added `Flusher` and `Hijacker` without breaking anyone.
 
@@ -127,7 +127,7 @@ An interface constrains implementers, so growing it is a breaking change even th
 
 <details markdown="1"><summary>Check</summary>
 
-They used an unkeyed composite literal — `Point{1, 2}` — which requires exactly as many values as fields, in order.
+They used an unkeyed composite literal, `Point{1, 2}`, which requires exactly as many values as fields, in order.
 
 You cannot prevent it after the fact, but an unexported `_ struct{}` field makes unkeyed literals a compile error from the start, so the breakage happens once, early, at your choosing rather than at theirs.
 
@@ -152,7 +152,7 @@ Nothing implements a struct, so nothing can fail to satisfy it. The other three 
 
 <details markdown="1"><summary>Check</summary>
 
-When the option set will keep growing and you cannot coordinate with callers — a published library with a long compatibility horizon. New options are new functions, so nothing existing changes.
+When the option set will keep growing and you cannot coordinate with callers, as in a published library with a long compatibility horizon. New options are new functions, so nothing existing changes.
 
 For two or three settings in a service you control, an `Options` struct with a documented zero value is fewer moving parts and equally additive. Functional options for three settings is a pattern applied because it is a pattern.
 
@@ -162,7 +162,7 @@ For two or three settings in a service you control, an `Options` struct with a d
 
 <details markdown="1"><summary>Check</summary>
 
-The moment you document it, callers write `errors.Is(err, pkg.ErrNotFound)` and depend on that specific value being in the chain. Removing it, or ceasing to wrap it, silently breaks their branch — with no compile error anywhere.
+The moment you document it, callers write `errors.Is(err, pkg.ErrNotFound)` and depend on that specific value being in the chain. Removing it, or ceasing to wrap it, silently breaks their branch, with no compile error anywhere.
 
 So documenting which errors are matchable is a commitment, and it is why Lesson 9 said to translate a driver's errors at the boundary rather than wrap them with `%w`. Every `%w` you publish is API.
 
@@ -171,7 +171,7 @@ So documenting which errors are matchable is a commitment, and it is why Lesson 
 ## Real-world reps
 
 - [ ] Take a package you have written and list its exported surface. For each item, decide whether you could remove it tomorrow. Whatever you could not is your real API.
-- [ ] Add an unexported `_ struct{}` field to an exported struct and try an unkeyed literal. Read the error — that is what you are buying.
+- [ ] Add an unexported `_ struct{}` field to an exported struct and try an unkeyed literal. Read the error. That is what you are buying.
 - [ ] Tomorrow: find one function in a library you depend on that is marked `Deprecated:`. Check whether your code still uses it, and whether the replacement is a drop-in.
 
 ## Going further

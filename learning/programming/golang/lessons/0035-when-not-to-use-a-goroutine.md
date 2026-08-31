@@ -32,8 +32,8 @@ Callers match on it with `errors.Is`. Removing it or ceasing to wrap it breaks t
 
 Go makes goroutines cheap, which makes them easy to add, which is not the same as free to own. Every one you start adds:
 
-- a **lifecycle** you must design — how it stops, who waits for it, what happens on shutdown ([Lesson 21](0021-goroutine-leaks.md));
-- a **synchronisation surface** — anything it touches is now shared, and shared plus written is a race ([Lesson 20](0020-memory-model-and-races.md));
+- a **lifecycle** you must design: how it stops, who waits for it, what happens on shutdown ([Lesson 21](0021-goroutine-leaks.md));
+- a **synchronisation surface**, because anything it touches is now shared and shared plus written is a race ([Lesson 20](0020-memory-model-and-races.md));
 - **non-determinism in tests**, which is where flakes come from;
 - **harder debugging**, because a stack trace no longer tells the whole story.
 
@@ -41,9 +41,9 @@ That cost is worth paying when concurrency buys you something. Frequently it doe
 
 ### Concurrency is not parallelism
 
-Concurrency is a way to *structure* a program as independently executing parts. Parallelism is *executing* things simultaneously. Concurrent structure enables parallel execution when there is hardware for it — and structuring something concurrently does not, by itself, make it faster.
+Concurrency is a way to *structure* a program as independently executing parts. Parallelism is *executing* things simultaneously. Concurrent structure enables parallel execution when there is hardware for it, and structuring something concurrently does not, by itself, make it faster.
 
-The measurable costs of splitting work up: channel operations and lock acquisitions, scheduler switches, and cache locality lost when data moves between cores. For small units of work these dominate, and the concurrent version is **slower** than the sequential one. That is not a rare edge case — it is the usual result for anything CPU-light with a small input.
+The measurable costs of splitting work up: channel operations and lock acquisitions, scheduler switches, and cache locality lost when data moves between cores. For small units of work these dominate, and the concurrent version is **slower** than the sequential one. That is not a rare edge case: it is the usual result for anything CPU-light with a small input.
 
 ### The cases where sequential wins
 
@@ -57,16 +57,16 @@ go func() { ch <- compute() }()
 r := <-ch                      // this is compute(), with steps
 ```
 
-**The work is already parallel one level up.** An HTTP server already runs one goroutine per request. Fanning out inside a handler multiplies concurrency by request rate — under load that is thousands of goroutines competing for the same CPUs, and total throughput usually drops.
+**The work is already parallel one level up.** An HTTP server already runs one goroutine per request. Fanning out inside a handler multiplies concurrency by request rate, so under load that is thousands of goroutines competing for the same CPUs, and total throughput usually drops.
 
 **Ordering matters.** If results must be ordered, you fan out and then reassemble, and the reassembly is the code most likely to be wrong.
 
-**It is fire-and-forget.** `go audit(event)` with nothing waiting on it: nobody sees the error, nobody knows if it finished, and shutdown cannot wait for it. If the work matters, give it a lifecycle — a queue, a worker with a context. If it does not matter, question whether to do it at all.
+**It is fire-and-forget.** `go audit(event)` with nothing waiting on it: nobody sees the error, nobody knows if it finished, and shutdown cannot wait for it. If the work matters, give it a lifecycle: a queue, a worker with a context. If it does not matter, question whether to do it at all.
 
 ### The cases where it earns its place
 
 - **Genuinely independent I/O**, where waiting dominates: five API calls that can overlap turn 500 ms into 100 ms.
-- **Background work with a real lifecycle** — a ticker, a queue consumer, a cache refresher — started at boot and stopped at shutdown.
+- **Background work with a real lifecycle**, such as a ticker, a queue consumer or a cache refresher, started at boot and stopped at shutdown.
 - **Producer/consumer structure** where the concurrency makes the program *clearer*, not merely faster. A pipeline reading, transforming and writing is easier to read as three stages than one interleaved loop.
 - **Bounded parallelism over a large CPU-bound workload**, sized to `GOMAXPROCS`, proven with a benchmark.
 
@@ -86,7 +86,7 @@ If four of the five have no good answer, the answer is a loop.
 
 <details markdown="1"><summary>Check</summary>
 
-The server already runs one goroutine per request. With 200 concurrent requests, the fan-out means 10,000 goroutines competing for the same cores — plus the scheduling, coordination and cache thrash to go with it.
+The server already runs one goroutine per request. With 200 concurrent requests, the fan-out means 10,000 goroutines competing for the same cores, plus the scheduling, coordination and cache thrash to go with it.
 
 Total throughput on a saturated machine is bounded by the CPUs, not by the goroutine count. Adding concurrency inside a request only helps when each request is waiting rather than computing.
 
@@ -96,7 +96,7 @@ Total throughput on a saturated machine is bounded by the CPUs, not by the gorou
 
 <details markdown="1"><summary>Check</summary>
 
-No lifecycle. Its error goes nowhere, nothing knows whether it ran, and shutdown will not wait for it — so the last few events before every deploy are silently lost. A panic inside it takes the process down, because nothing recovers there.
+No lifecycle. Its error goes nowhere, nothing knows whether it ran, and shutdown will not wait for it, so the last few events before every deploy are silently lost. A panic inside it takes the process down, because nothing recovers there.
 
 If the audit matters, it needs an owner: a queue with a worker that has a context and is drained at shutdown. If it does not matter enough to justify that, it probably should not exist.
 
@@ -113,7 +113,7 @@ If the audit matters, it needs an owner: a queue with a worker that has a contex
 
 **a)** Five independent HTTP calls whose latency overlaps.
 
-Waiting dominates, the calls do not depend on each other, and the win is real — roughly the slowest call instead of the sum. Option b is dominated by coordination cost, c is a function call with extra steps, and d is a leak with no error handling.
+Waiting dominates, the calls do not depend on each other, and the win is real: roughly the slowest call instead of the sum. Option b is dominated by coordination cost, c is a function call with extra steps, and d is a leak with no error handling.
 
 </details>
 
@@ -123,7 +123,7 @@ Waiting dominates, the calls do not depend on each other, and the win is real �
 
 A benchmark of both, `-count=10`, through `benchstat`, at a realistic input size and a realistic level of external concurrency.
 
-Concurrency has a fixed coordination cost and a variable benefit, so the answer usually depends on the input size — and a benchmark at one size can support either conclusion. Ask which sizes were measured.
+Concurrency has a fixed coordination cost and a variable benefit, so the answer usually depends on the input size, and a benchmark at one size can support either conclusion. Ask which sizes were measured.
 
 </details>
 
@@ -131,7 +131,7 @@ Concurrency has a fixed coordination cost and a variable benefit, so the answer 
 
 <details markdown="1"><summary>Check</summary>
 
-Shutdown has to know it exists, be able to tell it to stop, and wait for it — otherwise the drain either misses it or hangs on it.
+Shutdown has to know it exists, be able to tell it to stop, and wait for it. Otherwise the drain either misses it or hangs on it.
 
 That is three things to get right per goroutine, which is why `errgroup` and a single cancellable context are worth the structure: they make ownership explicit and give shutdown one thing to wait on rather than a set nobody has enumerated.
 
@@ -139,7 +139,7 @@ That is three things to get right per goroutine, which is why `errgroup` and a s
 
 ## Real-world reps
 
-- [ ] Benchmark summing a slice sequentially against a fan-out version, at 100, 10,000 and 1,000,000 elements. Find the size where concurrency starts to win — it will be larger than you expect.
+- [ ] Benchmark summing a slice sequentially against a fan-out version, at 100, 10,000 and 1,000,000 elements. Find the size where concurrency starts to win. It will be larger than you expect.
 - [ ] Find a `go` statement in code you work with and answer the five review questions for it. If any answer is "nothing", you have found something.
 - [ ] Tomorrow: take the most concurrent function you have written and write the sequential version beside it. Decide honestly which you would rather debug at 3am.
 

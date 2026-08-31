@@ -8,7 +8,7 @@ type: lesson
 
 **Mission link:** Reviewing a colleague's PR and saying precisely why a design is wrong is the mission's own wording. This lesson is the vocabulary and the order to look in.
 **Primary source:** [Go Code Review Comments, The Go Authors](https://go.dev/wiki/CodeReviewComments)
-**Prerequisites:** every lesson before it — this is where they get used together
+**Prerequisites:** every lesson before it, since this is where they get used together
 
 ## Warm-up
 
@@ -35,7 +35,7 @@ Coordination, scheduling and lost cache locality are fixed costs. For small unit
 If a comment could have been made by a tool, a tool should have made it. Before review:
 
 ```bash
-gofmt -l .            # formatting — not a matter of opinion
+gofmt -l .            # formatting, not a matter of opinion
 go vet ./...          # copylocks, lostcancel, printf, slog pairs, tests
 go test -race ./...   # races in the paths the tests cover
 staticcheck ./...     # or golangci-lint, in CI
@@ -64,13 +64,13 @@ Cite the rule and give the alternative. "This could be nicer" is not reviewable;
 
 | Instead of | Say |
 |---|---|
-| "bad naming" | "`store.NewStore` stutters at the call site — `store.New` reads better" |
+| "bad naming" | "`store.NewStore` stutters at the call site; `store.New` reads better" |
 | "use a pointer" | "value receiver copies the mutex; `go vet` flags this as `copylocks`" |
-| "too many methods" | "the only consumer uses two of these — a two-method interface in the consumer would do" |
-| "this might leak" | "if the caller returns early, these sends block forever — buffer the channel or add `ctx.Done()`" |
+| "too many methods" | "the only consumer uses two of these, so a two-method interface in the consumer would do" |
+| "this might leak" | "if the caller returns early, these sends block forever, so buffer the channel or add `ctx.Done()`" |
 | "wrap the error" | "`%v` here breaks `errors.Is` for `ErrNotFound` two layers up" |
 
-The pattern: name the concrete consequence, and name the mechanism. That is what makes a review teachable rather than a matter of taste — and it is what [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments) is for. Linking it settles arguments without making them personal.
+The pattern: name the concrete consequence, and name the mechanism. That is what makes a review teachable rather than a matter of taste, and it is what [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments) is for. Linking it settles arguments without making them personal.
 
 ### The Go-specific things that pass review too easily
 
@@ -87,7 +87,7 @@ Wrong code that compiles cleanly is the theme of this whole workspace, and these
 
 ### Reviewing as the author
 
-Read your own diff before sending it, and answer the questions above. Say what you were unsure about — "I could not decide between an options struct and functional options" gets you a better review than silence, because it tells the reviewer where their judgment is worth spending.
+Read your own diff before sending it, and answer the questions above. Say what you were unsure about. "I could not decide between an options struct and functional options" gets you a better review than silence, because it tells the reviewer where their judgment is worth spending.
 
 ## Practice
 
@@ -95,7 +95,7 @@ Read your own diff before sending it, and answer the questions above. Say what y
 
 <details markdown="1"><summary>Check</summary>
 
-Ask which consumer needs five methods. If the answer is "none — it is for tests", the interface belongs in the consumer package with only the methods that consumer calls.
+Ask which consumer needs five methods. If the answer is "none, it is for tests", the interface belongs in the consumer package with only the methods that consumer calls.
 
 Name the cost concretely: two declarations to keep in sync, every test double must implement all five, and the abstraction constrains nothing because there is one implementation. That is reviewable; "this is not idiomatic" is not.
 
@@ -105,7 +105,7 @@ Name the cost concretely: two declarations to keep in sync, every test double mu
 
 <details markdown="1"><summary>Check</summary>
 
-Formatting reached review at all. `gofmt` and `go vet` in CI make that comment impossible, which frees the reviewer's attention for the leak — the thing no tool in the standard set will catch.
+Formatting reached review at all. `gofmt` and `go vet` in CI make that comment impossible, which frees the reviewer's attention for the leak, the thing no tool in the standard set will catch.
 
 Human attention is the scarce resource in review. Spending it on what a tool decides is the most common reason real defects get through.
 
@@ -122,7 +122,7 @@ Human attention is the scarce resource in review. Spending it on what a tool dec
 
 **a)** A value receiver copying an embedded mutex.
 
-`go vet`'s `copylocks` reports it, so it should never reach a human. The other three are design judgments that no analyser makes reliably — which is exactly why they are what review is for.
+`go vet`'s `copylocks` reports it, so it should never reach a human. The other three are design judgments that no analyser makes reliably, which is exactly why they are what review is for.
 
 </details>
 
@@ -130,7 +130,7 @@ Human attention is the scarce resource in review. Spending it on what a tool dec
 
 <details markdown="1"><summary>Check</summary>
 
-"This logs the error and returns it, so the handler above logs it again — one incident becomes two log lines. Either handle it here and return nil, or return it wrapped and let the middleware log it."
+"This logs the error and returns it, so the handler above logs it again and one incident becomes two log lines. Either handle it here and return nil, or return it wrapped and let the middleware log it."
 
 Name the consequence, name the rule, offer both fixes. The author can act on that without a round trip, and they learn the rule rather than the instance.
 
@@ -140,7 +140,7 @@ Name the consequence, name the rule, offer both fixes. The author can act on tha
 
 <details markdown="1"><summary>Check</summary>
 
-Whether the returned slice has spare capacity into storage the caller still holds. `return s[:2]` lets the caller's next `append` overwrite `s[2]` — silently, and only when capacity happens to allow it.
+Whether the returned slice has spare capacity into storage the caller still holds. `return s[:2]` lets the caller's next `append` overwrite `s[2]`, silently, and only when capacity happens to allow it.
 
 The fix is `s[0:2:2]` or `slices.Clone`. This is worth checking every time because it produces no panic, no race report, and no test failure unless someone thought to write that specific test.
 

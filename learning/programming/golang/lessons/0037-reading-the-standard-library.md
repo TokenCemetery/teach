@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-A value receiver copying a mutex — `go vet`'s `copylocks`. Design judgments like a misplaced interface are what human review is for.
+A value receiver copying a mutex, caught by `go vet`'s `copylocks`. Design judgments like a misplaced interface are what human review is for.
 
 </details>
 
@@ -43,14 +43,14 @@ go doc -all strings        # everything a package exports
 
 ### When to read it
 
-- **The doc comment is ambiguous** about an edge case — does it retain the slice, is it safe for concurrent use, what happens on an empty input.
+- **The doc comment is ambiguous** about an edge case: does it retain the slice, is it safe for concurrent use, what happens on an empty input.
 - **Behaviour surprised you** and you want the mechanism rather than a guess.
 - **You want a style reference.** The standard library is where the idioms in this workspace are demonstrated at scale.
 - **You are choosing between two approaches** and want to know what the people who designed the language did.
 
 ### How to read it
 
-Start at the exported function, not at the top of the file. Follow it down one level at a time, and **skip the fast paths on the first pass** — most standard library functions have a general implementation and several optimisations, and the general one is what you came for.
+Start at the exported function, not at the top of the file. Follow it down one level at a time, and **skip the fast paths on the first pass**, because most standard library functions have a general implementation and several optimisations, and the general one is what you came for.
 
 Then read the tests. `_test.go` files show intended usage and, more usefully, every edge case the authors thought of. When the doc does not say what happens on empty input, the test usually does.
 
@@ -80,7 +80,7 @@ Three things fall out of five lines.
 
 **Why copying a file to a socket is fast.** `*os.File` implements `ReadFrom`, so the copy can become a `sendfile` syscall with no bytes passing through your program. Nothing in the signature says so, and nothing needed to.
 
-**How to extend an interface without breaking anyone.** `Copy` takes `Reader` and `Writer` — the one-method interfaces from Lesson 11 — and *asks* whether the value also satisfies a richer one. This is exactly the mechanism from [Lesson 34](0034-api-design-and-compatibility.md) for growing an interface, demonstrated in the library that invented it.
+**How to extend an interface without breaking anyone.** `Copy` takes `Reader` and `Writer`, the one-method interfaces from Lesson 11, and *asks* whether the value also satisfies a richer one. This is exactly the mechanism from [Lesson 34](0034-api-design-and-compatibility.md) for growing an interface, demonstrated in the library that invented it.
 
 **Why your own type might be slow through it.** A wrapper that forwards `Read` but not `WriteTo` silently defeats the optimisation. That is a real performance bug in middleware, and it is invisible unless you have read this function.
 
@@ -94,7 +94,7 @@ Read `net/http`, `io`, `sync`, `errors`, `strings`, `context`, `log/slog` for id
 
 ### This is the exit criterion
 
-The mission asked to be trusted to make the call and explain it to someone else. That means answering "how does this actually work?" from the source, and "why is this design right?" from the reasoning — not from memory of a blog post. Both are now available to you.
+The mission asked to be trusted to make the call and explain it to someone else. That means answering "how does this actually work?" from the source, and "why is this design right?" from the reasoning, not from memory of a blog post. Both are now available to you.
 
 ## Practice
 
@@ -104,7 +104,7 @@ The mission asked to be trusted to make the call and explain it to someone else.
 
 `go doc -src sync.Once Do`.
 
-`go doc` without `-src` gives the documentation; with it, the source. Worth knowing because it works offline, on the exact version you are building with — which is not necessarily the version pkg.go.dev is showing you.
+`go doc` without `-src` gives the documentation; with it, the source. Worth knowing because it works offline, on the exact version you are building with, which is not necessarily the version pkg.go.dev is showing you.
 
 </details>
 
@@ -129,7 +129,7 @@ The general buffered loop only runs when neither interface is satisfied. This is
 
 **b)** `net/http`, where the server is implemented.
 
-It is ordinary Go solving an ordinary problem — interfaces, error handling, concurrency, an API kept compatible for over a decade. The other three are full of `unsafe`, assembly and generated code: excellent for mechanism, actively misleading as style.
+It is ordinary Go solving an ordinary problem: interfaces, error handling, concurrency, an API kept compatible for over a decade. The other three are full of `unsafe`, assembly and generated code: excellent for mechanism, actively misleading as style.
 
 </details>
 
@@ -139,7 +139,7 @@ It is ordinary Go solving an ordinary problem — interfaces, error handling, co
 
 Read the source and see whether the slice is stored anywhere that outlives the call. Then read the tests, which often assert exactly this.
 
-If it does retain it and the doc does not say so, that is a documentation bug worth filing — and until it is fixed, your code should copy, because undocumented behaviour is free to change in the next release.
+If it does retain it and the doc does not say so, that is a documentation bug worth filing, and until it is fixed your code should copy, because undocumented behaviour is free to change in the next release.
 
 </details>
 
@@ -147,7 +147,7 @@ If it does retain it and the doc does not say so, that is a documentation bug wo
 
 <details markdown="1"><summary>Check</summary>
 
-That the smallest possible interface in the signature costs nothing in capability. `Copy` accepts the one-method `Reader` and `Writer`, so *everything* satisfies it — and it still gets the fast path when the value happens to offer more, by asking at runtime.
+That the smallest possible interface in the signature costs nothing in capability. `Copy` accepts the one-method `Reader` and `Writer`, so *everything* satisfies it, and it still gets the fast path when the value happens to offer more, by asking at runtime.
 
 This is the strongest available argument for "the bigger the interface, the weaker the abstraction". Demanding `ReadWriteSeeker` up front would have excluded most callers to serve an optimisation that a type assertion provides for free.
 

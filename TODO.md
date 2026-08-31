@@ -16,7 +16,9 @@ Each phase is written to be run on its own, in its own session, without the conv
 
 Two questions are unresolved. They block the phases named, and a session that reaches one should ask rather than choose.
 
-**D1: how far does the em dash cleanup reach?** Phase 5 counts 1427 em dashes across 86 files. The three candidate scopes are: documentation and templates only (70 dashes, 6 files), plus the Go workspace (851, 52 files), or everything including the fine-tuning workspace (1427, 86 files). Blocks phase 5 beyond wave 1.
+**D1: how far does the em dash cleanup reach?** Wave 1 is done and the documentation and templates are at zero. What is left is 781 dashes in the Go workspace (46 files) and 576 in the fine-tuning workspace (34 files). Measured rather than estimated, across all 1357: 1058 are prose and need a sentence rewritten; the other 299 are mechanical shapes with one obvious replacement each, being 87 annotated link lines, 67 headings, 64 front matter titles and descriptions, 46 tree and code comments, and 35 rep checkboxes. So the plan's "these are sentence rewrites, not a `sed` run" holds for four fifths of the work.
+
+Three dashes are held in the `FORMATS.md` lesson template on purpose: the `# Lesson {N} — {Title}` heading, the `**Latest lesson:**` pointer, and the fixed closing block. Each is shared verbatim with 64 published lessons, so the template and the workspace have to change in one commit. Whichever workspace is converted first pays for the template too.
 
 **D2: does the linking rule apply to `learning/llm/finetuning/`?** `SKILL.md` now states that every link must lead to a source a reader can read, never to a venue for asking. The Go workspace follows it. The fine-tuning workspace does not: it has a `## Wisdom (Communities)` section in `RESOURCES.md`, a matching front matter description, a line in its `README.md`, and links to EleutherAI Discord and r/LocalLLaMA in lessons 0017, 0020 and 0027. In lesson 0020 the body text itself leans on consulting a community, so it is not a link deletion. Until this is decided, that workspace is knowingly non-compliant with its own skill. Independent of phase 5, but if D1 reaches the fine-tuning workspace, both should be closed in one pass.
 
@@ -26,37 +28,25 @@ Two questions are unresolved. They block the phases named, and a session that re
 
 **Why.** Upstream removed every em dash from its prose and recorded the rule in its own `AGENTS.md`: rewrite the sentence with a comma, colon, period, parentheses or a conjunction, whichever the sentence actually wants, and never do a blind character substitution. Our fork predates that and is saturated. There is a second, independent argument: a heavy em dash rate reads as a machine writing tell, and 781 dashes across 37 Go lessons is roughly 19 per lesson.
 
-**Scope.** Blocked on decision D1 beyond wave 1.
+**Scope.** Wave 1 is done. The two workspaces are blocked on D1.
 
 | Area | Dashes | Files |
 |---|---|---|
-| `.agents/skills/teach/SKILL.md`, `AGENTS.md`, `README.md`, `templates/`, `learning/README.md` | 70 | 6 |
+| documentation, skill files, templates, `mkdocs.yml` | 0, was 72 | 9 |
 | `learning/programming/golang` | 781 | 46 |
 | `learning/llm/finetuning` | 576 | 34 |
 
-**Cost, stated plainly.** This is about 1400 sentence level rewrites, not a `sed` run. A mechanical substitution produces worse prose than the dashes did, which is why upstream forbids it. Budget accordingly.
+**Cost, stated plainly.** 1058 sentence level rewrites and 299 mechanical ones, per the measurement under D1. A mechanical substitution produces worse prose than the dashes did, which is why upstream forbids it. Budget accordingly.
 
 **Risk, stated plainly.** In the lessons the dash carries a specific move: a claim, then the reason it matters. Rewriting changes the voice, sometimes noticeably, and across several hundred edits some results will be worse than the original. That is the price of the rule rather than a side effect of doing it badly.
 
-### 5.1 Record the rule first
-
-Before touching any prose, add the rule to `AGENTS.md` under `## Quality bar for anything you write`. Without it the next session reintroduces dashes and the work is spent twice. This is the same lesson that removed `.agents/memory/`: a rule that is not in a committed document is not a rule.
-
-Suggested wording, matching the file's existing voice and wrap:
-
-```text
-- No em dashes in prose. Where a sentence reaches for one, rewrite it with a
-  comma, colon, period, parentheses or a conjunction, whichever the sentence
-  wants. Never substitute the character mechanically.
-```
-
-### 5.2 Wave 1: documentation and templates
-
-70 dashes in 6 files. Small enough to be a pilot, and it covers the files a future session reads before doing anything else. Judge here whether the resulting style holds up before committing to the lessons.
-
-### 5.3 Wave 2 and beyond
+### Wave 2 and beyond
 
 One workspace per pass, with `mkdocs build --strict` and a structural lint after each. Do not mix a workspace's dash cleanup with any other change: a diff of a few hundred prose rewrites is unreviewable if something else is hiding in it.
+
+The exception is the three held template dashes above, which must move in the same commit as the workspace that stops matching them.
+
+Blocked on D1.
 
 ---
 
@@ -107,3 +97,12 @@ Five commits. The spike answered its own question in one build, and the answer c
 - **4.3** Drill bank recognised in `FORMATS.md` as a `reference/` sheet, with the caveat that it is the one sheet not built for scanning. Building the Go one moved to Remaining above.
 - **4.4** Predict-then-run named in Lesson Design.
 - Not verified: how a nested `<details>` renders on GitHub. The site was checked on a real build; GitHub was not, because checking it means pushing the scratch file or sending content to a rendering API. The sibling form we adopted is the shape already in use, so nothing shipped depends on the unverified case.
+
+### Phase 5, wave 1: documentation, templates and the skill, 2026-08-31
+
+Three commits: the rule, then the six documentation and template files, then the three skill files. 69 dashes rewritten, 3 held.
+
+- **5.1** The rule went into `AGENTS.md` first, and had to say more than the suggested wording. Recording "no em dashes in prose" while 1357 sit in the lessons would have put the rule and the repository straight into the disagreement that phase 2 existed to fix, so the rule names the backlog as a backlog.
+- What the rewrites actually needed: a colon where the second half explains the first, which covered most of them; parentheses for a mid-sentence aside; a conjunction or a full stop for the rest. No instance wanted the same replacement as its neighbour, which is the argument against a scripted pass in one line.
+- Two traps found, both in YAML. `site_description` in `mkdocs.yml` needed quoting once it contained a colon and a space, and the same rewrite in the front matter template of `PUBLISHING.md` would have shipped an example that does not parse. It reads "One clause saying what" now.
+- Held deliberately: see the note under D1.

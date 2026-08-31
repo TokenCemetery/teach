@@ -7,52 +7,17 @@ Each phase is written to be run on its own, in its own session, without the conv
 ## How to run a phase
 
 1. Read `AGENTS.md`, then `.agents/skills/teach/SKILL.md`.
-2. Read only the phase you are running. The phases are ordered by dependency, so do not skip ahead without reading the ordering note at the end.
-3. Anchors below are quoted strings, not line numbers, because line numbers move. Search for the quoted text.
+2. Read only the phase you are running.
+3. Anchors are quoted strings, not line numbers, because line numbers move. Search for the quoted text.
 4. Run the phase's verification before reporting. Every phase includes one.
-5. When a phase is finished, move its heading to `## Done` at the bottom with the date, and leave the detail behind. What was decided is worth more than the fact that it happened.
+5. When a phase is finished, replace it with an entry under `## Done`, keeping what was decided rather than the fact that it happened.
 
-## Open decisions
-
-D2 is closed, see Done. D1 is decided: both workspaces.
-
-**D1, decided 2026-08-31: both workspaces.** Wave 1 is done and the documentation and templates are at zero. What is left is 781 dashes in the Go workspace (46 files) and 576 in the fine-tuning workspace (34 files). Measured rather than estimated, across all 1357: 1058 are prose and need a sentence rewritten; the other 299 are mechanical shapes with one obvious replacement each, being 87 annotated link lines, 67 headings, 64 front matter titles and descriptions, 46 tree and code comments, and 35 rep checkboxes. So the plan's "these are sentence rewrites, not a `sed` run" holds for four fifths of the work.
-
-Three dashes are held in the `FORMATS.md` lesson template on purpose: the `# Lesson {N} — {Title}` heading, the `**Latest lesson:**` pointer, and the fixed closing block. Each is shared verbatim with 64 published lessons, so the template and the workspace have to change in one commit. Whichever workspace is converted first pays for the template too.
-
----
-
-## Phase 5: em dashes
-
-**Why.** Upstream removed every em dash from its prose and recorded the rule in its own `AGENTS.md`: rewrite the sentence with a comma, colon, period, parentheses or a conjunction, whichever the sentence actually wants, and never do a blind character substitution. Our fork predates that and is saturated. There is a second, independent argument: a heavy em dash rate reads as a machine writing tell, and 781 dashes across 37 Go lessons is roughly 19 per lesson.
-
-**Scope.** Wave 1 is done. Both workspaces are in scope, per D1.
-
-| Area | Dashes | Files |
-|---|---|---|
-| documentation, skill files, templates, `mkdocs.yml` | 0, was 72 | 9 |
-| `learning/programming/golang` | 781 | 46 |
-| `learning/llm/finetuning` | 576 | 34 |
-
-**Cost, stated plainly.** 1058 sentence level rewrites and 299 mechanical ones, per the measurement under D1. A mechanical substitution produces worse prose than the dashes did, which is why upstream forbids it. Budget accordingly.
-
-**Risk, stated plainly.** In the lessons the dash carries a specific move: a claim, then the reason it matters. Rewriting changes the voice, sometimes noticeably, and across several hundred edits some results will be worse than the original. That is the price of the rule rather than a side effect of doing it badly.
-
-### Wave 2 and beyond
-
-One workspace per pass, with `mkdocs build --strict` and a structural lint after each. Do not mix a workspace's dash cleanup with any other change: a diff of a few hundred prose rewrites is unreviewable if something else is hiding in it.
-
-The exception is the three held template dashes above, which must move in the same commit as the workspace that stops matching them.
-
----
+All five planned phases are done. What is left is under Remaining.
 
 ## Remaining, outside a phase
 
 **Build a drill bank for the Go workspace, stages 1 to 3.** `FORMATS.md` now recognises the sheet type and nothing uses it. Lessons 0001 to 0021, retrieval questions with collapsed answers, grouped by stage. This is content authoring rather than repository work, so it belongs in a teaching session that has the lessons open, not in a plan phase. It was optional in phase 4 and stayed optional.
 
-## Ordering
-
-Phase 5 is what is left, and produces the largest and least reviewable diffs.
 
 ## Done
 
@@ -101,7 +66,7 @@ Three commits: the rule, then the six documentation and template files, then the
 - **5.1** The rule went into `AGENTS.md` first, and had to say more than the suggested wording. Recording "no em dashes in prose" while 1357 sit in the lessons would have put the rule and the repository straight into the disagreement that phase 2 existed to fix, so the rule names the backlog as a backlog.
 - What the rewrites actually needed: a colon where the second half explains the first, which covered most of them; parentheses for a mid-sentence aside; a conjunction or a full stop for the rest. No instance wanted the same replacement as its neighbour, which is the argument against a scripted pass in one line.
 - Two traps found, both in YAML. `site_description` in `mkdocs.yml` needed quoting once it contained a colon and a space, and the same rewrite in the front matter template of `PUBLISHING.md` would have shipped an example that does not parse. It reads "One clause saying what" now.
-- Held deliberately: see the note under D1.
+- Three dashes were held back in the lesson template, because each was shared verbatim with 64 published lessons and could not move without them. They moved in waves 2 and 3, below.
 
 ### D2: the linking rule and communities, decided 2026-08-31
 
@@ -112,3 +77,14 @@ So the test is now how the destination is used. A subreddit read as an archive o
 - Three of the four fine-tuning entries pass unchanged in substance and had their annotations rewritten to say why: r/LocalLLaMA, the Hugging Face forums, MLX Discussions.
 - The EleutherAI Discord fails on retrievability and was replaced with the EleutherAI blog, in `RESOURCES.md` and in lessons 0020 and 0027. The entry states the omission so a later session does not add it back as an oversight.
 - Nothing came back in the Go workspace. The link removed there was the Gophers Slack, a closed chat, which fails the softened rule for the same reason it failed the strict one. That is the check worth repeating when a rule is relaxed: confirm the earlier deletions were not collateral.
+
+### Phase 5, waves 2 and 3: both workspaces, 2026-08-31
+
+Fifteen commits, one per stage plus the mechanical passes. 1429 dashes at the start of the phase, zero at the end.
+
+- The split between mechanical and prose held up, and doing the mechanical passes first was worth it. 309 instances fell to three regex passes over both workspaces: link text (comma for a publisher, colon for a section within a document, period for a lesson number), the annotation after a link (colon), and code comments (comma). The other 1120 were rewritten one at a time.
+- What the prose actually wanted, in rough order of frequency: a colon where the second half explains the first; "because", "since" or "so" where the dash carried a causal claim; parentheses or a comma pair for a mid-sentence aside; a full stop where the clause could stand alone. Almost no instance wanted the same replacement as its neighbour, which is the concrete argument against a scripted pass.
+- Four instances were not punctuation at all. Three were `—` used as a table cell meaning "not applicable" and one was a heading separator; each became the thing it actually meant, which is a small improvement the dash had been hiding.
+- Three dashes held back from the earlier wave moved with the workspaces as planned: the lesson heading, its front matter `title`, and the fixed closing block. Titles took a period rather than a colon, since a colon in an unquoted YAML scalar does not parse.
+- Found on the way out, and unrelated to dashes: lesson 0009's front matter opened with `%w`, so the whole block was invalid YAML. MkDocs silently titled the page from its filename and `--strict` said nothing. Fixed, and `PUBLISHING.md` no longer claims a clean strict build proves the front matter parses.
+- One check to distrust: an early structural pass reported 259 indented `<details>` blocks. The regex used `\s+`, which matches a newline, so every block at column zero matched. Re-run with `[ \t]+` it reports none. A lint that finds a problem in every file is more likely to be wrong than the repository is.

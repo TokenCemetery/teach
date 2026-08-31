@@ -38,7 +38,7 @@ type error interface {
 }
 ```
 
-Anything with an `Error() string` method is an error. That is the whole mechanism, and everything else — wrapping, sentinels, matching — is built from ordinary Go on top of it.
+Anything with an `Error() string` method is an error. That is the whole mechanism, and everything else (wrapping, sentinels, matching) is built from ordinary Go on top of it.
 
 Functions that can fail return an error as their **last** result, and the caller checks it immediately:
 
@@ -50,11 +50,11 @@ if err != nil {
 defer f.Close()
 ```
 
-The convention is rigid on purpose: error last, checked immediately, and no other result is valid when `err != nil` unless the doc comment says so. `io.Reader` is the notable documented exception — `Read` can return bytes *and* an error.
+The convention is rigid on purpose: error last, checked immediately, and no other result is valid when `err != nil` unless the doc comment says so. `io.Reader` is the notable documented exception: `Read` can return bytes *and* an error.
 
 ### Why not exceptions
 
-Go has `panic`, and it is not for this. The design choice is that an expected failure — a missing file, a rejected request, a timeout — is a normal outcome and should be visible in the signature and in the call site. An exception is invisible in both: nothing in a Java signature past `throws` tells you what actually propagates, and nothing at the call site marks the lines that can be skipped.
+Go has `panic`, and it is not for this. The design choice is that an expected failure, whether a missing file, a rejected request or a timeout, is a normal outcome and should be visible in the signature and in the call site. An exception is invisible in both: nothing in a Java signature past `throws` tells you what actually propagates, and nothing at the call site marks the lines that can be skipped.
 
 The cost is real. `if err != nil` appears constantly, and it is the most common complaint about the language. The compensation is that control flow is local: you can read a Go function top to bottom and know every path out of it.
 
@@ -100,7 +100,7 @@ func (e *ValidationError) Error() string {
 }
 ```
 
-Reach for a sentinel when the caller only needs to know *which* failure. Reach for a type when the caller needs a *detail* — the field name, the retry-after, the HTTP status. Both become part of your package's API the moment a caller matches on them, which is a commitment worth making deliberately.
+Reach for a sentinel when the caller only needs to know *which* failure. Reach for a type when the caller needs a *detail*: the field name, the retry-after, the HTTP status. Both become part of your package's API the moment a caller matches on them, which is a commitment worth making deliberately.
 
 ### Errors are values, so you can use them as values
 
@@ -115,7 +115,7 @@ if err := scanner.Err(); err != nil {
 }
 ```
 
-One check, not one per line. When `if err != nil` genuinely dominates a function, the fix is usually a small type that holds the error — not a new language feature.
+One check, not one per line. When `if err != nil` genuinely dominates a function, the fix is usually a small type that holds the error, not a new language feature.
 
 ## Practice
 
@@ -127,7 +127,7 @@ One check, not one per line. When `if err != nil` genuinely dominates a function
 func GetUser(ctx context.Context, id string) (*User, error)
 ```
 
-Error last, and `context.Context` first — the convention you will meet properly in Lesson 18. Returning `(User, error)` by value is also fine; returning `(*User, error)` lets "not found" be expressed as a nil user if you want it, though an explicit `ErrNotFound` is clearer.
+Error last, and `context.Context` first, which is the convention you will meet properly in Lesson 18. Returning `(User, error)` by value is also fine; returning `(*User, error)` lets "not found" be expressed as a nil user if you want it, though an explicit `ErrNotFound` is clearer.
 
 </details>
 
@@ -142,7 +142,7 @@ Error last, and `context.Context` first — the convention you will meet properl
 
 The first is capitalised and punctuated, so it reads badly once wrapped: `load config: Failed to connect to database.`. Write `errors.New("connect to database")`.
 
-The second discards a real failure. `data` will be whatever was read before the error — often empty — and the program continues as if nothing happened. If ignoring is genuinely correct, say so with a comment; usually it is not.
+The second discards a real failure. `data` will be whatever was read before the error, often empty, and the program continues as if nothing happened. If ignoring is genuinely correct, say so with a comment; usually it is not.
 
 </details>
 
@@ -165,7 +165,7 @@ A sentinel says which failure but carries nothing. Parsing a message is a contra
 
 <details markdown="1"><summary>Check</summary>
 
-Because you can implement it. Your own types can be errors, errors can carry structured data, and the matching functions in `errors` work on anything satisfying the interface — including types the standard library has never heard of.
+Because you can implement it. Your own types can be errors, errors can carry structured data, and the matching functions in `errors` work on anything satisfying the interface, including types the standard library has never heard of.
 
 It also means an error is just a value: storable in a struct, sendable on a channel, comparable, and returnable from a function that produces several. Nothing in the mechanism is privileged.
 
@@ -177,7 +177,7 @@ It also means an error is just a value: storable in a struct, sendable on a chan
 
 Only if the function documents it. The convention is that a nil error means the other results are valid, so returning `(nil, nil)` is a trap for every caller.
 
-If "no user" is a normal outcome, express it — return `ErrNotFound`, or return `(User, bool, error)` when absence really is not an error. Silently returning a nil pointer with a nil error produces a panic in the caller's next line, far from the function that caused it.
+If "no user" is a normal outcome, express it: return `ErrNotFound`, or return `(User, bool, error)` when absence really is not an error. Silently returning a nil pointer with a nil error produces a panic in the caller's next line, far from the function that caused it.
 
 </details>
 

@@ -12,7 +12,7 @@ type: lesson
 
 ## Warm-up
 
-1. ▢ Where should an interface be declared — beside the implementation, or in the consumer?
+1. ▢ Where should an interface be declared: beside the implementation, or in the consumer?
 
 <details markdown="1"><summary>Check</summary>
 
@@ -38,7 +38,7 @@ An interface value is **two words**: a dynamic type and a dynamic value.
 └──────────────┴───────────────┘
 ```
 
-An interface is `nil` only when **both** words are nil — when it holds nothing at all. Put a nil `*MyError` into it and the type word is `*MyError`, the value word is nil, and the interface is not nil.
+An interface is `nil` only when **both** words are nil, meaning it holds nothing at all. Put a nil `*MyError` into it and the type word is `*MyError`, the value word is nil, and the interface is not nil.
 
 ```go
 var p *MyError = nil
@@ -88,7 +88,7 @@ func do() error {
 
 **Return literals on each path.** Explicit `return nil` on success, `return &MyError{}` on failure, no shared variable to be careless with.
 
-**Never give a function a concrete error return type.** `func do() *MyError` is the source of the whole family. Return `error` and let `errors.As` recover the type — which is what Lesson 9 gave you.
+**Never give a function a concrete error return type.** `func do() *MyError` is the source of the whole family. Return `error` and let `errors.As` recover the type, which is what Lesson 9 gave you.
 
 `go vet` has a `nilness` analyser that finds some cases, and staticcheck's `SA4023` finds more. Neither catches all of them, so the rule is a habit rather than a tool.
 
@@ -121,7 +121,7 @@ This is legitimate and occasionally useful: methods on nil receivers are how a n
 
 `true false`.
 
-`p` is a nil pointer; `err` is an interface holding the type `*MyError` and a nil value, so it is not empty. The wrong instinct is to think the assignment "passes the nil through" — it wraps it.
+`p` is a nil pointer; `err` is an interface holding the type `*MyError` and a nil value, so it is not empty. The wrong instinct is to think the assignment "passes the nil through". It wraps it.
 
 </details>
 
@@ -165,7 +165,7 @@ Both work because nothing ever converts a nil concrete pointer into the interfac
 
 **c)** When both type and value are nil.
 
-Option a is precisely the misconception this lesson exists to break. Option b cannot happen on its own — a type word with no value word is not a state you can produce by assignment. Option d is a true consequence rather than the rule, since an unassigned interface has both words nil.
+Option a is precisely the misconception this lesson exists to break. Option b cannot happen on its own: a type word with no value word is not a state you can produce by assignment. Option d is a true consequence rather than the rule, since an unassigned interface has both words nil.
 
 </details>
 
@@ -175,7 +175,7 @@ Option a is precisely the misconception this lesson exists to break. Option b ca
 
 A function returning a concrete error type, or assigning to a concrete-typed variable and returning it as `error`. The branch runs because the interface is non-nil; the `<nil>` comes from the value inside it.
 
-That exact output is worth understanding, because it is not `fmt` printing a nil interface. `fmt` called `Error()` on a nil receiver, the method dereferenced a field and panicked, and `fmt` recovered and printed `<nil>` because the argument was a nil pointer. An error type whose `Error()` does *not* touch its fields prints its message normally — so a healthy-looking log line does not rule this out.
+That exact output is worth understanding, because it is not `fmt` printing a nil interface. `fmt` called `Error()` on a nil receiver, the method dereferenced a field and panicked, and `fmt` recovered and printed `<nil>` because the argument was a nil pointer. An error type whose `Error()` does *not* touch its fields prints its message normally, so a healthy-looking log line does not rule this out.
 
 Grep for `*SomeError` in return positions and for `var err *`. This bug hides in exactly those two shapes.
 
@@ -187,7 +187,7 @@ Grep for `*SomeError` in return positions and for `var err *`. This bug hides in
 
 No, and separating them is worth doing explicitly. Method sets decide *whether* a type satisfies an interface, at compile time. This trap is about *what an interface value contains* once a type has been stored in it, at run time.
 
-They meet only in that both come from the same fact — an interface holds a copy of a value along with its type. One consequence is checked by the compiler; the other is not checked at all.
+They meet only in that both come from the same fact: an interface holds a copy of a value along with its type. One consequence is checked by the compiler; the other is not checked at all.
 
 </details>
 

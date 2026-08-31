@@ -58,7 +58,7 @@ func Generate(ctx context.Context, s UserStore) error { ... }
 
 `store.Postgres` satisfies `report.UserStore` without importing `report`. The dependency arrow points from the consumer to the implementation, so:
 
-- The consumer's interface has exactly the methods that consumer needs — often one — instead of everything the implementation offers.
+- The consumer's interface has exactly the methods that consumer needs, often one, instead of everything the implementation offers.
 - Tests substitute a fake by writing a type with one method, in the test file, with no mocking framework.
 - The implementation package stays free of abstractions it does not use.
 - The import cycle from Lesson 7 goes away, because the arrow only points one way.
@@ -67,7 +67,7 @@ The corollary is the phrase you will hear in review: **accept interfaces, return
 
 ### Small is not a slogan
 
-`io.Reader` is one method, and it is the most reused abstraction in the language — files, network connections, HTTP bodies, gzip streams, `strings.Reader`, and anything that will ever be written all satisfy it. `error` is one method. `fmt.Stringer` is one method. `sort.Interface` is three and is already at the edge.
+`io.Reader` is one method, and it is the most reused abstraction in the language: files, network connections, HTTP bodies, gzip streams, `strings.Reader`, and anything that will ever be written all satisfy it. `error` is one method. `fmt.Stringer` is one method. `sort.Interface` is three and is already at the edge.
 
 Rob Pike's proverb states the reason: *the bigger the interface, the weaker the abstraction.* Each method you add excludes implementations and buys the caller nothing it asked for. A five-method `UserService` interface with exactly one implementation is not an abstraction; it is a second copy of the type's signature that must now be kept in sync.
 
@@ -84,11 +84,11 @@ type ReadWriter interface {
 
 Do not declare an interface because a type exists. Declare one when you have a reason:
 
-- A consumer needs to work with more than one implementation — including a test double that is not a mocking framework artefact.
+- A consumer needs to work with more than one implementation, including a test double that is not a mocking framework artefact.
 - You want to narrow a large dependency down to the two methods you use.
 - You are publishing a plugin point that outside code must implement.
 
-One implementation and no test need means no interface yet. Adding one later costs a single line, precisely because implementations never name it — which is the argument for waiting.
+One implementation and no test need means no interface yet. Adding one later costs a single line, precisely because implementations never name it, which is the argument for waiting.
 
 `any` is an alias for `interface{}`, added in Go 1.18. It says "any type", which means it says nothing; each use is a place the compiler stopped helping.
 
@@ -108,7 +108,7 @@ Zero runtime cost, and the build breaks at the type rather than at the distant c
 
 <details markdown="1"><summary>Check</summary>
 
-In `mailer`, containing only the methods `mailer` calls — probably `AddressFor(ctx, id) (string, error)` alone.
+In `mailer`, containing only the methods `mailer` calls, probably `AddressFor(ctx, id) (string, error)` alone.
 
 Declaring it in `store` beside the implementation is the Java reflex. It forces `store` to anticipate consumers, produces an interface with every method the type has, and makes `mailer` depend on `store` for its abstraction as well as its implementation.
 
@@ -118,7 +118,7 @@ Declaring it in `store` beside the implementation is the Java reflex. It forces 
 
 <details markdown="1"><summary>Check</summary>
 
-`io.Writer` is one method, so the same function serves a file, a network connection, an HTTP response, a gzip stream, and a `bytes.Buffer` in a test — with no mock and no interface declared by anyone.
+`io.Writer` is one method, so the same function serves a file, a network connection, an HTTP response, a gzip stream, and a `bytes.Buffer` in a test, with no mock and no interface declared by anyone.
 
 The `*os.File` version can only be tested by touching a real filesystem, which is why "accept interfaces" is a testability argument before it is a design one.
 
@@ -143,7 +143,7 @@ That narrowing is real value available today: a smaller dependency, a trivial te
 
 <details markdown="1"><summary>Check</summary>
 
-The interface has no consumer that needs eight methods, so it abstracts nothing — it duplicates the struct's surface and now has to be updated in two places for every change. Any test double must implement all eight to call one.
+The interface has no consumer that needs eight methods, so it abstracts nothing: it duplicates the struct's surface and now has to be updated in two places for every change. Any test double must implement all eight to call one.
 
 Concretely: it adds maintenance cost and removes compiler help, in exchange for a substitutability nobody has asked for. If a test needs a fake, the fix is a one-method interface in the *consumer*.
 
@@ -153,7 +153,7 @@ Concretely: it adds maintenance cost and removes compiler help, in exchange for 
 
 <details markdown="1"><summary>Check</summary>
 
-No — `GetUser` has a pointer receiver, so it is only in the method set of `*Postgres`. `&Postgres{}` satisfies it.
+No. `GetUser` has a pointer receiver, so it is only in the method set of `*Postgres`. `&Postgres{}` satisfies it.
 
 This is the most common way method sets bite in real code: the interface is fine, the implementation is fine, and the assignment fails at a line far from either. `var _ UserStore = (*Postgres)(nil)` in the implementation package catches it at the definition.
 

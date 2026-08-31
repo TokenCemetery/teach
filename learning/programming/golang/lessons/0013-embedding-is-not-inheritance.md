@@ -24,7 +24,7 @@ Only when both its type word and its value word are nil. A nil pointer stored in
 
 <details markdown="1"><summary>Check</summary>
 
-Take the narrowest interface you actually use as a parameter, and return the concrete type — so callers keep every method and choose their own abstraction.
+Take the narrowest interface you actually use as a parameter, and return the concrete type, so callers keep every method and choose their own abstraction.
 
 </details>
 
@@ -56,13 +56,13 @@ func (c Child) Name() string { return "child" }
 fmt.Println(Child{}.Greet())   // hello, base
 ```
 
-In Java this prints `hello, child`. In Go it prints `hello, base`, and the reason is mechanical: `Greet` is a method on `Base` with a `Base` receiver. When it calls `b.Name()`, `b` is a `Base`, and `Base` has exactly one `Name`. `Child` is not a `Base` with extras — it is a struct that *contains* a `Base` and knows nothing about it from the inside.
+In Java this prints `hello, child`. In Go it prints `hello, base`, and the reason is mechanical: `Greet` is a method on `Base` with a `Base` receiver. When it calls `b.Name()`, `b` is a `Base`, and `Base` has exactly one `Name`. `Child` is not a `Base` with extras. It is a struct that *contains* a `Base` and knows nothing about it from the inside.
 
 There is no way to make the embedded method call the outer one. If a type needs that, the outer type must implement `Greet` itself, or the dependency must be inverted with an interface field the outer type supplies. Template-method designs do not port to Go; they get rewritten as a function that takes a function.
 
 ### Name resolution
 
-Promotion follows depth. A field or method declared on the outer type shadows a promoted one, and the shallower of two promoted names wins. Two promoted names at the *same* depth are ambiguous — and that is only an error at the point where you use the name, not where you declare the struct:
+Promotion follows depth. A field or method declared on the outer type shadows a promoted one, and the shallower of two promoted names wins. Two promoted names at the *same* depth are ambiguous, and that is only an error at the point where you use the name, not where you declare the struct:
 
 ```go
 type A struct{}; func (A) Do() {}
@@ -89,7 +89,7 @@ func (s loggingStore) Get(ctx context.Context, id string) (*User, error) {
 }
 ```
 
-Every other method passes through untouched. This is the idiomatic decorator, and it survives new methods being added to `Store` — where a hand-written wrapper would fail to compile until updated, which may or may not be what you want. It also means a nil embedded interface panics on any method you did not override, so the decorator must be constructed properly.
+Every other method passes through untouched. This is the idiomatic decorator, and it survives new methods being added to `Store`, where a hand-written wrapper would fail to compile until updated, which may or may not be what you want. It also means a nil embedded interface panics on any method you did not override, so the decorator must be constructed properly.
 
 ### The one to be careful with
 
@@ -100,7 +100,7 @@ type Cache struct {
 }
 ```
 
-Embedding promotes exported names, so callers outside the package can now call `cache.Lock()`. That is almost never intended: locking is an implementation detail, and exposing it invites deadlocks from code you do not control. Give it a name instead — `mu sync.Mutex` — and embed only when the promotion is the point.
+Embedding promotes exported names, so callers outside the package can now call `cache.Lock()`. That is almost never intended: locking is an implementation detail, and exposing it invites deadlocks from code you do not control. Give it a name instead, `mu sync.Mutex`, and embed only when the promotion is the point.
 
 The same question applies to every embed. Ask what you are exporting, not just what you are reusing.
 
@@ -132,7 +132,7 @@ The same question applies to every embed. Ask what you are exporting, not just w
 
 `Lock()` and `Unlock()`, callable by anyone importing the package.
 
-Nothing about your locking discipline holds any more, because a caller can take the lock and never release it — or release one you hold. Use a named field `mu sync.Mutex` unless exposing the lock is a deliberate part of the design, which it occasionally is for types documented as "embed me".
+Nothing about your locking discipline holds any more, because a caller can take the lock and never release it, or release one you hold. Use a named field `mu sync.Mutex` unless exposing the lock is a deliberate part of the design, which it occasionally is for types documented as "embed me".
 
 </details>
 
@@ -147,7 +147,7 @@ Nothing about your locking discipline holds any more, because a caller can take 
 
 **b)** At the call site `c.Do()`, as an ambiguous selector.
 
-The declaration is legal — Go only complains when you use a name it cannot resolve. `c.A.Do()` is the explicit form and always works. This is worth knowing because the error surfaces in a file that did not change.
+The declaration is legal: Go only complains when you use a name it cannot resolve. `c.A.Do()` is the explicit form and always works. This is worth knowing because the error surfaces in a file that did not change.
 
 </details>
 
@@ -157,7 +157,7 @@ The declaration is legal — Go only complains when you use a name it cannot res
 
 Embedding gives you the eleven pass-throughs for free; you write only the method you want to log. Adding a thirteenth method to `Store` keeps compiling, silently unlogged.
 
-A named field means writing all twelve delegations, and adding a thirteenth method breaks the build until you write it. Same trade in both directions: embedding optimises for convenience, the named field for being told when the interface grows. Pick by whether silent pass-through is a feature or a hazard — for a logger it is fine, for an authorisation wrapper it is a security bug.
+A named field means writing all twelve delegations, and adding a thirteenth method breaks the build until you write it. Same trade in both directions: embedding optimises for convenience, the named field for being told when the interface grows. Pick by whether silent pass-through is a feature or a hazard. For a logger it is fine; for an authorisation wrapper it is a security bug.
 
 </details>
 
@@ -171,14 +171,14 @@ Not embedding. Make the varying step a parameter: a function value, or a small i
 func Run(ctx context.Context, step func(context.Context) error) error
 ```
 
-The template-method pattern relies on the base calling an overridden method, which is exactly what Go does not do. Passing the behaviour in makes the customisation point visible in the signature — and it is testable without constructing a type.
+The template-method pattern relies on the base calling an overridden method, which is exactly what Go does not do. Passing the behaviour in makes the customisation point visible in the signature, and it is testable without constructing a type.
 
 </details>
 
 ## Real-world reps
 
 - [ ] Run the `Base`/`Child` example and confirm the output before reading it again. Then add a `Greet` on `Child` that calls `c.Base.Greet()` and see what changes.
-- [ ] Write the logging decorator by embedding an interface. Add a method to the interface afterwards and note that nothing breaks — decide whether you like that.
+- [ ] Write the logging decorator by embedding an interface. Add a method to the interface afterwards, note that nothing breaks, and decide whether you like that.
 - [ ] Tomorrow: find an embedded field in a codebase you work with. Ask what it promotes into the exported API, and whether that was intended.
 
 ## Going further

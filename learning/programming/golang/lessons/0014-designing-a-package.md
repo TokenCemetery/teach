@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-It abstracts nothing — it duplicates the type's surface and must be kept in sync, while forcing any test double to implement all five. Interfaces earn their place by narrowing a dependency for a consumer.
+It abstracts nothing: it duplicates the type's surface and must be kept in sync, while forcing any test double to implement all five. Interfaces earn their place by narrowing a dependency for a consumer.
 
 </details>
 
@@ -44,7 +44,7 @@ Practical consequences:
 - **Take the narrowest parameter you can use.** `io.Writer` over `*os.File`, `context.Context` first.
 - **Make the zero value work** where you can, so the API has one fewer thing to get wrong.
 
-The functions a package exports should read as a vocabulary. `store.Get`, `store.Put`, `store.Delete` — not `store.DoStoreOperation(op int)`.
+The functions a package exports should read as a vocabulary. `store.Get`, `store.Put`, `store.Delete`, not `store.DoStoreOperation(op int)`.
 
 ### Doc comments are the API
 
@@ -120,7 +120,7 @@ type Options struct {
 func New(db *sql.DB, opts Options) *Store
 ```
 
-A struct keeps call sites readable, lets the zero value mean "defaults", and adds fields without breaking callers. Functional options — `New(db, WithTimeout(d))` — are the other established answer, and they cost a function per setting; they earn their place in libraries with many optional knobs and a long compatibility horizon, which is [Lesson 34](0034-api-design-and-compatibility.md).
+A struct keeps call sites readable, lets the zero value mean "defaults", and adds fields without breaking callers. Functional options, as in `New(db, WithTimeout(d))`, are the other established answer, and they cost a function per setting; they earn their place in libraries with many optional knobs and a long compatibility horizon, which is [Lesson 34](0034-api-design-and-compatibility.md).
 
 ## Practice
 
@@ -138,7 +138,7 @@ A struct keeps call sites readable, lets the zero value mean "defaults", and add
 // It returns ErrExpired if the token is well-formed but no longer valid.
 ```
 
-Start with the name, so `go doc` and pkg.go.dev read properly. Then add what the signature cannot say — which sentinel errors a caller can match on.
+Start with the name, so `go doc` and pkg.go.dev read properly. Then add what the signature cannot say: which sentinel errors a caller can match on.
 
 </details>
 
@@ -146,7 +146,7 @@ Start with the name, so `go doc` and pkg.go.dev read properly. Then add what the
 
 <details markdown="1"><summary>Check</summary>
 
-Any caller can construct an invalid value — half-filled, with a nil map field, with a timeout of zero meaning "never" — and your methods have to defend against every combination.
+Any caller can construct an invalid value, half-filled or with a nil map field or with a timeout of zero meaning "never", and your methods have to defend against every combination.
 
 And every field is now a compatibility commitment. Renaming or removing one breaks callers, so the struct's internals are frozen the moment it is published.
 
@@ -165,7 +165,7 @@ The fix is not automatic getters. It is exporting only what callers need to set,
 
 **c)** `package models`.
 
-It names a category rather than a subject, so nothing is ever out of place in it and it accumulates every type in the system. Call sites read `models.User` where `user.User` stutters and `user.Profile` reads well — the naming problem is usually telling you the package boundary is wrong.
+It names a category rather than a subject, so nothing is ever out of place in it and it accumulates every type in the system. Call sites read `models.User` where `user.User` stutters and `user.Profile` reads well. The naming problem is usually telling you the package boundary is wrong.
 
 </details>
 
@@ -177,7 +177,7 @@ Extract the shared type into a third package both import, or have `store` accept
 
 Prefer the interface. It costs one declaration, keeps the arrow pointing one way, and makes `store` testable without an event system. The third package is right when the shared thing is genuinely a domain type rather than a behaviour.
 
-Merging them is the third option and is right more often than people admit — two packages that each need the other may be one package.
+Merging them is the third option and is right more often than people admit: two packages that each need the other may be one package.
 
 </details>
 
@@ -187,7 +187,7 @@ Merging them is the third option and is right more often than people admit — t
 
 Which sentinel errors and error types callers are allowed to match on. That set is API: once documented, `errors.Is(err, store.ErrNotFound)` is a contract you have to keep.
 
-Errors you do not document are free to change. This is the cheapest way to keep the wrapping decision from Lesson 9 honest — write down what is matchable, and translate everything else at the boundary.
+Errors you do not document are free to change. This is the cheapest way to keep the wrapping decision from Lesson 9 honest: write down what is matchable, and translate everything else at the boundary.
 
 </details>
 

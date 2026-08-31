@@ -63,7 +63,7 @@ if errors.As(err, &verr) {        // is there an error of this type in the chain
 
 Both walk the chain by calling `Unwrap` repeatedly, so they find the target however many layers were added on the way up. Two things to keep straight:
 
-- `errors.Is` is for **sentinel values**. Never use `err == ErrNotFound`, which breaks the moment anyone wraps it — and someone will.
+- `errors.Is` is for **sentinel values**. Never use `err == ErrNotFound`, which breaks the moment anyone wraps it, and someone will.
 - `errors.As` takes a **pointer to a variable of the target type**. `errors.As(err, &verr)` where `verr` is `*ValidationError`. Passing a non-pointer panics, which is deliberate: it is a programming error, not a runtime condition.
 
 A type can also opt into `Is` or `As` by implementing them, which is how `os.ErrNotExist` matches errors from several different syscall layers.
@@ -82,7 +82,7 @@ for _, f := range files {
 return errs   // nil if nothing was joined
 ```
 
-`fmt.Errorf` also accepts multiple `%w` verbs since Go 1.20. Joined errors implement `Unwrap() []error` — the plural form — which is why you should never write chain-walking code by hand.
+`fmt.Errorf` also accepts multiple `%w` verbs since Go 1.20. Joined errors implement `Unwrap() []error`, the plural form, which is why you should never write chain-walking code by hand.
 
 ### When to wrap, and when not to
 
@@ -92,11 +92,11 @@ A workable rule:
 
 | Situation | Verb |
 |---|---|
-| The caller may reasonably match on the cause — `ErrNotFound`, `context.DeadlineExceeded` | `%w` |
-| The cause is an implementation detail — the driver, the JSON library, the file layout | `%v` |
+| The caller may reasonably match on the cause, as with `ErrNotFound` or `context.DeadlineExceeded` | `%w` |
+| The cause is an implementation detail: the driver, the JSON library, the file layout | `%v` |
 | You are the top of the stack and about to log | neither; log it |
 
-And wrap with **context the error does not already carry**. `fmt.Errorf("failed to open file: %w", err)` adds nothing — the wrapped error already says it failed to open a file. `fmt.Errorf("load config %s: %w", path, err)` adds the path and the operation, which is what the on-call engineer needs.
+And wrap with **context the error does not already carry**. `fmt.Errorf("failed to open file: %w", err)` adds nothing, since the wrapped error already says it failed to open a file. `fmt.Errorf("load config %s: %w", path, err)` adds the path and the operation, which is what the on-call engineer needs.
 
 Wrap once per meaningful layer, not once per function. A message reading `handler: service: repository: query: exec: dial tcp: connection refused` is five layers agreeing that the database is down.
 
@@ -104,7 +104,7 @@ Wrap once per meaningful layer, not once per function. A message reading `handle
 
 Logging an error and returning it means it gets logged again by your caller, and again above that. Pick one:
 
-- **Handle it** — recover, retry, substitute a default — and do not return it.
+- **Handle it** by recovering, retrying or substituting a default, and do not return it.
 - **Return it**, wrapped with context, and say nothing.
 
 Log only where the error stops, which in a service is the HTTP middleware or `main`.
@@ -125,7 +125,7 @@ Log only where the error stops, which in a service is the HTTP middleware or `ma
 return fmt.Errorf("get user %s: %w", id, err)
 ```
 
-`%v` flattens the error to a string, breaking the chain — `errors.Is(err, ErrNotFound)` above will return false. `%w` preserves it. Adding the id is the second half: context the wrapped error could not have.
+`%v` flattens the error to a string, breaking the chain, so `errors.Is(err, ErrNotFound)` above will return false. `%w` preserves it. Adding the id is the second half: context the wrapped error could not have.
 
 </details>
 
@@ -150,7 +150,7 @@ It compares the top of the chain only. The day any layer between the source and 
 
 **a)** `errors.As(err, &verr)` with `verr` declared as `*ValidationError`.
 
-`As` needs somewhere to store what it finds, so the second argument is a pointer to your target variable — a `**ValidationError` here. Option b passes the value and panics. `Is` in option c compares rather than extracts. Option d takes the address of the wrong argument.
+`As` needs somewhere to store what it finds, so the second argument is a pointer to your target variable, a `**ValidationError` here. Option b passes the value and panics. `Is` in option c compares rather than extracts. Option d takes the address of the wrong argument.
 
 </details>
 
@@ -158,7 +158,7 @@ It compares the top of the chain only. The day any layer between the source and 
 
 <details markdown="1"><summary>Check</summary>
 
-The driver's error type is now part of the repository's public API. Callers can — and will — write `errors.As(err, &pqErr)` and match on Postgres error codes, so switching to another driver or another database becomes a breaking change with no compile error to warn you.
+The driver's error type is now part of the repository's public API. Callers can, and will, write `errors.As(err, &pqErr)` and match on Postgres error codes, so switching to another driver or another database becomes a breaking change with no compile error to warn you.
 
 The alternative is to translate at the boundary: match the driver error inside the repository and return your own `ErrDuplicateKey`. That is what the boundary is for, and it costs one small type.
 
@@ -170,13 +170,13 @@ The alternative is to translate at the boundary: match the driver error inside t
 
 Handle an error once. Logging is handling; returning is delegating. Doing both produces duplicate lines that look like two failures and make the real count of incidents unknowable.
 
-Return the error with context, and log at the single place where the error stops travelling — the top-level middleware or `main`.
+Return the error with context, and log at the single place where the error stops travelling: the top-level middleware or `main`.
 
 </details>
 
 ## Real-world reps
 
-- [ ] Build a three-layer chain — repository, service, handler — each wrapping with `%w`. Print the final message, then assert `errors.Is` finds the sentinel from the bottom layer.
+- [ ] Build a three-layer chain of repository, service and handler, each wrapping with `%w`. Print the final message, then assert `errors.Is` finds the sentinel from the bottom layer.
 - [ ] Change one layer's `%w` to `%v` and watch the `errors.Is` assertion fail. That failure is the shape of the bug in production.
 - [ ] Tomorrow: pick one error path in a service you operate and read what it would print at the top. Ask whether it names the operation and the identifier, or only the failure.
 

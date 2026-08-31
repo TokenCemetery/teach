@@ -63,8 +63,7 @@ learning/<domain>/<topic>/
 ├── NOTES.md               # preferences and working notes
 ├── lessons/               # NNNN-slug.md — one tight win each
 ├── reference/             # cheat sheets, built for lookup
-├── learning-records/      # NNNN-slug.md — what was demonstrably learned
-└── assets/                # diagrams, drill banks, printable cards
+└── learning-records/      # NNNN-slug.md — what was demonstrably learned
 ```
 
 |Path|Holds|
@@ -75,10 +74,9 @@ learning/<domain>/<topic>/
 |`lessons/NNNN-*.md`|The lessons. One tight win each.|
 |`reference/*.md`|Cheat sheets: syntax, algorithms, sequences, poses, routines.|
 |`learning-records/NNNN-*.md`|Evidence-grade insights that set what to teach next. The ADRs of learning.|
-|`assets/*`|Reusable artifacts lessons link to — diagrams, drill banks, printable cards.|
 |`NOTES.md`|What is true about *this learner*, and nothing else.|
 
-Create each lazily, on first need. Reuse is the default: read `reference/` and `assets/` before authoring, and build on what is there.
+Create each lazily, on first need. Reuse is the default: read `reference/` before authoring, and build on what is there.
 
 `NOTES.md` is the easiest file to abuse, because it is the only one with no reader to answer to. Hold it to one test: **would this still be true if someone else were learning this topic?** If yes, it is not a note — it is content, and it belongs in a published file where a reader can use it. Preferences, disclosed background, calibration plans, environment blockers and open questions stay. A curriculum arc, a corrected fact, a source worth trusting and a term worth pinning do not.
 

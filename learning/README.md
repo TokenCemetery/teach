@@ -46,8 +46,7 @@ learning/<domain>/<topic>/
 ├── NOTES.md               # preferences and working notes
 ├── lessons/               # NNNN-slug.md — one tight win each
 ├── reference/             # cheat sheets, built for lookup
-├── learning-records/      # NNNN-slug.md — what was demonstrably learned
-└── assets/                # diagrams, drill banks, printable cards
+└── learning-records/      # NNNN-slug.md — what was demonstrably learned
 ```
 
 Lessons number from `0001` within each workspace. Workspaces may link to each other, but a link is a pointer rather than an inclusion: it does not pull another topic's material into this mission. Prefer linking a glossary term or a reference sheet over a lesson — those are written for lookup and land on any reader.

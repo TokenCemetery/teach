@@ -19,9 +19,11 @@ files. Anything else (templates, CI, project docs) is rare.
 ## Teaching
 
 Read `.agents/skills/teach/SKILL.md` before you create or edit any file inside
-a workspace. It defines every path, every file format, and what the published
-site needs. Do not invent your own, and do not follow a personal skill of the
-same name where the two disagree — the file in this repository wins.
+a workspace. It is the entry point: it defines every path and the teaching
+workflow, and points at `FORMATS.md` for what each file must contain and
+`PUBLISHING.md` for front matter, rendering and what the published site needs.
+Do not invent your own, and do not follow a personal skill of the same name
+where the two disagree — the file in this repository wins.
 
 ## Editing rules
 
@@ -49,7 +51,8 @@ with the repository virtualenv:
 
 A clean strict build is necessary and not sufficient — it validates front matter
 and navigation, and cannot see a collapsed answer that failed to render.
-`.agents/skills/teach/SKILL.md` lists what it misses and how to check the rest.
+`.agents/skills/teach/PUBLISHING.md` lists what it misses and how to check the
+rest.
 
 ## Quality bar for anything you write
 

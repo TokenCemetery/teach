@@ -56,7 +56,9 @@ Two licenses, because the repository holds two different things.
 - **Software and configuration** — build config, workflows, stylesheets:
   [Apache-2.0](LICENSE).
 
-One exception: [`.agents/skills/teach/SKILL.md`](.agents/skills/teach/SKILL.md)
-is MIT, derived from [mattpocock/skills](https://github.com/mattpocock/skills)
-via [PromptPasture/agent.md](https://github.com/PromptPasture/agent.md). Its
-attribution lives in the file's front matter.
+One exception: everything under
+[`.agents/skills/teach/`](.agents/skills/teach/SKILL.md) is MIT, derived from
+[mattpocock/skills](https://github.com/mattpocock/skills) via
+[PromptPasture/agent.md](https://github.com/PromptPasture/agent.md). Its
+attribution lives in the front matter of `SKILL.md`, which the other files in
+that directory were split out of.

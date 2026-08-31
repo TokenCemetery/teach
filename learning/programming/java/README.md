@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0014. Immutability as a Default](lessons/0014-immutability-as-a-default.md)
+**Latest lesson:** [0021. Strings and Text](lessons/0021-strings-and-text.md)
 
 ## Success looks like
 
@@ -73,6 +73,13 @@ Work through these in order.
 | [0012](lessons/0012-enums.md) | Enums | A fixed set of instances the language guarantees, with room for state and behaviour on each one |
 | [0013](lessons/0013-generics-and-erasure.md) | Generics and Erasure | Type parameters the compiler checks and the runtime forgets, and the wildcards that make them usable |
 | [0014](lessons/0014-immutability-as-a-default.md) | Immutability as a Default | Make the object impossible to change and most of the hard questions stop being asked |
+| [0015](lessons/0015-exceptions.md) | Exceptions | Which failures belong in a signature, which belong in a stack trace, and cleanup that survives both |
+| [0016](lessons/0016-optional.md) | Optional | A return type that makes absence part of the contract, and the four places it does not belong |
+| [0017](lessons/0017-streams.md) | Streams | A pipeline that describes work, does none of it until asked, and can only be asked once |
+| [0018](lessons/0018-collectors.md) | Collectors | Turning a pipeline back into a container, and the three collectors that throw where you do not expect it |
+| [0019](lessons/0019-files-and-paths.md) | Files and Paths | Paths that are not strings, streams that must be closed, and a charset that is finally a default worth having |
+| [0020](lessons/0020-dates-and-times.md) | Dates and Times | Which of the six time types you actually meant, and the three that are not a point in time |
+| [0021](lessons/0021-strings-and-text.md) | Strings and Text | Text blocks, the formatting you should use, and why length is not the number of characters |
 
 ## Reference
 
@@ -80,6 +87,7 @@ Work through these in order.
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
 - [Equality, hashing and ordering](reference/equality-hashing-and-ordering.md): the three contracts, and which comparison to write
 - [Modelling](reference/modelling.md): which construct to reach for, what each one commits you to, and the rules that are easy to misremember
+- [Idiom and the library](reference/idiom-and-library.md): the library decisions a reviewer notices, and the traps that throw where nobody looks
 
 ## How this works
 

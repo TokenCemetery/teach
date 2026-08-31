@@ -38,6 +38,14 @@ _Avoid_: casting, wrapping, promotion
 The constructor whose parameters are exactly a record's components, in declaration order. It is generated unless you declare it, and every other constructor on the record has to delegate to it, which is why validation placed there cannot be bypassed.
 _Avoid_: default constructor, primary constructor, main constructor
 
+**Checked exception**:
+A `Throwable` outside `RuntimeException` and `Error`, which the compiler forces every caller to catch or declare. It earns its place only when a reasonable caller can act on the failure, because a caller who can only give up will wrap it or swallow it instead.
+_Avoid_: compile-time exception, declared error, fatal exception
+
+**Closeable stream**:
+A `Stream` backed by an open operating-system handle, which is what `Files.lines`, `Files.walk` and `Files.find` return. Unlike a stream over a collection it must be closed, and skipping that usually appears to work, because unreachable ones are cleaned up eventually and the descriptors run out only under load.
+_Avoid_: file stream, lazy stream, resource
+
 **Compact constructor**:
 A canonical constructor written with no parameter list, whose body runs before the components are assigned to the fields. Assigning to the parameter is what reaches the field, and assigning to `this.field` there is a compile error rather than a redundancy.
 _Avoid_: compact form, short constructor, implicit constructor
@@ -49,6 +57,14 @@ _Avoid_: polymorphism, subtyping, generics compatibility
 **Defensive copy**:
 A copy taken so that a reference cannot be used to change an object from outside it: on the way in so a caller's later mutation cannot reach a field, and on the way out so a returned reference cannot either. The second half is the half that gets forgotten.
 _Avoid_: deep copy, clone, snapshot
+
+**Downstream collector**:
+A collector handed to another one, such as `groupingBy`, `partitioningBy` or `teeing`, which runs against each group or branch rather than against the whole stream. It is what turns a grouping into counts, sums or a nested map without a second pass.
+_Avoid_: nested collector, sub-collector, inner reduction
+
+**Encounter order**:
+The order in which a stream's elements arrive, where the source has one. `findFirst`, sort stability and the order of a collected `List` are all defined against it, and a source such as a `HashSet` gives them nothing to be defined against.
+_Avoid_: sort order, iteration order, sequence
 
 **Erasure**:
 The compiler's discarding of type arguments, which leaves `List<String>` and `List<Integer>` as one class at run time. Every restriction on generics follows from it, and so does a `ClassCastException` on a line that contains no cast.
@@ -78,6 +94,10 @@ _Avoid_: caching, deduplication, pooling
 The rule that `List<String>` is not a `List<Object>`, whatever the relationship between the type arguments. It is the deliberate opposite of array covariance, and it is what moves the error from run time to compile time.
 _Avoid_: strictness, missing polymorphism, type mismatch
 
+**Local (of a date or time)**:
+A value naming a reading on a calendar or a wall clock with no zone attached, which is what `LocalDate`, `LocalTime` and `LocalDateTime` are. None of them is a point on the universal timeline, so none converts to an `Instant` without being told a zone, and using one as a timestamp is the most common mistake in the time API.
+_Avoid_: naive time, zoneless, floating time
+
 **Natural ordering**:
 The ordering a type defines for itself by implementing `Comparable`. A sorted collection uses it instead of `equals`, so two elements that compare as zero are one element as far as a `TreeSet` is concerned.
 _Avoid_: default sort, comparison, ranking
@@ -93,6 +113,18 @@ _Avoid_: untyped collection, legacy generic, unparameterised type
 **Sealed hierarchy**:
 A supertype whose permitted direct subtypes are fixed at compile time, so the set of alternatives is closed and the compiler can enumerate it. That is what makes a `switch` over it exhaustive with no `default`.
 _Avoid_: closed class, final hierarchy, restricted inheritance
+
+**Short-circuiting operation**:
+A stream operation that can finish without pulling every element through the pipeline, such as `findFirst`, `anyMatch` or `limit`. It is what makes an infinite source usable, and it is what an operation such as `sorted` takes away, since sorting has to see everything first.
+_Avoid_: early exit, lazy operation, break
+
+**Suppressed exception**:
+An exception attached to another rather than replacing it, which is what try-with-resources does when a resource fails to close while an exception from the body is already propagating. A hand-written `finally` loses the original instead, with no trace that it happened.
+_Avoid_: secondary exception, ignored exception, nested exception
+
+**Terminal operation**:
+The stream operation that makes the pipeline run and consumes it, such as `forEach`, `collect` or `count`. Nothing before it executes, and nothing after it is possible on that stream, because a second terminal call throws.
+_Avoid_: final operation, sink, evaluation
 
 **Total order**:
 A comparator or natural ordering under which no two distinct elements compare as zero. Sorted collections need one, and a chain of keys provides it only if the last key is unique per element.

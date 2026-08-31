@@ -10,7 +10,11 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## State
 
-Stages 1 and 2 are written: lessons 0001 to 0014, plus the `reference/equality-hashing-and-ordering.md` and `reference/modelling.md` sheets. Stages 3 to 7 are unwritten.
+Stages 1 to 3 are written: lessons 0001 to 0021, plus the `reference/equality-hashing-and-ordering.md`, `reference/modelling.md` and `reference/idiom-and-library.md` sheets. Stages 4 to 7 are unwritten.
+
+Stage 3 is seven lessons and is organised as two halves that share one question, which is whether a reviewer would call the code unidiomatic. The first half is control flow and absence, meaning exceptions (0015) and `Optional` (0016), and the second is the library a reviewer expects you to know, meaning streams and collectors (0017, 0018) then files, time and text (0019 to 0021). Streams are split from collectors deliberately: the pipeline and the container it becomes fail in different ways, and putting them together produced a lesson where the traps drowned the mechanics.
+
+Lesson 0018 is the one to protect in this stage, because it carries the least guessable fact in the arc: `Stream.toList` accepts a null element and `Collectors.toUnmodifiableList` refuses one, which is the opposite of what the names suggest. That asymmetry is a three-column table in the sheet for exactly this reason.
 
 Stage 2 is eight lessons rather than the six or seven the other stages will need, because the modelling surface is genuinely wider here: a class, a record, an interface, an abstract class, a sealed hierarchy and an enum are six ways to say almost the same thing, and the stage's whole job is telling them apart. The order is the load-bearing part. Interfaces (0009) come before inheritance (0010) so that a reader meets the contract before the mechanism, and sealed types (0011) come after both because sealing is a restriction on inheritance that only makes sense once inheritance has been priced. If the stage is ever reordered, that run is what must survive.
 
@@ -18,7 +22,7 @@ Lesson 0010 is the one to protect. It is the only place in the arc that argues a
 
 **Onboarding is handled inside lesson 0007**, in a short "Running these examples" subsection, rather than by inserting a new lesson at the front. Stage 1 shipped without ever showing how to compile and run, which is a real gap for a workspace whose constraints say "assumes no prior Java", and 0007 is the first lesson where the reader declares a class of their own, so it is the honest place for it. Renumbering stage 1 to put it first would have broken every existing cross-reference for no pedagogical gain. If stage 3 shows a gap of the same kind, solve it the same way.
 
-**How the glossary is populated here.** The skill's test, that a term lands once it can be used correctly, is a statement about a learner's demonstration. These lessons have no single learner, so the test is applied to the material: a term lands when a lesson has taught it well enough for a reader to use it. Stage 1 added seven terms alongside the three pinned ones, and stage 2 added thirteen. Keep doing this per stage, and do not add a term the lessons have not earned. Two of stage 2's entries are deliberately a pair: "Invariance (of generics)" is written to be read against the existing "Covariance (of arrays)", since the two rules are opposites and the contrast is the lesson.
+**How the glossary is populated here.** The skill's test, that a term lands once it can be used correctly, is a statement about a learner's demonstration. These lessons have no single learner, so the test is applied to the material: a term lands when a lesson has taught it well enough for a reader to use it. Stage 1 added seven terms alongside the three pinned ones, stage 2 added thirteen, and stage 3 added eight. Keep doing this per stage, and do not add a term the lessons have not earned. Two of stage 2's entries are deliberately a pair: "Invariance (of generics)" is written to be read against the existing "Covariance (of arrays)", since the two rules are opposites and the contrast is the lesson.
 
 ## What execution changed
 
@@ -30,6 +34,15 @@ Every behavioural claim in stage 2 was run rather than recalled, on the release 
 - **`List.copyOf` does not simply skip the copy for an already-unmodifiable list.** It returns the same instance for a list its own factories produced, and a new one for a `Collections.unmodifiableList` view, because the view is an implementation it cannot recognise as safe. Lesson 0014 states that distinction rather than the flat claim.
 
 A fifth detail worth keeping: `this.field = ...` inside a compact constructor is a compile error, not a redundancy, which lesson 0008 turns into a practice item.
+
+Stage 3 produced four more, and the first two are the ones that would have been written wrongly from recall.
+
+- **`Stream.toList` and `Collectors.toUnmodifiableList` disagree about null.** The first accepts a null element, the second throws. Both produce an unmodifiable list, so the names give no hint. Taught as a contrast rather than a rule.
+- **The documented "`Files.lines` must be closed" leak does not reproduce the obvious way.** A tight loop reusing one variable survived a hundred thousand iterations, because the cleaner closes unreachable streams. It only failed once every stream was kept reachable, at roughly sixty thousand open descriptors. Lesson 0019 teaches the rule and the mechanism that hides it, since "it works in my loop" is exactly how this reaches production.
+- **`String.valueOf(null)` is not a compile-time ambiguity.** It compiles, resolves to the more specific `valueOf(char[])` overload, and throws at run time. The spec for the lesson said "ambiguity" and was wrong; the lesson teaches what happens.
+- **A single expression using `+` on strings already compiles to one `StringConcatFactory` call**, checked with `javap`, not to a chain of `StringBuilder` appends. So the familiar advice applies to the loop and not to the expression, and lesson 0021 says which.
+
+Two smaller ones worth not losing: `peek` can be skipped entirely when the terminal operation does not need the elements, which makes it a debugging tool and not a processing step, and end-of-month clamping does not remember the original day, so January the 31st plus two months is the 28th of March rather than the 31st.
 
 ## Version policy
 

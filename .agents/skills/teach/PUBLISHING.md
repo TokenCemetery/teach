@@ -30,8 +30,10 @@ Do not add a date. The site derives `created_at` and `updated_at` from git histo
 
 - Keep `markdown="1"` on every `<details>`. Python-Markdown needs it, through the `md_in_html` extension, to parse the answer inside. GitHub ignores the attribute, so the file stays correct in both.
 - Leave a blank line after `<summary>` and before `</details>`.
-- Keep the `<details>` block at column zero. Indenting it to nest inside a list item looks tidier and breaks the site: `md_in_html` does not parse HTML nested in a list, and the answer reverts to literal markdown. `sane_lists` carries the Practice numbering across the break instead.
-- One `<details>` may sit inside another, as long as both stay at column zero and both keep `markdown="1"`. Verified on a built page: the inner block renders as HTML and its markdown becomes `<p>` and `<code>`. The limitation above is about indentation, not nesting. Two blocks in a row work too, and the numbering resumes after either shape.
+- Keep every `<details>` block at column zero, always. The constraint is indentation, not nesting, so read these three together:
+  - Never indent a block to sit inside a list item. It looks tidier and breaks the site: `md_in_html` does not parse HTML nested in a list, and the answer reverts to literal markdown. `sane_lists` carries the Practice numbering across the break instead.
+  - One `<details>` may sit inside another when both stay at column zero and both keep `markdown="1"`. Verified on a built page: the inner block renders as HTML and its markdown becomes `<p>` and `<code>`.
+  - Two blocks in a row work too, and the numbering resumes after either shape.
 - A single newline is a line break, as it is on GitHub. Lesson header blocks, glossary definitions and worked calculations rely on it. This holds only because no prose here is hard-wrapped, so keep it that way and write a paragraph on one line.
 - `mkdocs.yml` owns the extensions these rules depend on: `md_in_html`, `sane_lists`, `nl2br`, `pymdownx.highlight`, `pymdownx.superfences`. Removing one breaks every lesson at once.
 

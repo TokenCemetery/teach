@@ -80,7 +80,10 @@ learning/<domain>/<topic>/
 
 Create each lazily, on first need. Reuse is the default: read `reference/` before authoring, and build on what is there.
 
-`NOTES.md` is the easiest file to abuse, because it is the only one with no reader to answer to. Hold it to one test: **would this still be true if someone else were learning this topic?** If yes, it is not a note: it is content, and it belongs in a published file where a reader can use it. Preferences, disclosed background, calibration plans, environment blockers and open questions stay. A curriculum arc, a corrected fact, a source worth trusting and a term worth pinning do not.
+`NOTES.md` is the easiest file to abuse, because it is the only one with no reader to answer to. Hold it to one test: **would this still be true if someone else were learning this topic?** If yes, it is not a note: it is content, and it belongs in a published file where a reader can use it.
+
+- Keep in `NOTES.md`: preferences, disclosed background, calibration plans, environment blockers, open questions.
+- Move out of it: a curriculum arc, a corrected fact, a source worth trusting, a term worth pinning. Each belongs in a published file, meaning `README.md`, `GLOSSARY.md`, `RESOURCES.md`, or a lesson.
 
 Lessons number from `0001` within each workspace.
 
@@ -101,7 +104,12 @@ Never teach into `templates/learning-workspace/`. It is only a copy source, it k
 
 Workspaces may link to each other. A link is a pointer, not an inclusion: it does not move another topic's material into this mission, does not become a prerequisite the reader must finish first, and does not quietly empty the `## Out of scope` list.
 
-Prefer the most stable target. A `GLOSSARY.md` term or a `reference/` sheet is written for lookup and lands on any reader. Lessons are ordered and assume their own prerequisites, so a link into the middle of another workspace's arc reaches someone who has not earned it. Say what the reader will find there and why they would want it.
+Link to the most stable target available:
+
+- Prefer a `GLOSSARY.md` term or a `reference/` sheet. Both are written for lookup and land on any reader.
+- Avoid a link into the middle of another workspace's lesson arc. Lessons are ordered and assume their own prerequisites, so such a link reaches someone who has not earned it.
+
+Say what the reader will find there and why they would want it.
 
 One topic per workspace still holds. A different topic is a new workspace, not a second mission; linking is how the two connect.
 
@@ -109,7 +117,12 @@ One topic per workspace still holds. A different topic is a new workspace, not a
 
 Deep learning needs **knowledge** from high-trust sources, **skills** from practice the user actually performs, and **wisdom** from the real world. Some topics lean knowledge-heavy (theoretical physics), others skill-heavy (yoga), so calibrate.
 
-Separate **fluency strength** (in-the-moment retrieval) from **storage strength** (long-term retention). Fluency feels like mastery and isn't. Build storage strength through desirable difficulty: retrieval practice, spacing across sessions, interleaving related skills. For acquiring knowledge, difficulty is the enemy: it eats the working memory needed to understand. For practicing skills, difficulty is the tool.
+Separate **fluency strength** (in-the-moment retrieval) from **storage strength** (long-term retention). Fluency feels like mastery and isn't. Build storage strength through desirable difficulty: retrieval practice, spacing across sessions, interleaving related skills.
+
+Difficulty cuts both ways, so place it deliberately:
+
+- **Acquiring knowledge: remove difficulty.** It eats the working memory needed to understand.
+- **Practicing a skill: add difficulty.** It is what builds storage strength.
 
 ## Lesson Design
 
@@ -117,7 +130,10 @@ Separate **fluency strength** (in-the-moment retrieval) from **storage strength*
 - **Only the knowledge the skill needs.** Teach that, then have the user practice it.
 - **Self-contained feedback.** Practice carries its own answer key: recall prompts with collapsed answers, and real-world reps the user performs away from the screen. Close by inviting the user to bring answers or sticking points back to the session.
 - **Answer-key discipline.** Keep answers collapsed. Hold every multiple-choice option to the same word count, and character count where possible. Formatting must not leak the answer.
-- **Graduated hints, where a nudge is enough.** A prediction or a debugging prompt may carry a collapsed `Hint` before its `Check`, as a sibling block rather than nested inside the answer: a hint reachable only by opening the answer is not a hint. Use it where one push gets the learner unstuck, and leave it off recall prompts, where a hint is the answer arriving early.
+- **Graduated hints, where a nudge is enough.**
+  - Place a collapsed `Hint` before its `Check`, as a sibling block. Never nest it inside the answer: a hint reachable only by opening the answer is not a hint.
+  - Add one to a prediction or a debugging prompt, where a single push gets the learner unstuck.
+  - Leave it off a recall prompt, where a hint is the answer arriving early.
 - **Spacing and interleaving.** Open with two or three recall items from earlier lessons, and mix related skills into practice sets rather than drilling one in isolation.
 - **Predict, then run.** Where the material has a runnable or observable form, show it, ask what will happen before the user finds out, then make finding out a real-world rep. The gap between the prediction and the result is what teaches; a demonstration the user watched teaches much less.
 - **Linked.** Link the `reference/` sheets, glossary terms, and prior lessons a reader would want next.
@@ -132,7 +148,12 @@ Read `RESOURCES.md` before reaching for parametric knowledge. When a claim is fa
 
 **When `RESOURCES.md` is thin, finding sources is the work.** On a new workspace, or in an area the listed sources do not cover, spend the session locating and annotating high-trust sources instead of teaching from none. A session that produced no lesson is recoverable. A lesson grounded in nothing is not visibly missing anything, which is why it survives.
 
-When lookup is unavailable or the material is stable and uncontested, teach from model knowledge, but never dress an uncited claim as sourced, and record what is missing under `## Gaps` so a later session can close it. Prune sources that turn out to be shallow, wrong, or off-mission.
+When lookup is unavailable, or the material is stable and uncontested, teach from model knowledge. Two rules hold when you do:
+
+- Never dress an uncited claim as sourced.
+- Record what is missing under `## Gaps`, so a later session can close it.
+
+Prune any source that turns out to be shallow, wrong, or off-mission.
 
 ## Zone of Proximal Development
 
@@ -155,7 +176,12 @@ When a question needs judgment rather than facts, answer it as well as you can, 
 
 **Every link leads to something the reader can go and consume.** The test is the annotation you would write for it: "Use for: reading X" belongs, "Use for: asking X" does not. Documentation, specifications, books, articles and style guides pass without argument.
 
-The test turns on how the destination is used, not on what kind of site it is. A forum or a subreddit read as an archive of what practitioners have already reported is a source, and in a field that moves faster than anyone writes it down it is sometimes the only one. The same venue framed as somewhere to post a question and wait is not: that is an account, a delay, and an answer nobody can retrieve afterwards. So a `RESOURCES.md` may carry a `## Wisdom (Communities)` section, and the annotation has to earn it by naming what is already there to read rather than who might reply. Prefer archives that are searchable without joining, which is the half of the objection you can actually fix; a closed chat fails on retrievability however good the people in it are.
+Apply that test to how the destination is used, not to what kind of site it is:
+
+- List a forum or a subreddit when its archive is what the reader consumes. In a field that moves faster than anyone writes it down, that archive is sometimes the only source there is.
+- Do not list the same venue when it is somewhere to post a question and wait. That is an account, a delay, and an answer nobody can retrieve afterwards.
+- Put such an entry under a `## Wisdom (Communities)` section in `RESOURCES.md`, and name in its annotation what is already there to read, never who might reply.
+- Prefer an archive searchable without joining. A closed chat fails on retrievability however good the people in it are.
 
 A lesson's **Going further** is a reading list under either heading. A real-world rep may send the user to search a community, and that is practice, not a source.
 

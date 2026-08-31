@@ -25,3 +25,6 @@ $RECYCLE.BIN/
 
 # MkDocs build output
 /site/
+
+# Agent working notes, local to a checkout
+/.agents/TODO.md

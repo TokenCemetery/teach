@@ -5,74 +5,72 @@
 A place to learn topics over many sessions. One topic lives in one directory:
 `learning/<domain>/<topic>/`.
 
-All state is kept in files, not in the conversation, because a topic is taught
-across many sessions and no session remembers the last one. What the user
-demonstrably learned goes in that topic's `learning-records/`; what is true
-about them goes in its `NOTES.md`; anything a future session needs to know
-about the repository itself belongs in this file or in the teach skill, which
-are committed and read by everyone. There is no scratch file for durable facts:
-if it is worth keeping, it is worth putting where it is already read.
+Keep all state in files. No session remembers the last one, so write every
+durable fact where it is already read:
 
-Almost every task here is one of two things: teach a lesson, or update workspace
-files. Anything else (templates, CI, project docs) is rare.
+- What the user demonstrably learned: that topic's `learning-records/`.
+- What is true about the user: that topic's `NOTES.md`.
+- What a future session needs to know about this repository: this file, or the
+  teach skill.
+
+Never leave a durable fact in a scratch file or in the conversation.
 
 ## Teaching
 
-Read `.agents/skills/teach/SKILL.md` before you create or edit any file inside
-a workspace. It is the entry point: it defines every path and the teaching
-workflow, and points at `FORMATS.md` for what each file must contain and
-`PUBLISHING.md` for front matter, rendering and what the published site needs.
-Do not invent your own, and do not follow a personal skill of the same name
-where the two disagree. The file in this repository wins.
+Read `.agents/skills/teach/SKILL.md` before you create or edit any file under
+`learning/`. It defines every path and the teaching workflow. It points to two
+more files:
+
+- `FORMATS.md`: what each file must contain.
+- `PUBLISHING.md`: front matter, rendering, and what the published site needs.
+
+Follow that skill. Do not invent your own workflow. A personal skill named
+`teach` may exist outside this repository. Where the two disagree, the file in
+this repository wins.
 
 ## Editing rules
 
-- The repository is the source of truth. Check files before acting on old notes
-  or on what an earlier session reported.
-- Change as little as possible. Do not restructure, reformat, or improve
-  unrelated content unless asked.
+- The repository is the source of truth. Read the files before you act. Do not
+  trust old notes or what an earlier session reported.
+- Change as little as possible.
+- Do not restructure, reformat, or improve unrelated content unless asked.
 - If your change makes a project document wrong, fix that document in the same
   change.
 
-Before a change that touches behavior, several files, shared conventions,
-structure, dependencies, or project docs, first state: what you will change,
-how you will check it, and any real ambiguity. Ask one short question if the
-answer would change the scope. Writing one lesson into an existing workspace
-does not need this step.
+State your plan first when a change touches behavior, several files, shared
+conventions, structure, dependencies, or project docs. Say what you will
+change, how you will check it, and any real ambiguity. Ask one short question
+if the answer would change the scope. Writing one lesson into an existing
+workspace needs no plan.
 
 ## Checking your work
 
-`learning/` is the source of a published site. After any change under it, build
-with the repository virtualenv:
+`learning/` is the source of a published site. After any change under it, run:
 
 ```bash
 .venv/bin/mkdocs build --strict
 ```
 
-A clean strict build is necessary and not sufficient. It validates front matter
-and navigation, and cannot see a collapsed answer that failed to render.
-`.agents/skills/teach/PUBLISHING.md` lists what it misses and how to check the
-rest.
+The build checks front matter and navigation. It does not check that a
+collapsed answer rendered. Read `.agents/skills/teach/PUBLISHING.md` for the
+checks the build cannot do.
 
 ## Quality bar for anything you write
 
-- Complete, specific, and consistent with itself.
-- No placeholders and no TODOs. The only exceptions are
-  `templates/learning-workspace/`, which keeps its `{placeholder}` markers, and
-  `TODO.md`, whose subject is planned work.
-- No claims you cannot support.
-- No em dashes in prose. Where a sentence reaches for one, rewrite it with a
-  comma, colon, period, parentheses or a conjunction, whichever the sentence
-  wants. Never substitute the character mechanically. The lessons predate this
-  rule and still carry them; that is a backlog being cleared a workspace at a
-  time, not a licence.
-- Every section and example must serve the goal. Delete the rest.
-- Examples must be short, complete, and match how this repository actually
-  works.
-- Choose the simplest version that fully solves the task. Do not add
-  abstractions, options, or features nobody asked for.
-- Re-read what you wrote before showing it. Fix contradictions, placeholders,
-  and anything outside the request.
+- Be complete and specific, and stay consistent with yourself.
+- Write no placeholders and no TODOs. Two exceptions:
+  `templates/learning-workspace/` keeps its `{placeholder}` markers, and
+  `.agents/TODO.md`, which is git-ignored, holds planned work.
+- Make no claim you cannot support.
+- Use no em dashes in prose. Rewrite the sentence with a comma, colon, period,
+  parentheses, or a conjunction. Pick the one the sentence wants. Never swap
+  the character mechanically.
+- Delete any section or example that does not serve the goal.
+- Keep examples short and complete. Match how this repository actually works.
+- Choose the simplest version that fully solves the task. Add no abstraction,
+  option, or feature nobody asked for.
+- Re-read your work before you show it. Fix contradictions, placeholders, and
+  anything outside the request.
 
 ## Final answer
 

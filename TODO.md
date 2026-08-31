@@ -22,102 +22,6 @@ Two questions are unresolved. They block the phases named, and a session that re
 
 ---
 
-## Phase 1: rules and metadata
-
-Three small additions plus one clarification. Nothing here changes behaviour of existing content, so it is safe to run first.
-
-### 1.0 Let `AGENTS.md` permit a planning document
-
-**Why.** `AGENTS.md` says, under `## Quality bar for anything you write`: "No placeholders and no TODOs. The only exception is `templates/learning-workspace/`." The intent is that delivered work must not ship half-done with markers in it. A cold reader can also read it as forbidding this file, and might delete it. Fix the ambiguity rather than rely on interpretation.
-
-**Where.** `AGENTS.md`, the `## Quality bar for anything you write` section.
-
-**Now.**
-
-```text
-- No placeholders and no TODOs. The only exception is
-  `templates/learning-workspace/`.
-```
-
-**Change.** Add the second exception, keeping the file's hard wrap at roughly 78 characters:
-
-```text
-- No placeholders and no TODOs. The only exceptions are
-  `templates/learning-workspace/`, which keeps its `{placeholder}` markers, and
-  `TODO.md`, whose subject is planned work.
-```
-
-**Verify.** `grep -n "TODO" AGENTS.md` names both exceptions.
-
-### 1.1 Sources first when `RESOURCES.md` is thin
-
-**Why.** The upstream skill carries a sequencing rule the fork lost: "Before the `RESOURCES.md` is well-populated, your focus should be to find high-quality resources which will help the user acquire knowledge." Our `## Grounding` says to read `RESOURCES.md` before reaching for model knowledge, but never says that on a new workspace the session's job may be sourcing rather than teaching. Without it, a first session produces a lesson grounded in nothing, and nothing about the result looks wrong.
-
-**Where.** `.agents/skills/teach/SKILL.md`, sections `## Grounding` and `## Workflow` (subsection `### Setup`).
-
-**Now.** `## Grounding` opens with "Read `RESOURCES.md` before reaching for parametric knowledge." `### Setup` step 4 reads "Choose the lesson target: what the user asked for, otherwise derive it, see Zone of Proximal Development."
-
-**Change.** Add to `## Grounding`, as its own paragraph:
-
-> **When `RESOURCES.md` is thin, finding sources is the work.** On a new workspace, or in an area the listed sources do not cover, spend the session locating and annotating high-trust sources instead of teaching from none. A session that produced no lesson is recoverable. A lesson grounded in nothing is not visibly missing anything, which is why it survives.
-
-Then add a sentence to `### Setup` step 4, so the branch is visible where the target is chosen:
-
-> If no listed source covers that target, close the gap first, see Grounding.
-
-**Verify.** Both additions present, and `mkdocs build --strict` still passes (the skill is not published, but the build is the cheap guard against an accidental edit elsewhere).
-
-### 1.2 Glossary subheadings
-
-**Why.** Upstream's glossary format has a rule the fork lost: group terms under subheadings when natural clusters emerge. The Go glossary independently grew a `## Usage in this workspace` section above `## Terms`, which is evidence the rule was needed and its absence was noticed in practice rather than in review.
-
-**Where.** `.agents/skills/teach/SKILL.md`, section `## Formats`, subsection `### `GLOSSARY.md``, its `Rules:` list.
-
-**Now.** The list has six bullets, ending "Revise in place as understanding deepens."
-
-**Change.** Add one bullet before the last:
-
-> - Group under subheadings when natural clusters emerge, such as `## Anatomy` or `## Syntax`. A flat list under `## Terms` is right until it stops being scannable.
-
-**Verify.** `grep -c "subheading" .agents/skills/teach/SKILL.md` returns 1 or more. No existing glossary needs changing: the Go one already complies, and the fine-tuning one is a flat list that is still scannable.
-
-### 1.3 Honest metadata
-
-**Why.** The front matter makes three claims that do not hold. `upstream: github.com/PromptPasture/agent.md` is not supported by anything in the upstream copy, whose repository is `github.com/mattpocock/skills` (confirmed in its `package.json`). `version: "1.1.0"` corresponds to nothing checkable, because upstream versions the whole repository through changesets rather than per skill, and that repository is at 1.2.3. And the upstream skill has no `metadata` block at all, so the entire block is a local addition presenting itself as inherited.
-
-**Where.** `.agents/skills/teach/SKILL.md`, YAML front matter.
-
-**Now.**
-
-```yaml
-metadata:
-  author: github.com/mattpocock/skills
-  upstream: github.com/PromptPasture/agent.md
-  version: "1.1.0"
-  catalog: productivity
-  category: learning
-  tags: [learning, teaching, retention]
-```
-
-**Change.**
-
-```yaml
-metadata:
-  upstream: github.com/mattpocock/skills
-  upstream_path: skills/productivity/teach
-  upstream_version: "1.2.3"
-  version: "2.0.0"
-  catalog: productivity
-  category: learning
-  tags: [learning, teaching, retention]
-```
-
-`author` goes because it named a repository rather than a person, and `upstream` now carries that. `license: MIT` stays where it is, outside the metadata block: upstream is MIT and the attribution has to survive. Version 2.0.0 rather than 1.2.0 because the fork is incompatible, not behind: lessons moved from HTML to markdown, and one workspace per directory became many workspaces in one repository.
-
-**Verify.** The YAML parses. `python3 -c "import yaml,sys;print(yaml.safe_load(open('.agents/skills/teach/SKILL.md').read().split('---')[1]))"` prints the block without error.
-
----
-
 ## Phase 2: stop shipping empty directories
 
 **Why.** `SKILL.md` says "Create each lazily, on first need." The template ships four empty directories and the two live workspaces ship two each, all held open by a `.gitkeep`. The rule and the repository disagree, and the repository is what gets copied. Separately, `assets/` has no purpose in a markdown workspace: upstream's `assets/` holds stylesheets, quiz widgets and simulators for HTML lessons, none of which port.
@@ -256,7 +160,7 @@ One workspace per pass, with `mkdocs build --strict` and a structural lint after
 
 ## Ordering
 
-Phases 1, 2 and 3 in that order. The rules in phase 1 are cheap to add before the file is split, and the deletions in phase 2 are cheaper before the sections move. Splitting last means the move happens once.
+Phases 2 and 3 in that order: the deletions are cheaper before the sections move, and splitting last means the move happens once.
 
 Phase 4 depends on phase 3 only for where its output lands, and its spike (4.1) can run at any time.
 
@@ -264,4 +168,11 @@ Phase 5 is independent of everything and should be last, because it produces the
 
 ## Done
 
-Nothing yet.
+### Phase 1: rules and metadata, 2026-08-31
+
+Four commits, one per task. The rules themselves now live where they are read, so what is worth keeping here is only what the files do not say.
+
+- **1.0** `AGENTS.md` names two exceptions to the no-TODOs rule: the template, for its `{placeholder}` markers, and this file.
+- **1.1** Sourcing is the work when `RESOURCES.md` is thin. Restored from upstream into `## Grounding`, with the branch repeated at `### Setup` step 4 because that is where the target is chosen and where the omission would bite.
+- **1.2** Glossary subheadings allowed. Both live glossaries, not just the Go one, had already grown a `## Usage in this workspace` section, which is stronger evidence for the rule than upstream carrying it. Neither term list was regrouped: both are still scannable flat, and the rule says a flat list is right until it stops being.
+- **1.3** Metadata corrected. `author` dropped because it named a repository; `upstream` carries that, with `upstream_path` and `upstream_version` so the claim is checkable against a specific tree. `version: "2.0.0"` asserts incompatibility with upstream rather than lag. Left open deliberately: nothing consumes `version`, so its semantics are a convention this repository owes itself, not a contract.

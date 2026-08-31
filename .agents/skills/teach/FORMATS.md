@@ -188,3 +188,5 @@ See [Rendering](PUBLISHING.md#rendering) for the constraints the `<details>` blo
 `reference/<slug>.md`. The compressed essence of what lessons taught, built for quick lookup: syntax tables, algorithms, flowcharts, pose sequences, routines, checklists.
 
 Lessons are rarely revisited; these are. Optimise for scanning — tables and short lists over prose — and keep them printable.
+
+A **drill bank** is one of these sheets: retrieval questions covering a stage, answers collapsed the same way Practice collapses them, written to be dipped into repeatedly rather than worked through once. It is the exception to scanning, and the one sheet a session may open before teaching, to pull warm-up items from without rereading every lesson.

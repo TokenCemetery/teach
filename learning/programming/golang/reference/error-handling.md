@@ -23,7 +23,7 @@ Error last in the result list. Checked immediately. No other result is valid whe
 | fixed message | `errors.New("connection closed")` |
 | formatted, no chain | `fmt.Errorf("parse row %d: %v", i, err)` |
 | formatted, wrapped | `fmt.Errorf("parse row %d: %w", i, err)` |
-| several at once | `errors.Join(err1, err2)` — nil if all nil |
+| several at once | `errors.Join(err1, err2)`, nil if all nil |
 | sentinel | `var ErrNotFound = errors.New("not found")` |
 
 Error strings: lowercase, no trailing punctuation. They get embedded in longer messages.
@@ -49,15 +49,15 @@ if errors.As(err, &verr) {       // note: pointer to the target variable
 }
 ```
 
-Never `err == ErrNotFound` — one added `%w` anywhere above breaks it silently.
+Never `err == ErrNotFound`: one added `%w` anywhere above breaks it silently.
 `errors.As` panics if the second argument is not a pointer. That is deliberate.
 
 ## Wrapping discipline
 
-- Add context the error does not already carry — the operation and the identifier, not "failed to".
+- Add context the error does not already carry: the operation and the identifier, not "failed to".
 - Wrap once per meaningful layer, not once per function.
 - **Handle an error exactly once**: either handle it and return nil, or return it and say nothing. Never log *and* return.
-- Log where the error stops — middleware, or `main`.
+- Log where the error stops, in middleware or in `main`.
 
 ## Traps that compile
 
@@ -74,7 +74,7 @@ Never `err == ErrNotFound` — one added `%w` anywhere above breaks it silently.
 var p *MyError = nil
 var err error = p
 p == nil     // true
-err == nil   // false — the interface holds a type
+err == nil   // false, the interface holds a type
 ```
 
 An interface is nil only when **both** its type word and value word are nil.
@@ -83,7 +83,7 @@ An interface is nil only when **both** its type word and value word are nil.
 
 - Arguments are evaluated at the `defer` line; defer a closure to capture the variable.
 - Deferred calls run LIFO, on return and on panic.
-- `defer` is scoped to the **function**, not the block — never in a loop over many resources.
+- `defer` is scoped to the **function**, not the block, so never in a loop over many resources.
 - A deferred closure can modify a **named** result. That is the idiom for annotating every error path at once.
 - `Close` on a writer returns a real error; do not discard it.
 
@@ -98,7 +98,7 @@ func load(path string) (err error) {
 }
 ```
 
-`panic` is for programmer errors — impossible branches, startup invariants, `template.Must`. Not for expected failures.
+`panic` is for programmer errors: impossible branches, startup invariants, `template.Must`. Not for expected failures.
 
 `recover` works only in a function deferred directly by the panicking function, **in the same goroutine**. It cannot catch a fatal error (`concurrent map writes`, `deadlock!`).
 
@@ -118,4 +118,4 @@ default:
 }
 ```
 
-Translate third-party errors at the boundary — a repository returning `sql.ErrNoRows` puts `database/sql` in its API.
+Translate third-party errors at the boundary. A repository returning `sql.ErrNoRows` puts `database/sql` in its API.

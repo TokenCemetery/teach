@@ -37,7 +37,7 @@ Minimal version selection picks the **highest of the required minimums**, not th
 
 Module at v2 or above needs `/v2` in the module path and in imports.
 
-`GOPRIVATE=github.com/yourorg/*` for internal modules — skips the public proxy and checksum database.
+`GOPRIVATE=github.com/yourorg/*` for internal modules, which skips the public proxy and checksum database.
 
 The `go` directive sets language semantics (loop variables, timer behaviour). The `toolchain` directive sets which toolchain builds it.
 
@@ -54,7 +54,7 @@ go test -fuzz=FuzzRoundTrip       # open-ended fuzzing
 
 | Helper | Does |
 |---|---|
-| `t.Run(name, fn)` | subtest — independent failure, selectable by name |
+| `t.Run(name, fn)` | subtest, independent failure, selectable by name |
 | `t.Parallel()` | run with other parallel subtests |
 | `t.Helper()` | report failures at the caller's line |
 | `t.Cleanup(fn)` | teardown that works with subtests and parallel tests |
@@ -99,7 +99,7 @@ Import `_ "net/http/pprof"` and serve on **localhost only**.
 | `/debug/pprof/heap` | memory (`inuse_space` by default) |
 | `/debug/pprof/goroutine?debug=2` | every goroutine stack, with block duration |
 | `/debug/pprof/goroutineleak` | provably unblockable goroutines (Go 1.27) |
-| `/debug/pprof/block`, `/mutex` | waiting and contention — must be enabled first |
+| `/debug/pprof/block`, `/mutex` | waiting and contention, must be enabled first |
 
 Inside pprof: `top`, `top -cum`, `list Func`, `web`.
 **flat** = time in this function's own code. **cum** = including callees.
@@ -127,7 +127,7 @@ CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build \
 | Flag | Does |
 |---|---|
 | `CGO_ENABLED=0` | static binary, runs in `scratch`/`distroless` |
-| `-trimpath` | strips local paths — reproducible, and no leaked home directory |
+| `-trimpath` | strips local paths, so builds are reproducible and no home directory leaks |
 | `-ldflags="-s -w"` | strips symbols and DWARF; drop these if you need readable crashes |
 | `-X pkg.Var=value` | sets a string variable at link time |
 

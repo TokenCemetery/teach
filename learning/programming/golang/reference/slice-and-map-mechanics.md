@@ -12,7 +12,7 @@ Lookup sheet for [Lesson 3](../lessons/0003-slices-and-the-backing-array.md) and
 
 | Word | Read with | Meaning |
 |---|---|---|
-| pointer | — | where the elements start in the backing array |
+| pointer | not exposed | where the elements start in the backing array |
 | length | `len(s)` | how many elements this slice exposes |
 | capacity | `cap(s)` | elements from the pointer to the end of the array |
 
@@ -40,7 +40,7 @@ c = append(c, 99)    // allocates; a untouched
 ## Handing out a sub-slice safely
 
 ```go
-return s[0:2:2]        // capacity cut — caller's append must allocate
+return s[0:2:2]        // capacity cut, caller's append must allocate
 return slices.Clone(s[:2])  // always copies; costs an allocation
 ```
 
@@ -48,7 +48,7 @@ return slices.Clone(s[:2])  // always copies; costs an allocation
 
 | Want | Write |
 |---|---|
-| copy elements | `copy(dst, src)` — moves `min(len(dst), len(src))` |
+| copy elements | `copy(dst, src)`, moves `min(len(dst), len(src))` |
 | independent copy | `slices.Clone(s)` |
 | append another slice | `s = append(s, other...)` |
 | delete index i | `s = slices.Delete(s, i, i+1)` |
@@ -97,7 +97,7 @@ for _, k := range slices.Sorted(maps.Keys(m)) { ... }   // Go 1.23+
 
 ```go
 m["a"].N++          // compile error for map[string]Stat
-m["a"]++            // fine — whole-element assignment
+m["a"]++            // fine, whole-element assignment
 ```
 
 Fix with `map[string]*Stat`, or read-modify-write.
@@ -108,7 +108,7 @@ Fix with `map[string]*Stat`, or read-modify-write.
 fatal error: concurrent map writes
 ```
 
-Best-effort detection — a clean run is not proof. Guard with a `sync.Mutex`.
+Best-effort detection: a clean run is not proof. Guard with a `sync.Mutex`.
 
 **Keys must be comparable.** Numbers, strings, bools, pointers, channels, interfaces, and structs or arrays of those. Not slices, maps or functions. An interface key can panic at runtime if it holds a slice.
 
@@ -117,7 +117,7 @@ Best-effort detection — a clean run is not proof. Guard with a `sync.Mutex`.
 | Want | Write |
 |---|---|
 | keys as a sorted slice | `slices.Sorted(maps.Keys(m))` |
-| values | `maps.Values(m)` — an iterator |
+| values | `maps.Values(m)`, an iterator |
 | copy | `maps.Clone(m)` |
 | compare | `maps.Equal(a, b)` |
 | empty it | `clear(m)` |

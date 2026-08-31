@@ -29,7 +29,7 @@ If a comment could have been made by a tool, a tool should have made it.
 - [ ] Does the package return concrete types and accept interfaces?
 - [ ] Are the matchable errors documented? Anything documented is now API.
 - [ ] Does the doc comment start with the identifier's name?
-- [ ] Does anything stutter — `store.NewStore`, `http.HTTPServer`?
+- [ ] Does anything stutter, as in `store.NewStore` or `http.HTTPServer`?
 
 ### 2. Error paths
 
@@ -55,7 +55,7 @@ If a comment could have been made by a tool, a tool should have made it.
 - [ ] No lock held across I/O.
 - [ ] No map shared without synchronisation.
 - [ ] No method locks and then calls another method that locks.
-- [ ] Nothing containing a mutex is copied — value receivers, struct assignment, range copies.
+- [ ] Nothing containing a mutex is copied: value receivers, struct assignment, range copies.
 
 ### 5. Boundaries
 
@@ -95,10 +95,10 @@ Name the **consequence** and the **mechanism**, then offer the alternative.
 
 | Instead of | Say |
 |---|---|
-| "bad naming" | "`store.NewStore` stutters at the call site — `store.New` reads better" |
+| "bad naming" | "`store.NewStore` stutters at the call site; `store.New` reads better" |
 | "use a pointer" | "value receiver copies the mutex; `go vet` flags this as `copylocks`" |
-| "too many methods" | "the only consumer uses two — a two-method interface there would do" |
-| "might leak" | "if the caller returns early these sends block forever — buffer it or add `ctx.Done()`" |
+| "too many methods" | "the only consumer uses two, so a two-method interface there would do" |
+| "might leak" | "if the caller returns early these sends block forever, so buffer it or add `ctx.Done()`" |
 | "wrap the error" | "`%v` here breaks `errors.Is` for `ErrNotFound` two layers up" |
 | "not idiomatic" | link the specific rule in [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments) |
 

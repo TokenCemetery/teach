@@ -24,7 +24,7 @@ Unbuffered = rendezvous, both sides synchronise. Buffered = decoupled, capacity 
 
 - Several cases ready → one chosen **uniformly at random**. Order is not priority.
 - `default` makes it non-blocking.
-- A nil channel is never ready — assign nil to disable a case.
+- A nil channel is never ready, so assign nil to disable a case.
 - A **closed** channel is always ready. A `continue` on it spins the CPU.
 - `select {}` blocks forever.
 
@@ -46,11 +46,11 @@ for {
 | `WithCancel(parent)` | `cancel()`, or parent |
 | `WithTimeout(parent, d)` | `d` elapsing, `cancel()`, or parent |
 | `WithDeadline(parent, t)` | `t` passing, `cancel()`, or parent |
-| `WithValue(parent, k, v)` | never — carries a value only |
-| `WithoutCancel(parent)` | never — keeps values, drops cancellation |
+| `WithValue(parent, k, v)` | never, carries a value only |
+| `WithoutCancel(parent)` | never, keeps values and drops cancellation |
 | `WithCancelCause(parent)` | `cancel(err)`; read back with `context.Cause(ctx)` |
 
-Rules: first parameter, named `ctx`. Always `defer cancel()`. Never nil — use `Background()` or `TODO()`. Do not store in a struct. Values are request-scoped metadata, never dependencies. Keys are an unexported type.
+Rules: first parameter, named `ctx`. Always `defer cancel()`. Never nil: use `Background()` or `TODO()`. Do not store in a struct. Values are request-scoped metadata, never dependencies. Keys are an unexported type.
 
 **Cancellation is cooperative.** A CPU-bound loop must check `ctx.Err()` itself.
 
@@ -67,7 +67,7 @@ Rules: first parameter, named `ctx`. Always `defer cancel()`. Never nil — use 
 | fan out, collect first error, cancel the rest | `errgroup.WithContext` |
 | bound fan-out | `errgroup.SetLimit(n)` or a worker pool |
 
-Mutex rules: `defer mu.Unlock()` immediately after `Lock`. Never hold across I/O. Not reentrant. `RWMutex` only pays for long, read-heavy critical sections — measure.
+Mutex rules: `defer mu.Unlock()` immediately after `Lock`. Never hold across I/O. Not reentrant. `RWMutex` only pays for long, read-heavy critical sections, so measure.
 
 ## errgroup
 
@@ -83,7 +83,7 @@ if err := g.Wait(); err != nil { ... }
 ## Data races
 
 Race = two goroutines, same memory, ≥1 write, no happens-before edge.
-A race is **undefined behaviour** — not "one value or the other".
+A race is **undefined behaviour**, not "one value or the other".
 
 Happens-before edges you can rely on:
 
@@ -123,9 +123,9 @@ curl 'localhost:6060/debug/pprof/goroutineleak'       # Go 1.27: only unblockabl
 
 1. `signal.NotifyContext(ctx, os.Interrupt, syscall.SIGTERM)`
 2. Fail readiness, wait a few seconds for the load balancer
-3. `srv.Shutdown(freshCtx)` — **never the cancelled context**
+3. `srv.Shutdown(freshCtx)`, **never the cancelled context**
 4. Wait for workers (`g.Wait()`)
 5. Close dependencies in reverse construction order
-6. Exit anyway at the deadline — shorter than the platform's grace period
+6. Exit anyway at the deadline, shorter than the platform's grace period
 
 `ListenAndServe` returns `http.ErrServerClosed` on a clean shutdown. Treat it as success.

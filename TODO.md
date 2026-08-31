@@ -22,34 +22,6 @@ Two questions are unresolved. They block the phases named, and a session that re
 
 ---
 
-## Phase 3: split the skill into three files
-
-**Why.** `SKILL.md` is 392 lines, and 181 of them (46 per cent) are file templates that matter only when writing one specific file type. Another 54 are purely about publishing. `AGENTS.md` requires reading the whole thing before editing any workspace file, so every session pays for the templates whether or not it writes one. Upstream solves this with a 140 line `SKILL.md` and four format files loaded on demand.
-
-Run this after phases 1 and 2, so the additions and deletions do not have to be moved twice.
-
-**Change.** Three files, not upstream's five. Front matter and rendering rules apply to all six formats in our repository, so a file per format would duplicate them six times.
-
-| File | Sections moved into it |
-|---|---|
-| `SKILL.md` (stays) | Workflow, Layout, New Topic, Linking Across Workspaces, Philosophy, Lesson Design, Grounding, Zone of Proximal Development, Learning Records, Wisdom, Error Paths |
-| `FORMATS.md` (new) | Formats, with all six templates and their rules |
-| `PUBLISHING.md` (new) | Front Matter, Rendering, Verification |
-
-Expected sizes: about 157, 181 and 54 lines, totalling the 392 the single file has now.
-
-Requirements on the result:
-
-- `SKILL.md` links both new files where the reader needs them: Formats from the Loop step that drafts a lesson, Publishing from Lesson Design and from the Exit criteria.
-- Each new file opens with one sentence saying what it governs and that `SKILL.md` is the entry point.
-- No rule is duplicated across files. If two files both want a rule, one owns it and the other links.
-- `AGENTS.md` currently says "Read `.agents/skills/teach/SKILL.md` before you create or edit any file inside a workspace. It defines every path, every file format, and what the published site needs." After the split that sentence is wrong in detail: update it to name `SKILL.md` as the entry point and the other two as what it points at.
-- `AGENTS.md` also references the skill in `## Checking your work` as the place that "lists what it misses and how to check the rest". That target moves to `PUBLISHING.md`.
-
-**Verify.** `grep -rn "SKILL.md#" .` finds no anchor links into moved sections. `wc -l` on the three files totals within a few lines of 392. Read `SKILL.md` end to end as if new: it should be possible to orient without opening either other file.
-
----
-
 ## Phase 4: interactivity within markdown
 
 **Why.** Upstream teaches skills through interactive HTML: quizzes, simulators, in-browser tasks, all built on a component library. None of it ports, because the same files are read on GitHub where no script runs. What can port is the function those things served, which is a tight feedback loop. Three candidates below, one of which needs a prototype before it can be promised.
@@ -124,9 +96,7 @@ One workspace per pass, with `mkdocs build --strict` and a structural lint after
 
 ## Ordering
 
-Phase 3 next, then phase 4, which depends on it only for where its output lands. The spike at 4.1 can run at any time.
-
-Phase 5 is independent of everything and should be last, because it produces the largest and least reviewable diffs. Its wave 1 also touches files that phase 3 is rewriting, so running it earlier means editing the same sentences twice.
+Phase 4 next. Phase 5 last, because it produces the largest and least reviewable diffs.
 
 ## Done
 
@@ -147,3 +117,13 @@ Two commits, split by argument rather than by directory: `assets/` went because 
 - `assets/` is gone from both layout trees, the path table and the reuse rule. The reuse rule kept `reference/`, which is where a drill bank now belongs; phase 4.3 depends on that.
 - `### Setup` step 2 now says a missing `learning-records/` means no record has been earned. Without that, lazy creation and an unconditional read contradict each other, and the agent hitting it would guess.
 - Copying the template now yields four markdown files and no directories, verified with a real `cp -r`.
+
+### Phase 3: split the skill into three files, 2026-08-31
+
+One commit, because a split is not divisible: any smaller step leaves the skill describing a structure it does not have.
+
+- Sizes came out at 161, 184 and 57 lines against the plan's 157, 181 and 54. The four extra lines are the two new file headers.
+- Cut with a script rather than by hand, then diffed line multisets between the old file and the three new ones. Everything the diff reported lost was a heading demotion or one of four cross-references that used to point inside the same file. Worth repeating on any future move: a split is exactly the change where a careful reader misses a dropped rule.
+- `FORMATS.md` links `PUBLISHING.md` for front matter and rendering, and `SKILL.md` for Wisdom, which owns the readable-sources rule. Anchors used: `FORMATS.md#lessons` and `PUBLISHING.md#rendering`.
+- Two stale claims elsewhere surfaced and were fixed on the way: `README.md` still listed `.agents/memory/` in its layout, and its MIT exception named one file when the directory now holds three.
+- Left alone deliberately: `README.md` says the skill came from `mattpocock/skills` via `PromptPasture/agent.md`. Phase 1.3 dropped that chain from the skill metadata because the upstream copy does not corroborate it, but absence of corroboration is not disproof, and attribution is the one claim not to trim on a hunch. Someone who knows whether that fork is real should decide.

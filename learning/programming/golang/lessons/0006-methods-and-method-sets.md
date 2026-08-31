@@ -12,7 +12,7 @@ type: lesson
 
 ## Warm-up
 
-1. ▢ `for i, r := range "héllo"` — why does `i` jump from 1 to 3?
+1. ▢ `for i, r := range "héllo"`: why does `i` jump from 1 to 3?
 
 <details markdown="1"><summary>Check</summary>
 
@@ -24,13 +24,13 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-Nothing new. The new length only ever lands in the local copy of the header. Whether the *element* was written into shared storage depends on capacity — but the caller's length never changes.
+Nothing new. The new length only ever lands in the local copy of the header. Whether the *element* was written into shared storage depends on capacity, but the caller's length never changes.
 
 </details>
 
 ## Know this
 
-A method is a function with a receiver, declared on any named type in the same package — not only structs:
+A method is a function with a receiver, declared on any named type in the same package, not only structs:
 
 ```go
 type Celsius float64
@@ -72,7 +72,7 @@ Here is the part that surprises people, and the reason this is its own lesson:
 | value, `func (t T)` | yes | yes |
 | pointer, `func (t *T)` | **no** | yes |
 
-Method sets are asymmetric. `*T` has everything; `T` has only the value-receiver methods. Calling through a variable hides this — `c.Inc()` works fine — but interface satisfaction does not:
+Method sets are asymmetric. `*T` has everything; `T` has only the value-receiver methods. Calling through a variable hides this, since `c.Inc()` works fine, but interface satisfaction does not:
 
 ```go
 type Incrementer interface{ Inc() }
@@ -89,7 +89,7 @@ The reason is that an interface holds a copy of the value put into it, and that 
 
 The rule that keeps this manageable: **choose value or pointer receivers per type, not per method.** Mixing them means the method set depends on which method you are asking about, and callers have to track which form they are holding.
 
-Use pointer receivers when any method mutates, when the type contains a `sync.Mutex` or another copy-hostile field, or when the type is already handled through pointers everywhere. Use value receivers for small immutable types — `time.Time` and the `Celsius` above are the shape. When in doubt on a struct, pointer receivers are the safer default, because adding a mutating method later then costs nothing.
+Use pointer receivers when any method mutates, when the type contains a `sync.Mutex` or another copy-hostile field, or when the type is already handled through pointers everywhere. Use value receivers for small immutable types: `time.Time` and the `Celsius` above are the shape. When in doubt on a struct, pointer receivers are the safer default, because adding a mutating method later then costs nothing.
 
 ## Practice
 
@@ -99,7 +99,7 @@ Use pointer receivers when any method mutates, when the type contains a `sync.Mu
 
 The first compiles, the second does not.
 
-`c` is a variable and therefore addressable, so Go rewrites the call as `(&c).Inc()`. The interface assignment has no variable to address — it copies the `Counter` into the interface — so `Inc` is not in `Counter`'s method set and the assignment is rejected.
+`c` is a variable and therefore addressable, so Go rewrites the call as `(&c).Inc()`. The interface assignment has no variable to address, because it copies the `Counter` into the interface, so `Inc` is not in `Counter`'s method set and the assignment is rejected.
 
 The lesson is that a working method call tells you nothing about interface satisfaction.
 
@@ -111,7 +111,7 @@ The lesson is that a working method call tells you nothing about interface satis
 
 In the first case the element is not addressable, so Go cannot produce the `*Counter` that `Inc` requires. In the second the map already stores a pointer; nothing needs addressing, and the method is called on the value the map handed back.
 
-This is the same constraint as `m["a"].N++` in Lesson 4 — the map refusing to hand out addresses into storage it may relocate.
+This is the same constraint as `m["a"].N++` in Lesson 4: the map refusing to hand out addresses into storage it may relocate.
 
 </details>
 
@@ -136,11 +136,11 @@ This is the same constraint as `m["a"].N++` in Lesson 4 — the map refusing to 
 
 Every method call copies the struct, and therefore the mutex. Each copy locks its own mutex, so nothing is actually excluded and the type provides no protection while appearing to.
 
-`go vet`'s `copylocks` check reports the copy. The fix is to convert the type to pointer receivers throughout — which is the practical argument for choosing them by default on structs that might ever grow state.
+`go vet`'s `copylocks` check reports the copy. The fix is to convert the type to pointer receivers throughout, which is the practical argument for choosing them by default on structs that might ever grow state.
 
 </details>
 
-5. ▢ Interleaving Lesson 1: is `var c Counter` — with no constructor — ready for `c.Inc()`?
+5. ▢ Interleaving Lesson 1: is `var c Counter`, with no constructor, ready for `c.Inc()`?
 
 <details markdown="1"><summary>Check</summary>
 
@@ -152,7 +152,7 @@ The zero-value rule and the receiver rule meet here: the type is usable unconstr
 
 ## Real-world reps
 
-- [ ] Write `Counter` with a pointer-receiver `Inc` and a value-receiver `Value`. Then declare `var _ Incrementer = Counter{}` and read the compile error carefully — it names the receiver, which is the clue you will want later.
+- [ ] Write `Counter` with a pointer-receiver `Inc` and a value-receiver `Value`. Then declare `var _ Incrementer = Counter{}` and read the compile error carefully. It names the receiver, which is the clue you will want later.
 - [ ] Take a type you have written in another language with getters and setters. Write the Go version and count how many methods survive. Most getters do not.
 - [ ] Tomorrow: find a struct in a real codebase with mixed receivers. Work out whether the mix was deliberate. Note what it would take to unify them.
 

@@ -35,8 +35,8 @@ A slice is not a list and not an array. It is a three-word **header**:
 | Field | Meaning |
 |---|---|
 | pointer | where the elements start in the backing array |
-| length | how many elements this slice exposes — what `len` returns |
-| capacity | how many elements exist from the pointer to the end of the array — what `cap` returns |
+| length | how many elements this slice exposes, what `len` returns |
+| capacity | how many elements exist from the pointer to the end of the array, what `cap` returns |
 
 The elements live in a **backing array** that the slice does not own and does not exclusively hold. Two slices can point into the same array, and neither knows about the other.
 
@@ -93,7 +93,7 @@ func addOne(s []int) { s = append(s, 1) } // caller never sees the new element
 
 ### nil versus empty
 
-`var s []int` is nil with length 0. `s := []int{}` is non-nil with length 0. `len`, `range`, and `append` treat them identically, so prefer nil — it is the zero value and needs no allocation. The difference is visible in exactly two places: `s == nil`, and JSON, where a nil slice marshals to `null` and an empty one to `[]`.
+`var s []int` is nil with length 0. `s := []int{}` is non-nil with length 0. `len`, `range`, and `append` treat them identically, so prefer nil: it is the zero value and needs no allocation. The difference is visible in exactly two places: `s == nil`, and JSON, where a nil slice marshals to `null` and an empty one to `[]`.
 
 ## Practice
 
@@ -147,7 +147,7 @@ Ask of each option: how much room is left past the length you handed back? Three
 
 **b)** `return s[0:2:2]`.
 
-It sets capacity to 2, so the caller's first `append` must allocate and cannot reach into your storage. Options a and d are the same expression written two ways, and c explicitly hands over the full capacity — the worst of the four.
+It sets capacity to 2, so the caller's first `append` must allocate and cannot reach into your storage. Options a and d are the same expression written two ways, and c explicitly hands over the full capacity, the worst of the four.
 
 `slices.Clone(s[:2])` is the other correct answer: it always copies, at the cost of an allocation you may not need.
 
@@ -169,7 +169,7 @@ Discarding the result is a bug in both branches. `go vet` does not catch it in g
 
 No. Ranging a nil slice runs zero times.
 
-Add the check only if nil and empty mean genuinely different things to the caller — which is rare, and worth a doc comment when it is true. Returning a nil slice for "nothing" is idiomatic; returning `[]int{}` to be defensive is noise.
+Add the check only if nil and empty mean genuinely different things to the caller, which is rare and worth a doc comment when it is true. Returning a nil slice for "nothing" is idiomatic; returning `[]int{}` to be defensive is noise.
 
 </details>
 

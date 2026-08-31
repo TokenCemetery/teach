@@ -24,7 +24,7 @@ Map elements are not addressable, because the table can relocate entries as it g
 
 <details markdown="1"><summary>Check</summary>
 
-Capacity 0. `append` allocates a backing array and returns a header pointing at it — no guard needed.
+Capacity 0. `append` allocates a backing array and returns a header pointing at it, so no guard is needed.
 
 </details>
 
@@ -71,7 +71,7 @@ r := []rune(s)   // allocates, decodes, four bytes per code point
 back := string(b)
 ```
 
-Each conversion is an allocation. That is fine once, and it is a real cost inside a hot loop — the kind of thing stage 5 finds in a profile. `[]rune` in particular is heavy: it turns a 6-byte string into a 20-byte slice.
+Each conversion is an allocation. That is fine once, and it is a real cost inside a hot loop, the kind of thing stage 5 finds in a profile. `[]rune` in particular is heavy: it turns a 6-byte string into a 20-byte slice.
 
 Building strings in a loop with `+=` is quadratic, because each concatenation allocates a new string and copies both sides. Use a builder:
 
@@ -83,7 +83,7 @@ for _, part := range parts {
 return b.String()
 ```
 
-`strings.Builder` is usable at its zero value, and — like anything holding internal state — must not be copied after first use.
+`strings.Builder` is usable at its zero value, and, like anything holding internal state, must not be copied after first use.
 
 ### `strings` and `bytes` are the same package twice
 
@@ -91,7 +91,7 @@ return b.String()
 
 ### The honest caveat
 
-A rune is a code point, and a code point is still not always a "character" as a user sees it. `é` can be one code point or two (`e` plus a combining accent), and a flag emoji is two. Rune counting is correct for indexing and slicing text; for anything user-visible — truncating a display name, counting for a UI limit — grapheme clusters are the right unit, and that needs a library such as [`golang.org/x/text`](https://pkg.go.dev/golang.org/x/text). Knowing which question you are asking matters more than the answer.
+A rune is a code point, and a code point is still not always a "character" as a user sees it. `é` can be one code point or two (`e` plus a combining accent), and a flag emoji is two. Rune counting is correct for indexing and slicing text; for anything user-visible, such as truncating a display name or counting for a UI limit, grapheme clusters are the right unit, and that needs a library such as [`golang.org/x/text`](https://pkg.go.dev/golang.org/x/text). Knowing which question you are asking matters more than the answer.
 
 ## Practice
 
@@ -114,7 +114,7 @@ The wrong instinct is to expect `len` to match what you see. It matches what is 
 
 <details markdown="1"><summary>Check</summary>
 
-It prints `Ã` — the replacement of a lone byte. `s[1]` is the first of the two bytes encoding `é`, `195`. Converting a single byte value to a string interprets it as a code point, and code point 195 is `Ã`.
+It prints `Ã`, the replacement of a lone byte. `s[1]` is the first of the two bytes encoding `é`, `195`. Converting a single byte value to a string interprets it as a code point, and code point 195 is `Ã`.
 
 To get the character, range the string, or decode with `utf8.DecodeRuneInString(s[1:])`.
 
@@ -131,7 +131,7 @@ To get the character, range the string, or decode with `utf8.DecodeRuneInString(
 
 **b)** `for i, r := range s`.
 
-Ranging a string decodes UTF-8 and yields runes. Options a and c both walk raw bytes by index — c is the Go 1.22 range-over-int form, which changes the spelling and not the problem — and d converts to bytes explicitly, which is right only when bytes are what you want.
+Ranging a string decodes UTF-8 and yields runes. Options a and c both walk raw bytes by index (c is the Go 1.22 range-over-int form, which changes the spelling and not the problem), and d converts to bytes explicitly, which is right only when bytes are what you want.
 
 </details>
 
@@ -141,7 +141,7 @@ Ranging a string decodes UTF-8 and yields runes. Options a and c both walk raw b
 
 Strings are immutable, so each `+=` allocates a new string and copies everything accumulated so far. The work is quadratic in the number of rows.
 
-Use `strings.Builder`, which keeps a growing byte buffer and converts once at the end. For output that is being written anyway, skip the intermediate string entirely and write into the `io.Writer` — `w` is already there in an HTTP handler.
+Use `strings.Builder`, which keeps a growing byte buffer and converts once at the end. For output that is being written anyway, skip the intermediate string entirely and write into the `io.Writer`: `w` is already there in an HTTP handler.
 
 </details>
 
@@ -149,7 +149,7 @@ Use `strings.Builder`, which keeps a growing byte buffer and converts once at th
 
 <details markdown="1"><summary>Check</summary>
 
-`s` does not change. `[]byte(s)` allocated a copy precisely because strings are immutable, so `b` has its own backing array — this is one of the few places Go copies rather than aliasing.
+`s` does not change. `[]byte(s)` allocated a copy precisely because strings are immutable, so `b` has its own backing array. This is one of the few places Go copies rather than aliasing.
 
 Slicing a string, `s[1:3]`, does *not* copy: it produces a new string header over the same bytes, cheaply. That is safe only because neither side can write. Immutability is what buys the sharing.
 
@@ -159,7 +159,7 @@ Slicing a string, `s[1:3]`, does *not* copy: it produces a new string header ove
 
 - [ ] Run the range loop over `"héllo"` and print the byte index with each rune. Then run the indexed byte loop over the same string and compare the two outputs side by side.
 - [ ] Write a `Truncate(s string, n int) string` that cuts to `n` characters without splitting a multi-byte one. Test it with an accented string and an emoji, and note which case your implementation still gets wrong.
-- [ ] Tomorrow: grep a codebase for `len(` applied to something user-supplied — a name, a description, a password. Decide for each whether bytes or characters was the intended unit.
+- [ ] Tomorrow: grep a codebase for `len(` applied to something user-supplied: a name, a description, a password. Decide for each whether bytes or characters was the intended unit.
 
 ## Going further
 

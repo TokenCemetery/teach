@@ -8,7 +8,7 @@ type: lesson
 
 **Mission link:** Go's defaults are load-bearing. Code that defends against uninitialised state is fighting the language before it has expressed any logic.
 **Primary source:** [Effective Go, The Go Authors](https://go.dev/doc/effective_go)
-**Prerequisites:** none — this is the first lesson.
+**Prerequisites:** none, this is the first lesson.
 
 ## Know this
 
@@ -35,9 +35,9 @@ The compiler also enforces that you meant it. An unused local variable and an un
 | numeric | `0` | yes |
 | `string` | `""` | yes |
 | `bool` | `false` | yes |
-| slice | `nil` | yes — `len`, `cap`, `range` and `append` all work |
+| slice | `nil` | yes, `len`, `cap`, `range` and `append` all work |
 | map | `nil` | reads work, writes panic |
-| pointer, func, chan, interface | `nil` | no — dereferencing or calling panics |
+| pointer, func, chan, interface | `nil` | no, dereferencing or calling panics |
 | struct | each field at its own zero value | as usable as its fields are |
 
 The standard library is designed around this. All three of these are ready to work with no constructor:
@@ -80,7 +80,7 @@ The asymmetry is deliberate. Reading needs no storage; writing does, and Go will
 
 Safe: `len(tags)`, `range tags` (zero iterations), `append(tags, "x")`. Also `cap(tags)` and comparing `tags == nil`.
 
-Not safe: indexing, `tags[0]`, which panics with an index-out-of-range error — the same as it would on any empty slice.
+Not safe: indexing, `tags[0]`, which panics with an index-out-of-range error, the same as it would on any empty slice.
 
 The wrong instinct, imported from a language with `null`, is to write `if tags != nil` before ranging. It is dead code: ranging a nil slice runs zero times, which is exactly what you wanted.
 
@@ -123,7 +123,7 @@ A `Mutex` and a `Buffer` are both designed so their zero value is ready to use, 
 
 <details markdown="1"><summary>Check</summary>
 
-Because the zero value is usually already the correct starting state, so there is nothing for a constructor to do. A constructor earns its place only when a field's zero value is invalid — an unset timeout that must default to 30 seconds, a required dependency, a validated invariant.
+Because the zero value is usually already the correct starting state, so there is nothing for a constructor to do. A constructor earns its place only when a field's zero value is invalid: an unset timeout that must default to 30 seconds, a required dependency, a validated invariant.
 
 The habit worth breaking is writing `NewThing()` reflexively. If it only sets fields to their zero values, delete it; if it exists so callers cannot forget one required field, keep it.
 
@@ -142,14 +142,14 @@ The habit worth breaking is writing `NewThing()` reflexively. If it only sets fi
 
 Yes. `var c Counter` is ready to use, because both fields are usable at their zero values.
 
-The warning is about copying rather than construction: once a `sync.Mutex` has been used, copying the struct that contains it copies lock state, and the copy is no longer coordinated with the original. Pass `*Counter`, not `Counter`. `go vet` catches this — it is what the `copylocks` check exists for, and Lesson 2 is about the copy semantics underneath it.
+The warning is about copying rather than construction: once a `sync.Mutex` has been used, copying the struct that contains it copies lock state, and the copy is no longer coordinated with the original. Pass `*Counter`, not `Counter`. `go vet` catches this; it is what the `copylocks` check exists for, and Lesson 2 is about the copy semantics underneath it.
 
 </details>
 
 ## Real-world reps
 
 - [ ] Write the `Counter` above with an `Inc()` method and use it from `main` with no constructor. Then deliberately pass it by value to a function and run `go vet ./...` to see the `copylocks` diagnostic.
-- [ ] Declare a variable you never use and try to build. Read the exact error text — you will see it often, and it means less than it looks like it means.
+- [ ] Declare a variable you never use and try to build. Read the exact error text. You will see it often, and it means less than it looks like it means.
 - [ ] Tomorrow: take one class from a Java or TypeScript project you know well. List which fields would need a constructor in Go, and which would be fine at their zero value. Most will be fine.
 
 ## Going further

@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 4. Maps and Their Rules
 
-**Mission link:** A map is the default data structure in a Go service, and three of its rules have no equivalent in Java or TypeScript — including one that kills the process rather than raising an error.
+**Mission link:** A map is the default data structure in a Go service, and three of its rules have no equivalent in Java or TypeScript, including one that kills the process rather than raising an error.
 **Primary source:** [Go maps in action, The Go Blog](https://go.dev/blog/maps)
 **Prerequisites:** [Lesson 3](0003-slices-and-the-backing-array.md)
 
@@ -42,7 +42,7 @@ The size hint is a hint. It changes allocation behaviour, not semantics, and `ca
 
 ### Comma-ok separates absent from zero
 
-`m[k]` always returns something — the zero value if the key is missing. That is convenient and ambiguous, since a stored `0` and a missing key look identical. The second return value resolves it:
+`m[k]` always returns something: the zero value if the key is missing. That is convenient and ambiguous, since a stored `0` and a missing key look identical. The second return value resolves it:
 
 ```go
 v, ok := m["k"]   // ok is false when the key is absent
@@ -53,7 +53,7 @@ Use the one-value form when the zero value is a fine answer (counters, accumulat
 
 ### Iteration order is randomised on purpose
 
-Ranging a map visits keys in an unspecified order, and the runtime deliberately randomises the starting point so the order differs between runs of the same program on the same data. This is not an accident of the implementation — it exists to stop code from depending on an order that was never promised.
+Ranging a map visits keys in an unspecified order, and the runtime deliberately randomises the starting point so the order differs between runs of the same program on the same data. This is not an accident of the implementation. It exists to stop code from depending on an order that was never promised.
 
 To produce stable output, collect and sort:
 
@@ -74,7 +74,7 @@ m := map[string]Stat{"a": {}}
 m["a"].N++     // compile error: cannot assign to struct field m["a"].N in map
 ```
 
-Two fixes. Store pointers, `map[string]*Stat`, and mutate through them — the map then holds addresses that stay valid. Or read, modify, write back:
+Two fixes. Store pointers, `map[string]*Stat`, and mutate through them, so the map holds addresses that stay valid. Or read, modify, write back:
 
 ```go
 s := m["a"]
@@ -82,7 +82,7 @@ s.N++
 m["a"] = s
 ```
 
-Pointers are the usual answer when the value is mutated often; the read-modify-write is fine for a value updated in one place. Note that `m[k]++` on a `map[string]int` is legal — that is a whole-element assignment, not a field assignment.
+Pointers are the usual answer when the value is mutated often; the read-modify-write is fine for a value updated in one place. Note that `m[k]++` on a `map[string]int` is legal, because that is a whole-element assignment, not a field assignment.
 
 ### A shared map is a fatal error, not a race you get to handle
 
@@ -94,7 +94,7 @@ fatal error: concurrent map writes
 
 A `fatal error` is not a panic. `recover` cannot catch it, deferred functions do not run, and the process dies. That is a deliberate trade: silent corruption of a hash table is worse than a crash.
 
-The detector is best-effort, so a clean run is not proof of correctness — [Lesson 20](0020-memory-model-and-races.md) covers the tool that is. Guard shared maps with a `sync.Mutex`, or use `sync.Map` in the narrow cases it is built for (stage 3).
+The detector is best-effort, so a clean run is not proof of correctness; [Lesson 20](0020-memory-model-and-races.md) covers the tool that is. Guard shared maps with a `sync.Mutex`, or use `sync.Map` in the narrow cases it is built for (stage 3).
 
 ### Key types must be comparable
 
@@ -123,7 +123,7 @@ v, ok := m["a"]  // 0, true
 v, ok = m["b"]   // 0, false
 ```
 
-The one-value form returns `0` for both, which is the ambiguity comma-ok exists to remove. Reaching for a sentinel like `-1` to mean "missing" is the wrong instinct — the language already gives you a clean answer.
+The one-value form returns `0` for both, which is the ambiguity comma-ok exists to remove. Reaching for a sentinel like `-1` to mean "missing" is the wrong instinct, since the language already gives you a clean answer.
 
 </details>
 
@@ -137,7 +137,7 @@ The one-value form returns `0` for both, which is the ambiguity comma-ok exists 
 
 <details markdown="1"><summary>Check</summary>
 
-Map elements are not addressable — the table may relocate entries when it grows, so there is no stable address to assign through.
+Map elements are not addressable, because the table may relocate entries when it grows, so there is no stable address to assign through.
 
 Fix one: `map[string]*Stat`, then `m["a"].N++` works because you are assigning through a pointer the map merely stores. Fix two: read into a local, mutate, assign back.
 
@@ -154,7 +154,7 @@ Fix one: `map[string]*Stat`, then `m["a"].N++` works because you are assigning t
 
 **b)** A fatal runtime error that recover cannot intercept.
 
-It is also a data race, so a is true but incomplete — and the practical difference matters: a race may go unreported, whereas the map detector, when it fires, ends the process. It is not a recoverable panic, and it is not silent corruption, because the runtime chose the crash specifically to prevent that.
+It is also a data race, so a is true but incomplete, and the practical difference matters: a race may go unreported, whereas the map detector, when it fires, ends the process. It is not a recoverable panic, and it is not silent corruption, because the runtime chose the crash specifically to prevent that.
 
 </details>
 
@@ -164,17 +164,17 @@ It is also a data race, so a is true but incomplete — and the practical differ
 
 Map iteration order is randomised per run, so the lines come out in a different order and the string comparison fails. Locally it passed by luck, and with a small map luck holds surprisingly often.
 
-Fix the function if the output is user-facing — sort the keys before ranging. Fix the test if the order is genuinely irrelevant: compare a sorted slice, or a `map[string]string` of expected values, rather than a concatenated string.
+Fix the function if the output is user-facing, by sorting the keys before ranging. Fix the test if the order is genuinely irrelevant: compare a sorted slice, or a `map[string]string` of expected values, rather than a concatenated string.
 
 </details>
 
-5. ▢ Interleaving Lesson 1 and 3: for each expression, is it safe on a nil value — `len(m)`, `m["k"]`, `range m`, `m["k"] = 1`, `delete(m, "k")`?
+5. ▢ Interleaving Lesson 1 and 3: for each expression, is it safe on a nil value: `len(m)`, `m["k"]`, `range m`, `m["k"] = 1`, `delete(m, "k")`?
 
 <details markdown="1"><summary>Check</summary>
 
 All safe except `m["k"] = 1`, which panics with `assignment to entry in nil map`.
 
-A nil map is a usable empty map for every read-shaped operation, including `delete`. Only a write needs storage. This is exactly the nil-slice rule from Lesson 1, with one carve-out — and the carve-out is the reason a struct field of map type usually does need initialising, while a slice field does not.
+A nil map is a usable empty map for every read-shaped operation, including `delete`. Only a write needs storage. This is exactly the nil-slice rule from Lesson 1, with one carve-out, and that carve-out is the reason a struct field of map type usually does need initialising, while a slice field does not.
 
 </details>
 
@@ -182,7 +182,7 @@ A nil map is a usable empty map for every read-shaped operation, including `dele
 
 - [ ] Write a program that prints the keys of a five-element map, and run it ten times. Watch the order change. Then make the output stable with `slices.Sorted(maps.Keys(m))`.
 - [ ] Reproduce the fatal error: start two goroutines writing to one map in a loop. Note that the output says `fatal error`, not `panic`, and that no deferred function runs.
-- [ ] Tomorrow: find a `map[string]SomeStruct` in code you work with. Decide whether it should hold pointers, and write down the reason in one sentence — it is a design choice most codebases make by accident.
+- [ ] Tomorrow: find a `map[string]SomeStruct` in code you work with. Decide whether it should hold pointers, and write down the reason in one sentence. It is a design choice most codebases make by accident.
 
 ## Going further
 

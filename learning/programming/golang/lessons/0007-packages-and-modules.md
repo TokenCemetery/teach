@@ -30,9 +30,9 @@ Copying a value that contains a `sync.Mutex` or similar, which silently produces
 
 ## Know this
 
-**A package is a directory.** Every `.go` file in one directory declares the same package name, and files are otherwise interchangeable — Go has no header files, no ordering between files, and no rule about which type lives where. Splitting a package across five files is a readability choice with no semantic weight.
+**A package is a directory.** Every `.go` file in one directory declares the same package name, and files are otherwise interchangeable: Go has no header files, no ordering between files, and no rule about which type lives where. Splitting a package across five files is a readability choice with no semantic weight.
 
-**A capital letter is the entire visibility system.** An identifier starting with an uppercase letter is exported and visible to importers. Anything else is package-private. There is no `protected`, no `friend`, and no per-symbol export list. The unit of privacy is the package, so two types in the same package can always see each other's unexported fields — which is a feature, not a leak, and it is why Go packages tend to be larger than Java packages.
+**A capital letter is the entire visibility system.** An identifier starting with an uppercase letter is exported and visible to importers. Anything else is package-private. There is no `protected`, no `friend`, and no per-symbol export list. The unit of privacy is the package, so two types in the same package can always see each other's unexported fields. That is a feature rather than a leak, and it is why Go packages tend to be larger than Java packages.
 
 ### Modules
 
@@ -44,7 +44,7 @@ module github.com/you/svc
 go 1.26
 ```
 
-The module path prefixes every import inside it, so a package in `internal/store/` is imported as `github.com/you/svc/internal/store`. The `go` directive states the minimum language version the module requires — it changes what the compiler accepts, and it is why Go 1.22's loop-variable change could ship without breaking older code.
+The module path prefixes every import inside it, so a package in `internal/store/` is imported as `github.com/you/svc/internal/store`. The `go` directive states the minimum language version the module requires. It changes what the compiler accepts, and it is why Go 1.22's loop-variable change could ship without breaking older code.
 
 Since Go 1.26, `go mod init` writes a slightly older version than the toolchain you ran it with, so a new module does not immediately demand the newest release from everyone who builds it.
 
@@ -58,7 +58,7 @@ The commands worth memorising now:
 | `go vet ./...` | static checks the compiler does not make |
 | `go mod tidy` | add what is imported, remove what is not |
 | `go fmt ./...` | canonical formatting, not negotiable |
-| `go fix ./...` | rewrite to modern idioms — rebuilt in Go 1.26 |
+| `go fix ./...` | rewrite to modern idioms, rebuilt in Go 1.26 |
 
 `gofmt` output is the only accepted format for Go source. There is no style debate to have, and that is deliberate.
 
@@ -73,7 +73,7 @@ github.com/you/svc/
 └── httpapi/server.go            # importable by anyone
 ```
 
-This is not a convention — the toolchain rejects the import. It is the mechanism for having a large package surface inside your own module while publishing a small one, and it is the first tool to reach for when you are unsure whether something should be public. Start everything in `internal/`; move it out when an external caller genuinely needs it. That direction is easy, and the reverse is a breaking change.
+This is not a convention: the toolchain rejects the import. It is the mechanism for having a large package surface inside your own module while publishing a small one, and it is the first tool to reach for when you are unsure whether something should be public. Start everything in `internal/`; move it out when an external caller genuinely needs it. That direction is easy, and the reverse is a breaking change.
 
 ### The package name is part of every call site
 
@@ -87,13 +87,13 @@ http.HTTPServer    // stutter
 http.Server        // idiomatic
 ```
 
-Package names are short, lowercase, one word, no underscores, no plurals — `store`, `httpapi`, `token`. A package named `util`, `common`, `helpers` or `base` has no name because it has no subject, and it becomes the place everything lands. That is the single most reliable predictor of a repository that is hard to work in.
+Package names are short, lowercase, one word, no underscores, no plurals: `store`, `httpapi`, `token`. A package named `util`, `common`, `helpers` or `base` has no name because it has no subject, and it becomes the place everything lands. That is the single most reliable predictor of a repository that is hard to work in.
 
 ### Two constraints that shape layout
 
 **Import cycles are a compile error.** Go has no forward declarations and no lazy resolution. If `a` imports `b`, then `b` can never import `a`. This is the constraint that most often forces a design change, usually by extracting the shared type into a third package that both import.
 
-**`init()` runs before `main`.** Each package's variables are initialised, then its `init` functions run, and all of that completes before any importer's code runs. It is genuinely useful for registering a driver, and it is a poor place for anything you might want to fail, configure, or test — see [Lesson 23](0023-configuration-and-startup.md). Prefer explicit construction in `main`.
+**`init()` runs before `main`.** Each package's variables are initialised, then its `init` functions run, and all of that completes before any importer's code runs. It is genuinely useful for registering a driver, and it is a poor place for anything you might want to fail, configure, or test; see [Lesson 23](0023-configuration-and-startup.md). Prefer explicit construction in `main`.
 
 ## Practice
 
@@ -126,9 +126,9 @@ Call sites read `jwt.Decode(...)`, which says everything. `jwtutils` names a gra
 
 <details markdown="1"><summary>Check</summary>
 
-Extract `ID` into a small third package both import — often the right call, and the reason repositories grow a `types`-shaped package that should still be given a real name.
+Extract `ID` into a small third package both import. That is often the right call, and the reason repositories grow a `types`-shaped package that should still be given a real name.
 
-Or invert the dependency: define the narrow interface `payment` needs *inside* `payment`, and let `order` satisfy it. Go's implicit interfaces make this cheap, and it is usually the better design — Lesson 11.
+Or invert the dependency: define the narrow interface `payment` needs *inside* `payment`, and let `order` satisfy it. Go's implicit interfaces make this cheap, and it is usually the better design, per Lesson 11.
 
 Merging the two packages is the third option, and it is right more often than people expect.
 
@@ -150,14 +150,14 @@ The consequence to internalise is that a Go package is a bigger unit than a Java
 
 Because `init` runs implicitly, cannot return an error, and cannot be skipped by a test. A failure inside it kills the process before `main` gets a chance to report anything useful, and any test that imports the package pays the cost.
 
-Explicit construction in `main` gives you an error to handle, a dependency to substitute in tests, and an order you can read. `init` earns its keep for self-registration — a database driver adding itself to `database/sql` — and little else.
+Explicit construction in `main` gives you an error to handle, a dependency to substitute in tests, and an order you can read. `init` earns its keep for self-registration, such as a database driver adding itself to `database/sql`, and little else.
 
 </details>
 
 ## Real-world reps
 
 - [ ] Create a module with `cmd/svc/main.go` and `internal/store/store.go`. Import the store from main, build it, and then try to import it from a second module to watch the toolchain refuse.
-- [ ] Run `go vet ./...` and `go fix ./...` on a scratch package. Read what `go fix` proposes — the Go 1.26 modernizers are a fast way to see which idioms have moved on.
+- [ ] Run `go vet ./...` and `go fix ./...` on a scratch package. Read what `go fix` proposes. The Go 1.26 modernizers are a fast way to see which idioms have moved on.
 - [ ] Tomorrow: open a repository you work in and list every package whose name does not describe a subject. That list is your refactoring backlog.
 
 ## Going further

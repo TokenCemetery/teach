@@ -24,15 +24,15 @@ Reading works and returns `0`. Writing panics, because there is no hash table to
 
 <details markdown="1"><summary>Check</summary>
 
-`sync.Mutex`, `bytes.Buffer`, `sync.WaitGroup`, `strings.Builder`, `time.Time` — any two. "Make the zero value useful" is the design rule they all follow.
+`sync.Mutex`, `bytes.Buffer`, `sync.WaitGroup`, `strings.Builder`, `time.Time`; any two of those. "Make the zero value useful" is the design rule they all follow.
 
 </details>
 
 ## Know this
 
-**Go has one evaluation rule: assignment copies the value.** Passing an argument, returning a result, assigning a variable, appending a struct to a slice, storing into a map — all of them copy. There is no hidden reference, and there is no `Object` that is secretly a pointer.
+**Go has one evaluation rule: assignment copies the value.** Passing an argument, returning a result, assigning a variable, appending a struct to a slice, storing into a map: all of them copy. There is no hidden reference, and there is no `Object` that is secretly a pointer.
 
-This is the single largest difference from Java, where a variable of class type is always a reference to an object somewhere else. In Go, a struct variable *is* the struct — the bytes live where the variable lives.
+This is the single largest difference from Java, where a variable of class type is always a reference to an object somewhere else. In Go, a struct variable *is* the struct, and the bytes live where the variable lives.
 
 ```go
 type User struct{ Name string }
@@ -81,9 +81,9 @@ Copying is always shallow, and four built-in types are small headers that point 
 | channel | one pointer | the channel |
 | pointer | the address | the pointed-at value |
 
-So `func add(m map[string]int)` can insert entries the caller sees, even though `m` was copied — the copy points at the same table. A map argument is a copied header, not a reference parameter, and the distinction shows up the moment you assign to `m` itself rather than into it.
+So `func add(m map[string]int)` can insert entries the caller sees, even though `m` was copied, because the copy points at the same table. A map argument is a copied header, not a reference parameter, and the distinction shows up the moment you assign to `m` itself rather than into it.
 
-Everything else — structs, arrays, strings, numbers — is copied in full. `[1000]int` passed to a function copies eight kilobytes.
+Everything else (structs, arrays, strings, numbers) is copied in full. `[1000]int` passed to a function copies eight kilobytes.
 
 ### When to use a pointer
 
@@ -92,9 +92,9 @@ Reach for one when any of these is true:
 - **The callee must mutate the caller's value.** This is the main reason.
 - **The type must not be copied.** Anything containing a `sync.Mutex`, or a struct the standard library documents as "must not be copied after first use".
 - **The value is large and copied often.** Measure before believing this one; a copy of a few words is cheaper than the indirection that replaces it.
-- **`nil` is a meaningful state** that the zero value cannot express — a field that is genuinely absent rather than empty.
+- **`nil` is a meaningful state** that the zero value cannot express, such as a field that is genuinely absent rather than empty.
 
-Otherwise prefer values. They cannot be nil, they cannot be aliased by accident, and they are easier to reason about — the same reasons a reviewer will ask you to justify a pointer, not a value.
+Otherwise prefer values. They cannot be nil, they cannot be aliased by accident, and they are easier to reason about. Those are the same reasons a reviewer will ask you to justify a pointer, not a value.
 
 ## Practice
 
@@ -114,7 +114,7 @@ Otherwise prefer values. They cannot be nil, they cannot be aliased by accident,
 
 `1`. `bump` incremented a copy that was discarded when it returned.
 
-To make it stick, the parameter must be `*Config` and the call `bump(&c)`. The wrong instinct is to assume that "objects are passed by reference", which is true in Java and false in Go — Go passes everything by value, including pointers.
+To make it stick, the parameter must be `*Config` and the call `bump(&c)`. The wrong instinct is to assume that "objects are passed by reference", which is true in Java and false in Go. Go passes everything by value, including pointers.
 
 </details>
 
@@ -126,7 +126,7 @@ To make it stick, the parameter must be `*Config` and the call `bump(&c)`. The w
 
 <details markdown="1"><summary>Check</summary>
 
-The copy is of the map header — one pointer. Both the caller's variable and the parameter point at the same hash table, so writing through either is visible in both.
+The copy is of the map header, one pointer. Both the caller's variable and the parameter point at the same hash table, so writing through either is visible in both.
 
 The line that would *not* be visible is `m = make(map[string]int)` inside `add`: that reassigns the local copy of the header, leaving the caller pointed at the original table. Same for `s = append(s, x)` on a slice parameter, which is Lesson 3.
 
@@ -143,7 +143,7 @@ The line that would *not* be visible is `m = make(map[string]int)` inside `add`:
 
 **c)** The struct is a hundred bytes of plain fields.
 
-A hundred bytes is a cheap copy — often cheaper than the pointer chase and the extra pressure it can put on the heap. Size is a real reason only with evidence from a benchmark, which is stage 5. Mutation, copy-hostile fields, and a meaningful `nil` are all reasons that hold before you measure anything.
+A hundred bytes is a cheap copy, often cheaper than the pointer chase and the extra pressure it can put on the heap. Size is a real reason only with evidence from a benchmark, which is stage 5. Mutation, copy-hostile fields, and a meaningful `nil` are all reasons that hold before you measure anything.
 
 </details>
 
@@ -151,7 +151,7 @@ A hundred bytes is a cheap copy — often cheaper than the pointer chase and the
 
 <details markdown="1"><summary>Check</summary>
 
-The slice caller. `[3]int` is an array — a value type, copied element by element — so the function writes into its own copy. A slice copies a three-word header that still points at the caller's backing array, so the write lands in shared storage.
+The slice caller. `[3]int` is an array, a value type copied element by element, so the function writes into its own copy. A slice copies a three-word header that still points at the caller's backing array, so the write lands in shared storage.
 
 This is the clearest demonstration that arrays and slices are different types rather than two spellings of one idea, and it is why arrays are rare in Go outside fixed-size buffers and map keys.
 
@@ -163,7 +163,7 @@ This is the clearest demonstration that arrays and slices are different types ra
 
 The receiver must be `*Counter`. With a value receiver the method operates on a copy of the counter made at call time, increments it, and drops it.
 
-The compiler stays silent because nothing is ill-typed — incrementing a field of a local copy is a legal thing to want. This is the shape of the whole category: Go's value semantics make wrong code compile cleanly, which is exactly why the habit of asking "what was copied here?" has to be deliberate. Method sets, in [Lesson 6](0006-methods-and-method-sets.md), are the formal version of this question.
+The compiler stays silent because nothing is ill-typed: incrementing a field of a local copy is a legal thing to want. This is the shape of the whole category: Go's value semantics make wrong code compile cleanly, which is exactly why the habit of asking "what was copied here?" has to be deliberate. Method sets, in [Lesson 6](0006-methods-and-method-sets.md), are the formal version of this question.
 
 </details>
 
@@ -171,7 +171,7 @@ The compiler stays silent because nothing is ill-typed — incrementing a field 
 
 - [ ] Write the `rename` example both ways in a scratch file, run it, and confirm the output before you read the code again. Predicting first is the whole exercise.
 - [ ] Take a struct from a project you work on. Write down, for each method, whether it should have a value or pointer receiver and why. Consistency within a type matters more than any single call.
-- [ ] Tomorrow: find one place in your own code where you pass a large struct by value in a loop. Do not change it — just note whether you can articulate a cost, or only a suspicion. Stage 5 turns the suspicion into a number.
+- [ ] Tomorrow: find one place in your own code where you pass a large struct by value in a loop. Do not change it, just note whether you can articulate a cost or only a suspicion. Stage 5 turns the suspicion into a number.
 
 ## Going further
 

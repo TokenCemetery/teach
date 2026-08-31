@@ -34,6 +34,10 @@ _Avoid_: sharing, pointing, referencing
 What attribute access on an instance returns for a method: a new object pairing the function with that instance, produced by the function's `__get__`. `Cls.method` gives the plain function instead, which is why the two are not interchangeable.
 _Avoid_: method, function, callable, closure
 
+**Branch coverage**:
+Measurement of which **outcomes** of each conditional were executed, rather than which lines were. Statement coverage counts an `if` with no `else` as covered from one path, so the untested path stays invisible without it.
+_Avoid_: coverage (unqualified), test coverage, code quality
+
 **Class attribute**:
 A name in the class's namespace rather than any instance's, so one object exists for every instance. Reading falls through to it; assigning through an instance creates a shadowing instance attribute and stops the sharing.
 _Avoid_: static field, constant, default, instance variable
@@ -65,6 +69,14 @@ _Avoid_: wrapping, nesting, rethrowing
 **Falsy**:
 A property of an object rather than of a comparison: `False`, `None`, any numeric zero, and any empty container all test false in a boolean context. Everything else tests true, including `"0"` and `[0]`.
 _Avoid_: empty, null, blank, unset
+
+**Fixture**:
+Setup a test requests by naming it as a parameter, with anything after its `yield` guaranteed to run as teardown. Its **scope** decides how often it is rebuilt, and a scope wider than one test is safe only if nothing mutates the value.
+_Avoid_: setup, mock, helper, global
+
+**Flaky test**:
+A test whose result varies without a code change, which is worse than no test because it trains everyone to re-run rather than read. The causes are shared state, order dependence, real time, unordered data, or a genuine race in the code.
+_Avoid_: intermittent failure, environment issue, false positive
 
 **Generator**:
 The **iterator** a function containing `yield` returns when called, holding a frozen frame that resumes where it left off. The function may be called repeatedly; each generator it produces is consumed once.
@@ -118,9 +130,21 @@ _Avoid_: casting, asserting, type checking
 A directory of modules with an `__init__.py`, importable under a dotted name. Distinct from a **distribution**, the installable artifact on an index, which may contain several packages or none.
 _Avoid_: library, distribution, dependency, project
 
+**Parametrisation**:
+Running one test body over several argument sets, each collected as a **separate** test with its own name. That separation is the point: a failure names the case, the remaining cases still run, and one case can be re-run alone.
+_Avoid_: loop, data-driven test, test case, fuzzing
+
+**Property-based test**:
+A test that states an invariant over generated inputs rather than an expected output for one input, and reports the smallest failing input it can find. It complements examples rather than replacing them, since a property says what holds and an example says what the code is for.
+_Avoid_: fuzzing, random testing, generative test
+
 **Rebinding**:
 Pointing an existing **name** at a different object, which is what every assignment does. It is invisible to every other name, and it is the operation people mistake for mutation.
 _Avoid_: reassignment, overwriting, updating
+
+**Regression test**:
+A test written for a defect that has already occurred, and the only kind whose ability to detect something is proven: it fails before the fix and passes after. Write it first, and watch it fail.
+_Avoid_: unit test, bug ticket, smoke test
 
 **Shallow copy**:
 A new container holding the same objects as the original, which is what `[:]`, `list()`, `dict()` and `copy.copy` all produce. The container is independent and its contents are not.
@@ -129,6 +153,10 @@ _Avoid_: copy (unqualified), clone, snapshot
 **Structural typing**:
 Conformance decided by an object's shape rather than by what it inherits, which is what `Protocol` expresses to a checker. It works on classes you do not own, and `isinstance` against a runtime-checkable protocol verifies attribute names only.
 _Avoid_: duck typing, interface, subclassing
+
+**Test double**:
+Any stand-in for a real collaborator: a dummy, stub, fake, spy, or mock. A **fake** is a working simplified implementation and lets tests assert on outcomes; a **mock** records calls and couples the test to how the code is written.
+_Avoid_: mock (as the general term), stub, dependency, patch
 
 **Virtual environment**:
 A directory holding its own `site-packages` and interpreter links, so one project's dependencies cannot displace another's. Activating it only changes `PATH`; running its interpreter by path is equivalent.

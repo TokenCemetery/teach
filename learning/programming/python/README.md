@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Python on a team: able to ship a typed, tested, packaged Python service or tool, take a traceback or a profile to its root cause instead of guessing, and say concretely why someone's clever use of Python's dynamism is going to hurt them.
 
 **Start here:** [0001. Names Are Bindings, Not Boxes](lessons/0001-names-are-bindings.md)
-**Latest lesson:** [0027. Metaclasses, and Why Not](lessons/0027-metaclasses-and-why-not.md)
+**Latest lesson:** [0033. Coverage and Confidence](lessons/0033-coverage-and-confidence.md)
 
 ## Success looks like
 
@@ -85,6 +85,12 @@ Work through these in order.
 | [0025](lessons/0025-construction.md) | Construction | What __init__ does not control, when __new__ is required, and naming your constructors |
 | [0026](lessons/0026-inheritance-and-mro.md) | Inheritance and the MRO | What super actually does, why the order is computed, and when composition wins |
 | [0027](lessons/0027-metaclasses-and-why-not.md) | Metaclasses, and Why Not | What a class statement actually does, and the four hooks that replace almost every metaclass |
+| [0028](lessons/0028-what-a-test-asserts.md) | What a Test Asserts | One behaviour per test, a failure message that needs no debugger, and plain assert |
+| [0029](lessons/0029-fixtures.md) | Fixtures | Setup as a dependency the test asks for, with teardown that runs whatever happens |
+| [0030](lessons/0030-parametrisation.md) | Parametrisation | One test body, many cases, and a failure that names the case that broke |
+| [0031](lessons/0031-test-doubles.md) | Test Doubles | What to replace, what to leave alone, and why patch takes the path where the name is used |
+| [0032](lessons/0032-property-based-testing.md) | Property-Based Testing | Stating what must always hold, and letting a library find the input that breaks it |
+| [0033](lessons/0033-coverage-and-confidence.md) | Coverage and Confidence | Why 100 per cent proves nothing, what the number is good for, and which tests to trust |
 
 ## Reference
 
@@ -96,6 +102,7 @@ Work through these in order.
 - [Typing](reference/typing.md): current spellings, narrowing forms, error codes, and which shape to use at a boundary
 - [Project and packaging](reference/project-and-packaging.md): one pyproject.toml annotated, the specifier grammar, and the checks before publishing
 - [Data model](reference/data-model.md): attribute lookup order, the dunder map, the descriptor protocol, and which hook replaces a metaclass
+- [Testing](reference/testing.md): fixture scopes, parametrisation forms, which double to reach for, and reading a coverage report
 
 ## How this works
 

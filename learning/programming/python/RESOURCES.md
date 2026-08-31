@@ -41,6 +41,12 @@ type: resources
 - [Docs: "pytest", pytest developers, docs.pytest.org](https://docs.pytest.org/en/stable/)
   Fixtures, parametrisation, marks and the assertion rewriting that makes failures readable. Use for: stage 5 mechanics.
 
+- [Docs: "Hypothesis", Hypothesis contributors, hypothesis.readthedocs.io](https://hypothesis.readthedocs.io/en/latest/)
+  Property-based testing: the strategies, shrinking, and the settings that control the search. Use for: stage 5, and for turning an invariant into a test.
+
+- [Docs: "Coverage.py", Ned Batchelder, coverage.readthedocs.io](https://coverage.readthedocs.io/en/latest/)
+  What is measured, how branch coverage differs from statement coverage, and every configuration option. Use for: making the number mean something.
+
 - [Docs: "mypy", mypy contributors, mypy.readthedocs.io](https://mypy.readthedocs.io/en/stable/)
   What each strictness flag turns on, and how inference actually proceeds. Use for: making a checker useful rather than noisy.
 

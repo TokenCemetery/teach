@@ -71,6 +71,12 @@ type: resources
 - [PEP: "PEP 703, Making the Global Interpreter Lock Optional in CPython", Sam Gross](https://peps.python.org/pep-0703/)
   States precisely what the GIL protects and what removing it costs. Use for: stage 6, and for correcting folklore about threads in Python.
 
+- [Docs: "Python support for free threading", Python core developers, docs.python.org](https://docs.python.org/3/howto/free-threading-python.html)
+  How to identify a free-threaded build, what it guarantees about thread safety, and its known limitations. Use for: deciding whether a free-threaded build is usable with your dependencies.
+
+- [PEP: "PEP 734, Multiple Interpreters in the Stdlib", Eric Snow](https://peps.python.org/pep-0734/)
+  What a subinterpreter isolates and what it does not, and the interface that reached the standard library. Use for: stage 6, when threads are not parallel enough and processes are too expensive.
+
 - [Docs: "What's New in Python", Python Software Foundation, docs.python.org](https://docs.python.org/3/whatsnew/index.html)
   Per-release changes, deprecations and removals. Use for: checking any version-sensitive claim before teaching it.
 

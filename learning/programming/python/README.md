@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Python on a team: able to ship a typed, tested, packaged Python service or tool, take a traceback or a profile to its root cause instead of guessing, and say concretely why someone's clever use of Python's dynamism is going to hurt them.
 
 **Start here:** [0001. Names Are Bindings, Not Boxes](lessons/0001-names-are-bindings.md)
-**Latest lesson:** [0033. Coverage and Confidence](lessons/0033-coverage-and-confidence.md)
+**Latest lesson:** [0039. Measuring Before Optimising](lessons/0039-measuring-before-optimising.md)
 
 ## Success looks like
 
@@ -91,6 +91,12 @@ Work through these in order.
 | [0031](lessons/0031-test-doubles.md) | Test Doubles | What to replace, what to leave alone, and why patch takes the path where the name is used |
 | [0032](lessons/0032-property-based-testing.md) | Property-Based Testing | Stating what must always hold, and letting a library find the input that breaks it |
 | [0033](lessons/0033-coverage-and-confidence.md) | Coverage and Confidence | Why 100 per cent proves nothing, what the number is good for, and which tests to trust |
+| [0034](lessons/0034-the-gil-precisely.md) | The GIL, Precisely | What it serialises, what it does not protect, and what changes without it |
+| [0035](lessons/0035-threads-and-shared-state.md) | Threads and Shared State | A pool instead of raw threads, a queue instead of a lock, and the exception nobody saw |
+| [0036](lessons/0036-processes-and-interpreters.md) | Processes and Interpreters | Real parallelism for computation, and what it costs to send data across a boundary |
+| [0037](lessons/0037-asyncio.md) | asyncio | One thread, thousands of waits, and the blocking call that stalls all of them |
+| [0038](lessons/0038-choosing-a-model.md) | Choosing a Model | One question decides it, and the measurement that settles the rest |
+| [0039](lessons/0039-measuring-before-optimising.md) | Measuring Before Optimising | Where the time actually goes, and why the micro-optimisations you were taught are gone |
 
 ## Reference
 
@@ -103,6 +109,7 @@ Work through these in order.
 - [Project and packaging](reference/project-and-packaging.md): one pyproject.toml annotated, the specifier grammar, and the checks before publishing
 - [Data model](reference/data-model.md): attribute lookup order, the dunder map, the descriptor protocol, and which hook replaces a metaclass
 - [Testing](reference/testing.md): fixture scopes, parametrisation forms, which double to reach for, and reading a coverage report
+- [Concurrency and performance](reference/concurrency-and-performance.md): which model for which workload, the measured numbers behind it, and how to read a profile
 
 ## How this works
 

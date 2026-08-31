@@ -1,6 +1,6 @@
 ---
 title: 9. Wrapping, Is and As
-description: %w builds a chain, Is and As search it, and wrapping is an API commitment
+description: "%w builds a chain, Is and As search it, and wrapping is an API commitment"
 type: lesson
 ---
 

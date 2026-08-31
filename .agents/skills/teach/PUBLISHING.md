@@ -18,6 +18,8 @@ type: index | topic | lesson | reference | glossary | resources
 - **`description`** is one clause, no trailing period. For a lesson it is the same clause as its row in the workspace `README.md` table, and the front matter is canonical: change it here first, then match the table.
 - **`type`** names the shape of the page, so a reader, human or machine, knows what it is before reading it. Use exactly one of the six values.
 
+**Quote a value that starts with punctuation, or contains a colon followed by a space.** Both make the front matter invalid YAML, and the failure is silent: MkDocs drops the whole block, falls back to the filename for the page title, emits no description, and `--strict` reports nothing. A lesson whose `description` opened with `%w` shipped that way. The scripted parse below is what catches it.
+
 Do not add a date. The site derives `created_at` and `updated_at` from git history, and a hand-written date goes stale the first time someone forgets it.
 
 `order` is read by the theme and overrides a page's position in the navigation. Leave it out while lesson filenames still sort correctly on their own number.
@@ -48,11 +50,12 @@ Before presenting the lesson, confirm by reading:
 
 Then confirm by running `.venv/bin/mkdocs build --strict`.
 
-A clean strict build proves the front matter parses and the navigation resolves. It does **not** prove the answer keys survived, so open the built page, `site/<domain>/<topic>/lessons/<slug>/index.html`, and check two things that look fine in the source and break silently:
+A clean strict build proves the navigation resolves. It proves less than it looks like it proves: not that the answer keys survived, and not even that the front matter parsed. So open the built page, `site/<domain>/<topic>/lessons/<slug>/index.html`, and check three things that look fine in the source and break silently:
 
+- The `<title>` is the front matter `title`. When the YAML fails to parse, MkDocs falls back to the filename and says nothing.
 - Markdown inside each `<details>` rendered as `<p>` and `<code>`, not as literal backticks. It reverts when `markdown="1"` is missing.
 - Each Practice list resumed with `<ol start="N">` after an answer. It restarts at 1 when the `<details>` block is indented instead of sitting at column zero.
 
-After a bulk edit, script the structural checks over `learning/**/*.md` rather than reading for them: front matter keys present with `type` one of the six, `<details markdown="1">` at column zero with a blank line after `<summary>` and before `</details>`, tags balanced, every relative link resolving, and every lesson `description` matching its README row.
+After a bulk edit, script the structural checks over `learning/**/*.md` rather than reading for them: front matter parsing as YAML with its keys present and `type` one of the six, `<details markdown="1">` at column zero with a blank line after `<summary>` and before `</details>`, tags balanced, every relative link resolving, and every lesson `description` matching its README row.
 
 Two traps when checking external links. Strip fenced and inline code first, or code that looks like link syntax, such as the Go generics in `Map[T, U any](s []T)`, reports as a broken link. And send a browser user agent, because some hosts answer a scripted one with a 403 that reads as a dead link.

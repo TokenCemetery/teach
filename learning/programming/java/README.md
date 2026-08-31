@@ -8,7 +8,8 @@ type: topic
 
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
-**Latest lesson:** _none yet_
+**Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
+**Latest lesson:** [0006. Comparable and Comparator](lessons/0006-comparable-and-comparator.md)
 
 ## Success looks like
 
@@ -58,12 +59,18 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-references-are-values.md) | References Are Values | A variable holds a primitive or a reference, and every assignment and argument copies that |
+| [0002](lessons/0002-identity-and-equality.md) | Identity and Equality | == compares references, so it answers a different question for strings and boxed numbers |
+| [0003](lessons/0003-equals-and-hashcode.md) | The equals and hashCode Contract | Break the contract and a hash collection loses your object without raising anything |
+| [0004](lessons/0004-null.md) | null and Where It Comes From | null is a reference that refers to nothing, and the fix is to reject it at the boundary |
+| [0005](lessons/0005-arrays-and-collections.md) | Arrays and Collections | Arrays are covariant and fixed, and three list factories differ in ways their names hide |
+| [0006](lessons/0006-comparable-and-comparator.md) | Comparable and Comparator | A sorted collection uses ordering rather than equals, so an inconsistent comparator loses data |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
+- [Equality, hashing and ordering](reference/equality-hashing-and-ordering.md): the three contracts, and which comparison to write
 
 ## How this works
 

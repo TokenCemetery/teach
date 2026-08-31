@@ -26,4 +26,30 @@ _Avoid_: synchronised, atomic, concurrent
 
 ## Terms
 
-_Added as lessons establish them._
+**Aliasing**:
+The situation where two or more variables hold references to one object, which is what assignment always produces. Mutating through either is observable through both.
+_Avoid_: sharing, pointing, double reference
+
+**Autoboxing**:
+The implicit conversion between a primitive and its wrapper type, performed by calls the source code does not show. `Integer.valueOf` caches `-128` to `127`, which is why `==` on boxed values is correct for small numbers and wrong for large ones.
+_Avoid_: casting, wrapping, promotion
+
+**Covariance (of arrays)**:
+The rule that `String[]` is usable as an `Object[]`, which lets a type error survive compilation and surface as `ArrayStoreException`. Generics are invariant precisely to close this hole.
+_Avoid_: polymorphism, subtyping, generics compatibility
+
+**Interning**:
+Placing a value in a shared pool so that identical values are one object. String literals and compile-time constants are interned, which makes `==` on strings appear to work until a value is built at run time.
+_Avoid_: caching, deduplication, pooling
+
+**Natural ordering**:
+The ordering a type defines for itself by implementing `Comparable`. A sorted collection uses it instead of `equals`, so two elements that compare as zero are one element as far as a `TreeSet` is concerned.
+_Avoid_: default sort, comparison, ranking
+
+**Total order**:
+A comparator or natural ordering under which no two distinct elements compare as zero. Sorted collections need one, and a chain of keys provides it only if the last key is unique per element.
+_Avoid_: full sort, strict ordering, complete comparator
+
+**View**:
+A collection that reads through to another one rather than holding its own contents, which is what `Collections.unmodifiableList` and `Map.values` return. It refuses writes through itself and still shows every change made to the collection behind it.
+_Avoid_: copy, snapshot, wrapper

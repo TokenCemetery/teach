@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0006. Comparable and Comparator](lessons/0006-comparable-and-comparator.md)
+**Latest lesson:** [0014. Immutability as a Default](lessons/0014-immutability-as-a-default.md)
 
 ## Success looks like
 
@@ -65,12 +65,21 @@ Work through these in order.
 | [0004](lessons/0004-null.md) | null and Where It Comes From | null is a reference that refers to nothing, and the fix is to reject it at the boundary |
 | [0005](lessons/0005-arrays-and-collections.md) | Arrays and Collections | Arrays are covariant and fixed, and three list factories differ in ways their names hide |
 | [0006](lessons/0006-comparable-and-comparator.md) | Comparable and Comparator | A sorted collection uses ordering rather than equals, so an inconsistent comparator loses data |
+| [0007](lessons/0007-classes-and-objects.md) | Classes and Objects | A class is a template for state and behaviour, and every field starts at a default you did not write |
+| [0008](lessons/0008-records.md) | Records | A transparent carrier for immutable data, with the constructor, accessors, equals, hashCode and toString derived from the header |
+| [0009](lessons/0009-interfaces.md) | Interfaces | A contract with no state, plus the default methods that let one grow without breaking every implementor |
+| [0010](lessons/0010-inheritance-and-composition.md) | Inheritance and Composition | What extends actually gives you, and why the answer is usually a field instead of a superclass |
+| [0011](lessons/0011-sealed-types-and-pattern-matching.md) | Sealed Types and Pattern Matching | A closed set of alternatives, and a compiler that checks you handled all of them |
+| [0012](lessons/0012-enums.md) | Enums | A fixed set of instances the language guarantees, with room for state and behaviour on each one |
+| [0013](lessons/0013-generics-and-erasure.md) | Generics and Erasure | Type parameters the compiler checks and the runtime forgets, and the wildcards that make them usable |
+| [0014](lessons/0014-immutability-as-a-default.md) | Immutability as a Default | Make the object impossible to change and most of the hard questions stop being asked |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
 - [Equality, hashing and ordering](reference/equality-hashing-and-ordering.md): the three contracts, and which comparison to write
+- [Modelling](reference/modelling.md): which construct to reach for, what each one commits you to, and the rules that are easy to misremember
 
 ## How this works
 

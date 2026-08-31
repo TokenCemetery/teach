@@ -54,8 +54,9 @@ and navigation, and cannot see a collapsed answer that failed to render.
 ## Quality bar for anything you write
 
 - Complete, specific, and consistent with itself.
-- No placeholders and no TODOs. The only exception is
-  `templates/learning-workspace/`.
+- No placeholders and no TODOs. The only exceptions are
+  `templates/learning-workspace/`, which keeps its `{placeholder}` markers, and
+  `TODO.md`, whose subject is planned work.
 - No claims you cannot support.
 - Every section and example must serve the goal. Delete the rest.
 - Examples must be short, complete, and match how this repository actually

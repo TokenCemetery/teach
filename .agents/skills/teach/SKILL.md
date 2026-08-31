@@ -119,6 +119,7 @@ Separate **fluency strength** (in-the-moment retrieval) from **storage strength*
 - **Answer-key discipline.** Keep answers collapsed. Hold every multiple-choice option to the same word count, and character count where possible — formatting must not leak the answer.
 - **Graduated hints, where a nudge is enough.** A prediction or a debugging prompt may carry a collapsed `Hint` before its `Check`, as a sibling block rather than nested inside the answer: a hint reachable only by opening the answer is not a hint. Use it where one push gets the learner unstuck, and leave it off recall prompts, where a hint is the answer arriving early.
 - **Spacing and interleaving.** Open with two or three recall items from earlier lessons, and mix related skills into practice sets rather than drilling one in isolation.
+- **Predict, then run.** Where the material has a runnable or observable form, show it, ask what will happen before the user finds out, then make finding out a real-world rep. The gap between the prediction and the result is what teaches; a demonstration the user watched teaches much less.
 - **Linked.** Link the `reference/` sheets, glossary terms, and prior lessons a reader would want next.
 - **One primary source.** Name the single best source found for the user to read or watch.
 - **Readable.** These get revisited: clean headings, short paragraphs, no walls of text.

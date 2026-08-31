@@ -18,7 +18,6 @@ All five planned phases are done. What is left is under Remaining.
 
 **Build a drill bank for the Go workspace, stages 1 to 3.** `FORMATS.md` now recognises the sheet type and nothing uses it. Lessons 0001 to 0021, retrieval questions with collapsed answers, grouped by stage. This is content authoring rather than repository work, so it belongs in a teaching session that has the lessons open, not in a plan phase. It was optional in phase 4 and stayed optional.
 
-
 ## Done
 
 ### Phase 1: rules and metadata, 2026-08-31
@@ -88,3 +87,16 @@ Fifteen commits, one per stage plus the mechanical passes. 1429 dashes at the st
 - Three dashes held back from the earlier wave moved with the workspaces as planned: the lesson heading, its front matter `title`, and the fixed closing block. Titles took a period rather than a colon, since a colon in an unquoted YAML scalar does not parse.
 - Found on the way out, and unrelated to dashes: lesson 0009's front matter opened with `%w`, so the whole block was invalid YAML. MkDocs silently titled the page from its filename and `--strict` said nothing. Fixed, and `PUBLISHING.md` no longer claims a clean strict build proves the front matter parses.
 - One check to distrust: an early structural pass reported 259 indented `<details>` blocks. The regex used `\s+`, which matches a newline, so every block at column zero matched. Re-run with `[ \t]+` it reports none. A lint that finds a problem in every file is more likely to be wrong than the repository is.
+
+### Verified against the deployed site, 2026-08-31
+
+Everything above had been checked against a local build. Re-checked against `https://tokencemetery.github.io/teach/` after the deploy, by fetching every page in the sitemap and asserting on the DOM rather than by reading.
+
+- 158 pages, 988 `<details>` blocks. All collapsed by default, all with a `<summary>`, none containing a literal backtick, none with escaped `&lt;details` markup. No page title derived from a filename, every page carrying a `description`.
+- Zero em dashes in the rendered text of any page.
+- Lesson 0009 renders as "9. Wrapping, Is and As" with its description present, which is the front matter fix confirmed on the artifact that was actually broken.
+- The scratch spike file returns 404, and the fine-tuning `RESOURCES` page shows the softened linking rule live: the communities section is there, r/LocalLLaMA is there with its archive wording, the EleutherAI Discord is gone and its blog is in its place.
+- **The one thing local verification could not reach: GitHub's renderer.** Checked on `github.com` directly. The sibling `Hint` and `Check` blocks render as collapsible details with markdown parsed inside (`<p>` and `<code>`, no backticks), and GitHub continues the Practice numbering across the break with `<ol start="2">` through `<ol start="5">`, exactly as the site does. The dual-renderer contract holds for the adopted form. Nested `<details>` on GitHub remains unverified and unused.
+- A placeholder lint reported 14 pages. All false positives: Go composite literals such as `{Name: "original"}` and the routing wildcard `{path...}`. Same failure as the earlier `{id}` and `TODO` false positives, and the reason a lint over lesson prose has to strip code first.
+
+**Defect found by this pass, unrelated to any phase.** `mkdocs.yml` had no `site_url`, so MkDocs wrote every `<loc>` in `sitemap.xml` as `None./...` and emitted no canonical link on any page. Across seven locales that leaves nothing marking which URL is canonical. Fixed; the sitemap now carries real URLs and hreflang alternates. The theme emits no per-page hreflang tags either way.

@@ -22,42 +22,6 @@ Two questions are unresolved. They block the phases named, and a session that re
 
 ---
 
-## Phase 2: stop shipping empty directories
-
-**Why.** `SKILL.md` says "Create each lazily, on first need." The template ships four empty directories and the two live workspaces ship two each, all held open by a `.gitkeep`. The rule and the repository disagree, and the repository is what gets copied. Separately, `assets/` has no purpose in a markdown workspace: upstream's `assets/` holds stylesheets, quiz widgets and simulators for HTML lessons, none of which port.
-
-**Where.** Eight directories, each containing only `.gitkeep`:
-
-```text
-templates/learning-workspace/assets/
-templates/learning-workspace/lessons/
-templates/learning-workspace/reference/
-templates/learning-workspace/learning-records/
-learning/llm/finetuning/assets/
-learning/llm/finetuning/learning-records/
-learning/programming/golang/assets/
-learning/programming/golang/learning-records/
-```
-
-**Change.** Delete all eight, including the `.gitkeep` files. Then remove every reference to `assets/`, which exists in exactly four places:
-
-| File | Current text |
-|---|---|
-| `.agents/skills/teach/SKILL.md` | tree line ``└── assets/                # diagrams, drill banks, printable cards`` |
-| `.agents/skills/teach/SKILL.md` | table row ``|`assets/*`|Reusable artifacts lessons link to, diagrams, drill banks, printable cards.|`` |
-| `.agents/skills/teach/SKILL.md` | ``Create each lazily, on first need. Reuse is the default: read `reference/` and `assets/` before authoring, and build on what is there.`` |
-| `learning/README.md` | tree line ``└── assets/                # diagrams, drill banks, printable cards`` |
-
-In the third, keep the reuse rule and drop the dead half: "Reuse is the default: read `reference/` before authoring, and build on what is there." Fix the tree drawing characters so the last remaining entry uses `└──`.
-
-Also adjust `### Setup` step 2, which currently reads "Read `README.md`, `NOTES.md`, `GLOSSARY.md`, `RESOURCES.md`, and `learning-records/`." Once directories are created lazily, `learning-records/` may not exist, and a step that reads it unconditionally is wrong. Say that its absence means no record has been earned yet.
-
-**Do not** delete `reference/` in the two live workspaces: both hold real sheets. Only the template's copy is empty.
-
-**Verify.** `find learning templates -type d -empty` prints nothing. `grep -rn "assets" .agents/ learning/README.md templates/` prints nothing. `mkdocs build --strict` passes. `cp -r templates/learning-workspace /tmp/probe` produces a workspace with four markdown files and no directories, which is what the lazy rule intends.
-
----
-
 ## Phase 3: split the skill into three files
 
 **Why.** `SKILL.md` is 392 lines, and 181 of them (46 per cent) are file templates that matter only when writing one specific file type. Another 54 are purely about publishing. `AGENTS.md` requires reading the whole thing before editing any workspace file, so every session pays for the templates whether or not it writes one. Upstream solves this with a 140 line `SKILL.md` and four format files loaded on demand.
@@ -160,11 +124,9 @@ One workspace per pass, with `mkdocs build --strict` and a structural lint after
 
 ## Ordering
 
-Phases 2 and 3 in that order: the deletions are cheaper before the sections move, and splitting last means the move happens once.
+Phase 3 next, then phase 4, which depends on it only for where its output lands. The spike at 4.1 can run at any time.
 
-Phase 4 depends on phase 3 only for where its output lands, and its spike (4.1) can run at any time.
-
-Phase 5 is independent of everything and should be last, because it produces the largest and least reviewable diffs. Its wave 1 also touches files that phases 1 to 3 are rewriting, so running it earlier means editing the same sentences twice.
+Phase 5 is independent of everything and should be last, because it produces the largest and least reviewable diffs. Its wave 1 also touches files that phase 3 is rewriting, so running it earlier means editing the same sentences twice.
 
 ## Done
 
@@ -176,3 +138,12 @@ Four commits, one per task. The rules themselves now live where they are read, s
 - **1.1** Sourcing is the work when `RESOURCES.md` is thin. Restored from upstream into `## Grounding`, with the branch repeated at `### Setup` step 4 because that is where the target is chosen and where the omission would bite.
 - **1.2** Glossary subheadings allowed. Both live glossaries, not just the Go one, had already grown a `## Usage in this workspace` section, which is stronger evidence for the rule than upstream carrying it. Neither term list was regrouped: both are still scannable flat, and the rule says a flat list is right until it stops being.
 - **1.3** Metadata corrected. `author` dropped because it named a repository; `upstream` carries that, with `upstream_path` and `upstream_version` so the claim is checkable against a specific tree. `version: "2.0.0"` asserts incompatibility with upstream rather than lag. Left open deliberately: nothing consumes `version`, so its semantics are a convention this repository owes itself, not a contract.
+
+### Phase 2: stop shipping empty directories, 2026-08-31
+
+Two commits, split by argument rather than by directory: `assets/` went because the concept does not port, and the rest went because the skill already said to create directories lazily.
+
+- Ten `.gitkeep` files, not eight. Two of them sat in `learning/programming/golang/lessons/` and `reference/`, which had since filled with real files, so they were holding open a directory that no longer needed holding. Worth knowing that the count in a plan is a snapshot: check before deleting, do not trust the list.
+- `assets/` is gone from both layout trees, the path table and the reuse rule. The reuse rule kept `reference/`, which is where a drill bank now belongs; phase 4.3 depends on that.
+- `### Setup` step 2 now says a missing `learning-records/` means no record has been earned. Without that, lazy creation and an unconditional read contradict each other, and the agent hitting it would guess.
+- Copying the template now yields four markdown files and no directories, verified with a real `cp -r`.

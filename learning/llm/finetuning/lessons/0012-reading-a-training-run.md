@@ -7,7 +7,7 @@ type: lesson
 # Lesson 12. Reading a Training Run
 
 **Mission link:** "Diagnose a failed run and name the cause" is on the success list. Most people read a loss curve and guess.
-**Primary source:** [Blog: "A Recipe for Training Neural Networks" — Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
+**Primary source:** [Blog: "A Recipe for Training Neural Networks", Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
 **Prerequisites:** [Lesson 11](0011-your-first-adapter.md)
 
 ## Warm-up
@@ -175,9 +175,9 @@ Check held-out loss, which is likely flat or rising, and reduce epochs or capaci
 
 ## Going further
 
-- [Blog: "A Recipe for Training Neural Networks" — Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
+- [Blog: "A Recipe for Training Neural Networks", Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
 - [Failure modes](../reference/failure-modes.md)
-- [Lesson 24 — The Regression Suite](0024-the-regression-suite.md) — where the unrelated probe becomes a real system
+- [Lesson 24. The Regression Suite](0024-the-regression-suite.md): where the unrelated probe becomes a real system
 
 ---
 

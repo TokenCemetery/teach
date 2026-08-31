@@ -7,7 +7,7 @@ type: lesson
 # Lesson 25. Serving Adapters
 
 **Mission link:** "Ship it" is in the mission. An adapter in a directory is not shipped.
-**Primary source:** [Docs: LoRA adapters — vLLM](https://docs.vllm.ai/en/latest/features/lora.html)
+**Primary source:** [Docs: LoRA adapters, vLLM](https://docs.vllm.ai/en/latest/features/lora.html)
 **Prerequisites:** [Lesson 13](0013-merging-and-shipping.md), [Lesson 24](0024-the-regression-suite.md)
 
 ## Warm-up
@@ -181,9 +181,9 @@ Evaluate the artifact you ship. Always.
 
 ## Going further
 
-- [Docs: LoRA adapters — vLLM](https://docs.vllm.ai/en/latest/features/lora.html)
-- [Paper: "S-LoRA: Serving Thousands of Concurrent LoRA Adapters" — Sheng et al., arXiv:2311.03285](https://arxiv.org/abs/2311.03285)
-- [Lesson 26 — Cost, Latency and Throughput](0026-cost-latency-and-throughput.md)
+- [Docs: LoRA adapters, vLLM](https://docs.vllm.ai/en/latest/features/lora.html)
+- [Paper: "S-LoRA: Serving Thousands of Concurrent LoRA Adapters", Sheng et al., arXiv:2311.03285](https://arxiv.org/abs/2311.03285)
+- [Lesson 26. Cost, Latency and Throughput](0026-cost-latency-and-throughput.md)
 
 ---
 

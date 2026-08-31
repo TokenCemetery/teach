@@ -7,7 +7,7 @@ type: lesson
 # Lesson 8. The Low-Rank Idea
 
 **Mission link:** LoRA is the method the rest of the mission is built on. This lesson is the mechanism; the next two are the decisions.
-**Primary source:** [Paper: "LoRA: Low-Rank Adaptation of Large Language Models" — Hu et al., arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
+**Primary source:** [Paper: "LoRA: Low-Rank Adaptation of Large Language Models", Hu et al., arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
 **Prerequisites:** [Lesson 6](0006-gradients-and-optimizer-state.md), [Lesson 7](0007-activations-and-checkpointing.md), [adapter](../GLOSSARY.md)
 
 ## Warm-up
@@ -182,10 +182,10 @@ The adapter cost is driven by the sum of dimensions, so it is dominated by the l
 
 ## Going further
 
-- [Paper: "LoRA: Low-Rank Adaptation of Large Language Models" — Hu et al., arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
-- [Paper: "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning" — Aghajanyan et al., arXiv:2012.13255](https://arxiv.org/abs/2012.13255)
+- [Paper: "LoRA: Low-Rank Adaptation of Large Language Models", Hu et al., arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
+- [Paper: "Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning", Aghajanyan et al., arXiv:2012.13255](https://arxiv.org/abs/2012.13255)
 - [LoRA hyperparameters](../reference/lora-hyperparameters.md)
-- [Lesson 9 — Rank, Alpha and Initialisation](0009-rank-alpha-and-initialisation.md)
+- [Lesson 9. Rank, Alpha and Initialisation](0009-rank-alpha-and-initialisation.md)
 
 ---
 

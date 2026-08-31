@@ -7,7 +7,7 @@ type: lesson
 # Lesson 20. Judging a New PEFT Variant
 
 **Mission link:** "Read a new PEFT paper and judge whether its claimed win would survive on your own task" is the last item on the success list. This lesson is that skill.
-**Primary source:** [Docs: LoRA variants — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+**Primary source:** [Docs: LoRA variants, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
 **Prerequisites:** [Lesson 19](0019-when-dora-wins.md), [Lesson 17](0017-what-qlora-costs.md)
 
 ## Warm-up
@@ -166,10 +166,10 @@ It is hard because it already has enough capacity and coverage to approach full 
 
 ## Going further
 
-- [Docs: LoRA variants — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
-- [Docs: "LoRA Without Regret" — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
-- [EleutherAI Blog](https://blog.eleuther.ai/) — a group that publishes its negative results, which is the rarer half of this question
-- [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/) — fast, blunt replication reports
+- [Docs: LoRA variants, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+- [Docs: "LoRA Without Regret", Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
+- [EleutherAI Blog](https://blog.eleuther.ai/): a group that publishes its negative results, which is the rarer half of this question
+- [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/): fast, blunt replication reports
 
 ---
 

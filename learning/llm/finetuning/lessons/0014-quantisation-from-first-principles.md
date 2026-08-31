@@ -7,7 +7,7 @@ type: lesson
 # Lesson 14. Quantisation from First Principles
 
 **Mission link:** QLoRA is LoRA plus one idea. This lesson is that idea, taught on its own so the next one is short.
-**Primary source:** [Paper: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale" — Dettmers et al., arXiv:2208.07339](https://arxiv.org/abs/2208.07339)
+**Primary source:** [Paper: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale", Dettmers et al., arXiv:2208.07339](https://arxiv.org/abs/2208.07339)
 **Prerequisites:** [Lesson 5](0005-counting-parameters-and-bytes.md), [quantisation](../GLOSSARY.md)
 
 ## Warm-up
@@ -183,9 +183,9 @@ For training, quantising the frozen base is a memory budget decision. The adapte
 
 ## Going further
 
-- [Paper: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale" — Dettmers et al., arXiv:2208.07339](https://arxiv.org/abs/2208.07339)
-- [Paper: "8-bit Optimizers via Block-wise Quantization" — Dettmers et al., arXiv:2110.02861](https://arxiv.org/abs/2110.02861)
-- [Lesson 15 — NF4 and Double Quantisation](0015-nf4-and-double-quantisation.md)
+- [Paper: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale", Dettmers et al., arXiv:2208.07339](https://arxiv.org/abs/2208.07339)
+- [Paper: "8-bit Optimizers via Block-wise Quantization", Dettmers et al., arXiv:2110.02861](https://arxiv.org/abs/2110.02861)
+- [Lesson 15. NF4 and Double Quantisation](0015-nf4-and-double-quantisation.md)
 
 ---
 

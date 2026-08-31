@@ -7,7 +7,7 @@ type: lesson
 # Lesson 26. Cost, Latency and Throughput
 
 **Mission link:** "Measure what it cost in quality and latency" is on the success list. Fine-tuning is frequently a *cost* decision, and this is the arithmetic behind it.
-**Primary source:** [Blog: "LLM Inference Performance Engineering: Best Practices" — Databricks](https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices)
+**Primary source:** [Blog: "LLM Inference Performance Engineering: Best Practices", Databricks](https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices)
 **Prerequisites:** [Lesson 25](0025-serving-adapters.md)
 
 ## Warm-up
@@ -191,9 +191,9 @@ At 500 a day the recurring human cost almost certainly dominates. At 5 million i
 
 ## Going further
 
-- [Blog: "LLM Inference Performance Engineering: Best Practices" — Databricks](https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices)
-- [Docs: Optimization and tuning — vLLM](https://docs.vllm.ai/en/latest/configuration/optimization.html)
-- [Lesson 27 — When Not to Fine-Tune](0027-when-not-to-fine-tune.md)
+- [Blog: "LLM Inference Performance Engineering: Best Practices", Databricks](https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices)
+- [Docs: Optimization and tuning, vLLM](https://docs.vllm.ai/en/latest/configuration/optimization.html)
+- [Lesson 27. When Not to Fine-Tune](0027-when-not-to-fine-tune.md)
 
 ---
 

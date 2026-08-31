@@ -7,7 +7,7 @@ type: lesson
 # Lesson 19. When DoRA Wins, and When It Doesn't
 
 **Mission link:** "Can predict when DoRA beats LoRA before running it" is the bar for this stage. Prediction, not experiment.
-**Primary source:** [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation" — Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
+**Primary source:** [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation", Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
 **Prerequisites:** [Lesson 18](0018-dora-magnitude-and-direction.md), [Lesson 17](0017-what-qlora-costs.md)
 
 ## Warm-up
@@ -166,9 +166,9 @@ Either run enough seeds to resolve a difference that small — which may be many
 
 ## Going further
 
-- [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation" — Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
+- [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation", Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
 - [LoRA hyperparameters](../reference/lora-hyperparameters.md)
-- [Lesson 20 — Judging a New PEFT Variant](0020-judging-a-new-variant.md)
+- [Lesson 20. Judging a New PEFT Variant](0020-judging-a-new-variant.md)
 
 ---
 

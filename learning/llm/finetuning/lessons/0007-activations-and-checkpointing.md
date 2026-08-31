@@ -7,7 +7,7 @@ type: lesson
 # Lesson 7. Activations, Batch Size and Checkpointing
 
 **Mission link:** Adapters remove the optimizer cost but not the activation cost, which is why a LoRA run can still run out of memory. This is the part people are surprised by.
-**Primary source:** [Paper: "Training Deep Nets with Sublinear Memory Cost" — Chen et al., arXiv:1604.06174](https://arxiv.org/abs/1604.06174)
+**Primary source:** [Paper: "Training Deep Nets with Sublinear Memory Cost", Chen et al., arXiv:1604.06174](https://arxiv.org/abs/1604.06174)
 **Prerequisites:** [Lesson 6](0006-gradients-and-optimizer-state.md)
 
 ## Warm-up
@@ -174,10 +174,10 @@ Verify that `-100` labels are preserved through the packing step and that the im
 
 ## Going further
 
-- [Paper: "Training Deep Nets with Sublinear Memory Cost" — Chen et al., arXiv:1604.06174](https://arxiv.org/abs/1604.06174)
-- [Paper: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness" — Dao et al., arXiv:2205.14135](https://arxiv.org/abs/2205.14135)
-- [Docs: Methods and tools for efficient training on a single GPU — Hugging Face](https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one)
-- [Memory budget](../reference/memory-budget.md) — now complete enough to use
+- [Paper: "Training Deep Nets with Sublinear Memory Cost", Chen et al., arXiv:1604.06174](https://arxiv.org/abs/1604.06174)
+- [Paper: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness", Dao et al., arXiv:2205.14135](https://arxiv.org/abs/2205.14135)
+- [Docs: Methods and tools for efficient training on a single GPU, Hugging Face](https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one)
+- [Memory budget](../reference/memory-budget.md): now complete enough to use
 
 ---
 

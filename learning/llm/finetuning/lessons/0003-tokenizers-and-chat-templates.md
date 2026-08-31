@@ -7,7 +7,7 @@ type: lesson
 # Lesson 3. Tokenizers and Chat Templates
 
 **Mission link:** The most common cause of a fine-tune that trains cleanly and behaves badly is a template mismatch, not a hyperparameter.
-**Primary source:** [Docs: Chat Templates — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/chat_templating)
+**Primary source:** [Docs: Chat Templates, Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/chat_templating)
 **Prerequisites:** [Lesson 1](0001-what-a-base-model-is.md), [Lesson 2](0002-where-the-weights-live.md)
 
 ## Warm-up
@@ -162,10 +162,10 @@ Temperature is applied after the model produces its distribution, so it is a ser
 
 ## Going further
 
-- [Docs: Chat Templates — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/chat_templating)
-- [Code: minbpe — Andrej Karpathy](https://github.com/karpathy/minbpe) — byte-pair encoding in readable form
-- [Failure modes](../reference/failure-modes.md) — template mismatch appears there
-- [Lesson 21 — Building the Dataset](0021-building-the-dataset.md)
+- [Docs: Chat Templates, Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/chat_templating)
+- [Code: minbpe, Andrej Karpathy](https://github.com/karpathy/minbpe): byte-pair encoding in readable form
+- [Failure modes](../reference/failure-modes.md): template mismatch appears there
+- [Lesson 21. Building the Dataset](0021-building-the-dataset.md)
 
 ---
 

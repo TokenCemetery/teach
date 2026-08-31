@@ -7,7 +7,7 @@ type: lesson
 # Lesson 13. Merging, Saving and Shipping an Adapter
 
 **Mission link:** An adapter that only exists in a training script is not shipped. This closes stage 3.
-**Primary source:** [Docs: LoRA merging — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+**Primary source:** [Docs: LoRA merging, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
 **Prerequisites:** [Lesson 8](0008-the-low-rank-idea.md), [Lesson 12](0012-reading-a-training-run.md)
 
 ## Warm-up
@@ -209,9 +209,9 @@ It sometimes works well and is worth trying. It is never something to assume —
 
 ## Going further
 
-- [Docs: LoRA merging — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
-- [Docs: Model merging — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/model_merging)
-- [Lesson 25 — Serving Adapters](0025-serving-adapters.md)
+- [Docs: LoRA merging, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+- [Docs: Model merging, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/model_merging)
+- [Lesson 25. Serving Adapters](0025-serving-adapters.md)
 - [Failure modes](../reference/failure-modes.md)
 
 ---

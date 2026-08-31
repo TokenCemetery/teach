@@ -7,7 +7,7 @@ type: lesson
 # Lesson 11. Your First Adapter
 
 **Mission link:** "Run it" is in the mission. Everything before this was the reading; this is the run.
-**Primary source:** [Docs: SFTTrainer — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/sft_trainer)
+**Primary source:** [Docs: SFTTrainer, Hugging Face TRL](https://huggingface.co/docs/trl/main/en/sft_trainer)
 **Prerequisites:** [Lesson 3](0003-tokenizers-and-chat-templates.md), [Lesson 9](0009-rank-alpha-and-initialisation.md), [Lesson 10](0010-choosing-target-modules.md)
 
 ## Warm-up
@@ -211,10 +211,10 @@ Report this number, not the per-device one. Comparing runs by per-device batch s
 
 ## Going further
 
-- [Docs: SFTTrainer — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/sft_trainer)
-- [Docs: LoRA — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
-- [Failure modes](../reference/failure-modes.md) — keep this open during the run
-- [Lesson 12 — Reading a Training Run](0012-reading-a-training-run.md)
+- [Docs: SFTTrainer, Hugging Face TRL](https://huggingface.co/docs/trl/main/en/sft_trainer)
+- [Docs: LoRA, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+- [Failure modes](../reference/failure-modes.md): keep this open during the run
+- [Lesson 12. Reading a Training Run](0012-reading-a-training-run.md)
 
 ---
 

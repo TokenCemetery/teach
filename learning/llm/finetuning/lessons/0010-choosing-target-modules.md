@@ -7,7 +7,7 @@ type: lesson
 # Lesson 10. Choosing Target Modules
 
 **Mission link:** Target modules matter more than rank, and the received wisdom on them is out of date. This is a place where you can be measurably better than the average practitioner.
-**Primary source:** [Docs: "LoRA Without Regret" — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
+**Primary source:** [Docs: "LoRA Without Regret", Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
 **Prerequisites:** [Lesson 2](0002-where-the-weights-live.md), [Lesson 9](0009-rank-alpha-and-initialisation.md)
 
 ## Warm-up
@@ -174,10 +174,10 @@ Its cost is loss of precision — verify what it matched, and note that it may i
 
 ## Going further
 
-- [Docs: "LoRA Without Regret" — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
-- [Blog: "Practical Tips for Finetuning LLMs Using LoRA" — Sebastian Raschka](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms) — the target-module ablations
+- [Docs: "LoRA Without Regret", Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
+- [Blog: "Practical Tips for Finetuning LLMs Using LoRA", Sebastian Raschka](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms): the target-module ablations
 - [LoRA hyperparameters](../reference/lora-hyperparameters.md)
-- [Lesson 11 — Your First Adapter](0011-your-first-adapter.md)
+- [Lesson 11. Your First Adapter](0011-your-first-adapter.md)
 
 ---
 

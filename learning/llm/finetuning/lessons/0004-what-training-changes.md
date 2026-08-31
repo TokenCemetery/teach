@@ -7,7 +7,7 @@ type: lesson
 # Lesson 4. What Training Actually Changes
 
 **Mission link:** Every memory argument, hyperparameter and failure mode in this workspace follows from what one training step does.
-**Primary source:** [Paper: "Decoupled Weight Decay Regularization" (AdamW) — Loshchilov & Hutter, arXiv:1711.05101](https://arxiv.org/abs/1711.05101)
+**Primary source:** [Paper: "Decoupled Weight Decay Regularization" (AdamW), Loshchilov & Hutter, arXiv:1711.05101](https://arxiv.org/abs/1711.05101)
 **Prerequisites:** [Lesson 1](0001-what-a-base-model-is.md), [Lesson 3](0003-tokenizers-and-chat-templates.md)
 
 ## Warm-up
@@ -151,10 +151,10 @@ Early in training, AdamW's second-moment estimate is built from very few samples
 
 ## Going further
 
-- [Paper: "Decoupled Weight Decay Regularization" (AdamW) — Loshchilov & Hutter, arXiv:1711.05101](https://arxiv.org/abs/1711.05101)
-- [Paper: "Adam: A Method for Stochastic Optimization" — Kingma & Ba, arXiv:1412.6980](https://arxiv.org/abs/1412.6980)
-- [Blog: "A Recipe for Training Neural Networks" — Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
-- [Memory budget](../reference/memory-budget.md) — stage 2 turns these four steps into bytes
+- [Paper: "Decoupled Weight Decay Regularization" (AdamW), Loshchilov & Hutter, arXiv:1711.05101](https://arxiv.org/abs/1711.05101)
+- [Paper: "Adam: A Method for Stochastic Optimization", Kingma & Ba, arXiv:1412.6980](https://arxiv.org/abs/1412.6980)
+- [Blog: "A Recipe for Training Neural Networks", Andrej Karpathy](https://karpathy.github.io/2019/04/25/recipe/)
+- [Memory budget](../reference/memory-budget.md): stage 2 turns these four steps into bytes
 
 ---
 

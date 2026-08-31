@@ -7,7 +7,7 @@ type: lesson
 # Lesson 6. Gradients and Optimizer State
 
 **Mission link:** This is the argument for adapters. Once you can derive the sixteen-bytes-per-parameter figure, LoRA stops being a trick and becomes the obvious response.
-**Primary source:** [Paper: "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models" — Rajbhandari et al., arXiv:1910.02054](https://arxiv.org/abs/1910.02054)
+**Primary source:** [Paper: "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models", Rajbhandari et al., arXiv:1910.02054](https://arxiv.org/abs/1910.02054)
 **Prerequisites:** [Lesson 4](0004-what-training-changes.md), [Lesson 5](0005-counting-parameters-and-bytes.md)
 
 ## Warm-up
@@ -172,10 +172,10 @@ A frozen parameter needs only its own value stored for the forward pass, while a
 
 ## Going further
 
-- [Paper: "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models" — Rajbhandari et al., arXiv:1910.02054](https://arxiv.org/abs/1910.02054) — the canonical accounting of these categories
-- [Paper: "8-bit Optimizers via Block-wise Quantization" — Dettmers et al., arXiv:2110.02861](https://arxiv.org/abs/2110.02861)
+- [Paper: "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models", Rajbhandari et al., arXiv:1910.02054](https://arxiv.org/abs/1910.02054): the canonical accounting of these categories
+- [Paper: "8-bit Optimizers via Block-wise Quantization", Dettmers et al., arXiv:2110.02861](https://arxiv.org/abs/2110.02861)
 - [Memory budget](../reference/memory-budget.md)
-- [Lesson 8 — The Low-Rank Idea](0008-the-low-rank-idea.md) — the response to this lesson
+- [Lesson 8. The Low-Rank Idea](0008-the-low-rank-idea.md): the response to this lesson
 
 ---
 

@@ -7,7 +7,7 @@ type: lesson
 # Lesson 24. The Regression Suite
 
 **Mission link:** "Build an eval that catches a regression before shipping" is the mission's own wording. This is that lesson.
-**Primary source:** [Paper: "An Empirical Study of Catastrophic Forgetting in Large Language Models During Continual Fine-tuning" — Luo et al., arXiv:2308.08747](https://arxiv.org/abs/2308.08747)
+**Primary source:** [Paper: "An Empirical Study of Catastrophic Forgetting in Large Language Models During Continual Fine-tuning", Luo et al., arXiv:2308.08747](https://arxiv.org/abs/2308.08747)
 **Prerequisites:** [Lesson 23](0023-metrics-that-mean-something.md), [Lesson 22](0022-contamination-and-held-out-design.md)
 
 ## Warm-up
@@ -187,10 +187,10 @@ So that a difference from the baseline is attributable to changed weights rather
 
 ## Going further
 
-- [Paper: "An Empirical Study of Catastrophic Forgetting in Large Language Models During Continual Fine-tuning" — Luo et al., arXiv:2308.08747](https://arxiv.org/abs/2308.08747)
-- [Paper: "Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!" — Qi et al., arXiv:2310.03693](https://arxiv.org/abs/2310.03693)
+- [Paper: "An Empirical Study of Catastrophic Forgetting in Large Language Models During Continual Fine-tuning", Luo et al., arXiv:2308.08747](https://arxiv.org/abs/2308.08747)
+- [Paper: "Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!", Qi et al., arXiv:2310.03693](https://arxiv.org/abs/2310.03693)
 - [Failure modes](../reference/failure-modes.md)
-- [Lesson 25 — Serving Adapters](0025-serving-adapters.md)
+- [Lesson 25. Serving Adapters](0025-serving-adapters.md)
 
 ---
 

@@ -7,7 +7,7 @@ type: lesson
 # Lesson 22. Contamination and Held-Out Design
 
 **Mission link:** A held-out set you cannot trust is worse than none, because it produces confident wrong decisions.
-**Primary source:** [Code: lm-evaluation-harness — EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness)
+**Primary source:** [Code: lm-evaluation-harness, EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness)
 **Prerequisites:** [Lesson 21](0021-building-the-dataset.md)
 
 ## Warm-up
@@ -179,9 +179,9 @@ It also produces the more useful artifact: which specific examples improved and 
 
 ## Going further
 
-- [Code: lm-evaluation-harness — EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness)
-- [Docs: Splitting datasets — Hugging Face Datasets](https://huggingface.co/docs/datasets/main/en/process)
-- [Lesson 23 — Metrics That Mean Something](0023-metrics-that-mean-something.md)
+- [Code: lm-evaluation-harness, EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness)
+- [Docs: Splitting datasets, Hugging Face Datasets](https://huggingface.co/docs/datasets/main/en/process)
+- [Lesson 23. Metrics That Mean Something](0023-metrics-that-mean-something.md)
 
 ---
 

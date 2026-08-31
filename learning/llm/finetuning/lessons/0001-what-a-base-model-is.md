@@ -7,7 +7,7 @@ type: lesson
 # Lesson 1. What a Base Model Actually Is
 
 **Mission link:** You cannot judge whether fine-tuning is the right answer until you know exactly what the model does when you leave it alone.
-**Primary source:** [LLM Visualization — Brendan Bycroft](https://bbycroft.net/llm)
+**Primary source:** [LLM Visualization, Brendan Bycroft](https://bbycroft.net/llm)
 **Prerequisites:** none — this is the first lesson.
 
 ## Know this
@@ -108,9 +108,9 @@ Start from base when your task's output format is so unlike ordinary chat that i
 
 ## Going further
 
-- [LLM Visualization — Brendan Bycroft](https://bbycroft.net/llm) — click through a single token's path end to end
-- [The Illustrated Transformer — Jay Alammar](https://jalammar.github.io/illustrated-transformer/)
-- [Glossary](../GLOSSARY.md) — `fine-tuning` in this workspace always means the frozen-base kind
+- [LLM Visualization, Brendan Bycroft](https://bbycroft.net/llm): click through a single token's path end to end
+- [The Illustrated Transformer, Jay Alammar](https://jalammar.github.io/illustrated-transformer/)
+- [Glossary](../GLOSSARY.md): `fine-tuning` in this workspace always means the frozen-base kind
 - [Resources](../RESOURCES.md)
 
 ---

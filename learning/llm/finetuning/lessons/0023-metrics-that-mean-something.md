@@ -7,7 +7,7 @@ type: lesson
 # Lesson 23. Metrics That Mean Something
 
 **Mission link:** "Prove it worked" is in the mission. A number you cannot defend is not proof.
-**Primary source:** [Paper: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — Zheng et al., arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
+**Primary source:** [Paper: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", Zheng et al., arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
 **Prerequisites:** [Lesson 22](0022-contamination-and-held-out-design.md), [Lesson 12](0012-reading-a-training-run.md)
 
 ## Warm-up
@@ -178,9 +178,9 @@ Report per-class precision and recall, or a balanced metric. Accuracy on imbalan
 
 ## Going further
 
-- [Paper: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — Zheng et al., arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
-- [Code: lm-evaluation-harness — EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness)
-- [Lesson 24 — The Regression Suite](0024-the-regression-suite.md)
+- [Paper: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", Zheng et al., arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
+- [Code: lm-evaluation-harness, EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness)
+- [Lesson 24. The Regression Suite](0024-the-regression-suite.md)
 
 ---
 

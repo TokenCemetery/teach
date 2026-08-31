@@ -7,7 +7,7 @@ type: lesson
 # Lesson 17. What QLoRA Actually Costs
 
 **Mission link:** The mission says "explain the measured differences, not the advertised ones". This lesson is the measurement.
-**Primary source:** [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs" — Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
+**Primary source:** [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs", Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
 **Prerequisites:** [Lesson 16](0016-training-through-a-quantized-base.md)
 
 ## Warm-up
@@ -181,9 +181,9 @@ Both results can be right. That is precisely why the mission asks for measured r
 
 ## Going further
 
-- [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs" — Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314) — read the limitations section
-- [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/) — the largest pool of practitioner measurements on consumer hardware, and worth testing your numbers against
-- [Lesson 23 — Metrics That Mean Something](0023-metrics-that-mean-something.md)
+- [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs", Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314): read the limitations section
+- [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/): the largest pool of practitioner measurements on consumer hardware, and worth testing your numbers against
+- [Lesson 23. Metrics That Mean Something](0023-metrics-that-mean-something.md)
 
 ---
 

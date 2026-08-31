@@ -7,7 +7,7 @@ type: lesson
 # Lesson 16. Training Through a Quantized Base
 
 **Mission link:** QLoRA in practice. This is also the one lesson where the hardware you have genuinely changes what is available to you.
-**Primary source:** [Docs: bitsandbytes quantization — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/quantization/bitsandbytes)
+**Primary source:** [Docs: bitsandbytes quantization, Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/quantization/bitsandbytes)
 **Prerequisites:** [Lesson 15](0015-nf4-and-double-quantisation.md), [Lesson 11](0011-your-first-adapter.md)
 
 ## Warm-up
@@ -188,10 +188,10 @@ Merging into the 4-bit base requires dequantise-add-requantise and loses quality
 
 ## Going further
 
-- [Docs: bitsandbytes quantization — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/quantization/bitsandbytes)
-- [Code: bitsandbytes — bitsandbytes-foundation](https://github.com/bitsandbytes-foundation/bitsandbytes) — the backend directory is the authority on coverage
-- [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs" — Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
-- [Lesson 17 — What QLoRA Actually Costs](0017-what-qlora-costs.md)
+- [Docs: bitsandbytes quantization, Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/quantization/bitsandbytes)
+- [Code: bitsandbytes, bitsandbytes-foundation](https://github.com/bitsandbytes-foundation/bitsandbytes): the backend directory is the authority on coverage
+- [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs", Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
+- [Lesson 17. What QLoRA Actually Costs](0017-what-qlora-costs.md)
 
 ---
 

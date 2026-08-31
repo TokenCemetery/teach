@@ -7,7 +7,7 @@ type: lesson
 # Lesson 21. Building the Dataset
 
 **Mission link:** Data quality dominates every hyperparameter in this workspace. Stage 3 taught you to turn a knob; this stage teaches you what actually moves the result.
-**Primary source:** [Paper: "LIMA: Less Is More for Alignment" — Zhou et al., arXiv:2305.11206](https://arxiv.org/abs/2305.11206)
+**Primary source:** [Paper: "LIMA: Less Is More for Alignment", Zhou et al., arXiv:2305.11206](https://arxiv.org/abs/2305.11206)
 **Prerequisites:** [Lesson 3](0003-tokenizers-and-chat-templates.md), [Lesson 12](0012-reading-a-training-run.md)
 
 ## Warm-up
@@ -183,9 +183,9 @@ Then check what truncation actually does to the examples above the limit. If it 
 
 ## Going further
 
-- [Paper: "LIMA: Less Is More for Alignment" — Zhou et al., arXiv:2305.11206](https://arxiv.org/abs/2305.11206)
-- [Docs: Dataset formats — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/dataset_formats)
-- [Lesson 22 — Contamination and Held-Out Design](0022-contamination-and-held-out-design.md)
+- [Paper: "LIMA: Less Is More for Alignment", Zhou et al., arXiv:2305.11206](https://arxiv.org/abs/2305.11206)
+- [Docs: Dataset formats, Hugging Face TRL](https://huggingface.co/docs/trl/main/en/dataset_formats)
+- [Lesson 22. Contamination and Held-Out Design](0022-contamination-and-held-out-design.md)
 
 ---
 

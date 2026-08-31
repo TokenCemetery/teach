@@ -7,7 +7,7 @@ type: lesson
 # Lesson 2. Where the Weights Live
 
 **Mission link:** An adapter attaches to specific weight matrices. You cannot choose which ones until you can name them and say what each one does.
-**Primary source:** [The Illustrated Transformer — Jay Alammar](https://jalammar.github.io/illustrated-transformer/)
+**Primary source:** [The Illustrated Transformer, Jay Alammar](https://jalammar.github.io/illustrated-transformer/)
 **Prerequisites:** [Lesson 1](0001-what-a-base-model-is.md)
 
 ## Warm-up
@@ -143,10 +143,10 @@ So attention holds about 2 × 2048² + 2 × 2048 × 256 ≈ 9.4M per layer, not 
 
 ## Going further
 
-- [The Illustrated Transformer — Jay Alammar](https://jalammar.github.io/illustrated-transformer/)
-- [LLM Visualization — Brendan Bycroft](https://bbycroft.net/llm) — the parameter counts are shown per matrix
-- [Paper: "Attention Is All You Need" — Vaswani et al., arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
-- [Lesson 10 — Choosing Target Modules](0010-choosing-target-modules.md) is where this pays off
+- [The Illustrated Transformer, Jay Alammar](https://jalammar.github.io/illustrated-transformer/)
+- [LLM Visualization, Brendan Bycroft](https://bbycroft.net/llm): the parameter counts are shown per matrix
+- [Paper: "Attention Is All You Need", Vaswani et al., arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
+- [Lesson 10. Choosing Target Modules](0010-choosing-target-modules.md) is where this pays off
 
 ---
 

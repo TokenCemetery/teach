@@ -7,7 +7,7 @@ type: lesson
 # Lesson 5. Counting Parameters and Bytes
 
 **Mission link:** "Account for every byte" is in the mission. This is the lesson where you learn to do the arithmetic instead of guessing.
-**Primary source:** [Docs: Model memory anatomy — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/model_memory_anatomy)
+**Primary source:** [Docs: Model memory anatomy, Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/model_memory_anatomy)
 **Prerequisites:** [Lesson 2](0002-where-the-weights-live.md), [Lesson 4](0004-what-training-changes.md)
 
 ## Warm-up
@@ -170,9 +170,9 @@ The next lesson turns this into an exact number, and the answer is not close.
 
 ## Going further
 
-- [Docs: Model memory anatomy — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/model_memory_anatomy)
-- [Memory budget](../reference/memory-budget.md) — the table this lesson builds toward
-- [Lesson 6 — Gradients and Optimizer State](0006-gradients-and-optimizer-state.md)
+- [Docs: Model memory anatomy, Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/model_memory_anatomy)
+- [Memory budget](../reference/memory-budget.md): the table this lesson builds toward
+- [Lesson 6. Gradients and Optimizer State](0006-gradients-and-optimizer-state.md)
 
 ---
 

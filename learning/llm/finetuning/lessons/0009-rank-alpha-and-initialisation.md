@@ -7,7 +7,7 @@ type: lesson
 # Lesson 9. Rank, Alpha and Initialisation
 
 **Mission link:** The mission asks you to justify every hyperparameter from the task. These three are where most people repeat folklore instead.
-**Primary source:** [Docs: LoRA — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+**Primary source:** [Docs: LoRA, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
 **Prerequisites:** [Lesson 8](0008-the-low-rank-idea.md)
 
 ## Warm-up
@@ -191,9 +191,9 @@ The right response there is more or better data, or a narrower task — not a bi
 
 ## Going further
 
-- [Docs: LoRA — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
-- [Paper: "A Rank Stabilization Scaling Factor for Fine-Tuning with LoRA" — Kalajdzievski, arXiv:2312.03732](https://arxiv.org/abs/2312.03732)
-- [Blog: "Practical Tips for Finetuning LLMs Using LoRA" — Sebastian Raschka](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms)
+- [Docs: LoRA, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+- [Paper: "A Rank Stabilization Scaling Factor for Fine-Tuning with LoRA", Kalajdzievski, arXiv:2312.03732](https://arxiv.org/abs/2312.03732)
+- [Blog: "Practical Tips for Finetuning LLMs Using LoRA", Sebastian Raschka](https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms)
 - [LoRA hyperparameters](../reference/lora-hyperparameters.md)
 
 ---

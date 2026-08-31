@@ -88,11 +88,11 @@ Work through these in order.
 
 ## Reference
 
-- [Glossary](GLOSSARY.md) — canonical terms for this topic
-- [Resources](RESOURCES.md) — trusted sources and communities
-- [Memory budget](reference/memory-budget.md) — byte accounting, and what to try when a run will not fit
-- [LoRA hyperparameters](reference/lora-hyperparameters.md) — rank, alpha, targets, learning rate, variants
-- [Failure modes](reference/failure-modes.md) — symptom to cause, and the silent failures
+- [Glossary](GLOSSARY.md): canonical terms for this topic
+- [Resources](RESOURCES.md): trusted sources and communities
+- [Memory budget](reference/memory-budget.md): byte accounting, and what to try when a run will not fit
+- [LoRA hyperparameters](reference/lora-hyperparameters.md): rank, alpha, targets, learning rate, variants
+- [Failure modes](reference/failure-modes.md): symptom to cause, and the silent failures
 
 ## How this works
 

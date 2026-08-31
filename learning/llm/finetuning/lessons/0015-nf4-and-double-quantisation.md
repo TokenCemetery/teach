@@ -7,7 +7,7 @@ type: lesson
 # Lesson 15. NF4 and Double Quantisation
 
 **Mission link:** These are the two ideas QLoRA contributed. Knowing them separates understanding the paper from having read the abstract.
-**Primary source:** [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs" — Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
+**Primary source:** [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs", Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
 **Prerequisites:** [Lesson 14](0014-quantisation-from-first-principles.md)
 
 ## Warm-up
@@ -196,8 +196,8 @@ Set it to bf16 deliberately. Storage precision and compute precision are separat
 
 ## Going further
 
-- [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs" — Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314) — sections 3 and 4 are this lesson
-- [Docs: bitsandbytes quantization — Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/quantization/bitsandbytes)
+- [Paper: "QLoRA: Efficient Finetuning of Quantized LLMs", Dettmers et al., arXiv:2305.14314](https://arxiv.org/abs/2305.14314): sections 3 and 4 are this lesson
+- [Docs: bitsandbytes quantization, Hugging Face Transformers](https://huggingface.co/docs/transformers/main/en/quantization/bitsandbytes)
 - [Memory budget](../reference/memory-budget.md)
 
 ---

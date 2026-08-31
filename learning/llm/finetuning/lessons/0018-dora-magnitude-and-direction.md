@@ -7,7 +7,7 @@ type: lesson
 # Lesson 18. DoRA: Magnitude and Direction
 
 **Mission link:** The third method named in the mission, and the one whose mechanism is most often described wrongly.
-**Primary source:** [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation" — Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
+**Primary source:** [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation", Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
 **Prerequisites:** [Lesson 8](0008-the-low-rank-idea.md), [Lesson 9](0009-rank-alpha-and-initialisation.md)
 
 ## Warm-up
@@ -174,9 +174,9 @@ There is no second low-rank factor. The update is not full-rank. The normalisati
 
 ## Going further
 
-- [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation" — Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
-- [Docs: LoRA variants — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
-- [Lesson 19 — When DoRA Wins, and When It Doesn't](0019-when-dora-wins.md)
+- [Paper: "DoRA: Weight-Decomposed Low-Rank Adaptation", Liu et al., arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
+- [Docs: LoRA variants, Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+- [Lesson 19. When DoRA Wins, and When It Doesn't](0019-when-dora-wins.md)
 
 ---
 

@@ -6,7 +6,7 @@ type: glossary
 
 # Adapter Fine-Tuning Glossary
 
-Canonical terms for this workspace. A term lands here once it can be used correctly, not when it is first mentioned — so this grows as lessons are earned.
+Canonical terms for this workspace. A term lands here once it can be used correctly, not when it is first mentioned, so this grows as lessons are earned.
 
 ## Usage in this workspace
 
@@ -21,7 +21,7 @@ The small set of trainable weights added alongside a frozen base model, together
 _Avoid_: fine-tune (as a noun), LoRA (when the method is not specifically LoRA), checkpoint
 
 **Quantisation**:
-Storing weights at lower numeric precision than they were trained in. In this workspace it always refers to the *frozen base* unless stated otherwise — adapters stay at higher precision, and quantisation for inference is a separate concern.
+Storing weights at lower numeric precision than they were trained in. In this workspace it always refers to the *frozen base* unless stated otherwise: adapters stay at higher precision, and quantisation for inference is a separate concern.
 _Avoid_: compression, shrinking, optimisation
 
 ## Terms

@@ -11,7 +11,7 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The seven stages are public, in `README.md`. What belongs here is the caveat on them: all 27 lessons were written upfront rather than one per session. The trade is that the index is complete and non-drifted, but no lesson has been calibrated against demonstrated knowledge yet. Expect to revise individual lessons once real answers come back — particularly the practice difficulty, which is currently guessed.
+The seven stages are public, in `README.md`. What belongs here is the caveat on them: all 27 lessons were written upfront rather than one per session. The trade is that the index is complete and non-drifted, but no lesson has been calibrated against demonstrated knowledge yet. Expect to revise individual lessons once real answers come back, particularly the practice difficulty, which is currently guessed.
 
 ## Corrected: the CUDA claim
 
@@ -21,7 +21,7 @@ Checked against the `bitsandbytes` source and architecture notes: the library no
 
 What survives of the old boundary:
 
-- **Paged optimizers really are CUDA-specific** — they use NVIDIA unified memory. They also matter least for adapter training, where optimizer state is megabytes.
+- **Paged optimizers really are CUDA-specific**, because they use NVIDIA unified memory. They also matter least for adapter training, where optimizer state is megabytes.
 - **Kernel coverage varies** by operation, block size and version, so non-CUDA paths can silently fall back to something slow.
 - **Published numbers reproduce most reliably on CUDA.**
 
@@ -32,7 +32,7 @@ Lesson 0016 states this accurately, including the instruction to check the insta
 Environment facts, not teaching decisions:
 
 - No `torch` installed. Verify wheel availability for the chosen stack and platform before promising any run; a pinned Python version is likely, and `uv` is not installed either.
-- No base model downloaded. Pick the stage 3 base early — something in the 1–3B class per the README constraint.
+- No base model downloaded. Pick the stage 3 base early, something in the 1–3B class per the README constraint.
 - Renting a larger accelerator is now optional rather than required, given the correction above. Worth it for speed on stage 4 and 6 comparisons, not for correctness.
 
 ## Scope pressure to resist
@@ -43,5 +43,5 @@ The slug says `finetuning`, which is broader than the mission. Expect drift towa
 
 - No task chosen yet. The mission works without one, but stage 6 becomes abstract unless a real task with a real metric appears by then. Lessons 0021–0024 are written generically and will land much harder against a concrete task.
 - Unclear whether the end goal includes serving multiple adapters, which would change the emphasis in 0025.
-- `GLOSSARY.md` still has an empty `## Terms` section by design — terms land there when they can be used correctly, and nothing has been demonstrated yet. The three pinned usage terms are there because the skill sanctions resolving loose field usage explicitly.
+- `GLOSSARY.md` still has an empty `## Terms` section by design: terms land there when they can be used correctly, and nothing has been demonstrated yet. The three pinned usage terms are there because the skill sanctions resolving loose field usage explicitly.
 - No learning records yet. First one should capture disclosed prior knowledge so stage 1 is not re-taught unnecessarily.

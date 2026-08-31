@@ -6,7 +6,7 @@ type: topic
 
 # Learning: Adapter Fine-Tuning (LoRA, QLoRA, DoRA)
 
-Be the person who can take a base model and a task, decide whether adapter fine-tuning is the right answer at all, run it, prove it worked with an eval that would catch a regression, and ship it — and who can argue convincingly for prompting or retrieval instead when those would do the job better.
+Be the person who can take a base model and a task, decide whether adapter fine-tuning is the right answer at all, run it, prove it worked with an eval that would catch a regression, and ship it, and who can argue convincingly for prompting or retrieval instead when those would do the job better.
 
 **Start here:** [0001. What a Base Model Actually Is](lessons/0001-what-a-base-model-is.md)
 **Latest lesson:** [0027. When Not to Fine-Tune](lessons/0027-when-not-to-fine-tune.md)
@@ -25,7 +25,7 @@ Be the person who can take a base model and a task, decide whether adapter fine-
 
 - Assumes no prior machine-learning background. Matrix multiplication is the only mathematics taken for granted; everything above it is taught where it is needed.
 - Adapter training on a base model in the 1–3B class fits roughly 16 GB of accelerator or unified memory, which puts the whole arc within reach of ordinary single-device hardware.
-- Backend support is uneven, not exclusive. CUDA remains the most complete and best-optimised path and is where published numbers reproduce most reliably; other backends work with varying kernel coverage and slower steps. Every concept transfers unchanged — only speed and kernel availability differ.
+- Backend support is uneven, not exclusive. CUDA remains the most complete and best-optimised path and is where published numbers reproduce most reliably; other backends work with varying kernel coverage and slower steps. Every concept transfers unchanged; only speed and kernel availability differ.
 - Reps are long-latency: a training run takes minutes to hours, so sessions batch rather than fitting an evening, with reading in between.
 - The tooling moves faster than any book. Library APIs are read from the installed version's documentation, never recalled.
 - Nothing in the arc requires paid infrastructure, though renting a larger accelerator will make some comparisons faster.
@@ -33,7 +33,7 @@ Be the person who can take a base model and a task, decide whether adapter fine-
 ## Out of scope
 
 - Full fine-tuning at scale, and pretraining.
-- RLHF, DPO and preference optimisation — adjacent, and a separate workspace later.
+- RLHF, DPO and preference optimisation: adjacent, and a separate workspace later.
 - Inference quantisation and distillation as topics in their own right; touched only where QLoRA needs them.
 - Building serving infrastructure, beyond running an adapter through an existing stack.
 - Training a model from scratch.
@@ -96,4 +96,4 @@ Work through these in order.
 
 ## How this works
 
-Each lesson is short and self-contained. Answer keys are collapsed — recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Anything still unclear at the end of a lesson is worth chasing to its primary source before moving on.
+Each lesson is short and self-contained. Answer keys are collapsed: recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Anything still unclear at the end of a lesson is worth chasing to its primary source before moving on.

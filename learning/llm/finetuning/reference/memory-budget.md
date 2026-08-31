@@ -56,7 +56,7 @@ The MLP is typically 75–80% of a block.
 adapter = Σ over targeted layers:  r · (d_in + d_out)
 ```
 
-Dominated by the **larger** dimension — GQA narrowing barely shrinks an adapter.
+Dominated by the **larger** dimension, so GQA narrowing barely shrinks an adapter.
 
 | Base | Targets | Rank | Adapter | % of base |
 |---|---|---|---|---|
@@ -96,11 +96,11 @@ Gradient checkpointing cuts this by roughly an order of magnitude for ~20–40% 
 
 In order of what you give up:
 
-1. **Gradient checkpointing** — costs time only
-2. **Lower batch size, raise gradient accumulation** — statistically equivalent
-3. **Shorter sequence length** — check the token-length distribution first; this changes the task
-4. **Quantise the base** — costs some quality
-5. **Lower rank** — saves the least, costs capacity
+1. **Gradient checkpointing**, costs time only
+2. **Lower batch size, raise gradient accumulation**, statistically equivalent
+3. **Shorter sequence length**, but check the token-length distribution first; this changes the task
+4. **Quantise the base**, costs some quality
+5. **Lower rank**, saves the least and costs capacity
 
 Rank is the instinct and nearly the worst option. Halving rank on a 4M adapter saves ~32 MB.
 

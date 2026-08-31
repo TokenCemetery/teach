@@ -6,7 +6,7 @@ type: reference
 
 # LoRA Hyperparameters
 
-Decision sheet. Read the installed library version for exact parameter names — this surface changes between releases.
+Decision sheet. Read the installed library version for exact parameter names, because this surface changes between releases.
 
 ## The equation
 
@@ -38,7 +38,7 @@ Rank costs almost no memory. Its real cost is overfitting risk on small data.
 | 8 | 16 | 2.0 | baseline |
 | 16 | 32 | 2.0 | more capacity, same scale |
 | 16 | 16 | 1.0 | weaker update |
-| 64 | 16 | 0.25 | **trap** — capacity up, influence down 8× |
+| 64 | 16 | 0.25 | **trap**: capacity up, influence down 8× |
 
 Raising `r` without raising `α` turns the adapter *down*. At rank ≥ 64 consider `use_rslora=True`, which uses `α/√r`.
 
@@ -54,7 +54,7 @@ Raising `r` without raising `α` turns the adapter *down*. At rank ≥ 64 consid
 
 `"all-linear"` resolves against the loaded model, so it cannot go stale against unfamiliar naming. Attention-only is a 2021 ablation, not a default.
 
-Typical names — **verify with `named_modules()`**:
+Typical names, but **verify with `named_modules()`**:
 
 ```text
 attention: q_proj  k_proj  v_proj  o_proj
@@ -105,7 +105,7 @@ BitsAndBytesConfig(
 )
 ```
 
-Then `prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)` — skipping it gives unstable runs or opaque gradient errors.
+Then `prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)`. Skipping it gives unstable runs or opaque gradient errors.
 
 Every other hyperparameter is unchanged. **QLoRA is LoRA with a cheaper base.**
 
@@ -119,7 +119,7 @@ Merge into the **full-precision** base, never the quantized one.
 | ↓ | ↑ after a dip | Overfitting | Ship the minimum; less capacity or more data |
 | → high | → high | Underfitting | More rank, more targets, higher LR |
 | Flat from step 1 | Flat | Broken | Check the adapter attached and labels are not all `-100` |
-| `NaN` | — | Overflow | Lower LR; add warm-up; prefer bf16 |
+| `NaN` | also `NaN` | Overflow | Lower LR; add warm-up; prefer bf16 |
 
 ## Related
 

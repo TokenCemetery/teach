@@ -31,7 +31,7 @@ type: resources
   Ablations over rank, alpha and target modules, with the experiments shown. Use for: sanity-checking hyperparameter folklore against measurements.
 
 - [Docs: PEFT, Hugging Face](https://huggingface.co/docs/peft)
-  Reference implementation of all three methods and the configuration surface they expose. Use for: what a hyperparameter is called in practice, and which variants are established enough to be a flag. Version-sensitive — check against the installed release rather than from memory.
+  Reference implementation of all three methods and the configuration surface they expose. Use for: what a hyperparameter is called in practice, and which variants are established enough to be a flag. Version-sensitive, so check against the installed release rather than from memory.
 
 - [Docs: SFTTrainer, Hugging Face TRL](https://huggingface.co/docs/trl/main/en/sft_trainer)
   The standard supervised fine-tuning loop and its dataset formats. Use for: stage 3 onward. Version-sensitive; parameter names have moved between releases.
@@ -76,7 +76,7 @@ type: resources
   Evidence that a small carefully curated dataset outperforms a large careless one, and that SFT largely teaches format. Use for: stage 6's opening argument.
 
 - [Paper: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", Zheng et al., arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
-  Model-as-judge evaluation with its biases characterised — position, verbosity, self-preference. Use for: free-form generation metrics, and for why the judge needs calibrating against human labels.
+  Model-as-judge evaluation with its biases characterised: position, verbosity, self-preference. Use for: free-form generation metrics, and for why the judge needs calibrating against human labels.
 
 - [Paper: "An Empirical Study of Catastrophic Forgetting in Large Language Models During Continual Fine-tuning", Luo et al., arXiv:2308.08747](https://arxiv.org/abs/2308.08747)
   That forgetting is measurable, common, and not confined to edge cases. Use for: justifying the regression suite to someone who thinks it is overhead.
@@ -121,7 +121,7 @@ type: resources
 
 - No source tracks which `torch`, PEFT, TRL and quantisation-library versions actually work together on a given Python version and platform. This blocks a first run more often than any concept does, and each environment has to be verified against release notes rather than assumed.
 - Hardware backend coverage for 4-bit operations changes release to release. No document is reliable here; the library source is the only authority, and any tutorial's claim about hardware requirements should be treated as expired.
-- No trusted source yet for evaluation design specific to small-model task adaptation. This is the weakest link in stage 6 and the hardest part of the mission — the general evaluation literature is aimed at benchmarking foundation models, not at proving a narrow adapter helped.
+- No trusted source yet for evaluation design specific to small-model task adaptation. This is the weakest link in stage 6 and the hardest part of the mission. The general evaluation literature is aimed at benchmarking foundation models, not at proving a narrow adapter helped.
 - Most published LoRA hyperparameter advice targets 7B models and above. Little addresses whether it transfers to the 1–3B class, which is where most people actually start.
 - No independent replication surveyed for DoRA at the scale LoRA and QLoRA enjoy. Treat its reported gains as needing local measurement.
 - No source chosen for constrained decoding, which Lesson 27 recommends as the correct answer to schema-validity problems. It is named without a reference behind it.

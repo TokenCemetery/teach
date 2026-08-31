@@ -34,7 +34,7 @@ Check 2 catches template mismatch, missing end-of-turn tokens, masking bugs and 
 | Loss exactly flat from step 1 | LR orders of magnitude too low | Should be ~`1e-4` |
 | Loss barely moves | Target module names wrong for this architecture | `named_modules()` |
 | Loss barely moves | `α/r` accidentally tiny | Raised `r`, forgot `α` |
-| Loss plateaus high | Capacity ceiling | More rank or more targets — not more epochs |
+| Loss plateaus high | Capacity ceiling | More rank or more targets, not more epochs |
 | Held-out rises, train falls | Overfitting | Ship the held-out minimum |
 | Train → 0 fast, held-out rises at once | Dataset far too small for capacity | More data, less capacity |
 | Loss staircases at epoch boundaries | Memorisation | Fewer epochs |
@@ -54,18 +54,18 @@ Check 2 catches template mismatch, missing end-of-turn tokens, masking bugs and 
 | Great eval, bad production | Train/serve distribution mismatch | Train on real inputs, not clean ones |
 | Result vanished on rerun | Seed noise, never a real effect | Multiple seeds, paired comparison |
 
-## Silent failures — no error, wrong result
+## Silent failures: no error, wrong result
 
 The dangerous set. Nothing raises, everything looks fine.
 
 1. **Template mismatch** between training and serving.
-2. **Missing end-of-turn token** — trains fine, never stops.
-3. **Loss masking wrong** — training on prompts unintentionally.
-4. **Contamination** — held-out measures memorisation, reports generalisation.
-5. **Group or temporal leakage** — split by the wrong key.
-6. **Catastrophic forgetting** — every number you watch improves.
-7. **Adapter attached to nothing** — trains, logs a loss, learns nothing.
-8. **Evaluating a different artifact than you ship** — e.g. bf16 eval, 4-bit deploy.
+2. **Missing end-of-turn token.** Trains fine, never stops.
+3. **Loss masking wrong.** Training on prompts unintentionally.
+4. **Contamination.** Held-out measures memorisation, reports generalisation.
+5. **Group or temporal leakage.** Split by the wrong key.
+6. **Catastrophic forgetting.** Every number you watch improves.
+7. **Adapter attached to nothing.** Trains, logs a loss, learns nothing.
+8. **Evaluating a different artifact than you ship**, for example bf16 eval and 4-bit deploy.
 
 Each has a specific detection step above. None announces itself.
 
@@ -77,12 +77,12 @@ Cheapest first:
 2. Lower learning rate
 3. Lower rank, or fewer target modules
 4. Mix a few percent general instruction data into training
-5. **Keep the adapter unmerged and route** — the base stays intact, so forgetting stops mattering
+5. **Keep the adapter unmerged and route**, so the base stays intact and forgetting stops mattering
 
 ## Comparison hygiene
 
 - One variable at a time; fix seed, data and split
-- Multiple seeds — variance often exceeds the effect
+- Multiple seeds, since variance often exceeds the effect
 - Paired comparison on identical examples
 - Report `n` and an interval, never a bare number
 - Read actual generations, including failures, every time

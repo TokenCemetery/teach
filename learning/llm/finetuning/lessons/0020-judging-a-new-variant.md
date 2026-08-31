@@ -168,7 +168,7 @@ It is hard because it already has enough capacity and coverage to approach full 
 
 - [Docs: LoRA variants — Hugging Face PEFT](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
 - [Docs: "LoRA Without Regret" — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
-- [EleutherAI Discord](https://www.eleuther.ai/community) — where claims get tested against people who read papers critically
+- [EleutherAI Blog](https://blog.eleuther.ai/) — a group that publishes its negative results, which is the rarer half of this question
 - [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/) — fast, blunt replication reports
 
 ---

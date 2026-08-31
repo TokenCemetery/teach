@@ -106,16 +106,16 @@ type: resources
 ## Wisdom (Communities)
 
 - [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/)
-  The largest concentration of people fine-tuning on consumer hardware, across every backend. Use for: what actually works within a memory budget, which folklore is worth testing, and fast replication reports on new methods.
+  The largest concentration of people fine-tuning on consumer hardware, across every backend. Use for: searching what already worked within a memory budget, which folklore is worth testing, and replication reports on new methods. Read the archive; posting is a rep, not a source.
 
 - [Hugging Face Forums](https://discuss.huggingface.co/)
   Searchable and archived, with library authors present. Use for: PEFT, TRL and `transformers` behaviour that the docs leave ambiguous.
 
-- [EleutherAI Discord](https://www.eleuther.ai/community)
-  Research-grade discussion with people who read the papers critically. Use for: stage 5 and 7 judgment calls on whether a claimed result generalises.
+- [EleutherAI Blog](https://blog.eleuther.ai/)
+  Write-ups from a group that reads its own field critically, including negative results. Use for: stage 5 and 7 judgment calls on whether a claimed result generalises. Their Discord is where this gets discussed first, and is deliberately not listed: nothing said there is retrievable later.
 
 - [MLX Discussions — ml-explore/mlx](https://github.com/ml-explore/mlx/discussions)
-  Maintainers answer directly. Use for: Apple Silicon specifics and whether a given operation is supported yet.
+  Public, searchable, and answered by the maintainers. Use for: reading whether a given operation is supported on Apple Silicon yet, usually already asked.
 
 ## Gaps
 

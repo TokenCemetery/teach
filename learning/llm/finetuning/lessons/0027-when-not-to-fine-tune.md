@@ -187,7 +187,7 @@ The problem is behavioural: grounding in provided context, respecting it, citing
 
 - [Docs: "LoRA Without Regret" — Hugging Face TRL](https://huggingface.co/docs/trl/main/en/lora_without_regret)
 - [Paper: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" — Lewis et al., arXiv:2005.11401](https://arxiv.org/abs/2005.11401)
-- [EleutherAI Discord](https://www.eleuther.ai/community) and [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/) — where judgement calls like these get argued out with practitioners
+- [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/) — search it for the cases where practitioners decided against fine-tuning, and what they shipped instead
 - [Failure modes](../reference/failure-modes.md), [LoRA hyperparameters](../reference/lora-hyperparameters.md), [Memory budget](../reference/memory-budget.md)
 
 ---

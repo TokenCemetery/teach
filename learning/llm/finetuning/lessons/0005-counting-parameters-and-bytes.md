@@ -46,7 +46,7 @@ A parameter is a number. Memory is that number's storage size times how many of 
 |---|---|---|
 | `float32` (fp32) | 4 | Full precision. The historical default for training. |
 | `bfloat16` (bf16) | 2 | Same exponent range as fp32, fewer mantissa bits. The modern default. |
-| `float16` (fp16) | 2 | More mantissa, much smaller range — overflows to infinity more easily. |
+| `float16` (fp16) | 2 | More mantissa, much smaller range, so it overflows to infinity more easily. |
 | `int8` | 1 | Integer, needs a scale factor to interpret. |
 | 4-bit (`nf4`, `int4`) | 0.5 | Two values per byte, plus per-block scales. Stage 4. |
 
@@ -62,7 +62,7 @@ weights in bf16 = 1.5e9 × 2 bytes = 3.0 GB
 weights in nf4  = 1.5e9 × 0.5     = 0.75 GB, plus quantisation constants
 ```
 
-This is inference-weight memory only — the floor for having the model in memory at all, before any activations, any KV cache, and certainly before training.
+This is inference-weight memory only: the floor for having the model in memory at all, before any activations, any KV cache, and certainly before training.
 
 A useful reflex: **bf16 gigabytes ≈ twice the parameter count in billions.** A 7B model is about 14 GB of weights. A 70B model is about 140 GB. You should be able to produce these instantly.
 
@@ -96,15 +96,15 @@ embeddings = 32000 × 2048               = 0.066B
 total                                   ≈ 1.12B
 ```
 
-In bf16 that is about 2.2 GB of weights. Note that the MLP is 79% of the block — carry that forward to Lesson 10.
+In bf16 that is about 2.2 GB of weights. Note that the MLP is 79% of the block; carry that forward to Lesson 10.
 
 ### What this does not yet include
 
 You now have the weight cost. Training adds three more categories, and they dominate:
 
-- Gradients — one per trainable parameter (Lesson 6)
-- Optimizer state — two per trainable parameter (Lesson 6)
-- Activations — dependent on batch size and sequence length, not parameter count (Lesson 7)
+- Gradients, one per trainable parameter (Lesson 6)
+- Optimizer state, two per trainable parameter (Lesson 6)
+- Activations, dependent on batch size and sequence length rather than parameter count (Lesson 7)
 
 Anyone who tells you a 7B model "needs 14 GB to fine-tune" has counted only the first category. That is the mistake this stage exists to eliminate.
 
@@ -146,7 +146,7 @@ Roughly a 7B model, and the MLP is 81% of it.
 
 <details markdown="1"><summary>Check</summary>
 
-The embedding cost. With hidden size 4096, a 32k vocabulary is 131M parameters per copy; a 256k vocabulary is 1.05B — around 15% of the whole model in one table, and double that if the output projection is untied.
+The embedding cost. With hidden size 4096, a 32k vocabulary is 131M parameters per copy; a 256k vocabulary is 1.05B, around 15% of the whole model in one table, and double that if the output projection is untied.
 
 The large-vocabulary model therefore has meaningfully fewer parameters in its transformer blocks, which is where adapters attach.
 
@@ -156,7 +156,7 @@ The large-vocabulary model therefore has meaningfully fewer parameters in its tr
 
 <details markdown="1"><summary>Check</summary>
 
-They have counted only the weights. Full fine-tuning also needs gradients and two optimizer moments per trainable parameter, plus activations — several times the weight cost. Even the 14 GB claim leaves only 2 GB for everything else.
+They have counted only the weights. Full fine-tuning also needs gradients and two optimizer moments per trainable parameter, plus activations, which is several times the weight cost. Even the 14 GB claim leaves only 2 GB for everything else.
 
 The next lesson turns this into an exact number, and the answer is not close.
 

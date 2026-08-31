@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-The MLP, because its intermediate dimension is several times the hidden size — and grouped-query attention shrinks `k_proj` and `v_proj` further.
+The MLP, because its intermediate dimension is several times the hidden size, and grouped-query attention shrinks `k_proj` and `v_proj` further.
 
 </details>
 
@@ -38,7 +38,7 @@ How much probability the model assigned to the token that actually came next. Lo
 
 ## Know this
 
-The model does not see text. It sees integers. The tokenizer is the mapping between them, and it is part of the model — a checkpoint's tokenizer is not interchangeable with another's, even within the same family.
+The model does not see text. It sees integers. The tokenizer is the mapping between them, and it is part of the model: a checkpoint's tokenizer is not interchangeable with another's, even within the same family.
 
 ### What a tokenizer is
 
@@ -65,7 +65,7 @@ Hello<|im_end|>
 Hi.<|im_end|>
 ```
 
-Another family uses entirely different markers. The format is not a convention you can approximate — it is the distribution the weights were fit to. Get a marker wrong, add a stray newline, or omit the system block when the model expects one, and the model is now operating slightly off-distribution. It will still produce fluent text, which is exactly why this failure is hard to spot.
+Another family uses entirely different markers. The format is not a convention you can approximate: it is the distribution the weights were fit to. Get a marker wrong, add a stray newline, or omit the system block when the model expects one, and the model is now operating slightly off-distribution. It will still produce fluent text, which is exactly why this failure is hard to spot.
 
 The template ships with the tokenizer, as a Jinja string. Use it rather than writing the format yourself:
 
@@ -99,7 +99,7 @@ print(repr(full))
 
 ### Base models have no template
 
-If a base model's tokenizer has no chat template, that is not a bug — there is no conversation format to preserve. You are choosing the format, so choose one, write it down, and use it identically in training and serving.
+If a base model's tokenizer has no chat template, that is not a bug, because there is no conversation format to preserve. You are choosing the format, so choose one, write it down, and use it identically in training and serving.
 
 ## Practice
 
@@ -115,7 +115,7 @@ Token IDs index directly into the embedding matrix. A different vocabulary maps 
 
 <details markdown="1"><summary>Check</summary>
 
-`False`. The generation prompt is the opening marker that tells the model "the assistant speaks next" — useful at inference, when the assistant turn does not exist yet. In training the assistant turn is present in the text, so adding the prompt duplicates the marker and shifts the sequence off the format the model knows.
+`False`. The generation prompt is the opening marker that tells the model "the assistant speaks next", which is useful at inference, when the assistant turn does not exist yet. In training the assistant turn is present in the text, so adding the prompt duplicates the marker and shifts the sequence off the format the model knows.
 
 </details>
 
@@ -125,7 +125,7 @@ Token IDs index directly into the embedding matrix. A different vocabulary maps 
 
 The end-of-turn token was missing from your training examples, so the model never learned that answers terminate.
 
-Loss cannot catch this: predicting fluent continuation is exactly what the model was rewarded for on your data. It is a data-construction bug that only an actual generation reveals — one reason Lesson 24 insists on generating, not just scoring.
+Loss cannot catch this: predicting fluent continuation is exactly what the model was rewarded for on your data. It is a data-construction bug that only an actual generation reveals, which is one reason Lesson 24 insists on generating rather than just scoring.
 
 </details>
 
@@ -158,7 +158,7 @@ Temperature is applied after the model produces its distribution, so it is a ser
 
 - [ ] Take one model and print `apply_chat_template(..., tokenize=False)` with `repr`. Copy the exact string into your notes, whitespace included.
 - [ ] Tokenize the same paragraph in two different model families and compare token counts. Then tokenize a block of JSON and compare again.
-- [ ] Tomorrow: deliberately break a template — drop the end-of-turn marker — and prompt the model. Watch what it does. That is the failure you are learning to recognise.
+- [ ] Tomorrow: deliberately break a template by dropping the end-of-turn marker, then prompt the model. Watch what it does. That is the failure you are learning to recognise.
 
 ## Going further
 

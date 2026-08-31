@@ -8,11 +8,11 @@ type: lesson
 
 **Mission link:** You cannot judge whether fine-tuning is the right answer until you know exactly what the model does when you leave it alone.
 **Primary source:** [LLM Visualization, Brendan Bycroft](https://bbycroft.net/llm)
-**Prerequisites:** none — this is the first lesson.
+**Prerequisites:** none, this is the first lesson.
 
 ## Know this
 
-A language model is one function. It takes a sequence of token IDs and returns a score for every token in its vocabulary, describing what could come next. That is the whole operation. Chat, tool calls, refusals, reasoning traces — all of it is built on top of that single next-token step.
+A language model is one function. It takes a sequence of token IDs and returns a score for every token in its vocabulary, describing what could come next. That is the whole operation. Chat, tool calls, refusals, reasoning traces: all of it is built on top of that single next-token step.
 
 Those raw scores are called **logits**. Softmax turns them into a probability distribution. A sampler picks one token from that distribution, the token is appended to the sequence, and the function runs again. Text appears one token at a time, and nothing else is happening.
 
@@ -26,14 +26,14 @@ Two consequences matter for everything later.
 
 A **base** model has been trained on one objective only: predict the next token across a very large corpus. It does not answer questions. Given `What is the capital of France?` it may continue with three more exam questions, because that is what the surrounding text looked like in its training data.
 
-An **instruct** or **chat** model is a base model that has been trained further on pairs of instructions and responses — supervised fine-tuning — and usually on human or model preference data after that. The instruction-following behaviour you take for granted is a trained layer, not a property of the architecture.
+An **instruct** or **chat** model is a base model that has been trained further on pairs of instructions and responses, which is supervised fine-tuning, and usually on human or model preference data after that. The instruction-following behaviour you take for granted is a trained layer, not a property of the architecture.
 
 Which one you start from is a real decision:
 
 | Starting point | You inherit | You must supply |
 |---|---|---|
 | Base | Nothing but raw language ability | Every formatting and behavioural convention |
-| Instruct | Formatting, instruction following, refusal behaviour | Only your task — but you risk degrading what is already there |
+| Instruct | Formatting, instruction following, refusal behaviour | Only your task, but you risk degrading what is already there |
 
 Most adapter fine-tuning starts from an instruct model, because rebuilding instruction following from scratch on a small dataset is a losing trade. The cost is that your training data now competes with training the vendor already did, and that competition is where [catastrophic forgetting](../GLOSSARY.md) comes from later.
 
@@ -61,7 +61,7 @@ The wrong instinct is to describe generation ("it writes text") rather than the 
 
 The sampler (temperature above zero picks different tokens from the same distribution) and the context (a different system prompt, or conversation history you forgot was there). Neither involves the weights.
 
-The weights are frozen at inference. If you have not changed them, they cannot be the explanation — and this is the first thing to rule out before you conclude a model is inconsistent.
+The weights are frozen at inference. If you have not changed them, they cannot be the explanation, and this is the first thing to rule out before you conclude a model is inconsistent.
 
 </details>
 
@@ -94,7 +94,7 @@ Temperature is a serving-time knob. Context is per-request input. Vocabulary siz
 
 <details markdown="1"><summary>Check</summary>
 
-Start from instruct when you want to keep instruction following and general helpfulness that you cannot afford to rebuild from a small dataset — which is nearly always.
+Start from instruct when you want to keep instruction following and general helpfulness that you cannot afford to rebuild from a small dataset, which is nearly always.
 
 Start from base when your task's output format is so unlike ordinary chat that inherited chat behaviour actively interferes: rigid structured output, a single classification label, or a domain notation where conversational padding is pure noise.
 
@@ -104,7 +104,7 @@ Start from base when your task's output format is so unlike ordinary chat that i
 
 - [ ] Run any model you can reach locally or through an API. Send one prompt at temperature 0 twice, then at temperature 1 twice. Write down which pair matched and why.
 - [ ] Find a model on the Hugging Face Hub that has both a base and an instruct variant. Read both model cards and note what the instruct card claims was added.
-- [ ] Tomorrow: give a base model a direct question and record what it does instead of answering. Keep the output — you will recognise this failure again in stage 6.
+- [ ] Tomorrow: give a base model a direct question and record what it does instead of answering. Keep the output. You will recognise this failure again in stage 6.
 
 ## Going further
 

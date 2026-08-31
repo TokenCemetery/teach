@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-`α/r` sets the scale of the adapter's contribution. `r` alone sets its capacity — how complex an update it can express.
+`α/r` sets the scale of the adapter's contribution. `r` alone sets its capacity: how complex an update it can express.
 
 </details>
 
@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-The MLP — roughly 75–80% of the block, because the intermediate dimension is several times the hidden size and grouped-query attention shrinks two of the four attention projections.
+The MLP, roughly 75–80% of the block, because the intermediate dimension is several times the hidden size and grouped-query attention shrinks two of the four attention projections.
 
 </details>
 
@@ -40,17 +40,17 @@ That the adapted model is identical to the base model before the first optimizer
 
 ### What the original paper did, and why that is not advice
 
-The LoRA paper adapted only the attention projections — in its experiments, mostly `W_q` and `W_v` — and left the MLP alone. That choice propagated into years of tutorials, and it is where `target_modules=["q_proj", "v_proj"]` comes from.
+The LoRA paper adapted only the attention projections, in its experiments mostly `W_q` and `W_v`, and left the MLP alone. That choice propagated into years of tutorials, and it is where `target_modules=["q_proj", "v_proj"]` comes from.
 
 Two things to understand about it. It was a reasonable finding under a memory budget and on the tasks measured. And it is **not** a general result about where adaptation should happen. Treating a 2021 ablation as a default is the single most common inherited mistake in this field.
 
 ### The case for the MLP
 
-From Lesson 2: the MLP holds roughly four fifths of each block's parameters. There is a substantial body of interpretability work treating MLP layers as where much of a model's learned knowledge and feature detection lives, while attention routes information between positions. If your task needs the model to *know* or *classify* something differently, the parameters that encode that are disproportionately in the MLP — and an attention-only adapter cannot reach them.
+From Lesson 2: the MLP holds roughly four fifths of each block's parameters. There is a substantial body of interpretability work treating MLP layers as where much of a model's learned knowledge and feature detection lives, while attention routes information between positions. If your task needs the model to *know* or *classify* something differently, the parameters that encode that are disproportionately in the MLP, and an attention-only adapter cannot reach them.
 
 ### The current default
 
-Recent work converges on a blunt recommendation: **adapt all linear layers**, and give the adapter enough rank. The TRL write-up of the "LoRA without regret" result is explicit — applying LoRA to every linear layer, including the MLP, with sufficient rank, closes the gap to full fine-tuning on supervised fine-tuning workloads, while attention-only configurations do not.
+Recent work converges on a blunt recommendation: **adapt all linear layers**, and give the adapter enough rank. The TRL write-up of the "LoRA without regret" result is explicit: applying LoRA to every linear layer, including the MLP, with sufficient rank, closes the gap to full fine-tuning on supervised fine-tuning workloads, while attention-only configurations do not.
 
 ```python
 from peft import LoraConfig
@@ -87,7 +87,7 @@ Why this is affordable now: from Lesson 7, adapter parameters are a negligible s
 
 **Embeddings and the output head.** Usually left alone. Adapting them is expensive relative to benefit, and it is the one place where changing weights can shift the meaning of every token. The genuine exception is adding new special tokens, which requires touching the embedding table and is a different operation from adapting it.
 
-**Bias terms.** `bias="none"` is the standard setting. Training biases as well ( `"all"` or `"lora_only"`) is cheap but rarely the difference between a working and a failing run — and it complicates merging.
+**Bias terms.** `bias="none"` is the standard setting. Training biases as well ( `"all"` or `"lora_only"`) is cheap but rarely the difference between a working and a failing run, and it complicates merging.
 
 ### The check that catches the real error
 
@@ -99,7 +99,7 @@ model.print_trainable_parameters()
 print([n for n, _ in model.named_parameters() if "lora" in n][:8])
 ```
 
-A target-module name that matched nothing produces either an error or — depending on version — a model with no adapter at all, which trains, logs a loss, and learns nothing. A trainable-parameter count that disagrees with your Lesson 8 arithmetic is the earliest possible warning.
+A target-module name that matched nothing produces either an error or, depending on version, a model with no adapter at all, which trains, logs a loss, and learns nothing. A trainable-parameter count that disagrees with your Lesson 8 arithmetic is the earliest possible warning.
 
 ## Practice
 
@@ -125,7 +125,7 @@ All-linear. Making new discriminations means changing feature detection and stor
 
 <details markdown="1"><summary>Check</summary>
 
-With 400 examples, capacity is the risk rather than the constraint. A full all-linear adapter at generous rank can memorise the set outright — training loss near zero, held-out loss climbing, and no generalisation.
+With 400 examples, capacity is the risk rather than the constraint. A full all-linear adapter at generous rank can memorise the set outright: training loss near zero, held-out loss climbing, and no generalisation.
 
 Restricting to attention at low rank is a deliberate capacity limit, which functions as regularisation. The better answer, if available, is more data.
 
@@ -162,7 +162,7 @@ Print the module names, then `print_trainable_parameters()`. A near-zero trainab
 
 It resolves against the loaded model rather than against your memory, so it cannot silently miss layers on an architecture whose naming differs.
 
-Its cost is loss of precision — verify what it matched, and note that it may include layers you would rather leave alone.
+Its cost is loss of precision, so verify what it matched and note that it may include layers you would rather leave alone.
 
 </details>
 

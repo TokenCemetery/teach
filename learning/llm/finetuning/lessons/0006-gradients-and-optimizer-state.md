@@ -12,7 +12,7 @@ type: lesson
 
 ## Warm-up
 
-1. ▢ Weights of a 7B model in bf16 — how many gigabytes?
+1. ▢ Weights of a 7B model in bf16: how many gigabytes?
 
 <details markdown="1"><summary>Check</summary>
 
@@ -24,7 +24,7 @@ About 14 GB. Two bytes per parameter, so bf16 gigabytes are roughly twice the bi
 
 <details markdown="1"><summary>Check</summary>
 
-A running mean of gradients and a running mean of squared gradients — the first and second moments. Each is parameter-shaped.
+A running mean of gradients and a running mean of squared gradients, the first and second moments. Each is parameter-shaped.
 
 </details>
 
@@ -64,7 +64,7 @@ Full fine-tuning a 7B model needs 112 GB of optimizer-and-weight state alone, th
 
 ### The escape
 
-Look again at the table and notice what the 16 bytes are multiplied by: the number of **trainable** parameters, not total parameters. Frozen parameters cost 2 bytes each — their weights — and nothing more. No gradient. No moments.
+Look again at the table and notice what the 16 bytes are multiplied by: the number of **trainable** parameters, not total parameters. Frozen parameters cost 2 bytes each, for their weights, and nothing more. No gradient. No moments.
 
 That is the whole argument for adapters:
 
@@ -80,7 +80,7 @@ frozen base    7B  × 2  = 14.0 GB
 trainable      4M  × 16 = 0.064 GB
 ```
 
-The adapter's optimizer state is 64 MB. It has become a rounding error against the base weights — and the base weights are the one part you can attack separately, with quantisation, in stage 4.
+The adapter's optimizer state is 64 MB. It has become a rounding error against the base weights, and the base weights are the one part you can attack separately, with quantisation, in stage 4.
 
 ### Partial measures, and why they are not enough
 
@@ -125,7 +125,7 @@ The master copy is not optional: repeatedly adding a very small update to a bf16
 
 <details markdown="1"><summary>Check</summary>
 
-14 GB for the frozen base (7e9 × 2) plus 0.32 GB for the adapter (2e7 × 16) — about 14.3 GB.
+14 GB for the frozen base (7e9 × 2) plus 0.32 GB for the adapter (2e7 × 16), so about 14.3 GB.
 
 Against 112 GB for full fine-tuning: a 7.8× reduction, and almost all of what remains is the frozen base. Stage 4 attacks that remainder.
 
@@ -160,7 +160,7 @@ The technique is real and useful; the plan is off by an order of magnitude. This
 
 <details markdown="1"><summary>Check</summary>
 
-A frozen parameter needs only its own value stored for the forward pass, while a trainable one additionally needs a gradient, two optimizer moments, and a high-precision master copy — eight times as much.
+A frozen parameter needs only its own value stored for the forward pass, while a trainable one additionally needs a gradient, two optimizer moments, and a high-precision master copy: eight times as much.
 
 </details>
 

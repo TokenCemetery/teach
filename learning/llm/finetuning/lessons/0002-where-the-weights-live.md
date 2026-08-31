@@ -40,9 +40,9 @@ Each block has two sublayers, each preceded by a normalisation and wrapped in a 
 
 | Name | Role |
 |---|---|
-| `q_proj` | Queries — what this position is looking for |
-| `k_proj` | Keys — what each position offers as a match |
-| `v_proj` | Values — the content actually retrieved |
+| `q_proj` | Queries, what this position is looking for |
+| `k_proj` | Keys, what each position offers as a match |
+| `v_proj` | Values, the content actually retrieved |
 | `o_proj` | Mixes the attention result back into the residual stream |
 
 **MLP** (also called the feed-forward network). In current models this is usually three projections rather than two, because of gated activations:
@@ -53,7 +53,7 @@ Each block has two sublayers, each preceded by a normalisation and wrapped in a 
 | `up_proj` | Projects up to the wider intermediate dimension |
 | `down_proj` | Projects back down to the hidden dimension |
 
-The MLP is wider than the hidden dimension — commonly around 2.5× to 4× — so despite having fewer matrices than you might expect, **the MLP holds more parameters than attention does.** That fact drives target-module choice in Lesson 10.
+The MLP is wider than the hidden dimension, commonly around 2.5× to 4×, so despite having fewer matrices than you might expect, **the MLP holds more parameters than attention does.** That fact drives target-module choice in Lesson 10.
 
 ### Counting
 
@@ -68,7 +68,7 @@ That accounts for essentially the whole model. There is no hidden reservoir of p
 
 ### One trap worth knowing now
 
-Most current models use **grouped-query attention**, where several query heads share one set of keys and values. That makes `k_proj` and `v_proj` *narrower* than `q_proj` and `o_proj` — often by a factor of four or eight. Any calculation that assumes all four attention projections are square will overcount, and any assumption that they are the same size will produce a wrong adapter parameter count in Lesson 8.
+Most current models use **grouped-query attention**, where several query heads share one set of keys and values. That makes `k_proj` and `v_proj` *narrower* than `q_proj` and `o_proj`, often by a factor of four or eight. Any calculation that assumes all four attention projections are square will overcount, and any assumption that they are the same size will produce a wrong adapter parameter count in Lesson 8.
 
 ### Finding the real names
 
@@ -97,7 +97,7 @@ Older or non-gated architectures have only two MLP projections. That is why you 
 
 </details>
 
-2. ▢ For a model with hidden size 4096 and intermediate size 11008, which holds more parameters per layer — attention or the MLP? Roughly by what factor?
+2. ▢ For a model with hidden size 4096 and intermediate size 11008, which holds more parameters per layer, attention or the MLP? Roughly by what factor?
 
 <details markdown="1"><summary>Check</summary>
 
@@ -111,7 +111,7 @@ With grouped-query attention the gap widens further, because `k_proj` and `v_pro
 
 <details markdown="1"><summary>Check</summary>
 
-Nothing matches, so either the library raises an error or — worse, depending on version — you get a model with no trainable adapter weights at all. Training then runs, loss barely moves, and the run looks merely disappointing rather than broken.
+Nothing matches, so either the library raises an error or, worse depending on version, you get a model with no trainable adapter weights at all. Training then runs, loss barely moves, and the run looks merely disappointing rather than broken.
 
 Check the trainable-parameter count immediately after building the adapter. Lesson 11 makes this a habit.
 
@@ -121,7 +121,7 @@ Check the trainable-parameter count immediately after building the adapter. Less
 
 <details markdown="1"><summary>Check</summary>
 
-Because an adapter modifies one projection's output, and the residual connection means that change is added to a running stream rather than replacing it. A small adapter contribution can steer the stream without destroying what the frozen layers already wrote into it — which is why starting an adapter at exactly zero (Lesson 9) is safe.
+Because an adapter modifies one projection's output, and the residual connection means that change is added to a running stream rather than replacing it. A small adapter contribution can steer the stream without destroying what the frozen layers already wrote into it, which is why starting an adapter at exactly zero (Lesson 9) is safe.
 
 </details>
 

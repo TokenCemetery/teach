@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-The template defines the token distribution the weights are fit to. Training on one rendering and serving another means deploying a different problem — and loss will not reveal it.
+The template defines the token distribution the weights are fit to. Training on one rendering and serving another means deploying a different problem, and loss will not reveal it.
 
 </details>
 
@@ -40,7 +40,7 @@ Adding the sublayer's output back onto the running stream instead of replacing i
 
 One training step is four operations. Every memory cost in stage 2 is one of these four holding something in memory.
 
-**1. Forward pass.** Run a batch of sequences through the model and compute the loss. To make step 3 possible, the intermediate results at each layer — the **activations** — must be kept, not discarded. This is why training needs far more memory than inference.
+**1. Forward pass.** Run a batch of sequences through the model and compute the loss. To make step 3 possible, the intermediate results at each layer, the **activations**, must be kept rather than discarded. This is why training needs far more memory than inference.
 
 **2. Loss.** Cross-entropy between the predicted distribution and the actual next token, averaged over every position that counts. Which positions count is your choice, and it matters:
 
@@ -49,27 +49,27 @@ One training step is four operations. Every memory cost in stage 2 is one of the
 
 Masking is done by setting the label to `-100` at positions to ignore, a convention the loss function reads as "skip". For instruction tuning, completion-only is usually what you want: you are teaching responses, not teaching the model to imagine user questions.
 
-**3. Backward pass.** Work backwards through the graph applying the chain rule, producing for every trainable parameter a **gradient**: the direction and magnitude by which that parameter should change to reduce the loss. One gradient per trainable parameter — the same shape as the parameter itself. Remember that; it is half of Lesson 6.
+**3. Backward pass.** Work backwards through the graph applying the chain rule, producing for every trainable parameter a **gradient**: the direction and magnitude by which that parameter should change to reduce the loss. One gradient per trainable parameter, the same shape as the parameter itself. Remember that; it is half of Lesson 6.
 
 **4. Optimizer step.** Update the parameters using the gradients. Plain gradient descent would be `w ← w − lr · g`. Nobody uses that. **AdamW** maintains two running averages per parameter:
 
 | State | Tracks | Effect |
 |---|---|---|
-| First moment | Mean of recent gradients | Momentum — smooths noisy directions |
+| First moment | Mean of recent gradients | Momentum, smooths noisy directions |
 | Second moment | Mean of recent squared gradients | Per-parameter step scaling |
 
 Two extra tensors, each the size of the parameters. That is the other half of Lesson 6, and it is the reason full fine-tuning is so expensive.
 
 ### Learning rate and schedule
 
-The learning rate scales the step. Too high and the update overshoots, destroying pretrained structure — this is what catastrophic forgetting looks like mechanically. Too low and nothing moves.
+The learning rate scales the step. Too high and the update overshoots, destroying pretrained structure. That is what catastrophic forgetting looks like mechanically. Too low and nothing moves.
 
 Two standard refinements:
 
 - **Warm-up:** start near zero and ramp up over the first few hundred steps, so early noisy gradients do not wreck the weights.
 - **Decay:** reduce the rate over training, typically on a cosine curve, so late steps refine rather than thrash.
 
-Adapter fine-tuning tolerates learning rates one to two orders of magnitude higher than full fine-tuning — commonly around `1e-4` to `2e-4` rather than `1e-5`. Lesson 9 explains why.
+Adapter fine-tuning tolerates learning rates one to two orders of magnitude higher than full fine-tuning, commonly around `1e-4` to `2e-4` rather than `1e-5`. Lesson 9 explains why.
 
 ### Batch size, real and effective
 
@@ -83,7 +83,7 @@ Report and reason about the effective number. A run with batch size 1 and 16 acc
 
 ### An epoch is not a unit of learning
 
-One epoch is one pass over the dataset. On a small instruction dataset, two or three epochs is a typical range and more than that usually memorises. The number of *steps* is what the optimizer sees, and steps depend on dataset size and effective batch size together — so "3 epochs" means something completely different on 500 examples than on 500,000.
+One epoch is one pass over the dataset. On a small instruction dataset, two or three epochs is a typical range and more than that usually memorises. The number of *steps* is what the optimizer sees, and steps depend on dataset size and effective batch size together, so "3 epochs" means something completely different on 500 examples than on 500,000.
 
 ## Practice
 
@@ -119,7 +119,7 @@ Plus the gradient itself, which is a third same-shaped tensor but is not optimiz
 
 <details markdown="1"><summary>Check</summary>
 
-Effectively yes — both average gradients over 8 examples before stepping, so the update is essentially the same, and B uses far less activation memory. Small differences remain from how padding and per-batch normalisation interact.
+Effectively yes: both average gradients over 8 examples before stepping, so the update is essentially the same, and B uses far less activation memory. Small differences remain from how padding and per-batch normalisation interact.
 
 Gradient accumulation is the standard way to get a large effective batch on constrained memory. What is *not* equivalent is comparing B against a genuine batch-1 run, which steps eight times as often on noisier gradients.
 
@@ -131,7 +131,7 @@ Gradient accumulation is the standard way to get a large effective batch on cons
 
 Expect underfitting: loss drops slowly, the model barely changes, and the run looks like evidence that the method does not work.
 
-Adapters start from zero contribution and hold a tiny fraction of the parameters, so they need a much larger rate to move at all — usually `1e-4` to `2e-4`. Importing a full fine-tuning learning rate is one of the most common reasons a first LoRA run disappoints.
+Adapters start from zero contribution and hold a tiny fraction of the parameters, so they need a much larger rate to move at all, usually `1e-4` to `2e-4`. Importing a full fine-tuning learning rate is one of the most common reasons a first LoRA run disappoints.
 
 </details>
 

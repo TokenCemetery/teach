@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-Two, in bf16 — the weight value alone. No gradient, no moments, no master copy.
+Two, in bf16, for the weight value alone. No gradient, no moments, no master copy.
 
 </details>
 
@@ -48,7 +48,7 @@ The backward pass needs each layer's input to compute that layer's gradient. So 
 batch_size × sequence_length × hidden_size × bytes_per_element
 ```
 
-per tensor, and a transformer block holds a dozen or so of them — after each normalisation, each projection, the attention output, the MLP intermediate at its wider dimension, and so on. Multiply by the number of layers.
+per tensor, and a transformer block holds a dozen or so of them: after each normalisation, each projection, the attention output, the MLP intermediate at its wider dimension, and so on. Multiply by the number of layers.
 
 A rough working figure for a bf16 transformer block, counting the notable tensors:
 
@@ -56,13 +56,13 @@ A rough working figure for a bf16 transformer block, counting the notable tensor
 activations ≈ n_layers × batch × seq_len × hidden × ~20 bytes
 ```
 
-Treat the constant as a starting point to be measured, not a law — it moves with the attention implementation, the activation function, and whether the framework fuses operations. What matters is the *shape* of the formula.
+Treat the constant as a starting point to be measured, not a law, because it moves with the attention implementation, the activation function, and whether the framework fuses operations. What matters is the *shape* of the formula.
 
 ### The consequences of the shape
 
 **Linear in batch size.** Double the batch, double activation memory. This is the knob you reach for first, and gradient accumulation (Lesson 4) recovers the effective batch size for free in memory terms.
 
-**Linear in sequence length** for the stored activations — and quadratic for the attention score matrix, unless you use a memory-efficient attention kernel. Modern implementations such as FlashAttention avoid materialising the full `seq_len × seq_len` matrix, which removes the quadratic term. If you are still hitting quadratic blow-up on long sequences, the fix is the attention implementation, not the batch size.
+**Linear in sequence length** for the stored activations, and quadratic for the attention score matrix, unless you use a memory-efficient attention kernel. Modern implementations such as FlashAttention avoid materialising the full `seq_len × seq_len` matrix, which removes the quadratic term. If you are still hitting quadratic blow-up on long sequences, the fix is the attention implementation, not the batch size.
 
 Worked, for a 24-layer model with hidden size 2048, batch 4, sequence length 2048:
 
@@ -74,9 +74,9 @@ Eight gigabytes of activations, against roughly 2.2 GB of frozen bf16 weights an
 
 ### Gradient checkpointing
 
-The trade that fixes it: do not store most activations — store a few, and recompute the rest during the backward pass.
+The trade that fixes it: do not store most activations. Store a few, and recompute the rest during the backward pass.
 
-Keep the input to each block (a *checkpoint*), discard everything inside it, and when the backward pass reaches that block, re-run its forward pass to regenerate what is needed. Storage drops from roughly linear in depth to roughly the square root of it, at the cost of about one extra forward pass — commonly 20–40% slower per step.
+Keep the input to each block (a *checkpoint*), discard everything inside it, and when the backward pass reaches that block, re-run its forward pass to regenerate what is needed. Storage drops from roughly linear in depth to roughly the square root of it, at the cost of about one extra forward pass, commonly 20–40% slower per step.
 
 ```python
 model.gradient_checkpointing_enable()
@@ -91,20 +91,20 @@ That second line matters. The KV cache exists to speed up autoregressive *genera
 
 Every sequence in a batch is padded to the batch's longest member, and padding consumes activation memory while contributing nothing. Two remedies:
 
-- **Length grouping** — batch similarly-sized sequences together, so less padding is needed.
-- **Packing** — concatenate short examples into full-length sequences, eliminating padding almost entirely.
+- **Length grouping.** Batch similarly-sized sequences together, so less padding is needed.
+- **Packing.** Concatenate short examples into full-length sequences, eliminating padding almost entirely.
 
-Packing is a real efficiency win on datasets of short examples, and it has a correctness requirement: examples packed together must not attend across their boundaries. Implementations handle this with position resets and boundary-aware attention. If you enable packing, verify that your loss masking survives it — a packed sequence must keep its `-100` labels intact, or completion-only loss quietly becomes full-sequence loss.
+Packing is a real efficiency win on datasets of short examples, and it has a correctness requirement: examples packed together must not attend across their boundaries. Implementations handle this with position resets and boundary-aware attention. If you enable packing, verify that your loss masking survives it: a packed sequence must keep its `-100` labels intact, or completion-only loss quietly becomes full-sequence loss.
 
 ### The order to try things
 
 When a run does not fit, in order of what you give up:
 
-1. Enable gradient checkpointing — costs time only
-2. Reduce per-device batch size, raise gradient accumulation — costs a little time, changes nothing statistically
-3. Reduce sequence length — changes the task, so check your token-length distribution first
-4. Quantise the base model — stage 4, costs some quality
-5. Reduce adapter rank — costs capacity, and saves the least of any option here
+1. Enable gradient checkpointing, which costs time only
+2. Reduce per-device batch size and raise gradient accumulation, which costs a little time and changes nothing statistically
+3. Reduce sequence length, which changes the task, so check your token-length distribution first
+4. Quantise the base model, which is stage 4 and costs some quality
+5. Reduce adapter rank, which costs capacity and saves the least of any option here
 
 That last point is worth dwelling on. Rank is the knob people reach for first and it is nearly the *least* effective, because adapter parameters are a tiny fraction of the total. Halving rank on a 4M-parameter adapter saves 32 MB.
 
@@ -116,7 +116,7 @@ That last point is worth dwelling on. Rank is the knob people reach for first an
 
 Trainable parameter count: gradients, optimizer moments. Model size only: frozen weights. Batch and sequence length: activations.
 
-That activations belong to a different axis entirely is the point of this lesson — and why adapters do not solve them.
+That activations belong to a different axis entirely is the point of this lesson, and why adapters do not solve them.
 
 </details>
 
@@ -144,7 +144,7 @@ Enable gradient checkpointing and cut per-device batch size first. Rank is a cap
 
 <details markdown="1"><summary>Check</summary>
 
-The KV cache stores past keys and values to avoid recomputing them during autoregressive generation. Training does a single forward pass over a complete sequence, so the cache provides no benefit — and it conflicts with checkpointing's recompute strategy while consuming memory.
+The KV cache stores past keys and values to avoid recomputing them during autoregressive generation. Training does a single forward pass over a complete sequence, so the cache provides no benefit, and it conflicts with checkpointing's recompute strategy while consuming memory.
 
 </details>
 
@@ -152,7 +152,7 @@ The KV cache stores past keys and values to avoid recomputing them during autore
 
 <details markdown="1"><summary>Check</summary>
 
-It trades compute for memory: activation storage drops from roughly linear in depth to roughly its square root, in exchange for approximately one extra forward pass per step — typically 20–40% slower.
+It trades compute for memory: activation storage drops from roughly linear in depth to roughly its square root, in exchange for approximately one extra forward pass per step, typically 20–40% slower.
 
 </details>
 
@@ -170,7 +170,7 @@ Verify that `-100` labels are preserved through the packing step and that the im
 
 - [ ] Run one training step at batch 1, then batch 2, then batch 4, recording peak memory each time. Confirm the relationship is linear.
 - [ ] Turn on gradient checkpointing and repeat. Record both the memory saved and the seconds-per-step lost, and decide whether you would take that trade.
-- [ ] Tomorrow: measure the token-length distribution of a real dataset with the actual tokenizer. Find the 95th percentile — that, not the maximum, is your sequence length.
+- [ ] Tomorrow: measure the token-length distribution of a real dataset with the actual tokenizer. Find the 95th percentile. That, not the maximum, is your sequence length.
 
 ## Going further
 

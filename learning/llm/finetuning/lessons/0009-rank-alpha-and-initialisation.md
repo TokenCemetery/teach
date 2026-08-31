@@ -40,7 +40,7 @@ The update is additive and linear, so it folds into the base weight and leaves a
 
 ### Initialisation, and why it is not arbitrary
 
-`A` is initialised randomly — Gaussian or Kaiming-uniform. `B` is initialised to **exactly zero**.
+`A` is initialised randomly, either Gaussian or Kaiming-uniform. `B` is initialised to **exactly zero**.
 
 Therefore `BA = 0` at step zero, so `ΔW = 0`, so **the adapted model is bit-for-bit the base model before the first update.** This is a deliberate and important property:
 
@@ -48,7 +48,7 @@ Therefore `BA = 0` at step zero, so `ΔW = 0`, so **the adapted model is bit-for
 - There is no initial shock to pretrained behaviour, so no early damage to undo.
 - Any degradation you observe is something training did, not something initialisation did.
 
-The asymmetry is necessary. If both were zero, the gradient of both would be zero and nothing would ever learn — the product needs one factor non-zero to carry signal. If both were random, `ΔW` would start as structured noise injected into every targeted layer.
+The asymmetry is necessary. If both were zero, the gradient of both would be zero and nothing would ever learn: the product needs one factor non-zero to carry signal. If both were random, `ΔW` would start as structured noise injected into every targeted layer.
 
 This is also why LoRA tolerates much higher learning rates than full fine-tuning. You are not nudging weights that already encode everything the model knows; you are growing a term from zero.
 
@@ -65,7 +65,7 @@ The point of dividing by `r` was to make the effective update magnitude roughly 
 | 16 | 16 | 1.0 | More capacity, weaker update |
 | 64 | 16 | 0.25 | Much more capacity, heavily damped |
 
-That last row is a trap worth naming: raising rank while leaving `α` fixed *reduces* the scale of the update. People raise rank hoping for more expressive power, forget `α`, and conclude that higher rank hurts. It did not — they quietly turned the adapter down by 8×.
+That last row is a trap worth naming: raising rank while leaving `α` fixed *reduces* the scale of the update. People raise rank hoping for more expressive power, forget `α`, and conclude that higher rank hurts. It did not; they quietly turned the adapter down by 8×.
 
 The conventional starting point is `α = 2r`. Treat it as a convention with a rationale, not a discovery.
 
@@ -88,11 +88,11 @@ Rank is **capacity**. It bounds how complex an update the adapter can express.
 
 Two diagnostics that beat guessing:
 
-**Underfitting** — training loss plateaus above where you need it and more epochs do not help. Not enough capacity: raise rank, or add target modules (usually the better move — Lesson 10).
+**Underfitting.** Training loss plateaus above where you need it and more epochs do not help. Not enough capacity: raise rank, or add target modules (usually the better move, per Lesson 10).
 
-**Overfitting** — training loss keeps falling while held-out loss rises. Too much capacity for the data, or too many epochs. Lower rank, add dropout, get more data, or stop earlier.
+**Overfitting.** Training loss keeps falling while held-out loss rises. Too much capacity for the data, or too many epochs. Lower rank, add dropout, get more data, or stop earlier.
 
-Note the asymmetry with the memory lesson: rank costs very little memory (Lesson 7), so the cost of extra rank is overfitting risk and a little compute — not fitting in memory. That inverts the instinct many people bring from the era when memory was the binding constraint.
+Note the asymmetry with the memory lesson: rank costs very little memory (Lesson 7), so the cost of extra rank is overfitting risk and a little compute, not fitting in memory. That inverts the instinct many people bring from the era when memory was the binding constraint.
 
 ### Dropout
 
@@ -116,7 +116,7 @@ model = get_peft_model(model, config)
 model.print_trainable_parameters()
 ```
 
-That last line is not optional. It is the check that your target modules matched anything at all, and it should agree with the arithmetic you did in Lesson 8. Read the parameter names from the installed version's documentation rather than from memory — this surface changes between releases.
+That last line is not optional. It is the check that your target modules matched anything at all, and it should agree with the arithmetic you did in Lesson 8. Read the parameter names from the installed version's documentation rather than from memory, because this surface changes between releases.
 
 ## Practice
 
@@ -144,7 +144,7 @@ Raise `α` to 128 to preserve the ratio, or set `use_rslora=True` so the divisor
 
 <details markdown="1"><summary>Check</summary>
 
-Underfitting — the adapter lacks the capacity to express the required update.
+Underfitting: the adapter lacks the capacity to express the required update.
 
 Raise rank, or extend the target modules to cover more of the model. Adding target modules is usually the better first move, because the MLP holds most of the parameters and is often where the missing capacity is. More epochs cannot fix a capacity ceiling.
 
@@ -161,7 +161,7 @@ Raise rank, or extend the target modules to cover more of the model. Adding targ
 
 **b)** `r = 8` with `alpha = 32`, giving `α/r = 4`.
 
-The others are all `α/r = 1`. Capacity differs between them, but update scale does not — which is exactly the distinction the `α/r` design was meant to make.
+The others are all `α/r = 1`. Capacity differs between them, but update scale does not, which is exactly the distinction the `α/r` design was meant to make.
 
 </details>
 
@@ -179,13 +179,13 @@ The trainable parameters start at zero contribution and are not themselves the s
 
 When the dataset is small. Extra capacity on few examples buys memorisation, not generalisation: training loss falls, held-out loss rises.
 
-The right response there is more or better data, or a narrower task — not a bigger adapter.
+The right response there is more or better data, or a narrower task, not a bigger adapter.
 
 </details>
 
 ## Real-world reps
 
-- [ ] Build three configs — `(8, 16)`, `(16, 32)`, `(64, 16)` — and write down the `α/r` for each and what you predict will happen. Keep the predictions.
+- [ ] Build three configs, `(8, 16)`, `(16, 32)` and `(64, 16)`, and write down the `α/r` for each and what you predict will happen. Keep the predictions.
 - [ ] Print `print_trainable_parameters()` for each and reconcile against your Lesson 8 arithmetic.
 - [ ] Tomorrow: find a published fine-tuning config in the wild, work out its `α/r`, and decide whether the author chose it or inherited it.
 

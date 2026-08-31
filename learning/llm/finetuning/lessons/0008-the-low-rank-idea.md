@@ -24,7 +24,7 @@ Sixteen trainable, two frozen. The eight-to-one ratio is the reason adapters exi
 
 <details markdown="1"><summary>Check</summary>
 
-Enable gradient checkpointing, then cut per-device batch size with accumulation to compensate. Do not cut rank — adapter state is megabytes against gigabytes of activations.
+Enable gradient checkpointing, then cut per-device batch size with accumulation to compensate. Do not cut rank: adapter state is megabytes against gigabytes of activations.
 
 </details>
 
@@ -87,7 +87,7 @@ per layer                                  = 102,400
 × 24 layers                                = 2,457,600
 ```
 
-About 2.5M trainable parameters against a 1.12B base — **0.22%**. Optimizer state for that adapter is 2.5e6 × 16 ≈ 39 MB.
+About 2.5M trainable parameters against a 1.12B base, so **0.22%**. Optimizer state for that adapter is 2.5e6 × 16 ≈ 39 MB.
 
 Note that the grouped-query attention narrowing matters here in a way it did not for the base model: the `k_proj` and `v_proj` adapters are *not* proportionally smaller, because `r × (d_in + d_out)` is dominated by the larger of the two dimensions. Shrinking `d_out` from 2048 to 256 cut the base matrix by 8× but the adapter by only 1.8×.
 
@@ -99,7 +99,7 @@ Two honest caveats:
 
 **It is an empirical claim, not a theorem.** It holds well for adapting behaviour, style, format and narrow task competence. It holds less well for installing large volumes of genuinely new knowledge, which is one of the arguments in Lesson 27.
 
-**"Low" is relative and has moved.** Early practice settled on ranks like 8 or 16, partly because memory was scarce. More recent work — see [Lesson 10](0010-choosing-target-modules.md) — finds that on many supervised fine-tuning tasks, generously ranked adapters covering all linear layers match full fine-tuning, while stingy ones do not. Rank 8 is a starting point, not a law.
+**"Low" is relative and has moved.** Early practice settled on ranks like 8 or 16, partly because memory was scarce. More recent work, in [Lesson 10](0010-choosing-target-modules.md), finds that on many supervised fine-tuning tasks generously ranked adapters covering all linear layers match full fine-tuning, while stingy ones do not. Rank 8 is a starting point, not a law.
 
 ### The inference property that makes LoRA special
 
@@ -109,7 +109,7 @@ Because the update is *additive* and linear, it can be folded back into the base
 W = W₀ + (α / r) · B A
 ```
 
-The result is an ordinary weight matrix. **A merged LoRA has exactly zero inference overhead** — no extra matmuls, no changed architecture, nothing to install at serving time. This is the property that distinguishes LoRA from the adapter-layer methods that preceded it, which inserted new modules into the forward path and paid latency forever. Lesson 13 covers merging in practice, and Lesson 25 covers when *not* to merge.
+The result is an ordinary weight matrix. **A merged LoRA has exactly zero inference overhead**: no extra matmuls, no changed architecture, nothing to install at serving time. This is the property that distinguishes LoRA from the adapter-layer methods that preceded it, which inserted new modules into the forward path and paid latency forever. Lesson 13 covers merging in practice, and Lesson 25 covers when *not* to merge.
 
 ## Practice
 
@@ -129,7 +129,7 @@ Against a ~7B base, that is 0.10%.
 
 <details markdown="1"><summary>Check</summary>
 
-The full matrix grows as `d²` while the factorisation grows as `2rd` — linearly. The ratio `d / 2r` therefore improves as the model widens.
+The full matrix grows as `d²` while the factorisation grows as `2rd`, which is linear. The ratio `d / 2r` therefore improves as the model widens.
 
 Which is why LoRA gets *relatively* cheaper on bigger models, and why the method mattered more as models grew.
 
@@ -159,7 +159,7 @@ LoRA's update is additive and linear in the same space as the weight, so `W₀ +
 
 False. `ΔW = BA` with `B` of `r` columns has rank at most `r`, so it can only reach updates within a rank-8 subspace. A full fine-tune can produce a full-rank update.
 
-The bet is that the update your task needs lies close to such a subspace. When it does not, you see it as a loss floor that more training does not lower — and the fix is more rank or more target modules, not more epochs.
+The bet is that the update your task needs lies close to such a subspace. When it does not, you see it as a loss floor that more training does not lower, and the fix is more rank or more target modules rather than more epochs.
 
 </details>
 

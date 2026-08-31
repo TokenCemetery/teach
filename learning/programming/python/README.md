@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Python on a team: able to ship a typed, tested, packaged Python service or tool, take a traceback or a profile to its root cause instead of guessing, and say concretely why someone's clever use of Python's dynamism is going to hurt them.
 
 **Start here:** [0001. Names Are Bindings, Not Boxes](lessons/0001-names-are-bindings.md)
-**Latest lesson:** [0014. The Standard Library](lessons/0014-the-standard-library.md)
+**Latest lesson:** [0021. Lint and Format](lessons/0021-lint-and-format.md)
 
 ## Success looks like
 
@@ -72,6 +72,13 @@ Work through these in order.
 | [0012](lessons/0012-dataclasses.md) | Dataclasses | Generated init, repr and equality, and choosing the right shape for a bundle of data |
 | [0013](lessons/0013-modules-and-packages.md) | Modules and Packages | A module runs once, an import binds a name, and how the two produce every import error you have seen |
 | [0014](lessons/0014-the-standard-library.md) | The Standard Library | The modules that delete code you were about to write, and the ones that prevent a dependency |
+| [0015](lessons/0015-annotations-are-claims.md) | Annotations Are Claims | The interpreter stores them and never checks them, which is what makes them worth writing |
+| [0016](lessons/0016-making-a-checker-useful.md) | Making a Checker Useful | Configuring strictness, reading the error codes, and narrowing instead of silencing |
+| [0017](lessons/0017-generics-and-protocols.md) | Generics and Protocols | Keeping the element type through a function, and typing a shape instead of a class |
+| [0018](lessons/0018-types-at-the-boundary.md) | Types at the Boundary | Turning Any from JSON, environment and database rows into something a checker can reason about |
+| [0019](lessons/0019-environments-and-dependencies.md) | Environments and Dependencies | Isolation per project, the difference between a requirement and a lock, and who pins what |
+| [0020](lessons/0020-building-a-package.md) | Building a Package | What a wheel is, what the metadata has to say, and proving the artefact installs |
+| [0021](lessons/0021-lint-and-format.md) | Lint and Format | Ending the style argument, and the rule families that find real defects |
 
 ## Reference
 
@@ -80,6 +87,8 @@ Work through these in order.
 - [Mutability and copying](reference/mutability-and-copying.md): which types mutate, what each copy idiom copies, and who can see it
 - [Iteration and generators](reference/iteration-and-generators.md): what is consumed once, what survives a second pass, and which itertools tool fits
 - [Exceptions and cleanup](reference/exceptions-and-cleanup.md): the hierarchy, what each clause guarantees, and which built-in to raise
+- [Typing](reference/typing.md): current spellings, narrowing forms, error codes, and which shape to use at a boundary
+- [Project and packaging](reference/project-and-packaging.md): one pyproject.toml annotated, the specifier grammar, and the checks before publishing
 
 ## How this works
 

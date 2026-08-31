@@ -44,6 +44,12 @@ type: resources
 - [Docs: "mypy", mypy contributors, mypy.readthedocs.io](https://mypy.readthedocs.io/en/stable/)
   What each strictness flag turns on, and how inference actually proceeds. Use for: making a checker useful rather than noisy.
 
+- [Docs: "pyright", Microsoft, microsoft.github.io](https://microsoft.github.io/pyright/)
+  The other checker, stricter about `None` by default and the one most editors run. Use for: a second opinion when mypy accepts something that looks wrong.
+
+- [Docs: "pydantic", Pydantic Services, docs.pydantic.dev](https://docs.pydantic.dev/latest/)
+  Runtime validation generated from the same annotations, with the coercion rules stated explicitly. Use for: a boundary where data arrives untrusted and hand-written checks have outgrown a function.
+
 - [Docs: "Ruff", Astral, docs.astral.sh](https://docs.astral.sh/ruff/)
   Every lint rule with its rationale, which doubles as a catalogue of common Python mistakes. Use for: settling a style question with a rule number.
 
@@ -81,4 +87,5 @@ type: resources
 - Packaging and typing tooling moves faster than anything else here. `uv` and Ruff are current choices rather than settled standards, so a lesson naming a tool says what it is standing in for.
 - Free-threaded CPython is in progress, so any claim about the GIL states the version and the build it applies to.
 - No source is chosen for CPython internals in depth. The mission caps that deliberately at the point where internals stop predicting behaviour.
+- The two checkers disagree at the edges, and no source arbitrates. Stage 3 names mypy as the reference implementation and pyright as the editor default; where they differ, the specification at `typing.readthedocs.io` is the tiebreak.
 - No book covers the type system at depth. `typing.readthedocs.io` is the closest thing, and it is a specification rather than a course.

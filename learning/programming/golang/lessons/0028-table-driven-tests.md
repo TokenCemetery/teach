@@ -7,7 +7,7 @@ type: lesson
 # Lesson 28. Table-Driven Tests
 
 **Mission link:** Go's testing package has no assertions and no framework, and the tests are better for it. The table is the idiom that makes that work at scale.
-**Primary source:** [Using Subtests and Sub-benchmarks — The Go Blog](https://go.dev/blog/subtests)
+**Primary source:** [Using Subtests and Sub-benchmarks, The Go Blog](https://go.dev/blog/subtests)
 **Prerequisites:** [Lesson 27](0027-generics-that-earn-their-keep.md)
 
 ## Warm-up
@@ -201,9 +201,9 @@ This is the payoff for declaring the interface in the consumer and keeping it sm
 
 ## Going further
 
-- [Using Subtests and Sub-benchmarks — The Go Blog](https://go.dev/blog/subtests)
+- [Using Subtests and Sub-benchmarks, The Go Blog](https://go.dev/blog/subtests)
 - [`testing` package](https://pkg.go.dev/testing)
-- [`google/go-cmp`](https://pkg.go.dev/github.com/google/go-cmp/cmp) — `cmp.Diff` for struct and slice comparison
+- [`google/go-cmp`](https://pkg.go.dev/github.com/google/go-cmp/cmp): `cmp.Diff` for struct and slice comparison
 - [Toolchain Commands](../reference/toolchain-commands.md)
 - [Resources](../RESOURCES.md)
 

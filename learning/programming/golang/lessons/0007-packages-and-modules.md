@@ -7,7 +7,7 @@ type: lesson
 # Lesson 7. Packages and Modules
 
 **Mission link:** Go's unit of encapsulation is the directory, not the type. Getting this wrong produces a repository that fights every import you write, and it is hard to undo later.
-**Primary source:** [How to Write Go Code — The Go Authors](https://go.dev/doc/code)
+**Primary source:** [How to Write Go Code, The Go Authors](https://go.dev/doc/code)
 **Prerequisites:** [Lesson 6](0006-methods-and-method-sets.md)
 
 ## Warm-up
@@ -163,9 +163,9 @@ Explicit construction in `main` gives you an error to handle, a dependency to su
 ## Going further
 
 - [How to Write Go Code](https://go.dev/doc/code)
-- [Package names — The Go Blog](https://go.dev/blog/package-names)
-- [Organizing a Go module](https://go.dev/doc/modules/layout) — the layouts the Go team actually recommends
-- [Lesson 14 — Designing a Package](0014-designing-a-package.md) — the same material as a design skill rather than a mechanism
+- [Package names, The Go Blog](https://go.dev/blog/package-names)
+- [Organizing a Go module](https://go.dev/doc/modules/layout): the layouts the Go team actually recommends
+- [Lesson 14. Designing a Package](0014-designing-a-package.md): the same material as a design skill rather than a mechanism
 - [Resources](../RESOURCES.md)
 
 ---

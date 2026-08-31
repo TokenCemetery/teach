@@ -7,7 +7,7 @@ type: lesson
 # Lesson 34. API Design and Compatibility
 
 **Mission link:** Designing a package API you can keep backwards-compatible is a stated success criterion. The rules are short, and two of them are counterintuitive enough that most people learn them by breaking something.
-**Primary source:** [Go 1 and the Future of Go Programs — The Go Authors](https://go.dev/doc/go1compat)
+**Primary source:** [Go 1 and the Future of Go Programs, The Go Authors](https://go.dev/doc/go1compat)
 **Prerequisites:** [Lesson 14](0014-designing-a-package.md), [Lesson 33](0033-modules-and-release-builds.md)
 
 ## Warm-up
@@ -177,8 +177,8 @@ So documenting which errors are matchable is a commitment, and it is why Lesson 
 ## Going further
 
 - [Go 1 and the Future of Go Programs](https://go.dev/doc/go1compat)
-- [Keeping Your Modules Compatible — The Go Blog](https://go.dev/blog/module-compatibility)
-- [Go Doc Comments — deprecation](https://go.dev/doc/comment#deprecated)
+- [Keeping Your Modules Compatible, The Go Blog](https://go.dev/blog/module-compatibility)
+- [Go Doc Comments: deprecation](https://go.dev/doc/comment#deprecated)
 - [Review Checklist](../reference/review-checklist.md)
 - [Resources](../RESOURCES.md)
 

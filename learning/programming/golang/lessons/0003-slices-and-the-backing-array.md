@@ -7,7 +7,7 @@ type: lesson
 # Lesson 3. Slices and the Backing Array
 
 **Mission link:** Slice aliasing is the bug that separates people who read Go from people who write it. It produces corrupted data with no panic, no race, and no stack trace.
-**Primary source:** [Go Slices: usage and internals — The Go Blog](https://go.dev/blog/slices-intro)
+**Primary source:** [Go Slices: usage and internals, The Go Blog](https://go.dev/blog/slices-intro)
 **Prerequisites:** [Lesson 2](0002-value-semantics-and-pointers.md)
 
 ## Warm-up
@@ -45,7 +45,7 @@ Slicing creates a second header over the same storage:
 ```go
 a := []int{1, 2, 3, 4, 5}
 b := a[1:3]
-fmt.Println(len(b), cap(b)) // 2 4  — length 2, but capacity runs to the end of a
+fmt.Println(len(b), cap(b)) // 2 4 , length 2, but capacity runs to the end of a
 b[0] = 99
 fmt.Println(a)              // [1 99 3 4 5]
 ```
@@ -61,9 +61,9 @@ Nothing was copied. `b[0]` and `a[1]` are the same memory.
 
 ```go
 a := []int{1, 2, 3, 4, 5}
-b := a[1:3]        // len 2, cap 4 — room to spare
+b := a[1:3]        // len 2, cap 4, room to spare
 b = append(b, 99)  // writes into a's array at index 3
-fmt.Println(a)     // [1 2 3 99 5]  — a was never mentioned
+fmt.Println(a)     // [1 2 3 99 5] , a was never mentioned
 ```
 
 The same code with `a := []int{1, 2, 3}` would have hit the second branch, allocated, and left `a` alone. **Whether an append is visible elsewhere depends on capacity**, which is not visible at the call site and not stable across inputs. That is why this bug reaches production: it is data-dependent.
@@ -181,10 +181,10 @@ Add the check only if nil and empty mean genuinely different things to the calle
 
 ## Going further
 
-- [Go Slices: usage and internals — The Go Blog](https://go.dev/blog/slices-intro)
-- [Arrays, slices and strings: the mechanics of `append` — The Go Blog](https://go.dev/blog/slices)
-- [`slices` package](https://pkg.go.dev/slices) — `Clone`, `Contains`, `Sort`, `Delete`, added in Go 1.21
-- [Slice and Map Mechanics](../reference/slice-and-map-mechanics.md) — the lookup version of this lesson
+- [Go Slices: usage and internals, The Go Blog](https://go.dev/blog/slices-intro)
+- [Arrays, slices and strings: the mechanics of `append`, The Go Blog](https://go.dev/blog/slices)
+- [`slices` package](https://pkg.go.dev/slices): `Clone`, `Contains`, `Sort`, `Delete`, added in Go 1.21
+- [Slice and Map Mechanics](../reference/slice-and-map-mechanics.md): the lookup version of this lesson
 - [Resources](../RESOURCES.md)
 
 ---

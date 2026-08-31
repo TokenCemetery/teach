@@ -7,7 +7,7 @@ type: lesson
 # Lesson 17. select and Timeouts
 
 **Mission link:** `select` is what turns channels from a queue into a coordination language. Every shutdown path, timeout and worker loop in a Go service is built from it.
-**Primary source:** [Go Concurrency Patterns: Pipelines and cancellation — The Go Blog](https://go.dev/blog/pipelines)
+**Primary source:** [Go Concurrency Patterns: Pipelines and cancellation, The Go Blog](https://go.dev/blog/pipelines)
 **Prerequisites:** [Lesson 16](0016-channels.md)
 
 ## Warm-up
@@ -67,7 +67,7 @@ for in != nil || out != nil {
     select {
     case v, ok := <-in:
         if !ok {
-            in = nil   // source exhausted — stop selecting on it
+            in = nil   // source exhausted, stop selecting on it
             continue
         }
         pending = append(pending, v)
@@ -109,7 +109,7 @@ case <-time.After(time.Second):
 }
 ```
 
-Older Go advice says `time.After` leaks: before Go 1.23, an unfired timer was not collected, so a timeout in a hot loop accumulated memory until each one fired. [Go 1.23](https://go.dev/doc/go1.23#timer-changes) changed that — timers and tickers are now eligible for collection as soon as nothing references them, whether or not `Stop` was called. The behaviour follows the `go` line in `go.mod`, so a module on `go 1.22` still has the old one.
+Older Go advice says `time.After` leaks: before Go 1.23, an unfired timer was not collected, so a timeout in a hot loop accumulated memory until each one fired. [Go 1.23](https://go.dev/doc/go1.23#timer-changes) changed that, timers and tickers are now eligible for collection as soon as nothing references them, whether or not `Stop` was called. The behaviour follows the `go` line in `go.mod`, so a module on `go 1.22` still has the old one.
 
 Two things did not change. A `time.Ticker` you keep a reference to still needs `defer ticker.Stop()`, because you are still referring to it. And a per-request timeout belongs in the context rather than in a bare `time.After` — `context.WithTimeout` propagates to everything downstream, where a local timer only unblocks the one `select` that reads it.
 
@@ -194,7 +194,7 @@ The moment someone adds graceful shutdown — and stage 4 does — a worker with
 
 ## Going further
 
-- [Go Concurrency Patterns: Pipelines and cancellation — The Go Blog](https://go.dev/blog/pipelines)
+- [Go Concurrency Patterns: Pipelines and cancellation, The Go Blog](https://go.dev/blog/pipelines)
 - [Go 1.23 timer changes](https://go.dev/doc/go1.23#timer-changes)
 - [Select, in the language spec](https://go.dev/ref/spec#Select_statements)
 - [Concurrency Patterns](../reference/concurrency-patterns.md)

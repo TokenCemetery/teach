@@ -7,7 +7,7 @@ type: lesson
 # Lesson 35. When Not to Use a Goroutine
 
 **Mission link:** Knowing when *not* to reach for a goroutine is named in the mission. It is the judgment that separates someone who can use Go's concurrency from someone who should be trusted with it.
-**Primary source:** [Concurrency is not parallelism — Rob Pike](https://go.dev/blog/waza-talk)
+**Primary source:** [Concurrency is not parallelism, Rob Pike](https://go.dev/blog/waza-talk)
 **Prerequisites:** [Lesson 21](0021-goroutine-leaks.md), [Lesson 31](0031-reading-a-pprof-profile.md)
 
 ## Warm-up
@@ -145,8 +145,8 @@ That is three things to get right per goroutine, which is why `errgroup` and a s
 
 ## Going further
 
-- [Concurrency is not parallelism — Rob Pike](https://go.dev/blog/waza-talk)
-- [Go Proverbs](https://go-proverbs.github.io/) — several are about restraint
+- [Concurrency is not parallelism, Rob Pike](https://go.dev/blog/waza-talk)
+- [Go Proverbs](https://go-proverbs.github.io/): several are about restraint
 - [Review Checklist](../reference/review-checklist.md)
 - [Concurrency Patterns](../reference/concurrency-patterns.md)
 - [Resources](../RESOURCES.md)

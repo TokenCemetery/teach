@@ -7,7 +7,7 @@ type: lesson
 # Lesson 23. Configuration and Startup
 
 **Mission link:** Most "it works on my machine" incidents are startup problems. A service that validates its configuration before accepting traffic fails in the deploy instead of in production.
-**Primary source:** [Go for Industrial Programming — Peter Bourgon](https://peter.bourgon.org/go-for-industrial-programming/)
+**Primary source:** [Go for Industrial Programming, Peter Bourgon](https://peter.bourgon.org/go-for-industrial-programming/)
 **Prerequisites:** [Lesson 22](0022-an-http-server.md), [Lesson 7](0007-packages-and-modules.md)
 
 ## Warm-up
@@ -182,9 +182,9 @@ In practice `main` passes `context.Background()` and `run` immediately wraps it 
 
 ## Going further
 
-- [Go for Industrial Programming — Peter Bourgon](https://peter.bourgon.org/go-for-industrial-programming/)
+- [Go for Industrial Programming, Peter Bourgon](https://peter.bourgon.org/go-for-industrial-programming/)
 - [`flag` package](https://pkg.go.dev/flag)
-- [Lesson 25 — Graceful Shutdown](0025-graceful-shutdown.md)
+- [Lesson 25. Graceful Shutdown](0025-graceful-shutdown.md)
 - [Resources](../RESOURCES.md)
 
 ---

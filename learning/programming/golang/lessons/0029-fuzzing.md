@@ -7,7 +7,7 @@ type: lesson
 # Lesson 29. Fuzzing
 
 **Mission link:** Table tests check the cases you thought of. Fuzzing finds the ones you did not, which is exactly the category that reaches production.
-**Primary source:** [Tutorial: Getting started with fuzzing — The Go Authors](https://go.dev/doc/tutorial/fuzz)
+**Primary source:** [Tutorial: Getting started with fuzzing, The Go Authors](https://go.dev/doc/tutorial/fuzz)
 **Prerequisites:** [Lesson 28](0028-table-driven-tests.md)
 
 ## Warm-up
@@ -34,7 +34,7 @@ A fuzz test states a **property** and lets the toolchain generate inputs looking
 
 ```go
 func FuzzRoundTrip(f *testing.F) {
-    f.Add("3h")           // seed corpus — known-interesting inputs
+    f.Add("3h")           // seed corpus, known-interesting inputs
     f.Add("")
     f.Add("1h30m")
 
@@ -154,7 +154,7 @@ Lesson 5's rule — `len` is bytes, indexing is bytes, only `range` decodes — 
 ## Going further
 
 - [Tutorial: Getting started with fuzzing](https://go.dev/doc/tutorial/fuzz)
-- [Go Fuzzing documentation](https://go.dev/security/fuzz/) — supported types, corpus layout, and how minimisation works
+- [Go Fuzzing documentation](https://go.dev/security/fuzz/): supported types, corpus layout, and how minimisation works
 - [Toolchain Commands](../reference/toolchain-commands.md)
 - [Resources](../RESOURCES.md)
 

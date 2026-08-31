@@ -7,7 +7,7 @@ type: lesson
 # Lesson 11. Interfaces Are Satisfied Implicitly
 
 **Mission link:** This is the habit Java punishes hardest. Declaring interfaces next to implementations produces Go that compiles, works, and that every reviewer will describe as written in the wrong language.
-**Primary source:** [Effective Go — Interfaces](https://go.dev/doc/effective_go#interfaces)
+**Primary source:** [Effective Go: Interfaces](https://go.dev/doc/effective_go#interfaces)
 **Prerequisites:** [Lesson 6](0006-methods-and-method-sets.md), [Lesson 7](0007-packages-and-modules.md)
 
 ## Warm-up
@@ -48,7 +48,7 @@ var s Stringer = Celsius(20)                        // satisfied, checked here
 Because satisfaction is implicit, the interface can be declared where it is *used* rather than where it is implemented. That is the idiom, and it inverts the habit from Java:
 
 ```go
-// package report — the consumer
+// package report, the consumer
 type UserStore interface {
     GetUser(ctx context.Context, id string) (*User, error)
 }
@@ -167,10 +167,10 @@ This is the most common way method sets bite in real code: the interface is fine
 
 ## Going further
 
-- [Effective Go — Interfaces](https://go.dev/doc/effective_go#interfaces)
-- [Go Proverbs — Rob Pike](https://go-proverbs.github.io/) — "the bigger the interface, the weaker the abstraction", with the talk behind it
-- [Go Code Review Comments — interfaces](https://go.dev/wiki/CodeReviewComments#interfaces)
-- [Lesson 12 — The Nil Interface Trap](0012-the-nil-interface-trap.md) — what an interface value actually holds
+- [Effective Go: Interfaces](https://go.dev/doc/effective_go#interfaces)
+- [Go Proverbs, Rob Pike](https://go-proverbs.github.io/): "the bigger the interface, the weaker the abstraction", with the talk behind it
+- [Go Code Review Comments: interfaces](https://go.dev/wiki/CodeReviewComments#interfaces)
+- [Lesson 12. The Nil Interface Trap](0012-the-nil-interface-trap.md): what an interface value actually holds
 - [Resources](../RESOURCES.md)
 
 ---

@@ -7,7 +7,7 @@ type: lesson
 # Lesson 30. Benchmarks You Can Trust
 
 **Mission link:** "Optimises from a profile and proves the win with benchstat" is the stage 5 exit criterion. This is the proving half, and most benchmarks people write do not prove anything.
-**Primary source:** [`testing` package — Benchmarks](https://pkg.go.dev/testing#hdr-Benchmarks)
+**Primary source:** [`testing` package: Benchmarks](https://pkg.go.dev/testing#hdr-Benchmarks)
 **Prerequisites:** [Lesson 28](0028-table-driven-tests.md)
 
 ## Warm-up
@@ -164,7 +164,7 @@ Use `b.RunParallel` — or a benchmark that starts a realistic number of gorouti
 
 ## Going further
 
-- [`testing` package — Benchmarks](https://pkg.go.dev/testing#hdr-Benchmarks)
+- [`testing` package: Benchmarks](https://pkg.go.dev/testing#hdr-Benchmarks)
 - [`benchstat`](https://pkg.go.dev/golang.org/x/perf/cmd/benchstat)
 - [Go 1.24 `testing.B.Loop`](https://go.dev/doc/go1.24#testing)
 - [Toolchain Commands](../reference/toolchain-commands.md)

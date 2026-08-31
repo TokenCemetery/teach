@@ -7,7 +7,7 @@ type: lesson
 # Lesson 14. Designing a Package
 
 **Mission link:** Reviewing someone's Go and naming why a design is wrong starts here. Most package-level mistakes are visible before you read a single function body.
-**Primary source:** [Go Doc Comments — The Go Authors](https://go.dev/doc/comment)
+**Primary source:** [Go Doc Comments, The Go Authors](https://go.dev/doc/comment)
 **Prerequisites:** [Lesson 7](0007-packages-and-modules.md), [Lesson 11](0011-implicit-interfaces.md)
 
 ## Warm-up
@@ -194,15 +194,15 @@ Errors you do not document are free to change. This is the cheapest way to keep 
 ## Real-world reps
 
 - [ ] Run `go doc ./...` on a package you have written. Read it as a stranger would and note every place the docs do not answer "which errors?" or "is it safe to use concurrently?".
-- [ ] Write one `Example` function with an `// Output:` comment and run `go test`. Watch it fail when you change the output — that is the property that makes it worth writing.
+- [ ] Write one `Example` function with an `// Output:` comment and run `go test`. Watch it fail when you change the output, that is the property that makes it worth writing.
 - [ ] Tomorrow: draw the import arrows for one service you work on. Any arrow pointing from domain code toward transport or storage is a finding.
 
 ## Going further
 
 - [Go Doc Comments](https://go.dev/doc/comment)
 - [Organizing a Go module](https://go.dev/doc/modules/layout)
-- [Go for Industrial Programming — Peter Bourgon](https://peter.bourgon.org/go-for-industrial-programming/) — package boundaries and wiring in services that are operated
-- [Lesson 34 — API Design and Compatibility](0034-api-design-and-compatibility.md)
+- [Go for Industrial Programming, Peter Bourgon](https://peter.bourgon.org/go-for-industrial-programming/): package boundaries and wiring in services that are operated
+- [Lesson 34. API Design and Compatibility](0034-api-design-and-compatibility.md)
 - [Resources](../RESOURCES.md)
 
 ---

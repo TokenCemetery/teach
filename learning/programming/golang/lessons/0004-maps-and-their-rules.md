@@ -7,7 +7,7 @@ type: lesson
 # Lesson 4. Maps and Their Rules
 
 **Mission link:** A map is the default data structure in a Go service, and three of its rules have no equivalent in Java or TypeScript — including one that kills the process rather than raising an error.
-**Primary source:** [Go maps in action — The Go Blog](https://go.dev/blog/maps)
+**Primary source:** [Go maps in action, The Go Blog](https://go.dev/blog/maps)
 **Prerequisites:** [Lesson 3](0003-slices-and-the-backing-array.md)
 
 ## Warm-up
@@ -35,7 +35,7 @@ A map is a hash table with a copied pointer for a header, so passing one to a fu
 ```go
 m := make(map[string]int)          // empty, ready to write
 n := map[string]int{"a": 1}        // literal
-p := make(map[string]int, 1000)    // size hint — pre-sizes, avoiding repeated growth
+p := make(map[string]int, 1000)    // size hint, pre-sizes, avoiding repeated growth
 ```
 
 The size hint is a hint. It changes allocation behaviour, not semantics, and `cap` is not defined on maps.
@@ -186,9 +186,9 @@ A nil map is a usable empty map for every read-shaped operation, including `dele
 
 ## Going further
 
-- [Go maps in action — The Go Blog](https://go.dev/blog/maps)
-- [`maps` package](https://pkg.go.dev/maps) — `Keys`, `Values`, `Clone`, `Equal`
-- [Slice and Map Mechanics](../reference/slice-and-map-mechanics.md) — the lookup version of this lesson and the last one
+- [Go maps in action, The Go Blog](https://go.dev/blog/maps)
+- [`maps` package](https://pkg.go.dev/maps): `Keys`, `Values`, `Clone`, `Equal`
+- [Slice and Map Mechanics](../reference/slice-and-map-mechanics.md): the lookup version of this lesson and the last one
 - [Resources](../RESOURCES.md)
 
 ---

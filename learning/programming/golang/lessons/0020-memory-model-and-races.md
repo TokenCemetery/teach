@@ -7,7 +7,7 @@ type: lesson
 # Lesson 20. The Memory Model and Races
 
 **Mission link:** Reasoning about concurrency from the memory model instead of from experiment is what lets you say a design is wrong before it has failed in production.
-**Primary source:** [The Go Memory Model — The Go Authors](https://go.dev/ref/mem)
+**Primary source:** [The Go Memory Model, The Go Authors](https://go.dev/ref/mem)
 **Prerequisites:** [Lesson 19](0019-sync-primitives.md)
 
 ## Warm-up
@@ -157,8 +157,8 @@ Next step is a test that hits the map from several goroutines under `-race`, whi
 ## Going further
 
 - [The Go Memory Model](https://go.dev/ref/mem)
-- [Introducing the Go Race Detector — The Go Blog](https://go.dev/blog/race-detector)
-- [Testing concurrent code with testing/synctest — The Go Blog](https://go.dev/blog/synctest)
+- [Introducing the Go Race Detector, The Go Blog](https://go.dev/blog/race-detector)
+- [Testing concurrent code with testing/synctest, The Go Blog](https://go.dev/blog/synctest)
 - [Concurrency Patterns](../reference/concurrency-patterns.md)
 - [Resources](../RESOURCES.md)
 

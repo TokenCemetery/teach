@@ -7,7 +7,7 @@ type: lesson
 # Lesson 9. Wrapping, Is and As
 
 **Mission link:** An error that arrives at your log line with no context wastes an on-call hour. An error wrapped at every layer with no thought wastes the same hour differently. This is the difference.
-**Primary source:** [Working with Errors in Go 1.13 — The Go Blog](https://go.dev/blog/go1.13-errors)
+**Primary source:** [Working with Errors in Go 1.13, The Go Blog](https://go.dev/blog/go1.13-errors)
 **Prerequisites:** [Lesson 8](0008-errors-are-values.md)
 
 ## Warm-up
@@ -182,9 +182,9 @@ Return the error with context, and log at the single place where the error stops
 
 ## Going further
 
-- [Working with Errors in Go 1.13 — The Go Blog](https://go.dev/blog/go1.13-errors)
-- [`errors` package](https://pkg.go.dev/errors) — `Is`, `As`, `Join`, `Unwrap`
-- [Don't just check errors, handle them gracefully — Dave Cheney](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully)
+- [Working with Errors in Go 1.13, The Go Blog](https://go.dev/blog/go1.13-errors)
+- [`errors` package](https://pkg.go.dev/errors): `Is`, `As`, `Join`, `Unwrap`
+- [Don't just check errors, handle them gracefully, Dave Cheney](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully)
 - [Error Handling](../reference/error-handling.md)
 - [Resources](../RESOURCES.md)
 

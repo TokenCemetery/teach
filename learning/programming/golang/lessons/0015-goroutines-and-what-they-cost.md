@@ -7,7 +7,7 @@ type: lesson
 # Lesson 15. Goroutines and What They Cost
 
 **Mission link:** Predicting what a concurrent program does starts with knowing what `go` actually creates, what schedules it, and what happens to it when `main` returns.
-**Primary source:** [Concurrency is not parallelism — Rob Pike](https://go.dev/blog/waza-talk)
+**Primary source:** [Concurrency is not parallelism, Rob Pike](https://go.dev/blog/waza-talk)
 **Prerequisites:** [Lesson 10](0010-defer-panic-and-recover.md)
 
 ## Warm-up
@@ -165,9 +165,9 @@ It is not safe for anything else the closure captures: a shared map, a slice bei
 
 ## Going further
 
-- [Concurrency is not parallelism — Rob Pike](https://go.dev/blog/waza-talk)
+- [Concurrency is not parallelism, Rob Pike](https://go.dev/blog/waza-talk)
 - [Go 1.22 loop variable change](https://go.dev/blog/loopvar-preview)
-- [`golang.org/x/sync/errgroup`](https://pkg.go.dev/golang.org/x/sync/errgroup) — `SetLimit` is the bounded fan-out primitive
+- [`golang.org/x/sync/errgroup`](https://pkg.go.dev/golang.org/x/sync/errgroup): `SetLimit` is the bounded fan-out primitive
 - [Concurrency Patterns](../reference/concurrency-patterns.md)
 - [Resources](../RESOURCES.md)
 

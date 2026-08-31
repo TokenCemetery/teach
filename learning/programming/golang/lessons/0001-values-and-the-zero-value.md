@@ -7,7 +7,7 @@ type: lesson
 # Lesson 1. Values and the Zero Value
 
 **Mission link:** Go's defaults are load-bearing. Code that defends against uninitialised state is fighting the language before it has expressed any logic.
-**Primary source:** [Effective Go — The Go Authors](https://go.dev/doc/effective_go)
+**Primary source:** [Effective Go, The Go Authors](https://go.dev/doc/effective_go)
 **Prerequisites:** none — this is the first lesson.
 
 ## Know this
@@ -21,7 +21,7 @@ Three ways to declare:
 ```go
 var count int           // explicit type, zero value 0
 var name = "gopher"     // type inferred from the value
-total := 42             // short form — functions only, and at least one new name on the left
+total := 42             // short form, functions only, and at least one new name on the left
 ```
 
 The short form is why idiomatic Go writes types out far less often than its reputation suggests.
@@ -59,14 +59,14 @@ A nil slice is a perfectly good empty slice:
 ```go
 var ids []int
 fmt.Println(len(ids)) // 0
-ids = append(ids, 7)  // fine — append allocates the backing array
+ids = append(ids, 7)  // fine, append allocates the backing array
 ```
 
 A nil map reads but does not write:
 
 ```go
 var m map[string]int
-fmt.Println(m["missing"]) // 0 — reads from a nil map return the zero value
+fmt.Println(m["missing"]) // 0, reads from a nil map return the zero value
 m["k"] = 1                // panic: assignment to entry in nil map
 ```
 
@@ -154,9 +154,9 @@ The warning is about copying rather than construction: once a `sync.Mutex` has b
 
 ## Going further
 
-- [Effective Go](https://go.dev/doc/effective_go) — the sections on allocation and on `new` versus `make`
+- [Effective Go](https://go.dev/doc/effective_go): the sections on allocation and on `new` versus `make`
 - [The zero value, in the language spec](https://go.dev/ref/spec#The_zero_value)
-- [Glossary](../GLOSSARY.md) — `zero value` is pinned there because carrying `null` across from another language is the failure this lesson prevents
+- [Glossary](../GLOSSARY.md): `zero value` is pinned there because carrying `null` across from another language is the failure this lesson prevents
 - [Resources](../RESOURCES.md)
 
 ---

@@ -7,7 +7,7 @@ type: lesson
 # Lesson 36. Reviewing Go
 
 **Mission link:** Reviewing a colleague's PR and saying precisely why a design is wrong is the mission's own wording. This lesson is the vocabulary and the order to look in.
-**Primary source:** [Go Code Review Comments — The Go Authors](https://go.dev/wiki/CodeReviewComments)
+**Primary source:** [Go Code Review Comments, The Go Authors](https://go.dev/wiki/CodeReviewComments)
 **Prerequisites:** every lesson before it — this is where they get used together
 
 ## Warm-up
@@ -156,7 +156,7 @@ The fix is `s[0:2:2]` or `slices.Clone`. This is worth checking every time becau
 
 - [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments)
 - [Effective Go](https://go.dev/doc/effective_go)
-- [Uber Go Style Guide](https://github.com/uber-go/guide/blob/master/style.md) — decisions the official docs leave open
+- [Uber Go Style Guide](https://github.com/uber-go/guide/blob/master/style.md): decisions the official docs leave open
 - [Review Checklist](../reference/review-checklist.md)
 - [Resources](../RESOURCES.md)
 

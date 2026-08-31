@@ -7,7 +7,7 @@ type: lesson
 # Lesson 22. An HTTP Server Worth Operating
 
 **Mission link:** This is the first lesson of the service you will ship. The default `http.ListenAndServe` is a demo; the difference is four fields and a routing decision.
-**Primary source:** [Routing Enhancements for Go 1.22 — The Go Blog](https://go.dev/blog/routing-enhancements)
+**Primary source:** [Routing Enhancements for Go 1.22, The Go Blog](https://go.dev/blog/routing-enhancements)
 **Prerequisites:** [Lesson 18](0018-context-cancellation.md), [Lesson 11](0011-implicit-interfaces.md)
 
 ## Warm-up
@@ -193,10 +193,10 @@ Mapping inline in each handler duplicates the policy and drifts — the same con
 
 ## Going further
 
-- [Routing Enhancements for Go 1.22 — The Go Blog](https://go.dev/blog/routing-enhancements)
-- [`net/http.Server`](https://pkg.go.dev/net/http#Server) — read the field docs for the timeouts
-- [How I write HTTP services in Go — Mat Ryer](https://grafana.com/blog/2024/02/09/how-i-write-http-services-in-go-after-13-years/)
-- [Lesson 25 — Graceful Shutdown](0025-graceful-shutdown.md)
+- [Routing Enhancements for Go 1.22, The Go Blog](https://go.dev/blog/routing-enhancements)
+- [`net/http.Server`](https://pkg.go.dev/net/http#Server): read the field docs for the timeouts
+- [How I write HTTP services in Go, Mat Ryer](https://grafana.com/blog/2024/02/09/how-i-write-http-services-in-go-after-13-years/)
+- [Lesson 25. Graceful Shutdown](0025-graceful-shutdown.md)
 - [Resources](../RESOURCES.md)
 
 ---

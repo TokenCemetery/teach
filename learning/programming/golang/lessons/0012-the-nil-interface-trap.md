@@ -7,7 +7,7 @@ type: lesson
 # Lesson 12. The Nil Interface Trap
 
 **Mission link:** This one bug has shipped in more Go services than any other on this list. It turns a success path into an error path, and the code that causes it reads as obviously correct.
-**Primary source:** [Go FAQ — Why is my nil error value not equal to nil?](https://go.dev/doc/faq#nil_error)
+**Primary source:** [Go FAQ: Why is my nil error value not equal to nil?](https://go.dev/doc/faq#nil_error)
 **Prerequisites:** [Lesson 11](0011-implicit-interfaces.md)
 
 ## Warm-up
@@ -45,7 +45,7 @@ var p *MyError = nil
 var err error = p
 
 fmt.Println(p == nil)     // true
-fmt.Println(err == nil)   // false — the interface holds a type
+fmt.Println(err == nil)   // false, the interface holds a type
 ```
 
 Both lines are correct and they disagree, because they are asking different questions. `p == nil` asks whether the pointer is nil. `err == nil` asks whether the interface is empty.
@@ -56,7 +56,7 @@ Almost always through a concrete error type used as a return variable:
 
 ```go
 func do() error {
-    var err *MyError        // concrete type — this is the bug
+    var err *MyError        // concrete type, this is the bug
     if somethingFailed() {
         err = &MyError{}
     }
@@ -78,7 +78,7 @@ The same shape appears with any interface, not just `error`: a nil `*bytes.Buffe
 
 ```go
 func do() error {
-    var err error           // interface type — nil stays nil
+    var err error           // interface type, nil stays nil
     if somethingFailed() {
         err = &MyError{}
     }
@@ -102,7 +102,7 @@ func (t *T) Ping() string { return "pong" }
 
 var t *T
 var i interface{ Ping() string } = t
-fmt.Println(i.Ping())   // "pong" — the receiver is nil, and Ping never touches it
+fmt.Println(i.Ping())   // "pong", the receiver is nil, and Ping never touches it
 ```
 
 This is legitimate and occasionally useful: methods on nil receivers are how a nil `*Tree` can be a valid empty tree. It also means a nil check on an interface does not guarantee a usable value.
@@ -199,9 +199,9 @@ They meet only in that both come from the same fact — an interface holds a cop
 
 ## Going further
 
-- [Go FAQ — why is my nil error value not equal to nil?](https://go.dev/doc/faq#nil_error)
-- [The Laws of Reflection — The Go Blog](https://go.dev/blog/laws-of-reflection) — the type/value pair, from the other direction
-- [Typed nils in Go 2 — Dave Cheney](https://dave.cheney.net/2017/08/09/typed-nils-in-go-2)
+- [Go FAQ: why is my nil error value not equal to nil?](https://go.dev/doc/faq#nil_error)
+- [The Laws of Reflection, The Go Blog](https://go.dev/blog/laws-of-reflection): the type/value pair, from the other direction
+- [Typed nils in Go 2, Dave Cheney](https://dave.cheney.net/2017/08/09/typed-nils-in-go-2)
 - [Error Handling](../reference/error-handling.md)
 - [Resources](../RESOURCES.md)
 

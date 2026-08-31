@@ -7,7 +7,7 @@ type: lesson
 # Lesson 16. Channels
 
 **Mission link:** A channel is Go's synchronisation primitive as well as its queue. Using it as only a queue is how deadlocks and leaks get written.
-**Primary source:** [Effective Go — Channels](https://go.dev/doc/effective_go#channels)
+**Primary source:** [Effective Go: Channels](https://go.dev/doc/effective_go#channels)
 **Prerequisites:** [Lesson 15](0015-goroutines-and-what-they-cost.md)
 
 ## Warm-up
@@ -162,8 +162,8 @@ The difference is coverage. The map detector fires whenever it observes the misu
 
 ## Going further
 
-- [Effective Go — Channels](https://go.dev/doc/effective_go#channels)
-- [Go Concurrency Patterns: Pipelines and cancellation — The Go Blog](https://go.dev/blog/pipelines)
+- [Effective Go: Channels](https://go.dev/doc/effective_go#channels)
+- [Go Concurrency Patterns: Pipelines and cancellation, The Go Blog](https://go.dev/blog/pipelines)
 - [Concurrency Patterns](../reference/concurrency-patterns.md)
 - [Resources](../RESOURCES.md)
 

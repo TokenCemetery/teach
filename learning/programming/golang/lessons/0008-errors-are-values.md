@@ -7,7 +7,7 @@ type: lesson
 # Lesson 8. Errors Are Values
 
 **Mission link:** Error handling is the largest single difference between Go you can operate and Go you cannot. It is also where a habit of throwing exceptions does the most damage.
-**Primary source:** [Errors are values — The Go Blog](https://go.dev/blog/errors-are-values)
+**Primary source:** [Errors are values, The Go Blog](https://go.dev/blog/errors-are-values)
 **Prerequisites:** [Lesson 6](0006-methods-and-method-sets.md)
 
 ## Warm-up
@@ -71,7 +71,7 @@ The blank identifier is a claim that you have thought about it. `errcheck` and m
 ```go
 errors.New("connection closed")                  // fixed message
 fmt.Errorf("parse row %d: %v", i, err)           // formatted, does not wrap
-fmt.Errorf("parse row %d: %w", i, err)           // formatted, wraps — Lesson 9
+fmt.Errorf("parse row %d: %w", i, err)           // formatted, wraps, Lesson 9
 ```
 
 Error strings are lowercase and end with no punctuation, because they get embedded in longer messages: `fmt.Errorf("load user: %w", err)` should read `load user: connection closed`, not `Load user: Connection closed.`. This is in [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments#error-strings) and reviewers cite it by name.
@@ -189,10 +189,10 @@ If "no user" is a normal outcome, express it — return `ErrNotFound`, or return
 
 ## Going further
 
-- [Errors are values — The Go Blog](https://go.dev/blog/errors-are-values)
-- [Error handling and Go — The Go Blog](https://go.dev/blog/error-handling-and-go)
-- [Go Code Review Comments — error strings](https://go.dev/wiki/CodeReviewComments#error-strings)
-- [Error Handling](../reference/error-handling.md) — the lookup sheet for this stage
+- [Errors are values, The Go Blog](https://go.dev/blog/errors-are-values)
+- [Error handling and Go, The Go Blog](https://go.dev/blog/error-handling-and-go)
+- [Go Code Review Comments: error strings](https://go.dev/wiki/CodeReviewComments#error-strings)
+- [Error Handling](../reference/error-handling.md): the lookup sheet for this stage
 - [Resources](../RESOURCES.md)
 
 ---

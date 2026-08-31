@@ -7,7 +7,7 @@ type: lesson
 # Lesson 26. Talking to a Database
 
 **Mission link:** The database is where a Go service's concurrency model meets a resource with a hard limit. Most production database incidents are pool configuration and unclosed rows, not queries.
-**Primary source:** [Accessing relational databases — The Go Authors](https://go.dev/doc/database/)
+**Primary source:** [Accessing relational databases, The Go Authors](https://go.dev/doc/database/)
 **Prerequisites:** [Lesson 25](0025-graceful-shutdown.md), [Lesson 9](0009-wrapping-is-and-as.md)
 
 ## Warm-up
@@ -185,9 +185,9 @@ Translate at the boundary: match `sql.ErrNoRows` inside the repository and retur
 
 ## Going further
 
-- [Accessing relational databases](https://go.dev/doc/database/) — the official tutorial and the pool documentation
+- [Accessing relational databases](https://go.dev/doc/database/): the official tutorial and the pool documentation
 - [`database/sql` package](https://pkg.go.dev/database/sql)
-- [`pgx`](https://pkg.go.dev/github.com/jackc/pgx/v5) — the current default Postgres driver
+- [`pgx`](https://pkg.go.dev/github.com/jackc/pgx/v5): the current default Postgres driver
 - [Resources](../RESOURCES.md)
 
 ---

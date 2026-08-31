@@ -7,7 +7,7 @@ type: lesson
 # Lesson 24. Structured Logging with slog
 
 **Mission link:** Logs are the first thing you reach for at 3am and the last thing anyone designs. Structured output is what makes a log searchable instead of grep-able.
-**Primary source:** [Structured Logging with slog — The Go Blog](https://go.dev/blog/slog)
+**Primary source:** [Structured Logging with slog, The Go Blog](https://go.dev/blog/slog)
 **Prerequisites:** [Lesson 23](0023-configuration-and-startup.md)
 
 ## Warm-up
@@ -167,9 +167,9 @@ This is the legitimate use of `context.Value` from Lesson 18: request-scoped met
 
 ## Going further
 
-- [Structured Logging with slog — The Go Blog](https://go.dev/blog/slog)
-- [`log/slog` package](https://pkg.go.dev/log/slog) — the `Handler` interface is the extension point
-- [`slog.LogValuer`](https://pkg.go.dev/log/slog#LogValuer) — controlling how a sensitive type prints
+- [Structured Logging with slog, The Go Blog](https://go.dev/blog/slog)
+- [`log/slog` package](https://pkg.go.dev/log/slog): the `Handler` interface is the extension point
+- [`slog.LogValuer`](https://pkg.go.dev/log/slog#LogValuer): controlling how a sensitive type prints
 - [Resources](../RESOURCES.md)
 
 ---

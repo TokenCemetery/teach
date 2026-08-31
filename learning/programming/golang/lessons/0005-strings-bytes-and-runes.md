@@ -7,7 +7,7 @@ type: lesson
 # Lesson 5. Strings, Bytes and Runes
 
 **Mission link:** Every service parses, slices and logs strings. Treating them as arrays of characters produces output that is fine in tests and mangled the first time a real name arrives.
-**Primary source:** [Strings, bytes, runes and characters in Go — The Go Blog](https://go.dev/blog/strings)
+**Primary source:** [Strings, bytes, runes and characters in Go, The Go Blog](https://go.dev/blog/strings)
 **Prerequisites:** [Lesson 3](0003-slices-and-the-backing-array.md)
 
 ## Warm-up
@@ -36,8 +36,8 @@ Two consequences arrive immediately:
 
 ```go
 s := "héllo"
-fmt.Println(len(s))  // 6 — bytes, because é takes two
-fmt.Println(s[1])    // 195 — a byte (uint8), not a character
+fmt.Println(len(s))  // 6, bytes, because é takes two
+fmt.Println(s[1])    // 195, a byte (uint8), not a character
 ```
 
 `len` is a byte count and `s[i]` is a byte. Neither is wrong; both are answering a lower-level question than the one usually intended.
@@ -66,7 +66,7 @@ Invalid UTF-8 does not stop the loop. `range` yields `utf8.RuneError` (`U+FFFD`,
 ### Converting costs a copy
 
 ```go
-b := []byte(s)   // allocates and copies — strings are immutable, byte slices are not
+b := []byte(s)   // allocates and copies, strings are immutable, byte slices are not
 r := []rune(s)   // allocates, decodes, four bytes per code point
 back := string(b)
 ```
@@ -163,8 +163,8 @@ Slicing a string, `s[1:3]`, does *not* copy: it produces a new string header ove
 
 ## Going further
 
-- [Strings, bytes, runes and characters in Go — The Go Blog](https://go.dev/blog/strings)
-- [`unicode/utf8` package](https://pkg.go.dev/unicode/utf8) — `RuneCountInString`, `DecodeRuneInString`, `ValidString`
+- [Strings, bytes, runes and characters in Go, The Go Blog](https://go.dev/blog/strings)
+- [`unicode/utf8` package](https://pkg.go.dev/unicode/utf8): `RuneCountInString`, `DecodeRuneInString`, `ValidString`
 - [`strings.Builder`](https://pkg.go.dev/strings#Builder)
 - [Resources](../RESOURCES.md)
 

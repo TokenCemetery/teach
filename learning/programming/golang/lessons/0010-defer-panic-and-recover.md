@@ -7,7 +7,7 @@ type: lesson
 # Lesson 10. defer, panic and recover
 
 **Mission link:** `defer` is how a Go service releases what it acquired, and its two surprises — argument evaluation and loop accumulation — leak resources quietly under load.
-**Primary source:** [Defer, Panic, and Recover — The Go Blog](https://go.dev/blog/defer-panic-and-recover)
+**Primary source:** [Defer, Panic, and Recover, The Go Blog](https://go.dev/blog/defer-panic-and-recover)
 **Prerequisites:** [Lesson 8](0008-errors-are-values.md)
 
 ## Warm-up
@@ -226,8 +226,8 @@ Naming the result gives the closure a variable that is still live during unwindi
 
 ## Going further
 
-- [Defer, Panic, and Recover — The Go Blog](https://go.dev/blog/defer-panic-and-recover)
-- [Go Code Review Comments — don't panic](https://go.dev/wiki/CodeReviewComments#dont-panic)
+- [Defer, Panic, and Recover, The Go Blog](https://go.dev/blog/defer-panic-and-recover)
+- [Go Code Review Comments: don't panic](https://go.dev/wiki/CodeReviewComments#dont-panic)
 - [`runtime/debug.Stack`](https://pkg.go.dev/runtime/debug#Stack)
 - [Error Handling](../reference/error-handling.md)
 - [Resources](../RESOURCES.md)

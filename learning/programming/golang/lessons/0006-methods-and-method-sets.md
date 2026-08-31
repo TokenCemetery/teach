@@ -7,7 +7,7 @@ type: lesson
 # Lesson 6. Methods and Method Sets
 
 **Mission link:** The receiver choice looks like a mutation question and is really a type question. It decides, silently, whether your type satisfies the interface you are about to write.
-**Primary source:** [Go FAQ — Should I define methods on values or pointers?](https://go.dev/doc/faq#methods_on_values_or_pointers)
+**Primary source:** [Go FAQ: Should I define methods on values or pointers?](https://go.dev/doc/faq#methods_on_values_or_pointers)
 **Prerequisites:** [Lesson 2](0002-value-semantics-and-pointers.md), [Lesson 4](0004-maps-and-their-rules.md)
 
 ## Warm-up
@@ -43,15 +43,15 @@ Receivers are named with one or two letters, used consistently across every meth
 ### The two receiver forms
 
 ```go
-func (c Counter) Value() int { return c.n }  // value receiver — operates on a copy
-func (c *Counter) Inc()      { c.n++ }       // pointer receiver — operates on the original
+func (c Counter) Value() int { return c.n }  // value receiver, operates on a copy
+func (c *Counter) Inc()      { c.n++ }       // pointer receiver, operates on the original
 ```
 
 Go inserts the address or the dereference for you when the value is **addressable**:
 
 ```go
 var c Counter
-c.Inc()   // shorthand for (&c).Inc() — c is a variable, so it has an address
+c.Inc()   // shorthand for (&c).Inc(), c is a variable, so it has an address
 ```
 
 Addressability is where it stops being automatic. Map elements and function results have no address, so a pointer method cannot be called on them:
@@ -158,10 +158,10 @@ The zero-value rule and the receiver rule meet here: the type is usable unconstr
 
 ## Going further
 
-- [Go FAQ — methods on values or pointers](https://go.dev/doc/faq#methods_on_values_or_pointers)
+- [Go FAQ: methods on values or pointers](https://go.dev/doc/faq#methods_on_values_or_pointers)
 - [Method sets, in the language spec](https://go.dev/ref/spec#Method_sets)
-- [Go Code Review Comments — receiver type](https://go.dev/wiki/CodeReviewComments#receiver-type) — the reasoning a reviewer will cite
-- [Lesson 11 — Interfaces Are Satisfied Implicitly](0011-implicit-interfaces.md) — where method sets start to bite
+- [Go Code Review Comments: receiver type](https://go.dev/wiki/CodeReviewComments#receiver-type): the reasoning a reviewer will cite
+- [Lesson 11. Interfaces Are Satisfied Implicitly](0011-implicit-interfaces.md): where method sets start to bite
 - [Resources](../RESOURCES.md)
 
 ---

@@ -7,7 +7,7 @@ type: lesson
 # Lesson 31. Reading a pprof Profile
 
 **Mission link:** Optimising from a profile rather than from a hunch is the habit that separates a performance claim from a performance result.
-**Primary source:** [Profiling Go Programs — The Go Blog](https://go.dev/blog/pprof)
+**Primary source:** [Profiling Go Programs, The Go Blog](https://go.dev/blog/pprof)
 **Prerequisites:** [Lesson 30](0030-benchmarks-you-can-trust.md)
 
 ## Warm-up
@@ -168,8 +168,8 @@ The window is short, so it is worth having the pprof endpoint already wired and 
 
 ## Going further
 
-- [Profiling Go Programs — The Go Blog](https://go.dev/blog/pprof)
-- [Diagnostics — The Go Authors](https://go.dev/doc/diagnostics) — profiling, tracing and debugging in one place
+- [Profiling Go Programs, The Go Blog](https://go.dev/blog/pprof)
+- [Diagnostics, The Go Authors](https://go.dev/doc/diagnostics): profiling, tracing and debugging in one place
 - [`net/http/pprof`](https://pkg.go.dev/net/http/pprof)
 - [Toolchain Commands](../reference/toolchain-commands.md)
 - [Resources](../RESOURCES.md)

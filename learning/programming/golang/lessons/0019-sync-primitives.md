@@ -192,7 +192,7 @@ Run the benchmark both ways under realistic concurrency — stage 5 gives you `b
 - [`sync` package](https://pkg.go.dev/sync)
 - [`sync/atomic` package](https://pkg.go.dev/sync/atomic)
 - [`errgroup`](https://pkg.go.dev/golang.org/x/sync/errgroup)
-- [Go Proverbs](https://go-proverbs.github.io/) — the "share memory by communicating" line, in context
+- [Go Proverbs](https://go-proverbs.github.io/): the "share memory by communicating" line, in context
 - [Concurrency Patterns](../reference/concurrency-patterns.md)
 - [Resources](../RESOURCES.md)
 

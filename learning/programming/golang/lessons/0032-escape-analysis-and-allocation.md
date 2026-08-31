@@ -7,7 +7,7 @@ type: lesson
 # Lesson 32. Escape Analysis and Allocation
 
 **Mission link:** Cutting allocations with evidence is a stage 5 success criterion. Escape analysis is the mechanism underneath the `allocs/op` number, and the compiler will tell you its reasoning.
-**Primary source:** [Go FAQ — Stack or heap?](https://go.dev/doc/faq#stack_or_heap)
+**Primary source:** [Go FAQ: Stack or heap?](https://go.dev/doc/faq#stack_or_heap)
 **Prerequisites:** [Lesson 31](0031-reading-a-pprof-profile.md), [Lesson 2](0002-value-semantics-and-pointers.md)
 
 ## Warm-up
@@ -151,9 +151,9 @@ Guessing from the table of causes is a starting point; the compiler's own explan
 
 ## Going further
 
-- [Go FAQ — stack or heap?](https://go.dev/doc/faq#stack_or_heap)
-- [Diagnostics — memory profiling](https://go.dev/doc/diagnostics)
-- [`sync.Pool`](https://pkg.go.dev/sync#Pool) — read the caveats in the doc before using it
+- [Go FAQ: stack or heap?](https://go.dev/doc/faq#stack_or_heap)
+- [Diagnostics: memory profiling](https://go.dev/doc/diagnostics)
+- [`sync.Pool`](https://pkg.go.dev/sync#Pool): read the caveats in the doc before using it
 - [Toolchain Commands](../reference/toolchain-commands.md)
 - [Resources](../RESOURCES.md)
 

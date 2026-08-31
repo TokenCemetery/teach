@@ -7,7 +7,7 @@ type: lesson
 # Lesson 18. context and Cancellation
 
 **Mission link:** Cancellation that propagates is the difference between a service that sheds load and one that piles up goroutines until it dies. Nothing in Java or Promise-land transfers cleanly.
-**Primary source:** [Go Concurrency Patterns: Context — The Go Blog](https://go.dev/blog/context)
+**Primary source:** [Go Concurrency Patterns: Context, The Go Blog](https://go.dev/blog/context)
 **Prerequisites:** [Lesson 17](0017-select-and-timeouts.md)
 
 ## Warm-up
@@ -161,9 +161,9 @@ Distinguishing it matters operationally: a deadline means you gave up, and a `co
 
 ## Going further
 
-- [Go Concurrency Patterns: Context — The Go Blog](https://go.dev/blog/context)
-- [`context` package](https://pkg.go.dev/context) — read the package doc in full; it is short and it is the specification
-- [Contexts and structs — The Go Blog](https://go.dev/blog/context-and-structs) — why it is a parameter and not a field
+- [Go Concurrency Patterns: Context, The Go Blog](https://go.dev/blog/context)
+- [`context` package](https://pkg.go.dev/context): read the package doc in full; it is short and it is the specification
+- [Contexts and structs, The Go Blog](https://go.dev/blog/context-and-structs): why it is a parameter and not a field
 - [Concurrency Patterns](../reference/concurrency-patterns.md)
 - [Resources](../RESOURCES.md)
 

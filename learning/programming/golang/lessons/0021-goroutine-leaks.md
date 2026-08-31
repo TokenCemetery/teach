@@ -7,7 +7,7 @@ type: lesson
 # Lesson 21. Goroutine Leaks
 
 **Mission link:** This is the failure that closes stage 3: finding a leak in code you did not write, and naming the guarantee that was missed. It is also the most common Go production bug.
-**Primary source:** [Never start a goroutine without knowing how it will stop — Dave Cheney](https://dave.cheney.net/2016/12/22/never-start-a-goroutine-without-knowing-how-it-will-stop)
+**Primary source:** [Never start a goroutine without knowing how it will stop, Dave Cheney](https://dave.cheney.net/2016/12/22/never-start-a-goroutine-without-knowing-how-it-will-stop)
 **Prerequisites:** [Lesson 20](0020-memory-model-and-races.md)
 
 ## Warm-up
@@ -66,7 +66,7 @@ curl 'http://localhost:6060/debug/pprof/goroutine?debug=2' > goroutines.txt
 
 `debug=2` prints every goroutine's full stack with how long it has been blocked. A leak looks like ten thousand goroutines parked on the same line of your code. Take two profiles ten minutes apart and diff the counts — a leak grows, normal load does not.
 
-Since [Go 1.27](https://go.dev/doc/go1.27) there is a purpose-built profile: `goroutineleak`, in `runtime/pprof` and at `/debug/pprof/goroutineleak`. The runtime uses the garbage collector to find goroutines blocked on a primitive that is unreachable from any runnable goroutine — which cannot possibly be unblocked, and is therefore leaked rather than merely slow. It was an experiment in Go 1.26 and is generally available in 1.27. It does not find every leak: a channel still reachable through a global, or through a running goroutine's locals, looks live to the collector.
+Since [Go 1.27](https://go.dev/doc/go1.27) there is a purpose-built profile: `goroutineleak`, in `runtime/pprof` and at `/debug/pprof/goroutineleak`. The runtime uses the garbage collector to find goroutines blocked on a primitive that is unreachable from any runnable goroutine, which cannot possibly be unblocked, and is therefore leaked rather than merely slow. It was an experiment in Go 1.26 and is generally available in 1.27. It does not find every leak: a channel still reachable through a global, or through a running goroutine's locals, looks live to the collector.
 
 In tests, [`go.uber.org/goleak`](https://pkg.go.dev/go.uber.org/goleak) fails a test that finishes with goroutines it did not start. One line in `TestMain` covers a whole package.
 
@@ -152,7 +152,7 @@ They will eventually exit, so a goroutine profile taken once looks fine. Two pro
 
 ## Going further
 
-- [Never start a goroutine without knowing how it will stop — Dave Cheney](https://dave.cheney.net/2016/12/22/never-start-a-goroutine-without-knowing-how-it-will-stop)
+- [Never start a goroutine without knowing how it will stop, Dave Cheney](https://dave.cheney.net/2016/12/22/never-start-a-goroutine-without-knowing-how-it-will-stop)
 - [Go 1.27 goroutine leak profile](https://go.dev/doc/go1.27)
 - [`net/http/pprof`](https://pkg.go.dev/net/http/pprof)
 - [`go.uber.org/goleak`](https://pkg.go.dev/go.uber.org/goleak)

@@ -7,7 +7,7 @@ type: lesson
 # Lesson 33. Modules and Release Builds
 
 **Mission link:** Shipping means someone else builds your code and someone else runs the binary. Both depend on decisions in `go.mod` and on four build flags.
-**Primary source:** [Go Modules Reference — The Go Authors](https://go.dev/ref/mod)
+**Primary source:** [Go Modules Reference, The Go Authors](https://go.dev/ref/mod)
 **Prerequisites:** [Lesson 7](0007-packages-and-modules.md), [Lesson 32](0032-escape-analysis-and-allocation.md)
 
 ## Warm-up
@@ -172,7 +172,7 @@ This is the compatibility mechanism working as designed: upgrading the toolchain
 - [Go Modules Reference](https://go.dev/ref/mod)
 - [Module version numbering](https://go.dev/doc/modules/version-numbers)
 - [`govulncheck`](https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck)
-- [Go Release History](https://go.dev/doc/devel/release) — which versions are still supported
+- [Go Release History](https://go.dev/doc/devel/release): which versions are still supported
 - [Toolchain Commands](../reference/toolchain-commands.md)
 - [Resources](../RESOURCES.md)
 

@@ -7,7 +7,7 @@ type: lesson
 # Lesson 27. Generics That Earn Their Keep
 
 **Mission link:** Generics arrived after most Go idiom was settled, so the judgment about when *not* to use them is the part that distinguishes a senior reviewer.
-**Primary source:** [When To Use Generics — The Go Blog](https://go.dev/blog/when-generics)
+**Primary source:** [When To Use Generics, The Go Blog](https://go.dev/blog/when-generics)
 **Prerequisites:** [Lesson 11](0011-implicit-interfaces.md), [Lesson 26](0026-talking-to-a-database.md)
 
 ## Warm-up
@@ -171,9 +171,9 @@ This is the zero-value rule paying off in the type system: generic code can cons
 
 ## Going further
 
-- [When To Use Generics — The Go Blog](https://go.dev/blog/when-generics)
-- [An Introduction To Generics — The Go Blog](https://go.dev/blog/intro-generics)
-- [`slices`](https://pkg.go.dev/slices) and [`maps`](https://pkg.go.dev/maps) — the standard library's own answer
+- [When To Use Generics, The Go Blog](https://go.dev/blog/when-generics)
+- [An Introduction To Generics, The Go Blog](https://go.dev/blog/intro-generics)
+- [`slices`](https://pkg.go.dev/slices) and [`maps`](https://pkg.go.dev/maps): the standard library's own answer
 - [Go 1.27 generic methods](https://go.dev/doc/go1.27#language)
 - [Resources](../RESOURCES.md)
 

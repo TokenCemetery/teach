@@ -7,7 +7,7 @@ type: lesson
 # Lesson 37. Reading the Standard Library
 
 **Mission link:** The last skill in the arc is self-sufficiency: when the documentation is ambiguous and the blog posts disagree, you read the source and settle it.
-**Primary source:** [`io.Copy` source — go.dev](https://go.dev/src/io/io.go)
+**Primary source:** [`io.Copy` source, go.dev](https://go.dev/src/io/io.go)
 **Prerequisites:** [Lesson 36](0036-reviewing-go.md)
 
 ## Warm-up
@@ -162,8 +162,8 @@ This is the strongest available argument for "the bigger the interface, the weak
 ## Going further
 
 - [`io` package source](https://go.dev/src/io/io.go)
-- [Effective Go](https://go.dev/doc/effective_go) — the idioms, with the library as the worked example
-- [The Go Blog](https://go.dev/blog/) — design rationale from the people who made the decisions
+- [Effective Go](https://go.dev/doc/effective_go): the idioms, with the library as the worked example
+- [The Go Blog](https://go.dev/blog/): design rationale from the people who made the decisions
 - [Review Checklist](../reference/review-checklist.md)
 - [Resources](../RESOURCES.md)
 

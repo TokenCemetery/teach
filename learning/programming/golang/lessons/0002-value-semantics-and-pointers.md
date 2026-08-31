@@ -7,7 +7,7 @@ type: lesson
 # Lesson 2. Value Semantics and Pointers
 
 **Mission link:** Almost every "why didn't my change stick" bug in early Go is a copy the author did not see. Seeing copies is the prerequisite for reading slices, maps and method sets correctly.
-**Primary source:** [Effective Go — Data, allocation with `new` and `make`](https://go.dev/doc/effective_go#allocation_new)
+**Primary source:** [Effective Go: Data, allocation with `new` and `make`](https://go.dev/doc/effective_go#allocation_new)
 **Prerequisites:** [Lesson 1](0001-values-and-the-zero-value.md)
 
 ## Warm-up
@@ -41,7 +41,7 @@ func rename(u User) { u.Name = "changed" }
 
 u := User{Name: "original"}
 rename(u)
-fmt.Println(u.Name) // original — rename mutated its own copy
+fmt.Println(u.Name) // original, rename mutated its own copy
 ```
 
 Nothing about that is a bug in `rename`. The function was handed a copy, and it changed the copy.
@@ -63,7 +63,7 @@ Go has no pointer arithmetic. A pointer either points at a valid value or is `ni
 Three ways to get one:
 
 ```go
-p := &User{Name: "a"}    // composite literal, addressed — the common form
+p := &User{Name: "a"}    // composite literal, addressed, the common form
 q := new(User)           // zero-valued User, returns *User
 n := new(len(s))         // Go 1.26: new takes an expression, so this is a *int holding len(s)
 ```
@@ -175,9 +175,9 @@ The compiler stays silent because nothing is ill-typed — incrementing a field 
 
 ## Going further
 
-- [Effective Go — allocation with `new` and `make`](https://go.dev/doc/effective_go#allocation_new)
-- [Go FAQ — should I define methods on values or pointers?](https://go.dev/doc/faq#methods_on_values_or_pointers)
-- [Lesson 3 — Slices and the Backing Array](0003-slices-and-the-backing-array.md) — the copy rule applied to the type that surprises people most
+- [Effective Go: allocation with `new` and `make`](https://go.dev/doc/effective_go#allocation_new)
+- [Go FAQ: should I define methods on values or pointers?](https://go.dev/doc/faq#methods_on_values_or_pointers)
+- [Lesson 3. Slices and the Backing Array](0003-slices-and-the-backing-array.md): the copy rule applied to the type that surprises people most
 - [Resources](../RESOURCES.md)
 
 ---

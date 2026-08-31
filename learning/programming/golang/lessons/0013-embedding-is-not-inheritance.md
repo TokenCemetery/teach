@@ -7,7 +7,7 @@ type: lesson
 # Lesson 13. Embedding Is Not Inheritance
 
 **Mission link:** Embedding is the feature most often mistaken for something it is not. The mistake produces code that behaves correctly in every test you thought to write and wrongly in the one you did not.
-**Primary source:** [Effective Go — Embedding](https://go.dev/doc/effective_go#embedding)
+**Primary source:** [Effective Go: Embedding](https://go.dev/doc/effective_go#embedding)
 **Prerequisites:** [Lesson 11](0011-implicit-interfaces.md)
 
 ## Warm-up
@@ -183,9 +183,9 @@ The template-method pattern relies on the base calling an overridden method, whi
 
 ## Going further
 
-- [Effective Go — Embedding](https://go.dev/doc/effective_go#embedding)
+- [Effective Go: Embedding](https://go.dev/doc/effective_go#embedding)
 - [Struct embedding, in the language spec](https://go.dev/ref/spec#Struct_types)
-- [Go Code Review Comments — interfaces](https://go.dev/wiki/CodeReviewComments#interfaces)
+- [Go Code Review Comments: interfaces](https://go.dev/wiki/CodeReviewComments#interfaces)
 - [Resources](../RESOURCES.md)
 
 ---

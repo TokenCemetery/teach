@@ -5,27 +5,16 @@
 A place to learn topics over many sessions. One topic lives in one directory:
 `learning/<domain>/<topic>/`.
 
-All teaching state is kept in files, not in the conversation, because a topic is
-taught across many sessions.
+All state is kept in files, not in the conversation, because a topic is taught
+across many sessions and no session remembers the last one. What the user
+demonstrably learned goes in that topic's `learning-records/`; what is true
+about them goes in its `NOTES.md`; anything a future session needs to know
+about the repository itself belongs in this file or in the teach skill, which
+are committed and read by everyone. There is no scratch file for durable facts —
+if it is worth keeping, it is worth putting where it is already read.
 
 Almost every task here is one of two things: teach a lesson, or update workspace
 files. Anything else (templates, CI, project docs) is rare.
-
-## Start of every session
-
-1. Read `.agents/memory/MEMORY.md`.
-2. Read `.agents/memory/YYYY-MM-DD.md` using today's UTC date.
-3. If the directory or a file is missing, create it. Never overwrite memory that
-   already exists.
-
-What the files hold:
-
-- `MEMORY.md` — durable project facts. May be out of date. Check the repository
-  before trusting it.
-- `YYYY-MM-DD.md` — today's task notes and checklists.
-
-Never write learner state into `.agents/memory/`. What the user learned, got
-wrong, or told you about themselves belongs in that topic's `learning-records/`.
 
 ## Teaching
 
@@ -36,8 +25,8 @@ same name where the two disagree — the file in this repository wins.
 
 ## Editing rules
 
-- The repository is the source of truth. Check files before acting on memory or
-  old notes.
+- The repository is the source of truth. Check files before acting on old notes
+  or on what an earlier session reported.
 - Change as little as possible. Do not restructure, reformat, or improve
   unrelated content unless asked.
 - If your change makes a project document wrong, fix that document in the same
@@ -48,6 +37,19 @@ structure, dependencies, or project docs, first state: what you will change,
 how you will check it, and any real ambiguity. Ask one short question if the
 answer would change the scope. Writing one lesson into an existing workspace
 does not need this step.
+
+## Checking your work
+
+`learning/` is the source of a published site. After any change under it, build
+with the repository virtualenv:
+
+```bash
+.venv/bin/mkdocs build --strict
+```
+
+A clean strict build is necessary and not sufficient — it validates front matter
+and navigation, and cannot see a collapsed answer that failed to render.
+`.agents/skills/teach/SKILL.md` lists what it misses and how to check the rest.
 
 ## Quality bar for anything you write
 

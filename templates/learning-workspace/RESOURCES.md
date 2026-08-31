@@ -1,6 +1,6 @@
 ---
 title: Resources
-description: "Trusted sources and communities for {topic}"
+description: "Trusted sources for {topic}"
 type: resources
 ---
 
@@ -10,11 +10,6 @@ type: resources
 
 - [{Type}: "{Title}" — {Author}, {Publication}]({url})
   {What it covers.} Use for: {when to reach for it}.
-
-## Wisdom (Communities)
-
-- [{Community}]({url})
-  {Why it is high-signal.} Use for: {the kind of judgment call it answers}.
 
 ## Gaps
 

@@ -7,7 +7,6 @@ Working notes for the teaching session. Not linked from `README.md`.
 - Mission is the full arc: zero to senior specialist. Curriculum spans everything; lesson placement is set by calibration, not by starting at stage 1 by default.
 - Coming from Java 21 (professional) and TypeScript (heavy daily use). Use that as leverage — teach Go idiom as a contrast with what Java taught, since the wrong Java instinct compiles cleanly in Go.
 - Reps must fit an evening.
-- **Links go to sources of information, not to places to ask.** Stated 2026-08-30. Documentation, books, articles and style guides qualify; chats, forums and subreddits do not, however well moderated. The `## Wisdom (Communities)` section was deleted from `RESOURCES.md` and the community link removed from lesson 0036. Do not propose a community again — this overrides the Wisdom section of `SKILL.md`, which anticipates exactly this preference and says to record it here.
 
 ## Calibration needed before the first teaching session
 

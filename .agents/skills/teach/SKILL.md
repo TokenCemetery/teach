@@ -58,7 +58,7 @@ Workspaces live at `learning/<domain>/<topic>/`. A domain directory — `program
 learning/<domain>/<topic>/
 ├── README.md              # mission, success criteria, lesson index
 ├── GLOSSARY.md            # canonical terms for this topic
-├── RESOURCES.md           # trusted sources, communities, known gaps
+├── RESOURCES.md           # trusted sources, known gaps
 ├── NOTES.md               # preferences and working notes
 ├── lessons/               # NNNN-slug.md — one tight win each
 ├── reference/             # cheat sheets, built for lookup
@@ -69,7 +69,7 @@ learning/<domain>/<topic>/
 |Path|Holds|
 |---|---|
 |`README.md`|Landing page: the mission, the lesson index, where a visitor starts.|
-|`RESOURCES.md`|Annotated high-trust sources and communities. Gaps listed explicitly.|
+|`RESOURCES.md`|Annotated high-trust sources a reader can go and read. Gaps listed explicitly.|
 |`GLOSSARY.md`|Canonical terms the user already understands. Once here, use them everywhere.|
 |`lessons/NNNN-*.md`|The lessons. One tight win each.|
 |`reference/*.md`|Cheat sheets: syntax, algorithms, sequences, poses, routines.|
@@ -144,7 +144,11 @@ Coverage is not learning. Do not log session activity, and do not restate a defi
 
 ## Wisdom
 
-When a question needs judgment rather than facts, answer it as well as you can — then point the user at a community where they can test the answer against practitioners: a well-moderated forum, a local group, a class. Find high-reputation options rather than naming the obvious one. If the user says they don't want a community, respect it and record that under `## Preferences` in `NOTES.md` so later sessions stop proposing them. It is a preference, not a source, and `NOTES.md` is the file that stays off the site.
+When a question needs judgment rather than facts, answer it as well as you can, say what the answer rests on, and name what would change it. Then point the user at where that judgment is already written down — a style guide, a review checklist, a specification, a practitioner's post arguing the case — and at the real-world reps, which is where they test it themselves.
+
+**Every link leads to a source someone can read.** The test is the annotation you would write for it: "Use for: reading X" belongs, "Use for: asking X" does not. Chats, forums and subreddits fail it however well moderated — they need an account, they answer on their own schedule, and what was said is rarely retrievable later. Documentation, specifications, books, articles and style guides pass.
+
+This is why `RESOURCES.md` has no communities section, and why a lesson's **Going further** links sources rather than places.
 
 ## Error Paths
 
@@ -153,12 +157,23 @@ When a question needs judgment rather than facts, answer it as well as you can �
 
 ## Verification
 
-Before presenting the lesson, confirm:
+Before presenting the lesson, confirm by reading:
 
 - Every answer key is correct and collapsed, with no formatting tells.
 - Terminology matches `GLOSSARY.md`.
-- No placeholders remain, and every link resolves.
-- The `README.md` table has a row for the new lesson, and the **Latest lesson** pointer names it.
+- No placeholders remain.
+- The `README.md` table has a row for the new lesson, its clause is the same as the lesson's front-matter `description`, and the **Latest lesson** pointer names it.
+
+Then confirm by running `.venv/bin/mkdocs build --strict`.
+
+A clean strict build proves the front matter parses and the navigation resolves. It does **not** prove the answer keys survived, so open the built page — `site/<domain>/<topic>/lessons/<slug>/index.html` — and check two things that look fine in the source and break silently:
+
+- Markdown inside each `<details>` rendered as `<p>` and `<code>`, not as literal backticks. It reverts when `markdown="1"` is missing.
+- Each Practice list resumed with `<ol start="N">` after an answer. It restarts at 1 when the `<details>` block is indented instead of sitting at column zero.
+
+After a bulk edit, script the structural checks over `learning/**/*.md` rather than reading for them: front matter keys present with `type` one of the six, `<details markdown="1">` at column zero with a blank line after `<summary>` and before `</details>`, tags balanced, every relative link resolving, and every lesson `description` matching its README row.
+
+Two traps when checking external links. Strip fenced and inline code first, or code that looks like link syntax — Go generics such as `Map[T, U any](s []T)` — reports as a broken link. And send a browser user agent, because some hosts answer a scripted one with a 403 that reads as a dead link.
 
 ## Rendering
 
@@ -240,7 +255,7 @@ Work through these in order.
 ## Reference
 
 - [Glossary](GLOSSARY.md) — canonical terms for this topic
-- [Resources](RESOURCES.md) — trusted sources and communities
+- [Resources](RESOURCES.md) — trusted sources, each annotated with what it covers
 - [{Cheat sheet}](reference/slug.md) — {when to reach for it}
 
 ## How this works
@@ -258,7 +273,7 @@ Rules:
 
 ### `RESOURCES.md`
 
-The curated set of trusted sources. Knowledge comes from here; wisdom comes from the communities listed here.
+The curated set of trusted sources. Every claim in a lesson can be traced back to something listed here.
 
 ```md
 # {Topic} Resources
@@ -268,11 +283,6 @@ The curated set of trusted sources. Knowledge comes from here; wisdom comes from
 - [Article: "How Much Should I Train?" — Greg Nuckols, Stronger By Science](https://example.com)
   Evidence-based review of volume landmarks. Use for: weekly set targets per muscle group.
 
-## Wisdom (Communities)
-
-- [r/weightroom](https://reddit.com/r/weightroom)
-  High-signal, moderated against bro-science. Use for: programme critique, plateau troubleshooting.
-
 ## Gaps
 
 - {An area the mission needs and no good source covers yet}
@@ -280,8 +290,10 @@ The curated set of trusted sources. Knowledge comes from here; wisdom comes from
 
 Rules:
 
-- High-trust only. Primary sources, recognised experts, peer-reviewed work, well-moderated communities. Marketing dressed as education stays out.
+- High-trust only. Primary sources, recognised experts, peer-reviewed work, official documentation. Marketing dressed as education stays out.
+- Readable sources only — see Wisdom. A community is not a source, however good it is.
 - Annotate every entry with one line: what it covers, when to reach for it. A bare link is useless in three months.
+- Check that every link resolves before listing it, and prune sources that turn out to be shallow, wrong, or off-mission.
 
 ### `GLOSSARY.md`
 
@@ -360,7 +372,7 @@ That is the whole format — a single paragraph is a complete record. Add **Evid
 
 - [{Reference sheet}](../reference/slug.md)
 - [{Primary source}]({url})
-- {Community, when the next step needs judgment rather than facts}
+- [{A further source, when the next step needs more than this lesson gave}]({url})
 
 ---
 

@@ -43,7 +43,7 @@ Work through these in order.
 ## Reference
 
 - [Glossary](GLOSSARY.md) — canonical terms for this topic
-- [Resources](RESOURCES.md) — trusted sources and communities
+- [Resources](RESOURCES.md) — trusted sources
 
 ## How this works
 

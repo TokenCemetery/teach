@@ -42,7 +42,7 @@ Each workspace:
 learning/<domain>/<topic>/
 ├── README.md              # mission, success criteria, lesson index
 ├── GLOSSARY.md            # canonical terms for this topic
-├── RESOURCES.md           # trusted sources, communities, known gaps
+├── RESOURCES.md           # trusted sources, known gaps
 ├── NOTES.md               # preferences and working notes
 ├── lessons/               # NNNN-slug.md — one tight win each
 ├── reference/             # cheat sheets, built for lookup

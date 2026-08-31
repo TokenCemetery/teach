@@ -6,7 +6,7 @@ type: topic
 
 # Learning: Go
 
-Become the engineer trusted to own Go on a team — able to design, ship and operate a production Go service, review someone else's Go and name concretely why a design is wrong, and recognise when a design imported from another language is fighting Go rather than using it.
+Become the engineer trusted to own Go on a team: able to design, ship and operate a production Go service, review someone else's Go and name concretely why a design is wrong, and recognise when a design imported from another language is fighting Go rather than using it.
 
 **Latest lesson:** [0037. Reading the Standard Library](lessons/0037-reading-the-standard-library.md)
 
@@ -21,7 +21,7 @@ Become the engineer trusted to own Go on a team — able to design, ship and ope
 
 ## Constraints
 
-- Assumes no prior Go. Experience in another language shortens the early stages but is not required, and it brings habits that Go will punish quietly — wrong instincts here still compile.
+- Assumes no prior Go. Experience in another language shortens the early stages but is not required, and it brings habits that Go will punish quietly, because a wrong instinct here still compiles.
 - Needs only the standard toolchain on any supported OS. Nothing through stage 5 requires paid tooling, a cloud account, or a second machine.
 - Reps are small programs that fit one sitting. Spacing them across days is the mechanism, not an inconvenience.
 - Version-sensitive material dates fast. Claims about the current release are checked against release notes rather than against books.
@@ -29,14 +29,14 @@ Become the engineer trusted to own Go on a team — able to design, ship and ope
 ## Out of scope
 
 - Other languages as subjects in their own right. Comparisons appear only where they stop a habit from being carried into Go.
-- Third-party frameworks as subjects in their own right — routers, ORMs, dependency-injection containers, CLI toolkits. The standard library covers routing, structured logging and database access directly, so lessons build on it; where a team has already chosen a framework, judging whether it earns its place is a review skill and belongs in stage 6.
+- Third-party frameworks as subjects in their own right: routers, ORMs, dependency-injection containers, CLI toolkits. The standard library covers routing, structured logging and database access directly, so lessons build on it; where a team has already chosen a framework, judging whether it earns its place is a review skill and belongs in stage 6.
 - Frontend, WASM, and mobile targets.
 - Kubernetes and infrastructure beyond what one Go service needs to run.
 - Compiler and runtime internals past the point where they stop predicting program behaviour.
 
 ## The arc
 
-Six stages, zero to senior. Not a lesson list — a stage takes several lessons, and the boundaries are soft.
+Six stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
 | Stage | Covers | Done when |
 |---|---|---|
@@ -93,14 +93,14 @@ Work through these in order.
 
 ## Reference
 
-- [Glossary](GLOSSARY.md) — canonical terms for this topic
-- [Resources](RESOURCES.md) — trusted sources, each annotated with what it covers
-- [Slices and Maps](reference/slice-and-map-mechanics.md) — aliasing, capacity, and the operations that panic
-- [Error Handling](reference/error-handling.md) — wrapping verbs, matching functions, and the traps that compile
-- [Concurrency Patterns](reference/concurrency-patterns.md) — channel rules, context constructors, leak checklist
-- [Toolchain Commands](reference/toolchain-commands.md) — test, benchmark, profile and release-build flags
-- [Review Checklist](reference/review-checklist.md) — what the tools catch and what you must
+- [Glossary](GLOSSARY.md): canonical terms for this topic
+- [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
+- [Slices and Maps](reference/slice-and-map-mechanics.md): aliasing, capacity, and the operations that panic
+- [Error Handling](reference/error-handling.md): wrapping verbs, matching functions, and the traps that compile
+- [Concurrency Patterns](reference/concurrency-patterns.md): channel rules, context constructors, leak checklist
+- [Toolchain Commands](reference/toolchain-commands.md): test, benchmark, profile and release-build flags
+- [Review Checklist](reference/review-checklist.md): what the tools catch and what you must
 
 ## How this works
 
-Each lesson is short and self-contained. Answer keys are collapsed — recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Anything still unclear at the end of a lesson is worth chasing to its primary source before moving on.
+Each lesson is short and self-contained. Answer keys are collapsed: recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Anything still unclear at the end of a lesson is worth chasing to its primary source before moving on.

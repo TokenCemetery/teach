@@ -82,7 +82,7 @@ The curated set of trusted sources. Every claim in a lesson can be traced back t
 Rules:
 
 - High-trust only. Primary sources, recognised experts, peer-reviewed work, official documentation. Marketing dressed as education stays out.
-- Readable sources only, see Wisdom in [`SKILL.md`](SKILL.md). A community is not a source, however good it is.
+- Readable sources, see Wisdom in [`SKILL.md`](SKILL.md). A community belongs under `## Wisdom (Communities)` and only when its archive is what the reader consumes; a closed chat does not qualify.
 - Annotate every entry with one line: what it covers, when to reach for it. A bare link is useless in three months.
 - Check that every link resolves before listing it, and prune sources that turn out to be shallow, wrong, or off-mission.
 

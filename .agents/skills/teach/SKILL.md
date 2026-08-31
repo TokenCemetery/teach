@@ -153,9 +153,11 @@ Coverage is not learning. Do not log session activity, and do not restate a defi
 
 When a question needs judgment rather than facts, answer it as well as you can, say what the answer rests on, and name what would change it. Then point the user at where that judgment is already written down (a style guide, a review checklist, a specification, a practitioner's post arguing the case) and at the real-world reps, which is where they test it themselves.
 
-**Every link leads to a source someone can read.** The test is the annotation you would write for it: "Use for: reading X" belongs, "Use for: asking X" does not. Chats, forums and subreddits fail it however well moderated: they need an account, they answer on their own schedule, and what was said is rarely retrievable later. Documentation, specifications, books, articles and style guides pass.
+**Every link leads to something the reader can go and consume.** The test is the annotation you would write for it: "Use for: reading X" belongs, "Use for: asking X" does not. Documentation, specifications, books, articles and style guides pass without argument.
 
-This is why `RESOURCES.md` has no communities section, and why a lesson's **Going further** links sources rather than places.
+The test turns on how the destination is used, not on what kind of site it is. A forum or a subreddit read as an archive of what practitioners have already reported is a source, and in a field that moves faster than anyone writes it down it is sometimes the only one. The same venue framed as somewhere to post a question and wait is not: that is an account, a delay, and an answer nobody can retrieve afterwards. So a `RESOURCES.md` may carry a `## Wisdom (Communities)` section, and the annotation has to earn it by naming what is already there to read rather than who might reply. Prefer archives that are searchable without joining, which is the half of the objection you can actually fix; a closed chat fails on retrievability however good the people in it are.
+
+A lesson's **Going further** is a reading list under either heading. A real-world rep may send the user to search a community, and that is practice, not a source.
 
 ## Error Paths
 

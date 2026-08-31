@@ -11,9 +11,11 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## State
 
-Stage 1 is written: lessons 0001 to 0007, plus the `reference/mutability-and-copying.md` sheet they all point at. Stages 2 to 7 are unwritten.
+Stages 1 and 2 are written: lessons 0001 to 0014, plus three reference sheets. Stages 3 to 7 are unwritten.
 
-**How the glossary is populated here.** The skill says a term lands once it can be used correctly, which is a statement about a learner's demonstration. These lessons have no single learner, so the test is applied to the material instead: a term lands when a lesson has taught it well enough for a reader to use it. Stage 1 therefore added six terms alongside the three pinned ones. Keep doing this per stage rather than upfront, and do not add a term the lessons have not earned.
+Stage 2 is built as one chain rather than a set of topics. The iteration protocol (0008) is what makes generators (0009) predictable, generators are what make the `try/finally` in a context manager (0011) subtle, and exceptions (0010) sit between them because both later lessons depend on knowing what `finally` guarantees. Lessons 0012 to 0014 are the equipment: the shape data should take, the unit code is organised into, and what already ships. If a stage-2 lesson gets reordered, the 0008 to 0011 run is the part that must stay in sequence.
+
+**How the glossary is populated here.** The skill says a term lands once it can be used correctly, which is a statement about a learner's demonstration. These lessons have no single learner, so the test is applied to the material instead: a term lands when a lesson has taught it well enough for a reader to use it. Stage 1 added six terms alongside the three pinned ones, and stage 2 added seven. Keep doing this per stage rather than upfront, and do not add a term the lessons have not earned.
 
 ## On the arc
 

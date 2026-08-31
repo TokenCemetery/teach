@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Python on a team: able to ship a typed, tested, packaged Python service or tool, take a traceback or a profile to its root cause instead of guessing, and say concretely why someone's clever use of Python's dynamism is going to hurt them.
 
 **Start here:** [0001. Names Are Bindings, Not Boxes](lessons/0001-names-are-bindings.md)
-**Latest lesson:** [0007. Comprehensions](lessons/0007-comprehensions.md)
+**Latest lesson:** [0014. The Standard Library](lessons/0014-the-standard-library.md)
 
 ## Success looks like
 
@@ -65,12 +65,21 @@ Work through these in order.
 | [0005](lessons/0005-truthiness-none-and-equality.md) | Truthiness, None and Equality | Empty is falsy but not None, so the wrong default idiom rejects zero and the empty string |
 | [0006](lessons/0006-functions-and-arguments.md) | Functions and Arguments | Defaults are evaluated once at definition, and a caller sees every mutation you make |
 | [0007](lessons/0007-comprehensions.md) | Comprehensions | One expression that builds a container, with its own scope and a limit worth respecting |
+| [0008](lessons/0008-the-iteration-protocol.md) | The Iteration Protocol | Why for works on anything, and why some of those things can only be looped over once |
+| [0009](lessons/0009-generators.md) | Generators | A function that pauses, keeps its local state, and produces values only when asked |
+| [0010](lessons/0010-exceptions.md) | Exceptions | Asking forgiveness instead of permission, and catching exactly what you can handle |
+| [0011](lessons/0011-context-managers.md) | Context Managers | A block with a guaranteed exit, and how to write one in six lines |
+| [0012](lessons/0012-dataclasses.md) | Dataclasses | Generated init, repr and equality, and choosing the right shape for a bundle of data |
+| [0013](lessons/0013-modules-and-packages.md) | Modules and Packages | A module runs once, an import binds a name, and how the two produce every import error you have seen |
+| [0014](lessons/0014-the-standard-library.md) | The Standard Library | The modules that delete code you were about to write, and the ones that prevent a dependency |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
 - [Mutability and copying](reference/mutability-and-copying.md): which types mutate, what each copy idiom copies, and who can see it
+- [Iteration and generators](reference/iteration-and-generators.md): what is consumed once, what survives a second pass, and which itertools tool fits
+- [Exceptions and cleanup](reference/exceptions-and-cleanup.md): the hierarchy, what each clause guarantees, and which built-in to raise
 
 ## How this works
 

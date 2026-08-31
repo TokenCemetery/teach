@@ -24,7 +24,7 @@ An already-cancelled context makes `Shutdown` return immediately, dropping every
 
 <details markdown="1"><summary>Check</summary>
 
-Liveness: restart me. Readiness: take me out of rotation. Dependency checks belong in readiness — putting them in liveness turns a database blip into a restart storm.
+Liveness: restart me. Readiness: take me out of rotation. Dependency checks belong in readiness: putting them in liveness turns a database blip into a restart storm.
 
 </details>
 
@@ -44,7 +44,7 @@ if err := db.PingContext(ctx); err != nil {   // this connects
 }
 ```
 
-`sql.Open` validates arguments and returns immediately — it does not talk to the database, which is why a wrong password produces a healthy-looking startup and a failure on the first query. `Ping` at startup, per Lesson 23.
+`sql.Open` validates arguments and returns immediately without talking to the database, which is why a wrong password produces a healthy-looking startup and a failure on the first query. `Ping` at startup, per Lesson 23.
 
 A `*sql.DB` is safe for concurrent use and is meant to be **one per database, for the life of the process**. Passing it around is correct; opening one per request is a bug that exhausts connections.
 
@@ -57,7 +57,7 @@ db.SetConnMaxLifetime(30 * time.Minute)
 db.SetConnMaxIdleTime(5 * time.Minute)
 ```
 
-The default for `MaxOpenConns` is **unlimited**, which means a traffic spike opens connections until the database refuses them — and a database refusing connections fails everything, not just the excess. Set it to something your database can serve, sized against `max_connections` divided across every instance and every other client.
+The default for `MaxOpenConns` is **unlimited**, which means a traffic spike opens connections until the database refuses them, and a database refusing connections fails everything rather than just the excess. Set it to something your database can serve, sized against `max_connections` divided across every instance and every other client.
 
 Set `MaxIdleConns` to the same value as `MaxOpenConns` unless you have a reason not to; a lower idle count makes the pool close and reopen connections under normal load, and connection setup with TLS is not cheap. `ConnMaxLifetime` keeps connections rotating so a failover or a DNS change is picked up.
 
@@ -87,11 +87,11 @@ return users, rows.Err()
 
 Three things in that block are load-bearing:
 
-- **`defer rows.Close()`** — an open `Rows` holds a pooled connection. Leak enough and the pool is empty while the database is idle, which looks like a database problem and is not.
-- **`rows.Err()`** — `rows.Next()` returns false both at the end of the result set and on error. Without the check, a mid-iteration failure looks like a short result. Skipping it is the most common silent data bug in Go database code.
+- **`defer rows.Close()`.** An open `Rows` holds a pooled connection. Leak enough and the pool is empty while the database is idle, which looks like a database problem and is not.
+- **`rows.Err()`.** `rows.Next()` returns false both at the end of the result set and on error. Without the check, a mid-iteration failure looks like a short result. Skipping it is the most common silent data bug in Go database code.
 - **Placeholders, never concatenation.** `$1` for Postgres, `?` for MySQL and SQLite. String-building a query with user input is SQL injection, and no amount of escaping by hand is the right answer.
 
-`QueryRowContext` for a single row defers its error to `Scan`, which returns `sql.ErrNoRows` when there is nothing. Translate that at the boundary into your own `ErrNotFound`, per Lesson 9 — otherwise `database/sql` is part of your package's API.
+`QueryRowContext` for a single row defers its error to `Scan`, which returns `sql.ErrNoRows` when there is nothing. Translate that at the boundary into your own `ErrNotFound`, per Lesson 9. Otherwise `database/sql` is part of your package's API.
 
 ### Transactions
 
@@ -108,15 +108,15 @@ if _, err := tx.ExecContext(ctx, `UPDATE ...`); err != nil {
 return tx.Commit()
 ```
 
-`defer tx.Rollback()` immediately after `BeginTx` is the idiom: it covers every early return and every panic, and it does nothing once `Commit` has succeeded. A transaction holds one connection for its whole life, so a transaction that spans an HTTP call to another service is holding a scarce resource across a network — the Lesson 19 rule about locks, applied to a pool.
+`defer tx.Rollback()` immediately after `BeginTx` is the idiom: it covers every early return and every panic, and it does nothing once `Commit` has succeeded. A transaction holds one connection for its whole life, so a transaction that spans an HTTP call to another service is holding a scarce resource across a network. That is the Lesson 19 rule about locks, applied to a pool.
 
 ### NULL
 
-A SQL `NULL` will not scan into a `string`. Use `sql.NullString` and friends, or a pointer, or fix the schema with `NOT NULL DEFAULT ''` — which is usually the better answer, because a nullable column that is never meaningfully null is a lie the type system has to carry forever.
+A SQL `NULL` will not scan into a `string`. Use `sql.NullString` and friends, or a pointer, or fix the schema with `NOT NULL DEFAULT ''`, which is usually the better answer, because a nullable column that is never meaningfully null is a lie the type system has to carry forever.
 
 ### Drivers and helpers
 
-`database/sql` needs a driver: `github.com/jackc/pgx/v5` for Postgres is the current default choice. On top of it, `sqlx` reduces `Scan` boilerplate and `sqlc` generates typed code from SQL. All are optional — the standard library is entirely usable, and the concepts above do not change under any of them.
+`database/sql` needs a driver: `github.com/jackc/pgx/v5` for Postgres is the current default choice. On top of it, `sqlx` reduces `Scan` boilerplate and `sqlc` generates typed code from SQL. All are optional: the standard library is entirely usable, and the concepts above do not change under any of them.
 
 ## Practice
 
@@ -126,7 +126,7 @@ A SQL `NULL` will not scan into a `string`. Use `sql.NullString` and friends, or
 
 `sql.Open` does not connect. It parses the DSN and prepares the pool; the first actual connection happens lazily on first use.
 
-`db.PingContext(ctx)` at startup forces it, turning a runtime surprise into a failed deploy — the Lesson 23 rule about validating what you control.
+`db.PingContext(ctx)` at startup forces it, turning a runtime surprise into a failed deploy, per the Lesson 23 rule about validating what you control.
 
 </details>
 
@@ -151,7 +151,7 @@ Check for a `QueryContext` without a `defer rows.Close()`, and for early returns
 
 **b)** Whether iteration stopped early from an error.
 
-`rows.Next()` returns false for two different reasons — the result set ended, or something failed — and the loop cannot tell them apart. Without `rows.Err()`, a network failure halfway through 10,000 rows returns 4,000 rows and a nil error, and the caller has no way to know.
+`rows.Next()` returns false for two different reasons, the result set ending or something failing, and the loop cannot tell them apart. Without `rows.Err()`, a network failure halfway through 10,000 rows returns 4,000 rows and a nil error, and the caller has no way to know.
 
 Option a is answered by the length of the result. Option d surfaces from `Scan` directly.
 
@@ -161,7 +161,7 @@ Option a is answered by the length of the result. Option d surfaces from `Scan` 
 
 <details markdown="1"><summary>Check</summary>
 
-Because unlimited means a traffic spike opens connections until the database refuses them, and a database at its connection limit fails *every* client — including the ones that were behaving.
+Because unlimited means a traffic spike opens connections until the database refuses them, and a database at its connection limit fails *every* client, including the ones that were behaving.
 
 Bounding the pool converts an unbounded failure into local queuing: requests wait for a connection, deadlines fire, and the database keeps serving. It is the same bounded-fan-out argument as Lesson 15, applied to a resource someone else owns.
 
@@ -171,7 +171,7 @@ Bounding the pool converts an unbounded failure into local queuing: requests wai
 
 <details markdown="1"><summary>Check</summary>
 
-`database/sql` is now part of the repository's API. Every caller matching on `sql.ErrNoRows` breaks the day you move to a driver that returns something else, or to a cache in front of the query — with no compile error.
+`database/sql` is now part of the repository's API. Every caller matching on `sql.ErrNoRows` breaks the day you move to a driver that returns something else, or to a cache in front of the query, with no compile error.
 
 Translate at the boundary: match `sql.ErrNoRows` inside the repository and return your own `store.ErrNotFound`. One small mapping there keeps the persistence choice replaceable.
 

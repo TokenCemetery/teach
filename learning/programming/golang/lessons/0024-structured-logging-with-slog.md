@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-The ones about things you control — configuration parsing, credentials, files, templates. A downstream service being unavailable belongs in a readiness probe, not a boot assertion.
+The ones about things you control: configuration parsing, credentials, files, templates. A downstream service being unavailable belongs in a readiness probe, not a boot assertion.
 
 </details>
 
@@ -55,7 +55,7 @@ logger := slog.New(h)
 
 `slog.NewTextHandler` gives `key=value` for local development; `slog.NewJSONHandler` gives JSON for anything that ships logs somewhere. The choice belongs in `run`, driven by a flag, so a developer gets readable output and production gets parseable output from the same binary.
 
-`slog.SetDefault(logger)` makes the package-level `slog.Info` use it — convenient, and still global state. Pass the `*slog.Logger` explicitly to the types that log; set the default as well so that libraries logging through the package functions land in the same stream.
+`slog.SetDefault(logger)` makes the package-level `slog.Info` use it, which is convenient and still global state. Pass the `*slog.Logger` explicitly to the types that log; set the default as well so that libraries logging through the package functions land in the same stream.
 
 ### Attributes, and the two ways to write them
 
@@ -67,7 +67,7 @@ slog.LogAttrs(ctx, slog.LevelInfo, "saved",
     slog.String("id", id), slog.Int("bytes", n))                // explicit, no boxing
 ```
 
-A mismatched key-value pair — an odd number of arguments, or a non-string key — produces a broken record rather than a compile error. Since Go 1.22 `go vet` reports these, which is the main reason to keep `vet` in CI.
+A mismatched key-value pair, an odd number of arguments or a non-string key, produces a broken record rather than a compile error. Since Go 1.22 `go vet` reports these, which is the main reason to keep `vet` in CI.
 
 Use `With` to bind attributes once instead of repeating them:
 
@@ -76,7 +76,7 @@ log := logger.With("component", "store")
 log.Info("query", "rows", n)   // component is included
 ```
 
-In a request path, bind the request id once in middleware and pass the logger — or the context — down. The `Context` variants (`InfoContext`, `LogAttrs`) exist so a custom handler can pull the trace id out of the context and attach it to every record automatically. That is the cleanest way to get correlation without threading an argument through every function.
+In a request path, bind the request id once in middleware and pass the logger, or the context, down. The `Context` variants (`InfoContext`, `LogAttrs`) exist so a custom handler can pull the trace id out of the context and attach it to every record automatically. That is the cleanest way to get correlation without threading an argument through every function.
 
 ### Levels you can change at runtime
 
@@ -87,11 +87,11 @@ lvl.Set(slog.LevelDebug)       // safe to call from a handler, at any time
 h := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: &lvl})
 ```
 
-A `LevelVar` behind an admin endpoint lets you turn on debug logging for five minutes on a running process. Without it, debugging a production-only problem needs a deploy — and the problem usually stops reproducing.
+A `LevelVar` behind an admin endpoint lets you turn on debug logging for five minutes on a running process. Without it, debugging a production-only problem needs a deploy, and the problem usually stops reproducing.
 
 ### What to log
 
-- **Error once**, where it stops travelling — the rule from Lesson 9. A logged-and-returned error is logged again by every layer above.
+- **Error once**, where it stops travelling, per the rule from Lesson 9. A logged-and-returned error is logged again by every layer above.
 - **Attributes, not sentences.** `slog.Info("upload failed", "err", err, "user", id)` beats `slog.Info(fmt.Sprintf("upload failed for %s: %v", id, err))`, because the second is only searchable as text.
 - **No secrets, no personal data you would not put in a database.** Logs are copied to more places than any other output, and redaction after the fact does not work. A type with a `LogValue() slog.Value` method controls its own representation, which is the right hook for wrapping a token or a card number.
 - **Not in a tight loop.** Logging is I/O, and a debug line per iteration is how a profile ends up dominated by the logger.
@@ -118,7 +118,7 @@ Now `bytes` is a number you can aggregate and `user` is a field you can filter o
 
 <details markdown="1"><summary>Check</summary>
 
-The missing value for the final key. The alternating form is convenient precisely because it is untyped, so the compiler cannot check it — the vet analyser added in Go 1.22 fills that gap.
+The missing value for the final key. The alternating form is convenient precisely because it is untyped, so the compiler cannot check it. The vet analyser added in Go 1.22 fills that gap.
 
 It also reports a key that is neither a string nor a `slog.Attr`. Both produce a malformed record at runtime rather than a failure, which is why they survive to production without `vet` in CI.
 
@@ -135,7 +135,7 @@ It also reports a key that is neither a string nor a `slog.Attr`. Both produce a
 
 **b)** Change a `slog.LevelVar` through an endpoint.
 
-It takes effect immediately, on the instance that is misbehaving, without losing its state. The other three all restart or replace the process — and the fastest way to stop reproducing a bug is to restart the thing doing it.
+It takes effect immediately, on the instance that is misbehaving, without losing its state. The other three all restart or replace the process, and the fastest way to stop reproducing a bug is to restart the thing doing it.
 
 </details>
 
@@ -145,7 +145,7 @@ It takes effect immediately, on the instance that is misbehaving, without losing
 
 Because the logger is then a dependency you can substitute: a test can capture output into a buffer and assert on it, and a component can carry bound attributes like `component=store` that its call sites do not have to repeat.
 
-Package-level `slog.Info` is global state with the usual costs — no substitution, no per-component context, and any test that changes the default affects the others. Setting the default as well is still worth doing, so third-party libraries land in the same stream.
+Package-level `slog.Info` is global state with the usual costs: no substitution, no per-component context, and any test that changes the default affects the others. Setting the default as well is still worth doing, so third-party libraries land in the same stream.
 
 </details>
 
@@ -153,7 +153,7 @@ Package-level `slog.Info` is global state with the usual costs — no substituti
 
 <details markdown="1"><summary>Check</summary>
 
-Middleware puts it in the context, the code calls the `Context` variants — `logger.InfoContext(ctx, ...)` — and a custom `slog.Handler` reads it from the context in `Handle` and adds it to every record.
+Middleware puts it in the context, the code calls the `Context` variants such as `logger.InfoContext(ctx, ...)`, and a custom `slog.Handler` reads it from the context in `Handle` and adds it to every record.
 
 This is the legitimate use of `context.Value` from Lesson 18: request-scoped metadata that crosses layers which do not care about it. A logger *handle* would be a dependency and belongs in a parameter; the request id is metadata and does not.
 

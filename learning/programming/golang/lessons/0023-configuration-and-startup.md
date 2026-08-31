@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-`ReadHeaderTimeout`, `ReadTimeout`, `WriteTimeout`, `IdleTimeout` — all zero, meaning unlimited, in the default.
+`ReadHeaderTimeout`, `ReadTimeout`, `WriteTimeout`, `IdleTimeout` are all zero, meaning unlimited, in the default.
 
 </details>
 
@@ -66,7 +66,7 @@ if err := fs.Parse(args); err != nil {
 }
 ```
 
-Using a `FlagSet` rather than the package-level functions keeps `run` self-contained — the global `flag.CommandLine` is shared state that makes two tests in one binary interfere.
+Using a `FlagSet` rather than the package-level functions keeps `run` self-contained, because the global `flag.CommandLine` is shared state that makes two tests in one binary interfere.
 
 Environment variables are what container platforms supply, so most services read both, with flags overriding. Whichever you choose, decide once and write it down; a service that reads some settings from flags and others from the environment is a configuration bug generator.
 
@@ -85,7 +85,7 @@ if err != nil {
 
 Parse the durations, resolve the addresses, confirm the required values are present, `Ping` the database, compile the templates and the regexes. A process that fails to start is a deploy that rolls back. A process that starts and then fails on the first request that touches a bad setting is an incident, and the setting may be one used only at 3am.
 
-The counter-rule: **do not check what you cannot control.** If a downstream service is down at startup, failing to boot may make an outage worse rather than better — start, report unready, and retry. The line is roughly whether the value is yours (configuration, credentials, files) or someone else's (their availability).
+The counter-rule: **do not check what you cannot control.** If a downstream service is down at startup, failing to boot may make an outage worse rather than better: start, report unready, and retry. The line is roughly whether the value is yours (configuration, credentials, files) or someone else's (their availability).
 
 ### Zero values as defaults
 
@@ -99,7 +99,7 @@ type Config struct {
 }
 ```
 
-Let the zero value mean "default", document it, and fill in defaults in one place. The alternative — every call site knowing every default — drifts within a month.
+Let the zero value mean "default", document it, and fill in defaults in one place. The alternative, every call site knowing every default, drifts within a month.
 
 ### Wiring is boring on purpose
 
@@ -123,7 +123,7 @@ Construct dependencies in order, pass them in explicitly, and let the compiler c
 
 <details markdown="1"><summary>Check</summary>
 
-`os.Exit` terminates immediately and skips every deferred function — `db.Close`, a flushed log buffer, a released lock file.
+`os.Exit` terminates immediately and skips every deferred function: `db.Close`, a flushed log buffer, a released lock file.
 
 Returning the error also makes startup testable: a test can call `run` with its own arguments and context and assert on the failure, which is impossible when the function's failure mode is ending the process.
 
@@ -135,7 +135,7 @@ Returning the error also makes startup testable: a test can call `run` with its 
 
 From the environment, a mounted file, or a secret manager. Not from a command-line flag.
 
-Flags land in the process command line, which is readable by other users through `ps` and captured by process-listing agents, crash handlers and container inspectors. It is not a subtle leak — it is one `ps aux` away.
+Flags land in the process command line, which is readable by other users through `ps` and captured by process-listing agents, crash handlers and container inspectors. It is not a subtle leak: it is one `ps aux` away.
 
 </details>
 
@@ -150,7 +150,7 @@ Flags land in the process command line, which is readable by other users through
 
 **b)** Whether the configured listen address parses correctly.
 
-It is your configuration, it cannot change while the process runs, and finding it wrong later means the deploy already succeeded. Option a is someone else's availability — check it in a readiness probe, not a boot assertion. Options c and d are per-request or per-day concerns.
+It is your configuration, it cannot change while the process runs, and finding it wrong later means the deploy already succeeded. Option a is someone else's availability, so check it in a readiness probe rather than a boot assertion. Options c and d are per-request or per-day concerns.
 
 </details>
 
@@ -158,7 +158,7 @@ It is your configuration, it cannot change while the process runs, and finding i
 
 <details markdown="1"><summary>Check</summary>
 
-Nobody can tell where a setting comes from without reading the source, so operators guess — and a guess that sets the wrong one fails silently, because the unread source is simply ignored.
+Nobody can tell where a setting comes from without reading the source, so operators guess, and a guess that sets the wrong one fails silently, because the unread source is simply ignored.
 
 Pick a precedence rule, apply it to every setting, and document it. "Flags override environment, environment overrides defaults" is a fine rule; having no rule is not.
 
@@ -168,7 +168,7 @@ Pick a precedence rule, apply it to every setting, and document it. "Flags overr
 
 <details markdown="1"><summary>Check</summary>
 
-Derive from it and pass it down to everything that starts work — the server, the workers, the database. That single context becomes the shutdown signal for the whole process.
+Derive from it and pass it down to everything that starts work: the server, the workers, the database. That single context becomes the shutdown signal for the whole process.
 
 In practice `main` passes `context.Background()` and `run` immediately wraps it with `signal.NotifyContext`, so a SIGTERM cancels the tree. That is Lesson 25, and this is the wiring that makes it a two-line change rather than a refactor.
 

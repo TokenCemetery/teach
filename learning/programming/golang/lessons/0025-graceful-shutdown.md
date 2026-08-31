@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 25. Graceful Shutdown and Health
 
-**Mission link:** A deploy restarts every instance. If shutdown drops in-flight requests, every deploy is a small outage — and this is the code that decides.
+**Mission link:** A deploy restarts every instance. If shutdown drops in-flight requests, every deploy is a small outage, and this is the code that decides.
 **Primary source:** [`http.Server.Shutdown`](https://pkg.go.dev/net/http#Server.Shutdown)
 **Prerequisites:** [Lesson 23](0023-configuration-and-startup.md), [Lesson 19](0019-sync-primitives.md)
 
@@ -24,7 +24,7 @@ A `slog.LevelVar` passed to the handler, changed through an admin endpoint. The 
 
 <details markdown="1"><summary>Check</summary>
 
-From `case <-ctx.Done()` in its `select`. Cancellation is cooperative — a goroutine that never checks never stops.
+From `case <-ctx.Done()` in its `select`. Cancellation is cooperative: a goroutine that never checks never stops.
 
 </details>
 
@@ -36,7 +36,7 @@ Shutdown has an order, and getting it wrong loses work:
 2. **Fail the readiness probe** so the load balancer stops sending new requests, and wait long enough for it to notice.
 3. **Stop accepting connections**, while letting in-flight requests finish.
 4. **Wait for background workers** to finish their current unit of work.
-5. **Close dependencies** — database, queues, flush the logger — in reverse order of construction.
+5. **Close dependencies**, meaning database, queues and a flushed logger, in reverse order of construction.
 6. **Give up after a deadline** and exit anyway.
 
 Step 6 is not optional. Something will eventually hang, and a process that refuses to die is worse than one that drops a request.
@@ -48,7 +48,7 @@ ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SI
 defer stop()
 ```
 
-`signal.NotifyContext` cancels the context on the first matching signal, which turns the whole of Lesson 18 into your shutdown mechanism: everything already taking this context already knows how to stop. A second signal is the operator saying they are done waiting — after `stop()`, the default behaviour returns and the next SIGINT kills the process.
+`signal.NotifyContext` cancels the context on the first matching signal, which turns the whole of Lesson 18 into your shutdown mechanism: everything already taking this context already knows how to stop. A second signal is the operator saying they are done waiting: after `stop()`, the default behaviour returns and the next SIGINT kills the process.
 
 ### Draining the server
 
@@ -69,7 +69,7 @@ if err := srv.Shutdown(shutdownCtx); err != nil {
 }
 ```
 
-`Shutdown` closes listeners, waits for idle keep-alive connections to close, and waits for active requests to complete. It returns when everything is done or when its context expires — which is why that context must **not** be the cancelled one. Deriving the shutdown timeout from a context that is already cancelled aborts instantly and drops every in-flight request. It is the most common bug in this code.
+`Shutdown` closes listeners, waits for idle keep-alive connections to close, and waits for active requests to complete. It returns when everything is done or when its context expires, which is why that context must **not** be the cancelled one. Deriving the shutdown timeout from a context that is already cancelled aborts instantly and drops every in-flight request. It is the most common bug in this code.
 
 `ListenAndServe` returns `http.ErrServerClosed` on a clean shutdown, so treat that value as success rather than as an error.
 
@@ -86,7 +86,7 @@ g.Go(func() error { return serve(gctx, srv) })
 if err := g.Wait(); err != nil { ... }
 ```
 
-Then close dependencies after `g.Wait()` returns, in reverse construction order — the database last, because a draining request may still need it. `defer db.Close()` in `run` gets this right for free, since defers unwind in reverse.
+Then close dependencies after `g.Wait()` returns, in reverse construction order, the database last, because a draining request may still need it. `defer db.Close()` in `run` gets this right for free, since defers unwind in reverse.
 
 ### Liveness and readiness are different questions
 
@@ -95,7 +95,7 @@ Then close dependencies after `g.Wait()` returns, in reverse construction order 
 | Liveness | is this process wedged? | restart me |
 | Readiness | should I get traffic right now? | take me out of rotation |
 
-Getting these backwards is a classic outage: a readiness check that pings the database, wired up as liveness, restarts every instance when the database has a brief hiccup — turning a recoverable dependency blip into a full outage with a cold cache.
+Getting these backwards is a classic outage: a readiness check that pings the database, wired up as liveness, restarts every instance when the database has a brief hiccup, turning a recoverable dependency blip into a full outage with a cold cache.
 
 **Liveness should check almost nothing.** Return 200 if the process can serve. **Readiness may check dependencies** the service cannot work without, and must return failure as soon as shutdown begins, before the listener closes.
 
@@ -112,7 +112,7 @@ mux.HandleFunc("GET /readyz", func(w http.ResponseWriter, r *http.Request) {
 })
 ```
 
-The gap between failing readiness and closing the listener matters. Load balancers notice on their own schedule, so sleeping a few seconds there — before calling `Shutdown` — is what actually prevents dropped requests during a deploy.
+The gap between failing readiness and closing the listener matters. Load balancers notice on their own schedule, so sleeping a few seconds there, before calling `Shutdown`, is what actually prevents dropped requests during a deploy.
 
 ## Practice
 
@@ -132,7 +132,7 @@ Use a fresh context with its own timeout: `context.WithTimeout(context.Backgroun
 
 Because the load balancer learns about readiness on a polling interval, not instantly. Closing the listener the moment you go unready means requests already in flight toward you arrive at a closed port and fail.
 
-Fail readiness, wait a few seconds — long enough for a poll or two — then stop accepting. That sleep is doing real work, however wrong it looks.
+Fail readiness, wait a few seconds, long enough for a poll or two, then stop accepting. That sleep is doing real work, however wrong it looks.
 
 </details>
 
@@ -147,7 +147,7 @@ Fail readiness, wait a few seconds — long enough for a poll or two — then st
 
 **b)** That the process can serve a response.
 
-Liveness failing means "restart me", and restarting does not fix someone else's database, queue or cache. Putting a dependency check there converts a downstream blip into a restart storm across every instance at once — with cold caches and a thundering reconnect.
+Liveness failing means "restart me", and restarting does not fix someone else's database, queue or cache. Putting a dependency check there converts a downstream blip into a restart storm across every instance at once, with cold caches and a thundering reconnect.
 
 </details>
 
@@ -165,7 +165,7 @@ The shutdown budget has to fit inside the platform's grace period with room to s
 
 <details markdown="1"><summary>Check</summary>
 
-A goroutine that never observed the cancellation — a worker whose `select` has no `ctx.Done()` case, or one blocked on a channel send nobody will receive.
+A goroutine that never observed the cancellation: a worker whose `select` has no `ctx.Done()` case, or one blocked on a channel send nobody will receive.
 
 The goroutine profile at the moment of the hang names it. This is the concrete cost of Lesson 21's leaks: they are invisible in steady state and they are exactly what turns a clean deploy into a 30-second stall and dropped requests.
 

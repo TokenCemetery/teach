@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-The runtime reports a deadlock only when *every* goroutine is blocked. A leaking service still has a runnable listener, so nothing is reported at all — you find leaks with a goroutine profile.
+The runtime reports a deadlock only when *every* goroutine is blocked. A leaking service still has a runnable listener, so nothing is reported at all. You find leaks with a goroutine profile.
 
 </details>
 
@@ -38,7 +38,7 @@ type Handler interface {
 }
 ```
 
-`http.HandlerFunc` adapts a plain function to it. That is the extension point for routers, middleware, and testing — `httptest.NewRecorder()` is a `ResponseWriter`, so a handler is testable with no network.
+`http.HandlerFunc` adapts a plain function to it. That is the extension point for routers, middleware, and testing: `httptest.NewRecorder()` is a `ResponseWriter`, so a handler is testable with no network.
 
 ### Routing
 
@@ -57,11 +57,11 @@ func getItem(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-The rules worth remembering: a pattern with a method beats one without; `GET` also registers `HEAD`; `{path...}` matches all remaining segments and must come last; `{$}` anchors the end so the pattern is not a prefix match; and the *more specific* pattern wins regardless of registration order. Conflicting patterns that are equally specific panic at registration — at startup, where you want it.
+The rules worth remembering: a pattern with a method beats one without; `GET` also registers `HEAD`; `{path...}` matches all remaining segments and must come last; `{$}` anchors the end so the pattern is not a prefix match; and the *more specific* pattern wins regardless of registration order. Conflicting patterns that are equally specific panic at registration, which is at startup, where you want it.
 
 ### The four timeouts
 
-`http.ListenAndServe(":8080", mux)` builds a `http.Server` with **no timeouts at all**. A client that opens a connection and sends one byte a minute holds a goroutine and a connection indefinitely — the slowloris shape, and a trivially cheap way to exhaust a service.
+`http.ListenAndServe(":8080", mux)` builds a `http.Server` with **no timeouts at all**. A client that opens a connection and sends one byte a minute holds a goroutine and a connection indefinitely. That is the slowloris shape, and a trivially cheap way to exhaust a service.
 
 Construct the server yourself:
 
@@ -78,7 +78,7 @@ srv := &http.Server{
 
 | Field | Covers |
 |---|---|
-| `ReadHeaderTimeout` | headers only — the cheapest defence, safe to set aggressively |
+| `ReadHeaderTimeout` | headers only, the cheapest defence and safe to set aggressively |
 | `ReadTimeout` | headers plus body; too low breaks large uploads |
 | `WriteTimeout` | from end of headers to end of response; too low truncates slow responses |
 | `IdleTimeout` | how long a keep-alive connection may sit unused |
@@ -102,7 +102,7 @@ func withRequestID(next http.Handler) http.Handler {
 srv.Handler = withRequestID(withLogging(mux))
 ```
 
-No framework, no registration, no interface to satisfy — just composition, and the reason implicit interfaces from Lesson 11 matter in practice.
+No framework, no registration, no interface to satisfy: just composition, and the reason implicit interfaces from Lesson 11 matter in practice.
 
 Order is inside-out: the outermost wrapper sees the request first and the response last. Recovery goes outermost so it catches panics from everything within, then logging, then request id, then routing.
 
@@ -126,7 +126,7 @@ Now a handler writes `return fmt.Errorf("get item %s: %w", id, err)` and one fun
 
 `encoding/json` decodes from the body and encodes to the writer. Two habits: bound the read with `http.MaxBytesReader` so a large body cannot exhaust memory, and set the `Content-Type` header before writing, since writing the body commits the status code.
 
-Go 1.27 added `encoding/json/v2`, with stricter defaults — invalid UTF-8 and duplicate object names are rejected. `encoding/json` is not deprecated and remains the default choice; reach for v2 when you want the stricter behaviour or its options.
+Go 1.27 added `encoding/json/v2`, with stricter defaults: invalid UTF-8 and duplicate object names are rejected. `encoding/json` is not deprecated and remains the default choice; reach for v2 when you want the stricter behaviour or its options.
 
 ## Practice
 
@@ -146,7 +146,7 @@ A client that opens connections and dribbles bytes holds one goroutine and one f
 
 `GET /items/new`. The more specific pattern wins, and a literal segment is more specific than a wildcard.
 
-Registration order does not matter — which is the property that makes the Go 1.22 mux predictable, and a real difference from routers that match in declaration order.
+Registration order does not matter, which is the property that makes the Go 1.22 mux predictable and a real difference from routers that match in declaration order.
 
 </details>
 
@@ -161,7 +161,7 @@ Registration order does not matter — which is the property that makes the Go 1
 
 **c)** `ReadHeaderTimeout`, covering only the request headers.
 
-Headers should arrive in milliseconds from any legitimate client, so a few seconds is generous and it shuts down the slowloris shape. The others are bounded by real work — a large upload, a slow response, a client that reconnects — so tightening them breaks valid traffic first.
+Headers should arrive in milliseconds from any legitimate client, so a few seconds is generous and it shuts down the slowloris shape. The others are bounded by real work such as a large upload, a slow response or a client that reconnects, so tightening them breaks valid traffic first.
 
 </details>
 
@@ -169,7 +169,7 @@ Headers should arrive in milliseconds from any legitimate client, so a few secon
 
 <details markdown="1"><summary>Check</summary>
 
-Outermost, so it wraps everything else — a panic in any inner middleware or handler unwinds into it.
+Outermost, so it wraps everything else: a panic in any inner middleware or handler unwinds into it.
 
 Note what it is for. `net/http` already recovers handler panics, logs a stack, and closes the connection, so the process survives either way. Your middleware exists to turn that into a 500 response and a structured log line with the request id attached, instead of a dropped connection the client has to interpret.
 
@@ -181,7 +181,7 @@ Note what it is for. `net/http` already recovers handler panics, logs a stack, a
 
 Return the error, wrapped with context. One central `writeError` uses `errors.Is(err, store.ErrNotFound)` to map it to 404.
 
-Mapping inline in each handler duplicates the policy and drifts — the same condition becomes 404 in one place and 500 in another. Centralising it also gives one place to decide what detail is safe to return to a client versus logged internally, which is a security boundary as much as a design one.
+Mapping inline in each handler duplicates the policy and drifts, so the same condition becomes 404 in one place and 500 in another. Centralising it also gives one place to decide what detail is safe to return to a client versus logged internally, which is a security boundary as much as a design one.
 
 </details>
 

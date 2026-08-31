@@ -24,7 +24,7 @@ An open `Rows` holds a pooled connection until closed. Leak enough and the pool 
 
 <details markdown="1"><summary>Check</summary>
 
-Otherwise `database/sql` becomes part of your package's API and every caller matching on it breaks when the persistence layer changes — with no compile error.
+Otherwise `database/sql` becomes part of your package's API and every caller matching on it breaks when the persistence layer changes, with no compile error.
 
 </details>
 
@@ -53,7 +53,7 @@ The constraint says what the type parameter is allowed to be:
 | Constraint | Permits |
 |---|---|
 | `any` | any type; you can only move values around |
-| `comparable` | types usable with `==` — so, valid map keys |
+| `comparable` | types usable with `==`, so valid map keys |
 | an interface with methods | types having those methods |
 | an interface with a type union | exactly the listed types |
 
@@ -81,23 +81,23 @@ An interface containing a type union can be used **only as a constraint**, never
 
 Three situations, and the Go team's own guidance says roughly this:
 
-- **Container types.** A set, a cache, a linked list, a queue — anything whose logic is identical regardless of element type. This is the clearest case.
+- **Container types.** A set, a cache, a linked list, a queue: anything whose logic is identical regardless of element type. This is the clearest case.
 - **Functions over slices, maps and channels** where the element type does not matter to the algorithm. The `slices` and `maps` packages exist because of this.
 - **Genuinely identical method bodies across types**, where the only difference is the type. If you would copy-paste and change `int` to `float64`, that is the signal.
 
 ### When they do not
 
 - **A single concrete type.** Write the function for that type. Generality with one instantiation is cost with no benefit.
-- **The behaviour differs per type.** That is what interfaces are for. If `T` needs a method to do the work, take an interface — `io.Writer` is not improved by a type parameter.
+- **The behaviour differs per type.** That is what interfaces are for. If `T` needs a method to do the work, take an interface. `io.Writer` is not improved by a type parameter.
 - **Reflection would be needed anyway.** Type parameters do not give you field access or tags; `encoding/json` cannot be rewritten with them.
 - **It only makes the signature shorter.** `func Handle[T any](x T)` is `func Handle(x any)` with more punctuation.
 
-The honest default: **write the concrete version first.** Make it generic when the second type shows up, because at that point you know which parts actually vary. That is the same argument as "do not declare an interface before you need it" from Lesson 11, and it holds for the same reason — Go makes the change cheap later.
+The honest default: **write the concrete version first.** Make it generic when the second type shows up, because at that point you know which parts actually vary. That is the same argument as "do not declare an interface before you need it" from Lesson 11, and it holds for the same reason: Go makes the change cheap later.
 
 ### Recent additions
 
 - **Generic type aliases** (Go 1.24): `type Set[T comparable] = map[T]struct{}` works across packages.
-- **Generic methods** (Go 1.27): a method may declare its own type parameters, so a helper can live in a type's namespace instead of the package's. Interface methods still may not declare them, and an interface method cannot be implemented by a generic method — which keeps dynamic dispatch out of the feature.
+- **Generic methods** (Go 1.27): a method may declare its own type parameters, so a helper can live in a type's namespace instead of the package's. Interface methods still may not declare them, and an interface method cannot be implemented by a generic method, which keeps dynamic dispatch out of the feature.
 - **Self-referential constraints** (Go 1.26): `type Adder[A Adder[A]] interface { Add(A) A }` is now legal, which makes fluent and builder-shaped constraints expressible.
 
 On performance: do not assume generics are faster than an interface, or slower. The compiler shares instantiations between types with the same shape, so the result sits between a hand-written concrete version and an interface, and where exactly depends on the code. Stage 5 gives you `benchstat`; use it rather than a story.
@@ -114,7 +114,7 @@ On performance: do not assume generics are faster than an interface, or slower. 
 
 Not until there is a second numeric type that needs it. One instantiation means a type parameter, a constraint and inference rules bought nothing.
 
-When the second arrives, `func Sum[T Number](s []T) T` is a small edit — and you will then know whether the constraint needs `~` and whether floats belong in it, which you cannot know from one caller.
+When the second arrives, `func Sum[T Number](s []T) T` is a small edit, and you will then know whether the constraint needs `~` and whether floats belong in it, which you cannot know from one caller.
 
 </details>
 
@@ -122,7 +122,7 @@ When the second arrives, `func Sum[T Number](s []T) T` is a small edit — and y
 
 <details markdown="1"><summary>Check</summary>
 
-Named types whose underlying type is `int` — `type UserID int`, `type Celsius int`.
+Named types whose underlying type is `int`, such as `type UserID int` or `type Celsius int`.
 
 Without the tilde, the union matches the exact type only, so every domain type in your codebase is excluded. Since defining named types over primitives is idiomatic Go, a constraint without `~` usually fails on the first real caller.
 
@@ -149,7 +149,7 @@ Container types are the canonical case: the algorithm genuinely does not depend 
 
 Essentially nothing, and it cost something. The interface version already accepts every writer; the generic version accepts the same set with a more complex signature.
 
-The one real difference is that the generic form avoids the interface's dynamic dispatch and can be inlined per instantiation — a micro-optimisation worth making only with a benchmark showing it matters. It also loses the ability to store a heterogeneous set of writers in a slice, since each instantiation is a distinct type.
+The one real difference is that the generic form avoids the interface's dynamic dispatch and can be inlined per instantiation, a micro-optimisation worth making only with a benchmark showing it matters. It also loses the ability to store a heterogeneous set of writers in a slice, since each instantiation is a distinct type.
 
 </details>
 
@@ -157,7 +157,7 @@ The one real difference is that the generic form avoids the interface's dynamic 
 
 <details markdown="1"><summary>Check</summary>
 
-Because every type has a zero value, and `var` gives you it — `0` for a numeric `T`, `""` for a string one.
+Because every type has a zero value, and `var` gives you it: `0` for a numeric `T`, `""` for a string one.
 
 This is the zero-value rule paying off in the type system: generic code can construct a valid starting value for a type it knows nothing about, with no constructor constraint and no `new`. A language where the default is null would need the constraint to provide one.
 

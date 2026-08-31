@@ -8,7 +8,8 @@ type: topic
 
 Become the engineer trusted to own Python on a team: able to ship a typed, tested, packaged Python service or tool, take a traceback or a profile to its root cause instead of guessing, and say concretely why someone's clever use of Python's dynamism is going to hurt them.
 
-**Latest lesson:** _none yet_
+**Start here:** [0001. Names Are Bindings, Not Boxes](lessons/0001-names-are-bindings.md)
+**Latest lesson:** [0007. Comprehensions](lessons/0007-comprehensions.md)
 
 ## Success looks like
 
@@ -57,12 +58,19 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-names-are-bindings.md) | Names Are Bindings, Not Boxes | Assignment binds a name to an object and never copies it, so two names can mean one thing |
+| [0002](lessons/0002-mutability-and-copying.md) | Mutability and Copying | Mutability belongs to the object, so an immutable container can still hold something that changes |
+| [0003](lessons/0003-lists-and-slicing.md) | Lists and Slicing | A slice copies, in-place methods return None, and += mutates what + would rebuild |
+| [0004](lessons/0004-dicts-and-sets.md) | Dicts and Sets | Keys must be hashable, lookup has one right idiom per intention, and a view is not a snapshot |
+| [0005](lessons/0005-truthiness-none-and-equality.md) | Truthiness, None and Equality | Empty is falsy but not None, so the wrong default idiom rejects zero and the empty string |
+| [0006](lessons/0006-functions-and-arguments.md) | Functions and Arguments | Defaults are evaluated once at definition, and a caller sees every mutation you make |
+| [0007](lessons/0007-comprehensions.md) | Comprehensions | One expression that builds a container, with its own scope and a limit worth respecting |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
+- [Mutability and copying](reference/mutability-and-copying.md): which types mutate, what each copy idiom copies, and who can see it
 
 ## How this works
 

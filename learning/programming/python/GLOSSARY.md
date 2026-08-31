@@ -26,4 +26,26 @@ _Avoid_: generator (which is one specific kind), stream, sequence
 
 ## Terms
 
-_Added as lessons establish them._
+**Aliasing**:
+The situation where two or more **names** refer to one object, which is what assignment always produces. Mutating through either name is observable through all of them.
+_Avoid_: sharing, pointing, referencing
+
+**Falsy**:
+A property of an object rather than of a comparison: `False`, `None`, any numeric zero, and any empty container all test false in a boolean context. Everything else tests true, including `"0"` and `[0]`.
+_Avoid_: empty, null, blank, unset
+
+**Hashable**:
+A property of an object whose hash never changes, which is what a `dict` key and a `set` member must be. Immutable built-ins are hashable, and a tuple only inherits the property if everything inside it has it.
+_Avoid_: comparable, immutable, indexable
+
+**Late binding**:
+The behaviour of a closure that looks its enclosing names up when it runs rather than when it was defined. Functions built in a loop therefore all see the loop variable's final value.
+_Avoid_: lazy evaluation, capture by reference
+
+**Rebinding**:
+Pointing an existing **name** at a different object, which is what every assignment does. It is invisible to every other name, and it is the operation people mistake for mutation.
+_Avoid_: reassignment, overwriting, updating
+
+**Shallow copy**:
+A new container holding the same objects as the original, which is what `[:]`, `list()`, `dict()` and `copy.copy` all produce. The container is independent and its contents are not.
+_Avoid_: copy (unqualified), clone, snapshot

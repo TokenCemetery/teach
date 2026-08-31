@@ -106,6 +106,12 @@ func addOne(s []int) { s = append(s, 1) } // caller never sees the new element
    fmt.Println(a)
    ```
 
+<details markdown="1"><summary>Hint</summary>
+
+Work out `len(b)` and `cap(b)` before you predict. Slicing moved where `b` starts and ends; it did not move where the array ends.
+
+</details>
+
 <details markdown="1"><summary>Check</summary>
 
 `[1 2 30 4 5]`.
@@ -130,6 +136,12 @@ Same source, opposite outcome, decided entirely by the input length. That data d
    - b) `return s[0:2:2]`
    - c) `return s[:2:cap(s)]`
    - d) `return s[0:2]`
+
+<details markdown="1"><summary>Hint</summary>
+
+Ask of each option: how much room is left past the length you handed back? Three of the four answer the same way.
+
+</details>
 
 <details markdown="1"><summary>Check</summary>
 

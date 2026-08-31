@@ -42,6 +42,10 @@ _Avoid_: method, function, callable, closure
 Measurement of which **outcomes** of each conditional were executed, rather than which lines were. Statement coverage counts an `if` with no `else` as covered from one path, so the untested path stays invisible without it.
 _Avoid_: coverage (unqualified), test coverage, code quality
 
+**Breaking change**:
+A change that stops working code from working, which includes narrowing an accepted type, widening a return type, changing the exception raised, and reordering parameters. Accepting more and returning less are both safe; the asymmetry is commonly stated backwards.
+_Avoid_: major change, incompatible, refactor, regression
+
 **Class attribute**:
 A name in the class's namespace rather than any instance's, so one object exists for every instance. Reading falls through to it; assigning through an instance creates a shadowing instance attribute and stops the sharing.
 _Avoid_: static field, constant, default, instance variable
@@ -57,6 +61,10 @@ _Avoid_: async function, thread, future, promise
 **Data descriptor**:
 A class attribute defining both `__get__` and `__set__`, which makes it beat the instance dict on both read and write. A `property` is one, which is why assigning to a property runs its setter instead of creating an attribute.
 _Avoid_: property, getter, accessor, field
+
+**Deprecation**:
+A published notice that something will be removed, which is only a notice if users see it. `DeprecationWarning` is suppressed unless attributed to `__main__`, so `stacklevel=2` is what makes it visible, and the message has to name the replacement and the removal version.
+_Avoid_: warning, legacy, obsolete, removal
 
 **Dunder method**:
 A method with a reserved double-underscore name that a language construct calls: `len(x)` calls `__len__`, `for` calls `__iter__`. Implement one when the type genuinely is that kind of thing, and note that several are derived from others when absent.
@@ -110,6 +118,10 @@ _Avoid_: comparable, immutable, indexable
 The rule that a container of a subtype is not a container of a supertype, which holds for every mutable generic: `list[int]` is not a `list[object]`. Read-only types such as `Sequence` are covariant instead, which is why they belong in parameters.
 _Avoid_: strictness, type mismatch, casting
 
+**Keyword-only parameter**:
+A parameter after `*` in a signature, which callers must pass by name. It removes order from the contract, so parameters can be added or renamed later, and it makes two same-typed arguments impossible to swap silently.
+_Avoid_: named argument, optional parameter, kwarg
+
 **Late binding**:
 The behaviour of a closure that looks its enclosing names up when it runs rather than when it was defined. Functions built in a loop therefore all see the loop variable's final value.
 _Avoid_: lazy evaluation, capture by reference
@@ -154,6 +166,10 @@ _Avoid_: loop, data-driven test, test case, fuzzing
 A test that states an invariant over generated inputs rather than an expected output for one input, and reports the smallest failing input it can find. It complements examples rather than replacing them, since a property says what holds and an example says what the code is for.
 _Avoid_: fuzzing, random testing, generative test
 
+**Public API**:
+Everything callers can observe and will therefore depend on, which is wider than what you documented: exception types, message wording, the order of a returned sequence, the `repr`, and any name without a leading underscore. What is public is what you can no longer change.
+_Avoid_: interface, exported names, documentation, contract
+
 **Race condition**:
 A defect where the result depends on when execution switches between concurrent workers, which for Python means at any bytecode boundary between threads or at any `await` between tasks. Whether it is ever observed is an implementation detail, so it is found by reading for invariants that span statements rather than by reproducing it.
 _Avoid_: flaky behaviour, timing issue, deadlock, thread bug
@@ -166,9 +182,17 @@ _Avoid_: reassignment, overwriting, updating
 A test written for a defect that has already occurred, and the only kind whose ability to detect something is proven: it fails before the fix and passes after. Write it first, and watch it fail.
 _Avoid_: unit test, bug ticket, smoke test
 
+**Semantic versioning**:
+The convention that a major release may break, a minor adds, and a patch fixes. Python packaging does not enforce it and many projects do not follow it, so a project's own policy belongs in its readme rather than being assumed from the number.
+_Avoid_: version number, release, tag, calendar versioning
+
 **Shallow copy**:
 A new container holding the same objects as the original, which is what `[:]`, `list()`, `dict()` and `copy.copy` all produce. The container is independent and its contents are not.
 _Avoid_: copy (unqualified), clone, snapshot
+
+**Shim**:
+A thin compatibility layer keeping an old name or signature working while it is deprecated, such as a `property` forwarding to a renamed attribute. Every shim needs a removal version and a changelog entry, or it becomes permanent.
+_Avoid_: wrapper, adapter, alias, patch
 
 **Structural typing**:
 Conformance decided by an object's shape rather than by what it inherits, which is what `Protocol` expresses to a checker. It works on classes you do not own, and `isinstance` against a runtime-checkable protocol verifies attribute names only.

@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Python on a team: able to ship a typed, tested, packaged Python service or tool, take a traceback or a profile to its root cause instead of guessing, and say concretely why someone's clever use of Python's dynamism is going to hurt them.
 
 **Start here:** [0001. Names Are Bindings, Not Boxes](lessons/0001-names-are-bindings.md)
-**Latest lesson:** [0039. Measuring Before Optimising](lessons/0039-measuring-before-optimising.md)
+**Latest lesson:** [0044. Judgment](lessons/0044-judgment.md)
 
 ## Success looks like
 
@@ -97,6 +97,11 @@ Work through these in order.
 | [0037](lessons/0037-asyncio.md) | asyncio | One thread, thousands of waits, and the blocking call that stalls all of them |
 | [0038](lessons/0038-choosing-a-model.md) | Choosing a Model | One question decides it, and the measurement that settles the rest |
 | [0039](lessons/0039-measuring-before-optimising.md) | Measuring Before Optimising | Where the time actually goes, and why the micro-optimisations you were taught are gone |
+| [0040](lessons/0040-designing-an-api.md) | Designing an API | The signature is the contract, and everything observable becomes one whether you meant it or not |
+| [0041](lessons/0041-changing-a-published-api.md) | Changing a Published API | Deprecation that users actually see, and what counts as a breaking change |
+| [0042](lessons/0042-reviewing-python.md) | Reviewing Python | What to look for, in what order, and how to separate a defect from a preference |
+| [0043](lessons/0043-reading-the-source.md) | Reading the Source | Getting the answer from the standard library and the PEPs when the documentation stops |
+| [0044](lessons/0044-judgment.md) | Judgment | When to break the rules from the earlier stages, and how to defend the call |
 
 ## Reference
 
@@ -110,7 +115,10 @@ Work through these in order.
 - [Data model](reference/data-model.md): attribute lookup order, the dunder map, the descriptor protocol, and which hook replaces a metaclass
 - [Testing](reference/testing.md): fixture scopes, parametrisation forms, which double to reach for, and reading a coverage report
 - [Concurrency and performance](reference/concurrency-and-performance.md): which model for which workload, the measured numbers behind it, and how to read a profile
+- [API and review](reference/api-and-review.md): signature decisions, what counts as breaking, the review checklist, and where to find an answer
 
 ## How this works
+
+The arc is complete: all seven stages are written, from lesson 0001 to lesson 0044. Work through them in order, or start at the stage whose "Done when" you cannot yet demonstrate.
 
 Each lesson is short and self-contained. Answer keys are collapsed: recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Anything still unclear at the end of a lesson is worth chasing to its primary source before moving on.

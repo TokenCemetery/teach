@@ -11,7 +11,11 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## State
 
-Stages 1 to 6 are written: lessons 0001 to 0039, plus eight reference sheets. Stage 7 is unwritten.
+**The arc is complete.** All seven stages are written: lessons 0001 to 0044, plus nine reference sheets and 48 earned glossary terms alongside the three pinned ones.
+
+Stage 7 is five lessons rather than six, because the last one is a capstone and padding it would have weakened it. Lesson 0044 is the piece to protect: it is the only lesson in the arc that gives permission to break the arc's own rules, and it does that by restating each rule as a cost so the exception is findable. If the stage is ever revised, keep the table of rules and their exceptions, and keep the three-sentence form for explaining a decision, since the third sentence (what would change your mind) is what the whole stage is for.
+
+Lesson 0042's review checklist is the other durable artefact: 22 rows, each pointing at the lesson that explains it, which makes the arc usable as a review aid rather than only as a course.
 
 Stage 6 stayed as one stage rather than splitting concurrency from performance, and the reason held up: both halves answer the same question, which is where the time goes. Lesson 0038 is the hinge, and it sends the reader to 0039 for the measurement that chooses the model.
 
@@ -25,13 +29,13 @@ Stage 3 kept typing and packaging together, as the arc planned, and the boundary
 
 Stage 2 is built as one chain rather than a set of topics. The iteration protocol (0008) is what makes generators (0009) predictable, generators are what make the `try/finally` in a context manager (0011) subtle, and exceptions (0010) sit between them because both later lessons depend on knowing what `finally` guarantees. Lessons 0012 to 0014 are the equipment: the shape data should take, the unit code is organised into, and what already ships. If a stage-2 lesson gets reordered, the 0008 to 0011 run is the part that must stay in sequence.
 
-**How the glossary is populated here.** The skill says a term lands once it can be used correctly, which is a statement about a learner's demonstration. These lessons have no single learner, so the test is applied to the material instead: a term lands when a lesson has taught it well enough for a reader to use it. Stage 1 added six terms alongside the three pinned ones, stage 2 added seven, stage 3 added eight, stage 4 added seven, stage 5 added seven, and stage 6 added seven. Keep doing this per stage rather than upfront, and do not add a term the lessons have not earned.
+**How the glossary is populated here.** The skill says a term lands once it can be used correctly, which is a statement about a learner's demonstration. These lessons have no single learner, so the test is applied to the material instead: a term lands when a lesson has taught it well enough for a reader to use it. Stage 1 added six terms alongside the three pinned ones, stage 2 added seven, stage 3 added eight, stage 4 added seven, stage 5 added seven, stage 6 added seven, and stage 7 added six. Keep doing this per stage rather than upfront, and do not add a term the lessons have not earned.
 
 ## On the arc
 
-Two stage boundaries are judgment calls worth revisiting once lessons exist:
+Both stage boundaries flagged as judgment calls before the lessons existed have now been decided by writing them:
 
-- Stage 3 puts typing and packaging together because both are about code leaving the machine it was written on. If either grows past three or four lessons, they split.
+- Resolved: stage 3 kept typing and packaging together at seven lessons, past the three-or-four threshold this note set, and the boundary still reads as one idea. Leaving it merged.
 - Resolved: stage 6 stayed merged. Six lessons was enough room for the GIL material to stand alone as 0034, and lesson 0038 is the hinge that uses the measurement from 0039 to choose a model, which is the shared idea made explicit.
 
 ## Version policy

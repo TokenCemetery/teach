@@ -1,5 +1,10 @@
 site_name: teach
 site_description: "Учебные материалы: уроки и справочники для самостоятельного изучения"
+# Without this, every `<loc>` in sitemap.xml is written as "None" and no page
+# gets a canonical link, so the seven locales compete as duplicates of each
+# other. The theme emits no per-page hreflang tags either way; the sitemap
+# carries the alternates.
+site_url: https://tokencemetery.github.io/teach/
 repo_url: https://github.com/TokenCemetery/teach
 docs_dir: learning
 site_dir: site

@@ -24,7 +24,7 @@ Decode one real training example and read it, counting scored versus masked posi
 
 <details markdown="1"><summary>Check</summary>
 
-Memorisation — the model is recognising examples it has already seen.
+Memorisation: the model is recognising examples it has already seen.
 
 </details>
 
@@ -42,7 +42,7 @@ Completion-only. Prompt positions are masked to `-100` so only the assistant res
 
 If you have limited time, spend it on data. The gap between a mediocre dataset and a good one is larger than the gap between rank 8 and rank 128, larger than LoRA versus DoRA, and larger than most things you could tune. Hyperparameters are legible and satisfying to adjust, which is why they absorb attention out of proportion to their effect.
 
-The LIMA result is the sharpest published statement of this: a small number of carefully curated examples — on the order of a thousand — produced strong instruction-following, supporting the view that supervised fine-tuning mostly teaches *format and style* while capability comes from pretraining. Treat the exact number as setting-specific; take the direction seriously.
+The LIMA result is the sharpest published statement of this: a small number of carefully curated examples, on the order of a thousand, produced strong instruction-following, supporting the view that supervised fine-tuning mostly teaches *format and style* while capability comes from pretraining. Treat the exact number as setting-specific; take the direction seriously.
 
 ### What fine-tuning teaches well, and badly
 
@@ -54,13 +54,13 @@ The LIMA result is the sharpest published statement of this: a small number of c
 | Narrow classification and extraction | Long-tail knowledge with a single mention |
 | Tool-call and function syntax | Arithmetic and precise calculation |
 
-The right column is why [Lesson 27](0027-when-not-to-fine-tune.md) exists. A dataset built to install facts is doing the thing fine-tuning is worst at, and each fact would need many varied examples to stick — at which point retrieval is cheaper, more accurate and updatable.
+The right column is why [Lesson 27](0027-when-not-to-fine-tune.md) exists. A dataset built to install facts is doing the thing fine-tuning is worst at, and each fact would need many varied examples to stick, at which point retrieval is cheaper, more accurate and updatable.
 
 ### Designing examples
 
-**Match the deployment distribution.** Your training inputs should look like real inputs. Clean, well-formed, uniform-length training prompts produce a model that degrades on the messy reality it meets in production — and your held-out split, drawn from the same clean pool, will not warn you.
+**Match the deployment distribution.** Your training inputs should look like real inputs. Clean, well-formed, uniform-length training prompts produce a model that degrades on the messy reality it meets in production, and your held-out split, drawn from the same clean pool, will not warn you.
 
-**Include the hard cases deliberately.** Ambiguous inputs, edge cases, and the cases where the correct answer is a refusal or "insufficient information". If every training answer is confident and complete, you have trained confident completeness — including on inputs that do not warrant it.
+**Include the hard cases deliberately.** Ambiguous inputs, edge cases, and the cases where the correct answer is a refusal or "insufficient information". If every training answer is confident and complete, you have trained confident completeness, including on inputs that do not warrant it.
 
 **Be consistent about format.** If half your examples end with a period and half do not, the model learns the inconsistency. Every arbitrary variation you leave in is capacity spent on noise.
 
@@ -70,7 +70,7 @@ The right column is why [Lesson 27](0027-when-not-to-fine-tune.md) exists. A dat
 
 ### Deduplication
 
-Near-duplicates are the most common serious defect in assembled datasets, and they cause two harms at once: over-weighting whatever the duplicated content teaches, and — if duplicates land on both sides of your split — a held-out score that measures recall rather than generalisation.
+Near-duplicates are the most common serious defect in assembled datasets, and they cause two harms at once: over-weighting whatever the duplicated content teaches, and, if duplicates land on both sides of your split, a held-out score that measures recall rather than generalisation.
 
 Exact-match deduplication is not enough. Use normalised hashing, then a similarity measure such as MinHash or embedding distance for near-duplicates. Do it *before* splitting, not after.
 
@@ -85,7 +85,7 @@ A rough orientation, not a rule:
 | 5,000–50,000 | A broad task, or several capabilities at once |
 | 100,000+ | Diminishing returns for adapters; consider whether the task is really one task |
 
-Where categories exist, imbalance becomes a bias. A dataset that is 90% one class teaches the model to guess that class. Either balance it or account for the imbalance in your metric — Lesson 23.
+Where categories exist, imbalance becomes a bias. A dataset that is 90% one class teaches the model to guess that class. Either balance it or account for the imbalance in your metric, per Lesson 23.
 
 ### Synthetic data
 
@@ -93,7 +93,7 @@ Generating training data with a stronger model is standard, effective, and has t
 
 **Inherited errors.** The generator's mistakes and biases become your training targets, and they will be fluent and consistent, which makes them hard to spot by skimming. Sample and read.
 
-**Distribution collapse.** Generated data tends to be more uniform than real data — similar structures, similar lengths, similar register. You train a model that handles a narrow slice cleanly and real variation poorly. Seed generation from real inputs where you can, and vary prompts deliberately.
+**Distribution collapse.** Generated data tends to be more uniform than real data: similar structures, similar lengths, similar register. You train a model that handles a narrow slice cleanly and real variation poorly. Seed generation from real inputs where you can, and vary prompts deliberately.
 
 Also: check the licence and terms of the model you generate from. Whether outputs may be used to train another model is a real constraint, not a formality.
 
@@ -113,7 +113,7 @@ Get the mechanics right, once:
 
 <details markdown="1"><summary>Check</summary>
 
-No. Those are facts, which fine-tuning installs unreliably — each would need many varied examples, and the result is unverifiable and stale the moment the catalogue changes.
+No. Those are facts, which fine-tuning installs unreliably: each would need many varied examples, and the result is unverifiable and stale the moment the catalogue changes.
 
 Retrieval is the right tool: accurate, citable, and updated by editing a document rather than retraining. What fine-tuning *could* usefully teach here is the format for presenting product information.
 
@@ -133,7 +133,7 @@ Your held-out split is drawn from the same clean pool, so it shares the defect. 
 
 <details markdown="1"><summary>Check</summary>
 
-Because a duplicate pair straddling the split puts a training example into the held-out set. Held-out performance then measures memorisation and reports it as generalisation — the single most effective way to fool yourself about a fine-tune.
+Because a duplicate pair straddling the split puts a training example into the held-out set. Held-out performance then measures memorisation and reports it as generalisation, which is the single most effective way to fool yourself about a fine-tune.
 
 Deduplicating after the split leaves cross-split pairs intact, which is exactly the case that matters.
 
@@ -150,7 +150,7 @@ Deduplicating after the split leaves cross-split pairs intact, which is exactly 
 
 **b)** Every single answer being confident and complete.
 
-The model imitates its targets. With no example of appropriate uncertainty or refusal, confident completeness is the only behaviour it has been shown — including for inputs that do not support it.
+The model imitates its targets. With no example of appropriate uncertainty or refusal, confident completeness is the only behaviour it has been shown, including for inputs that do not support it.
 
 </details>
 
@@ -170,7 +170,7 @@ Distribution collapse: generated data is more uniform than real data. Mitigate b
 
 Around 1200–1500. Setting 8000 wastes activation memory on padding for almost every example; setting 512 truncates a substantial fraction.
 
-Then check what truncation actually does to the examples above the limit. If it cuts answers in half you are teaching the model to stop mid-sentence — either raise the limit or drop those examples deliberately.
+Then check what truncation actually does to the examples above the limit. If it cuts answers in half you are teaching the model to stop mid-sentence, so either raise the limit or drop those examples deliberately.
 
 </details>
 
@@ -179,7 +179,7 @@ Then check what truncation actually does to the examples above the limit. If it 
 - [ ] Read twenty examples of your dataset in full, decoded through the chat template. Note every inconsistency you find.
 - [ ] Run near-duplicate detection across the whole set before splitting. Record how many you found and remove them.
 - [ ] Plot the token-length distribution and pick `max_length` from it. Inspect three examples that would be truncated.
-- [ ] Tomorrow: add ten deliberately hard examples — ambiguous, edge-case, or where the right answer is a refusal.
+- [ ] Tomorrow: add ten deliberately hard examples: ambiguous, edge-case, or where the right answer is a refusal.
 
 ## Going further
 

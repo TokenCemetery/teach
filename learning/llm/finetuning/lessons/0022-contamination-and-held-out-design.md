@@ -32,7 +32,7 @@ New facts, reasoning not already present, current information, and precise calcu
 
 <details markdown="1"><summary>Check</summary>
 
-The one at the held-out minimum — which presupposes a held-out set you can trust.
+The one at the held-out minimum, which presupposes a held-out set you can trust.
 
 </details>
 
@@ -62,11 +62,11 @@ Random splitting is the default and it is frequently wrong. What you split *by* 
 
 ### Three splits, not two
 
-- **Train** — what the model fits.
-- **Validation** — what you use to choose checkpoints, rank, learning rate, and everything else.
-- **Test** — touched once, at the end, to estimate real performance.
+- **Train.** What the model fits.
+- **Validation.** What you use to choose checkpoints, rank, learning rate, and everything else.
+- **Test.** Touched once, at the end, to estimate real performance.
 
-The reason for three is that selecting against a set fits to it. Choose your checkpoint by validation, compare twenty configurations on validation, pick the best — and the validation score is now optimistic by an amount proportional to how many choices you made against it. That is why the test set exists and why it is used once.
+The reason for three is that selecting against a set fits to it. Choose your checkpoint by validation, compare twenty configurations on validation, pick the best, and the validation score is now optimistic by an amount proportional to how many choices you made against it. That is why the test set exists and why it is used once.
 
 **In practice people use two, then wonder why deployment underperforms their evaluation.** The gap is exactly the amount of selection they did.
 
@@ -74,9 +74,9 @@ The reason for three is that selecting against a set fits to it. Choose your che
 
 Deduplicate against the test set explicitly, not just within the training set:
 
-1. Normalise — lowercase, collapse whitespace, strip punctuation.
+1. Normalise: lowercase, collapse whitespace, strip punctuation.
 2. Exact-match hash across train and test. Remove any collision from train.
-3. Near-duplicate detection — MinHash or embedding similarity, with a threshold you have looked at by hand.
+3. Near-duplicate detection with MinHash or embedding similarity, using a threshold you have looked at by hand.
 4. **Read the highest-similarity pairs yourself.** Thresholds are guesses; your eyes are the calibration.
 
 Step 4 is the one people skip and it is the one that finds the real problems.
@@ -99,7 +99,7 @@ The corollary: if you have 200 held-out examples, do not run a twelve-configurat
 
 When comparing two models, evaluate both on **the same examples** and compare per-example. Paired comparison removes the variance from example difficulty and detects smaller differences with fewer examples than comparing two independent averages. It costs nothing but bookkeeping.
 
-Keep the per-example results, not just the aggregate. "Model B is 3 points better" is far less useful than "B fixed 14 examples A got wrong and broke 6 A got right" — and the six are where you learn something.
+Keep the per-example results, not just the aggregate. "Model B is 3 points better" is far less useful than "B fixed 14 examples A got wrong and broke 6 A got right", and the six are where you learn something.
 
 ## Practice
 
@@ -156,7 +156,7 @@ Either get more held-out data or accept that this question is unanswerable with 
 
 **a)** Splitting the data by time when it has temporal order.
 
-Random is easier and is the default, so temporal structure gets ignored. The cost is training on data that postdates the test period — the model has seen the future, and the score cannot survive deployment.
+Random is easier and is the default, so temporal structure gets ignored. The cost is training on data that postdates the test period: the model has seen the future, and the score cannot survive deployment.
 
 </details>
 
@@ -172,7 +172,7 @@ It also produces the more useful artifact: which specific examples improved and 
 
 ## Real-world reps
 
-- [ ] Check your dataset for a grouping structure — document, customer, author, session. If one exists, re-split by it and compare the two held-out numbers.
+- [ ] Check your dataset for a grouping structure: document, customer, author, session. If one exists, re-split by it and compare the two held-out numbers.
 - [ ] Run near-duplicate detection between train and test. Read the twenty highest-similarity pairs by hand.
 - [ ] Split into three sets and write down the rule for what each may be used for. Then stick to it.
 - [ ] Tomorrow: compute how many held-out examples you would need to detect the difference you actually care about. Compare to how many you have.

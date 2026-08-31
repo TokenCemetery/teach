@@ -24,7 +24,7 @@ It scores agreement with one reference continuation, penalising correct alternat
 
 <details markdown="1"><summary>Check</summary>
 
-Position bias — randomise order and evaluate both orderings. Verbosity bias — compare at matched lengths or instruct the judge to disregard length.
+Position bias: randomise order and evaluate both orderings. Verbosity bias: compare at matched lengths or instruct the judge to disregard length.
 
 </details>
 
@@ -40,9 +40,9 @@ It is drawn from your task's distribution, so it cannot observe degradation on c
 
 ### The failure this exists to catch
 
-Fine-tuning moves weights toward your task. Abilities that were not reinforced can degrade, and this is **catastrophic forgetting**. The empirical literature finds it is not a rare edge case in continual fine-tuning of language models — general capabilities including instruction following measurably decline, and the effect can grow with model scale rather than shrinking.
+Fine-tuning moves weights toward your task. Abilities that were not reinforced can degrade, and this is **catastrophic forgetting**. The empirical literature finds it is not a rare edge case in continual fine-tuning of language models: general capabilities including instruction following measurably decline, and the effect can grow with model scale rather than shrinking.
 
-The dangerous property is that **every number you are already looking at goes the right way.** Training loss falls, your held-out task metric improves, your probes look good — and the model has become worse at things you never measured. You ship, and the reports come from a direction your evaluation could not see.
+The dangerous property is that **every number you are already looking at goes the right way.** Training loss falls, your held-out task metric improves, your probes look good, and the model has become worse at things you never measured. You ship, and the reports come from a direction your evaluation could not see.
 
 A held-out set measures whether you learned the task. A regression suite measures whether you broke anything else. **They are different instruments and you need both.**
 
@@ -54,7 +54,7 @@ Four categories. All four, not a selection.
 
 **2. Format and behavioural compliance.** Does it still respect a system prompt? Still produce valid JSON when asked? Still stop when it should? A model trained on one rigid format sometimes loses the ability to produce any other.
 
-**3. Safety and refusal behaviour.** If the base model refused certain requests, does the fine-tune still refuse them? **Fine-tuning on benign data can degrade safety alignment as a side effect** — this is a documented and repeatedly reproduced result, not a hypothetical. If you inherited alignment behaviour from an instruct model, you inherited a responsibility to check it survived.
+**3. Safety and refusal behaviour.** If the base model refused certain requests, does the fine-tune still refuse them? **Fine-tuning on benign data can degrade safety alignment as a side effect.** That is a documented and repeatedly reproduced result, not a hypothetical. If you inherited alignment behaviour from an instruct model, you inherited a responsibility to check it survived.
 
 **4. Adjacent capability.** Things near your task that you did not train. Fine-tuned on English support tickets? Check another language. Fine-tuned on one document type? Check another.
 
@@ -71,7 +71,7 @@ regression/
 └── baseline/                     # base model outputs, committed
 ```
 
-Eighty examples total. That is deliberately small — enough to catch a real regression, small enough that a person actually reads the diffs.
+Eighty examples total. That is deliberately small: enough to catch a real regression, small enough that a person actually reads the diffs.
 
 The critical, frequently-omitted step: **record the base model's outputs before you train, and commit them.** A regression is a *change*, so you need the before. Without a stored baseline you are left comparing against your memory of how the model used to behave, which is not evidence.
 
@@ -92,7 +92,7 @@ Run the suite on every candidate checkpoint. Diff against the baseline. Then cla
 |---|---|
 | Unchanged | Fine |
 | Changed, still correct | Note it; fine |
-| Changed, now wrong | **Regression — blocks the ship** |
+| Changed, now wrong | **Regression, blocks the ship** |
 | Changed, now better | A bonus, and worth understanding |
 
 The third row is the whole point. One clear regression in safety or instruction following outweighs a couple of points on your task metric, because the failure mode is unbounded and the gain is not.
@@ -111,7 +111,7 @@ Option 5 is the one people overlook, and it is often the correct architecture. I
 
 ### Automate it
 
-The suite should run on every checkpoint, unprompted, and refuse to pass on a regression. An evaluation that depends on someone remembering to run it will be skipped on the run where it mattered — the one under deadline pressure.
+The suite should run on every checkpoint, unprompted, and refuse to pass on a regression. An evaluation that depends on someone remembering to run it will be skipped on the run where it mattered, the one under deadline pressure.
 
 ## Practice
 
@@ -139,7 +139,7 @@ Safety is the one most often left out, and fine-tuning on entirely benign data c
 
 <details markdown="1"><summary>Check</summary>
 
-Very little. A regression is a change from prior behaviour, so without the prior behaviour you cannot identify one — only judge outputs in isolation, which will not reveal a subtle degradation.
+Very little. A regression is a change from prior behaviour, so without the prior behaviour you cannot identify one, only judge outputs in isolation, which will not reveal a subtle degradation.
 
 Record and commit base-model outputs before training. This is the step that makes the suite work.
 
@@ -149,7 +149,7 @@ Record and commit base-model outputs before training. This is the step that make
 
 <details markdown="1"><summary>Check</summary>
 
-No. A safety regression blocks the ship regardless of task gains — the downside is unbounded while three points is not.
+No. A safety regression blocks the ship regardless of task gains: the downside is unbounded while three points is not.
 
 Investigate: try an earlier checkpoint, a lower learning rate, mixing in general instruction data, or keeping the adapter unmerged and routing only relevant traffic to it.
 
@@ -180,7 +180,7 @@ So that a difference from the baseline is attributable to changed weights rather
 
 ## Real-world reps
 
-- [ ] Write 20 regression cases — five in each category. Include at least one the base model refuses.
+- [ ] Write 20 regression cases, five in each category. Include at least one the base model refuses.
 - [ ] Generate and commit base-model baseline outputs, greedily, before any training.
 - [ ] Run the suite on your existing adapter and diff. Classify every change into the four verdicts.
 - [ ] Tomorrow: wire the suite into your training script so it runs on every checkpoint without being asked.

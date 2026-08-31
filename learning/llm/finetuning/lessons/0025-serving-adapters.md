@@ -64,7 +64,7 @@ That last row is underrated. With an unmerged adapter, rolling back a bad fine-t
 
 ### How multi-adapter serving works
 
-The naive approach — swap adapter weights between requests — serialises everything and destroys throughput, because batching is where inference efficiency comes from.
+The naive approach, swapping adapter weights between requests, serialises everything and destroys throughput, because batching is where inference efficiency comes from.
 
 Real implementations batch requests using *different* adapters together. The base model computation is shared across the whole batch, since it is identical for everyone, and the adapter contributions are computed per-request with specialised kernels that handle a batch of small heterogeneous matmuls. The S-LoRA work ([arXiv:2311.03285](https://arxiv.org/abs/2311.03285)) is the reference point for serving many adapters concurrently, including keeping inactive adapters in host memory and paging them in.
 
@@ -74,7 +74,7 @@ What this means practically:
 - The overhead is small but real, and it grows with how many *distinct* adapters appear in a batch.
 - Adapters should share rank and target modules where possible. Heterogeneous shapes are harder to batch efficiently.
 
-In vLLM the shape is roughly: enable LoRA support, register adapters, and name one per request. Check the current flags and the maximum-rank and maximum-adapters limits in the installed version's documentation — this surface changes, and the limits are set at server start.
+In vLLM the shape is roughly: enable LoRA support, register adapters, and name one per request. Check the current flags and the maximum-rank and maximum-adapters limits in the installed version's documentation, because this surface changes and the limits are set at server start.
 
 ### Quantisation at serving time, kept separate
 
@@ -85,7 +85,7 @@ A decision independent of everything above, and worth restating because the two 
 
 You can train against a 4-bit base and serve in bf16. You can train in bf16 and serve quantized. They are unrelated choices with unrelated trade-offs, and neither implies the other.
 
-If you serve quantized, evaluate the quantized artifact. Evaluating a bf16 model and shipping a 4-bit one means your numbers describe something you did not deploy — which is a surprisingly common mistake.
+If you serve quantized, evaluate the quantized artifact. Evaluating a bf16 model and shipping a 4-bit one means your numbers describe something you did not deploy, which is a surprisingly common mistake.
 
 ### Operational essentials
 
@@ -101,7 +101,7 @@ If you serve quantized, evaluate the quantized artifact. Evaluating a bf16 model
 
 ### Sampling is not a fix
 
-One caution, because it is a common trap. If a fine-tune underperforms, temperature and top-p are not the repair. They change the distribution's shape, not its content. Tuning sampling to compensate for a training problem hides it and makes the next comparison uninterpretable — you no longer know which of two variables produced a difference.
+One caution, because it is a common trap. If a fine-tune underperforms, temperature and top-p are not the repair. They change the distribution's shape, not its content. Tuning sampling to compensate for a training problem hides it and makes the next comparison uninterpretable: you no longer know which of two variables produced a difference.
 
 Fix training in training. Pin sampling and leave it alone.
 
@@ -158,7 +158,7 @@ Worse, it introduces a second changed variable, so the next comparison is uninte
 
 **b)** The ability to roll back by changing a routing rule.
 
-(a) is real and often the headline reason, but (b) is what you want at two in the morning. (c) is false — unmerged adds small overhead. (d) is backwards; merged is the universally compatible option.
+(a) is real and often the headline reason, but (b) is what you want at two in the morning. (c) is false, since unmerged adds small overhead. (d) is backwards; merged is the universally compatible option.
 
 </details>
 

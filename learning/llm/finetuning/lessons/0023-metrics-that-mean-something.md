@@ -40,7 +40,7 @@ Whether generations are usable, and whether capabilities outside the task's dist
 
 ### Why loss is not the metric
 
-Cross-entropy loss on held-out data is genuinely useful — it is cheap, it is stable, and it is the right thing to watch during a run. It is not a measure of whether the model does your job.
+Cross-entropy loss on held-out data is genuinely useful: it is cheap, it is stable, and it is the right thing to watch during a run. It is not a measure of whether the model does your job.
 
 Loss measures next-token surprise against one specific reference continuation. It therefore penalises a differently-worded correct answer and rewards a fluent wrong one. Two models with equal held-out loss can differ substantially in usefulness, and the direction is not predictable.
 
@@ -52,7 +52,7 @@ Loss measures next-token surprise against one specific reference continuation. I
 |---|---|---|
 | Classification | Accuracy; per-class precision and recall; F1 | Class imbalance makes accuracy meaningless |
 | Extraction | Exact match on the field; F1 over spans | Normalise before comparing |
-| Structured output | Schema validity rate, then field-level correctness | Two separate failures — measure both |
+| Structured output | Schema validity rate, then field-level correctness | Two separate failures, measure both |
 | Code | Execution against tests | Passing tests, not resembling the reference |
 | Free-form generation | Rubric scoring, human or model-judged | The hard case; see below |
 | Retrieval-adjacent | Groundedness, citation accuracy | Fluency masks unsupported claims |
@@ -69,8 +69,8 @@ Use them only when overlap genuinely is the thing you care about, and never as t
 
 For JSON or any schema, always report both:
 
-1. **Validity** — did it parse and satisfy the schema?
-2. **Correctness** — given that it parsed, are the values right?
+1. **Validity.** Did it parse and satisfy the schema?
+2. **Correctness.** Given that it parsed, are the values right?
 
 Collapsing these hides which problem you have. A model at 99% validity and 60% correctness needs better data. One at 60% validity and 95% correctness needs format training, or constrained decoding at serving time, which may make the problem disappear without retraining at all.
 
@@ -78,12 +78,12 @@ Collapsing these hides which problem you have. A model at 99% validity and 60% c
 
 For free-form output, having a strong model score against a rubric is often the only scalable option. It works, and it has documented biases you must control for:
 
-- **Position bias** — judges favour whichever response is presented first. Mitigate by randomising order and, for pairwise comparison, evaluating both orderings.
-- **Verbosity bias** — longer answers score higher regardless of quality. Watch whether your fine-tune simply got wordier.
-- **Self-preference** — judges tend to favour text resembling their own output.
-- **Rubric sensitivity** — small wording changes in the rubric shift scores materially.
+- **Position bias.** Judges favour whichever response is presented first. Mitigate by randomising order and, for pairwise comparison, evaluating both orderings.
+- **Verbosity bias.** Longer answers score higher regardless of quality. Watch whether your fine-tune simply got wordier.
+- **Self-preference.** Judges tend to favour text resembling their own output.
+- **Rubric sensitivity.** Small wording changes in the rubric shift scores materially.
 
-The non-negotiable step: **calibrate the judge against human labels.** Score 50–100 examples yourself, run the judge on the same ones, and measure agreement. If agreement is poor, the judge's numbers are decoration. If it is good, you have earned the right to scale it — and you have a number quantifying how much to trust it.
+The non-negotiable step: **calibrate the judge against human labels.** Score 50–100 examples yourself, run the judge on the same ones, and measure agreement. If agreement is poor, the judge's numbers are decoration. If it is good, you have earned the right to scale it, and you have a number quantifying how much to trust it.
 
 A concrete, robust setup: pairwise comparison of base versus fine-tuned output, both orderings, with a rubric naming the specific criteria you care about, reported as a win rate. Pairwise judging is more reliable than absolute scoring, which drifts.
 
@@ -100,7 +100,7 @@ A single number with no spread is not a result. Minimum standard:
 
 ### Read the outputs
 
-Whatever your metric, read a sample of actual generations — including the failures — every time. Metrics compress, and the thing they compress away is usually the thing you needed to know: the model has started refusing, or emitting a preamble, or truncating, or answering a subtly different question. No aggregate reveals this. Ten minutes of reading does.
+Whatever your metric, read a sample of actual generations every time, including the failures. Metrics compress, and the thing they compress away is usually the thing you needed to know: the model has started refusing, or emitting a preamble, or truncating, or answering a subtly different question. No aggregate reveals this. Ten minutes of reading does.
 
 ## Practice
 
@@ -128,7 +128,7 @@ One combined number hides which problem you have. High validity with low correct
 
 <details markdown="1"><summary>Check</summary>
 
-Yes — verbosity bias. Judges reliably favour longer answers regardless of quality, so much of that gain may be length.
+Yes: verbosity bias. Judges reliably favour longer answers regardless of quality, so much of that gain may be length.
 
 Control for it: compare at matched lengths, instruct the judge explicitly to disregard length, or check whether users actually prefer the longer output. The score alone does not distinguish "better" from "longer".
 
@@ -153,7 +153,7 @@ Code has an objective correctness criterion, so use it. Overlap metrics reward r
 
 <details markdown="1"><summary>Check</summary>
 
-Calibrating it against human labels — scoring 50–100 examples yourself and measuring agreement with the judge on the same items.
+Calibrating it against human labels, by scoring 50–100 examples yourself and measuring agreement with the judge on the same items.
 
 Without that, the judge's numbers are unvalidated. With it, you have both justification and a quantified degree of trust.
 

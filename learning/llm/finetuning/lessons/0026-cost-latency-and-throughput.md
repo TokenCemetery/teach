@@ -42,15 +42,15 @@ New facts, absent reasoning ability, current information, precise calculation.
 
 Generation has two phases with completely different performance characteristics, and confusing them makes every optimisation discussion incoherent.
 
-**Prefill** processes the whole input prompt at once. All tokens are available, so the work is large parallel matrix multiplication — **compute-bound.** Cost scales with prompt length.
+**Prefill** processes the whole input prompt at once. All tokens are available, so the work is large parallel matrix multiplication, making it **compute-bound.** Cost scales with prompt length.
 
-**Decode** generates one token at a time, each depending on the last. Each step reads the entire model's weights to produce a single token, so the arithmetic per byte moved is tiny — **memory-bandwidth-bound.** Cost scales with output length.
+**Decode** generates one token at a time, each depending on the last. Each step reads the entire model's weights to produce a single token, so the arithmetic per byte moved is tiny, making it **memory-bandwidth-bound.** Cost scales with output length.
 
 Consequences:
 
 - **Long prompts are cheap per token; long outputs are expensive per token.** Not symmetric, and the asymmetry is large.
 - Decode speed is set by memory bandwidth, so a smaller model is faster almost in proportion to its size.
-- Batching helps decode enormously — the weights are read once for the whole batch — and helps prefill much less.
+- Batching helps decode enormously, because the weights are read once for the whole batch, and helps prefill much less.
 
 ### The metrics that matter
 
@@ -62,13 +62,13 @@ Consequences:
 | Throughput | Tokens/second across all requests | Batching efficiency |
 | Cost per request | Money | Throughput and hardware cost |
 
-Latency and throughput trade against each other via batch size. Larger batches raise throughput and raise per-request latency. There is no single best setting — it depends on whether a human is waiting.
+Latency and throughput trade against each other via batch size. Larger batches raise throughput and raise per-request latency. There is no single best setting: it depends on whether a human is waiting.
 
 ### Where fine-tuning changes the economics
 
 This is the part people miss. Fine-tuning's cost benefit usually has nothing to do with the weights being better.
 
-**Shorter prompts.** A fine-tuned model needs no few-shot examples, no lengthy format instructions, no elaborate system prompt — that behaviour is in the weights. If your prompt drops from 2,000 tokens to 200, you removed 1,800 tokens of prefill from every single request, forever. On a high-volume endpoint that is often the entire business case.
+**Shorter prompts.** A fine-tuned model needs no few-shot examples, no lengthy format instructions, no elaborate system prompt, because that behaviour is in the weights. If your prompt drops from 2,000 tokens to 200, you removed 1,800 tokens of prefill from every single request, forever. On a high-volume endpoint that is often the entire business case.
 
 **Shorter outputs.** A model trained to answer in the required format stops padding with preamble and hedging. Since decode is the expensive phase, cutting output length is worth more per token than cutting input length.
 
@@ -85,9 +85,9 @@ Against those savings, count the costs:
 | Training compute | One-off per version, usually small for adapters |
 | Data creation | Often the dominant cost, and usually human time |
 | Evaluation infrastructure | One-off, then ongoing maintenance |
-| Serving complexity | Ongoing — adapter-capable stack, versioning, routing |
-| Retraining | Ongoing — models, data and requirements all move |
-| Expertise | Ongoing — someone must own this |
+| Serving complexity | Ongoing: adapter-capable stack, versioning, routing |
+| Retraining | Ongoing: models, data and requirements all move |
+| Expertise | Ongoing: someone must own this |
 
 **The recurring costs are what decide it, and they are the ones left out of the initial estimate.** A fine-tune that saves a little money per request and requires a person to maintain it is a bad trade at low volume and a good one at high volume. The crossover is arithmetic, so do the arithmetic.
 
@@ -121,7 +121,7 @@ And measure under realistic load. A benchmark on one request at a time tells you
 
 <details markdown="1"><summary>Check</summary>
 
-Prefill is compute-bound — the whole prompt is processed in parallel. Decode is memory-bandwidth-bound — each step reads all the weights to produce one token.
+Prefill is compute-bound, because the whole prompt is processed in parallel. Decode is memory-bandwidth-bound, because each step reads all the weights to produce one token.
 
 It follows that long prompts are relatively cheap per token, long outputs are expensive, batching helps decode far more than prefill, and smaller models speed up decode nearly in proportion to size.
 
@@ -131,7 +131,7 @@ It follows that long prompts are relatively cheap per token, long outputs are ex
 
 <details markdown="1"><summary>Check</summary>
 
-Prefill — 1,650 fewer tokens of compute-bound work on every request. The behaviour formerly specified by few-shot examples and format instructions now lives in the weights.
+Prefill: 1,650 fewer tokens of compute-bound work on every request. The behaviour formerly specified by few-shot examples and format instructions now lives in the weights.
 
 This is frequently the whole economic case for fine-tuning, and it has nothing to do with the model being smarter.
 
@@ -148,7 +148,7 @@ This is frequently the whole economic case for fine-tuning, and it has nothing t
 
 **b)** A smaller model becoming sufficient for the task.
 
-It reduces both phases at once, and decode — the expensive phase — scales with model size because it is bandwidth-bound. The others are real and additive, but a model-size change is multiplicative across everything.
+It reduces both phases at once, and decode, the expensive phase, scales with model size because it is bandwidth-bound. The others are real and additive, but a model-size change is multiplicative across everything.
 
 </details>
 
@@ -176,7 +176,7 @@ Measure under realistic concurrency, at several batch sizes, and pick your point
 
 <details markdown="1"><summary>Check</summary>
 
-No. The fixed and recurring costs — data creation, evaluation, serving complexity, maintenance — are essentially independent of volume, while the savings scale with it.
+No. The fixed and recurring costs of data creation, evaluation, serving complexity and maintenance are essentially independent of volume, while the savings scale with it.
 
 At 500 a day the recurring human cost almost certainly dominates. At 5 million it is negligible against the savings. Volume is the deciding variable and belongs in the first sentence of the proposal.
 

@@ -22,40 +22,6 @@ Two questions are unresolved. They block the phases named, and a session that re
 
 ---
 
-## Phase 4: interactivity within markdown
-
-**Why.** Upstream teaches skills through interactive HTML: quizzes, simulators, in-browser tasks, all built on a component library. None of it ports, because the same files are read on GitHub where no script runs. What can port is the function those things served, which is a tight feedback loop. Three candidates below, one of which needs a prototype before it can be promised.
-
-### 4.1 Prototype graduated hints
-
-**Why.** Practice currently offers one collapsed `Check`. A `Hint` before it would let the learner try, get a nudge, then see the answer, which is the desirable difficulty our own `## Philosophy` argues for and only half implements.
-
-**Risk that makes this a spike rather than a task.** It needs a `<details>` inside a `<details>`. `SKILL.md` already documents that `md_in_html` does not parse HTML nested inside a list item, and nesting may fail the same way. Prototype before deciding.
-
-**Procedure.** In a scratch lesson file, write a Practice item with a nested `Hint` inside the answer block and a sibling variant with `Hint` and `Check` as two separate blocks. Run `.venv/bin/mkdocs build --strict`, open the built HTML, and check three things: the inner block rendered as HTML rather than as literal `<details>` text, markdown inside it became `<p>` and `<code>` rather than backticks, and the surrounding ordered list still resumed with `<ol start="N">`. Check the same file on GitHub, which ignores `markdown="1"` and may behave differently.
-
-**Outcome.** If both variants fail, record that in `PUBLISHING.md` under Rendering as a known limit and close this item. If the sibling variant works and the nested one does not, adopt the sibling form.
-
-### 4.2 Adopt hints, if 4.1 succeeded
-
-Write the pattern into Lesson Design and into the lesson template in `FORMATS.md`, then apply it to one Go lesson as a worked example. Lesson 0003 on slice aliasing is the best candidate: its practice items are predictions where a nudge is genuinely useful.
-
-Do not retrofit all 37 lessons. New lessons and one example are enough to establish the pattern.
-
-### 4.3 A drill bank as a reference type
-
-**Why.** Upstream keeps reusable drill material in `assets/`, which phase 2 deletes. The need is real and markdown can hold it: a bank of retrieval questions per stage, built for spaced practice across sessions rather than for one sitting.
-
-**Change.** Add it to the `reference/` description in `FORMATS.md` as a recognised sheet type, alongside syntax tables and checklists. Optionally build one for the Go workspace covering stages 1 to 3, which is where retrieval matters most.
-
-### 4.4 Name the predict-then-run move
-
-**Why.** The Go lessons use a pattern that is not written down anywhere: state a snippet, ask for the output before running it, then make running it a real world rep. It is the tightest feedback loop available without scripting, and right now it survives only as an author's habit.
-
-**Change.** One bullet in Lesson Design describing it.
-
----
-
 ## Phase 5: em dashes
 
 **Why.** Upstream removed every em dash from its prose and recorded the rule in its own `AGENTS.md`: rewrite the sentence with a comma, colon, period, parentheses or a conjunction, whichever the sentence actually wants, and never do a blind character substitution. Our fork predates that and is saturated. There is a second, independent argument: a heavy em dash rate reads as a machine writing tell, and 781 dashes across 37 Go lessons is roughly 19 per lesson.
@@ -94,9 +60,13 @@ One workspace per pass, with `mkdocs build --strict` and a structural lint after
 
 ---
 
+## Remaining, outside a phase
+
+**Build a drill bank for the Go workspace, stages 1 to 3.** `FORMATS.md` now recognises the sheet type and nothing uses it. Lessons 0001 to 0021, retrieval questions with collapsed answers, grouped by stage. This is content authoring rather than repository work, so it belongs in a teaching session that has the lessons open, not in a plan phase. It was optional in phase 4 and stayed optional.
+
 ## Ordering
 
-Phase 4 next. Phase 5 last, because it produces the largest and least reviewable diffs.
+Phase 5 is what is left, and produces the largest and least reviewable diffs.
 
 ## Done
 
@@ -127,3 +97,13 @@ One commit, because a split is not divisible: any smaller step leaves the skill 
 - `FORMATS.md` links `PUBLISHING.md` for front matter and rendering, and `SKILL.md` for Wisdom, which owns the readable-sources rule. Anchors used: `FORMATS.md#lessons` and `PUBLISHING.md#rendering`.
 - Two stale claims elsewhere surfaced and were fixed on the way: `README.md` still listed `.agents/memory/` in its layout, and its MIT exception named one file when the directory now holds three.
 - Left alone deliberately: `README.md` says the skill came from `mattpocock/skills` via `PromptPasture/agent.md`. Phase 1.3 dropped that chain from the skill metadata because the upstream copy does not corroborate it, but absence of corroboration is not disproof, and attribution is the one claim not to trim on a hunch. Someone who knows whether that fork is real should decide.
+
+### Phase 4: interactivity within markdown, 2026-08-31
+
+Five commits. The spike answered its own question in one build, and the answer changed what got adopted.
+
+- **4.1** Both variants render. A `<details>` inside a `<details>` at column zero parses correctly, inner markdown becomes `<p>` and `<code>`, and numbering resumes after either shape. The existing warning in Rendering was about indenting a block into a list item, and its wording invited the wrong inference; it now says so. Recorded in `PUBLISHING.md`.
+- **4.2** Adopted the sibling form, and not because nesting failed. Nesting works, but a hint you can only reach by opening the answer is not a hint, so the technical result did not decide it. Applied to lesson 0003 on the two prediction items; the recall items were left alone deliberately.
+- **4.3** Drill bank recognised in `FORMATS.md` as a `reference/` sheet, with the caveat that it is the one sheet not built for scanning. Building the Go one moved to Remaining above.
+- **4.4** Predict-then-run named in Lesson Design.
+- Not verified: how a nested `<details>` renders on GitHub. The site was checked on a real build; GitHub was not, because checking it means pushing the scratch file or sending content to a rendering API. The sibling form we adopted is the shape already in use, so nothing shipped depends on the unverified case.

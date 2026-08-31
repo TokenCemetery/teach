@@ -31,7 +31,7 @@ One lesson written to `lessons/NNNN-<slug>.md`, tied to the mission and inside t
 ### Setup
 
 1. Locate the workspace: `learning/<domain>/<topic>/` — a `README.md` sitting beside a `lessons/` directory. If the topic has no workspace yet, create one; see New Topic.
-2. Read `README.md`, `NOTES.md`, `GLOSSARY.md`, `RESOURCES.md`, and `learning-records/`. List `lessons/` and `reference/` to see what has been taught, and to catch a drifted lesson table.
+2. Read `README.md`, `NOTES.md`, `GLOSSARY.md`, `RESOURCES.md`, and `learning-records/`. List `lessons/` and `reference/` to see what has been taught, and to catch a drifted lesson table. Directories are created lazily, so a missing `learning-records/` means no record has been earned yet, not that something is broken.
 3. If the mission in `README.md` is vague, interview the user on why they want this before teaching anything, then rewrite it and confirm. A bad mission is worse than no mission.
 4. Choose the lesson target: what the user asked for, otherwise derive it — see Zone of Proximal Development. If no listed source covers that target, close the gap first, see Grounding.
 

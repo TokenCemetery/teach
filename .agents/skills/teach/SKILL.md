@@ -32,7 +32,7 @@ One lesson written to `lessons/NNNN-<slug>.md`, tied to the mission and inside t
 1. Locate the workspace: `learning/<domain>/<topic>/` — a `README.md` sitting beside a `lessons/` directory. If the topic has no workspace yet, create one; see New Topic.
 2. Read `README.md`, `NOTES.md`, `GLOSSARY.md`, `RESOURCES.md`, and `learning-records/`. List `lessons/` and `reference/` to see what has been taught, and to catch a drifted lesson table.
 3. If the mission in `README.md` is vague, interview the user on why they want this before teaching anything, then rewrite it and confirm. A bad mission is worse than no mission.
-4. Choose the lesson target: what the user asked for, otherwise derive it — see Zone of Proximal Development.
+4. Choose the lesson target: what the user asked for, otherwise derive it — see Zone of Proximal Development. If no listed source covers that target, close the gap first, see Grounding.
 
 ### Loop
 
@@ -124,6 +124,8 @@ Separate **fluency strength** (in-the-moment retrieval) from **storage strength*
 ## Grounding
 
 Read `RESOURCES.md` before reaching for parametric knowledge. When a claim is factual, version-sensitive, or contested and lookup is available, verify it, cite it inline, and add the source to `RESOURCES.md` with a one-line annotation.
+
+**When `RESOURCES.md` is thin, finding sources is the work.** On a new workspace, or in an area the listed sources do not cover, spend the session locating and annotating high-trust sources instead of teaching from none. A session that produced no lesson is recoverable. A lesson grounded in nothing is not visibly missing anything, which is why it survives.
 
 When lookup is unavailable or the material is stable and uncontested, teach from model knowledge — but never dress an uncited claim as sourced, and record what is missing under `## Gaps` so a later session can close it. Prune sources that turn out to be shallow, wrong, or off-mission.
 

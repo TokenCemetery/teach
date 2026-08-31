@@ -10,7 +10,11 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## State
 
-The workspace was prepared in one pass: mission, arc and sources. No lesson has been written yet, so the lesson table is empty rather than drifted, and `GLOSSARY.md` holds only the three pinned usage terms.
+Stage 1 is written: lessons 0001 to 0006, plus two reference sheets, `null-and-three-valued-logic.md` and `select-evaluation-order.md`. Stages 2 to 7 are unwritten.
+
+All six lessons use one schema, `customers` and `orders`, introduced in lesson 0001. Keep using it. Its nullability is deliberate: `country` is unknown-if-absent and `shipped_at` is not-yet-if-absent, which gives lesson 0003 two genuinely different meanings of `NULL` to work with, and gives later stages a foreign key and a money column to reason about.
+
+**How the glossary is populated here.** The skill's test, that a term lands once it can be used correctly, is about a learner's demonstration. These lessons have no single learner, so the test is applied to the material: a term lands when a lesson has taught it well enough for a reader to use it. Stage 1 added seven terms alongside the three pinned ones. Keep doing this per stage, and do not add a term the lessons have not earned.
 
 ## Engine policy
 

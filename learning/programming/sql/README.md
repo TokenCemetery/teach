@@ -8,7 +8,8 @@ type: topic
 
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
-**Latest lesson:** _none yet_
+**Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
+**Latest lesson:** [0006. Keys and Constraints](lessons/0006-keys-and-constraints.md)
 
 ## Success looks like
 
@@ -57,12 +58,19 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-tables-rows-and-types.md) | Tables, Rows and Types | A column type is a constraint you get for free, and the wrong one is hard to undo |
+| [0002](lessons/0002-select-and-evaluation-order.md) | SELECT and Evaluation Order | The clauses run in a different order than they are written, which explains most beginner errors |
+| [0003](lessons/0003-null-and-three-valued-logic.md) | NULL and Three-Valued Logic | WHERE keeps only true, so unknown behaves as false and NOT IN can return nothing |
+| [0004](lessons/0004-sets-and-bags.md) | Sets and Bags | A table is a bag, so duplicates are real and UNION quietly pays to remove them |
+| [0005](lessons/0005-sorting-and-collation.md) | Sorting and Collation | Text ordering depends on a collation, and a tie without a unique key is not stable |
+| [0006](lessons/0006-keys-and-constraints.md) | Keys and Constraints | A key is a claim the database enforces, and every claim you leave out becomes a bug |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
+- [NULL and three-valued logic](reference/null-and-three-valued-logic.md): truth tables, where NULL counts as equal, and the traps with their fixes
+- [Evaluation order of a SELECT](reference/select-evaluation-order.md): what runs when, what each clause can see, and which errors that explains
 
 ## How this works
 

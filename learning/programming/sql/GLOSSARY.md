@@ -28,4 +28,30 @@ _Avoid_: locking mode, consistency level, transaction mode
 
 ## Terms
 
-_Added as lessons establish them._
+**Bag**:
+A collection that allows duplicates, which is what a SQL table actually is. Two identical rows are two rows and no query can tell them apart, so only a constraint makes rows distinguishable.
+_Avoid_: set, list, relation
+
+**Candidate key**:
+A set of columns that is both `UNIQUE` and `NOT NULL`, and therefore identifies every row. Uniqueness alone is not enough, because a nullable unique column permits any number of NULLs.
+_Avoid_: unique index, identifier, natural key
+
+**Collation**:
+The rules that decide how text compares and sorts, including case and accent handling. It is configuration rather than part of SQL, so the same query on two databases can legitimately return rows in a different order.
+_Avoid_: character set, encoding, locale
+
+**Evaluation order**:
+The order in which a `SELECT`'s clauses actually run, which is `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `SELECT`, `DISTINCT`, `ORDER BY`, `LIMIT`. It differs from the written order, and it is what determines which names a clause can see.
+_Avoid_: execution plan, clause order, precedence
+
+**Surrogate key**:
+An identifier invented for the purpose of identifying a row, carrying no meaning of its own. It is chosen over a natural key for stability, since data that means something tends to change.
+_Avoid_: auto-increment, primary key, technical key
+
+**Three-valued logic**:
+The system in which a condition evaluates to true, false or unknown, with any comparison involving `NULL` producing unknown. `WHERE` keeps only true, which is why unknown behaves like false and why a filter and its negation do not partition a table.
+_Avoid_: null handling, boolean logic, tri-state
+
+**Unknown**:
+The third truth value, produced by comparing anything with `NULL`. It is not the same as false: `NOT unknown` is still unknown, and `false AND unknown` is false while `unknown AND unknown` is not.
+_Avoid_: null, false, undefined

@@ -61,6 +61,11 @@ rest.
   `templates/learning-workspace/`, which keeps its `{placeholder}` markers, and
   `TODO.md`, whose subject is planned work.
 - No claims you cannot support.
+- No em dashes in prose. Where a sentence reaches for one, rewrite it with a
+  comma, colon, period, parentheses or a conjunction, whichever the sentence
+  wants. Never substitute the character mechanically. The lessons predate this
+  rule and still carry them; that is a backlog being cleared a workspace at a
+  time, not a licence.
 - Every section and example must serve the goal. Delete the rest.
 - Examples must be short, complete, and match how this repository actually
   works.

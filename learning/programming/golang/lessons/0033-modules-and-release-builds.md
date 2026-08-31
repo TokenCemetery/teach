@@ -32,7 +32,7 @@ Preallocating a slice with `make([]T, 0, n)` when the final size is known. It tu
 
 ### Minimal version selection
 
-Go does not resolve dependencies to the newest compatible version. It selects the **minimum version that satisfies every requirement** in the graph. If your module needs `v1.2.0` and a dependency needs `v1.4.0`, you get `v1.4.0` — the highest of the minimums, not the highest that exists.
+Go does not resolve dependencies to the newest compatible version. It selects the **minimum version that satisfies every requirement** in the graph. If your module needs `v1.2.0` and a dependency needs `v1.4.0`, you get `v1.4.0`, the highest of the minimums rather than the highest that exists.
 
 The consequence is worth internalising: **builds are reproducible without a lockfile**, because the answer is a function of the requirements rather than of the day you ran it. Upgrades only happen when someone edits `go.mod`.
 
@@ -44,7 +44,7 @@ go mod why example.com/pkg      # why is this in my graph at all
 go mod graph                    # the full requirement graph
 ```
 
-`go.sum` records cryptographic hashes of every module version used. It is not a lockfile — `go.mod` already pins — it is a tamper check, and it belongs in version control.
+`go.sum` records cryptographic hashes of every module version used. It is not a lockfile, since `go.mod` already pins. It is a tamper check, and it belongs in version control.
 
 ### The v2 rule
 
@@ -62,7 +62,7 @@ Forgetting the suffix is the most common module mistake. `go get` will keep reso
 
 `GOPROXY` defaults to the public module proxy, with checksum verification against `GOSUMDB`. For internal code, `GOPRIVATE=github.com/yourorg/*` turns off both for those paths so the go tool fetches directly and does not publish your module names to a public service.
 
-`replace` directives redirect a module path, typically to a local checkout during development. A `replace` in a library's `go.mod` is ignored by consumers and is a common source of "works in the repo, fails for users" — keep them out of anything you publish.
+`replace` directives redirect a module path, typically to a local checkout during development. A `replace` in a library's `go.mod` is ignored by consumers and is a common source of "works in the repo, fails for users", so keep them out of anything you publish.
 
 ### The `go` and `toolchain` directives
 
@@ -71,7 +71,7 @@ go 1.26
 toolchain go1.27.0
 ```
 
-`go` is the minimum language version, and it selects behaviour — the Lesson 15 loop-variable change and the Lesson 17 timer change are both gated on it. `toolchain` names the toolchain to use, and the go command will download it if the installed one is older. Together they let a repository pin what it builds with while keeping the language floor lower than the newest release.
+`go` is the minimum language version, and it selects behaviour: the Lesson 15 loop-variable change and the Lesson 17 timer change are both gated on it. `toolchain` names the toolchain to use, and the go command will download it if the installed one is older. Together they let a repository pin what it builds with while keeping the language floor lower than the newest release.
 
 ### Release builds
 
@@ -84,10 +84,10 @@ CGO_ENABLED=0 go build \
 
 | Flag | Does |
 |---|---|
-| `CGO_ENABLED=0` | pure-Go static binary — runs in a `scratch` or `distroless` image with no libc |
+| `CGO_ENABLED=0` | pure-Go static binary, runs in a `scratch` or `distroless` image with no libc |
 | `-trimpath` | removes local filesystem paths from the binary, so builds are reproducible and do not leak your home directory |
 | `-ldflags="-s -w"` | strips the symbol table and DWARF data; smaller binary, no debugger |
-| `-X main.version=…` | sets a string variable at link time — how a binary knows its own version |
+| `-X main.version=…` | sets a string variable at link time, which is how a binary knows its own version |
 
 Cross-compiling is `GOOS=linux GOARCH=arm64 go build`, and with `CGO_ENABLED=0` it needs no toolchain for the target. That is a genuine Go advantage worth using.
 
@@ -100,9 +100,9 @@ go install golang.org/x/vuln/cmd/govulncheck@latest
 govulncheck ./...
 ```
 
-`govulncheck` reports known vulnerabilities in your dependencies *and* checks whether your code actually reaches the affected function — so it produces far fewer false alarms than a plain dependency scan. Run it in CI.
+`govulncheck` reports known vulnerabilities in your dependencies *and* checks whether your code actually reaches the affected function, so it produces far fewer false alarms than a plain dependency scan. Run it in CI.
 
-Go releases patches roughly every month, and the support policy covers the two most recent major versions — at the time of writing, Go 1.26 and 1.27. A toolchain older than that receives no security fixes.
+Go releases patches roughly every month, and the support policy covers the two most recent major versions, which at the time of writing are Go 1.26 and 1.27. A toolchain older than that receives no security fixes.
 
 ## Practice
 
@@ -110,7 +110,7 @@ Go releases patches roughly every month, and the support policy covers the two m
 
 <details markdown="1"><summary>Check</summary>
 
-`v1.4.0` — the highest of the required minimums.
+`v1.4.0`, the highest of the required minimums.
 
 Minimal version selection takes the maximum across the requirement graph, not the newest published version. So a new release of `lib` does not enter your build until someone edits a `go.mod`, which is what makes builds reproducible without a lockfile.
 
@@ -122,7 +122,7 @@ Minimal version selection takes the maximum across the requirement graph, not th
 
 The module path is missing the `/v2` suffix. Without it, the go tool treats `v2.0.0` as a version of a module that claims to be v1, and it will not select it.
 
-Fix by setting `module github.com/you/lib/v2` in `go.mod` and updating internal imports. It is a breaking change by design — v1 and v2 are different packages, which is exactly what lets both exist in one build.
+Fix by setting `module github.com/you/lib/v2` in `go.mod` and updating internal imports. It is a breaking change by design: v1 and v2 are different packages, which is exactly what lets both exist in one build.
 
 </details>
 
@@ -137,7 +137,7 @@ Fix by setting `module github.com/you/lib/v2` in `go.mod` and updating internal 
 
 **b)** `-trimpath` to remove local filesystem paths.
 
-Without it, the binary embeds the build machine's directory layout, so two builds of identical source differ — and your home directory ships to production. `CGO_ENABLED=0` helps portability rather than reproducibility, stripping changes size, and `-race` belongs nowhere near a release build.
+Without it, the binary embeds the build machine's directory layout, so two builds of identical source differ, and your home directory ships to production. `CGO_ENABLED=0` helps portability rather than reproducibility, stripping changes size, and `-race` belongs nowhere near a release build.
 
 </details>
 
@@ -145,7 +145,7 @@ Without it, the binary embeds the build machine's directory layout, so two build
 
 <details markdown="1"><summary>Check</summary>
 
-Because `replace` in a dependency's `go.mod` is ignored — only the main module's directives apply. So the library builds in its own repository and fails for every consumer, with an error pointing at a module path nobody recognises.
+Because `replace` in a dependency's `go.mod` is ignored: only the main module's directives apply. So the library builds in its own repository and fails for every consumer, with an error pointing at a module path nobody recognises.
 
 Use them for local development and remove them before tagging. In a multi-module repository, a `go.work` file does the same job without touching `go.mod`.
 
@@ -155,7 +155,7 @@ Use them for local development and remove them before tagging. In a multi-module
 
 <details markdown="1"><summary>Check</summary>
 
-The loop-variable semantics from Lesson 15 and the timer behaviour from Lesson 17 — both are gated on the `go` directive, not on the installed toolchain.
+The loop-variable semantics from Lesson 15 and the timer behaviour from Lesson 17. Both are gated on the `go` directive, not on the installed toolchain.
 
 This is the compatibility mechanism working as designed: upgrading the toolchain never changes your program's behaviour, and raising the `go` line is the deliberate, reviewable step that does. It also means a stale `go` directive quietly keeps you on old semantics.
 

@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-`testdata/fuzz/FuzzName/`. Committed, it joins the seed corpus, so every plain `go test` replays it — the finding becomes a regression test for free.
+`testdata/fuzz/FuzzName/`. Committed, it joins the seed corpus, so every plain `go test` replays it and the finding becomes a regression test for free.
 
 </details>
 
@@ -57,7 +57,7 @@ That second point is why so many old benchmarks report impossible numbers. With 
 BenchmarkParse-10    	 8123456	       147.2 ns/op	      32 B/op	       1 allocs/op
 ```
 
-`-10` is `GOMAXPROCS`. Then iterations, nanoseconds per operation, and — with `-benchmem` — bytes and allocations per operation. **Allocations per operation is usually the number that matters**, because it is stable across machines and it is what you can actually act on. Nanoseconds move with the CPU, the thermal state and whatever else is running.
+`-10` is `GOMAXPROCS`. Then iterations, nanoseconds per operation, and, with `-benchmem`, bytes and allocations per operation. **Allocations per operation is usually the number that matters**, because it is stable across machines and it is what you can actually act on. Nanoseconds move with the CPU, the thermal state and whatever else is running.
 
 ### One run is not a measurement
 
@@ -70,7 +70,7 @@ go test -bench=. -benchmem -count=10 ./... > new.txt
 benchstat old.txt new.txt
 ```
 
-`benchstat` — from `golang.org/x/perf/cmd/benchstat` — reports the difference with a confidence interval and tells you when the change is statistically indistinguishable from noise. That verdict is the deliverable. "It went from 147ns to 141ns" is not a result; it is one sample from a noisy distribution.
+`benchstat`, from `golang.org/x/perf/cmd/benchstat`, reports the difference with a confidence interval and tells you when the change is statistically indistinguishable from noise. That verdict is the deliverable. "It went from 147ns to 141ns" is not a result; it is one sample from a noisy distribution.
 
 Reduce the noise you control: close other applications, disable turbo or plug in the laptop, and never benchmark inside a container sharing a busy host. A quiet machine and `-count=10` beats a clever methodology on a busy one.
 
@@ -95,7 +95,7 @@ Scaling behaviour is more informative than any single point. A function that is 
 
 A microbenchmark measures one function on warm caches with no contention, no GC pressure from the rest of the program, and no network. Real gains and real regressions frequently live in the parts it excludes.
 
-So the order is: **profile the whole system to find where the time goes, benchmark the specific function to prove the fix.** Reversing it produces a heavily optimised function that was never the problem — the most common way engineering time gets spent on nothing.
+So the order is: **profile the whole system to find where the time goes, benchmark the specific function to prove the fix.** Reversing it produces a heavily optimised function that was never the problem, which is the most common way engineering time gets spent on nothing.
 
 ## Practice
 
@@ -115,7 +115,7 @@ The result is unused, so the compiler may eliminate the call entirely and you ti
 
 Nothing yet. That is a 4% difference from single runs, well inside the noise of most machines.
 
-Run both with `-count=10` and let `benchstat` decide. It will report the change with a confidence interval, and often the answer is that the two are indistinguishable — which is a real and useful result.
+Run both with `-count=10` and let `benchstat` decide. It will report the change with a confidence interval, and often the answer is that the two are indistinguishable, which is a real and useful result.
 
 </details>
 
@@ -132,7 +132,7 @@ Run both with `-count=10` and let `benchstat` decide. It will report the change 
 
 Allocation count is a property of the code, not of the CPU, so it reproduces on a colleague's laptop and in CI. Timing moves with clock speed, thermal state and neighbours; iteration count and wall-clock are just the framework hitting its time budget.
 
-It is also the number you can act on directly — Lesson 32 is about removing allocations.
+It is also the number you can act on directly, and Lesson 32 is about removing allocations.
 
 </details>
 
@@ -140,7 +140,7 @@ It is also the number you can act on directly — Lesson 32 is about removing al
 
 <details markdown="1"><summary>Check</summary>
 
-A benchmark measures the function you already suspect. A profile tells you which function to suspect — and intuition about where time goes is wrong often enough that the profile regularly points somewhere nobody proposed.
+A benchmark measures the function you already suspect. A profile tells you which function to suspect, and intuition about where time goes is wrong often enough that the profile regularly points somewhere nobody proposed.
 
 Optimising a correctly-benchmarked function that accounts for 2% of runtime is a real outcome of skipping this order, and the work is unrecoverable once done.
 
@@ -152,7 +152,7 @@ Optimising a correctly-benchmarked function that accounts for 2% of runtime is a
 
 Concurrency. A lock benchmarked from one goroutine measures the uncontended path, which is exactly where `RWMutex`'s extra bookkeeping shows up as pure cost and its benefit cannot appear.
 
-Use `b.RunParallel` — or a benchmark that starts a realistic number of goroutines — so contention exists at all. Lock changes justified by single-goroutine benchmarks are a recurring way to make a service slower with evidence.
+Use `b.RunParallel`, or a benchmark that starts a realistic number of goroutines, so contention exists at all. Lock changes justified by single-goroutine benchmarks are a recurring way to make a service slower with evidence.
 
 </details>
 

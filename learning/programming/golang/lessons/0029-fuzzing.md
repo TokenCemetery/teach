@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-`t.Errorf("Parse(%q) = %v, want %v", in, got, want)` — the call, the result, the expectation, on one line, so the failure is readable without opening the file.
+`t.Errorf("Parse(%q) = %v, want %v", in, got, want)`: the call, the result, the expectation, on one line, so the failure is readable without opening the file.
 
 </details>
 
@@ -61,7 +61,7 @@ go test ./...                    # runs the seed corpus only, as an ordinary tes
 go test -fuzz=FuzzRoundTrip      # generates inputs until it finds a failure or you stop it
 ```
 
-That split matters. Fuzz targets run as normal tests in CI over their corpus, and the open-ended search is something you run deliberately — for minutes or hours — when working on the code.
+That split matters. Fuzz targets run as normal tests in CI over their corpus, and the open-ended search is something you run deliberately, for minutes or hours, when working on the code.
 
 When a failing input is found it is **minimised and written to `testdata/fuzz/FuzzRoundTrip/`**. Commit that file: from then on it is part of the seed corpus and every `go test` run checks it. A fuzz finding becomes a regression test with no work.
 
@@ -76,7 +76,7 @@ The hard part is not the mechanics, it is finding an assertion that holds for ev
 | Differential | your fast implementation agrees with the obvious slow one |
 | Never panics | the function returns an error rather than crashing on any input |
 
-"Never panics" is the weakest and still worth having for anything parsing untrusted input — which is every request body, every header, every filename. It is the whole reason fuzzing was invented.
+"Never panics" is the weakest and still worth having for anything parsing untrusted input, which is every request body, every header, every filename. It is the whole reason fuzzing was invented.
 
 Reject invalid input by returning early, not by failing. A parser rejecting garbage is correct; the fuzzer will move on and try something else.
 
@@ -84,7 +84,7 @@ Reject invalid input by returning early, not by failing. A parser rejecting garb
 
 The fuzzing engine supports a fixed set of parameter types: `[]byte`, `string`, the integer types, `float32`/`float64`, `bool`, and `rune`. To fuzz a struct, take a `[]byte` and build the struct from it deterministically.
 
-The search is coverage-guided but not exhaustive. A clean overnight run is evidence, not proof — the same caveat as the race detector in Lesson 20, for the same reason: both observe what actually executed.
+The search is coverage-guided but not exhaustive. A clean overnight run is evidence, not proof, the same caveat as the race detector in Lesson 20, for the same reason: both observe what actually executed.
 
 Fuzzing is slow relative to unit tests, so keep the body fast. A target that touches a database will find almost nothing, because the engine gets a few hundred executions a second instead of a few hundred thousand.
 
@@ -94,9 +94,9 @@ Fuzzing is slow relative to unit tests, so keep the body fast. A target that tou
 
 <details markdown="1"><summary>Check</summary>
 
-No — it is the parser working. Return early from the fuzz function when the input is legitimately invalid.
+No, it is the parser working. Return early from the fuzz function when the input is legitimately invalid.
 
-Failing on any error would make the fuzzer report noise immediately and constantly, and the real property — that valid input round-trips, and that nothing panics — would never get exercised.
+Failing on any error would make the fuzzer report noise immediately and constantly, and the real property, that valid input round-trips and that nothing panics, would never get exercised.
 
 </details>
 
@@ -104,7 +104,7 @@ Failing on any error would make the fuzzer report noise immediately and constant
 
 <details markdown="1"><summary>Check</summary>
 
-Commit the file it wrote under `testdata/fuzz/`. It becomes part of the seed corpus, so every subsequent `go test` — with no `-fuzz` flag — replays it.
+Commit the file it wrote under `testdata/fuzz/`. It becomes part of the seed corpus, so every subsequent `go test` replays it, with no `-fuzz` flag.
 
 That turns each finding into a permanent regression test at zero cost, which is the part of Go's fuzzing design that makes it worth adopting rather than just trying.
 
@@ -129,7 +129,7 @@ A round trip constrains the whole encoding rather than one surface detail, so it
 
 <details markdown="1"><summary>Check</summary>
 
-Take a `[]byte` and construct the `Config` from it deterministically — slice fields out of the bytes, or feed it through a decoder you already trust.
+Take a `[]byte` and construct the `Config` from it deterministically: slice fields out of the bytes, or feed it through a decoder you already trust.
 
 Deterministic matters: the engine minimises a failing input by shrinking the bytes and re-running, so the same bytes must always produce the same `Config`. Anything random in the construction makes the reported failure unreproducible.
 
@@ -141,14 +141,14 @@ Deterministic matters: the engine minimises a failing input by shrinking the byt
 
 Because the input space is enormous and the interesting cases are exactly the ones nobody writes by hand: truncated multi-byte sequences, overlong encodings, lone surrogates, combining marks.
 
-Lesson 5's rule — `len` is bytes, indexing is bytes, only `range` decodes — is violated by code that slices a string at an arbitrary index. A fuzzer finds that in seconds by producing a string where the boundary lands mid-rune, which is the same bug that mangles a real user's name in production.
+Lesson 5's rule, that `len` is bytes and indexing is bytes and only `range` decodes, is violated by code that slices a string at an arbitrary index. A fuzzer finds that in seconds by producing a string where the boundary lands mid-rune, which is the same bug that mangles a real user's name in production.
 
 </details>
 
 ## Real-world reps
 
 - [ ] Write a `Format`/`Parse` pair and fuzz the round trip. Run it for two minutes and see whether it finds anything.
-- [ ] Deliberately introduce a bug — slice a string at a byte index — and watch the fuzzer produce the multi-byte input that breaks it. Commit the corpus file it writes.
+- [ ] Deliberately introduce a bug by slicing a string at a byte index, and watch the fuzzer produce the multi-byte input that breaks it. Commit the corpus file it writes.
 - [ ] Tomorrow: find one function in a service you own that parses untrusted input. Write the "never panics" fuzz target for it, even if you write nothing else.
 
 ## Going further

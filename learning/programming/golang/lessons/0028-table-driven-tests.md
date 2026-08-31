@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-When the behaviour differs per type — that is an interface — or when there is one concrete type, or when reflection would be needed anyway.
+When the behaviour differs per type, which is what an interface is for, or when there is one concrete type, or when reflection would be needed anyway.
 
 </details>
 
@@ -30,7 +30,7 @@ Named types with `int` as their underlying type, such as `type UserID int`. With
 
 ## Know this
 
-A test is a function taking `*testing.T` in a `_test.go` file. There are no assertions — you compare and call `t.Errorf`. That is deliberate: the failure message is written by the person who knows what the test means.
+A test is a function taking `*testing.T` in a `_test.go` file. There are no assertions: you compare and call `t.Errorf`. That is deliberate: the failure message is written by the person who knows what the test means.
 
 ```go
 func TestParse(t *testing.T) {
@@ -44,7 +44,7 @@ func TestParse(t *testing.T) {
 }
 ```
 
-`t.Errorf` records a failure and continues; `t.Fatalf` stops this test. Use `Fatalf` when continuing would produce noise — a nil pointer to dereference — and `Errorf` when you want to see every failure at once.
+`t.Errorf` records a failure and continues; `t.Fatalf` stops this test. Use `Fatalf` when continuing would produce noise, such as a nil pointer to dereference, and `Errorf` when you want to see every failure at once.
 
 The message convention is `functionCall = got, want expected`. It looks terse and it means a failing test tells you the input, the result and the expectation on one line, without opening the file.
 
@@ -89,7 +89,7 @@ func TestParse(t *testing.T) {
 go test -run 'TestParse/empty' ./...
 ```
 
-Adding a case is one line, which is the property that makes people actually add them. Note that the zero value does useful work again — omitted fields mean "no error expected", "empty input", and the struct literal stays readable.
+Adding a case is one line, which is the property that makes people actually add them. Note that the zero value does useful work again: omitted fields mean "no error expected" and "empty input", and the struct literal stays readable.
 
 ### Parallel subtests
 
@@ -100,7 +100,7 @@ t.Run(tt.name, func(t *testing.T) {
 })
 ```
 
-Parallel subtests pause until the parent test function returns, then run together. Two things to know: since Go 1.22 the loop variable is per-iteration, so the old `tt := tt` line is no longer needed — and you will still see it everywhere. And parallel tests sharing state is exactly the situation `-race` was built for.
+Parallel subtests pause until the parent test function returns, then run together. Two things to know: since Go 1.22 the loop variable is per-iteration, so the old `tt := tt` line is no longer needed, and you will still see it everywhere. And parallel tests sharing state is exactly the situation `-race` was built for.
 
 ### Helpers and cleanup
 
@@ -117,7 +117,7 @@ func newTestStore(t *testing.T) *Store {
 
 ### Golden files
 
-For output too large to inline — rendered templates, formatted reports, JSON — keep the expected result in `testdata/` and compare against it. The directory name is special: the Go tool ignores it when building.
+For output too large to inline, such as rendered templates, formatted reports or JSON, keep the expected result in `testdata/` and compare against it. The directory name is special: the Go tool ignores it when building.
 
 The convention is a `-update` flag that rewrites the golden files, so regenerating is deliberate and the diff is reviewed like any other change:
 
@@ -127,7 +127,7 @@ var update = flag.Bool("update", false, "update golden files")
 
 ### What not to reach for
 
-You do not need an assertion library. `testify` is widely used and adds a dependency, a second vocabulary, and failure messages nobody wrote for this test. `google/go-cmp` is the one worth adopting, because comparing structs and slices by hand is genuinely awkward — `cmp.Diff(want, got)` prints a readable diff, and it handles unexported fields explicitly rather than by accident.
+You do not need an assertion library. `testify` is widely used and adds a dependency, a second vocabulary, and failure messages nobody wrote for this test. `google/go-cmp` is the one worth adopting, because comparing structs and slices by hand is genuinely awkward. `cmp.Diff(want, got)` prints a readable diff, and it handles unexported fields explicitly rather than by accident.
 
 Run tests with `-race` in CI, and with `-count=1` when you want to defeat the test cache.
 
@@ -149,7 +149,7 @@ The deeper reason is cost: adding a case to a table is one line, so cases get ad
 
 `Errorf` marks the test failed and continues. `Fatalf` marks it failed and stops that test function immediately.
 
-Use `Fatalf` when continuing is pointless or unsafe — an error where you expected a value, so the next line would dereference nil. Use `Errorf` when independent checks can all report, which gives you the whole picture from one run.
+Use `Fatalf` when continuing is pointless or unsafe, as with an error where you expected a value, so the next line would dereference nil. Use `Errorf` when independent checks can all report, which gives you the whole picture from one run.
 
 </details>
 
@@ -164,7 +164,7 @@ Use `Fatalf` when continuing is pointless or unsafe — an error where you expec
 
 **b)** `tt := tt` before the subtest closure.
 
-Loop variables are per-iteration from Go 1.22, so the shadow copy is redundant — subject to the `go` directive in `go.mod`. The other three do jobs the language change did not touch.
+Loop variables are per-iteration from Go 1.22, so the shadow copy is redundant, subject to the `go` directive in `go.mod`. The other three do jobs the language change did not touch.
 
 </details>
 
@@ -174,7 +174,7 @@ Loop variables are per-iteration from Go 1.22, so the shadow copy is redundant �
 
 A `defer` in the helper fires when the *helper* returns, which is before the test has used the resource. Moving it to the calling test does not work either, once the subtest is parallel: the parent function returns while the parallel subtests are still running, so its defers fire too early.
 
-`t.Cleanup` is registered against the specific `*testing.T` and runs when *that* test finishes — which is the semantics you wanted in both cases.
+`t.Cleanup` is registered against the specific `*testing.T` and runs when *that* test finishes, which is the semantics you wanted in both cases.
 
 </details>
 
@@ -189,7 +189,7 @@ type fakeStore struct{ user *User; err error }
 func (f fakeStore) GetUser(context.Context, string) (*User, error) { return f.user, f.err }
 ```
 
-This is the payoff for declaring the interface in the consumer and keeping it small. A mocking framework is what you need when the interface has fourteen methods — the framework is treating the symptom.
+This is the payoff for declaring the interface in the consumer and keeping it small. A mocking framework is what you need when the interface has fourteen methods, so the framework is treating the symptom.
 
 </details>
 

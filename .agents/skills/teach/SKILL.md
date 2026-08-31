@@ -5,9 +5,10 @@ disable-model-invocation: true
 argument-hint: "What would you like to learn about?"
 license: MIT
 metadata:
-  author: github.com/mattpocock/skills
-  upstream: github.com/PromptPasture/agent.md
-  version: "1.1.0"
+  upstream: github.com/mattpocock/skills
+  upstream_path: skills/productivity/teach
+  upstream_version: "1.2.3"
+  version: "2.0.0"
   catalog: productivity
   category: learning
   tags: [learning, teaching, retention]

@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0042. From Profile to Proof](lessons/0042-from-profile-to-proof.md)
+**Latest lesson:** [0049. Does This Framework Earn Its Place](lessons/0049-does-this-framework-earn-its-place.md), which closes the arc
 
 ## Success looks like
 
@@ -101,6 +101,13 @@ Work through these in order.
 | [0040](lessons/0040-reading-a-gc-log.md) | Reading a Garbage Collection Log | One line of log says how much was collected, how long it took, and whether to care |
 | [0041](lessons/0041-a-benchmark-you-can-trust.md) | A Benchmark You Can Trust | Why the obvious timing loop lies, and the harness setup that silently measures nothing |
 | [0042](lessons/0042-from-profile-to-proof.md) | From Profile to Proof | Record the run, read where the time went, change one thing, and prove the win |
+| [0043](lessons/0043-what-counts-as-breaking.md) | What Counts as Breaking | Three kinds of compatibility, and the change that is safe to compile against and fatal to run against |
+| [0044](lessons/0044-designing-a-signature.md) | Designing a Signature | The parameter and return types decide what callers can do, and most of the damage is done at the boundary |
+| [0045](lessons/0045-evolving-a-type.md) | Evolving a Type Without Breaking It | How to add to an interface, a record, an enum and a sealed hierarchy after people depend on them |
+| [0046](lessons/0046-deprecation-that-works.md) | Deprecation That Works | Marking something deprecated changes nothing unless you say what happens next |
+| [0047](lessons/0047-settling-it-from-the-source.md) | Settling It From the Source | Where to look when the argument is about what Java does, and which document answers which question |
+| [0048](lessons/0048-reviewing-java.md) | Reviewing Java | Naming what an abstraction costs, instead of saying it feels wrong |
+| [0049](lessons/0049-does-this-framework-earn-its-place.md) | Does This Framework Earn Its Place | The last judgment in the arc, made from the service's constraints rather than the framework's promises |
 
 ## Reference
 
@@ -112,6 +119,7 @@ Work through these in order.
 - [Concurrency](reference/concurrency.md): which guarantee each construct gives, which model fits the workload, and what the symptom in front of you means
 - [Testing and build](reference/testing-and-build.md): the build task each command actually performs, the double to reach for, and the failure that means the artifact is wrong
 - [The runtime](reference/the-runtime.md): where the memory goes, which collector answers which requirement, and the measurement that supports a claim
+- [Judgment](reference/judgment.md): which changes break what, how to retire an API, and how to argue the call from the source
 
 ## How this works
 

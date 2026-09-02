@@ -38,9 +38,17 @@ _Avoid_: casting, wrapping, promotion
 A plain jar with no `module-info.class`, which the module system still admits under a name taken from its `Automatic-Module-Name` manifest attribute or, failing that, derived from its filename. A library that does not set the attribute therefore publishes a name that changes when somebody renames the file.
 _Avoid_: module, unnamed module, modular jar
 
+**Behavioural compatibility**:
+Whether code that still compiles and still links produces the same result as before. It is independent of the other two compatibilities, so the most dangerous release is one that is source-compatible and binary-compatible and quietly answers differently.
+_Avoid_: semantic versioning, bug fix, backwards compatible
+
 **Bill of materials**:
 A `pom`-packaged artifact that exists only to declare versions, imported into `dependencyManagement` with `import` scope. One line then fixes the versions of a whole family of artifacts, which is why a dependency taken from a BOM is declared with no version of its own.
 _Avoid_: parent pom, dependency list, manifest
+
+**Binary compatibility**:
+Whether already-compiled class files still link and run against a new version with no recompilation. Its test is running the old class files, never rebuilding them, because a successful rebuild proves source compatibility and says nothing about this.
+_Avoid_: source compatibility, ABI stability, drop-in replacement
 
 **Blackhole**:
 A sink a benchmark passes a result to so that the value is unambiguously consumed and cannot be treated as unused. JMH can also detect a compiler-supported blackhole mode and use it without any change to the benchmark, and results taken under different modes are not comparable.
@@ -69,6 +77,10 @@ _Avoid_: max heap, used heap, allocated memory
 **Compact constructor**:
 A canonical constructor written with no parameter list, whose body runs before the components are assigned to the fields. Assigning to the parameter is what reaches the field, and assigning to `this.field` there is a compile error rather than a redundancy.
 _Avoid_: compact form, short constructor, implicit constructor
+
+**Compile-time constant**:
+A `static final` field of a primitive or `String` type with a constant initialiser, whose value the compiler folds into every caller's class file. Changing it has no effect on a caller that does not recompile, because no reference to the field survives in the caller at all.
+_Avoid_: final field, immutable value, static field
 
 **Compressed ordinary object pointers**:
 The JVM's default encoding of a reference as a 32-bit heap offset rather than a full-width address, used while the heap is small enough for every object to be reachable that way. It halves the cost of every reference field and every reference-typed array slot, and the JVM decides it ergonomically rather than the programmer choosing it.
@@ -194,6 +206,10 @@ _Avoid_: naive time, zoneless, floating time
 The off-heap area holding the metadata of loaded classes, meaning their bytecode, constant pools and field layouts. It is bounded separately from the heap and is unbounded by default, so a classloader leak exhausts native memory rather than heap.
 _Avoid_: permgen, heap, class cache
 
+**Method descriptor**:
+The encoding of a method's parameter and return types which, with its name, is the method's identity inside a class file. Two methods differing only in return type are one method in the source language and two unrelated methods here, which is why narrowing a return type breaks callers that do not recompile.
+_Avoid_: signature, prototype, type erasure
+
 **Mock**:
 A test double carrying expectations about how it is called, which are checked and can fail the test on their own. It tests the implementation's choice of interactions rather than its promise, which is why it is the double most likely to fail on a change that broke no behaviour.
 _Avoid_: stub, fake, double
@@ -209,6 +225,10 @@ _Avoid_: default sort, comparison, ranking
 **Object header**:
 The fixed block of JVM bookkeeping in front of every instance's fields, invisible from the source and counted in every allocation. On a small object it is most of the object, which is why a record of two `int` fields costs three times what its fields do.
 _Avoid_: record header, metadata, object overhead
+
+**Overload resolution**:
+The compiler's choice, made from the static types of the arguments, of which same-named method a call binds to. It happens once at compile time and never again, so a caller holding a value under a more general type gets a different overload than its runtime class would suggest.
+_Avoid_: dynamic dispatch, overriding, polymorphism
 
 **PECS**:
 Producer extends, consumer super: `? extends T` for a structure you only read from, `? super T` for one you only write to. A parameter that must do both takes a plain `T` and gives up the flexibility, which is the trade rather than a defect.
@@ -250,6 +270,10 @@ _Avoid_: closed class, final hierarchy, restricted inheritance
 A stream operation that can finish without pulling every element through the pipeline, such as `findFirst`, `anyMatch` or `limit`. It is what makes an infinite source usable, and it is what an operation such as `sorted` takes away, since sorting has to see everything first.
 _Avoid_: early exit, lazy operation, break
 
+**Source compatibility**:
+Whether code that compiled against the old version still compiles against the new one, unchanged. Its test is a recompile, and passing it says nothing about whether already-compiled callers will still run.
+_Avoid_: binary compatibility, API stability, non-breaking change
+
 **Spy**:
 A test double that records how it was called so the test can inspect it afterwards, or a wrapper that delegates to a real object while recording. It moves the check to after the call instead of declaring it in advance, which is what separates it from a mock.
 _Avoid_: mock, stub, listener
@@ -261,6 +285,10 @@ _Avoid_: mock, fake, dummy
 **Suppressed exception**:
 An exception attached to another rather than replacing it, which is what try-with-resources does when a resource fails to close while an exception from the body is already propagating. A hand-written `finally` loses the original instead, with no trace that it happened.
 _Avoid_: secondary exception, ignored exception, nested exception
+
+**Terminal deprecation**:
+Deprecation with `forRemoval = true`, which the platform treats as a different signal rather than a stronger adjective: the compiler warns about it by default, in its own `removal` category, where ordinary deprecation is silent without `-Xlint:deprecation`. It is a stated intention and not a guarantee, since the platform has withdrawn one.
+_Avoid_: deprecated, obsolete, scheduled for deletion
 
 **Terminal operation**:
 The stream operation that makes the pipeline run and consumes it, such as `forEach`, `collect` or `count`. Nothing before it executes, and nothing after it is possible on that stream, because a second terminal call throws.

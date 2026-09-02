@@ -102,6 +102,18 @@ FORBIDDEN = [
 
 FENCE = re.compile(r"^(```|~~~)", re.M)
 
+# The site's markdown extensions, kept in step with mkdocs.yml. Rendering with
+# these is the only check that actually proves a collapsible block survives,
+# rather than proving it looks right in the source. Available only when the
+# project virtual environment's interpreter runs this script; without it the
+# render check is reported as skipped rather than passing silently.
+SITE_EXTENSIONS = ["md_in_html", "sane_lists", "nl2br",
+                   "pymdownx.highlight", "pymdownx.superfences"]
+try:
+    import markdown as _markdown
+except ImportError:
+    _markdown = None
+
 
 def strip_code(text):
     """Remove fenced blocks and inline code spans."""
@@ -265,6 +277,17 @@ class Workspace:
         """Collapsible blocks must render, which the theme is strict about."""
         depth = 0
         for i, line in code_free_lines(text):
+            # A `<` immediately followed by `?` opens a processing instruction as
+            # far as Python-Markdown's HTML block parser is concerned, and that
+            # parser runs before inline code is protected, so backticks do not
+            # save it. One `List<?>` inside a collapsible block silently stops
+            # md_in_html processing that block and every later one in the file,
+            # which renders the raw tag and the literal markdown. Write it as
+            # <code>List&lt;?&gt;</code>, which renders identically. A space, as
+            # in `Map<String, ?>`, is already safe.
+            if depth and "<?" in line:
+                self.bad(rel, f"line {i}: `<?` inside a collapsible block stops "
+                              "md_in_html; write <code>...&lt;?&gt;</code> instead")
             if line.startswith("<details"):
                 if line not in ('<details markdown="1"><summary>Check</summary>',
                                 '<details markdown="1"><summary>Hint</summary>'):
@@ -327,6 +350,22 @@ class Workspace:
         if not text.endswith("\n"):
             self.bad(rel, "no trailing newline")
 
+    def check_render(self, path, rel):
+        """Render with the site's extensions and insist every collapsible block
+        was actually processed. A block md_in_html skipped is emitted as a raw
+        tag with its markdown unparsed, which no source-level rule can see."""
+        if _markdown is None:
+            return
+        src = path.read_text(encoding="utf-8")
+        if '<details markdown="1">' not in src:
+            return
+        body = src.split("---\n", 2)[2] if src.startswith("---\n") else src
+        html = _markdown.markdown(body, extensions=SITE_EXTENSIONS)
+        left = len(re.findall(r'<details markdown="1">', html))
+        if left:
+            self.bad(rel, f"{left} collapsible block(s) reached the page unprocessed, "
+                          "so their markdown renders literally")
+
     def check_links(self, path, rel):
         text = strip_code(path.read_text(encoding="utf-8"))
         for m in re.finditer(r"\[[^\]]*\]\(([^)\s]+)\)", text):
@@ -357,6 +396,7 @@ class Workspace:
                 continue
             info = self.check_lesson(path, rel, int(m.group(1)))
             self.check_prose(path, rel)
+            self.check_render(path, rel)
             self.check_links(path, rel)
             if info:
                 self.meta[int(m.group(1))] = info
@@ -446,6 +486,10 @@ def main():
         else:
             print(f"{label}: NO PROBLEMS "
                   f"({len(ws.meta)} lessons, {len(ws.sheets)} sheets)")
+    if _markdown is None:
+        print("NOTE: the render check was skipped, because this interpreter has no "
+              "`markdown` module. Run with the project virtual environment's python "
+              "to check that collapsible blocks actually render.")
     return 1 if failed else 0
 
 

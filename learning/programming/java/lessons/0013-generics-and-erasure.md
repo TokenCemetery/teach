@@ -241,7 +241,7 @@ A type parameter is erased before the program runs, so by the time the configura
 
 <details markdown="1"><summary>Check</summary>
 
-Generics did complain, just not with an error: `javac` reports `warning: [unchecked] unchecked call to add(E) as a member of the raw type List`, and a warning that nothing enforces reading is not the same as nothing being wrong. The raw type switched off checking for every call that mentions the erased type parameter, so `add(42)` is accepted with no compile-time link back to the `<String>` the variable was declared with. `List<?>` keeps a type argument, just an unknown one, so `list.add(42)` there fails outright with `incompatible types: int cannot be converted to CAP#1`, because the compiler still enforces that whatever goes in must match the wildcard's hidden type, even without knowing what that type is.
+Generics did complain, just not with an error: `javac` reports `warning: [unchecked] unchecked call to add(E) as a member of the raw type List`, and a warning that nothing enforces reading is not the same as nothing being wrong. The raw type switched off checking for every call that mentions the erased type parameter, so `add(42)` is accepted with no compile-time link back to the `<String>` the variable was declared with. <code>List&lt;?&gt;</code> keeps a type argument, just an unknown one, so `list.add(42)` there fails outright with `incompatible types: int cannot be converted to CAP#1`, because the compiler still enforces that whatever goes in must match the wildcard's hidden type, even without knowing what that type is.
 
 </details>
 

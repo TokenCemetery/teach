@@ -60,7 +60,7 @@ type: resources
   Graded type-level puzzles with community solutions. Use for: stage 6 reps, treated as exercise rather than as a model for production types.
 
 - [Docs: "Zod", Colin McDonnell and contributors, zod.dev](https://zod.dev/)
-  Schema validation whose inferred types match what it validates at runtime. Use for: stage 5, closing the gap between a declared type and an actual value.
+  Schema validation whose inferred types match what it validates at runtime. Use for: stage 5, closing the gap between a declared type and an actual value. This is the arc's chosen validation library, decided on reach, release health and the fact that one declaration yields both the check and the type. The stage teaches the boundary rather than the library, so the technique transfers to any schema validator with inference.
 
 ## Wisdom (Communities)
 
@@ -72,4 +72,4 @@ type: resources
 - **TypeScript has no specification.** An early one was abandoned, and the compiler is now the definition. Any claim about assignability that the handbook does not state has to be checked against the compiler itself, in the playground.
 - Module resolution is the messiest area here. The handbook and the config reference describe the compiler's model, which bundlers and runtimes then approximate differently; no source reconciles them.
 - Type-level programming has no authoritative reference. Type Challenges is practice and Total TypeScript is a course, so stage 6 has to supply its own judgment about when a type has gone too far.
-- Runtime validation has no standard. Zod is listed because its inference is the clearest illustration of the boundary, not because the ecosystem has settled on it.
+- Runtime validation still has no standard, and the gap is narrower than it was. Zod is now the arc's choice and the reasoning is in `NOTES.md`, but it is a choice among live alternatives rather than a settled ecosystem default, and a reader will meet others. Stage 5 therefore teaches the boundary and uses Zod to make it concrete, so nothing in the stage depends on the library beyond the shape of `parse`, `safeParse` and inference from a schema.

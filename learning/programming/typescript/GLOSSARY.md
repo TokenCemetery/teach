@@ -26,6 +26,10 @@ _Avoid_: cast, conversion, coercion, type guard
 
 ## Terms
 
+**Ambient declaration**:
+A `declare` at the top level of a file with no import or export, which adds a name to the global scope rather than to a module's exports. It asserts that something exists without producing it, so nothing audits the claim.
+_Avoid_: module declaration, global variable, polyfill, shim
+
 **Annotation**:
 A type written explicitly at a variable, parameter or return position, which the compiler checks against what it would have inferred there. It constrains rather than informs: an annotation wider than the inferred type throws information away.
 _Avoid_: declaration, type hint, cast
@@ -37,6 +41,10 @@ _Avoid_: wildcard, dynamic, untyped, object
 **as const**:
 An assertion that keeps a literal at its literal type instead of widening it, and additionally makes arrays and object properties readonly. It changes what the compiler infers and nothing about the value at run time.
 _Avoid_: freeze, immutable, constant
+
+**Assertion function**:
+A function whose return type is `asserts x is T`, which narrows its argument for everything after the call rather than inside a branch. Its body is not checked against the claim, and the compiler requires the call target to have an explicit type annotation.
+_Avoid_: type predicate, validator, guard, assert statement
 
 **Branded type**:
 A primitive intersected with an object type carrying a property no runtime value has, so that two otherwise identical primitives stop being interchangeable. It gives nominal typing in one direction only: the value flows out to the underlying type freely and cannot flow in without an assertion.
@@ -62,6 +70,10 @@ _Avoid_: inference, narrowing, duck typing
 The compiler's tracking of what a value's type must be at each position, given the branches taken to reach it. A type is therefore a property of a position in the code rather than of a declaration.
 _Avoid_: type inference, static analysis, data flow
 
+**Declaration file**:
+A `.d.ts` holding types with no implementation, which produces no output and which the compiler takes entirely on trust. One written by hand for code you do not own is a promise nothing verifies; one generated from your own source cannot disagree with it.
+_Avoid_: type definition, header file, interface file, stub
+
 **Declaration merging**:
 Two declarations of the same interface name combining into one shape, which `type` cannot do. Its real purpose is module augmentation rather than convenience within a file.
 _Avoid_: module augmentation, overloading, inheritance, redeclaration
@@ -77,6 +89,10 @@ _Avoid_: cast, conversion, coercion, type guard
 **Emit**:
 The JavaScript the compiler writes out, as distinct from the checking it performs. `target` changes it and the type system does not depend on it, which is why the same source can type-check identically and produce different output.
 _Avoid_: compile, build, transpile, output type
+
+**Erasure**:
+The removal of everything type-only when the compiler emits JavaScript, so annotations, interfaces, type arguments, assertions and brands are all gone before any value arrives. It is a stated design goal rather than a limitation, and it is why a type cannot check anything at run time.
+_Avoid_: compilation, minification, stripping, transpilation
 
 **Excess property checking**:
 The check that rejects members a target type does not declare, firing only when a fresh object literal is assigned or passed directly to a typed position. It is not part of structural assignability and is defeated by routing the same object through a variable.
@@ -105,6 +121,10 @@ _Avoid_: tick, job, callback, async task
 **Module augmentation**:
 Adding members to an interface another module owns, by declaring it again inside `declare module`. It is the reason interfaces merge at all, and the reason a library's public types are usually interfaces rather than aliases.
 _Avoid_: declaration merging, monkey patching, inheritance, overriding
+
+**Module declaration**:
+A `declare module "specifier"` block, which supplies types for exactly the import string it names. It is scoped to that specifier rather than to the global scope, and with an empty body it types the whole module `any`.
+_Avoid_: ambient declaration, module augmentation, namespace, import alias
 
 **Module resolution**:
 The process of turning an import specifier into a particular file, decided by `moduleResolution` together with the nearest `package.json`. It is a separate question from what `module` controls, which is only the import syntax that gets emitted.
@@ -138,6 +158,10 @@ _Avoid_: parent class, base, superclass, `__proto__`
 An operator that checks an expression against a type without replacing the expression's own inferred type, which is what an annotation does instead. It is the same check as an annotation without the widening, and unlike `as` it does not switch the check off.
 _Avoid_: assertion, cast, annotation, type guard
 
+**Schema**:
+A value that describes a shape and can both check a runtime value against it and yield the static type of what it accepts. Because one declaration produces the check and the type, the two cannot drift apart, which is the property that distinguishes it from a type plus a separate hand-written check.
+_Avoid_: type, interface, validator, model
+
 **Soundness**:
 The property of a type system that a passing check guarantees the absence of a class of runtime error. TypeScript declares it a non-goal, so some assignments the compiler accepts are unsafe on purpose, in exchange for accepting the JavaScript people actually write.
 _Avoid_: correctness, safety, strictness
@@ -165,6 +189,10 @@ _Avoid_: interface, class, new type, wrapper
 **Type parameter**:
 A name in a signature standing for a type supplied or inferred at the call site, which ties positions in that signature together. It earns its place only when the caller learns something from it, so one appearing exactly once should usually be a concrete type instead.
 _Avoid_: generic, placeholder, template, wildcard
+
+**Type predicate**:
+A return type of the form `x is T`, which makes a function usable as a narrowing operator. The compiler never checks the body against the claim, so it is an assertion in a function signature and inherits the same standard.
+_Avoid_: type guard, validator, assertion function, check
 
 **Type-only import**:
 An import written with `import type` or an inline `type` specifier, which is erased and emits no run-time import. Making it explicit is what lets the emitted import statements be exactly what was written, rather than depending on whether the compiler could tell a name was a type.

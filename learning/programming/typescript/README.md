@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a TypeScript codebase on a team: able to model a domain so the compiler rejects the states that should not exist, keep type assertions out of code that carries weight, validate what crosses a runtime boundary rather than assuming the types held, and review someone's types and say concretely why a clever generic is costing more than it gives.
 
 **Start here:** [0001. Values and Coercion](lessons/0001-values-and-coercion.md)
-**Latest lesson:** [0028. interface or type](lessons/0028-interface-or-type.md)
+**Latest lesson:** [0035. When the Declaration Lies](lessons/0035-when-the-declaration-lies.md)
 
 ## Success looks like
 
@@ -86,6 +86,13 @@ Work through these in order.
 | [0026](lessons/0026-generics-and-constraints.md) | Generics and Constraints | A type parameter is a promise to the caller, and a constraint is what lets you keep it |
 | [0027](lessons/0027-satisfies.md) | satisfies | Check a value against a type without letting the type replace what you wrote |
 | [0028](lessons/0028-interface-or-type.md) | interface or type | One reports a conflicting member where you wrote it and the other reports it somewhere else |
+| [0029](lessons/0029-nothing-survives-to-run-time.md) | Nothing Survives to Run Time | Every type is a claim about a program that no longer exists when the claim would matter |
+| [0030](lessons/0030-unknown-at-the-edge.md) | unknown at the Edge | Find every place a value arrives from outside, and give each one the only honest type |
+| [0031](lessons/0031-parsing-instead-of-asserting.md) | Parsing Instead of Asserting | One declaration that produces both the runtime check and the static type |
+| [0032](lessons/0032-type-predicates-and-assertion-functions.md) | Type Predicates and Assertion Functions | A signature that promises a check, and a body nothing compares it against |
+| [0033](lessons/0033-errors-as-values.md) | Errors as Values | A failure in the return type is one the compiler can make you handle |
+| [0034](lessons/0034-declaration-files.md) | Declaration Files | Types for code the compiler never sees, and what that promise is worth |
+| [0035](lessons/0035-when-the-declaration-lies.md) | When the Declaration Lies | The compiler believes the declaration and the runtime has never heard of it |
 
 ## Reference
 
@@ -96,6 +103,7 @@ Work through these in order.
 - [Types over values](reference/types-over-values.md): what each annotation buys, where inference reaches, and the holes the compiler leaves open on purpose
 - [Strictness and the compiler](reference/strictness-and-the-compiler.md): which flag catches which failure, where a setting comes from, and how an import resolves
 - [Modelling](reference/modelling.md): which shape removes the illegal state, and which declaration catches the mistake where you made it
+- [The runtime boundary](reference/the-runtime-boundary.md): where values enter, what checks them, and which claims nothing checks at all
 
 ## How this works
 

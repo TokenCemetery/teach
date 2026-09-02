@@ -80,9 +80,9 @@ A rough orientation, not a rule:
 
 | Examples | Realistic target |
 |---|---|
-| 50–200 | Style, tone, a fixed output format |
-| 500–2,000 | A well-defined task with narrow scope |
-| 5,000–50,000 | A broad task, or several capabilities at once |
+| 50 to 200 | Style, tone, a fixed output format |
+| 500 to 2,000 | A well-defined task with narrow scope |
+| 5,000 to 50,000 | A broad task, or several capabilities at once |
 | 100,000+ | Diminishing returns for adapters; consider whether the task is really one task |
 
 Where categories exist, imbalance becomes a bias. A dataset that is 90% one class teaches the model to guess that class. Either balance it or account for the imbalance in your metric, per Lesson 23.
@@ -168,7 +168,7 @@ Distribution collapse: generated data is more uniform than real data. Mitigate b
 
 <details markdown="1"><summary>Check</summary>
 
-Around 1200–1500. Setting 8000 wastes activation memory on padding for almost every example; setting 512 truncates a substantial fraction.
+Around 1200 to 1500. Setting 8000 wastes activation memory on padding for almost every example; setting 512 truncates a substantial fraction.
 
 Then check what truncation actually does to the examples above the limit. If it cuts answers in half you are teaching the model to stop mid-sentence, so either raise the limit or drop those examples deliberately.
 

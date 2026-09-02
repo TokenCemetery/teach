@@ -22,9 +22,9 @@ Capacity. Bounds how complex an update the adapter can express.
 
 | Rank | Suits |
 |---|---|
-| 4–8 | Style, tone, output format; small datasets |
-| 16–32 | A real task, a few thousand examples |
-| 64–128 | Harder tasks, larger data, reasoning-heavy behaviour |
+| 4 to 8 | Style, tone, output format; small datasets |
+| 16 to 32 | A real task, a few thousand examples |
+| 64 to 128 | Harder tasks, larger data, reasoning-heavy behaviour |
 | 256+ | Approaching full fine-tuning capacity on large SFT data |
 
 Rank costs almost no memory. Its real cost is overfitting risk on small data.
@@ -74,9 +74,9 @@ Importing a full fine-tuning rate into an adapter run is a leading cause of a di
 
 | Setting | Default | Notes |
 |---|---|---|
-| `lora_dropout` | 0.0–0.05 | Raise only if held-out loss is rising |
+| `lora_dropout` | 0.0 to 0.05 | Raise only if held-out loss is rising |
 | `bias` | `"none"` | Rarely decisive; complicates merging |
-| Epochs | 2–3 | On small instruction data; more usually memorises |
+| Epochs | 2 to 3 | On small instruction data; more usually memorises |
 | Gradient checkpointing | on | Nearly a default for adapters |
 | `use_cache` | off in training | Conflicts with checkpointing; useless for training |
 

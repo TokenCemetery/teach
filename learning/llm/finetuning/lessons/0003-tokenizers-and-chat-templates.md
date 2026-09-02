@@ -133,7 +133,7 @@ Loss cannot catch this: predicting fluent continuation is exactly what the model
 
 <details markdown="1"><summary>Check</summary>
 
-Roughly 900–1000 tokens, taking about 1.3 tokens per English word. No, you would not trust it: the ratio moves substantially with code, JSON, non-Latin scripts and unusual formatting, all of which are common in fine-tuning data.
+Roughly 900 to 1000 tokens, taking about 1.3 tokens per English word. No, you would not trust it: the ratio moves substantially with code, JSON, non-Latin scripts and unusual formatting, all of which are common in fine-tuning data.
 
 Measure the real distribution with the actual tokenizer. Lesson 7 turns that distribution into a memory number.
 

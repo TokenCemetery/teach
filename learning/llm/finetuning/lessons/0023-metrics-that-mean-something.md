@@ -83,7 +83,7 @@ For free-form output, having a strong model score against a rubric is often the 
 - **Self-preference.** Judges tend to favour text resembling their own output.
 - **Rubric sensitivity.** Small wording changes in the rubric shift scores materially.
 
-The non-negotiable step: **calibrate the judge against human labels.** Score 50–100 examples yourself, run the judge on the same ones, and measure agreement. If agreement is poor, the judge's numbers are decoration. If it is good, you have earned the right to scale it, and you have a number quantifying how much to trust it.
+The non-negotiable step: **calibrate the judge against human labels.** Score 50 to 100 examples yourself, run the judge on the same ones, and measure agreement. If agreement is poor, the judge's numbers are decoration. If it is good, you have earned the right to scale it, and you have a number quantifying how much to trust it.
 
 A concrete, robust setup: pairwise comparison of base versus fine-tuned output, both orderings, with a rubric naming the specific criteria you care about, reported as a win rate. Pairwise judging is more reliable than absolute scoring, which drifts.
 
@@ -153,7 +153,7 @@ Code has an objective correctness criterion, so use it. Overlap metrics reward r
 
 <details markdown="1"><summary>Check</summary>
 
-Calibrating it against human labels, by scoring 50–100 examples yourself and measuring agreement with the judge on the same items.
+Calibrating it against human labels, by scoring 50 to 100 examples yourself and measuring agreement with the judge on the same items.
 
 Without that, the judge's numbers are unvalidated. With it, you have both justification and a quantified degree of trust.
 

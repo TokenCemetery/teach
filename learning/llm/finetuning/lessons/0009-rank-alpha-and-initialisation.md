@@ -81,9 +81,9 @@ Rank is **capacity**. It bounds how complex an update the adapter can express.
 
 | Rank | Reasonable for |
 |---|---|
-| 4–8 | Style, tone, output format; small datasets |
-| 16–32 | A genuine task with a few thousand examples |
-| 64–128 | Harder tasks, larger datasets, reasoning-heavy behaviour |
+| 4 to 8 | Style, tone, output format; small datasets |
+| 16 to 32 | A genuine task with a few thousand examples |
+| 64 to 128 | Harder tasks, larger datasets, reasoning-heavy behaviour |
 | 256+ | Approaching full fine-tuning capacity on large SFT datasets |
 
 Two diagnostics that beat guessing:

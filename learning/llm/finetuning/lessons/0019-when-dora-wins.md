@@ -52,9 +52,9 @@ So the prediction rule is not "DoRA is better" but:
 
 | Situation | Expect | Because |
 |---|---|---|
-| Very low rank (4–16) | Meaningful gain | Capacity is scarce; decoupling frees some |
+| Very low rank (4 to 16) | Meaningful gain | Capacity is scarce; decoupling frees some |
 | Rank forced low by constraints | Meaningful gain | Same reason, and you have no alternative |
-| Mid rank (32–64) | Smaller gain | Capacity less scarce |
+| Mid rank (32 to 64) | Smaller gain | Capacity less scarce |
 | High rank (128+) | Little or none | Capacity is not the binding limit |
 | You could just raise rank instead | Raise the rank | Cheaper in wall-clock than DoRA's per-step cost |
 | Step time is your constraint | Skip DoRA | You are paying tens of percent for a small gain |

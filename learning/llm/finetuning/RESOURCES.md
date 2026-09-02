@@ -122,6 +122,6 @@ type: resources
 - No source tracks which `torch`, PEFT, TRL and quantisation-library versions actually work together on a given Python version and platform. This blocks a first run more often than any concept does, and each environment has to be verified against release notes rather than assumed.
 - Hardware backend coverage for 4-bit operations changes release to release. No document is reliable here; the library source is the only authority, and any tutorial's claim about hardware requirements should be treated as expired.
 - No trusted source yet for evaluation design specific to small-model task adaptation. This is the weakest link in stage 6 and the hardest part of the mission. The general evaluation literature is aimed at benchmarking foundation models, not at proving a narrow adapter helped.
-- Most published LoRA hyperparameter advice targets 7B models and above. Little addresses whether it transfers to the 1–3B class, which is where most people actually start.
+- Most published LoRA hyperparameter advice targets 7B models and above. Little addresses whether it transfers to the 1B to 3B class, which is where most people actually start.
 - No independent replication surveyed for DoRA at the scale LoRA and QLoRA enjoy. Treat its reported gains as needing local measurement.
 - No source chosen for constrained decoding, which Lesson 27 recommends as the correct answer to schema-validity problems. It is named without a reference behind it.

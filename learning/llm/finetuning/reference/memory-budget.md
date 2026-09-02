@@ -48,7 +48,7 @@ mlp/layer       = 3·d·d_ff                  # gate, up, down
 model           ≈ n_layers·(attn + mlp) + vocab·d·(1 if tied else 2)
 ```
 
-The MLP is typically 75–80% of a block.
+The MLP is typically 75 to 80% of a block.
 
 ## Adapter parameter count
 
@@ -77,7 +77,7 @@ The constant is a starting point to measure against, not a law. Linear in batch 
 | 24 layers, d=2048, batch 4, seq 2048 | ~8 GB |
 | 32 layers, d=4096, batch 2, seq 4096 | ~21 GB |
 
-Gradient checkpointing cuts this by roughly an order of magnitude for ~20–40% more step time.
+Gradient checkpointing cuts this by roughly an order of magnitude for ~20 to 40% more step time.
 
 **In an adapter run, activations usually dominate.** This inverts the full fine-tuning profile.
 

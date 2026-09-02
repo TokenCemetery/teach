@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-The MLP, roughly 75–80% of the block, because the intermediate dimension is several times the hidden size and grouped-query attention shrinks two of the four attention projections.
+The MLP, roughly 75 to 80% of the block, because the intermediate dimension is several times the hidden size and grouped-query attention shrinks two of the four attention projections.
 
 </details>
 

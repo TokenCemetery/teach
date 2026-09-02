@@ -76,7 +76,7 @@ Eight gigabytes of activations, against roughly 2.2 GB of frozen bf16 weights an
 
 The trade that fixes it: do not store most activations. Store a few, and recompute the rest during the backward pass.
 
-Keep the input to each block (a *checkpoint*), discard everything inside it, and when the backward pass reaches that block, re-run its forward pass to regenerate what is needed. Storage drops from roughly linear in depth to roughly the square root of it, at the cost of about one extra forward pass, commonly 20–40% slower per step.
+Keep the input to each block (a *checkpoint*), discard everything inside it, and when the backward pass reaches that block, re-run its forward pass to regenerate what is needed. Storage drops from roughly linear in depth to roughly the square root of it, at the cost of about one extra forward pass, commonly 20 to 40% slower per step.
 
 ```python
 model.gradient_checkpointing_enable()
@@ -152,7 +152,7 @@ The KV cache stores past keys and values to avoid recomputing them during autore
 
 <details markdown="1"><summary>Check</summary>
 
-It trades compute for memory: activation storage drops from roughly linear in depth to roughly its square root, in exchange for approximately one extra forward pass per step, typically 20–40% slower.
+It trades compute for memory: activation storage drops from roughly linear in depth to roughly its square root, in exchange for approximately one extra forward pass per step, typically 20 to 40% slower.
 
 </details>
 

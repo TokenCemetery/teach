@@ -42,9 +42,9 @@ Inference. In training the assistant turn is already in the text, so adding the 
 
 Your first run's purpose is **not** a good model. It is to prove the pipeline is wired correctly. So make it cheap enough that a mistake costs minutes:
 
-- A base model in the 0.5B–3B class. Small models train fast and expose data bugs just as well as large ones.
+- A base model in the 0.5B to 3B class. Small models train fast and expose data bugs just as well as large ones.
 - A few hundred examples. Enough to see loss move.
-- `max_steps` around 20–50, not epochs. You want it finished quickly.
+- `max_steps` around 20 to 50, not epochs. You want it finished quickly.
 
 Optimising anything before the pipeline is proven is wasted effort, and it hides which change caused which effect.
 

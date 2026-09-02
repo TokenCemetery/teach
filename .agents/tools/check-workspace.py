@@ -31,9 +31,12 @@ import sys
 import unicodedata
 from pathlib import Path
 
-CLOSING = (
-    "---\n"
-    "\n"
+# The house block that closes every lesson, below a --- separator. A final
+# lesson may put one paragraph between the separator and the block to close
+# the arc, so the two parts are checked separately.
+SEPARATOR = "\n---\n"
+
+CLOSING_BODY = (
     "Not landing? Reread the primary source at the top, since this lesson compresses it "
     "and compression is where understanding leaks. Check the [glossary](../GLOSSARY.md) "
     "for any term that felt slippery.\n"
@@ -57,6 +60,10 @@ DEFAULTS = {
     # MACHINE patterns this workspace legitimately needs, because the string
     # is subject matter there rather than a leak. Keep each one narrow.
     "machine_allow": (),
+    # Whether Going further must end with the Resources bullet. One arc ends
+    # each lesson on a forward pointer to the next instead, which is a
+    # pedagogical choice rather than drift.
+    "resources_bullet_last": True,
 }
 
 CONVENTIONS = {
@@ -64,6 +71,12 @@ CONVENTIONS = {
     # Start methods genuinely differ by operating system, so naming one is a
     # fact the reader needs rather than a trace of the author's machine.
     "python": {"machine_allow": (r"\bmacOS\b", r"\bWindows 1\d\b")},
+    # This arc ends 26 of its 27 Going further sections on a forward pointer
+    # to the lesson that pays the material off, or on the reference sheets it
+    # earned, rather than on the Resources bullet. It is consistent enough to
+    # be the convention there, and the arc is closed, so it is exempt rather
+    # than retrofitted.
+    "finetuning": {"resources_bullet_last": False},
 }
 
 # Strings that identify the machine a lesson was drafted on rather than a fact
@@ -220,9 +233,12 @@ class Workspace:
         try:
             gf = lines.index("## Going further")
             tail = [l for l in lines[gf:] if l.startswith("- ")]
-            if not tail or tail[-1] != "- [Resources](../RESOURCES.md)":
-                shown = tail[-1] if tail else None
-                self.bad(rel, f"last Going further bullet is {shown!r}, "
+            if not tail:
+                self.bad(rel, "Going further has no bullets")
+            elif not self.conv["resources_bullet_last"]:
+                pass
+            elif tail[-1] != "- [Resources](../RESOURCES.md)":
+                self.bad(rel, f"last Going further bullet is {tail[-1]!r}, "
                               "expected '- [Resources](../RESOURCES.md)'")
             elif self.uses("stage_sheet_from", n_expected):
                 if len(tail) < 2:
@@ -233,8 +249,14 @@ class Workspace:
         except ValueError:
             pass
 
-        if not text.endswith(CLOSING):
+        _, sep, tail = text.rpartition(SEPARATOR)
+        if not sep or not tail.endswith("\n" + CLOSING_BODY):
             self.bad(rel, "closing block does not match the house block byte for byte")
+        else:
+            extra = tail[:-len("\n" + CLOSING_BODY)].strip()
+            if extra and ("\n## " in extra or "<details" in extra or "\n\n" in extra):
+                self.bad(rel, "only a single closing paragraph may sit between the "
+                              "--- separator and the house block")
 
         self.check_details(text, lines, rel)
         return {"num": num, "title": headline, "desc": desc}

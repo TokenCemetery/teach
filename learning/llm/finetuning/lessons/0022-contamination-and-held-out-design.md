@@ -89,7 +89,7 @@ Held-out sets are usually too small to support the conclusions drawn from them. 
 |---|---|
 | 10 percentage points | Low hundreds |
 | 5 percentage points | Several hundred to a thousand |
-| 1–2 percentage points | Thousands |
+| 1 to 2 percentage points | Thousands |
 
 So a 50-example held-out set can tell you whether the model works at all. It cannot tell you whether rank 32 beat rank 16 by two points, and treating it as though it can is a very common error.
 

@@ -56,6 +56,10 @@ _Avoid_: failed statement, rolled-back transaction, deadlock, error
 A lock taken on a number the application chooses rather than on a row or a table, held for the transaction or the session. It is the tool for serialising work that has no row to lock yet, such as deciding which of two workers creates a thing.
 _Avoid_: row lock, table lock, mutex, semaphore
 
+**Affinity typing**:
+A column's declared type treated as a storage preference rather than an enforced constraint, which is SQLite's model: a value is converted when it can be and stored as given when it cannot. A `STRICT` table opts out of it, and only for a short list of base type names.
+_Avoid_: type enforcement, strict typing, declared type as a constraint, coercion
+
 **Anchor term**:
 The non-recursive first part of a recursive `WITH`, which fixes the rows the walk starts from. A condition belongs here when it chooses the starting point and in the recursive term when it must hold at every round, and putting it in the wrong one answers a different question rather than merely reading differently.
 _Avoid_: base case, seed query, first row, initial condition
@@ -72,6 +76,10 @@ _Avoid_: isolation, durability, consistency, locking
 A collection that allows duplicates, which is what a SQL table actually is. Two identical rows are two rows and no query can tell them apart, so only a constraint makes rows distinguishable.
 _Avoid_: set, list, relation
 
+**Batched backfill**:
+An `UPDATE` over existing rows split into committed, non-overlapping key ranges instead of one statement. The ranges have to be chosen so no row is missed or done twice, and committing between them is what releases the row locks and lets vacuum keep up.
+_Avoid_: chunked update, loop, transaction, migration
+
 **Bitmap heap scan**:
 A scan that collects matching row locations from an index, sorts them by page, then visits each heap page once. It is what the planner chooses when many scattered rows match, between the extremes of one index lookup and a full sequential scan.
 _Avoid_: index scan, sequential scan, index-only scan, bitmap index
@@ -79,6 +87,10 @@ _Avoid_: index scan, sequential scan, index-only scan, bitmap index
 **Bloat**:
 Space a table or index holds that no live row occupies, left by updated and deleted row versions. A plain vacuum makes it reusable without returning it, so a table can stop growing in rows and keep growing on disk.
 _Avoid_: fragmentation, table size, dead rows, disk usage
+
+**Bound parameter**:
+A value sent to the server separately from the statement text and substituted by the driver, which appears in a log as a placeholder rather than as the value. It is what makes generated SQL safe from injection, and it is visible in an ORM's own statement log.
+_Avoid_: string interpolation, literal, variable, prepared statement
 
 **Candidate key**:
 A set of columns that is both `UNIQUE` and `NOT NULL`, and therefore identifies every row. Uniqueness alone is not enough, because a nullable unique column permits any number of NULLs.
@@ -95,6 +107,10 @@ _Avoid_: character set, encoding, locale
 **Common table expression**:
 A named subquery written before the query that uses it, so a long query reads in the order its steps happen. Naming a step is what it buys; on a current PostgreSQL a single-use one is inlined, so it is not an optimisation fence unless `MATERIALIZED` asks for one.
 _Avoid_: temporary table, view, optimisation fence, subquery
+
+**Concurrent index build**:
+Building or dropping an index with `CONCURRENTLY`, which takes a weaker lock so writes continue, at the cost of more work and a longer build. It cannot run inside a transaction block, and a build that fails leaves an invalid index behind to be dropped.
+_Avoid_: no lock at all, instant, online migration generally, reindex
 
 **Covering index**:
 An index holding every column a query needs, so the query is answered without reading the table, which a plan reports as an index-only scan. Columns added with `INCLUDE` are stored in the leaves and cannot be searched or ordered by.
@@ -124,9 +140,17 @@ _Avoid_: optimisation, caching, redundancy as a synonym for a mistake, wide tabl
 A subquery in `FROM`, queried like any other table, which is how a result gets grouped or filtered before the outer query sees it. It takes an alias, which every codebase writes even where a recent PostgreSQL no longer demands one.
 _Avoid_: subquery, inline view, temporary table, CTE
 
+**Eager loading**:
+An ORM option that fetches an association up front in a fixed number of statements rather than one per access. It is a trade rather than a free win: the join form returns the outer row once per child and the application deduplicates.
+_Avoid_: lazy loading, caching, prefetch as always cheaper, join
+
 **Evaluation order**:
 The order in which a `SELECT`'s clauses actually run, which is `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `SELECT`, `DISTINCT`, `ORDER BY`, `LIMIT`. It differs from the written order, and it is what determines which names a clause can see.
 _Avoid_: execution plan, clause order, precedence
+
+**Expand, migrate, contract**:
+A schema change split into deploys so no single one requires both the old and the new shape to be correct: add the new thing, write to both and backfill, read from the new, then remove the old. It is what makes a rename or a type change survivable while two versions of the code are running.
+_Avoid_: blue-green deployment, rolling migration, zero-downtime deploy as a synonym, feature flag
 
 **Hash batch**:
 One pass a hash join makes over its build and probe sides. More than one batch means the build side did not fit in `work_mem`, so the join wrote partitions to temporary files, which the plan shows as `Batches` above 1 with temp reads and writes.
@@ -156,6 +180,10 @@ _Avoid_: derived table, correlated subquery, join, inline view
 A multicolumn index can only be searched from its first column inward, so an index on two columns serves a query on the first, or on both, and not one on the second alone. Skip scan relaxes this only when the leading column has few distinct values.
 _Avoid_: column order as a preference, covering index, partial index, index-only scan
 
+**Lock queue**:
+The line of statements waiting on the same object, released in arrival order. A read that would have succeeded blocks behind a waiting `ALTER TABLE`, not behind whatever the `ALTER TABLE` is waiting for, which is how a fast migration becomes an outage.
+_Avoid_: deadlock, contention, lock wait, blocking as a synonym
+
 **Lost update**:
 Two transactions read a value, each computes a new one from it, and the second write silently replaces the first. Neither transaction gets an error at Read Committed, which is what makes it the most expensive anomaly to find.
 _Avoid_: non-repeatable read, write skew, deadlock, overwrite
@@ -163,6 +191,10 @@ _Avoid_: non-repeatable read, write skew, deadlock, overwrite
 **MVCC**:
 Multiversion concurrency control: an `UPDATE` writes a new row version and marks the old one as ending rather than changing it in place, so a reader sees whichever version its snapshot admits and never waits for a writer.
 _Avoid_: locking, isolation level, snapshot, versioning
+
+**N+1**:
+One statement to fetch a set, then one near-identical statement per row of it, which application-side iteration over a result produces. The shape is the defect rather than the number, so it is as wrong at three rows as at three thousand.
+_Avoid_: slow query, cache miss, batch, correlated subquery
 
 **Natural join**:
 A join whose condition the engine infers from every column name the two tables share. The condition is invisible in the query text and changes on its own when either table gains or loses a matching name, so it is unsafe in code that outlives the schema.
@@ -244,6 +276,10 @@ _Avoid_: isolation level, backup, transaction, lock
 An identifier invented for the purpose of identifying a row, carrying no meaning of its own. It is chosen over a natural key for stability, since data that means something tends to change.
 _Avoid_: auto-increment, primary key, technical key
 
+**Table rewrite**:
+Copying every row of a table into a new file to satisfy a schema change, done while the statement holds its lock, which is what makes some `ALTER TABLE` forms unsafe on a live table. Whether it happened is visible as a change of the table's filenode.
+_Avoid_: reindex, vacuum full, migration, lock
+
 **Three-valued logic**:
 The system in which a condition evaluates to true, false or unknown, with any comparison involving `NULL` producing unknown. `WHERE` keeps only true, which is why unknown behaves like false and why a filter and its negation do not partition a table.
 _Avoid_: null handling, boolean logic, tri-state
@@ -260,9 +296,17 @@ _Avoid_: partial dependency, indirect join, chained foreign key, derived column
 The third truth value, produced by comparing anything with `NULL`. It is not the same as false: `NOT unknown` is still unknown, and `false AND unknown` is false while `unknown AND unknown` is not.
 _Avoid_: null, false, undefined
 
+**Unvalidated constraint**:
+A constraint added `NOT VALID`, which the engine enforces on new writes while leaving existing rows unchecked, reported as not validated until `VALIDATE CONSTRAINT` scans them. It is how a rule is adopted on a table whose data does not satisfy it yet.
+_Avoid_: disabled constraint, deferred constraint check, trigger, soft constraint
+
 **Visibility map**:
 A per-table bitmap recording which pages hold only rows every transaction can see. It is what allows an index-only scan to skip the table entirely, so a non-zero `Heap Fetches` means some page was not yet marked.
 _Avoid_: index-only scan, MVCC, vacuum, cache
+
+**Volatile default**:
+A column default whose value has to be computed per row, such as a clock reading or a random value, which forces a table rewrite when the column is added. A constant default does not, which is the difference between a safe `ADD COLUMN` and an unsafe one.
+_Avoid_: generated column, non-null default, sequence, expression index
 
 **Window frame**:
 The subset of the partition a window function actually reads for the current row, which is the whole partition when the window has no `ORDER BY` and `RANGE UNBOUNDED PRECEDING AND CURRENT ROW` when it has one. Every value function is only as wide as its frame.

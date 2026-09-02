@@ -86,6 +86,15 @@ type: resources
 - [Docs: "Transaction Isolation", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/transaction-iso.html)
   Each isolation level with the anomalies it permits and the errors it raises instead. Use for: stage 5, choosing a level on purpose.
 
+- [Docs: "ALTER TABLE", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/sql-altertable.html)
+  Every form of the statement with the lock each one takes and which of them rewrite the table, which is the authoritative half of migration safety. Use for: stage 7, before writing any schema change against a live table.
+
+- [Reference: "strong_migrations", Andrew Kane, github.com](https://github.com/ankane/strong_migrations)
+  A maintained catalogue of migrations that are unsafe on a live database, each with the safe rewrite, and a PostgreSQL-specific section. Use for: stage 7, as the practitioner half of a subject with no canonical source. It is a Ruby library's documentation, so the catalogue travels and the code does not.
+
+- [Docs: "SQLAlchemy Documentation", SQLAlchemy contributors, docs.sqlalchemy.org](https://docs.sqlalchemy.org/en/20/)
+  The one ORM this arc uses as its worked example, cited for how to see the SQL it emits rather than for how to use it. Use for: stage 7, and nowhere else, since ORMs are out of scope as subjects.
+
 - [Docs: "Don't Do This", PostgreSQL contributors, wiki.postgresql.org](https://wiki.postgresql.org/wiki/Don%27t_Do_This)
   A maintained list of choices that look reasonable and are regretted, with the reason for each. Use for: stage 4 type and schema decisions, and for review vocabulary.
 
@@ -129,5 +138,5 @@ type: resources
 - **Normalisation has no PostgreSQL source.** The manual documents constraints and types thoroughly and never teaches the normal forms, so stage 4 states first to third normal form and Boyce-Codd from ordinary relational theory and cites an encyclopaedia for the forms it deliberately does not teach. Any claim about a normal form in this workspace rests on a demonstration against the engine rather than on a citation.
 - **The ISO SQL standard is paywalled**, so no lesson can cite it directly. Modern SQL is the substitute for what the standard requires, and it is a secondary source; a lesson that says "the standard says" is leaning on it.
 - Cross-engine differences have no single reference. MySQL, Oracle and SQL Server behaviours have to be checked in their own documentation, and stage 7 portability material will need sources this list does not have.
-- Zero-downtime migration has no canonical source. It is stage 7's central skill and currently rests on the concurrency and locking documentation plus engine-specific release notes.
-- Reading ORM output is unsourced by design, since the arc keeps ORMs out of scope as subjects. The stage 7 lesson will need at least one worked example from a real ORM.
+- **Zero-downtime migration has no canonical source, and stage 7 settled how to live with that.** The authoritative half is PostgreSQL's own `ALTER TABLE` and `CREATE INDEX` pages plus the release notes dating the two optimisations the subject turns on. The practitioner half, the catalogue of which operation is unsafe and what to write instead, exists only in maintained community lists, of which `strong_migrations` is the most complete and is now listed above. The most-cited historical write-up, Braintree's, answers a scripted request with a 403 and cannot be linked here. Where the halves disagree, the stage verifies the mechanics against the engine rather than citing either.
+- **Reading ORM output is now sourced, once.** The arc keeps ORMs out of scope as subjects, and stage 7 needed one concrete example, so it uses SQLAlchemy over this workspace's own driver and quotes SQL that library really emitted. Its documentation is listed above and is cited for how to see the statements rather than for how to use the library. Any other ORM's equivalents are named by pattern rather than by API.

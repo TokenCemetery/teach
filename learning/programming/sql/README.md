@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0041. When the Query Is Not the Problem](lessons/0041-when-the-query-is-not-the-problem.md)
+**Latest lesson:** [0048. Trusted With the Database](lessons/0048-trusted-with-the-database.md)
 
 ## Success looks like
 
@@ -99,6 +99,13 @@ Work through these in order.
 | [0039](lessons/0039-join-strategies.md) | Join Strategies | Three ways to join and the planner picks by estimated cost, so a wrong estimate shows up as the wrong strategy |
 | [0040](lessons/0040-pagination-and-counting.md) | Pagination and Counting | OFFSET reads and discards every row it skips, and counting exactly costs a pass over the table |
 | [0041](lessons/0041-when-the-query-is-not-the-problem.md) | When the Query Is Not the Problem | Proving a win needs a measurement you can repeat, and the cause is often the table, the traffic or the client |
+| [0042](lessons/0042-migrations-without-downtime.md) | Migrations Without Downtime | A migration that takes a millisecond can still stop every read on the table, because of what queues behind it |
+| [0043](lessons/0043-changing-what-has-data.md) | Changing What Already Has Data | A constraint on a full table is two statements, and a backfill is a loop rather than one UPDATE |
+| [0044](lessons/0044-reviewing-a-query.md) | Reviewing a Query | Read the query for the rows it returns before reading it for speed, because a fast wrong answer is worse |
+| [0045](lessons/0045-reviewing-a-schema-change.md) | Reviewing a Schema Change | Ask what the migration locks, what it rewrites, and what runs while both versions of the code are live |
+| [0046](lessons/0046-portability.md) | Portability, and What It Costs | Most of this arc travels between engines, and the parts that do not are the parts worth depending on deliberately |
+| [0047](lessons/0047-reading-orm-output.md) | Reading What an ORM Emits | The ORM writes the SQL you did not write, and the only way to know what it sent is to look |
+| [0048](lessons/0048-trusted-with-the-database.md) | Trusted With the Database | Seven stages end in one habit, which is naming the row, the lock or the plan that makes a call defensible |
 
 ## Reference
 
@@ -112,6 +119,7 @@ Work through these in order.
 - [Schema design](reference/schema-design.md): the stage 4 sheet, with the normal forms, every constraint kind, and which type refuses what
 - [Transactions](reference/transactions.md): the stage 5 sheet, with each isolation level, the anomalies it permits, the lock strengths, and the retryable errors
 - [Performance](reference/performance.md): the stage 6 sheet, with the plan nodes, which numbers to trust, the scan and join strategies, and the index decisions
+- [Operating](reference/operating.md): the stage 7 sheet, with which migrations are safe, the review questions, and what travels between engines
 
 ## How this works
 

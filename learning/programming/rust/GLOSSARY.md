@@ -54,10 +54,10 @@ _Avoid_: scope-based borrows, lexical scoping
 Producing a new borrow from an existing one, which the compiler inserts implicitly when a `&mut T` is passed to a function so the original stays usable. Where it does not fire, such as storing a `&mut` in a struct, the move is real.
 _Avoid_: copy, pass-through, nested borrow
 
-**Slice**:
-A borrowed view into a contiguous sequence, carrying a pointer and a length and owning nothing. `&str` and `&[T]` are the two that appear constantly, and both are what a signature should ask for.
-_Avoid_: array, view, range, substring
-
 **Shadowing**:
 Declaring a new binding with the name of an existing one, so the earlier binding becomes unreachable. It is not mutation: the type may change, and no `mut` is required.
 _Avoid_: reassignment, overwriting, redeclaration
+
+**Slice**:
+A borrowed view into a contiguous sequence, carrying a pointer and a length and owning nothing. `&str` and `&[T]` are the two that appear constantly, and both are what a signature should ask for.
+_Avoid_: array, view, range, substring

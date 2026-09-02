@@ -28,7 +28,7 @@ These are where Java and TypeScript habits actively mislead, so they deserve the
 
 ## Open threads
 
-- Stage 4 went HTTP-first (lessons 0022–0027); gRPC has no lesson and no source. Revisit only if what gets shipped needs it; the arc and `RESOURCES.md` both say so now.
+- Stage 4 went HTTP-first (lessons 0022 to 0027); gRPC has no lesson and no source. Revisit only if what gets shipped needs it; the arc and `RESOURCES.md` both say so now.
 - Observability past `slog`, meaning metrics and tracing, is unwritten and listed as a gap. It is the most likely place the arc grows.
 - No decision yet on whether reps land in a scratch repo or in an existing project.
 - The Java 21 contrast is currently concentrated in lesson 0015 (goroutines versus virtual threads). If it needs more room, 0018 on `context` is the other place it would earn a section.

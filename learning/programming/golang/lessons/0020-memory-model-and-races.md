@@ -73,7 +73,7 @@ It is a dynamic analysis built on ThreadSanitizer. Two properties define how to 
 - **No false positives.** When it reports a race, there is a race. Do not argue with it.
 - **Only what executes.** It sees the accesses that actually happened in that run. Code paths not taken, and interleavings that did not occur, are invisible. A clean run is evidence, not proof.
 
-Cost is real, roughly 2–20× slower and 5–10× more memory, so it belongs in CI and in load tests against a staging build rather than in production. Because coverage is the limiting factor, a race detector run over a *test suite that exercises concurrency* is worth far more than one over unit tests that run everything on one goroutine.
+Cost is real, roughly 2 to 20 times slower and 5 to 10 times more memory, so it belongs in CI and in load tests against a staging build rather than in production. Because coverage is the limiting factor, a race detector run over a *test suite that exercises concurrency* is worth far more than one over unit tests that run everything on one goroutine.
 
 ### Making concurrent tests deterministic
 

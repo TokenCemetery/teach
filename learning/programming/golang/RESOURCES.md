@@ -18,7 +18,7 @@ type: resources
   Precise statement of what concurrent programs are guaranteed to observe. Use for: reasoning about races instead of testing for them.
 
 - [Book: "The Go Programming Language", Donovan & Kernighan, Addison-Wesley](https://www.gopl.io/)
-  Language semantics from first principles, with exercises. Use for: stages 1–3 when a mental model is missing rather than a fact.
+  Language semantics from first principles, with exercises. Use for: stages 1 to 3 when a mental model is missing rather than a fact.
 
 - [Book: "100 Go Mistakes and How to Avoid Them", Teiva Harsanyi, Manning](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
   Catalogued traps with explanations of why each one is wrong. Use for: the errors developers reliably import from other languages.

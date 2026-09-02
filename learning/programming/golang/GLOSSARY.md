@@ -40,7 +40,7 @@ _Avoid_: cancellation token, request scope, thread local
 
 **Data race**:
 Two goroutines accessing the same memory with at least one write and no **happens-before** edge between them. It is undefined behaviour, not an unpredictable-but-bounded outcome.
-_Avoid*_: race condition, which is the broader logical bug; a program can have one without a data race
+_Avoid_: race condition, which is the broader logical bug; a program can have one without a data race
 
 **Embedding**:
 Declaring a field with a type and no name, so the outer type promotes the embedded type's exported fields and methods. It is delegation the compiler writes for you, with no dynamic dispatch.

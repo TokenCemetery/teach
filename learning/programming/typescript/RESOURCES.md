@@ -14,6 +14,12 @@ type: resources
 - [Docs: "TSConfig Reference", Microsoft, typescriptlang.org](https://www.typescriptlang.org/tsconfig/)
   Every compiler option with what it changes and what it costs. Use for: stage 3, and for justifying a configuration rather than copying one.
 
+- [Docs: "Handbook: Modules", Microsoft, typescriptlang.org](https://www.typescriptlang.org/docs/handbook/modules/theory.html)
+  The compiler's own model of what an import means, separated into the theory, the reference and the guides. Use for: stage 3 module resolution, and as the only source that states the model rather than one tool's approximation of it.
+
+- [Docs: "Modules: Packages", OpenJS Foundation, nodejs.org](https://nodejs.org/api/packages.html)
+  How `package.json` decides a file's module system, including `type` and `exports`. Use for: stage 3, since the compiler reads these same fields and a resolution verdict often turns on one of them. Note this URL serves the current release rather than the long-term-support line.
+
 - [Docs: "Declaration Files", Microsoft, typescriptlang.org](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
   Writing, publishing and consuming type declarations, including for untyped libraries. Use for: stage 5, and for making a package usable by others.
 

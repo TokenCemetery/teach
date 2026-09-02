@@ -54,6 +54,14 @@ _Avoid_: inference, narrowing, duck typing
 The compiler's tracking of what a value's type must be at each position, given the branches taken to reach it. A type is therefore a property of a position in the code rather than of a declaration.
 _Avoid_: type inference, static analysis, data flow
 
+**Double assertion**:
+The `as unknown as T` form, used to reach a type that a single `as` refuses because the two types do not sufficiently overlap. It is a statement that you have read the compiler's objection and would like it set aside, so seeing one is a request for an explanation rather than a matter of style.
+_Avoid_: cast, conversion, coercion, type guard
+
+**Emit**:
+The JavaScript the compiler writes out, as distinct from the checking it performs. `target` changes it and the type system does not depend on it, which is why the same source can type-check identically and produce different output.
+_Avoid_: compile, build, transpile, output type
+
 **Excess property checking**:
 The check that rejects members a target type does not declare, firing only when a fresh object literal is assigned or passed directly to a typed position. It is not part of structural assignability and is defeated by routing the same object through a variable.
 _Avoid_: strict object checking, structural assignability, exact types
@@ -74,6 +82,10 @@ _Avoid_: reference, alias, shared state
 Work queued by a promise reaction or an `await` continuation, drained completely before the next task runs. That priority is why a promise callback always precedes a zero-delay timer.
 _Avoid_: tick, job, callback, async task
 
+**Module resolution**:
+The process of turning an import specifier into a particular file, decided by `moduleResolution` together with the nearest `package.json`. It is a separate question from what `module` controls, which is only the import syntax that gets emitted.
+_Avoid_: module, import, bundling, path mapping
+
 **Narrowing**:
 A type refinement the compiler derives from a condition, valid only at positions reachable through that branch. It is lost when a local is reassigned anywhere afterwards, and when a property's use is deferred into a closure.
 _Avoid_: casting, assertion, type guard, validation
@@ -90,6 +102,14 @@ _Avoid_: parent class, base, superclass, `__proto__`
 The property of a type system that a passing check guarantees the absence of a class of runtime error. TypeScript declares it a non-goal, so some assignments the compiler accepts are unsafe on purpose, in exchange for accepting the JavaScript people actually write.
 _Avoid_: correctness, safety, strictness
 
+**Strict family**:
+The named group of checking options that `strict` enables together. It is a set rather than a level, each member can be switched off on its own, and the membership grows between releases, so `strict: true` does not mean the same thing across versions.
+_Avoid_: strict mode, level, preset, linting
+
+**Suppression comment**:
+A directive that hides a diagnostic on the following line, either `@ts-ignore` or `@ts-expect-error`. Only the second is reported when the error it suppresses goes away, so only the second cannot rot silently.
+_Avoid_: assertion, disable, lint rule, pragma
+
 **Temporal dead zone**:
 The region between the top of a block and a `let` or `const` declaration in it, where the binding exists and reading it throws. It is also what a cyclic module import runs into.
 _Avoid_: hoisting error, uninitialised, undefined
@@ -102,9 +122,17 @@ _Avoid_: array, fixed array, record, struct
 A name bound to an existing type with `type`, which introduces no new type of its own. Two aliases for the same shape are the same type, and an alias never appears in the emitted JavaScript.
 _Avoid_: interface, class, new type, wrapper
 
+**Type-only import**:
+An import written with `import type` or an inline `type` specifier, which is erased and emits no run-time import. Making it explicit is what lets the emitted import statements be exactly what was written, rather than depending on whether the compiler could tell a name was a type.
+_Avoid_: import, side-effect import, dynamic import
+
 **Union type**:
 A type describing a value that may be any one of several listed types. Before narrowing, only the capabilities every member shares are usable, which is a promise about what the value might be rather than a restriction the compiler invented.
 _Avoid_: sum type, optional type, any, variant
+
+**unknown**:
+A type that accepts any value on the way in and permits no operation on it until it has been narrowed. It is the honest type for a value nothing has established anything about yet, and it differs from `any` precisely by refusing the way out.
+_Avoid_: any, object, mixed, untyped
 
 **Widening**:
 The compiler's replacement of a literal type with its general type where the value could later change, so a `let` initialised with `"a"` becomes `string` while a `const` keeps `"a"`. It is why a literal type sometimes has to be asked for.

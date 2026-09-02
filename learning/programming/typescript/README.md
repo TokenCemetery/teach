@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a TypeScript codebase on a team: able to model a domain so the compiler rejects the states that should not exist, keep type assertions out of code that carries weight, validate what crosses a runtime boundary rather than assuming the types held, and review someone's types and say concretely why a clever generic is costing more than it gives.
 
 **Start here:** [0001. Values and Coercion](lessons/0001-values-and-coercion.md)
-**Latest lesson:** [0014. What Inference Already Knows](lessons/0014-what-inference-already-knows.md)
+**Latest lesson:** [0021. Module Resolution](lessons/0021-module-resolution.md)
 
 ## Success looks like
 
@@ -72,6 +72,13 @@ Work through these in order.
 | [0012](lessons/0012-narrowing.md) | Narrowing | Control flow tells the compiler what a union has become, and exactly two things take it back |
 | [0013](lessons/0013-function-types.md) | Function Types | Parameters are checked in the direction you expect, unless you wrote a method |
 | [0014](lessons/0014-what-inference-already-knows.md) | What Inference Already Knows | Where inference reaches, so that writing an annotation means something when you do |
+| [0015](lessons/0015-what-strict-turns-on.md) | What strict Turns On | Seven checks behind one flag, each with a failure it exists to catch |
+| [0016](lessons/0016-the-checks-strict-leaves-out.md) | The Checks strict Leaves Out | Six more checks worth having, one that the compiler refuses to enable, and one that does nothing at all |
+| [0017](lessons/0017-unknown-instead-of-any.md) | unknown Instead of any | One type accepts everything and lets you do nothing, the other accepts everything and checks nothing |
+| [0018](lessons/0018-an-assertion-is-not-a-check.md) | An Assertion Is Not a Check | Every way to tell the compiler to stop checking, and what each one costs when the claim is wrong |
+| [0019](lessons/0019-reading-a-tsconfig.md) | Reading a tsconfig | Which files the compiler looks at, where the settings come from, and why the generated file says what it says |
+| [0020](lessons/0020-target-and-lib.md) | target and lib | One setting changes what is emitted and the other changes what exists, and naming the second throws the default away |
+| [0021](lessons/0021-module-resolution.md) | Module Resolution | The same compiler options give opposite verdicts depending on one field in package.json |
 
 ## Reference
 
@@ -80,6 +87,7 @@ Work through these in order.
 - [Coercion and equality](reference/coercion-and-equality.md): falsy values, what `==` converts, which default operator to write
 - [Event loop and promises](reference/event-loop-and-promises.md): queue ordering, combinators, and the async mistakes no compiler reports
 - [Types over values](reference/types-over-values.md): what each annotation buys, where inference reaches, and the holes the compiler leaves open on purpose
+- [Strictness and the compiler](reference/strictness-and-the-compiler.md): which flag catches which failure, where a setting comes from, and how an import resolves
 
 ## How this works
 

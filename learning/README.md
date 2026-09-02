@@ -17,7 +17,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | programming | [Python](programming/python/) | Own Python in production: ship it typed, tested, packaged and profiled | 44 |
 | programming | [Rust](programming/rust/) | Own Rust: design with ownership instead of fighting the borrow checker, then ship the crate | 6 |
 | programming | [SQL](programming/sql/) | Own the database: write the query, read the plan, design the schema, survive the concurrency | 6 |
-| programming | [TypeScript](programming/typescript/) | Own a TypeScript codebase: make the compiler reject the states that should not exist | 14 |
+| programming | [TypeScript](programming/typescript/) | Own a TypeScript codebase: make the compiler reject the states that should not exist | 21 |
 | llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 27 |
 
 ## Starting a topic

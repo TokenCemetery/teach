@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a TypeScript codebase on a team: able to model a domain so the compiler rejects the states that should not exist, keep type assertions out of code that carries weight, validate what crosses a runtime boundary rather than assuming the types held, and review someone's types and say concretely why a clever generic is costing more than it gives.
 
 **Start here:** [0001. Values and Coercion](lessons/0001-values-and-coercion.md)
-**Latest lesson:** [0007. Modules](lessons/0007-modules.md)
+**Latest lesson:** [0014. What Inference Already Knows](lessons/0014-what-inference-already-knows.md)
 
 ## Success looks like
 
@@ -46,7 +46,7 @@ Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 |---|---|---|
 | 1. The JavaScript underneath | Values and coercion, objects and prototypes, closures, `this`, modules, the event loop, promises and async | Can predict what a program does at runtime, with no types involved |
 | 2. Types over values | Primitives, arrays and tuples, unions, literal types, structural assignability, narrowing, function types, `readonly`, what inference already knows | Annotates only where inference cannot reach |
-| 3. Strictness and the compiler | The `strict` family flag by flag, `unknown` versus `any`, assertions versus declarations, `tsconfig`, module resolution, `target` and `lib` | Turns the strict flags on and fixes what appears instead of suppressing it |
+| 3. Strictness and the compiler | The `strict` family flag by flag, the strict-shaped flags `strict` still omits, `unknown` versus `any`, assertions versus declarations, `tsconfig`, module resolution, `target` and `lib` | Keeps strictness on and fixes what it reports instead of suppressing it, and turns on the checks `strict` leaves out |
 | 4. Modelling | Discriminated unions, exhaustiveness with `never`, branded types, generics and constraints, `satisfies`, interface versus type alias | Illegal states are unrepresentable, and the compiler is what proves it |
 | 5. The runtime boundary | What erases, declaration files, validating input at the edge, errors as values, consuming untyped and wrongly typed dependencies | No value enters the program unvalidated, and no assertion is load-bearing |
 | 6. Type-level tools | Mapped and conditional types, `infer`, template literal types, variance and assignability, inference for library APIs, compiler performance | Writes an API whose types serve its callers, and stops before cleverness |
@@ -65,6 +65,13 @@ Work through these in order.
 | [0005](lessons/0005-scope-and-closures.md) | Scope and Closures | A closure captures the binding rather than the value, and let makes one per iteration |
 | [0006](lessons/0006-event-loop-and-promises.md) | The Event Loop, Promises and await | Microtasks drain before the next timer, and two awaits in a row are sequential |
 | [0007](lessons/0007-modules.md) | Modules | Imports are hoisted and bound live, and a file with no import or export is not a module |
+| [0008](lessons/0008-the-types-you-write.md) | The Types You Write | The annotation vocabulary, and a compiler that already objects before you configure it |
+| [0009](lessons/0009-tuples-and-readonly.md) | Tuples and readonly | A fixed length the compiler enforces on reads and forgets on push |
+| [0010](lessons/0010-unions-and-literal-types.md) | Unions and Literal Types | A value with more than one possible type, and the widening that throws the interesting one away |
+| [0011](lessons/0011-structural-assignability.md) | Structural Assignability | Shape decides what goes where, except for the one check that only fires on a fresh object literal |
+| [0012](lessons/0012-narrowing.md) | Narrowing | Control flow tells the compiler what a union has become, and exactly two things take it back |
+| [0013](lessons/0013-function-types.md) | Function Types | Parameters are checked in the direction you expect, unless you wrote a method |
+| [0014](lessons/0014-what-inference-already-knows.md) | What Inference Already Knows | Where inference reaches, so that writing an annotation means something when you do |
 
 ## Reference
 
@@ -72,6 +79,7 @@ Work through these in order.
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
 - [Coercion and equality](reference/coercion-and-equality.md): falsy values, what `==` converts, which default operator to write
 - [Event loop and promises](reference/event-loop-and-promises.md): queue ordering, combinators, and the async mistakes no compiler reports
+- [Types over values](reference/types-over-values.md): what each annotation buys, where inference reaches, and the holes the compiler leaves open on purpose
 
 ## How this works
 

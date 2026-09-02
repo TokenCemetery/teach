@@ -77,6 +77,10 @@ CONVENTIONS = {
     # be the convention there, and the arc is closed, so it is exempt rather
     # than retrofitted.
     "finetuning": {"resources_bullet_last": False},
+    # This arc has used the box marker since its first lesson, in the Warm-up
+    # as well as in Practice, so it is enforced from lesson 1 rather than from
+    # the lesson Java happened to adopt it at.
+    "typescript": {"practice_marker_from": 1},
 }
 
 # Strings that identify the machine a lesson was drafted on rather than a fact

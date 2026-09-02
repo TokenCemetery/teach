@@ -53,6 +53,21 @@ type: resources
 - [Docs: "Using EXPLAIN", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/using-explain.html)
   How to read a plan, and what the estimated and actual numbers each mean. Use for: stage 6, every time.
 
+- [Docs: "EXPLAIN", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/sql-explain.html)
+  Every option the command takes, which matters because release 18 changed what it prints by default. Use for: stage 6, and for the exact meaning of a line you have not seen before.
+
+- [Docs: "14.2 Statistics Used by the Planner", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/planner-stats.html)
+  What `pg_stats` holds, what each column is used to estimate, and how extended statistics fix a correlation the planner otherwise assumes away. Use for: stage 6, when an estimate is wrong rather than a plan.
+
+- [Docs: "19.7 Query Planning", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/runtime-config-query.html)
+  The planner's cost constants and the `enable_*` switches, with their defaults. Use for: stage 6, both for what a plan's choice rests on and for the switches that exist only to investigate one.
+
+- [Docs: "25.1 Routine Vacuuming", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/routine-vacuuming.html)
+  Why dead row versions accumulate, what a plain vacuum reclaims against what it returns to the operating system, and what autovacuum decides on its own. Use for: stage 6, when the table rather than the query is the problem.
+
+- [Docs: "pg_stat_statements", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/pgstatstatements.html)
+  Per-statement call counts and totals, which turn "the database is slow" into a named list. Use for: stage 6, and note that it needs a server restart to load, so this arc cites it rather than demonstrating it.
+
 - [Docs: "Performance Tips", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/performance-tips.html)
   Statistics, planner cost constants, and how estimation goes wrong. Use for: stage 6, when the plan is bad because the estimate was.
 

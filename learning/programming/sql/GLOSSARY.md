@@ -72,9 +72,21 @@ _Avoid_: isolation, durability, consistency, locking
 A collection that allows duplicates, which is what a SQL table actually is. Two identical rows are two rows and no query can tell them apart, so only a constraint makes rows distinguishable.
 _Avoid_: set, list, relation
 
+**Bitmap heap scan**:
+A scan that collects matching row locations from an index, sorts them by page, then visits each heap page once. It is what the planner chooses when many scattered rows match, between the extremes of one index lookup and a full sequential scan.
+_Avoid_: index scan, sequential scan, index-only scan, bitmap index
+
+**Bloat**:
+Space a table or index holds that no live row occupies, left by updated and deleted row versions. A plain vacuum makes it reusable without returning it, so a table can stop growing in rows and keep growing on disk.
+_Avoid_: fragmentation, table size, dead rows, disk usage
+
 **Candidate key**:
 A set of columns that is both `UNIQUE` and `NOT NULL`, and therefore identifies every row. Uniqueness alone is not enough, because a nullable unique column permits any number of NULLs.
 _Avoid_: unique index, identifier, natural key
+
+**Cardinality**:
+The number of rows a step produces, which is what a selectivity fraction works out to against a given table. Not the number of distinct values in a column, which is a different quantity the planner stores separately.
+_Avoid_: selectivity, distinct values, row count of the table, uniqueness
 
 **Collation**:
 The rules that decide how text compares and sorts, including case and accent handling. It is configuration rather than part of SQL, so the same query on two databases can legitimately return rows in a different order.
@@ -83,6 +95,10 @@ _Avoid_: character set, encoding, locale
 **Common table expression**:
 A named subquery written before the query that uses it, so a long query reads in the order its steps happen. Naming a step is what it buys; on a current PostgreSQL a single-use one is inlined, so it is not an optimisation fence unless `MATERIALIZED` asks for one.
 _Avoid_: temporary table, view, optimisation fence, subquery
+
+**Covering index**:
+An index holding every column a query needs, so the query is answered without reading the table, which a plan reports as an index-only scan. Columns added with `INCLUDE` are stored in the leaves and cannot be searched or ordered by.
+_Avoid_: wide index, composite key, unique index, partial index
 
 **Cross product**:
 Every row of one table paired with every row of another, with no condition to remove a pair, which `CROSS JOIN` produces and which is also what a join is before its condition applies. Also called a Cartesian product.
@@ -112,6 +128,10 @@ _Avoid_: subquery, inline view, temporary table, CTE
 The order in which a `SELECT`'s clauses actually run, which is `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `SELECT`, `DISTINCT`, `ORDER BY`, `LIMIT`. It differs from the written order, and it is what determines which names a clause can see.
 _Avoid_: execution plan, clause order, precedence
 
+**Hash batch**:
+One pass a hash join makes over its build and probe sides. More than one batch means the build side did not fit in `work_mem`, so the join wrote partitions to temporary files, which the plan shows as `Batches` above 1 with temp reads and writes.
+_Avoid_: partition, chunk, bucket, spill as a synonym
+
 **Idempotency key**:
 A caller-supplied identifier sent unchanged on every retry of one logical request, stored in a unique column so a repeat is refused by the constraint rather than by a check the application forgot.
 _Avoid_: primary key, request id, trace id, nonce
@@ -120,9 +140,21 @@ _Avoid_: primary key, request id, trace id, nonce
 An operation that can be run more than once without changing anything beyond its first successful run. It is a property of the caller's design, not of the database's atomicity, and it is what makes at-least-once delivery survivable.
 _Avoid_: atomic, safe, retryable, transactional
 
+**Join strategy**:
+The algorithm the planner picks to combine two row sets, being a nested loop, a hash join or a merge join. It is chosen from estimated row counts rather than written in the query, which is why a wrong estimate shows up as the wrong strategy.
+_Avoid_: join type, join order, inner join, plan
+
+**Keyset pagination**:
+Fetching the next page by asking for rows after the last key seen, rather than by counting rows to skip. Every page costs the same, and the key has to be unique or the order is not stable enough to page through.
+_Avoid_: offset pagination, cursor, page number, seek
+
 **Lateral subquery**:
 A subquery in `FROM` marked `LATERAL`, which may reference columns of the items to its left and is evaluated once per row of them. Order in `FROM` therefore matters, since it can only see what is already to its left.
 _Avoid_: derived table, correlated subquery, join, inline view
+
+**Leftmost-prefix rule**:
+A multicolumn index can only be searched from its first column inward, so an index on two columns serves a query on the first, or on both, and not one on the second alone. Skip scan relaxes this only when the leading column has few distinct values.
+_Avoid_: column order as a preference, covering index, partial index, index-only scan
 
 **Lost update**:
 Two transactions read a value, each computes a new one from it, and the second write silently replaces the first. Neither transaction gets an error at Read Committed, which is what makes it the most expensive anomaly to find.
@@ -148,6 +180,10 @@ _Avoid_: left join as a synonym for all three, full join, join, optional join
 A non-key column that depends on part of a composite key rather than on the whole of it, which second normal form forbids. It cannot arise in a table whose key is a single column.
 _Avoid_: transitive dependency, redundancy, denormalisation, join dependency
 
+**Partial index**:
+An index built over the subset of rows a `WHERE` clause selects, which is smaller than the full index and serves only queries whose own condition implies that clause.
+_Avoid_: expression index, filtered query, covering index, unique index
+
 **Peer**:
 A row that ties with another on a window's `ORDER BY` columns. `RANGE` and `GROUPS` treat peers as one unit and `ROWS` does not, which is why one running total gives tied rows the same value and the other splits them.
 _Avoid_: duplicate, tie as a synonym, equal row, neighbour
@@ -155,6 +191,14 @@ _Avoid_: duplicate, tie as a synonym, equal row, neighbour
 **Phantom**:
 A row that appears in, or vanishes from, the result of the same predicate run twice in one transaction, because another transaction inserted or removed a matching row. The defence has to cover the predicate rather than any particular row.
 _Avoid_: non-repeatable read, read skew, dirty read, ghost row
+
+**Plan node**:
+One step in the tree `EXPLAIN` prints, with its children indented beneath it and execution running from the leaves upward. Each node reports what it produced, and the line worth reading differs by node type.
+_Avoid_: query, statement, operator as a synonym for a scan, buffer
+
+**Planner cost**:
+The estimate `EXPLAIN` prints in arbitrary units, comparable only between plans for the same query on the same settings. It is not a time, not a byte count, and not comparable across queries.
+_Avoid_: execution time, milliseconds, buffers, price
 
 **Read skew**:
 Two different rows read once each in one transaction, each read correct on its own, and jointly describing a state that never existed, such as both sides of a transfer read either side of it.
@@ -176,6 +220,10 @@ _Avoid_: nested transaction, checkpoint, commit, rollback
 A subquery returning exactly one row and one column, usable wherever a single value belongs. Nothing checks the promise at parse time, so a second row makes it fail at run time, on data rather than on syntax.
 _Avoid_: correlated subquery, single-row query, aggregate, expression
 
+**Selectivity**:
+The fraction of a table's rows a condition keeps, which is what decides every choice the planner makes. It is a fraction rather than a count; the count it implies is the cardinality.
+_Avoid_: cardinality, distinct values, index usefulness, filter
+
 **Self-join**:
 A table joined to itself so two of its own rows can be compared, which needs a condition to stop a row pairing with itself and another to stop each genuine pair appearing twice.
 _Avoid_: recursive query, cross join, duplicate join, hierarchy query
@@ -183,6 +231,10 @@ _Avoid_: recursive query, cross join, duplicate join, hierarchy query
 **Semi-join**:
 A test of whether a matching row exists, as `IN` and `EXISTS` perform, which returns each outer row at most once however many inner rows match. That is the difference from a join, which repeats the outer row per match and needs a `DISTINCT` or a grouping to imitate this.
 _Avoid_: join, subquery, filter, inner join
+
+**Skip scan**:
+A planner strategy, added in PostgreSQL 18, that uses a multicolumn index for a query constrained only on a later column by restarting the search once per distinct leading value. The plan shows it as more than one index search on a single-row result.
+_Avoid_: index scan, full index scan, leftmost-prefix rule as broken, bitmap scan
 
 **Snapshot**:
 A statement of which transactions had committed at one moment, which decides what a query sees. An isolation level is a rule about when a snapshot is taken and how long it is kept.
@@ -207,6 +259,10 @@ _Avoid_: partial dependency, indirect join, chained foreign key, derived column
 **Unknown**:
 The third truth value, produced by comparing anything with `NULL`. It is not the same as false: `NOT unknown` is still unknown, and `false AND unknown` is false while `unknown AND unknown` is not.
 _Avoid_: null, false, undefined
+
+**Visibility map**:
+A per-table bitmap recording which pages hold only rows every transaction can see. It is what allows an index-only scan to skip the table entirely, so a non-zero `Heap Fetches` means some page was not yet marked.
+_Avoid_: index-only scan, MVCC, vacuum, cache
 
 **Window frame**:
 The subset of the partition a window function actually reads for the current row, which is the whole partition when the window has no `ORDER BY` and `RANGE UNBOUNDED PRECEDING AND CURRENT ROW` when it has one. Every value function is only as wide as its frame.

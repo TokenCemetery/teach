@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0034. Idempotency and the Retry That Is Correct](lessons/0034-idempotency-and-retry.md)
+**Latest lesson:** [0041. When the Query Is Not the Problem](lessons/0041-when-the-query-is-not-the-problem.md)
 
 ## Success looks like
 
@@ -92,6 +92,13 @@ Work through these in order.
 | [0032](lessons/0032-locks.md) | Locks You Take on Purpose | A row lock is how you hold a decision still, and every one of them has a failure mode worth choosing |
 | [0033](lessons/0033-deadlocks.md) | Deadlocks | Two transactions each holding what the other needs, and the only cure is agreeing on an order in advance |
 | [0034](lessons/0034-idempotency-and-retry.md) | Idempotency and the Retry That Is Correct | A retry that replays the same statements reproduces the bug it was meant to fix, so it has to read again and decide again |
+| [0035](lessons/0035-reading-a-plan.md) | Reading a Plan | The plan tells you what the database did and what it expected, and the gap between them is where the work is |
+| [0036](lessons/0036-what-an-index-does.md) | What an Index Actually Does | A B-tree turns a scan of every row into a walk down a few pages, and the plan names which of four ways it read them |
+| [0037](lessons/0037-selectivity-and-statistics.md) | Selectivity and Statistics | Every plan is built from a sample of your data, so a bad plan is usually a bad estimate rather than a bad planner |
+| [0038](lessons/0038-choosing-an-index.md) | Choosing an Index | Column order decides which queries an index can answer, and the best index is often the one you decide not to build |
+| [0039](lessons/0039-join-strategies.md) | Join Strategies | Three ways to join and the planner picks by estimated cost, so a wrong estimate shows up as the wrong strategy |
+| [0040](lessons/0040-pagination-and-counting.md) | Pagination and Counting | OFFSET reads and discards every row it skips, and counting exactly costs a pass over the table |
+| [0041](lessons/0041-when-the-query-is-not-the-problem.md) | When the Query Is Not the Problem | Proving a win needs a measurement you can repeat, and the cause is often the table, the traffic or the client |
 
 ## Reference
 
@@ -104,6 +111,7 @@ Work through these in order.
 - [Beyond the basics](reference/beyond-the-basics.md): the stage 3 sheet, with the window functions, the frame modes, and which tool answers which question
 - [Schema design](reference/schema-design.md): the stage 4 sheet, with the normal forms, every constraint kind, and which type refuses what
 - [Transactions](reference/transactions.md): the stage 5 sheet, with each isolation level, the anomalies it permits, the lock strengths, and the retryable errors
+- [Performance](reference/performance.md): the stage 6 sheet, with the plan nodes, which numbers to trust, the scan and join strategies, and the index decisions
 
 ## How this works
 

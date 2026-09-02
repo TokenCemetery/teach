@@ -42,6 +42,10 @@ _Avoid_: module, unnamed module, modular jar
 A `pom`-packaged artifact that exists only to declare versions, imported into `dependencyManagement` with `import` scope. One line then fixes the versions of a whole family of artifacts, which is why a dependency taken from a BOM is declared with no version of its own.
 _Avoid_: parent pom, dependency list, manifest
 
+**Blackhole**:
+A sink a benchmark passes a result to so that the value is unambiguously consumed and cannot be treated as unused. JMH can also detect a compiler-supported blackhole mode and use it without any change to the benchmark, and results taken under different modes are not comparable.
+_Avoid_: void return, discarding, no-op
+
 **Canonical constructor**:
 The constructor whose parameters are exactly a record's components, in declaration order. It is generated unless you declare it, and every other constructor on the record has to delegate to it, which is why validation placed there cannot be bypassed.
 _Avoid_: default constructor, primary constructor, main constructor
@@ -58,9 +62,17 @@ _Avoid_: compile-time exception, declared error, fatal exception
 A `Stream` backed by an open operating-system handle, which is what `Files.lines`, `Files.walk` and `Files.find` return. Unlike a stream over a collection it must be closed, and skipping that usually appears to work, because unreachable ones are cleaned up eventually and the descriptors run out only under load.
 _Avoid_: file stream, lazy stream, resource
 
+**Committed heap**:
+The heap the collector currently holds from the operating system, which is what a garbage collection line reports in parentheses. It is neither the occupancy before or after the collection nor the `-Xmx` ceiling it may still grow towards.
+_Avoid_: max heap, used heap, allocated memory
+
 **Compact constructor**:
 A canonical constructor written with no parameter list, whose body runs before the components are assigned to the fields. Assigning to the parameter is what reaches the field, and assigning to `this.field` there is a compile error rather than a redundancy.
 _Avoid_: compact form, short constructor, implicit constructor
+
+**Compressed ordinary object pointers**:
+The JVM's default encoding of a reference as a 32-bit heap offset rather than a full-width address, used while the heap is small enough for every object to be reachable that way. It halves the cost of every reference field and every reference-typed array slot, and the JVM decides it ergonomically rather than the programmer choosing it.
+_Avoid_: pointer compression, small heap mode, 32-bit mode
 
 **Covariance (of arrays)**:
 The rule that `String[]` is usable as an `Object[]`, which lets a type error survive compilation and surface as `ArrayStoreException`. Generics are invariant precisely to close this hole.
@@ -81,6 +93,10 @@ _Avoid_: race condition, concurrency bug, contention
 **Deadlock**:
 A cycle of threads each waiting for a lock the next one in the cycle holds, so none proceeds and none of the locks is ever released. One consistent acquisition order across the program prevents it, and the JVM will name the cycle from inside the running process.
 _Avoid_: hang, freeze, lock contention
+
+**Decorator (of unified logging)**:
+One of the context fields `-Xlog` prepends to each line, such as the wall-clock time, the uptime, the level or the tags. Choosing them is what makes a log analysable later, because the fields absent from a line cannot be recovered from it.
+_Avoid_: decorator pattern, prefix, formatter
 
 **Defensive copy**:
 A copy taken so that a reference cannot be used to change an object from outside it: on the way in so a caller's later mutation cannot reach a field, and on the way out so a returned reference cannot either. The second half is the half that gets forgotten.
@@ -110,6 +126,14 @@ _Avoid_: sort order, iteration order, sequence
 The compiler's discarding of type arguments, which leaves `List<String>` and `List<Integer>` as one class at run time. Every restriction on generics follows from it, and so does a `ClassCastException` on a line that contains no cast.
 _Avoid_: type deletion, unboxing, runtime generics
 
+**Ergonomics**:
+The JVM's practice of computing a flag's value at startup from the machine it finds, reported as `{ergonomic}` rather than `{default}`. An ergonomic value is not a constant and changes with the machine or the container limit, silently and with no flag touched.
+_Avoid_: default, tuning, autoconfiguration
+
+**Escape analysis**:
+The compiler's proof that an object cannot be observed outside the method that created it, which permits it not to be created at all. It is an optimisation with nothing in the specification promising it, so it can stop applying when unrelated code changes what gets inlined.
+_Avoid_: garbage collection, stack allocation, optimisation pass
+
 **Exhaustive switch**:
 A `switch` whose labels the compiler can prove cover every possible value, which is what permits omitting `default`. Omitting it is the point rather than an oversight, because adding an alternative then fails compilation at every place that has to decide again.
 _Avoid_: complete switch, total switch, default-free switch
@@ -121,6 +145,10 @@ _Avoid_: mock, stub, in-memory copy
 **Final field freeze**:
 The guarantee that a thread obtaining a reference only after construction has finished sees that object's `final` fields correctly initialised. It holds even when the reference itself was published through a data race, which is why a properly built immutable object can be shared with no synchronisation at all.
 _Avoid_: immutability guarantee, constructor barrier, safe init
+
+**Fork (of a benchmark)**:
+A separate JVM process a harness starts so that one benchmark's compilation and profiling history cannot influence another's measurement. Running a single fork is the commonest reason two benchmarks appear to differ when they do not, or appear identical when they differ.
+_Avoid_: thread, iteration, process fork
 
 **Fragile base class problem**:
 The coupling inheritance creates in both directions: a superclass author breaks subclasses by changing behaviour that looked internal, and a subclass author breaks by depending on more than the superclass promised. It is why every `protected` member is published API.
@@ -142,6 +170,10 @@ _Avoid_: before, ordering, synchronisation
 A subclass declaring a `static` method or a field with the same name as one in the superclass. It resolves on the declared type of the reference rather than the runtime type of the object, which is the opposite of overriding and looks identical in the source.
 _Avoid_: overriding, shadowing, masking
 
+**Humongous allocation**:
+In G1, an object at least half a region in size, which is allocated directly into contiguous regions rather than through the ordinary young path. It appears in a garbage collection log by name, and a stream of them is a sizing problem rather than a collector problem.
+_Avoid_: large object, big allocation, old generation allocation
+
 **Interning**:
 Placing a value in a shared pool so that identical values are one object. String literals and compile-time constants are interned, which makes `==` on strings appear to work until a value is built at run time.
 _Avoid_: caching, deduplication, pooling
@@ -158,6 +190,10 @@ _Avoid_: goal, step, target
 A value naming a reading on a calendar or a wall clock with no zone attached, which is what `LocalDate`, `LocalTime` and `LocalDateTime` are. None of them is a point on the universal timeline, so none converts to an `Instant` without being told a zone, and using one as a timestamp is the most common mistake in the time API.
 _Avoid_: naive time, zoneless, floating time
 
+**Metaspace**:
+The off-heap area holding the metadata of loaded classes, meaning their bytecode, constant pools and field layouts. It is bounded separately from the heap and is unbounded by default, so a classloader leak exhausts native memory rather than heap.
+_Avoid_: permgen, heap, class cache
+
 **Mock**:
 A test double carrying expectations about how it is called, which are checked and can fail the test on their own. It tests the implementation's choice of interactions rather than its promise, which is why it is the double most likely to fail on a change that broke no behaviour.
 _Avoid_: stub, fake, double
@@ -169,6 +205,10 @@ _Avoid_: lock object, mutex, semaphore
 **Natural ordering**:
 The ordering a type defines for itself by implementing `Comparable`. A sorted collection uses it instead of `equals`, so two elements that compare as zero are one element as far as a `TreeSet` is concerned.
 _Avoid_: default sort, comparison, ranking
+
+**Object header**:
+The fixed block of JVM bookkeeping in front of every instance's fields, invisible from the source and counted in every allocation. On a small object it is most of the object, which is why a record of two `int` fields costs three times what its fields do.
+_Avoid_: record header, metadata, object overhead
 
 **PECS**:
 Producer extends, consumer super: `? extends T` for a structure you only read from, `? super T` for one you only write to. A parameter that must do both takes a plain `T` and gives up the flexibility, which is the trade rather than a defect.
@@ -193,6 +233,14 @@ _Avoid_: untyped collection, legacy generic, unparameterised type
 **Reproducible build**:
 A build that turns the same source into byte-identical output. Archive entry timestamps defeat it by default, so it has to be asked for explicitly, and until it is, two builds of one commit cannot be shown to have produced the same artifact.
 _Avoid_: deterministic build, repeatable build, clean build
+
+**Resident memory**:
+The total memory the operating system charges to the JVM process, which is the heap plus metaspace plus thread stacks plus the code cache plus native and direct buffers. It is what a container limit is enforced against, and `-Xmx` bounds only the first term of it.
+_Avoid_: heap usage, virtual memory, max heap
+
+**Scalar replacement**:
+The optimisation that follows escape analysis, holding a non-escaping object's fields in registers or on the stack instead of allocating the object. The allocation then does not appear in a measurement of bytes per operation at all, because it never happened.
+_Avoid_: inlining, stack allocation, elision
 
 **Sealed hierarchy**:
 A supertype whose permitted direct subtypes are fixed at compile time, so the set of alternatives is closed and the compiler can enumerate it. That is what makes a `switch` over it exhaustive with no `default`.
@@ -229,6 +277,14 @@ _Avoid_: runner, framework, platform
 **Test instance lifecycle**:
 The rule deciding how many instances of a test class get created: one per test method by default, or one for the whole class. The default is what makes a field written by one test invisible to the next, so changing it trades isolation for shared setup.
 _Avoid_: scope, fixture, lifecycle
+
+**Thread stack**:
+The per-thread reservation holding that thread's call frames, sized by `-Xss` and unaffected by `-Xmx`. Exhausting one raises `StackOverflowError` in that thread alone, which is a different kind of failure from a shared pool running out.
+_Avoid_: heap, call stack trace, stack trace
+
+**Thread-local allocation buffer**:
+The slice of the heap handed to one thread so that its ordinary allocations are a pointer bump needing no coordination with other threads. It is why allocation itself is cheap, and it says nothing about the later cost of tracing or copying what was allocated.
+_Avoid_: free allocation, thread-local variable, buffer pool
 
 **Total order**:
 A comparator or natural ordering under which no two distinct elements compare as zero. Sorted collections need one, and a chain of keys provides it only if the last key is unique per element.

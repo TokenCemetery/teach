@@ -26,6 +26,18 @@ type: resources
 - [Docs: "JDK 25 Documentation", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/)
   Tool guides, virtual-machine options, troubleshooting and migration in one place. Use for: command-line flags and the guides behind them.
 
+- [Docs: "HotSpot Virtual Machine Garbage Collection Tuning Guide, Release 25", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/gctuning/index.html)
+  The collectors, what each is built for, and the ergonomics that pick one for you, versioned to the release. Use for: stage 6, and as the primary source for any tuning claim, because this is the source that gets reissued when the answer changes.
+
+- [Docs: "The java Command", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html)
+  Every launcher option, including the whole of unified logging behind `-Xlog` and the heap sizing flags. Use for: stage 6, and whenever a flag found in a blog post needs checking against the release in hand.
+
+- [Docs: "The jfr Command", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jfr.html)
+  The command-line reader for a Flight Recorder file: `summary`, `print` and event filtering. Use for: stage 6, reading a recording without installing a graphical tool.
+
+- [Docs: "Flight Recorder API Programmer's Guide, Release 25", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/jfapi/index.html)
+  What the recorder records, which events exist and what each one costs to collect. Use for: stage 6, deciding what to switch on before recording rather than after.
+
 - [Docs: "Learn Java", Oracle, dev.java](https://dev.java/learn/)
   The official tutorials, maintained for current releases rather than left at Java 8. Use for: stages 1 to 3, and for a worked introduction to a feature.
 
@@ -44,6 +56,9 @@ type: resources
 - [Book: "Effective Java", Joshua Bloch, Addison-Wesley](https://openlibrary.org/isbn/9780134685991)
   Seventy-eight numbered items on API and class design, each with the reasoning kept. Use for: stages 2, 3 and 7, and for review vocabulary.
 
+- [Book: "The Garbage Collection Handbook", Jones, Hosking, Moss, Chapman and Hall](https://gchandbook.org/)
+  How collectors are built, from mark-sweep to concurrent and generational designs, with the trade-offs derived rather than asserted. Use for: stage 6 when the question is why a collector behaves as it does, which is the part that does not go stale.
+
 - [Blog: "Inside Java", Oracle Java Platform Group, inside.java](https://inside.java/)
   Design rationale, release changes and deep dives from the engineers who make the decisions. Use for: why the platform refused a feature, and what changed in a release.
 
@@ -52,6 +67,15 @@ type: resources
 
 - [Tool: "JMH", OpenJDK, github.com/openjdk/jmh](https://github.com/openjdk/jmh)
   The harness that handles warmup, dead-code elimination and statistics for JVM benchmarks. Use for: measuring anything on a JIT-compiled runtime without fooling yourself.
+
+- [Code: "JMH Samples", OpenJDK, github.com/openjdk/jmh](https://github.com/openjdk/jmh/tree/master/jmh-samples/src/main/java/org/openjdk/jmh/samples)
+  Numbered, commented benchmarks, each demonstrating one way a measurement goes wrong. Use for: stage 6, as the authoritative worked examples. Note that they teach the mechanism rather than guarantee the outcome: two of the effects they demonstrate did not reproduce on JDK 25 when this stage was written, which is the reason to run them rather than quote them.
+
+- [Tool: "async-profiler", github.com/async-profiler/async-profiler](https://github.com/async-profiler/async-profiler)
+  Sampling profiler for processor time, allocation and native frames, with flame-graph output. Use for: stage 6 when Flight Recorder's resolution is not enough, or when the frames you need are below the Java stack.
+
+- [Tool: "JDK Mission Control", Oracle, oracle.com](https://www.oracle.com/java/technologies/jdk-mission-control.html)
+  The graphical reader for Flight Recorder files, with the automated analysis rules. Use for: stage 6 when a recording is too large to read with the command-line tool. It is a separate download, so nothing in the arc requires it.
 
 - [Docs: "JUnit User Guide", JUnit Team, docs.junit.org](https://docs.junit.org/current/user-guide/)
   The programming and extension model, including parameterised and nested tests. Use for: stage 5 mechanics. Note the host: the material now lives at `docs.junit.org` rather than under the `junit5` path most search results still point at, and since JUnit 6 the Platform, Jupiter and Vintage share one version number.
@@ -79,6 +103,7 @@ type: resources
 ## Gaps
 
 - The memory model has no gentle authoritative source. Chapter 17 is formal and "Java Concurrency in Practice" predates virtual threads, `VarHandle` and structured concurrency, so stage 4 uses the book for the model and the current specification and JEPs for the API. That split worked, with one caveat found while writing the stage: **a JEP describes the release it shipped in and is not revised when a later JEP changes the behaviour.** JEP 444 still states that `synchronized` pins a carrier thread, which JEP 491 changed. Read a JEP for intent and design rationale, and confirm current behaviour by running it.
-- Garbage-collection tuning in depth rests on Shipilëv's posts and the virtual-machine guides. No single book is listed, and one may be needed before stage 6 is written.
+- Closed, and it turned out to be two gaps rather than one. **How collectors work** does have a book-length source, now listed: "The Garbage Collection Handbook". **How to tune a particular collector on a particular release** does not, and should not: tuning advice ages faster than books ship, so the primary source is the HotSpot garbage-collection tuning guide for the release in hand, which is versioned and is now listed for JDK 25. Do not go looking for a tuning book again.
+- Two of the JIT effects the JMH samples demonstrate, dead-code elimination and constant folding, did not reproduce on JDK 25 while stage 6 was being written. This is not a defect in the samples: they demonstrate the mechanism, and whether it fires depends on the compiler, the platform and the shape of the code. It is a standing reason to run a sample rather than cite it, and stage 6 teaches the principle instead of the anecdote.
 - The six-month release cadence outpaces every book here. Version-sensitive claims go to the specification, the API documentation or the JEP index, and any lesson naming a release says which one.
 - Frameworks have no source by design. When stage 7 judges whether a framework earns its place, that judgment needs a source and this list does not yet have one.

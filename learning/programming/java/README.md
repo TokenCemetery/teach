@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0035. A Runnable Artifact](lessons/0035-a-runnable-artifact.md)
+**Latest lesson:** [0042. From Profile to Proof](lessons/0042-from-profile-to-proof.md)
 
 ## Success looks like
 
@@ -94,6 +94,13 @@ Work through these in order.
 | [0033](lessons/0033-declaring-dependencies.md) | Declaring Dependencies | Coordinates, scopes and the transitive graph, plus the version that arrives without being asked for |
 | [0034](lessons/0034-the-build-lifecycle.md) | The Build Lifecycle | Phases and goals instead of memorised commands, and the wrapper that makes the build the same everywhere |
 | [0035](lessons/0035-a-runnable-artifact.md) | A Runnable Artifact | Packaging what you built so that someone with nothing but a JDK can run it |
+| [0036](lessons/0036-where-memory-goes.md) | Where Memory Goes | The five places the JVM puts memory, and which OutOfMemoryError names which one |
+| [0037](lessons/0037-the-shape-of-an-object.md) | The Shape of an Object | A small object is mostly header, and the flag that shrinks it is off by default |
+| [0038](lessons/0038-the-allocation-that-never-happened.md) | The Allocation That Never Happened | Escape analysis can delete an allocation entirely, and one field store puts it back |
+| [0039](lessons/0039-collectors-and-the-trade.md) | Collectors and the Trade You Are Making | Five collectors, one three-way trade, and why the default is usually the right answer |
+| [0040](lessons/0040-reading-a-gc-log.md) | Reading a Garbage Collection Log | One line of log says how much was collected, how long it took, and whether to care |
+| [0041](lessons/0041-a-benchmark-you-can-trust.md) | A Benchmark You Can Trust | Why the obvious timing loop lies, and the harness setup that silently measures nothing |
+| [0042](lessons/0042-from-profile-to-proof.md) | From Profile to Proof | Record the run, read where the time went, change one thing, and prove the win |
 
 ## Reference
 
@@ -104,6 +111,7 @@ Work through these in order.
 - [Idiom and the library](reference/idiom-and-library.md): the library decisions a reviewer notices, and the traps that throw where nobody looks
 - [Concurrency](reference/concurrency.md): which guarantee each construct gives, which model fits the workload, and what the symptom in front of you means
 - [Testing and build](reference/testing-and-build.md): the build task each command actually performs, the double to reach for, and the failure that means the artifact is wrong
+- [The runtime](reference/the-runtime.md): where the memory goes, which collector answers which requirement, and the measurement that supports a claim
 
 ## How this works
 

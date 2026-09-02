@@ -91,6 +91,10 @@ MACHINE = [
     r"/Users/", r"/opt/homebrew", r"olegshulyakov", r"\bDarwin\b",
     r"\bzsh\b", r"\bHomebrew\b", r"\bbrew install\b", r"/tmp/javawork",
     r"25\.0\.\d+\.\d+", r"\bru_RU\b", r"\bmacOS\b", r"\bWindows 1\d\b",
+    # This machine's time zone. A tool that prints a local timestamp stamps
+    # its offset on the output, so a pasted log or query result carries the
+    # author's zone unless the run was told to use UTC.
+    r"\+0300\b", r"\+03:00\b", r"\bMSK\b",
     r"\b3\.9\.16\b", r"\bopenjdk@2\d\b",
     r"\bIntelliJ\b", r"\bVS Code\b", r"\$ cd /", r"~/Projects",
 ]

@@ -40,6 +40,10 @@ _Avoid_: locking mode, consistency level, transaction mode
 
 ## Terms
 
+**Anchor term**:
+The non-recursive first part of a recursive `WITH`, which fixes the rows the walk starts from. A condition belongs here when it chooses the starting point and in the recursive term when it must hold at every round, and putting it in the wrong one answers a different question rather than merely reading differently.
+_Avoid_: base case, seed query, first row, initial condition
+
 **Anti-join**:
 A query that keeps the rows of one table having no match in another, written as an outer join filtered on the joined side being `NULL`, as `NOT EXISTS`, or as `EXCEPT`. Only the nullness test itself is safe after an outer join, since any other condition on the joined side discards the very rows the question is about.
 _Avoid_: exclusion join, negative join, filter, `NOT IN`
@@ -72,6 +76,10 @@ _Avoid_: subquery, inline view, temporary table, CTE
 The order in which a `SELECT`'s clauses actually run, which is `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `SELECT`, `DISTINCT`, `ORDER BY`, `LIMIT`. It differs from the written order, and it is what determines which names a clause can see.
 _Avoid_: execution plan, clause order, precedence
 
+**Lateral subquery**:
+A subquery in `FROM` marked `LATERAL`, which may reference columns of the items to its left and is evaluated once per row of them. Order in `FROM` therefore matters, since it can only see what is already to its left.
+_Avoid_: derived table, correlated subquery, join, inline view
+
 **Natural join**:
 A join whose condition the engine infers from every column name the two tables share. The condition is invisible in the query text and changes on its own when either table gains or loses a matching name, so it is unsafe in code that outlives the schema.
 _Avoid_: inner join, `USING` join, implicit join, equijoin
@@ -79,6 +87,10 @@ _Avoid_: inner join, `USING` join, implicit join, equijoin
 **Outer join**:
 A join that keeps rows from one or both sides that matched nothing, filling the absent side's columns with `NULL`. Those `NULL`s were invented by the join rather than stored, and any later condition on them behaves exactly as three-valued logic says.
 _Avoid_: left join as a synonym for all three, full join, join, optional join
+
+**Peer**:
+A row that ties with another on a window's `ORDER BY` columns. `RANGE` and `GROUPS` treat peers as one unit and `ROWS` does not, which is why one running total gives tied rows the same value and the other splits them.
+_Avoid_: duplicate, tie as a synonym, equal row, neighbour
 
 **Scalar subquery**:
 A subquery returning exactly one row and one column, usable wherever a single value belongs. Nothing checks the promise at parse time, so a second row makes it fail at run time, on data rather than on syntax.
@@ -103,3 +115,19 @@ _Avoid_: null handling, boolean logic, tri-state
 **Unknown**:
 The third truth value, produced by comparing anything with `NULL`. It is not the same as false: `NOT unknown` is still unknown, and `false AND unknown` is false while `unknown AND unknown` is not.
 _Avoid_: null, false, undefined
+
+**Window frame**:
+The subset of the partition a window function actually reads for the current row, which is the whole partition when the window has no `ORDER BY` and `RANGE UNBOUNDED PRECEDING AND CURRENT ROW` when it has one. Every value function is only as wide as its frame.
+_Avoid_: partition, window, range, subset
+
+**Window function**:
+A function computed over rows related to the current row, called with `OVER`, which leaves every row in place instead of collapsing them. It is computed after `WHERE`, `GROUP BY` and `HAVING` have finished, which is why its result cannot be filtered in the same query.
+_Avoid_: aggregate, analytic function as a synonym for one, grouping, subquery
+
+**Window partition**:
+The division of rows a window's `PARTITION BY` makes, which groups them for the calculation and keeps every row in the output. It is unrelated to a table partition, which is a storage arrangement.
+_Avoid_: table partition, group, shard, frame
+
+**Working table**:
+The rows the previous round of a recursive query produced, which is what the recursive term runs against. It is not the accumulated result, so a term that expects to see everything produced so far is wrong about what it is joining to.
+_Avoid_: result set, accumulated rows, temporary table, CTE

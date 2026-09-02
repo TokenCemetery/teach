@@ -149,6 +149,26 @@ SELECT (SELECT count(*) FROM customers) AS customers,
 
 The small fixture answers `8`, `12`, `8`. The large one answers `100000`, `1049916`, `8`.
 
+## One extra table, for the JSON lesson
+
+Lesson 19 queries a document column, which the three tables above deliberately do not have. It gets its own table instead, so the schema every other lesson reasons about stays exactly as it is. Load this only when you reach that lesson.
+
+```sql
+CREATE TABLE events (
+    id      bigint PRIMARY KEY,
+    kind    text NOT NULL,
+    payload jsonb NOT NULL
+);
+
+INSERT INTO events (id, kind, payload) VALUES
+    (1, 'order_placed',   '{"order_id": 101, "items": [{"sku": "A1", "qty": 2}, {"sku": "B2", "qty": 1}], "channel": "web"}'),
+    (2, 'order_placed',   '{"order_id": 104, "items": [{"sku": "A1", "qty": 5}], "channel": "app", "coupon": "SUMMER"}'),
+    (3, 'payment_failed', '{"order_id": 104, "reason": "card_declined", "retries": 2}'),
+    (4, 'order_placed',   '{"order_id": 112, "items": [], "channel": "web"}');
+```
+
+Four rows, and the awkwardness is again deliberate: one payload has a key the others lack, one has an empty array, one has no `items` key at all, and each `order_id` points at a real order without any foreign key to enforce it, which is exactly the situation a document column creates.
+
 ## Running it on SQLite
 
 The small fixture loads on SQLite as written, with three differences to know about rather than work around. All three were checked by loading it.

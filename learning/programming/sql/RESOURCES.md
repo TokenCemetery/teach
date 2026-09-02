@@ -29,6 +29,18 @@ type: resources
 - [Docs: "Window Functions", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/tutorial-window.html)
   Partitions and frames explained with worked examples. Use for: stage 3.
 
+- [Docs: "9.22 Window Functions", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/functions-window.html)
+  Every window function with what it returns and, crucially, which of them respect the frame. Use for: stage 3, and the answer to why `last_value` returned the current row.
+
+- [Docs: "7.8 WITH Queries", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/queries-with.html)
+  Common table expressions, the recursive form with its evaluation described round by round, and the `SEARCH` and `CYCLE` options. Use for: stages 2 and 3, and for how a recursive query terminates.
+
+- [Docs: "8.14 JSON Types" and "9.16 JSON Functions", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/datatype-json.html)
+  `json` against `jsonb`, the operators, the path language and `JSON_TABLE`. Use for: stage 3, and for what a document column does not enforce.
+
+- [Docs: "Window Functions", SQLite contributors, sqlite.org](https://www.sqlite.org/windowfunctions.html)
+  The same feature in the no-server engine, including its frame syntax. Use for: checking whether a stage 3 query travels.
+
 - [Docs: "Indexes", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/indexes.html)
   Index types, multicolumn and partial indexes, and when the planner will ignore one. Use for: stage 6, choosing an index rather than adding one.
 

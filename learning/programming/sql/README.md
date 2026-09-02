@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0013. Set Operations, and One Question as One Query](lessons/0013-set-operations.md)
+**Latest lesson:** [0020. Choosing the Tool](lessons/0020-choosing-the-tool.md)
 
 ## Success looks like
 
@@ -71,6 +71,13 @@ Work through these in order.
 | [0011](lessons/0011-subqueries.md) | Subqueries, and Which Kind Answers the Question | A scalar, an IN, an EXISTS and a derived table answer four different questions, and one of them lies when NULL appears |
 | [0012](lessons/0012-common-table-expressions.md) | Common Table Expressions | WITH names a step so a long query reads top to bottom, and on this release it is not an optimisation fence |
 | [0013](lessons/0013-set-operations.md) | Set Operations, and One Question as One Query | UNION, INTERSECT and EXCEPT combine result sets by position and remove duplicates unless told not to |
+| [0014](lessons/0014-window-functions.md) | Window Functions | A window function computes across other rows without collapsing the one it is on |
+| [0015](lessons/0015-window-frames.md) | Window Frames | The default frame includes every row that ties with the current one, which is why a running total can jump |
+| [0016](lessons/0016-navigating-within-a-window.md) | Navigating Within a Window | lag, lead and the value functions reach other rows directly, and two of them obey the frame |
+| [0017](lessons/0017-lateral-joins.md) | Lateral Joins | LATERAL lets a subquery in FROM see the row beside it, which is how you take the top few per group |
+| [0018](lessons/0018-recursive-queries.md) | Recursive Queries | A recursive CTE feeds its own output back in until nothing new comes out, which is how a hierarchy gets walked |
+| [0019](lessons/0019-json-columns.md) | JSON Columns | Querying a document column is ordinary SQL once you know which operator returns text and which returns JSON |
+| [0020](lessons/0020-choosing-the-tool.md) | Choosing the Tool | Top-N, running totals and deduplication each have two or three correct spellings, and the choice is about what the question asks |
 
 ## Reference
 
@@ -80,6 +87,7 @@ Work through these in order.
 - [NULL and three-valued logic](reference/null-and-three-valued-logic.md): truth tables, where NULL counts as equal, and the traps with their fixes
 - [Evaluation order of a SELECT](reference/select-evaluation-order.md): what runs when, what each clause can see, and which errors that explains
 - [Querying](reference/querying.md): the stage 2 sheet, with every join type, what each aggregate does to NULL, and where a condition belongs
+- [Beyond the basics](reference/beyond-the-basics.md): the stage 3 sheet, with the window functions, the frame modes, and which tool answers which question
 
 ## How this works
 

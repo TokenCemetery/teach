@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0020. Choosing the Tool](lessons/0020-choosing-the-tool.md)
+**Latest lesson:** [0027. Making Bad Data Impossible](lessons/0027-making-bad-data-impossible.md)
 
 ## Success looks like
 
@@ -78,6 +78,13 @@ Work through these in order.
 | [0018](lessons/0018-recursive-queries.md) | Recursive Queries | A recursive CTE feeds its own output back in until nothing new comes out, which is how a hierarchy gets walked |
 | [0019](lessons/0019-json-columns.md) | JSON Columns | Querying a document column is ordinary SQL once you know which operator returns text and which returns JSON |
 | [0020](lessons/0020-choosing-the-tool.md) | Choosing the Tool | Top-N, running totals and deduplication each have two or three correct spellings, and the choice is about what the question asks |
+| [0021](lessons/0021-normalisation.md) | Normalisation | Every normal form removes a way for two rows to disagree about the same fact |
+| [0022](lessons/0022-choosing-a-key.md) | Choosing a Key | A surrogate key buys stability and gives up meaning, and the generator you pick decides what else it costs |
+| [0023](lessons/0023-foreign-keys.md) | Foreign Keys and What Happens on Delete | A foreign key is a promise about rows that exist, and the action you choose decides who pays when one goes |
+| [0024](lessons/0024-constraints-that-hold.md) | Constraints That Actually Hold | A CHECK fails only when its condition is false, so an absent value satisfies almost every rule you wrote |
+| [0025](lessons/0025-choosing-types.md) | Choosing Types Deliberately | A type decides what the database will accept, what it will silently change, and what it can never take back |
+| [0026](lessons/0026-denormalising-on-purpose.md) | Denormalising on Purpose | A second copy of a fact is a second chance to be wrong, unless the database is the one keeping it |
+| [0027](lessons/0027-making-bad-data-impossible.md) | Making Bad Data Impossible | Take a schema that permits a wrong row and close every gap, then say what the design still cannot promise |
 
 ## Reference
 
@@ -88,6 +95,7 @@ Work through these in order.
 - [Evaluation order of a SELECT](reference/select-evaluation-order.md): what runs when, what each clause can see, and which errors that explains
 - [Querying](reference/querying.md): the stage 2 sheet, with every join type, what each aggregate does to NULL, and where a condition belongs
 - [Beyond the basics](reference/beyond-the-basics.md): the stage 3 sheet, with the window functions, the frame modes, and which tool answers which question
+- [Schema design](reference/schema-design.md): the stage 4 sheet, with the normal forms, every constraint kind, and which type refuses what
 
 ## How this works
 

@@ -18,6 +18,10 @@ Three terms are used loosely in ways that would make later lessons ambiguous, an
 A marker for the absence of a value, not a value. Comparing anything to it yields unknown rather than true or false, which is why a row can fail both `= 5` and `<> 5`.
 _Avoid_: empty, blank, zero, missing value
 
+**Exclusion constraint**:
+A generalisation of `UNIQUE` to any operator, which rejects a row whose values conflict with an existing row under that operator, most usefully `&&` on a range. It compares one row against the table, so it catches an overlap that no per-row `CHECK` could see.
+_Avoid_: unique constraint, check constraint, index, trigger
+
 **Fan-out**:
 The row multiplication a join causes when one row on one side matches several on the other, so every additive aggregate computed afterwards is multiplied with it. A query that fans out runs without error and reports a wrong total, which is why it has to be recognised rather than debugged.
 _Avoid_: cartesian product, duplicate rows, cross join, bad join
@@ -25,6 +29,10 @@ _Avoid_: cartesian product, duplicate rows, cross join, bad join
 **Functional dependency**:
 The relationship that lets one column's value determine another's, which a primary key has with every other column of its row. It is why grouping by a table's key permits selecting its other columns ungrouped, and why grouping by a merely unique-looking column does not.
 _Avoid_: correlation, constraint, uniqueness, foreign key
+
+**Generated column**:
+A column whose value the database computes from other columns of the same row, and which nothing else may write. It is the one redundant column that cannot drift, and it cannot see another row, so a count of children is not expressible as one.
+_Avoid_: default value, computed column as a synonym for a trigger, view column, cached column
 
 **Grouping set**:
 One of several groupings computed in a single pass, as `GROUPING SETS`, `ROLLUP` and `CUBE` request. A total row's grouping column is `NULL`, indistinguishable in the output from a real group of `NULL`s, and `grouping()` is what tells them apart.
@@ -68,6 +76,14 @@ _Avoid_: temporary table, view, optimisation fence, subquery
 Every row of one table paired with every row of another, with no condition to remove a pair, which `CROSS JOIN` produces and which is also what a join is before its condition applies. Also called a Cartesian product.
 _Avoid_: cross join as a mistake, full join, cartesian explosion, join
 
+**Deferred constraint check**:
+A constraint whose check is postponed from the end of the statement to the end of the transaction, which `DEFERRABLE INITIALLY DEFERRED` requests and `SET CONSTRAINTS` can switch on. It is what lets two rows that reference each other be inserted at all, at the cost of a window inside the transaction where the promise does not hold.
+_Avoid_: disabled constraint, `NOT VALID`, deferred trigger, `RESTRICT`
+
+**Denormalisation**:
+Keeping a second copy of a fact on purpose, for the sake of the reads that want it in one place. The question it always raises is who keeps the copies equal, and the answers range from the database itself, for a generated column, to nobody, for a plain duplicated column that needs an audit query to catch drift.
+_Avoid_: optimisation, caching, redundancy as a synonym for a mistake, wide table
+
 **Derived table**:
 A subquery in `FROM`, queried like any other table, which is how a result gets grouped or filtered before the outer query sees it. It takes an alias, which every codebase writes even where a recent PostgreSQL no longer demands one.
 _Avoid_: subquery, inline view, temporary table, CTE
@@ -84,13 +100,29 @@ _Avoid_: derived table, correlated subquery, join, inline view
 A join whose condition the engine infers from every column name the two tables share. The condition is invisible in the query text and changes on its own when either table gains or loses a matching name, so it is unsafe in code that outlives the schema.
 _Avoid_: inner join, `USING` join, implicit join, equijoin
 
+**Natural key**:
+A key made of data the domain already has, such as a country code or an email address, so it carries meaning and enforces uniqueness of the real thing. It moves when the domain changes its mind, and every child row referencing it moves with it.
+_Avoid_: primary key, unique column, business key as a synonym for stable, composite key
+
 **Outer join**:
 A join that keeps rows from one or both sides that matched nothing, filling the absent side's columns with `NULL`. Those `NULL`s were invented by the join rather than stored, and any later condition on them behaves exactly as three-valued logic says.
 _Avoid_: left join as a synonym for all three, full join, join, optional join
 
+**Partial dependency**:
+A non-key column that depends on part of a composite key rather than on the whole of it, which second normal form forbids. It cannot arise in a table whose key is a single column.
+_Avoid_: transitive dependency, redundancy, denormalisation, join dependency
+
 **Peer**:
 A row that ties with another on a window's `ORDER BY` columns. `RANGE` and `GROUPS` treat peers as one unit and `ROWS` does not, which is why one running total gives tied rows the same value and the other splits them.
 _Avoid_: duplicate, tie as a synonym, equal row, neighbour
+
+**Referential action**:
+The `ON DELETE` or `ON UPDATE` behaviour a foreign key applies when the referenced row goes or changes: `NO ACTION`, `RESTRICT`, `CASCADE`, `SET NULL` or `SET DEFAULT`. Writing none of them does not mean no policy, it means `NO ACTION`, and `RESTRICT` differs from it only in when the check happens and in the error it raises.
+_Avoid_: cascade as a synonym for all of them, trigger, constraint, default
+
+**Referential integrity**:
+The property a foreign key maintains, that every referencing value names a row that exists. It promises existence and nothing else: the row it names can still be the wrong one for the domain.
+_Avoid_: correctness, consistency, cascade, constraint
 
 **Scalar subquery**:
 A subquery returning exactly one row and one column, usable wherever a single value belongs. Nothing checks the promise at parse time, so a second row makes it fail at run time, on data rather than on syntax.
@@ -111,6 +143,10 @@ _Avoid_: auto-increment, primary key, technical key
 **Three-valued logic**:
 The system in which a condition evaluates to true, false or unknown, with any comparison involving `NULL` producing unknown. `WHERE` keeps only true, which is why unknown behaves like false and why a filter and its negation do not partition a table.
 _Avoid_: null handling, boolean logic, tri-state
+
+**Transitive dependency**:
+A non-key column that depends on the key only through another non-key column, which third normal form forbids. The tell is that one fact can be updated in one row and left stale in another that shares it.
+_Avoid_: partial dependency, indirect join, chained foreign key, derived column
 
 **Unknown**:
 The third truth value, produced by comparing anything with `NULL`. It is not the same as false: `NOT unknown` is still unknown, and `false AND unknown` is false while `unknown AND unknown` is not.

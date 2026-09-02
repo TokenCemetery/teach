@@ -17,6 +17,12 @@ type: resources
 - [Docs: "Queries", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/queries.html)
   Join types, grouping, and the order in which the clauses of a `SELECT` are actually evaluated. Use for: stage 2, and for why `WHERE` cannot see an alias from `SELECT`.
 
+- [Docs: "5.5 Constraints", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/ddl-constraints.html)
+  Every constraint kind with its syntax and its caveats: `CHECK`, `NOT NULL`, `UNIQUE`, primary and foreign keys with their referential actions, and exclusion constraints. Use for: stage 4, and for the exact wording of a diagnostic.
+
+- [Docs: "Chapter 8 Data Types", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/datatype.html)
+  Every type with its range, its storage and the trade it makes, including the numeric, character, date and time families the arc argues about. Use for: stages 1 and 4, whenever a column type is being chosen rather than accepted.
+
 - [Docs: "SELECT", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/sql-select.html)
   The full syntax of one statement, clause by clause, including the grouping and set-operation forms the tutorial pages leave out. Use for: stage 2, when the question is what is legal where rather than what it means.
 
@@ -96,6 +102,7 @@ type: resources
 
 ## Gaps
 
+- **Normalisation has no PostgreSQL source.** The manual documents constraints and types thoroughly and never teaches the normal forms, so stage 4 states first to third normal form and Boyce-Codd from ordinary relational theory and cites an encyclopaedia for the forms it deliberately does not teach. Any claim about a normal form in this workspace rests on a demonstration against the engine rather than on a citation.
 - **The ISO SQL standard is paywalled**, so no lesson can cite it directly. Modern SQL is the substitute for what the standard requires, and it is a secondary source; a lesson that says "the standard says" is leaning on it.
 - Cross-engine differences have no single reference. MySQL, Oracle and SQL Server behaviours have to be checked in their own documentation, and stage 7 portability material will need sources this list does not have.
 - Zero-downtime migration has no canonical source. It is stage 7's central skill and currently rests on the concurrency and locking documentation plus engine-specific release notes.

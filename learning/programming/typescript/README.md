@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a TypeScript codebase on a team: able to model a domain so the compiler rejects the states that should not exist, keep type assertions out of code that carries weight, validate what crosses a runtime boundary rather than assuming the types held, and review someone's types and say concretely why a clever generic is costing more than it gives.
 
 **Start here:** [0001. Values and Coercion](lessons/0001-values-and-coercion.md)
-**Latest lesson:** [0042. Knowing When to Stop](lessons/0042-knowing-when-to-stop.md)
+**Latest lesson:** [0049. Trusted to Make the Call](lessons/0049-trusted-to-make-the-call.md), which closes the arc
 
 ## Success looks like
 
@@ -100,6 +100,13 @@ Work through these in order.
 | [0040](lessons/0040-variance-and-assignability.md) | Variance and Assignability | Which direction a type may travel, and the array that gets it wrong on purpose |
 | [0041](lessons/0041-inference-for-library-apis.md) | Inference for Library APIs | Design the signature so the caller annotates nothing |
 | [0042](lessons/0042-knowing-when-to-stop.md) | Knowing When to Stop | Measure what a clever type costs, then justify it to whoever maintains it |
+| [0043](lessons/0043-what-counts-as-a-breaking-change.md) | What Counts as a Breaking Change | Which edits to a published type break a consumer, and which direction each one has to travel |
+| [0044](lessons/0044-publishing-a-type-surface.md) | Publishing a Type Surface | What a consumer actually resolves when they import your package, and how to check it before they do |
+| [0045](lessons/0045-the-consumers-settings-are-not-yours.md) | The Consumer's Settings Are Not Yours | A strict consumer inherits a loose author's claims and has no way to notice |
+| [0046](lessons/0046-the-typescript-that-does-not-erase.md) | The TypeScript That Does Not Erase | Four features that emit code you did not ask for, and the flag that names them |
+| [0047](lessons/0047-settling-it-from-the-source.md) | Settling It From the Source | Which document answers a question about the compiler, and how to read the declarations it ships |
+| [0048](lessons/0048-reviewing-typescript.md) | Reviewing TypeScript | Naming what a type costs, instead of saying it looks complicated |
+| [0049](lessons/0049-trusted-to-make-the-call.md) | Trusted to Make the Call | The last judgment in the arc, and what the compiler was never going to do for you |
 
 ## Reference
 
@@ -112,6 +119,7 @@ Work through these in order.
 - [Modelling](reference/modelling.md): which shape removes the illegal state, and which declaration catches the mistake where you made it
 - [The runtime boundary](reference/the-runtime-boundary.md): where values enter, what checks them, and which claims nothing checks at all
 - [Type-level tools](reference/type-level-tools.md): which construct computes which type, and the test a clever one has to pass
+- [Judgment](reference/judgment.md): which edits break a consumer, what does not erase, and how to argue the call from the source
 
 ## How this works
 

@@ -54,6 +54,10 @@ _Avoid_: covariant, contravariant, any, loose typing
 A primitive intersected with an object type carrying a property no runtime value has, so that two otherwise identical primitives stop being interchangeable. It gives nominal typing in one direction only: the value flows out to the underlying type freely and cannot flow in without an assertion.
 _Avoid_: wrapper type, tagged type, newtype, validated type
 
+**Breaking change**:
+An edit that stops a consumer's existing code from compiling or running against a new version of your package, decided by what a caller can still write rather than by how large the edit looks. Renaming a type of identical shape breaks an import while replacing a whole implementation may break nothing.
+_Avoid_: major version, refactor, incompatible change, regression
+
 **Closure**:
 A function together with the scope it was created in, which stays reachable after the enclosing function returns. It captures the binding rather than a copy of the value, which is why a `var` loop variable gives every callback the same final value.
 _Avoid_: callback, capture, lambda
@@ -186,6 +190,10 @@ _Avoid_: structural typing, class identity, instanceof, sealed type
 A property stored on the object itself, as opposed to one found on its **prototype**. Reads walk the prototype chain and writes always create an own property, which is why assigning to an inherited property shadows it rather than changing it.
 _Avoid_: instance field, local property, direct property
 
+**Parameter property**:
+A constructor parameter carrying a visibility modifier, which the compiler expands into a field declaration and an assignment nothing in the source wrote. It generates run-time code, which is why `erasableSyntaxOnly` refuses it.
+_Avoid_: shorthand constructor, field, initialiser, sugar
+
 **Phantom property**:
 A member that exists only in a type and is never present on any value, used to change assignability rather than to hold data. It cannot be checked at run time, so it records that a check happened rather than performing one.
 _Avoid_: marker, metadata, hidden field, symbol
@@ -193,6 +201,10 @@ _Avoid_: marker, metadata, hidden field, symbol
 **Prototype**:
 The object a property lookup falls back to when the property is not an own property, forming a chain that ends at `null`. `class` syntax builds one, and `instanceof` asks whether a particular prototype appears in it.
 _Avoid_: parent class, base, superclass, `__proto__`
+
+**Reverse mapping**:
+The value-to-name direction an `enum` builds into its emitted object, so that a numeric member can be looked up as `Colour[0]`. Nothing in the source asks for it and an object literal never produces it, so it is a run-time cost carried whether or not the code reads it.
+_Avoid_: lookup, index signature, forward mapping, key access
 
 **satisfies**:
 An operator that checks an expression against a type without replacing the expression's own inferred type, which is what an annotation does instead. It is the same check as an annotation without the widening, and unlike `as` it does not switch the check off.
@@ -205,6 +217,10 @@ _Avoid_: type, interface, validator, model
 **Soundness**:
 The property of a type system that a passing check guarantees the absence of a class of runtime error. TypeScript declares it a non-goal, so some assignments the compiler accepts are unsafe on purpose, in exchange for accepting the JavaScript people actually write.
 _Avoid_: correctness, safety, strictness
+
+**Standard decorator**:
+The calling convention from the ECMAScript decorator proposal, which the compiler implements by default. It is a different dialect from the pre-standard convention behind `experimentalDecorators`, sharing only the `@` syntax, so enabling that flag breaks code written for this one.
+_Avoid_: decorator, annotation, legacy decorator, attribute
 
 **Strict family**:
 The named group of checking options that `strict` enables together. It is a set rather than a level, each member can be switched off on its own, and the membership grows between releases, so `strict: true` does not mean the same thing across versions.
@@ -237,6 +253,10 @@ _Avoid_: generic, placeholder, template, wildcard
 **Type predicate**:
 A return type of the form `x is T`, which makes a function usable as a narrowing operator. The compiler never checks the body against the claim, so it is an assertion in a function signature and inherits the same standard.
 _Avoid_: type guard, validator, assertion function, check
+
+**Type surface**:
+Every type a package's exported signatures expose to a consumer, including a type that is merely mentioned and never exported. A signature naming an internal type puts that type's shape in the surface, whatever the export statements say.
+_Avoid_: exports, public API, declaration file, type definitions
 
 **Type-only import**:
 An import written with `import type` or an inline `type` specifier, which is erased and emits no run-time import. Making it explicit is what lets the emitted import statements be exactly what was written, rather than depending on whether the compiler could tell a name was a type.

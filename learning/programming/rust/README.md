@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0020. A Library a Caller Can Handle](lessons/0020-a-library-callers-can-handle.md)
+**Latest lesson:** [0028. Reading a Lifetime Error](lessons/0028-reading-a-lifetime-error.md)
 
 ## Success looks like
 
@@ -80,6 +80,14 @@ Work through these in order.
 | [0018](lessons/0018-modules-and-visibility.md) | Modules and Visibility | What you make public is what you have promised to keep, so the module tree is an API decision before it is an organisation one |
 | [0019](lessons/0019-documentation-that-compiles.md) | Documentation That Compiles | An example in a doc comment is a test, so the documentation that rots is the documentation nobody ran |
 | [0020](lessons/0020-a-library-callers-can-handle.md) | A Library a Caller Can Handle | Split the crate, name the failures, and decide what the binary does that the library must not |
+| [0021](lessons/0021-traits-as-shared-behaviour.md) | Traits as Shared Behaviour | How a trait names behaviour several types can provide, and why the trait has to be in scope before you can use it |
+| [0022](lessons/0022-trait-bounds-and-generic-functions.md) | Trait Bounds and Generic Functions | What a bound promises the body and demands of the caller, and what the compiler does with it |
+| [0023](lessons/0023-associated-types.md) | Associated Types | Why Iterator names its Item as an associated type rather than a parameter, and what that decides for anyone implementing it |
+| [0024](lessons/0024-generics-or-dyn-trait.md) | Generics or dyn Trait | The two dispatch strategies, what each one costs, and the question that actually decides between them |
+| [0025](lessons/0025-implementing-traits-you-do-not-own.md) | Implementing Traits You Do Not Own | Coherence, the newtype pattern, and why a blanket implementation is a commitment rather than a convenience |
+| [0026](lessons/0026-lifetimes-are-not-durations.md) | Lifetimes Are Not Durations | What a lifetime parameter says about the relation between borrows, and what elision had been doing for you all along |
+| [0027](lessons/0027-types-that-borrow.md) | Types That Borrow | Putting a lifetime parameter on a struct, and deciding whether the type should own its data instead |
+| [0028](lessons/0028-reading-a-lifetime-error.md) | Reading a Lifetime Error | The shapes a lifetime error takes, each with the honest fix and the workaround it tempts you into |
 
 ## Reference
 
@@ -89,6 +97,7 @@ Work through these in order.
 - [The project](reference/the-project.md): the crate the reps build across the arc, and what state it should be in at the end of each stage
 - [Data and control](reference/data-and-control.md): the stage 2 sheet, with the enum and Option and Result decisions, the pattern rules, and the collections
 - [Errors and API shape](reference/errors-and-api-shape.md): the stage 3 sheet, with the error-type decisions, the conversion rules, and what a public API commits to
+- [Traits and lifetimes](reference/traits-and-lifetimes.md): the stage 4 sheet, with the dispatch decision, the coherence rules, and the lifetime error table
 
 ## How this works
 

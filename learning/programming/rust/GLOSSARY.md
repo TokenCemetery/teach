@@ -30,6 +30,10 @@ _Avoid_: unchecked, dangerous, raw, escape hatch
 
 ## Terms
 
+**Associated type**:
+A type placeholder a trait declares and each implementing type fills in exactly once, named in a bound as `Iterator<Item = u32>` and, where two traits in scope declare the same name, as the fully qualified `<Type as Trait>::Item`. Declare one where a type has a single sensible choice, and take a generic parameter where several are sensible.
+_Avoid_: generic parameter, type argument, `Trait<Type>` as though the placeholder were positional
+
 **Binding mode**:
 The implicit `ref`, `ref mut` or move state a sub-pattern inherits when a non-reference pattern is matched against a reference, which is why matching `&record` gives you borrowed fields without writing `&` anywhere. From the 2024 edition an explicit `&` pattern may not be layered on top of an implicit borrow.
 _Avoid_: dereference, ref keyword as the only way, move, coercion
@@ -70,6 +74,14 @@ _Avoid_: cast, conversion, coercion, pattern match
 The point at which a value's owner goes out of scope and its destructor runs, releasing whatever it owns. It happens in reverse declaration order within a scope, which makes it the defined moment a lock is released or a file is closed.
 _Avoid_: free, garbage collection, finalisation
 
+**Dyn compatibility**:
+The property a trait needs before the compiler can build a vtable for it and let it stand behind a trait object, lost by an associated function with no receiver or by a generic method, and recoverable one method at a time with a `where Self: Sized` bound. Sources written before the compiler's diagnostics were renamed in release 1.83 call the same property object safety.
+_Avoid_: object safety as the current term, sealed trait, interface
+
+**Elision**:
+The rules by which the compiler supplies a lifetime the signature left unwritten: each elided input position gets its own, a single input lends its lifetime to the output, and a method with a receiver lends the receiver's. It is a stated rule with a resolvable answer rather than a guess, so a signature it cannot resolve is rejected instead of assumed.
+_Avoid_: inference, omission, the compiler guessing, defaulting to `'static`
+
 **Error source**:
 The underlying cause a wrapping error returns from `Error::source`, which is what lets a caller or a log print the whole chain. A layer's own `Display` message says what that layer knows and leaves the cause to the source, or the printed chain repeats itself.
 _Avoid_: cause as a synonym for the message, backtrace, context, inner error as an opaque field
@@ -77,6 +89,10 @@ _Avoid_: cause as a synonym for the message, backtrace, context, inner error as 
 **Exhaustiveness**:
 The compiler's requirement that a `match` account for every possible value, which is what makes adding an enum variant a compile error rather than a silent gap. Satisfying it with a catch-all on an enum you own gives the guarantee away.
 _Avoid_: completeness, default case, total function, coverage in the testing sense
+
+**Higher-ranked bound**:
+A trait bound quantified over every lifetime rather than one particular lifetime, which is what a closure bound such as `Fn(&str) -> usize` already means. Offering a closure fixed to one lifetime against such a bound is what the compiler reports as an implementation not being general enough, contrasting a lifetime it needs for any against one the closure provides for some.
+_Avoid_: lifetime parameter, generic lifetime, a `'static` bound
 
 **Intra-doc link**:
 A bracketed item path in a doc comment that rustdoc resolves against the crate's own items, so a rename moves the link with it. A broken one is reported by a lint rather than shipping as dead text.
@@ -89,6 +105,10 @@ _Avoid_: precondition on the caller, validation, assertion, contract with the us
 **Iterator**:
 A type with a `next` method returning `Option<Item>`, which is where absence and iteration meet. Adapters build a new iterator and do nothing until a consumer asks for items, so a chain with no consumer runs no code at all.
 _Avoid_: loop, generator, stream, which is async, collection
+
+**Monomorphisation**:
+The compiler's generation of one fully concrete copy of a generic item for each set of type arguments it is used with, which is why a generic call is a direct call that can be inlined, and why a widely instantiated generic costs compile time and binary size rather than nothing.
+_Avoid_: erasure, dynamic dispatch, specialisation, inlining as a synonym
 
 **Move**:
 The transfer of ownership that assignment or argument passing performs on a non-**Copy** type, after which the source binding is unusable. It is compile-time bookkeeping rather than a runtime operation.
@@ -141,6 +161,18 @@ _Avoid_: reassignment, overwriting, redeclaration
 **Slice**:
 A borrowed view into a contiguous sequence, carrying a pointer and a length and owning nothing. `&str` and `&[T]` are the two that appear constantly, and both are what a signature should ask for.
 _Avoid_: array, view, range, substring
+
+**Trait bound**:
+A constraint on a generic parameter naming a trait the type must implement, written after a colon, joined with `+`, moved into a `where` clause, or sugared as `impl Trait` in an argument position. It faces two ways at once: a promise to the body about what it may call, and a requirement on every caller.
+_Avoid_: runtime check, interface, constraint on the value rather than the type
+
+**Trait object**:
+A value reached through a two-pointer handle, a data pointer beside a vtable pointer, whose concrete type is no longer in the type system, which is what `&dyn Trait` and `Box<dyn Trait>` produce and what lets one collection hold several types at once.
+_Avoid_: interface, abstract class, boxed value, a cost claim nobody measured
+
+**Turbofish**:
+The `::<Type>` syntax that names a generic argument explicitly at a use site, for where inference has nothing to work from. A parameter written as `impl Trait` declares no name to give it, so the turbofish is not available against one.
+_Avoid_: cast, type annotation, generic declaration
 
 **Unwind**:
 The default panic behaviour, running each value's `Drop` up the call stack as the panic propagates, as opposed to `abort`, which ends the process immediately. A project can choose either, so code must not rely on unwinding happening.

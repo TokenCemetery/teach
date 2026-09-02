@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0027. Making Bad Data Impossible](lessons/0027-making-bad-data-impossible.md)
+**Latest lesson:** [0034. Idempotency and the Retry That Is Correct](lessons/0034-idempotency-and-retry.md)
 
 ## Success looks like
 
@@ -85,6 +85,13 @@ Work through these in order.
 | [0025](lessons/0025-choosing-types.md) | Choosing Types Deliberately | A type decides what the database will accept, what it will silently change, and what it can never take back |
 | [0026](lessons/0026-denormalising-on-purpose.md) | Denormalising on Purpose | A second copy of a fact is a second chance to be wrong, unless the database is the one keeping it |
 | [0027](lessons/0027-making-bad-data-impossible.md) | Making Bad Data Impossible | Take a schema that permits a wrong row and close every gap, then say what the design still cannot promise |
+| [0028](lessons/0028-what-a-transaction-promises.md) | What a Transaction Promises | Four promises travel under one acronym, and only one of them is yours to negotiate |
+| [0029](lessons/0029-mvcc.md) | Multiversion Concurrency Control | An update writes a new row version rather than changing one, which is why a reader never waits for a writer |
+| [0030](lessons/0030-isolation-levels.md) | Isolation Levels | PostgreSQL gives you three distinct levels under four names, and each one permits a different set of surprises |
+| [0031](lessons/0031-the-anomalies.md) | The Anomalies, and How to Recognise Yours | Every concurrency bug has a name, and naming it tells you which level or lock would have prevented it |
+| [0032](lessons/0032-locks.md) | Locks You Take on Purpose | A row lock is how you hold a decision still, and every one of them has a failure mode worth choosing |
+| [0033](lessons/0033-deadlocks.md) | Deadlocks | Two transactions each holding what the other needs, and the only cure is agreeing on an order in advance |
+| [0034](lessons/0034-idempotency-and-retry.md) | Idempotency and the Retry That Is Correct | A retry that replays the same statements reproduces the bug it was meant to fix, so it has to read again and decide again |
 
 ## Reference
 
@@ -96,6 +103,7 @@ Work through these in order.
 - [Querying](reference/querying.md): the stage 2 sheet, with every join type, what each aggregate does to NULL, and where a condition belongs
 - [Beyond the basics](reference/beyond-the-basics.md): the stage 3 sheet, with the window functions, the frame modes, and which tool answers which question
 - [Schema design](reference/schema-design.md): the stage 4 sheet, with the normal forms, every constraint kind, and which type refuses what
+- [Transactions](reference/transactions.md): the stage 5 sheet, with each isolation level, the anomalies it permits, the lock strengths, and the retryable errors
 
 ## How this works
 

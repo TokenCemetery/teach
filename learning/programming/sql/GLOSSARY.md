@@ -48,6 +48,14 @@ _Avoid_: locking mode, consistency level, transaction mode
 
 ## Terms
 
+**Aborted transaction**:
+The state a transaction enters after any statement in it fails, in which every later statement is refused with `25P02` until a `ROLLBACK` or a rollback to a savepoint. Catching the error in application code does not clear it.
+_Avoid_: failed statement, rolled-back transaction, deadlock, error
+
+**Advisory lock**:
+A lock taken on a number the application chooses rather than on a row or a table, held for the transaction or the session. It is the tool for serialising work that has no row to lock yet, such as deciding which of two workers creates a thing.
+_Avoid_: row lock, table lock, mutex, semaphore
+
 **Anchor term**:
 The non-recursive first part of a recursive `WITH`, which fixes the rows the walk starts from. A condition belongs here when it chooses the starting point and in the recursive term when it must hold at every round, and putting it in the wrong one answers a different question rather than merely reading differently.
 _Avoid_: base case, seed query, first row, initial condition
@@ -55,6 +63,10 @@ _Avoid_: base case, seed query, first row, initial condition
 **Anti-join**:
 A query that keeps the rows of one table having no match in another, written as an outer join filtered on the joined side being `NULL`, as `NOT EXISTS`, or as `EXCEPT`. Only the nullness test itself is safe after an outer join, since any other condition on the joined side discards the very rows the question is about.
 _Avoid_: exclusion join, negative join, filter, `NOT IN`
+
+**Atomicity**:
+The promise that a transaction takes effect completely or not at all, so there is no half-applied state to clean up or to retry into. It says nothing about what another transaction may see while it runs.
+_Avoid_: isolation, durability, consistency, locking
 
 **Bag**:
 A collection that allows duplicates, which is what a SQL table actually is. Two identical rows are two rows and no query can tell them apart, so only a constraint makes rows distinguishable.
@@ -76,6 +88,14 @@ _Avoid_: temporary table, view, optimisation fence, subquery
 Every row of one table paired with every row of another, with no condition to remove a pair, which `CROSS JOIN` produces and which is also what a join is before its condition applies. Also called a Cartesian product.
 _Avoid_: cross join as a mistake, full join, cartesian explosion, join
 
+**Dead row version**:
+A row version left behind by an `UPDATE` or a `DELETE` once no snapshot can still need it. It occupies space until vacuum removes it, which is why a table can grow while its row count does not.
+_Avoid_: duplicate row, orphaned row, deleted row, garbage
+
+**Deadlock**:
+A cycle of transactions each waiting on a lock another holds, which no amount of waiting resolves. The server detects the cycle after `deadlock_timeout` and cancels one transaction with `40P01`, and which one it picks is not something to rely on.
+_Avoid_: lock wait, contention, serialization failure, timeout
+
 **Deferred constraint check**:
 A constraint whose check is postponed from the end of the statement to the end of the transaction, which `DEFERRABLE INITIALLY DEFERRED` requests and `SET CONSTRAINTS` can switch on. It is what lets two rows that reference each other be inserted at all, at the cost of a window inside the transaction where the promise does not hold.
 _Avoid_: disabled constraint, `NOT VALID`, deferred trigger, `RESTRICT`
@@ -92,9 +112,25 @@ _Avoid_: subquery, inline view, temporary table, CTE
 The order in which a `SELECT`'s clauses actually run, which is `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `SELECT`, `DISTINCT`, `ORDER BY`, `LIMIT`. It differs from the written order, and it is what determines which names a clause can see.
 _Avoid_: execution plan, clause order, precedence
 
+**Idempotency key**:
+A caller-supplied identifier sent unchanged on every retry of one logical request, stored in a unique column so a repeat is refused by the constraint rather than by a check the application forgot.
+_Avoid_: primary key, request id, trace id, nonce
+
+**Idempotent operation**:
+An operation that can be run more than once without changing anything beyond its first successful run. It is a property of the caller's design, not of the database's atomicity, and it is what makes at-least-once delivery survivable.
+_Avoid_: atomic, safe, retryable, transactional
+
 **Lateral subquery**:
 A subquery in `FROM` marked `LATERAL`, which may reference columns of the items to its left and is evaluated once per row of them. Order in `FROM` therefore matters, since it can only see what is already to its left.
 _Avoid_: derived table, correlated subquery, join, inline view
+
+**Lost update**:
+Two transactions read a value, each computes a new one from it, and the second write silently replaces the first. Neither transaction gets an error at Read Committed, which is what makes it the most expensive anomaly to find.
+_Avoid_: non-repeatable read, write skew, deadlock, overwrite
+
+**MVCC**:
+Multiversion concurrency control: an `UPDATE` writes a new row version and marks the old one as ending rather than changing it in place, so a reader sees whichever version its snapshot admits and never waits for a writer.
+_Avoid_: locking, isolation level, snapshot, versioning
 
 **Natural join**:
 A join whose condition the engine infers from every column name the two tables share. The condition is invisible in the query text and changes on its own when either table gains or loses a matching name, so it is unsafe in code that outlives the schema.
@@ -116,6 +152,14 @@ _Avoid_: transitive dependency, redundancy, denormalisation, join dependency
 A row that ties with another on a window's `ORDER BY` columns. `RANGE` and `GROUPS` treat peers as one unit and `ROWS` does not, which is why one running total gives tied rows the same value and the other splits them.
 _Avoid_: duplicate, tie as a synonym, equal row, neighbour
 
+**Phantom**:
+A row that appears in, or vanishes from, the result of the same predicate run twice in one transaction, because another transaction inserted or removed a matching row. The defence has to cover the predicate rather than any particular row.
+_Avoid_: non-repeatable read, read skew, dirty read, ghost row
+
+**Read skew**:
+Two different rows read once each in one transaction, each read correct on its own, and jointly describing a state that never existed, such as both sides of a transfer read either side of it.
+_Avoid_: non-repeatable read, write skew, phantom, inconsistency
+
 **Referential action**:
 The `ON DELETE` or `ON UPDATE` behaviour a foreign key applies when the referenced row goes or changes: `NO ACTION`, `RESTRICT`, `CASCADE`, `SET NULL` or `SET DEFAULT`. Writing none of them does not mean no policy, it means `NO ACTION`, and `RESTRICT` differs from it only in when the check happens and in the error it raises.
 _Avoid_: cascade as a synonym for all of them, trigger, constraint, default
@@ -123,6 +167,10 @@ _Avoid_: cascade as a synonym for all of them, trigger, constraint, default
 **Referential integrity**:
 The property a foreign key maintains, that every referencing value names a row that exists. It promises existence and nothing else: the row it names can still be the wrong one for the domain.
 _Avoid_: correctness, consistency, cascade, constraint
+
+**Savepoint**:
+A named point inside a transaction that `ROLLBACK TO SAVEPOINT` returns to, discarding the work after it and keeping the work before it. It is not a nested transaction: nothing it did is durable until the outer transaction commits.
+_Avoid_: nested transaction, checkpoint, commit, rollback
 
 **Scalar subquery**:
 A subquery returning exactly one row and one column, usable wherever a single value belongs. Nothing checks the promise at parse time, so a second row makes it fail at run time, on data rather than on syntax.
@@ -136,6 +184,10 @@ _Avoid_: recursive query, cross join, duplicate join, hierarchy query
 A test of whether a matching row exists, as `IN` and `EXISTS` perform, which returns each outer row at most once however many inner rows match. That is the difference from a join, which repeats the outer row per match and needs a `DISTINCT` or a grouping to imitate this.
 _Avoid_: join, subquery, filter, inner join
 
+**Snapshot**:
+A statement of which transactions had committed at one moment, which decides what a query sees. An isolation level is a rule about when a snapshot is taken and how long it is kept.
+_Avoid_: isolation level, backup, transaction, lock
+
 **Surrogate key**:
 An identifier invented for the purpose of identifying a row, carrying no meaning of its own. It is chosen over a natural key for stability, since data that means something tends to change.
 _Avoid_: auto-increment, primary key, technical key
@@ -143,6 +195,10 @@ _Avoid_: auto-increment, primary key, technical key
 **Three-valued logic**:
 The system in which a condition evaluates to true, false or unknown, with any comparison involving `NULL` producing unknown. `WHERE` keeps only true, which is why unknown behaves like false and why a filter and its negation do not partition a table.
 _Avoid_: null handling, boolean logic, tri-state
+
+**Transaction**:
+A unit of work the database applies completely or not at all, opened with `BEGIN` and closed with `COMMIT` or `ROLLBACK`. A statement sent outside one is still a transaction, of exactly one statement.
+_Avoid_: session, connection, statement, batch
 
 **Transitive dependency**:
 A non-key column that depends on the key only through another non-key column, which third normal form forbids. The tell is that one fact can be updated in one row and left stale in another that shares it.
@@ -167,3 +223,7 @@ _Avoid_: table partition, group, shard, frame
 **Working table**:
 The rows the previous round of a recursive query produced, which is what the recursive term runs against. It is not the accumulated result, so a term that expects to see everything produced so far is wrong about what it is joining to.
 _Avoid_: result set, accumulated rows, temporary table, CTE
+
+**Write skew**:
+Two transactions each read overlapping rows, each write a different row, and together break a rule that spans both, which no per-row constraint can see. Repeatable Read permits it; Serializable turns it into `40001`.
+_Avoid_: lost update, read skew, phantom, race condition

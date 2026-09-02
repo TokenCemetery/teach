@@ -59,6 +59,15 @@ type: resources
 - [Docs: "Concurrency Control", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/mvcc.html)
   Multiversion concurrency control, lock modes and deadlocks, from the implementation. Use for: stage 5, and for what a writer does to a reader.
 
+- [Docs: "13.3 Explicit Locking", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/explicit-locking.html)
+  Every lock mode with its conflict table, the row-level locks and their wait behaviour, deadlocks, and advisory locks. Use for: stage 5, and whenever a session is waiting and you need to know on what.
+
+- [Docs: "13.4 Data Consistency Checks at the Application Level", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/applevel-consistency.html)
+  What the engine expects an application to do for itself, including the retry a Serializable transaction demands. Use for: stage 5, and for the argument that a retry has to re-decide rather than replay.
+
+- [Docs: "Reliability and the Write-Ahead Log", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/wal.html)
+  How a commit becomes durable, which is the one ACID promise this arc cannot demonstrate on a running server. Use for: stage 5, where durability is cited rather than shown.
+
 - [Docs: "Transaction Isolation", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/transaction-iso.html)
   Each isolation level with the anomalies it permits and the errors it raises instead. Use for: stage 5, choosing a level on purpose.
 

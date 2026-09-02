@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0006. Reading a Borrow Error](lessons/0006-reading-a-borrow-error.md)
+**Latest lesson:** [0013. The Collections Worth Knowing](lessons/0013-collections.md)
 
 ## Success looks like
 
@@ -66,12 +66,21 @@ Work through these in order.
 | [0004](lessons/0004-slices-string-and-str.md) | Slices, String and str | A slice is a borrowed view with a length, and taking &str in an API costs callers nothing |
 | [0005](lessons/0005-bindings-and-mutability.md) | Bindings and Mutability | Immutable by default, mut is per binding, and shadowing is a new binding rather than a change |
 | [0006](lessons/0006-reading-a-borrow-error.md) | Reading a Borrow Error | Five error codes cover most of stage 1, and each one has an honest fix and a workaround |
+| [0007](lessons/0007-structs.md) | Structs and Their Methods | A struct owns its fields, so what you put in one decides who has to keep it alive |
+| [0008](lessons/0008-enums.md) | Enums That Carry Data | An enum says a value is exactly one of these shapes, which is the modelling tool the rest of the stage rests on |
+| [0009](lessons/0009-option.md) | Option, and Handling Absence | Absence is a value of a different type, so the compiler makes you say what happens when it arrives |
+| [0010](lessons/0010-result.md) | Result, and Failure as a Value | A failure is a return value rather than an event, so the signature says what can go wrong before you read the body |
+| [0011](lessons/0011-pattern-matching.md) | Pattern Matching | A match must cover every case, and the pattern decides whether you borrowed the value or moved it |
+| [0012](lessons/0012-iterators-and-closures.md) | Iterators and Closures | An iterator does nothing until something consumes it, and a closure captures exactly what it uses |
+| [0013](lessons/0013-collections.md) | The Collections Worth Knowing | Vec and HashMap cover most of it, and the entry API is the one thing worth learning properly |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
 - [Ownership and borrowing](reference/ownership-and-borrowing.md): the rules, the Copy list, the error codes, and the honest fix for each
+- [The project](reference/the-project.md): the crate the reps build across the arc, and what state it should be in at the end of each stage
+- [Data and control](reference/data-and-control.md): the stage 2 sheet, with the enum and Option and Result decisions, the pattern rules, and the collections
 
 ## How this works
 

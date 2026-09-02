@@ -53,11 +53,20 @@ type: resources
 - [Tool: "JMH", OpenJDK, github.com/openjdk/jmh](https://github.com/openjdk/jmh)
   The harness that handles warmup, dead-code elimination and statistics for JVM benchmarks. Use for: measuring anything on a JIT-compiled runtime without fooling yourself.
 
-- [Docs: "JUnit 5 User Guide", JUnit Team, junit.org](https://junit.org/junit5/docs/current/user-guide/)
-  The programming and extension model, including parameterised and nested tests. Use for: stage 5 mechanics.
+- [Docs: "JUnit User Guide", JUnit Team, docs.junit.org](https://docs.junit.org/current/user-guide/)
+  The programming and extension model, including parameterised and nested tests. Use for: stage 5 mechanics. Note the host: the material now lives at `docs.junit.org` rather than under the `junit5` path most search results still point at, and since JUnit 6 the Platform, Jupiter and Vintage share one version number.
+
+- [Docs: "JUnit Release Notes", JUnit Team, docs.junit.org](https://docs.junit.org/current/release-notes/)
+  What each release changed, added and removed, including the breaking changes. Use for: whether the advice you just read still applies.
 
 - [Docs: "Maven Guides", Apache Software Foundation, maven.apache.org](https://maven.apache.org/guides/index.html)
   The build lifecycle, dependency mediation and scopes, from the project itself. Use for: what a build is actually doing, whichever tool runs it.
+
+- [Docs: "Maven POM Reference", Apache Software Foundation, maven.apache.org](https://maven.apache.org/pom.html)
+  Every element a project descriptor accepts, with inheritance and interpolation spelled out. Use for: settling what a POM element means rather than copying one that works.
+
+- [Docs: "Mockito", javadoc.io](https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html)
+  The API and, unusually for reference documentation, an argued position on what not to mock. Use for: stage 5, and for the reasoning to quote in a review.
 
 - [Style guide: "Google Java Style Guide", Google](https://google.github.io/styleguide/javaguide.html)
   Opinionated, complete and widely adopted, with the rationale attached. Use for: decisions the specification leaves open.

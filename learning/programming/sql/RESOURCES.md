@@ -17,6 +17,15 @@ type: resources
 - [Docs: "Queries", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/queries.html)
   Join types, grouping, and the order in which the clauses of a `SELECT` are actually evaluated. Use for: stage 2, and for why `WHERE` cannot see an alias from `SELECT`.
 
+- [Docs: "SELECT", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/sql-select.html)
+  The full syntax of one statement, clause by clause, including the grouping and set-operation forms the tutorial pages leave out. Use for: stage 2, when the question is what is legal where rather than what it means.
+
+- [Docs: "Appendix A, Error Codes", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/errcodes-appendix.html)
+  Every SQLSTATE the server can raise, grouped by class. Use for: turning a five-character code in a log line into a named condition, from stage 2 onward.
+
+- [Docs: "Release Notes", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/release.html)
+  What changed in each release, which is the only place to settle when a behaviour became true. Use for: any claim that depends on a version, and stage 2 needed it twice.
+
 - [Docs: "Window Functions", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/tutorial-window.html)
   Partitions and frames explained with worked examples. Use for: stage 3.
 

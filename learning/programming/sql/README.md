@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0006. Keys and Constraints](lessons/0006-keys-and-constraints.md)
+**Latest lesson:** [0013. Set Operations, and One Question as One Query](lessons/0013-set-operations.md)
 
 ## Success looks like
 
@@ -64,13 +64,22 @@ Work through these in order.
 | [0004](lessons/0004-sets-and-bags.md) | Sets and Bags | A table is a bag, so duplicates are real and UNION quietly pays to remove them |
 | [0005](lessons/0005-sorting-and-collation.md) | Sorting and Collation | Text ordering depends on a collation, and a tie without a unique key is not stable |
 | [0006](lessons/0006-keys-and-constraints.md) | Keys and Constraints | A key is a claim the database enforces, and every claim you leave out becomes a bug |
+| [0007](lessons/0007-joins-and-what-they-do.md) | Joins, and What a Join Actually Does | A join is a filtered cross product, so the ON condition decides which rows exist before anything else runs |
+| [0008](lessons/0008-outer-joins-and-missing-rows.md) | Outer Joins and the Rows That Are Not There | An outer join keeps the rows that matched nothing, and one WHERE clause silently throws them away again |
+| [0009](lessons/0009-aggregation-and-group-by.md) | Aggregation and GROUP BY | Aggregates ignore NULL and a join that multiplies rows multiplies the total |
+| [0010](lessons/0010-having-and-filter.md) | HAVING, FILTER and Several Groupings at Once | Where a condition belongs decides which rows it can still see, and one pass can answer several groupings |
+| [0011](lessons/0011-subqueries.md) | Subqueries, and Which Kind Answers the Question | A scalar, an IN, an EXISTS and a derived table answer four different questions, and one of them lies when NULL appears |
+| [0012](lessons/0012-common-table-expressions.md) | Common Table Expressions | WITH names a step so a long query reads top to bottom, and on this release it is not an optimisation fence |
+| [0013](lessons/0013-set-operations.md) | Set Operations, and One Question as One Query | UNION, INTERSECT and EXCEPT combine result sets by position and remove duplicates unless told not to |
 
 ## Reference
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources, each annotated with what it covers
+- [The dataset](reference/the-dataset.md): the schema and data every lesson from stage 2 onward queries, and how to load it
 - [NULL and three-valued logic](reference/null-and-three-valued-logic.md): truth tables, where NULL counts as equal, and the traps with their fixes
 - [Evaluation order of a SELECT](reference/select-evaluation-order.md): what runs when, what each clause can see, and which errors that explains
+- [Querying](reference/querying.md): the stage 2 sheet, with every join type, what each aggregate does to NULL, and where a condition belongs
 
 ## How this works
 

@@ -315,6 +315,19 @@ class Workspace:
                 nxt = lines[i] if i < len(lines) else ""
                 if nxt.strip() != "":
                     self.bad(rel, f"line {i}: needs a blank line after <summary>")
+                # An answer to "predict the row count" that opens with the
+                # number, as in "64. Eight countries times eight customers",
+                # is parsed as an ordered list starting at 64 and renders as a
+                # list item rather than the sentence it is. A deliberate list
+                # in an answer starts at 1, so only a different opening number
+                # is the signature of this mistake.
+                first = next((lines[j] for j in range(i, min(i + 4, len(lines)))
+                              if lines[j].strip()), "")
+                m = re.match(r"(\d+)\.\s", first)
+                if m and m.group(1) != "1":
+                    self.bad(rel, f"line {i}: the answer opens with {m.group(1)!r} and a full "
+                                  "stop, which renders as a numbered list item; write the "
+                                  "number as a word or put a clause before it")
             elif line.startswith("</details>"):
                 if line != "</details>":
                     self.bad(rel, f"line {i}: {line!r} should be exactly '</details>'")

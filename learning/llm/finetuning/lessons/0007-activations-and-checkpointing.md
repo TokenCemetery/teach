@@ -16,7 +16,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-16. Two for bf16 weights, four for the fp32 master copy, two for the bf16 gradient, and four each for the two moments.
+Sixteen bytes: two for bf16 weights, four for the fp32 master copy, two for the bf16 gradient, and four each for the two moments.
 
 </details>
 

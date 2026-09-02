@@ -38,6 +38,10 @@ _Avoid_: wildcard, dynamic, untyped, object
 An assertion that keeps a literal at its literal type instead of widening it, and additionally makes arrays and object properties readonly. It changes what the compiler infers and nothing about the value at run time.
 _Avoid_: freeze, immutable, constant
 
+**Branded type**:
+A primitive intersected with an object type carrying a property no runtime value has, so that two otherwise identical primitives stop being interchangeable. It gives nominal typing in one direction only: the value flows out to the underlying type freely and cannot flow in without an assertion.
+_Avoid_: wrapper type, tagged type, newtype, validated type
+
 **Closure**:
 A function together with the scope it was created in, which stays reachable after the enclosing function returns. It captures the binding rather than a copy of the value, which is why a `var` loop variable gives every callback the same final value.
 _Avoid_: callback, capture, lambda
@@ -46,6 +50,10 @@ _Avoid_: callback, capture, lambda
 The implicit conversion an operator performs on its operands before comparing or combining them. `==` and `+` both do it, `===` does not, and the conversions are specified rather than intuitive.
 _Avoid_: casting, conversion, parsing
 
+**Constraint**:
+The `extends` clause on a type parameter, stating the minimum a substitution must satisfy. It is what lets the body use a member at all, and it should be sized to what the body actually needs rather than to what the caller happens to pass.
+_Avoid_: bound, restriction, interface requirement, base class
+
 **Contextual typing**:
 The type an expression receives from the position it appears in, such as a callback taking its parameter types from the signature it is passed to. It flows a type inwards, where inference reads one outwards, which is why a well-typed callback needs no annotation at all.
 _Avoid_: inference, narrowing, duck typing
@@ -53,6 +61,14 @@ _Avoid_: inference, narrowing, duck typing
 **Control-flow analysis**:
 The compiler's tracking of what a value's type must be at each position, given the branches taken to reach it. A type is therefore a property of a position in the code rather than of a declaration.
 _Avoid_: type inference, static analysis, data flow
+
+**Declaration merging**:
+Two declarations of the same interface name combining into one shape, which `type` cannot do. Its real purpose is module augmentation rather than convenience within a file.
+_Avoid_: module augmentation, overloading, inheritance, redeclaration
+
+**Discriminant**:
+The property every arm of a union carries, holding a distinct literal type in each, so that one equality check narrows the union to a single arm. It has to be a literal type: once it widens to `string`, narrowing on it stops working.
+_Avoid_: tag, flag, type field, discriminated union
 
 **Double assertion**:
 The `as unknown as T` form, used to reach a type that a single `as` refuses because the two types do not sufficiently overlap. It is a statement that you have read the compiler's objection and would like it set aside, so seeing one is a request for an explanation rather than a matter of style.
@@ -65,6 +81,10 @@ _Avoid_: compile, build, transpile, output type
 **Excess property checking**:
 The check that rejects members a target type does not declare, firing only when a fresh object literal is assigned or passed directly to a typed position. It is not part of structural assignability and is defeated by routing the same object through a variable.
 _Avoid_: strict object checking, structural assignability, exact types
+
+**Exhaustiveness check**:
+A compile-time proof that every member of a union has been handled, obtained by assigning whatever is left to `never` in a `default` or final `else`. Its value is that adding a member to the union then fails at every site that ignored it, and the diagnostic names the member.
+_Avoid_: default case, validation, switch coverage, assertion
 
 **Falsy**:
 A property of a value rather than of a comparison: `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined` and `NaN` all test false in a condition. Every other value tests true, including `[]`, `{}` and `"0"`.
@@ -82,6 +102,10 @@ _Avoid_: reference, alias, shared state
 Work queued by a promise reaction or an `await` continuation, drained completely before the next task runs. That priority is why a promise callback always precedes a zero-delay timer.
 _Avoid_: tick, job, callback, async task
 
+**Module augmentation**:
+Adding members to an interface another module owns, by declaring it again inside `declare module`. It is the reason interfaces merge at all, and the reason a library's public types are usually interfaces rather than aliases.
+_Avoid_: declaration merging, monkey patching, inheritance, overriding
+
 **Module resolution**:
 The process of turning an import specifier into a particular file, decided by `moduleResolution` together with the nearest `package.json`. It is a separate question from what `module` controls, which is only the import syntax that gets emitted.
 _Avoid_: module, import, bundling, path mapping
@@ -90,13 +114,29 @@ _Avoid_: module, import, bundling, path mapping
 A type refinement the compiler derives from a condition, valid only at positions reachable through that branch. It is lost when a local is reassigned anywhere afterwards, and when a property's use is deferred into a closure.
 _Avoid_: casting, assertion, type guard, validation
 
+**never**:
+The type with no values, which is why nothing is assignable to it. That makes it useful deliberately, as the assertion behind an exhaustiveness check, and it also appears accidentally, as the property type left by an intersection of two conflicting members.
+_Avoid_: void, undefined, unknown, any
+
+**Nominal typing**:
+Assignability decided by declared identity rather than by shape. TypeScript is structural and does not have it, which is why obtaining it requires the deliberate trick a branded type performs.
+_Avoid_: structural typing, class identity, instanceof, sealed type
+
 **Own property**:
 A property stored on the object itself, as opposed to one found on its **prototype**. Reads walk the prototype chain and writes always create an own property, which is why assigning to an inherited property shadows it rather than changing it.
 _Avoid_: instance field, local property, direct property
 
+**Phantom property**:
+A member that exists only in a type and is never present on any value, used to change assignability rather than to hold data. It cannot be checked at run time, so it records that a check happened rather than performing one.
+_Avoid_: marker, metadata, hidden field, symbol
+
 **Prototype**:
 The object a property lookup falls back to when the property is not an own property, forming a chain that ends at `null`. `class` syntax builds one, and `instanceof` asks whether a particular prototype appears in it.
 _Avoid_: parent class, base, superclass, `__proto__`
+
+**satisfies**:
+An operator that checks an expression against a type without replacing the expression's own inferred type, which is what an annotation does instead. It is the same check as an annotation without the widening, and unlike `as` it does not switch the check off.
+_Avoid_: assertion, cast, annotation, type guard
 
 **Soundness**:
 The property of a type system that a passing check guarantees the absence of a class of runtime error. TypeScript declares it a non-goal, so some assignments the compiler accepts are unsafe on purpose, in exchange for accepting the JavaScript people actually write.
@@ -121,6 +161,10 @@ _Avoid_: array, fixed array, record, struct
 **Type alias**:
 A name bound to an existing type with `type`, which introduces no new type of its own. Two aliases for the same shape are the same type, and an alias never appears in the emitted JavaScript.
 _Avoid_: interface, class, new type, wrapper
+
+**Type parameter**:
+A name in a signature standing for a type supplied or inferred at the call site, which ties positions in that signature together. It earns its place only when the caller learns something from it, so one appearing exactly once should usually be a concrete type instead.
+_Avoid_: generic, placeholder, template, wildcard
 
 **Type-only import**:
 An import written with `import type` or an inline `type` specifier, which is erased and emits no run-time import. Making it explicit is what lets the emitted import statements be exactly what was written, rather than depending on whether the compiler could tell a name was a type.

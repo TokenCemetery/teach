@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a TypeScript codebase on a team: able to model a domain so the compiler rejects the states that should not exist, keep type assertions out of code that carries weight, validate what crosses a runtime boundary rather than assuming the types held, and review someone's types and say concretely why a clever generic is costing more than it gives.
 
 **Start here:** [0001. Values and Coercion](lessons/0001-values-and-coercion.md)
-**Latest lesson:** [0021. Module Resolution](lessons/0021-module-resolution.md)
+**Latest lesson:** [0028. interface or type](lessons/0028-interface-or-type.md)
 
 ## Success looks like
 
@@ -79,6 +79,13 @@ Work through these in order.
 | [0019](lessons/0019-reading-a-tsconfig.md) | Reading a tsconfig | Which files the compiler looks at, where the settings come from, and why the generated file says what it says |
 | [0020](lessons/0020-target-and-lib.md) | target and lib | One setting changes what is emitted and the other changes what exists, and naming the second throws the default away |
 | [0021](lessons/0021-module-resolution.md) | Module Resolution | The same compiler options give opposite verdicts depending on one field in package.json |
+| [0022](lessons/0022-discriminated-unions.md) | Discriminated Unions | One shared literal property, and a union the compiler can take apart |
+| [0023](lessons/0023-exhaustiveness-with-never.md) | Exhaustiveness With never | Adding a member to a union should break every switch that ignored it, and one line makes it so |
+| [0024](lessons/0024-illegal-states.md) | Making Illegal States Unrepresentable | Count the states your type permits, then remove the ones your domain does not have |
+| [0025](lessons/0025-branded-types.md) | Branded Types | Nominal typing on top of a structural system, and the single assertion it costs |
+| [0026](lessons/0026-generics-and-constraints.md) | Generics and Constraints | A type parameter is a promise to the caller, and a constraint is what lets you keep it |
+| [0027](lessons/0027-satisfies.md) | satisfies | Check a value against a type without letting the type replace what you wrote |
+| [0028](lessons/0028-interface-or-type.md) | interface or type | One reports a conflicting member where you wrote it and the other reports it somewhere else |
 
 ## Reference
 
@@ -88,6 +95,7 @@ Work through these in order.
 - [Event loop and promises](reference/event-loop-and-promises.md): queue ordering, combinators, and the async mistakes no compiler reports
 - [Types over values](reference/types-over-values.md): what each annotation buys, where inference reaches, and the holes the compiler leaves open on purpose
 - [Strictness and the compiler](reference/strictness-and-the-compiler.md): which flag catches which failure, where a setting comes from, and how an import resolves
+- [Modelling](reference/modelling.md): which shape removes the illegal state, and which declaration catches the mistake where you made it
 
 ## How this works
 

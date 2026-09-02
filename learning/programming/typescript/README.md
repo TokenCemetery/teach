@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a TypeScript codebase on a team: able to model a domain so the compiler rejects the states that should not exist, keep type assertions out of code that carries weight, validate what crosses a runtime boundary rather than assuming the types held, and review someone's types and say concretely why a clever generic is costing more than it gives.
 
 **Start here:** [0001. Values and Coercion](lessons/0001-values-and-coercion.md)
-**Latest lesson:** [0035. When the Declaration Lies](lessons/0035-when-the-declaration-lies.md)
+**Latest lesson:** [0042. Knowing When to Stop](lessons/0042-knowing-when-to-stop.md)
 
 ## Success looks like
 
@@ -93,6 +93,13 @@ Work through these in order.
 | [0033](lessons/0033-errors-as-values.md) | Errors as Values | A failure in the return type is one the compiler can make you handle |
 | [0034](lessons/0034-declaration-files.md) | Declaration Files | Types for code the compiler never sees, and what that promise is worth |
 | [0035](lessons/0035-when-the-declaration-lies.md) | When the Declaration Lies | The compiler believes the declaration and the runtime has never heard of it |
+| [0036](lessons/0036-mapped-types.md) | Mapped Types | Transform every property of a type at once, and remove the ones you do not want |
+| [0037](lessons/0037-conditional-types.md) | Conditional Types | A type that branches, and a union it quietly takes apart first |
+| [0038](lessons/0038-infer.md) | infer | Pull a type out of a position instead of asking the caller to name it |
+| [0039](lessons/0039-template-literal-types.md) | Template Literal Types | A string pattern the compiler checks, and the key names it can build |
+| [0040](lessons/0040-variance-and-assignability.md) | Variance and Assignability | Which direction a type may travel, and the array that gets it wrong on purpose |
+| [0041](lessons/0041-inference-for-library-apis.md) | Inference for Library APIs | Design the signature so the caller annotates nothing |
+| [0042](lessons/0042-knowing-when-to-stop.md) | Knowing When to Stop | Measure what a clever type costs, then justify it to whoever maintains it |
 
 ## Reference
 
@@ -104,6 +111,7 @@ Work through these in order.
 - [Strictness and the compiler](reference/strictness-and-the-compiler.md): which flag catches which failure, where a setting comes from, and how an import resolves
 - [Modelling](reference/modelling.md): which shape removes the illegal state, and which declaration catches the mistake where you made it
 - [The runtime boundary](reference/the-runtime-boundary.md): where values enter, what checks them, and which claims nothing checks at all
+- [Type-level tools](reference/type-level-tools.md): which construct computes which type, and the test a clever one has to pass
 
 ## How this works
 

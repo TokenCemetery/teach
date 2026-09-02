@@ -46,6 +46,10 @@ _Avoid_: freeze, immutable, constant
 A function whose return type is `asserts x is T`, which narrows its argument for everything after the call rather than inside a branch. Its body is not checked against the claim, and the compiler requires the call target to have an explicit type annotation.
 _Avoid_: type predicate, validator, guard, assert statement
 
+**Bivariant**:
+A position the compiler accepts in either direction, rejecting neither the wider nor the narrower type. A method's parameter is checked this way while the same parameter written as a function-typed property is not, which is a deliberate exemption rather than general looseness.
+_Avoid_: covariant, contravariant, any, loose typing
+
 **Branded type**:
 A primitive intersected with an object type carrying a property no runtime value has, so that two otherwise identical primitives stop being interchangeable. It gives nominal typing in one direction only: the value flows out to the underlying type freely and cannot flow in without an assertion.
 _Avoid_: wrapper type, tagged type, newtype, validated type
@@ -58,6 +62,14 @@ _Avoid_: callback, capture, lambda
 The implicit conversion an operator performs on its operands before comparing or combining them. `==` and `+` both do it, `===` does not, and the conversions are specified rather than intuitive.
 _Avoid_: casting, conversion, parsing
 
+**Conditional type**:
+A type of the form `T extends U ? X : Y`, where `extends` asks about assignability rather than about inheritance. It is how a type branches, and `never` is how a branch produces nothing.
+_Avoid_: type guard, ternary, overload, union
+
+**const type parameter**:
+A type parameter declared `const`, which preserves the literal types and readonly-ness of what the caller passed without the caller writing `as const`. It moves the decision from every call site to the signature.
+_Avoid_: const declaration, as const, readonly, literal type
+
 **Constraint**:
 The `extends` clause on a type parameter, stating the minimum a substitution must satisfy. It is what lets the body use a member at all, and it should be sized to what the body actually needs rather than to what the caller happens to pass.
 _Avoid_: bound, restriction, interface requirement, base class
@@ -66,9 +78,17 @@ _Avoid_: bound, restriction, interface requirement, base class
 The type an expression receives from the position it appears in, such as a callback taking its parameter types from the signature it is passed to. It flows a type inwards, where inference reads one outwards, which is why a well-typed callback needs no annotation at all.
 _Avoid_: inference, narrowing, duck typing
 
+**Contravariant**:
+A position that may travel only in the opposite direction to its container, so a wider type is accepted where a narrower one was promised. A function-typed parameter is checked this way, because a function must accept everything its type says it accepts.
+_Avoid_: covariant, bivariant, inverted, reversed
+
 **Control-flow analysis**:
 The compiler's tracking of what a value's type must be at each position, given the branches taken to reach it. A type is therefore a property of a position in the code rather than of a declaration.
 _Avoid_: type inference, static analysis, data flow
+
+**Covariant**:
+A position that may travel only in the same direction as its container, so a narrower type is accepted where a wider one was promised. A return type is checked this way; an array is too, which is unsound and deliberate.
+_Avoid_: contravariant, bivariant, subtype, assignable
 
 **Declaration file**:
 A `.d.ts` holding types with no implementation, which produces no output and which the compiler takes entirely on trust. One written by hand for code you do not own is a promise nothing verifies; one generated from your own source cannot disagree with it.
@@ -81,6 +101,10 @@ _Avoid_: module augmentation, overloading, inheritance, redeclaration
 **Discriminant**:
 The property every arm of a union carries, holding a distinct literal type in each, so that one equality check narrows the union to a single arm. It has to be a literal type: once it widens to `string`, narrowing on it stops working.
 _Avoid_: tag, flag, type field, discriminated union
+
+**Distributive conditional type**:
+A conditional type whose checked type is a naked type parameter, which makes the compiler split a union, test each member separately and rejoin the results. Wrapping the check in a tuple turns it off, and the choice between the two is deliberate rather than incidental.
+_Avoid_: union, mapped type, iteration, broadcast
 
 **Double assertion**:
 The `as unknown as T` form, used to reach a type that a single `as` refuses because the two types do not sufficiently overlap. It is a statement that you have read the compiler's objection and would like it set aside, so seeing one is a request for an explanation rather than a matter of style.
@@ -106,6 +130,18 @@ _Avoid_: default case, validation, switch coverage, assertion
 A property of a value rather than of a comparison: `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined` and `NaN` all test false in a condition. Every other value tests true, including `[]`, `{}` and `"0"`.
 _Avoid_: empty, null, unset, invalid
 
+**infer**:
+A name declared inside a conditional type's `extends` clause, which the compiler fills in from whatever matched that position and which is usable in the true branch. It is how a type is extracted from a shape rather than supplied by a caller.
+_Avoid_: generic, inference, destructuring, extract
+
+**Invariant**:
+A position where neither direction is safe, so only an exact match is accepted. It has nothing to do with immutability or with an invariant in the sense of a rule a value must satisfy.
+_Avoid_: readonly, immutable, constant, exact
+
+**Key remapping**:
+The `as` clause inside a mapped type, which renames the key being produced or, by producing `never`, removes it. Remapping to `never` is how a mapped type selects rather than only transforms.
+_Avoid_: rename, alias, index signature, pick
+
 **Literal type**:
 A type inhabited by exactly one value, such as `"circle"` or `42`, most useful as one member of a union. It is what makes a union able to say which strings are allowed rather than only that a string is allowed.
 _Avoid_: enum, constant, string literal, value type
@@ -113,6 +149,10 @@ _Avoid_: enum, constant, string literal, value type
 **Live binding**:
 The relationship an `import` creates with the exporting module's declaration, so a later change in that module is visible through the import. CommonJS destructuring copies a value instead, which is why the two disagree about a counter.
 _Avoid_: reference, alias, shared state
+
+**Mapped type**:
+A type built by iterating another type's keys, written `[K in keyof T]`, optionally adding or removing the `readonly` and optional modifiers. It keeps a derived type in step with its source, so the source gaining a property is a compile error wherever that was not handled.
+_Avoid_: generic, index signature, iteration, transform
 
 **Microtask**:
 Work queued by a promise reaction or an `await` continuation, drained completely before the next task runs. That priority is why a promise callback always precedes a zero-delay timer.
@@ -173,6 +213,10 @@ _Avoid_: strict mode, level, preset, linting
 **Suppression comment**:
 A directive that hides a diagnostic on the following line, either `@ts-ignore` or `@ts-expect-error`. Only the second is reported when the error it suppresses goes away, so only the second cannot rot silently.
 _Avoid_: assertion, disable, lint rule, pragma
+
+**Template literal type**:
+A type written with backtick interpolation that describes a shape of string rather than one string, and which the compiler checks a literal against. It composes with `infer` and with a mapped type's key remapping, and interpolating unions multiplies out, which is where it gets expensive.
+_Avoid_: template string, string interpolation, regular expression, pattern
 
 **Temporal dead zone**:
 The region between the top of a block and a `let` or `const` declaration in it, where the binding exists and reading it throws. It is also what a cyclic module import runs into.

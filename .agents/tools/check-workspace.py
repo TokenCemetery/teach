@@ -281,6 +281,19 @@ class Workspace:
         """Collapsible blocks must render, which the theme is strict about."""
         depth = 0
         for i, line in code_free_lines(text):
+            # A backslash before a backtick is never an escape inside a code
+            # span, so `\``, which authors reach for when the span's content is
+            # itself a backtick, terminates the span at the inner backtick and
+            # leaks a stray </code> plus a literal backslash into the page.
+            # Template literal types make this likely. Use a fenced block, or
+            # pad a doubled delimiter: `` `on${string}` ``.
+            # Two of them on one line is the signature: an author wrapping an
+            # inner backtick-delimited thing and escaping both ends. One on its
+            # own is usually a legitimate span whose content is a backslash,
+            # as when a lesson discusses a line-continuation escape.
+            if line.count("\\`") >= 2:
+                self.bad(rel, f"line {i}: a backslash before a backtick does not escape it "
+                              "inside a code span; use a fenced block or a padded `` delimiter")
             # A `<` immediately followed by `?` opens a processing instruction as
             # far as Python-Markdown's HTML block parser is concerned, and that
             # parser runs before inline code is protected, so backticks do not

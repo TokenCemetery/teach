@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0028. Choosing a Model](lessons/0028-choosing-a-model.md)
+**Latest lesson:** [0035. A Runnable Artifact](lessons/0035-a-runnable-artifact.md)
 
 ## Success looks like
 
@@ -49,7 +49,7 @@ Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 2. Modelling | Classes and interfaces, records, sealed types, enums, generics and erasure, pattern matching, immutability as a default | Models a domain without reaching for inheritance first |
 | 3. Idiom and the library | Exceptions and what to do with checked ones, `Optional`, streams and collectors, iteration, files and IO, the time API, text blocks | Writes Java a reviewer would not describe as unidiomatic |
 | 4. Concurrency | Threads, the memory model, `synchronized` and `volatile`, `java.util.concurrent`, executors, virtual threads, structured concurrency, the traps | Can name the guarantee a broken concurrent program violated |
-| 5. Testing and build | JUnit 5, parameterised tests, test doubles and when not to use one, dependency declaration, a reproducible runnable artifact | Someone else can clone, build, test and run it |
+| 5. Testing and build | JUnit 6, parameterised tests, test doubles and when not to use one, dependency declaration, a reproducible runnable artifact | Someone else can clone, build, test and run it |
 | 6. The runtime | Memory areas, object layout and escape analysis, garbage collectors and their trade-offs, reading a GC log, JMH, profiling, allocation reduction | Optimises from a profile and proves the win with a benchmark that is trustworthy |
 | 7. Judgment | API design and backwards compatibility, deprecation, review, reading the specification and the JEPs for answers | Trusted to make the call and to explain it to someone else |
 
@@ -87,6 +87,13 @@ Work through these in order.
 | [0026](lessons/0026-executors-and-futures.md) | Executors and Futures | Submit work instead of creating threads, and find the exception that submit swallowed |
 | [0027](lessons/0027-virtual-threads.md) | Virtual Threads | Threads cheap enough to block, and the pooling habit you now have to unlearn |
 | [0028](lessons/0028-choosing-a-model.md) | Choosing a Model | One question picks the model, and the failure you are looking at names the guarantee it broke |
+| [0029](lessons/0029-your-first-test.md) | Your First Test | Where tests live, what the runner actually does, and the version scheme every write-up gets wrong |
+| [0030](lessons/0030-assertions-that-name-the-failure.md) | Assertions That Name the Failure | A failing test is a bug report, and the assertion you chose decides how good a report it is |
+| [0031](lessons/0031-parameterised-tests.md) | Parameterised Tests | One test method, many cases, and the line where a loop inside a test stops being good enough |
+| [0032](lessons/0032-test-doubles.md) | Test Doubles | Five kinds of stand-in, when a real object beats all of them, and what a mock quietly stops testing |
+| [0033](lessons/0033-declaring-dependencies.md) | Declaring Dependencies | Coordinates, scopes and the transitive graph, plus the version that arrives without being asked for |
+| [0034](lessons/0034-the-build-lifecycle.md) | The Build Lifecycle | Phases and goals instead of memorised commands, and the wrapper that makes the build the same everywhere |
+| [0035](lessons/0035-a-runnable-artifact.md) | A Runnable Artifact | Packaging what you built so that someone with nothing but a JDK can run it |
 
 ## Reference
 
@@ -96,6 +103,7 @@ Work through these in order.
 - [Modelling](reference/modelling.md): which construct to reach for, what each one commits you to, and the rules that are easy to misremember
 - [Idiom and the library](reference/idiom-and-library.md): the library decisions a reviewer notices, and the traps that throw where nobody looks
 - [Concurrency](reference/concurrency.md): which guarantee each construct gives, which model fits the workload, and what the symptom in front of you means
+- [Testing and build](reference/testing-and-build.md): the build task each command actually performs, the double to reach for, and the failure that means the artifact is wrong
 
 ## How this works
 

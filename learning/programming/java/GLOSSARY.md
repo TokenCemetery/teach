@@ -34,6 +34,14 @@ _Avoid_: sharing, pointing, double reference
 The implicit conversion between a primitive and its wrapper type, performed by calls the source code does not show. `Integer.valueOf` caches `-128` to `127`, which is why `==` on boxed values is correct for small numbers and wrong for large ones.
 _Avoid_: casting, wrapping, promotion
 
+**Automatic module**:
+A plain jar with no `module-info.class`, which the module system still admits under a name taken from its `Automatic-Module-Name` manifest attribute or, failing that, derived from its filename. A library that does not set the attribute therefore publishes a name that changes when somebody renames the file.
+_Avoid_: module, unnamed module, modular jar
+
+**Bill of materials**:
+A `pom`-packaged artifact that exists only to declare versions, imported into `dependencyManagement` with `import` scope. One line then fixes the versions of a whole family of artifacts, which is why a dependency taken from a BOM is declared with no version of its own.
+_Avoid_: parent pom, dependency list, manifest
+
 **Canonical constructor**:
 The constructor whose parameters are exactly a record's components, in declaration order. It is generated unless you declare it, and every other constructor on the record has to delegate to it, which is why validation placed there cannot be bypassed.
 _Avoid_: default constructor, primary constructor, main constructor
@@ -78,9 +86,21 @@ _Avoid_: hang, freeze, lock contention
 A copy taken so that a reference cannot be used to change an object from outside it: on the way in so a caller's later mutation cannot reach a field, and on the way out so a returned reference cannot either. The second half is the half that gets forgotten.
 _Avoid_: deep copy, clone, snapshot
 
+**Dependency mediation**:
+The rule by which a build picks one version when the graph asks for several: the declaration nearest the project wins, and a tie at equal depth is broken by whichever was declared first. It is not "newest wins", which is the common assumption and the reason adding one dependency can silently downgrade another.
+_Avoid_: version resolution, conflict resolution, upgrade
+
+**Dependency scope**:
+A declaration of which classpaths a dependency belongs on and whether it reaches a consumer. `test` and `provided` do not propagate at all, which is the mechanism behind most failures that appear only once something is packaged or reused.
+_Avoid_: visibility, dependency type, phase
+
 **Downstream collector**:
 A collector handed to another one, such as `groupingBy`, `partitioningBy` or `teeing`, which runs against each group or branch rather than against the whole stream. It is what turns a grouping into counts, sums or a nested map without a second pass.
 _Avoid_: nested collector, sub-collector, inner reduction
+
+**Dummy**:
+A test double passed only to satisfy a signature and never actually called. If it is called the test should fail, which is why throwing from every method is a sound implementation of one.
+_Avoid_: stub, mock, null object
 
 **Encounter order**:
 The order in which a stream's elements arrive, where the source has one. `findFirst`, sort stability and the order of a collected `List` are all defined against it, and a source such as a `HashSet` gives them nothing to be defined against.
@@ -94,6 +114,10 @@ _Avoid_: type deletion, unboxing, runtime generics
 A `switch` whose labels the compiler can prove cover every possible value, which is what permits omitting `default`. Omitting it is the point rather than an oversight, because adding an alternative then fails compilation at every place that has to decide again.
 _Avoid_: complete switch, total switch, default-free switch
 
+**Fake**:
+A working implementation of an interface, simplified enough to use in a test, such as a map standing in for a repository. It encodes behaviour rather than an expected sequence of calls, so it survives a refactor that would break a mock with ordered expectations.
+_Avoid_: mock, stub, in-memory copy
+
 **Final field freeze**:
 The guarantee that a thread obtaining a reference only after construction has finished sees that object's `final` fields correctly initialised. It holds even when the reference itself was published through a data race, which is why a properly built immutable object can be shared with no synchronisation at all.
 _Avoid_: immutability guarantee, constructor barrier, safe init
@@ -105,6 +129,10 @@ _Avoid_: tight coupling, bad inheritance, base class rot
 **Functional interface**:
 An interface with exactly one abstract method, which is what lets a lambda or a method reference stand in for an instance of it. The `@FunctionalInterface` annotation states and enforces the intent, and is never required for the lambda to work.
 _Avoid_: lambda interface, callback, SAM type
+
+**Goal**:
+A single unit of work a build plugin can perform, named as `plugin:goal`. Goals are what actually run, and a phase only names the point at which one has been bound to run, so "what does this command do" is always answered by listing goals.
+_Avoid_: task, phase, command
 
 **Happens-before**:
 The ordering relation that makes one action's effects visible to, and ordered before, another's. It is the only thing that makes a concurrent read and write pair safe, so every synchronisation construct is worth precisely the edges it creates and nothing more.
@@ -122,9 +150,17 @@ _Avoid_: caching, deduplication, pooling
 The rule that `List<String>` is not a `List<Object>`, whatever the relationship between the type arguments. It is the deliberate opposite of array covariance, and it is what moves the error from run time to compile time.
 _Avoid_: strictness, missing polymorphism, type mismatch
 
+**Lifecycle phase**:
+A named point in a build's ordered sequence, such as `compile`, `test` or `package`. Naming one runs every phase before it as well, which is the single rule that predicts what any build command will do.
+_Avoid_: goal, step, target
+
 **Local (of a date or time)**:
 A value naming a reading on a calendar or a wall clock with no zone attached, which is what `LocalDate`, `LocalTime` and `LocalDateTime` are. None of them is a point on the universal timeline, so none converts to an `Instant` without being told a zone, and using one as a timestamp is the most common mistake in the time API.
 _Avoid_: naive time, zoneless, floating time
+
+**Mock**:
+A test double carrying expectations about how it is called, which are checked and can fail the test on their own. It tests the implementation's choice of interactions rather than its promise, which is why it is the double most likely to fail on a change that broke no behaviour.
+_Avoid_: stub, fake, double
 
 **Monitor**:
 The intrinsic lock and wait set that every object carries, entered by a `synchronized` method or block and released on exit or on a call to `wait`. Locking on an object anyone else can reach publishes its monitor, and then anyone else can hold it.
@@ -154,6 +190,10 @@ _Avoid_: heisenbug, observer effect, timing issue
 A generic type used with no type argument, such as `List` in place of `List<String>`. It switches off checking for every member whose signature mentions the parameter, which is how a wrong element gets in silently and surfaces as a cast failure somewhere else entirely.
 _Avoid_: untyped collection, legacy generic, unparameterised type
 
+**Reproducible build**:
+A build that turns the same source into byte-identical output. Archive entry timestamps defeat it by default, so it has to be asked for explicitly, and until it is, two builds of one commit cannot be shown to have produced the same artifact.
+_Avoid_: deterministic build, repeatable build, clean build
+
 **Sealed hierarchy**:
 A supertype whose permitted direct subtypes are fixed at compile time, so the set of alternatives is closed and the compiler can enumerate it. That is what makes a `switch` over it exhaustive with no `default`.
 _Avoid_: closed class, final hierarchy, restricted inheritance
@@ -161,6 +201,14 @@ _Avoid_: closed class, final hierarchy, restricted inheritance
 **Short-circuiting operation**:
 A stream operation that can finish without pulling every element through the pipeline, such as `findFirst`, `anyMatch` or `limit`. It is what makes an infinite source usable, and it is what an operation such as `sorted` takes away, since sorting has to see everything first.
 _Avoid_: early exit, lazy operation, break
+
+**Spy**:
+A test double that records how it was called so the test can inspect it afterwards, or a wrapper that delegates to a real object while recording. It moves the check to after the call instead of declaring it in advance, which is what separates it from a mock.
+_Avoid_: mock, stub, listener
+
+**Stub**:
+A test double that returns canned answers and checks nothing about how it was used. It supplies input rather than expectations, so a test built only on stubs is asserting on results.
+_Avoid_: mock, fake, dummy
 
 **Suppressed exception**:
 An exception attached to another rather than replacing it, which is what try-with-resources does when a resource fails to close while an exception from the body is already propagating. A hand-written `finally` loses the original instead, with no trace that it happened.
@@ -170,9 +218,29 @@ _Avoid_: secondary exception, ignored exception, nested exception
 The stream operation that makes the pipeline run and consumes it, such as `forEach`, `collect` or `count`. Nothing before it executes, and nothing after it is possible on that stream, because a second terminal call throws.
 _Avoid_: final operation, sink, evaluation
 
+**Test double**:
+Any stand-in for a real collaborator in a test: a dummy, a stub, a spy, a mock or a fake. The general word is worth keeping because those five differ in what they let a test conclude, and treating them as synonyms is what produces a suite that passes while proving nothing.
+_Avoid_: mock, fake, stub
+
+**Test engine**:
+A plug-in that teaches the test platform one way of writing tests, such as Jupiter for current tests or Vintage for JUnit 4 ones. Nothing runs without one present, and a build tool that supplies one automatically will hide its absence from the project's own declarations.
+_Avoid_: runner, framework, platform
+
+**Test instance lifecycle**:
+The rule deciding how many instances of a test class get created: one per test method by default, or one for the whole class. The default is what makes a field written by one test invisible to the next, so changing it trades isolation for shared setup.
+_Avoid_: scope, fixture, lifecycle
+
 **Total order**:
 A comparator or natural ordering under which no two distinct elements compare as zero. Sorted collections need one, and a chain of keys provides it only if the last key is unique per element.
 _Avoid_: full sort, strict ordering, complete comparator
+
+**Transitive dependency**:
+A dependency you never declared, present because something you did declare needs it. Most of a project's classpath arrives this way, at versions chosen by mediation rather than by anyone, which is why relying on one you did not ask for breaks on somebody else's upgrade.
+_Avoid_: indirect import, sub-dependency, nested library
+
+**Uber jar**:
+A single jar holding the project's own classes together with the unpacked contents of all its dependencies, so it runs with nothing else on the classpath. The convenience costs a far larger artifact and flattens every dependency's identity, including its licence information, into one file.
+_Avoid_: fat jar, shaded jar, bundle
 
 **View**:
 A collection that reads through to another one rather than holding its own contents, which is what `Collections.unmodifiableList` and `Map.values` return. It refuses writes through itself and still shows every change made to the collection behind it.

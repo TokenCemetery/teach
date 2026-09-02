@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0013. The Collections Worth Knowing](lessons/0013-collections.md)
+**Latest lesson:** [0020. A Library a Caller Can Handle](lessons/0020-a-library-callers-can-handle.md)
 
 ## Success looks like
 
@@ -73,6 +73,13 @@ Work through these in order.
 | [0011](lessons/0011-pattern-matching.md) | Pattern Matching | A match must cover every case, and the pattern decides whether you borrowed the value or moved it |
 | [0012](lessons/0012-iterators-and-closures.md) | Iterators and Closures | An iterator does nothing until something consumes it, and a closure captures exactly what it uses |
 | [0013](lessons/0013-collections.md) | The Collections Worth Knowing | Vec and HashMap cover most of it, and the entry API is the one thing worth learning properly |
+| [0014](lessons/0014-propagating-errors.md) | Propagating Errors | The question mark converts as it returns, so the error type in your signature decides what it will accept |
+| [0015](lessons/0015-designing-an-error-type.md) | Designing an Error Type | A caller can only handle what your error lets them distinguish, so the shape of it is an API decision |
+| [0016](lessons/0016-conversions-and-boundaries.md) | Conversions and Boundaries | A From implementation is where one layer's failure becomes another's, and a derive writes the ones you already understand |
+| [0017](lessons/0017-panic-or-error.md) | Panic or Error | A panic says the program is broken and an error says the input was, and a library rarely gets to decide the first |
+| [0018](lessons/0018-modules-and-visibility.md) | Modules and Visibility | What you make public is what you have promised to keep, so the module tree is an API decision before it is an organisation one |
+| [0019](lessons/0019-documentation-that-compiles.md) | Documentation That Compiles | An example in a doc comment is a test, so the documentation that rots is the documentation nobody ran |
+| [0020](lessons/0020-a-library-callers-can-handle.md) | A Library a Caller Can Handle | Split the crate, name the failures, and decide what the binary does that the library must not |
 
 ## Reference
 
@@ -81,6 +88,7 @@ Work through these in order.
 - [Ownership and borrowing](reference/ownership-and-borrowing.md): the rules, the Copy list, the error codes, and the honest fix for each
 - [The project](reference/the-project.md): the crate the reps build across the arc, and what state it should be in at the end of each stage
 - [Data and control](reference/data-and-control.md): the stage 2 sheet, with the enum and Option and Result decisions, the pattern rules, and the collections
+- [Errors and API shape](reference/errors-and-api-shape.md): the stage 3 sheet, with the error-type decisions, the conversion rules, and what a public API commits to
 
 ## How this works
 

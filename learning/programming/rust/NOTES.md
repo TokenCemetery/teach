@@ -11,9 +11,9 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## State
 
-Stages 1 and 2 are written: lessons 0001 to 0013, plus three reference sheets, `ownership-and-borrowing.md`, `the-project.md` and `data-and-control.md`. Stages 3 to 8 are unwritten.
+Stages 1 to 3 are written: lessons 0001 to 0020, plus four reference sheets, `ownership-and-borrowing.md`, `the-project.md`, `data-and-control.md` and `errors-and-api-shape.md`. Stages 4 to 8 are unwritten.
 
-**Baseline, rechecked before stage 2: rustc 1.98.0, edition 2024.** The toolchain was two releases behind when the stage started and was updated first. Recheck again before stage 3 rather than assuming this still holds.
+**Baseline, rechecked before stage 2 and unchanged through stage 3: rustc 1.98.0, edition 2024.** The toolchain was two releases behind when stage 2 started and was updated first. Recheck again before stage 4 rather than assuming this still holds.
 
 Lesson 0006 is the stage's capstone and the piece worth protecting. It teaches reading the compiler's three spans, the five error codes stage 1 actually produces, and the four honest fixes against the four workarounds. It is the direct answer to the stage's success criterion, and it is also where the "what not to do here" rule below is made explicit for a reader rather than kept as a note.
 
@@ -34,6 +34,18 @@ Why this one rather than the other obvious candidates, argued from what each sta
 
 The reps grow it a piece at a time, one per lesson, so no lesson asks for a build that does not fit a sitting. The sheet records what state the project should be in at the end of each stage, so a reader who skipped a rep knows what to catch up on.
 
+## Stage 3's decision: whether the arc uses a crate, and when
+
+Stage 3 had no recorded blocking decision and has an obvious one, because it is the first stage where the standard library stops being the whole answer: error handling in real Rust is done with `thiserror` and `anyhow`, and the project sheet already says stage 3 is where dependencies arrive. Settled before writing, on evidence.
+
+**Both versions were written and compiled, and both are needed, in that order.** The hand-written error type is 47 lines with its documentation: an enum, a `Display` implementation that is one `match` arm per variant, and an `Error` implementation whose `source` returns the inner error. The same type with `thiserror` is 36 lines, replacing both implementations with an `#[error("...")]` attribute per variant and a `#[source]` on the field. Verified that they are observably the same rather than merely similar: a test asserting `to_string()` and `source()` on the derived version passes with exactly the values the hand-written one produces, so the derive generates the code the reader has already written by hand.
+
+**The crates are not optional knowledge, which the download counts settle rather than my opinion.** Checked on crates.io: `thiserror` 2.0.20 has about 343 million recent downloads against 1.4 billion all time, and `anyhow` 1.0.104 about 203 million against 922 million. A reader will meet both in the first repository they open, so an arc that never names them leaves them to guess what the macro did.
+
+**So the order is the decision, and it follows this workspace's standing rule about workarounds.** Lesson 0015 hand-writes the error type. Lesson 0016 hand-writes the `From` conversions that make `?` work across boundaries, then shows `thiserror` as the derive that generates exactly what those two lessons wrote, naming what it replaces line by line. The closing lesson introduces `anyhow` for the binary's top level and states the split that the ecosystem actually uses: a typed error in a library, because a caller may want to match on it, and an opaque one in an application, because nothing above `main` is going to. Deriving before you can write it by hand is the thing the arc refuses, for the same reason it refuses reaching for `clone` before understanding the borrow.
+
+**One fact that dates the material and is easy to get wrong.** A private type in a public signature is no longer the hard error older writing describes: on 1.98.0 it is a warning from the `private_interfaces` lint, on by default, reading "type `Private` is more private than the item `leak`". Lesson 0018 teaches what the compiler actually does now and says which release changed it.
+
 ## What execution changed
 
 ### Stage 2
@@ -50,6 +62,22 @@ All compiled on **rustc 1.98.0, edition 2024**, which is what `cargo new` now pr
 - **Both standing rules held.** No lesson reaches for `Rc`, `RefCell`, `Arc`, `Mutex` or a thread, confirmed by grep, and the one borrow-checker-adjacent moment, the compiler suggesting `.clone()` for `E0507` in lesson 0009, is explicitly named as the wrong fix with `Option::take` given as the design.
 - **One gate-4 limitation, recorded because it will recur.** `fasterthanli.me`, a pre-existing entry in `RESOURCES.md` rather than anything stage 2 cited, answers 200 and then stalls the body for an automated client: a `curl` gets the status and about nineteen kilobytes before timing out at ninety seconds. It is a live page, not a dead link, and the same category as the vendor hosts that answer a scripted request with a 403. All sixty links this stage touched were checked, and that is the only one that needed a manual look.
 - **`RESOURCES.md` needed nothing.** Stage 2 cited the Book, the standard library, the Reference, the error index and the release blog, all already listed, and the gaps section already records that release notes are read from the blog. Recording that as a non-change rather than inventing an entry.
+
+### Stage 3
+
+All compiled on **rustc 1.98.0, edition 2024**, in a library crate rather than a binary, because this is the stage where the reader's code acquires callers.
+
+- **`#[non_exhaustive]` does nothing inside the crate that defines it, which took two crates to show.** A `match` on a `#[non_exhaustive]` enum without a wildcard compiles fine in the defining crate and only fails downstream, with `E0004` naming `_` as the missing arm. Teaching it from one crate would have taught the opposite of the truth, so the lesson uses a consumer crate and says why the single-crate version looks like the attribute is inert.
+- **`std::error::Error` requires `Debug`, not just `Display`.** Omitting the derive gives the trait-bound error rather than anything mentioning errors, which is worth quoting because the diagnostic does not say "your error type is missing something".
+- **`#[from]` is narrower than it looks.** `thiserror` rejects a variant carrying a `#[from]` field alongside any other data, with a message saying the variant must have "no fields other than source and backtrace". That is the concrete reason a hand-written `From` implementation is still the answer whenever a conversion needs to add context, which is exactly the case lesson 0016 builds the stage around, and the orphan rule (`E0117`) is the other half of the same boundary.
+- **Overflow is two different things and only one of them is a panic.** A literal operand that overflows is rejected at compile time by the `arithmetic_overflow` lint, which is deny by default, so it never reaches a runtime check; a computed overflow panics in a debug build and wraps in a release build. Lesson 0017 needed both, because "overflow panics" alone is false in either direction depending on which case a reader tries.
+- **`panic = "abort"` changes observable behaviour, not just speed.** With it, `Drop` does not run during a panic and the process exits 134 rather than 101. That is the fact that makes the panic-against-error decision a design decision rather than a style preference: a library cannot know whether its caller unwinds.
+- **Cross-crate intra-doc links fail silently under `--no-deps`.** A link to another crate's type renders as plain text with no warning at all, so a documentation build that looks clean can still ship dead links. Recorded because it is invisible by construction and will recur in stage 8.
+- **`anyhow`'s report changes shape with depth.** One layer prints unnumbered; two or more print a numbered `Caused by:` list starting at `0:`. A lesson that quotes only the numbered form teaches a reader to expect output they will not see.
+- **Private-in-public is a warning now, and half of the old error survives.** Defining `pub fn leak() -> Private` compiles with the `private_interfaces` lint only, but calling it from outside the defining module still hard-fails with a message saying that the type is private, and with no error code at all. The author found the second half; teaching only the lint would have overstated what the change buys. The lint replaced `private_in_public` in release 1.74.0, read from that release's notes.
+- **The stage's ordering rule was verified rather than assumed.** The hand-written type is 47 lines with its documentation and the `thiserror` version is 36, and a test asserting `to_string()` and `source()` passes identically against both, so lesson 0016 can name what the derive replaced line by line instead of asserting that it replaces something.
+- **One gate-4 fix.** The Reference renamed the `?` section: the anchor is now `the-try-propagation-expression`, and the page carries a note that the operator "is sometimes called the question mark operator". Lesson 0014's citation was corrected to the current anchor. Every other external link in the stage resolved with its anchor present, `fasterthanli.me` excepted for the reason recorded under stage 2.
+- **`RESOURCES.md` gained two entries and needed them.** The rustdoc book and the API guidelines were already listed, but `thiserror` and `anyhow` are taught here and had no source, so their `docs.rs` pages are now listed with the split they exist for.
 
 ## On the arc
 

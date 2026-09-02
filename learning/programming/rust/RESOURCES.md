@@ -35,6 +35,12 @@ type: resources
 - [Docs: "The rustdoc Book", The Rust Project, doc.rust-lang.org](https://doc.rust-lang.org/rustdoc/)
   Documentation attributes, intra-doc links, and doctests that run in the test suite. Use for: stage 3, where documentation becomes part of the API.
 
+- [Docs: "thiserror", David Tolnay, docs.rs](https://docs.rs/thiserror/)
+  The derive that generates the `Display` and `Error` implementations a typed library error needs, with the attributes it accepts. Use for: stage 3, after writing one of those implementations by hand.
+
+- [Docs: "anyhow", David Tolnay, docs.rs](https://docs.rs/anyhow/)
+  One opaque error type for an application's top level, with context chaining and a report that prints the chain. Use for: stage 3, and only above the library boundary.
+
 - [Style guide: "The Rust Style Guide", The Rust Project, doc.rust-lang.org](https://doc.rust-lang.org/style-guide/)
   The formatting conventions the toolchain enforces, and the reasoning behind them. Use for: settling layout questions without argument.
 

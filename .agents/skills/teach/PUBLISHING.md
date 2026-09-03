@@ -20,9 +20,9 @@ type: index | topic | lesson | reference | glossary | resources
 
 **Quote a value that starts with punctuation, or contains a colon followed by a space.** Both make the front matter invalid YAML, and the failure is silent: MkDocs drops the whole block, falls back to the filename for the page title, emits no description, and `--strict` reports nothing. A lesson whose `description` opened with `%w` shipped that way. The scripted parse below is what catches it.
 
-Do not add a date. The site derives `created_at` and `updated_at` from git history, and a hand-written date goes stale the first time someone forgets it.
+Do not add a date. The `git-revision-date-localized` plugin reads each page's last commit and the theme footer prints it as "Last updated", and a hand-written date goes stale the first time someone forgets it.
 
-`order` is read by the theme and overrides a page's position in the navigation. Leave it out while lesson filenames still sort correctly on their own number.
+Nothing in the front matter moves a page in the navigation. Order comes from `learning/.nav.yml` and, inside a directory, from the filenames, which is why every lesson file carries its number.
 
 ## Rendering
 

@@ -46,6 +46,10 @@ _Avoid_: a limitation, a bug, a full buffer being an error, throttling as a syno
 The implicit `ref`, `ref mut` or move state a sub-pattern inherits when a non-reference pattern is matched against a reference, which is why matching `&record` gives you borrowed fields without writing `&` anywhere. From the 2024 edition an explicit `&` pattern may not be layered on top of an implicit borrow.
 _Avoid_: dereference, ref keyword as the only way, move, coercion
 
+**Breaking change**:
+A released version that fails to compile for some caller of the previous public API, judged by what compiles rather than by what you intended. Adding a public field, an enum variant or a trait method without a default all qualify, and a tool can check the shape while only your tests can check the behaviour.
+_Avoid_: any refactor, anything that feels large, only a removal, something the version number decides after the fact
+
 **Busy-spin**:
 An executor that answers `Poll::Pending` by polling again immediately, so it makes progress without a waker at the cost of occupying a processor for nothing. It is what a hand-written first executor does, and it is the reason the waker contract exists.
 _Avoid_: polling as a synonym, blocking, a tight loop being merely inefficient
@@ -130,6 +134,14 @@ _Avoid_: runtime as a synonym, scheduler, thread pool, something the standard li
 The compiler's requirement that a `match` account for every possible value, which is what makes adding an enum variant a compile error rather than a silent gap. Satisfying it with a catch-all on an enum you own gives the guarantee away.
 _Avoid_: completeness, default case, total function, coverage in the testing sense
 
+**Feature**:
+A named, additive switch declared in the manifest that turns on code or an optional dependency, with `default` being an ordinary feature that happens to be enabled. It may only add: a feature that changes or removes behaviour is a design error, because a build gets the union of everything anyone asked for.
+_Avoid_: a configuration option, a build profile, a way to offer two behaviours, something only your crate sees
+
+**Feature unification**:
+Cargo resolving one set of features per package per build, so if two dependants ask for different features everybody in that build gets both. It is the reason a feature that subtracts breaks somebody you never hear from.
+_Avoid_: per-dependant features, isolation between consumers, something a lock file prevents
+
 **Future**:
 A value implementing one method, `poll`, which either yields a result or says not yet. Constructing one runs nothing, and an `async fn` returns one, so something has to poll it before any of its body executes.
 _Avoid_: a promise, a thread, a running computation, a callback
@@ -156,7 +168,7 @@ _Avoid_: markdown link, external URL, reference, anchor
 
 **Invariant**:
 A property your own code guarantees at a given point, whose violation is a bug in that code rather than bad input. That distinction is what decides between a panic and a `Result`, since a caller cannot fix your broken invariant and can often handle bad input.
-_Avoid_: precondition on the caller, validation, assertion, contract with the user
+_Avoid_: precondition on the caller, validation, assertion, contract with the user, and the variance sense of the word, where a type being invariant over a lifetime means the lifetime cannot be substituted at all
 
 **Iterator**:
 A type with a `next` method returning `Option<Item>`, which is where absence and iteration meet. Adapters build a new iterator and do nothing until a consumer asks for items, so a chain with no consumer runs no code at all.
@@ -181,6 +193,18 @@ _Avoid_: erasure, dynamic dispatch, specialisation, inlining as a synonym
 **Move**:
 The transfer of ownership that assignment or argument passing performs on a non-**Copy** type, after which the source binding is unusable. It is compile-time bookkeeping rather than a runtime operation.
 _Avoid_: transfer, copy, reassignment
+
+**MSRV**:
+The minimum supported Rust version a crate declares with `rust-version` in its `[package]` table, which cargo enforces by refusing to build on an older toolchain. Raising it is treated as a minor incompatibility, so it is a promise with a cost rather than a note.
+_Avoid_: the version you happen to use, the newest release, something only documentation records
+
+**Must-use attribute**:
+An attribute on a function, or on a type returned by one, that makes the compiler warn when the result is discarded. It is a warning rather than an error, and it applies to any type worth not ignoring rather than only to `Result`.
+_Avoid_: a compile error, something only `Result` needs, a guarantee the value is handled
+
+**Newtype**:
+A local tuple struct wrapping a single value, used to implement a foreign trait the orphan rule would otherwise forbid, or to keep a foreign type's API from becoming your public API. Nothing forwards automatically, which is both its cost and the point.
+_Avoid_: a type alias, a zero-cost synonym, something whose methods you inherit
 
 **Niche optimisation**:
 The compiler's use of an impossible bit pattern in a payload to store an enum's discriminant, which is why `Option<&T>` and `Option<Box<T>>` are the same size as the pointer they wrap. The standard library documents that guarantee for those cases; other sizes are not promised.
@@ -254,6 +278,10 @@ _Avoid_: a note expressing confidence, a description of what the code does, deco
 A thread spawned inside a `thread::scope` block, which may borrow non-`'static` data because the scope guarantees every one of its threads is joined before it returns.
 _Avoid_: any thread spawned inside a scope, a lightweight thread, a thread you need not join
 
+**Sealed trait**:
+A public trait that no other crate can implement, achieved by giving it a supertrait that is public in name only and unreachable outside your crate. It keeps the right to add methods later, at the cost of forbidding implementations you did not write.
+_Avoid_: a private trait, `#[non_exhaustive]`, a trait nobody may call
+
 **Send**:
 A marker meaning a value may be moved to another thread. It says nothing about sharing, so a type can be `Send` and still be unusable behind a shared reference from two threads.
 _Avoid_: thread-safe as a general claim, `Sync`, safe to share
@@ -286,6 +314,10 @@ _Avoid_: `Send`, thread-safe as a general claim, synchronised access
 A future handed to a runtime to own and drive, which starts running without being awaited and must be `Send` and `'static` because the runtime may move it between workers.
 _Avoid_: a thread, a green thread the language provides, a future that runs by itself
 
+**Tracking issue**:
+The issue an `#[unstable]` attribute points at, where a feature's amendments and eventual stabilisation are recorded. It is the live record, so it outranks an accepted proposal that describes an earlier design.
+_Avoid_: the RFC, a fixed specification, something that stops changing once written
+
 **Trait bound**:
 A constraint on a generic parameter naming a trait the type must implement, written after a colon, joined with `+`, moved into a `where` clause, or sugared as `impl Trait` in an argument position. It faces two ways at once: a promise to the body about what it may call, and a requirement on every caller.
 _Avoid_: runtime check, interface, constraint on the value rather than the type
@@ -310,6 +342,10 @@ _Avoid_: something to implement by hand, unpinning a pinned value, the opposite 
 The default panic behaviour, running each value's `Drop` up the call stack as the panic propagates, as opposed to `abort`, which ends the process immediately. A project can choose either, so code must not rely on unwinding happening.
 _Avoid_: exception handling, catch, stack trace, rollback
 
+**Variance**:
+Which lifetimes and types may stand in for the ones a generic type was written with. A type is covariant where a longer lifetime may substitute for a shorter one, as `&'a T` is, invariant where no substitution is allowed, as anything behind `&mut` or inside a `Cell` is, and contravariant where the substitution runs the other way, as a function's parameter position does. It is computed from the fields, so one field decides it for the whole type, and it is part of a public API whether or not the signature changes.
+_Avoid_: mutability, the invariant sense of the same word, something you declare rather than compute
+
 **Variant**:
 One of the shapes an enum's value may take, which may carry no data, a tuple payload or named fields. A payload is owned by the value the way a struct's field is, so constructing a variant moves what you put in it.
 _Avoid_: case as a synonym for the enum, subclass, tag, member
@@ -321,3 +357,11 @@ _Avoid_: a callback the executor invokes on its own, a thread signal, something 
 **Weak pointer**:
 A non-owning handle to a counted value, made with `Rc::downgrade` or `Arc::downgrade`, which must be upgraded before use and yields `None` once the value is gone. It is how a cycle is broken and how a back-reference is expressed.
 _Avoid_: a raw pointer, a borrow, a handle that keeps the value alive, an `upgrade` that always succeeds
+
+**Workspace**:
+A root manifest carrying `[workspace]` members rather than a package of its own, optionally sharing dependency versions and package fields the members inherit. Its members are published separately, in dependency order.
+_Avoid_: one package with two targets, a monorepo as such, something that publishes as a unit
+
+**Yank**:
+Marking a published version so that new resolution will not pick it, without deleting the code or disturbing anyone whose lock file already names it. It withdraws a recommendation rather than a release.
+_Avoid_: deletion, a fix for a leaked secret, something that unbreaks existing builds

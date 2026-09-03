@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0054. Defending an Unsafe Boundary](lessons/0054-defending-an-unsafe-boundary.md)
+**Latest lesson:** [0063. Reviewing Rust](lessons/0063-reviewing-rust.md)
 
 ## Success looks like
 
@@ -114,6 +114,15 @@ Work through these in order.
 | [0052](lessons/0052-measuring-before-optimising.md) | Measuring Before Optimising | How to get a number you can defend, what the compiler does to a benchmark that measures nothing, and what a measurement cannot tell you |
 | [0053](lessons/0053-allocation-and-copying-costs.md) | Allocation and Copying Costs | Where a Rust program actually spends its time, and which of the obvious fixes pay for themselves |
 | [0054](lessons/0054-defending-an-unsafe-boundary.md) | Defending an Unsafe Boundary | The argument you have to be able to make before an unsafe block ships, and the measurement that has to come with it |
+| [0055](lessons/0055-variance.md) | Variance | Which lifetimes may stand in for which, why your own type decides, and what that commits you to |
+| [0056](lessons/0056-higher-ranked-bounds.md) | Higher-Ranked Bounds | Writing the quantifier the compiler has been printing at you, and the API shapes that need it |
+| [0057](lessons/0057-what-breaks-a-caller.md) | What Breaks a Caller | The changes that need a major version, the ones that only look safe, and the tool that tells you which is which |
+| [0058](lessons/0058-designing-for-change.md) | Designing for Change | The decisions that leave you room to move later, and the ones that quietly promise more than you meant |
+| [0059](lessons/0059-features-and-the-minimum-version.md) | Features and the Minimum Version | Why a feature must only add, what unification does to your assumptions, and what declaring a minimum version actually promises |
+| [0060](lessons/0060-workspaces-and-release.md) | Workspaces and Release | Getting a crate to the point where publishing is one command, and what that command actually does |
+| [0061](lessons/0061-the-api-guidelines.md) | The API Guidelines | The checklist the ecosystem already agreed on, which items matter most, and how to use it without cargo-culting it |
+| [0062](lessons/0062-reading-the-source-and-the-rfcs.md) | Reading the Source and the RFCs | Answering a question the documentation does not, from the standard library, the tracking issues and the RFCs |
+| [0063](lessons/0063-reviewing-rust.md) | Reviewing Rust | What to look for in somebody else's Rust, in what order, and which comments are worth making |
 
 ## Reference
 
@@ -127,6 +136,7 @@ Work through these in order.
 - [Sharing and threads](reference/sharing-and-threads.md): the stage 5 sheet, with the strategy procedure, what each sharing type costs, and the failure table
 - [Async](reference/async.md): the stage 6 sheet, with the poll model, the bounds, the failure table, and where cancel safety is documented
 - [Unsafe and performance](reference/unsafe-and-performance.md): the stage 7 sheet, with the undefined-behaviour table, what each tool catches, and the measurement discipline
+- [Judgment](reference/judgment.md): the stage 8 sheet, with the variance rules, the breaking-change table, the release checklist, and the order of authority
 
 ## How this works
 

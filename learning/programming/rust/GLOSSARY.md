@@ -70,9 +70,17 @@ _Avoid_: lambda as a synonym for its type, function pointer, block, thunk
 A method on `Option` or `Result` that transforms or inspects the value inside without unwrapping it, such as `map`, `and_then` or `ok_or`. Each answers one question, and a chain of them is the alternative to a `match` rather than a replacement for thinking about the absent case.
 _Avoid_: helper, functor, adapter, which is an iterator's word, chaining as a style
 
+**Confidence interval**:
+The range a benchmarking harness reports in place of a single figure, which is what makes a measurement quotable: it says how much of the difference you are seeing is the change and how much is noise.
+_Avoid_: the centre value alone, a guarantee, precision that came free
+
 **Copy**:
 A marker trait for types that are duplicated rather than moved on assignment, because they are plain data with nothing to free. It requires `Clone` and is incompatible with `Drop`, and `&T` has it while `&mut T` deliberately does not.
 _Avoid_: value type, primitive, cheap type
+
+**Data race**:
+Two threads accessing the same location without synchronisation where at least one writes, which is undefined behaviour rather than merely a wrong answer. It is not the same as a lost update, which is a wrong answer produced by correctly synchronised code.
+_Avoid_: a lost update, any concurrency bug, something a correct-looking run rules out
 
 **Deadlock**:
 Two or more threads each holding a lock the other needs, so none can proceed. It presents as a hang with no panic, no message and no exit code, and it survives testing because low contention usually lets both threads through.
@@ -130,6 +138,10 @@ _Avoid_: a promise, a thread, a running computation, a callback
 The value a borrow or a lock hands back, whose `Drop` ends the access it granted, as with `RefMut` from a `RefCell` or `MutexGuard` from a `Mutex`. Its scope, not the call that produced it, decides how long the access lasts.
 _Avoid_: a handle you may keep, a reference, a token to pass around
 
+**Happens-before**:
+The relation a `Release` store and a matching `Acquire` load establish between two threads, which is what makes everything written before the store visible after the load.
+_Avoid_: wall-clock order, any two operations on the same atomic, something a stronger ordering makes faster
+
 **Higher-ranked bound**:
 A trait bound quantified over every lifetime rather than one particular lifetime, which is what a closure bound such as `Fn(&str) -> usize` already means. Offering a closure fixed to one lifetime against such a bound is what the compiler reports as an implementation not being general enough, contrasting a lifetime it needs for any against one the closure provides for some.
 _Avoid_: lifetime parameter, generic lifetime, a `'static` bound
@@ -153,6 +165,14 @@ _Avoid_: loop, generator, stream, which is async, collection
 **Lost update**:
 An increment or write silently overwritten because two threads read the same value before either wrote, which is what separate lock acquisitions for a read and a write allow. Its size is not predictable and neither is its rate, so an approximate assertion can pass while the code is wrong.
 _Avoid_: a small drift, rounding, something a retry fixes, a bug that always shows up
+
+**Memory ordering**:
+The constraint an atomic operation places on which other operations may be observed around it. It is about visibility and ordering rather than speed, and a stronger ordering does not make a write propagate sooner.
+_Avoid_: a delay, a flush, a speed setting, something testable by running it once
+
+**Microbenchmark**:
+A measurement of one function or loop in isolation. Its ratio is evidence about that function and nothing else, so it cannot tell you whether the code path matters in a real run.
+_Avoid_: a profile, proof that a change matters, a number that generalises to another machine
 
 **Monomorphisation**:
 The compiler's generation of one fully concrete copy of a generic item for each set of type arguments it is used with, which is why a generic call is a direct call that can be inlined, and why a widely instantiated generic costs compile time and binary size rather than nothing.
@@ -198,6 +218,10 @@ _Avoid_: the data being lost, a corrupted lock, an error you must `unwrap` past
 The two-variant enum a future's `poll` returns, either pending or ready. Pending is a promise to wake the caller later rather than a request to be asked again.
 _Avoid_: input and output polling, a busy loop, a status code
 
+**Provenance**:
+The information a pointer carries beyond its address, recording which allocation it came from and what it may reach. A round trip through an integer can lose it, leaving an address that is numerically right and not usable.
+_Avoid_: the address, a type, something a cast preserves automatically
+
 **Re-export**:
 A `pub use` that presents an item at a shorter public path than the one its file layout gives it, so a library can move code without breaking the paths callers type. The path a caller writes is part of the public API, which is what makes this a design tool rather than a tidying one.
 _Avoid_: import, alias, copy, module declaration
@@ -222,6 +246,10 @@ _Avoid_: exception, panic, Option, status code
 An executor plus what real work needs around it: a timer, a source of input and output readiness, and a scheduler with worker threads. Rust ships none, so a program chooses one, and the flavour it chooses decides where a future runs.
 _Avoid_: executor as a synonym, a virtual machine, a garbage collector, part of the language
 
+**SAFETY comment**:
+The comment attached to an `unsafe` block naming the invariant that makes it sound, and which line or caller guarantees that invariant. It is written for the next reader rather than for the compiler, and it is what makes the block reviewable.
+_Avoid_: a note expressing confidence, a description of what the code does, decoration
+
 **Scoped thread**:
 A thread spawned inside a `thread::scope` block, which may borrow non-`'static` data because the scope guarantees every one of its threads is joined before it returns.
 _Avoid_: any thread spawned inside a scope, a lightweight thread, a thread you need not join
@@ -237,6 +265,14 @@ _Avoid_: reassignment, overwriting, redeclaration
 **Slice**:
 A borrowed view into a contiguous sequence, carrying a pointer and a length and owning nothing. `&str` and `&[T]` are the two that appear constantly, and both are what a signature should ask for.
 _Avoid_: array, view, range, substring
+
+**Soundness**:
+The property that no safe caller, however careless, can cause undefined behaviour through your interface. It is a much stronger claim than the code working, and tests cannot establish it.
+_Avoid_: well tested, safe as a synonym, it compiled and ran
+
+**Stacked Borrows**:
+Miri's default model for checking which references may be used when, by tracking a stack of borrows per location. Its own documentation calls it experimental, so a program it accepts is not thereby proved sound.
+_Avoid_: the language's definition, a proof of soundness, the borrow checker
 
 **Strong count**:
 The number of owning handles to a counted value that are currently alive, reported by `Rc::strong_count` and `Arc::strong_count`. The value is dropped when it reaches zero, and weak handles are counted separately and do not keep it alive.
@@ -261,6 +297,10 @@ _Avoid_: interface, abstract class, boxed value, a cost claim nobody measured
 **Turbofish**:
 The `::<Type>` syntax that names a generic argument explicitly at a use site, for where inference has nothing to work from. A parameter written as `impl Trait` declares no name to give it, so the turbofish is not available against one.
 _Avoid_: cast, type annotation, generic declaration
+
+**Undefined behaviour**:
+An operation whose premise the compiler was entitled to assume never happens, so once it does, the optimisations licensed by that assumption can misbehave anywhere in the program. It is a broken premise rather than an unpredictable result.
+_Avoid_: unpredictable output, a runtime error, a crash, something a passing run rules out
 
 **Unpin**:
 An auto trait meaning a type does not care whether it is pinned, which almost every ordinary type implements. Generated futures do not, which is why the pinning ceremony appears exactly where it is load-bearing.

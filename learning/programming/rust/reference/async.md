@@ -89,9 +89,9 @@ None of these three verdicts generalise to a method the page has not covered; a 
 | `Stream` | The standard library has not settled the trait; not taught in this arc |
 | `futures`, `tokio-stream`, `async-std`, `smol` | Not taught; tokio is this stage's only runtime crate |
 | `async-trait` | Named once, for the `Send`-on-a-trait-method gap it papers over; not taught as a general tool |
-| Manual `Pin` projection, and writing `Future` by hand for a type with genuine internal pointers | Stage 7 |
+| Manual `Pin` projection, and writing `Future` by hand for a type with genuine internal pointers | Out of the arc. Stage 7 names it as the boundary its own lessons stop at and points at the Rustonomicon |
 | Comparing memory orderings | Stage 7, as already settled for threads in stage 5 |
-| Building a `Waker` from a raw pointer and a vtable | Stage 7; this stage's own hand-built executors use the safe `Wake` trait instead |
+| Building a `Waker` from a raw pointer and a vtable | Out of the arc. This stage's hand-built executors use the safe `Wake` trait and `Waker::noop` instead |
 | `tokio_util::CancellationToken` | Named once, for cooperative shutdown across several tasks; not taught |
 | `tokio::sync::RwLock`, `Semaphore`, `Notify`, `oneshot` | Named so a reader recognises each on sight; their APIs are not worked through here |
 

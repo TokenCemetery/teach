@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0045. Reading an Async Failure](lessons/0045-reading-an-async-failure.md)
+**Latest lesson:** [0054. Defending an Unsafe Boundary](lessons/0054-defending-an-unsafe-boundary.md)
 
 ## Success looks like
 
@@ -105,6 +105,15 @@ Work through these in order.
 | [0043](lessons/0043-cancellation-safety.md) | Cancellation Safety | Whether a future can be dropped mid-flight without losing what it had already taken, and where that question is answered |
 | [0044](lessons/0044-pinning.md) | Pinning | Why a future's memory must stop moving once it is polled, and what Pin does about it |
 | [0045](lessons/0045-reading-an-async-failure.md) | Reading an Async Failure | The five ways async code fails without an error message, and how to tell which one you are looking at |
+| [0046](lessons/0046-what-unsafe-promises.md) | What Unsafe Promises | The five things an unsafe block lets you do, and the obligation you take on by writing one |
+| [0047](lessons/0047-raw-pointers.md) | Raw Pointers | What a raw pointer is not, what it costs you in guarantees, and how to make one that is actually valid |
+| [0048](lessons/0048-undefined-behaviour.md) | Undefined Behaviour | What the compiler is allowed to assume, why a program that works can still be wrong, and the list worth knowing by heart |
+| [0049](lessons/0049-checking-with-miri.md) | Checking With Miri | The tool that turns an invisible soundness bug into a report, what it catches, and what it cannot |
+| [0050](lessons/0050-encapsulating-an-invariant.md) | Encapsulating an Invariant | Wrapping unsafe code in a safe interface, and what has to be true for that interface to deserve the name |
+| [0051](lessons/0051-memory-orderings.md) | Memory Orderings | What an ordering actually constrains, why you cannot test one by running it, and how to check the one you chose |
+| [0052](lessons/0052-measuring-before-optimising.md) | Measuring Before Optimising | How to get a number you can defend, what the compiler does to a benchmark that measures nothing, and what a measurement cannot tell you |
+| [0053](lessons/0053-allocation-and-copying-costs.md) | Allocation and Copying Costs | Where a Rust program actually spends its time, and which of the obvious fixes pay for themselves |
+| [0054](lessons/0054-defending-an-unsafe-boundary.md) | Defending an Unsafe Boundary | The argument you have to be able to make before an unsafe block ships, and the measurement that has to come with it |
 
 ## Reference
 
@@ -117,6 +126,7 @@ Work through these in order.
 - [Traits and lifetimes](reference/traits-and-lifetimes.md): the stage 4 sheet, with the dispatch decision, the coherence rules, and the lifetime error table
 - [Sharing and threads](reference/sharing-and-threads.md): the stage 5 sheet, with the strategy procedure, what each sharing type costs, and the failure table
 - [Async](reference/async.md): the stage 6 sheet, with the poll model, the bounds, the failure table, and where cancel safety is documented
+- [Unsafe and performance](reference/unsafe-and-performance.md): the stage 7 sheet, with the undefined-behaviour table, what each tool catches, and the measurement discipline
 
 ## How this works
 

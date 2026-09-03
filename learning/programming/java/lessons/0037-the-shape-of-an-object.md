@@ -119,7 +119,7 @@ A boxed `Integer` holding the incremented count, since `Integer` is immutable an
 - [ ] Check whether the JDK you actually deploy reports `-XX:+UseCompactObjectHeaders` as `false` by default too, the same way this lesson checked it on JDK 25.
 - [ ] Find one place in code you own where a primitive is stored in a boxed collection, such as a `List<Integer>` or a `Map<K, Long>`, and count how many distinct objects one entry actually costs once the box and the container's own internal node are both counted.
 - [ ] Pick one small, frequently allocated type in a project you maintain and write one honest sentence on whether millions of instances of it are remotely plausible for that project's real traffic, before treating anything in this lesson as relevant to it.
-- [ ] Search a project you maintain, or a library it depends on, for a comment, script or build flag that mentions JOL, and check whether whoever wrote it was relying on an agent JDK 25 already warns will stop working by default.
+- [ ] Search a project you maintain, or a library it depends on, for a comment, script or build flag that mentions JOL, and check whether whoever wrote it was relying on an agent JDK 25 already warns will stop working by default, a warning JDK 26 still prints in the same words.
 - [ ] Tomorrow: look at one `Map<String, Integer>` or similar boxed counter in code you own, and write down, honestly, whether you have ever measured that it allocates enough to matter, or whether it has simply never been questioned.
 
 ## Going further

@@ -132,7 +132,7 @@ A scope answers two questions: compile classpath, and runtime classpath. See [le
 
 Three ways to force a version: declare the coordinate directly in your own `<dependencies>` (depth zero beats anything transitive); manage it in `<dependencyManagement>` with no matching `<dependencies>` entry, so it still arrives only transitively but at the managed version; or import a BOM (a `<type>pom</type>` artifact whose only content is `dependencyManagement`) with `<scope>import</scope>`, to manage many coordinates at once.
 
-One tooling trap: `maven-dependency-plugin` 3.7.0 fails to read JDK 25 class files, `Unsupported class file major version 69`; 3.11.0 or later reads them correctly.
+One tooling trap: the version Maven resolves for `maven-dependency-plugin` by default, still 3.7.0, cannot read class files from a recent release, and the number it complains about tracks the release you compiled for: `Unsupported class file major version 69` for JDK 25, and 70 for JDK 26 when rechecked a release later. Pin 3.11.0 or later, which reads both.
 
 ## Lifecycle phases and what runs
 
@@ -223,7 +223,7 @@ Stable at the time of writing, distinct from a plugin's "latest" tag, which seve
 | `org.mockito:mockito-core` | 5.23.0 | 5.23.0 |
 | `org.assertj:assertj-core` | 3.27.7 | 4.0.0-M1 |
 
-Baseline: JDK 25, the current long-term-support release; Maven 3.9 or later (Maven 4 is only a release candidate at time of writing); `maven-dependency-plugin` 3.11.0 or later, since 3.7.0 cannot read JDK 25 class files.
+Baseline: JDK 25, the current long-term-support release; Maven 3.9 or later (Maven 4 is only a release candidate at time of writing); `maven-dependency-plugin` 3.11.0 or later, since the 3.7.0 that Maven still resolves by default cannot read class files from either JDK 25 or JDK 26.
 
 ## Sources
 

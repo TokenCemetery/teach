@@ -149,7 +149,7 @@ A log is also read for what it does not contain. Sixty young collections and no 
 ## Benchmark setup checklist
 
 - Declare `jmh-core` and `jmh-generator-annprocess` at the same version, `1.37` on JDK 25; the two artifacts share one version number.
-- Do not rely on `jmh-generator-annprocess` sitting on the classpath at `provided` scope to get itself invoked. On JDK 25, `javac` does not run an annotation processor merely because its jar is present, and it says nothing about not running it.
+- Do not rely on `jmh-generator-annprocess` sitting on the classpath at `provided` scope to get itself invoked. On JDK 25, `javac` does not run an annotation processor merely because its jar is present, and it says nothing about not running it. Rechecked on JDK 26: the build still succeeds, still warns about nothing, and still produces no `META-INF/BenchmarkList`, while the `annotationProcessorPaths` fix still generates it.
 - The canonical setup that most write-ups show, `provided`-scoping the generator, therefore compiles cleanly, packages cleanly, and produces a jar with zero benchmarks, with no warning anywhere in the build. It fails only when run: `Exception in thread "main" java.lang.RuntimeException: ERROR: Unable to find the resource: /META-INF/BenchmarkList`.
 - Fix it by naming the processor explicitly on `maven-compiler-plugin` (`3.15.0` or later) as an `annotationProcessorPaths` entry, which makes annotation processing something the build asks for by name rather than something that happens because a jar was reachable.
 - Verify by checking the packaged jar for `META-INF/BenchmarkList` before trusting a single benchmark result from it.
@@ -224,7 +224,7 @@ See [lesson 42](../lessons/0042-from-profile-to-proof.md).
 | `-XX:+UseCompactObjectHeaders` | `{product lp64_product}`, default `false`, no unlock flag needed (JEP 519) |
 | `jmh-core` / `jmh-generator-annprocess` | `1.37`, one shared version number |
 | `maven-compiler-plugin` | `3.15.0`, needed for the `annotationProcessorPaths` fix |
-| JOL (Java Object Layout) | `0.17`, does not complete on JDK 25 by any of its three invocation methods; not recommended |
+| JOL (Java Object Layout) | `0.17`, does not complete on JDK 25 or JDK 26 by any of its three invocation methods, and each fails differently: self-attach throws after warning that `sun.misc.Unsafe::arrayBaseOffset` is terminally deprecated, `-Djdk.attach.allowAttachSelf` attaches and then produces no layout at all, and `-javaagent` stops the virtual machine starting because the jar has no premain class; not recommended |
 
 ## Sources
 

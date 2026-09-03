@@ -28,3 +28,4 @@ $RECYCLE.BIN/
 
 # Agent working notes, local to a checkout
 /.agents/TODO.md
+/.agents/LOOP.md

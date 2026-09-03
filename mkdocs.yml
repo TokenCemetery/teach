@@ -19,6 +19,11 @@ theme:
 extra_css:
   - extra.css
 
+# Drops one false-positive warning from mkdocs-section-index so `--strict`
+# stays usable. See the docstring in hooks.py.
+hooks:
+  - hooks.py
+
 markdown_extensions:
   # Lessons collapse their answer keys into `<details markdown="1">`. Without
   # this, Python-Markdown passes the block through raw and the answer renders
@@ -47,6 +52,8 @@ markdown_extensions:
 
 plugins:
   - search
+  # Nav comes from learning/.nav.yml. Must run before section-index, which
+  # rewrites the nav it produces.
   - awesome-nav
   - i18n:
       docs_structure: suffix
@@ -98,6 +105,15 @@ plugins:
           build: true
           theme:
             locale: en
+  # Every workspace's overview lives in its README.md. Without this the
+  # section label and the overview are two separate nav rows; with it the
+  # label itself links to the overview.
+  - section-index
+  # Sets page.meta.git_revision_date_localized, which the theme footer prints
+  # as "Last updated". Nothing in `learning/` carries a hand-written date.
+  - git-revision-date-localized:
+      # A shallow clone has no log for a page; fall back rather than fail.
+      fallback_to_build_date: true
 
 exclude_docs: |
   **/NOTES.md

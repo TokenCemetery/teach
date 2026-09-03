@@ -34,9 +34,21 @@ _Avoid_: unchecked, dangerous, raw, escape hatch
 A type placeholder a trait declares and each implementing type fills in exactly once, named in a bound as `Iterator<Item = u32>` and, where two traits in scope declare the same name, as the fully qualified `<Type as Trait>::Item`. Declare one where a type has a single sensible choice, and take a generic parameter where several are sensible.
 _Avoid_: generic parameter, type argument, `Trait<Type>` as though the placeholder were positional
 
+**Auto trait**:
+A trait the compiler implements for a type structurally, from what the type contains, rather than from any written `impl`. `Send` and `Sync` are the two that matter here, and because nobody writes them, a type loses one because of something several layers inside it.
+_Avoid_: derived trait in the attribute sense, marker trait as a synonym, a trait you can add by hand
+
+**Backpressure**:
+A bounded channel's `send` blocking once the queue is full, so a fast producer is paced by its consumer rather than allowed to grow an unbounded queue. It is a design tool, chosen with the bound.
+_Avoid_: a limitation, a bug, a full buffer being an error, throttling as a synonym
+
 **Binding mode**:
 The implicit `ref`, `ref mut` or move state a sub-pattern inherits when a non-reference pattern is matched against a reference, which is why matching `&record` gives you borrowed fields without writing `&` anywhere. From the 2024 edition an explicit `&` pattern may not be layered on top of an implicit borrow.
 _Avoid_: dereference, ref keyword as the only way, move, coercion
+
+**Channel**:
+A queue with a sending half and a receiving half that moves ownership of each value between threads, so no two threads hold the same value and there is nothing to lock. Each half fails once the other is dropped, which is how a pipeline ends.
+_Avoid_: a shared buffer, a lock with extra steps, a queue both ends may read
 
 **Closure**:
 An anonymous function that captures what its body uses from the enclosing scope, by shared borrow, mutable borrow or move, whichever is the least it needs. Which of `Fn`, `FnMut` and `FnOnce` it satisfies follows from what it does with the capture rather than from how it is written.
@@ -49,6 +61,10 @@ _Avoid_: helper, functor, adapter, which is an iterator's word, chaining as a st
 **Copy**:
 A marker trait for types that are duplicated rather than moved on assignment, because they are plain data with nothing to free. It requires `Clone` and is incompatible with `Drop`, and `&T` has it while `&mut T` deliberately does not.
 _Avoid_: value type, primitive, cheap type
+
+**Deadlock**:
+Two or more threads each holding a lock the other needs, so none can proceed. It presents as a hang with no panic, no message and no exit code, and it survives testing because low contention usually lets both threads through.
+_Avoid_: a slow program, a livelock, an error the compiler could catch
 
 **Deref coercion**:
 The compiler's automatic conversion from a reference to an owning type into a reference to what it derefs to, such as `&String` into `&str`. It is why taking the borrowed type in a signature costs callers nothing.
@@ -90,9 +106,17 @@ _Avoid_: cause as a synonym for the message, backtrace, context, inner error as 
 The compiler's requirement that a `match` account for every possible value, which is what makes adding an enum variant a compile error rather than a silent gap. Satisfying it with a catch-all on an enum you own gives the guarantee away.
 _Avoid_: completeness, default case, total function, coverage in the testing sense
 
+**Guard**:
+The value a borrow or a lock hands back, whose `Drop` ends the access it granted, as with `RefMut` from a `RefCell` or `MutexGuard` from a `Mutex`. Its scope, not the call that produced it, decides how long the access lasts.
+_Avoid_: a handle you may keep, a reference, a token to pass around
+
 **Higher-ranked bound**:
 A trait bound quantified over every lifetime rather than one particular lifetime, which is what a closure bound such as `Fn(&str) -> usize` already means. Offering a closure fixed to one lifetime against such a bound is what the compiler reports as an implementation not being general enough, contrasting a lifetime it needs for any against one the closure provides for some.
 _Avoid_: lifetime parameter, generic lifetime, a `'static` bound
+
+**Interior mutability**:
+Mutating a value through a shared reference, using a type that enforces the borrow rule itself instead of leaving it to the compiler. `Cell` and `RefCell` do it in one thread and `Mutex` and `RwLock` across threads, and the check moves from compile time to run time.
+_Avoid_: a hole in the borrow rule, `unsafe` by another name, mutability you get for free
 
 **Intra-doc link**:
 A bracketed item path in a doc comment that rustdoc resolves against the crate's own items, so a rename moves the link with it. A broken one is reported by a lint rather than shipping as dead text.
@@ -105,6 +129,10 @@ _Avoid_: precondition on the caller, validation, assertion, contract with the us
 **Iterator**:
 A type with a `next` method returning `Option<Item>`, which is where absence and iteration meet. Adapters build a new iterator and do nothing until a consumer asks for items, so a chain with no consumer runs no code at all.
 _Avoid_: loop, generator, stream, which is async, collection
+
+**Lost update**:
+An increment or write silently overwritten because two threads read the same value before either wrote, which is what separate lock acquisitions for a read and a write allow. Its size is not predictable and neither is its rate, so an approximate assertion can pass while the code is wrong.
+_Avoid_: a small drift, rounding, something a retry fixes, a bug that always shows up
 
 **Monomorphisation**:
 The compiler's generation of one fully concrete copy of a generic item for each set of type arguments it is used with, which is why a generic call is a direct call that can be inlined, and why a widely instantiated generic costs compile time and binary size rather than nothing.
@@ -138,6 +166,10 @@ _Avoid_: visibility, privacy, ownership in the borrow sense, a package-level rul
 The failure path for a broken invariant in your own code, which unwinds the thread with a message, a file and a line rather than returning anything. It is not the same event as an `Err`, which returns normally and prints nothing on its own.
 _Avoid_: exception, error, crash, abort
 
+**Poisoning**:
+A lock marking itself unusable after a thread panicked while holding its guard, because it cannot know whether the data's invariant survived. Later locks return an `Err` that still carries the guard, so the data and any partial mutation remain reachable, and `clear_poison` clears the mark once it has been checked.
+_Avoid_: the data being lost, a corrupted lock, an error you must `unwrap` past
+
 **Re-export**:
 A `pub use` that presents an item at a shorter public path than the one its file layout gives it, so a library can move code without breaking the paths callers type. The path a caller writes is part of the public API, which is what makes this a design tool rather than a tidying one.
 _Avoid_: import, alias, copy, module declaration
@@ -145,6 +177,10 @@ _Avoid_: import, alias, copy, module declaration
 **Reborrow**:
 Producing a new borrow from an existing one, which the compiler inserts implicitly when a `&mut T` is passed to a function so the original stays usable. Where it does not fire, such as storing a `&mut` in a struct, the move is real.
 _Avoid_: copy, pass-through, nested borrow
+
+**Reference cycle**:
+Two or more counted pointers holding each other alive, so no count reaches zero and the values are never dropped. It compiles, runs, and leaks, and it is broken by making one direction a weak pointer.
+_Avoid_: a borrow error, something the compiler catches, a double free, an infinite loop
 
 **Refutable pattern**:
 A pattern that may fail to match some value of its type, which is why it is allowed in `if let`, `while let` and `let ... else` and rejected in a plain `let` or a function parameter. An irrefutable pattern always matches, and the distinction decides which construct will accept it.
@@ -154,6 +190,14 @@ _Avoid_: invalid pattern, optional match, guard, wildcard
 The standard library's enum for an operation that may fail, `Ok(T)` or `Err(E)`, used when the caller could reasonably do something about the failure. The `?` operator returns early on `Err`, which is what makes propagating one cheap enough to do everywhere.
 _Avoid_: exception, panic, Option, status code
 
+**Scoped thread**:
+A thread spawned inside a `thread::scope` block, which may borrow non-`'static` data because the scope guarantees every one of its threads is joined before it returns.
+_Avoid_: any thread spawned inside a scope, a lightweight thread, a thread you need not join
+
+**Send**:
+A marker meaning a value may be moved to another thread. It says nothing about sharing, so a type can be `Send` and still be unusable behind a shared reference from two threads.
+_Avoid_: thread-safe as a general claim, `Sync`, safe to share
+
 **Shadowing**:
 Declaring a new binding with the name of an existing one, so the earlier binding becomes unreachable. It is not mutation: the type may change, and no `mut` is required.
 _Avoid_: reassignment, overwriting, redeclaration
@@ -161,6 +205,14 @@ _Avoid_: reassignment, overwriting, redeclaration
 **Slice**:
 A borrowed view into a contiguous sequence, carrying a pointer and a length and owning nothing. `&str` and `&[T]` are the two that appear constantly, and both are what a signature should ask for.
 _Avoid_: array, view, range, substring
+
+**Strong count**:
+The number of owning handles to a counted value that are currently alive, reported by `Rc::strong_count` and `Arc::strong_count`. The value is dropped when it reaches zero, and weak handles are counted separately and do not keep it alive.
+_Avoid_: the weak count, a borrow count, the number of references in the program
+
+**Sync**:
+A marker meaning `&T` may be shared with another thread, which is exactly what makes `&T` itself `Send`. A type may have this without `Send` or `Send` without this, and the two errors name different traits.
+_Avoid_: `Send`, thread-safe as a general claim, synchronised access
 
 **Trait bound**:
 A constraint on a generic parameter naming a trait the type must implement, written after a colon, joined with `+`, moved into a `where` clause, or sugared as `impl Trait` in an argument position. It faces two ways at once: a promise to the body about what it may call, and a requirement on every caller.
@@ -181,3 +233,7 @@ _Avoid_: exception handling, catch, stack trace, rollback
 **Variant**:
 One of the shapes an enum's value may take, which may carry no data, a tuple payload or named fields. A payload is owned by the value the way a struct's field is, so constructing a variant moves what you put in it.
 _Avoid_: case as a synonym for the enum, subclass, tag, member
+
+**Weak pointer**:
+A non-owning handle to a counted value, made with `Rc::downgrade` or `Arc::downgrade`, which must be upgraded before use and yields `None` once the value is gone. It is how a cycle is broken and how a back-reference is expressed.
+_Avoid_: a raw pointer, a borrow, a handle that keeps the value alive, an `upgrade` that always succeeds

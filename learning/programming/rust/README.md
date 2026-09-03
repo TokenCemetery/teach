@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0028. Reading a Lifetime Error](lessons/0028-reading-a-lifetime-error.md)
+**Latest lesson:** [0036. Choosing a Sharing Strategy](lessons/0036-choosing-a-sharing-strategy.md)
 
 ## Success looks like
 
@@ -88,6 +88,14 @@ Work through these in order.
 | [0026](lessons/0026-lifetimes-are-not-durations.md) | Lifetimes Are Not Durations | What a lifetime parameter says about the relation between borrows, and what elision had been doing for you all along |
 | [0027](lessons/0027-types-that-borrow.md) | Types That Borrow | Putting a lifetime parameter on a struct, and deciding whether the type should own its data instead |
 | [0028](lessons/0028-reading-a-lifetime-error.md) | Reading a Lifetime Error | The shapes a lifetime error takes, each with the honest fix and the workaround it tempts you into |
+| [0029](lessons/0029-threads-joining-and-panics.md) | Threads, Joining and Panics | What spawning actually demands of the data you hand it, and what happens to a thread that panics alone |
+| [0030](lessons/0030-scoped-threads.md) | Scoped Threads | Why a thread that cannot outlive its scope may borrow, and why this is the first thing to reach for rather than the last |
+| [0031](lessons/0031-shared-ownership.md) | Shared Ownership with Rc and Arc | When a value needs several owners rather than one, what the count costs, and how a cycle leaks |
+| [0032](lessons/0032-interior-mutability.md) | Interior Mutability | Moving the borrow rule from compile time to run time, what that buys, and what it costs when you get it wrong |
+| [0033](lessons/0033-mutex-rwlock-and-poisoning.md) | Mutex, RwLock and Poisoning | What a lock actually protects, why the guard's scope is the design decision, and what a panic while holding one leaves behind |
+| [0034](lessons/0034-send-and-sync.md) | Send and Sync | The two traits nobody writes that decide what may cross a thread boundary, and how to read the errors they cause |
+| [0035](lessons/0035-channels.md) | Channels | Sending values between threads instead of sharing them, and what the ends of a channel do when the other end goes away |
+| [0036](lessons/0036-choosing-a-sharing-strategy.md) | Choosing a Sharing Strategy | The failures that follow from choosing by habit, and the questions that pick the strategy from the data instead |
 
 ## Reference
 
@@ -98,6 +106,7 @@ Work through these in order.
 - [Data and control](reference/data-and-control.md): the stage 2 sheet, with the enum and Option and Result decisions, the pattern rules, and the collections
 - [Errors and API shape](reference/errors-and-api-shape.md): the stage 3 sheet, with the error-type decisions, the conversion rules, and what a public API commits to
 - [Traits and lifetimes](reference/traits-and-lifetimes.md): the stage 4 sheet, with the dispatch decision, the coherence rules, and the lifetime error table
+- [Sharing and threads](reference/sharing-and-threads.md): the stage 5 sheet, with the strategy procedure, what each sharing type costs, and the failure table
 
 ## How this works
 

@@ -87,17 +87,34 @@ CONVENTIONS = {
 # about the subject. Lessons are written for any reader, so none of these may
 # reach a published file. Versions a lesson deliberately pins are project
 # facts and belong here only when they match a locally installed build.
-MACHINE = [
-    r"/Users/", r"/opt/homebrew", r"olegshulyakov", r"\bDarwin\b",
-    r"\bzsh\b", r"\bHomebrew\b", r"\bbrew install\b", r"/tmp/javawork",
-    r"25\.0\.\d+\.\d+", r"\bru_RU\b", r"\bmacOS\b", r"\bWindows 1\d\b",
+# Two groups, because they are forbidden for different reasons and one group
+# also applies to the unpublished NOTES.md while the other deliberately does not.
+#
+# LEAK: says something about this checkout or this person rather than about the
+# subject, and is never the finding. A path or a username is noise in a lesson
+# and a small privacy leak in a committed note, so it is banned in both.
+MACHINE_LEAK = [
+    r"/Users/", r"olegshulyakov", r"/tmp/javawork",
+    r"/opt/homebrew", r"\$ cd /", r"~/Projects",
     # This machine's time zone. A tool that prints a local timestamp stamps
     # its offset on the output, so a pasted log or query result carries the
     # author's zone unless the run was told to use UTC.
-    r"\+0300\b", r"\+03:00\b", r"\bMSK\b",
-    r"\b3\.9\.16\b", r"\bopenjdk@2\d\b",
-    r"\bIntelliJ\b", r"\bVS Code\b", r"\$ cd /", r"~/Projects",
+    r"\+0300\b", r"\+03:00\b", r"\bMSK\b", r"\bru_RU\b",
 ]
+
+# ENV: names the platform, the editor or the exact installed build. Forbidden in
+# a published lesson, where it tells a reader about the author's machine instead
+# of about the subject. **Allowed in NOTES.md**, which exists to record which
+# build produced a finding: "rechecked on Maven 3.9.16" is provenance there and
+# noise in a lesson, and a finding is sometimes about the platform itself.
+MACHINE_ENV = [
+    r"\bDarwin\b", r"\bzsh\b", r"\bHomebrew\b", r"\bbrew install\b",
+    r"25\.0\.\d+\.\d+", r"\bmacOS\b", r"\bWindows 1\d\b",
+    r"\b3\.9\.16\b", r"\bopenjdk@2\d\b",
+    r"\bIntelliJ\b", r"\bVS Code\b",
+]
+
+MACHINE = MACHINE_LEAK + MACHINE_ENV
 
 # Draft markers and tool-call syntax that must never survive into a lesson.
 # "placeholder" on its own is ordinary technical vocabulary (display-name
@@ -384,6 +401,39 @@ class Workspace:
         if not text.endswith("\n"):
             self.bad(rel, "no trailing newline")
 
+    def check_notes(self, path, rel):
+        """NOTES.md is unpublished: mkdocs.yml excludes it and it carries none of
+        the lesson conventions, so the structural rules must not apply. It is
+        still committed, though, which is a publication channel of its own, and
+        an en dash once survived in one of these files until a manual grep found
+        it. So the prose rules and the leak half of the machine rules apply here,
+        and MACHINE_ENV deliberately does not: a note recording which build
+        produced a finding is provenance, where the same string in a lesson would
+        be noise."""
+        text = path.read_text(encoding="utf-8")
+        bare = strip_code(text)
+
+        for dash, name in (("\u2014", "em dash"), ("\u2013", "en dash")):
+            if dash in bare:
+                self.bad(rel, f"contains an {name}")
+
+        for pat in MACHINE_LEAK:
+            if pat in self.conv["machine_allow"]:
+                continue
+            m = re.search(pat, text)
+            if m:
+                self.bad(rel, f"contains machine-specific string {m.group(0)!r}")
+
+        for ch in bare:
+            if unicodedata.category(ch) == "Cc" and ch != "\n":
+                self.bad(rel, f"control character {ch!r} outside a code block")
+
+        for i, line in enumerate(text.split("\n"), 1):
+            if line != line.rstrip():
+                self.bad(rel, f"line {i}: trailing whitespace")
+        if not text.endswith("\n"):
+            self.bad(rel, "no trailing newline")
+
     def check_render(self, path, rel):
         """Render with the site's extensions and insist every collapsible block
         was actually processed. A block md_in_html skipped is emitted as a raw
@@ -456,6 +506,10 @@ class Workspace:
                 continue
             self.check_prose(path, name)
             self.check_links(path, name)
+
+        notes = self.root / "NOTES.md"
+        if notes.exists():
+            self.check_notes(notes, "NOTES.md")
 
         if (self.root / "README.md").exists():
             self.check_readme()

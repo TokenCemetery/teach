@@ -39,6 +39,10 @@ Do not add a date. The site derives `created_at` and `updated_at` from git histo
 
 Not everything in a workspace is published. `mkdocs.yml` excludes `NOTES.md` and `learning-records/`: they hold the learner's state (preferences, disclosed background, corrected misconceptions) and stay out of the site whether or not the repository is public.
 
+**Excluded from the site is not the same as unchecked, and `NOTES.md` is checked on purpose.** It is committed, and a commit is a publication channel of its own, which is how an en dash once survived in one workspace's notes until somebody grepped by hand. So the checker applies the prose rules to `NOTES.md` (no em or en dash, no control characters, no trailing whitespace, a trailing newline) and the leak half of the machine rules (absolute paths, this checkout's username, a scratch directory, the author's time zone). It applies none of the structural rules: there is no front matter, no section order, no closing block and no lesson conventions in a working note, and demanding them would be inventing a format for a file whose whole value is being informal.
+
+**The machine rules are split for this reason**, into `MACHINE_LEAK` and `MACHINE_ENV` in the checker. A leak says something about this checkout or this person and is never the finding, so it is banned in both lessons and notes. An environment string, meaning the platform, the editor or an exact installed build, is banned in a lesson because it tells a reader about the author's machine instead of about the subject, and **allowed in a note**, because recording that a finding was rechecked on a named build is provenance rather than noise, and sometimes the platform is the finding. When the rule and a note disagree, prefer rewriting the note over adding an exemption: the one hit this rule found on introduction was a note that quoted the very offset it was recording the removal of, and rewriting it left the repository with no exemptions at all.
+
 Everything else is published, `RESOURCES.md` included. Workspace `README.md` files and lessons link to it, and a reader deserves the sources a claim rests on as much as the claim itself.
 
 ## Verification

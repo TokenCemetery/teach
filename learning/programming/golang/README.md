@@ -45,7 +45,7 @@ Six stages, zero to senior. Not a lesson list: a stage takes several lessons, an
 | 3. Concurrency | Goroutines, channels, `select`, `sync` primitives, `context` cancellation, `errgroup`, the race detector, the memory model, leak patterns | Can find a leak and a race in unfamiliar code and explain the guarantee that was violated |
 | 4. Production | HTTP services, config, `slog`, graceful shutdown, health checks, database access, generics where they earn their keep | Has shipped a service that survives being operated |
 | 5. Performance and tooling | Table-driven tests, fuzzing, benchmarks, `pprof`, escape analysis, allocation reduction, modules and versioning, release builds | Optimises from a profile and proves the win with `benchstat` |
-| 6. Judgment | API design and compatibility, when *not* to use a goroutine, review, mentoring, reading stdlib source for answers | Trusted to make the call and to explain it to someone else |
+| 6. Judgment | API design and compatibility, when *not* to use a goroutine, review, reading stdlib source for answers | Trusted to make the call and to explain it to someone else |
 
 ## Lessons
 

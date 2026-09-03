@@ -62,6 +62,6 @@ type: resources
 ## Gaps
 
 - Go's release cadence outpaces every book listed here. Version-sensitive claims are checked against the release notes above rather than against a book, and any lesson naming a release states which one.
-- Observability beyond logging (metrics, tracing, OpenTelemetry) has no lesson and no source chosen. Stage 4 covers `slog` and health checks only.
+- Observability beyond logging (metrics, tracing) has no lesson and no source chosen. Stage 4 covers `slog` and health checks only, and no stage's done-when clause requires more, so this is an optional extension rather than a hole. If it is ever written, note that the usual reason to skip it does not apply: `expvar` and `runtime/metrics` are both in the standard library, so it can be taught without the third-party dependency the out-of-scope list excludes. Reaching for OpenTelemetry instead would need that exclusion revisited first.
 - gRPC has no source and no lesson. Stage 4 went HTTP-first; this stays open in case the mission needs gRPC later.
 - No source chosen for the Go scheduler in depth. Lesson 15 teaches only as much as predicts program behaviour, which the mission caps deliberately.

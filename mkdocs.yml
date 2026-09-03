@@ -6,11 +6,15 @@ site_description: "Учебные материалы: уроки и справо
 # carries the alternates.
 site_url: https://tokencemetery.github.io/teach/
 repo_url: https://github.com/TokenCemetery/teach
+# The theme footer links each page back to its source. MkDocs guesses
+# `edit/master/docs/` for a GitHub repository, and this one has neither that
+# branch nor that directory, so every link would 404.
+edit_uri: edit/main/learning/
 docs_dir: learning
 site_dir: site
 
 theme:
-  name: shadcn
+  name: primer
 
 extra_css:
   - extra.css
@@ -33,35 +37,67 @@ markdown_extensions:
   # markup, so every code block rendered unhighlighted.
   - pymdownx.highlight
   - pymdownx.superfences
+  # GitHub puts a hover anchor beside every heading, and the same files are
+  # read there. The theme draws the octicon itself, so the permalink text
+  # stays empty and no stray glyph reaches the search index.
+  - toc:
+      permalink: ""
+      permalink_class: anchor
+      permalink_leading: true
 
 plugins:
   - search
   - awesome-nav
   - i18n:
       docs_structure: suffix
+      # `theme.locale` per language is what switches the theme's own chrome
+      # (Search, Back to top, Previous/Next) to that language. The plugin sets
+      # it automatically only for the themes MkDocs itself ships, so a
+      # third-party theme needs it spelled out.
+      #
+      # `en` is listed last on purpose. One build pass runs per language, and
+      # the two pages that exist once for the whole site, 404.html and
+      # search.html, are rewritten by every pass, so the last language wins
+      # them. Putting the default language last leaves those two in English.
+      # The theme sorts the language selector itself, so this does not affect
+      # its order.
       languages:
+        - locale: es
+          name: Spanish
+          build: true
+          theme:
+            locale: es
+        - locale: zh
+          name: Chinese
+          build: true
+          theme:
+            locale: zh
+        - locale: hi
+          name: Hindi
+          build: true
+          theme:
+            locale: hi
+        - locale: pt
+          name: Portuguese
+          build: true
+          theme:
+            locale: pt
+        - locale: ru
+          name: Russian
+          build: true
+          theme:
+            locale: ru
+        - locale: fr
+          name: French
+          build: true
+          theme:
+            locale: fr
         - locale: en
           default: true
           name: English
           build: true
-        - locale: es
-          name: Spanish
-          build: true
-        - locale: zh
-          name: Chinese
-          build: true
-        - locale: hi
-          name: Hindi
-          build: true
-        - locale: pt
-          name: Portuguese
-          build: true
-        - locale: ru
-          name: Russian
-          build: true
-        - locale: fr
-          name: French
-          build: true
+          theme:
+            locale: en
 
 exclude_docs: |
   **/NOTES.md

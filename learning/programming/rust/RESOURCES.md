@@ -56,6 +56,9 @@ type: resources
 - [Docs: "Tokio Tutorial", Tokio contributors, tokio.rs](https://tokio.rs/tokio/tutorial)
   A complete worked async application from the most widely used runtime. Use for: stage 6 reps, once the model is understood.
 
+- [Docs: "tokio API documentation", Tokio contributors, docs.rs](https://docs.rs/tokio/)
+  The runtime's per-item reference, and the only place cancellation safety is stated precisely: each method that can sit in a `select!` branch carries its own "Cancel safety" section saying exactly what a cancellation loses. Use for: stage 6, before putting any call in a `select!` branch.
+
 - [Tool: "Miri", The Rust Project, github.com/rust-lang/miri](https://github.com/rust-lang/miri)
   An interpreter that detects undefined behaviour in unsafe code, including aliasing violations. Use for: stage 7, checking an `unsafe` block instead of trusting it.
 
@@ -93,7 +96,7 @@ type: resources
 
 ## Gaps
 
-- The async ecosystem is the least settled area here. The async book covers the model and Tokio covers one runtime, and no source covers cancellation safety well; stage 6 will need care and possibly a source that does not exist yet.
+- The async ecosystem is the least settled area here. The async book covers the model and Tokio covers one runtime. Cancellation safety was recorded as unsourced, and the answer turned out to be that it is documented method by method in tokio's API reference rather than anywhere prose-shaped, so look it up per call rather than expecting a chapter. What is still genuinely unsettled is `Stream`, which the standard library has not stabilised, so this arc teaches it from nowhere.
 - Rust has no formal specification. The Reference is authoritative in practice and explicitly incomplete, so a claim about undefined behaviour goes to the Rustonomicon and the Reference together, and to Miri for evidence.
 - Nothing here covers embedded or `no_std`, by design. If the mission ever moves that way, the sources change entirely.
 - Release notes are read from the blog rather than from a book. Any lesson naming a stabilised feature says which release stabilised it.

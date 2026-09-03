@@ -46,6 +46,18 @@ _Avoid_: a limitation, a bug, a full buffer being an error, throttling as a syno
 The implicit `ref`, `ref mut` or move state a sub-pattern inherits when a non-reference pattern is matched against a reference, which is why matching `&record` gives you borrowed fields without writing `&` anywhere. From the 2024 edition an explicit `&` pattern may not be layered on top of an implicit borrow.
 _Avoid_: dereference, ref keyword as the only way, move, coercion
 
+**Busy-spin**:
+An executor that answers `Poll::Pending` by polling again immediately, so it makes progress without a waker at the cost of occupying a processor for nothing. It is what a hand-written first executor does, and it is the reason the waker contract exists.
+_Avoid_: polling as a synonym, blocking, a tight loop being merely inefficient
+
+**Cancel safety**:
+The property that dropping a future before it completes loses nothing that cannot be retried. It is a statement about that future's own state rather than about the code around it, and it is documented method by method rather than derived.
+_Avoid_: every use of `select!` being unsafe, cancellation being prevented, a synonym for cancellation
+
+**Cancellation**:
+Dropping a future or task before it completes. Nothing is notified and no error is delivered: the state machine stops at the await point it was suspended at, and only `Drop` runs.
+_Avoid_: a signal, an exception, an interrupt, anything the cancelled code can observe
+
 **Channel**:
 A queue with a sending half and a receiving half that moves ownership of each value between threads, so no two threads hold the same value and there is nothing to lock. Each half fails once the other is dropped, which is how a pipeline ends.
 _Avoid_: a shared buffer, a lock with extra steps, a queue both ends may read
@@ -102,9 +114,17 @@ _Avoid_: inference, omission, the compiler guessing, defaulting to `'static`
 The underlying cause a wrapping error returns from `Error::source`, which is what lets a caller or a log print the whole chain. A layer's own `Display` message says what that layer knows and leaves the cause to the source, or the printed chain repeats itself.
 _Avoid_: cause as a synonym for the message, backtrace, context, inner error as an opaque field
 
+**Executor**:
+The loop that owns a future, calls `poll` and supplies the waker. It is the smaller half of a runtime, which adds a timer and a source of readiness on top of it.
+_Avoid_: runtime as a synonym, scheduler, thread pool, something the standard library ships
+
 **Exhaustiveness**:
 The compiler's requirement that a `match` account for every possible value, which is what makes adding an enum variant a compile error rather than a silent gap. Satisfying it with a catch-all on an enum you own gives the guarantee away.
 _Avoid_: completeness, default case, total function, coverage in the testing sense
+
+**Future**:
+A value implementing one method, `poll`, which either yields a result or says not yet. Constructing one runs nothing, and an `async fn` returns one, so something has to poll it before any of its body executes.
+_Avoid_: a promise, a thread, a running computation, a callback
 
 **Guard**:
 The value a borrow or a lock hands back, whose `Drop` ends the access it granted, as with `RefMut` from a `RefCell` or `MutexGuard` from a `Mutex`. Its scope, not the call that produced it, decides how long the access lasts.
@@ -166,9 +186,17 @@ _Avoid_: visibility, privacy, ownership in the borrow sense, a package-level rul
 The failure path for a broken invariant in your own code, which unwinds the thread with a message, a file and a line rather than returning anything. It is not the same event as an `Err`, which returns normally and prints nothing on its own.
 _Avoid_: exception, error, crash, abort
 
+**Pin**:
+A wrapper around a pointer promising that its target will not move again, which is why `poll` takes a pinned receiver: a generated future can hold borrows into its own state, so relocating it once polling has begun would leave them dangling.
+_Avoid_: immutability, a lock, a borrow, pinning a value to a thread
+
 **Poisoning**:
 A lock marking itself unusable after a thread panicked while holding its guard, because it cannot know whether the data's invariant survived. Later locks return an `Err` that still carries the guard, so the data and any partial mutation remain reachable, and `clear_poison` clears the mark once it has been checked.
 _Avoid_: the data being lost, a corrupted lock, an error you must `unwrap` past
+
+**Poll**:
+The two-variant enum a future's `poll` returns, either pending or ready. Pending is a promise to wake the caller later rather than a request to be asked again.
+_Avoid_: input and output polling, a busy loop, a status code
 
 **Re-export**:
 A `pub use` that presents an item at a shorter public path than the one its file layout gives it, so a library can move code without breaking the paths callers type. The path a caller writes is part of the public API, which is what makes this a design tool rather than a tidying one.
@@ -189,6 +217,10 @@ _Avoid_: invalid pattern, optional match, guard, wildcard
 **Result**:
 The standard library's enum for an operation that may fail, `Ok(T)` or `Err(E)`, used when the caller could reasonably do something about the failure. The `?` operator returns early on `Err`, which is what makes propagating one cheap enough to do everywhere.
 _Avoid_: exception, panic, Option, status code
+
+**Runtime**:
+An executor plus what real work needs around it: a timer, a source of input and output readiness, and a scheduler with worker threads. Rust ships none, so a program chooses one, and the flavour it chooses decides where a future runs.
+_Avoid_: executor as a synonym, a virtual machine, a garbage collector, part of the language
 
 **Scoped thread**:
 A thread spawned inside a `thread::scope` block, which may borrow non-`'static` data because the scope guarantees every one of its threads is joined before it returns.
@@ -214,6 +246,10 @@ _Avoid_: the weak count, a borrow count, the number of references in the program
 A marker meaning `&T` may be shared with another thread, which is exactly what makes `&T` itself `Send`. A type may have this without `Send` or `Send` without this, and the two errors name different traits.
 _Avoid_: `Send`, thread-safe as a general claim, synchronised access
 
+**Task**:
+A future handed to a runtime to own and drive, which starts running without being awaited and must be `Send` and `'static` because the runtime may move it between workers.
+_Avoid_: a thread, a green thread the language provides, a future that runs by itself
+
 **Trait bound**:
 A constraint on a generic parameter naming a trait the type must implement, written after a colon, joined with `+`, moved into a `where` clause, or sugared as `impl Trait` in an argument position. It faces two ways at once: a promise to the body about what it may call, and a requirement on every caller.
 _Avoid_: runtime check, interface, constraint on the value rather than the type
@@ -226,6 +262,10 @@ _Avoid_: interface, abstract class, boxed value, a cost claim nobody measured
 The `::<Type>` syntax that names a generic argument explicitly at a use site, for where inference has nothing to work from. A parameter written as `impl Trait` declares no name to give it, so the turbofish is not available against one.
 _Avoid_: cast, type annotation, generic declaration
 
+**Unpin**:
+An auto trait meaning a type does not care whether it is pinned, which almost every ordinary type implements. Generated futures do not, which is why the pinning ceremony appears exactly where it is load-bearing.
+_Avoid_: something to implement by hand, unpinning a pinned value, the opposite of a pinned pointer
+
 **Unwind**:
 The default panic behaviour, running each value's `Drop` up the call stack as the panic propagates, as opposed to `abort`, which ends the process immediately. A project can choose either, so code must not rely on unwinding happening.
 _Avoid_: exception handling, catch, stack trace, rollback
@@ -233,6 +273,10 @@ _Avoid_: exception handling, catch, stack trace, rollback
 **Variant**:
 One of the shapes an enum's value may take, which may carry no data, a tuple payload or named fields. A payload is owned by the value the way a struct's field is, so constructing a variant moves what you put in it.
 _Avoid_: case as a synonym for the enum, subclass, tag, member
+
+**Waker**:
+The handle a future receives through its context and must arrange to have called once progress is possible. Returning pending without arranging that is how a future is never polled again.
+_Avoid_: a callback the executor invokes on its own, a thread signal, something a future may ignore
 
 **Weak pointer**:
 A non-owning handle to a counted value, made with `Rc::downgrade` or `Arc::downgrade`, which must be upgraded before use and yields `None` once the value is gone. It is how a cycle is broken and how a back-reference is expressed.

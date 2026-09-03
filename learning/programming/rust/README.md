@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0036. Choosing a Sharing Strategy](lessons/0036-choosing-a-sharing-strategy.md)
+**Latest lesson:** [0045. Reading an Async Failure](lessons/0045-reading-an-async-failure.md)
 
 ## Success looks like
 
@@ -96,6 +96,15 @@ Work through these in order.
 | [0034](lessons/0034-send-and-sync.md) | Send and Sync | The two traits nobody writes that decide what may cross a thread boundary, and how to read the errors they cause |
 | [0035](lessons/0035-channels.md) | Channels | Sending values between threads instead of sharing them, and what the ends of a channel do when the other end goes away |
 | [0036](lessons/0036-choosing-a-sharing-strategy.md) | Choosing a Sharing Strategy | The failures that follow from choosing by habit, and the questions that pick the strategy from the data instead |
+| [0037](lessons/0037-what-a-future-is.md) | What a Future Is | A state machine with one method, driven by whoever polls it, and what that means for code that looks sequential |
+| [0038](lessons/0038-wakers-executors-and-runtimes.md) | Wakers, Executors and Runtimes | How a future says it is ready to be polled again, and what a runtime does besides poll it |
+| [0039](lessons/0039-tasks-and-the-send-bound.md) | Tasks and the Send Bound | What spawning an async task demands of the future you hand it, and why an async trait method will not satisfy it |
+| [0040](lessons/0040-blocking-is-a-bug.md) | Blocking Is a Bug | Why one blocking call in an async task stalls work that has nothing to do with it, and what to do with the calls you cannot avoid |
+| [0041](lessons/0041-shared-state-across-an-await.md) | Shared State Across an Await | Why a lock guard held across an await point is refused, and how to choose between the two kinds of mutex |
+| [0042](lessons/0042-cancellation.md) | Cancellation | Stopping a future means dropping it, which is why nothing gets told and why the work simply stops where it was |
+| [0043](lessons/0043-cancellation-safety.md) | Cancellation Safety | Whether a future can be dropped mid-flight without losing what it had already taken, and where that question is answered |
+| [0044](lessons/0044-pinning.md) | Pinning | Why a future's memory must stop moving once it is polled, and what Pin does about it |
+| [0045](lessons/0045-reading-an-async-failure.md) | Reading an Async Failure | The five ways async code fails without an error message, and how to tell which one you are looking at |
 
 ## Reference
 
@@ -107,6 +116,7 @@ Work through these in order.
 - [Errors and API shape](reference/errors-and-api-shape.md): the stage 3 sheet, with the error-type decisions, the conversion rules, and what a public API commits to
 - [Traits and lifetimes](reference/traits-and-lifetimes.md): the stage 4 sheet, with the dispatch decision, the coherence rules, and the lifetime error table
 - [Sharing and threads](reference/sharing-and-threads.md): the stage 5 sheet, with the strategy procedure, what each sharing type costs, and the failure table
+- [Async](reference/async.md): the stage 6 sheet, with the poll model, the bounds, the failure table, and where cancel safety is documented
 
 ## How this works
 

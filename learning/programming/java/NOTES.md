@@ -123,6 +123,21 @@ Rechecked against that roadmap before stage 2 was written: 8, 11, 17, 21 and 25 
 
 Rechecked again before stage 5, as the note above directed. The roadmap still gives the same five long-term-support releases and the same next one, so the baseline did not move. **The warning was right about the drift and wrong about where it would be.** Nothing in the JDK had changed; the testing library had gone up a major version. So widen the rule: before a stage, recheck the release policy of every dependency the stage teaches, not only the platform's. The version numbers stage 5 was verified against are listed in the stage's reference sheet, which is the right place to start from when this is next revisited.
 
+## Rechecked after the arc was finished: the one fact that was expected to expire has not
+
+The arc's own work order recorded that lesson 0037's off-by-default fact about compact object headers "stops being true in JDK 27", and lesson 0037 itself cites JEP 534, Compact Object Headers by Default, as already delivered and targeting that release. **Checked on JDK 26, which is now the newest release available here, one beyond the arc's JDK 25 baseline: the fact still holds.** `-XX:+PrintFlagsFinal` reports
+
+```text
+bool UseCompactObjectHeaders                  = false                          {product lp64_product} {default}
+bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+```
+
+which is exactly what lesson 0037 describes for JDK 25, including the `{product lp64_product}` category that distinguishes it from the JDK 24 experimental flag and the `{ergonomic}` marking on compressed references. **So the lesson needs no change, and a reviser should not "correct" it.** Recording the non-change deliberately, because the danger here is the opposite of the usual one: a note predicting an expiry invites somebody to act on the prediction rather than on a run.
+
+What this does change is the trigger. The expiry is real but has not arrived, so the recheck is: **run that flag query on JDK 27 when it ships**, and only then rewrite the subsection, keeping the JDK 25 and 26 measurements as the history the lesson is arguing from. The long-term-support baseline itself has not moved; 29 remains the next one.
+
+**The related item that is genuinely open is broader than one flag.** Stage 6's findings were all made on JDK 25, and three of them are about tooling rather than the language: JOL 0.17 failing to self-attach, the JMH setup that silently produces a jar with no benchmarks, and `maven-dependency-plugin` needing 3.11.0 to read JDK 25 class files. Tooling is where this workspace has drifted every single time, so those three are the ones to re-run against JDK 26, not the language facts.
+
 ## On the arc
 
 - Resolved: stage 2 did depart from how Java is usually taught, and the departure held. Records (0008) and interfaces (0009) come before `extends` (0010), and by the time inheritance arrives the reader has already modelled two domains without it, so lesson 0010 can price it rather than sell it. Sealed types then land as a restriction on something already understood. Keep this order.

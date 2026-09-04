@@ -1,7 +1,0 @@
-/* Lesson titles run to about fifty characters, so at the theme's default
-   240px each one wraps onto three lines and the nav becomes a wall of text.
-   Widen the column. Below 1012px the theme hides the sidebar and drops to a
-   single grid column, where this variable has no effect. */
-:root {
-  --primer-sidebar-width: 300px;
-}

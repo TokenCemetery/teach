@@ -16,9 +16,6 @@ site_dir: site
 theme:
   name: primer
 
-extra_css:
-  - extra.css
-
 # Drops one false-positive warning from mkdocs-section-index so `--strict`
 # stays usable. See the docstring in hooks.py.
 hooks:

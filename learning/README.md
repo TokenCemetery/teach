@@ -37,7 +37,6 @@ learning/
 ├── <domain>/              # programming, llm, …
 │   └── <topic>/           # one workspace per topic
 ├── .nav.yml               # sidebar order/titles for the published site
-├── extra.css              # site style tweaks for the published site
 └── README.md              # this index
 ```
 

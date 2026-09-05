@@ -174,7 +174,13 @@ b strong_count: 2
 end of main, a and b are about to go out of scope
 ```
 
-Both counts read `2`. After `main` ends, neither `dropping a` nor `dropping b` ever prints, across every run: the two `Rc`s keep each other's count at one, and the memory is never freed. `Weak`, the pointer `Rc::downgrade` produces, does not count towards that total, so a shape with one strong edge and one `Weak` edge has a strong count that does reach zero. The standard library's own advice for a tree is this shape: a strong `Rc` from parent to child, `Weak` back from child to parent.
+Both counts read `2`. After `main` ends, neither `dropping a` nor `dropping b` ever prints, across every run: the two `Rc`s keep each other's count at one, and the memory is never freed.
+
+![Two pairs of nodes pointing at each other. On the left both edges are strong and both counts read 2, and neither destructor runs. On the right the edge back is dashed and weak, and both nodes drop in order.](images/one-edge-that-does-not-count.svg)
+
+The two shapes are the same graph. Same nodes, same two edges, same direction on each; only one edge's kind differs, and that is the difference between memory that is never freed and memory that is.
+
+`Weak`, the pointer `Rc::downgrade` produces, does not count towards that total, so a shape with one strong edge and one `Weak` edge has a strong count that does reach zero. The standard library's own advice for a tree is this shape: a strong `Rc` from parent to child, `Weak` back from child to parent.
 
 ```rust
 use std::cell::RefCell;

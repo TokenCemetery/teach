@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 206" width="560" height="206" role="img" aria-labelledby="title desc">
+  <title id="title">The same chain, and only what follows it decides whether anything ran</title>
+  <desc id="desc">One vector and one map closure feed two endings. Dropping the chain leaves the log empty, so the closure ran no times. Collecting the chain leaves the log holding all three input values, so the closure ran once per element.</desc>
+
+  <!-- Both endings hang off the same two boxes, so the log is a consequence of
+       what came after them. Accent marks the ending that ran nothing. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="500" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">log</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="96" width="90" height="20" rx="2"/>
+    <rect x="150" y="96" width="140" height="20" rx="2"/>
+    <rect x="320" y="60" width="110" height="20" rx="2"/>
+    <rect x="320" y="132" width="110" height="20" rx="2"/>
+    <rect x="450" y="132" width="100" height="20" rx="2"/>
+  </g>
+  <rect x="450" y="60" width="100" height="20" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="75" y="110">[1, 2, 3]</text>
+    <text x="220" y="110">map(closure)</text>
+    <text x="375" y="74">drop(chain)</text>
+    <text x="375" y="146">.collect()</text>
+    <text x="500" y="146">[1, 2, 3]</text>
+  </g>
+  <text x="500" y="74" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">[]</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M120,106 H146" marker-end="url(#g)"/>
+    <path d="M290,100 L316,76" marker-end="url(#g)"/>
+    <path d="M290,112 L316,136" marker-end="url(#g)"/>
+    <path d="M430,70 H446" marker-end="url(#g)"/>
+    <path d="M430,142 H446" marker-end="url(#g)"/>
+  </g>
+
+  <text x="320" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the closure ran 0 times</text>
+  <text x="320" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">the closure ran 3 times</text>
+
+  <text x="20" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same chain either way, and only what follows it decides whether anything ran</text>
+</svg>

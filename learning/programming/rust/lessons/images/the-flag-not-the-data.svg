@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">The panic changed the flag, not the data</title>
+  <desc id="desc">Five moments across one mutex. The vector reaches its final value at the push and never changes again. The poison flag turns true when the holding thread panics and back to false when it is cleared, and lock returns Err exactly while the flag is true.</desc>
+
+  <!-- The data row is constant from the second column on, so the failure sits
+       entirely in the row above it. Accent marks the flag while it is set.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="152" y="52">A locks</text>
+    <text x="242" y="52">A pushes 4</text>
+    <text x="332" y="52">A panics</text>
+    <text x="422" y="52">lock()</text>
+    <text x="512" y="52">clear_poison</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="77">the data</text>
+    <text x="20" y="101">poisoned</text>
+    <text x="20" y="125">lock()</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="110" y="64" width="84" height="18" rx="2"/>
+    <rect x="110" y="88" width="84" height="18" rx="2"/>
+    <rect x="200" y="64" width="84" height="18" rx="2"/>
+    <rect x="200" y="88" width="84" height="18" rx="2"/>
+    <rect x="290" y="64" width="84" height="18" rx="2"/>
+    <rect x="380" y="64" width="84" height="18" rx="2"/>
+    <rect x="380" y="112" width="84" height="18" rx="2"/>
+    <rect x="470" y="64" width="84" height="18" rx="2"/>
+    <rect x="470" y="88" width="84" height="18" rx="2"/>
+    <rect x="470" y="112" width="84" height="18" rx="2"/>
+  </g>
+  <g fill="#bf7d1a" fill-opacity="0.9">
+    <rect x="290" y="88" width="84" height="18" rx="2"/>
+    <rect x="380" y="88" width="84" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6" fill="#7a828c" text-anchor="middle">
+    <text x="152" y="76">[1, 2, 3]</text>
+    <text x="152" y="100">false</text>
+    <text x="242" y="76">[1, 2, 3, 4]</text>
+    <text x="242" y="100">false</text>
+    <text x="332" y="76">[1, 2, 3, 4]</text>
+    <text x="422" y="76">[1, 2, 3, 4]</text>
+    <text x="422" y="124">Err</text>
+    <text x="512" y="76">[1, 2, 3, 4]</text>
+    <text x="512" y="100">false</text>
+    <text x="512" y="124">Ok</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6" fill="#10141a" text-anchor="middle">
+    <text x="332" y="100">true</text>
+    <text x="422" y="100">true</text>
+  </g>
+
+  <text x="110" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the data never changed, and the flag did</text>
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">poisoning is advisory: into_inner hands back the guard, and the value is still there</text>
+</svg>

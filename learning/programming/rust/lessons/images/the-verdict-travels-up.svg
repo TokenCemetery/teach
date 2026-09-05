@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">One field two structs down decides the whole closure</title>
+  <desc id="desc">A nesting from the closure down through Outer to Inner to a raw pointer field. The String field is Send. The raw pointer is not, and because a struct has the trait only if all its fields do, Inner, Outer and the closure all lose it. The line that fails to compile is the closure at the top; the type the error names is the raw pointer at the bottom.</desc>
+
+  <!-- The accent runs bottom to top because that is the direction the rule
+       propagates, and the arrow says so. The one non-accented row is the
+       field that was fine. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <text x="20" y="34" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the compiler walks the fields, and one verdict travels back up</text>
+
+  <defs>
+    <marker id="up" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+  <path d="M14,140 V52" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#up)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="26" y="58">closure</text>
+    <text x="40" y="78">Outer</text>
+    <text x="54" y="118">inner: Inner</text>
+    <text x="68" y="138">raw: *const i32</text>
+  </g>
+  <text x="54" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">label: String</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="330" y="58">not Send</text>
+    <text x="330" y="78">not Send</text>
+    <text x="330" y="118">not Send</text>
+    <text x="330" y="138">not Send</text>
+  </g>
+  <text x="330" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">Send</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.9">
+    <text x="430" y="58">the line you wrote</text>
+  </g>
+  <text x="430" y="138" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">the type the error names</text>
+
+  <text x="20" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">the failing field sits two structs below the line that failed to compile</text>
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">String was fine; one field is enough to take the trait from everything above it</text>
+</svg>

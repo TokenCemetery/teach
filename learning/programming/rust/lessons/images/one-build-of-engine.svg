@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 282" width="560" height="282" role="img" aria-labelledby="title desc">
+  <title id="title">Two consumers, two different requests, one build of the dependency</title>
+  <desc id="desc">A diamond: top depends on consumer-a and consumer-b, and both depend on engine. consumer-a asks for no features and consumer-b asks for loud, but there is only one engine in the graph and it is built with the union, so the feature consumer-a never asked for is present in the build it gets.</desc>
+
+  <!-- Two edges converging on one box is the mechanism: there is no second
+       engine for the crate that asked for nothing. Accent marks the single
+       build. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">one dependency, two requests</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="250" y="56" width="80" height="20" rx="2"/>
+    <rect x="120" y="110" width="110" height="20" rx="2"/>
+    <rect x="330" y="110" width="110" height="20" rx="2"/>
+  </g>
+  <rect x="215" y="170" width="150" height="30" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="290" y="70">top</text>
+    <text x="175" y="124">consumer-a</text>
+    <text x="385" y="124">consumer-b</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">
+    <text x="290" y="184">engine</text>
+    <text x="290" y="195">built once, with loud</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M262,76 L190,106" marker-end="url(#g)"/>
+    <path d="M318,76 L378,106" marker-end="url(#g)"/>
+    <path d="M190,130 L253,166" marker-end="url(#g)"/>
+    <path d="M378,130 L327,166" marker-end="url(#g)"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="140" y="152">no features</text>
+    <text x="388" y="152">features = ["loud"]</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="234">on its own, consumer-a's test sees 3</text>
+  </g>
+  <text x="20" y="250" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">in one workspace, the same test sees 3!!!</text>
+
+  <text x="20" y="272" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">there is no second engine for the crate that asked for nothing</text>
+</svg>

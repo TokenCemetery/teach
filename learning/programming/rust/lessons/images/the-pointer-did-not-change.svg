@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 184" width="560" height="184" role="img" aria-labelledby="title desc">
+  <title id="title">The pointer holds still while the memory underneath changes hands</title>
+  <desc id="desc">A timeline. The pointer value is one unbroken bar: the same bits from start to finish. The memory at that address passes through three owners: x lives there, then it is freed, then a buffer is allocated over it. An access through the pointer is valid only in the first stretch, dangling in the second and reading someone else's data in the third.</desc>
+
+  <!-- The pointer row is drawn as a single uncut bar on purpose: nothing about
+       it changes, which is the lesson's point. Accent follows the memory, not
+       the pointer. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle" opacity="0.9">
+    <text x="270" y="32">x goes out of scope</text>
+    <text x="390" y="32">buf allocated</text>
+  </g>
+  <g stroke="#7a828c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55" fill="none">
+    <path d="M270,38 V150"/>
+    <path d="M390,38 V150"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="59">the pointer value</text>
+    <text x="20" y="99">the memory there</text>
+    <text x="20" y="129">an access would be</text>
+  </g>
+
+  <rect x="150" y="48" width="370" height="14" rx="2" fill="#7a828c"/>
+  <text x="335" y="59" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#10141a" text-anchor="middle">the same bits from start to finish</text>
+
+  <rect x="150" y="88" width="118" height="14" rx="2" fill="#7a828c"/>
+  <rect x="272" y="88" width="116" height="14" rx="2" fill="#bf7d1a"/>
+  <rect x="392" y="88" width="128" height="14" rx="2" fill="#bf7d1a"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#10141a" text-anchor="middle">
+    <text x="209" y="99">x lives here</text>
+    <text x="330" y="99">freed</text>
+    <text x="456" y="99">buf lives here</text>
+  </g>
+
+  <text x="209" y="129" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">valid</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a" text-anchor="middle">
+    <text x="330" y="129">dangling</text>
+    <text x="456" y="129">someone else's</text>
+  </g>
+
+  <text x="20" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">the top row never changes, so no property of it can answer the bottom row</text>
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">ask whether it is valid for an access, not whether it is valid</text>
+</svg>

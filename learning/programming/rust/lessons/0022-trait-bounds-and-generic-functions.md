@@ -98,6 +98,10 @@ note: required by a bound in `total`
 
 The `note` names exactly which bound on which function rejected the call, and the `help` names a type that would have passed, which is the compiler doing the caller's debugging for them. This is the same shape as lesson 16's `?` failing to find a `From` implementation: a bound is checked against the concrete type the instant one is chosen, never deferred to runtime.
 
+![The bound T colon Cost in the middle of the signature, with an arrow leaving each side: towards the caller it is a demand, towards the body a permission, and each side has its own refusal, E0277 and E0599.](images/a-demand-and-a-permission.svg)
+
+One chip, two arrows, and two different error codes depending on which side failed to hold up its end. The words never change; the audience does.
+
 ### Multiple bounds, written two ways
 
 A type parameter can carry more than one bound with `+`, and the same set of bounds can move into a `where` clause after the signature:

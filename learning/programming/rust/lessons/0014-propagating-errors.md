@@ -44,6 +44,10 @@ let n = match expr {
 
 Two functions built from the two forms give identical results for every input: `s.parse::<i32>()?` and the hand-written `match` above both give `Ok(42)` for `"21"` and `Err(ParseIntError { kind: InvalidDigit })` for `"x"`. The unwrapping half, `Ok(v) => v`, is the part everyone remembers about `?`. The half worth fixing in your head instead is `Err(e) => return Err(From::from(e))`: `?` does not hand the `Err` value back unchanged, it hands back whatever the function's own error type converts it into through `From`. Every consequence in the rest of this lesson follows from that one conversion step, not from the unwrapping.
 
+![A question mark splitting into two paths. The Ok path unwraps and the function carries on; the Err path passes through From::from before returning, turning a ParseError into a ReadError.](images/the-half-nobody-remembers.svg)
+
+Only one of the two paths has a box on it, and the two error types on that path are different ones. That box is the whole of the rest of this lesson.
+
 ### The conversion requirement, met head-on
 
 Lesson 10 already showed this once with its own `MyError`, so here is the same mechanism against a fresh function, reading the byte count out of a line with the crate's own `parse`:

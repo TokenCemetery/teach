@@ -158,7 +158,11 @@ Across all four, the compiler's job ends at "you must write `unsafe` before touc
 
 ### Validity is a property of the whole access, not the pointer
 
-`std::ptr` says this outright, with its curly quotation marks flattened here and below to keep this page plain text: "it makes no sense to ask 'is this pointer valid'; one has to ask 'is this pointer valid for a given access'." The same bit pattern is good at one moment and dangling the next, since the memory's ownership changed, not the pointer. `make_ptr` above drew no warning; a plainer route does:
+`std::ptr` says this outright, with its curly quotation marks flattened here and below to keep this page plain text: "it makes no sense to ask 'is this pointer valid'; one has to ask 'is this pointer valid for a given access'." The same bit pattern is good at one moment and dangling the next, since the memory's ownership changed, not the pointer.
+
+![A timeline. The pointer value is one unbroken bar of the same bits throughout, while the memory at that address passes from x, to freed, to a buffer. An access is valid only in the first stretch.](images/the-pointer-did-not-change.svg)
+
+The top row has no divisions to read, which is exactly why no property of the pointer can answer the bottom row. Everything that decides an access lives in the row underneath, and that row is not something the pointer's type, value, or provenance can tell you about on its own. `make_ptr` above drew no warning; a plainer route does:
 
 ```rust
 fn dangling() -> *const i32 {

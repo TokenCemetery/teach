@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 216" width="560" height="216" role="img" aria-labelledby="title desc">
+  <title id="title">Whether a lost race costs you data depends on where the variable lives</title>
+  <desc id="desc">Two drawings of the same function. On the left, batch is declared inside the lap, so it sits within the box that a lost race ends, and whatever it collected goes with it. On the right, batch sits beside seen outside that box, so the lap can end without taking it, and the next lap continues from what is already there.</desc>
+
+  <!-- The claim is containment: a lost race ends the lap box, so a variable
+       drawn inside it does not survive one. Accent marks the variable that is
+       inside. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V196" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="40">batch inside the loop</text>
+    <text x="300" y="40">batch outside the loop</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="30" y="58">the function</text>
+    <text x="310" y="58">the function</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 3">
+    <rect x="30" y="62" width="220" height="112" rx="2"/>
+    <rect x="310" y="62" width="220" height="112" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="42" y="101">each lap</text>
+    <text x="322" y="101">each lap</text>
+  </g>
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.6">
+    <rect x="42" y="104" width="196" height="58" rx="2"/>
+    <rect x="322" y="104" width="196" height="58" rx="2"/>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="42" y="72" width="88" height="18" rx="2"/>
+    <rect x="322" y="72" width="88" height="18" rx="2"/>
+    <rect x="418" y="72" width="88" height="18" rx="2"/>
+  </g>
+  <rect x="54" y="116" width="120" height="18" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="86" y="85">seen</text>
+    <text x="366" y="85">seen</text>
+    <text x="462" y="85">batch</text>
+  </g>
+  <text x="114" y="129" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">batch</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.7">
+    <text x="54" y="152">select! { ... }</text>
+    <text x="334" y="152">select! { ... }</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="30" y="190">a lost race ends the lap, and takes it</text>
+    <text x="310" y="190">a lost race ends the lap without it</text>
+  </g>
+
+  <text x="20" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">across thirty runs the first version never printed [1, 2, 3, 4, 5]</text>
+</svg>

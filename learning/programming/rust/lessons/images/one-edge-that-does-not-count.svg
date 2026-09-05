@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 186" width="560" height="186" role="img" aria-labelledby="title desc">
+  <title id="title">One weak edge is the whole difference between a leak and a clean drop</title>
+  <desc id="desc">Two pairs of nodes pointing at each other. On the left both edges are strong Rc pointers, each node's strong count reads 2, and neither destructor ever runs. On the right the edge back is a Weak pointer, which does not count, and both nodes drop in order.</desc>
+
+  <!-- The two graphs are identical except for one edge's kind, so the dashed
+       edge is the entire difference. Counts are shown only on the left,
+       because those are the ones the lesson printed. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V166" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="34">two strong edges</text>
+    <text x="300" y="34">one strong, one weak</text>
+  </g>
+
+  <defs>
+    <marker id="sg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+    <marker id="wk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="60" y="52" width="100" height="20" rx="3"/>
+    <rect x="60" y="112" width="100" height="20" rx="3"/>
+    <rect x="340" y="52" width="100" height="20" rx="3"/>
+    <rect x="340" y="112" width="100" height="20" rx="3"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="110" y="66">a</text>
+    <text x="110" y="126">b</text>
+    <text x="390" y="66">parent</text>
+    <text x="390" y="126">child</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5" marker-end="url(#sg)">
+    <path d="M85,72 V108"/>
+    <path d="M135,112 V76"/>
+    <path d="M365,72 V108"/>
+  </g>
+  <path d="M415,112 V76" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none" marker-end="url(#wk)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="66" y="94">Rc</text>
+    <text x="140" y="94">Rc</text>
+    <text x="346" y="94">Rc</text>
+  </g>
+  <text x="420" y="94" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">Weak</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="172" y="66">strong_count 2</text>
+    <text x="172" y="126">strong_count 2</text>
+  </g>
+
+  <text x="20" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">neither destructor ever printed</text>
+  <text x="300" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">dropping parent, then dropping child</text>
+  <text x="20" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">a Weak edge points at the value without adding to the count that frees it</text>
+</svg>

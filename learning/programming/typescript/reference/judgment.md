@@ -54,6 +54,10 @@ The stage's sharpest finding, verified end to end: a loose author setting publis
 | `noUncheckedIndexedAccess` | an indexed return typed `string` where the bound is unchecked, so it can be `undefined` | the same parse, narrow, or dated patch | turn on their own copy of the flag; the indexing already happened inside the library, out of the consumer's code |
 | both, at once | two false claims behind one clean, confident declaration | treat the dependency as an unaudited boundary, the only real verification | reach for `skipLibCheck`; verified both ways, it checks a `.d.ts` for internal consistency, never against the implementation |
 
+![Two builds. In the library's, strictNullChecks is off, the implementation can return null, and the declaration says string. That declaration crosses to your build, where strict is on but governs only the code you write.](images/strictness-does-not-cross.svg)
+
+The last column of the table is a consequence of the arrow. A consumer's flags are not weaker than the author's, they are pointed at different code: everything to the right of the line. The declaration was already false to the left of it, and there is no second arrow going back.
+
 A `tsconfig.json` behind a published package reads as a private build detail, but it decides which claims in the declaration are backed by a check, which makes it part of the interface whether a consumer reads it or not.
 
 ## What does not erase

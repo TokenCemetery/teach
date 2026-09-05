@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 176" width="560" height="176" role="img" aria-labelledby="title desc">
+  <title id="title">The same four lines before and after compilation</title>
+  <desc id="desc">On the left, four lines of TypeScript: a type-only import, a declaration annotated unknown holding the result of JSON.parse, an assertion of that value as User, and a call to u.name.trim. On the right, the emitted JavaScript: the type-only import line is gone entirely, the annotation is gone, and the assertion is gone, leaving const u equals raw. The final line is unchanged and runs against whatever the JSON actually contained.</desc>
+
+  <!-- Accent marks the fragments that are gone on the right. The right-hand
+       column is the same code with them removed, so the comparison, not the
+       colour, carries the point. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <path d="M285,24 V166" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c" text-anchor="middle">
+    <text x="150" y="36">what you write</text>
+    <text x="425" y="36">what runs</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">
+    <text x="20" y="64" fill="#bf7d1a">import type { User } from "./user";</text>
+    <text x="20" y="86">const raw<tspan fill="#bf7d1a">: unknown</tspan> = JSON.parse(s);</text>
+    <text x="20" y="108">const u = raw<tspan fill="#bf7d1a"> as User</tspan>;</text>
+    <text x="20" y="130">u.name.trim();</text>
+
+    <text x="300" y="86">const raw = JSON.parse(s);</text>
+    <text x="300" y="108">const u = raw;</text>
+    <text x="300" y="130">u.name.trim();</text>
+  </g>
+
+  <text x="300" y="64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c" opacity="0.45">(the whole line is gone)</text>
+
+  <text x="20" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a">the assertion left no trace, so nothing ever checked the shape</text>
+</svg>

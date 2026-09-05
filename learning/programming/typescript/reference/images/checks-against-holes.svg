@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180" width="560" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">Which assignability verdicts are checks and which are deliberate holes</title>
+  <desc id="desc">The six verdicts sorted into three groups. Two are rejected: the excess property check and parameter contravariance. One compiles and is sound: ordinary structural assignability. Three compile and are documented holes: readonly being dropped, a returning function assigned to a void-returning one, and method parameters checked bivariantly.</desc>
+
+  <!-- The table's Verdict column says compiles for four rows, and only one of
+       the four is a guarantee. Accent marks the holes, which are the rows a
+       reader is most likely to mistake for a guarantee. Tones validated for
+       both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="40">the checker rejects</text>
+    <text x="200" y="40">compiles, and sound</text>
+  </g>
+  <text x="380" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">compiles, a known hole</text>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="52" width="160" height="20" rx="3"/>
+    <rect x="20" y="78" width="160" height="20" rx="3"/>
+    <rect x="200" y="52" width="160" height="20" rx="3"/>
+  </g>
+  <g fill="none" stroke="#bf7d1a" stroke-width="2">
+    <rect x="380" y="52" width="160" height="20" rx="3"/>
+    <rect x="380" y="78" width="160" height="20" rx="3"/>
+    <rect x="380" y="104" width="160" height="20" rx="3"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="28" y="66">excess property, TS2353</text>
+    <text x="28" y="92">contravariance, TS2322</text>
+    <text x="208" y="66">structural assignability</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="388" y="66">readonly dropped</text>
+    <text x="388" y="92">a return assigned to void</text>
+    <text x="388" y="118">method bivariance</text>
+  </g>
+
+  <text x="20" y="152" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">four of the six compile, and only one of those four is a guarantee</text>
+  <text x="20" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the holes are deliberate, so no flag turns them into errors</text>
+</svg>

@@ -46,7 +46,11 @@ Seven flags default to `true` unless `strict` is `false`. An eighth is named by 
 | Accepted but inert | `noUncheckedIndexedAccess` without `strictNullChecks` | compiles; no union forms, so a mismatch names the bare type |
 | Working | any of the three, `strictNullChecks` on | reports honestly: a union, `TS2564`, or `TS2375` |
 
-An inert flag reads as covered when nothing ran. See [lesson 16](../lessons/0016-the-checks-strict-leaves-out.md).
+![The three tiers compared on three questions. Refused differs everywhere. Inert and working both accept the config and both show nothing on a clean run, and differ only on whether any check runs.](images/inert-looks-like-working.svg)
+
+An inert flag reads as covered when nothing ran. The table above gives each tier a row; the columns show why the middle one is the dangerous tier rather than merely the useless one. It agrees with the working tier on both questions a reader can actually put to the compiler, and disagrees on the only one they cannot. A green build is evidence for either.
+
+See [lesson 16](../lessons/0016-the-checks-strict-leaves-out.md).
 
 ## `unknown` against `any`
 

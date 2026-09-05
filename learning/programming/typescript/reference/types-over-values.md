@@ -58,6 +58,10 @@ Two strict-shaped checks are still off by default:
 | `(x: string) => void`, as a function-type property | `(x: string \| number) => void` | `TS2322` | contravariant, under `strictFunctionTypes`; a real check |
 | the identical narrower parameter, as a method | a method signature of the wider type | compiles | method parameters checked bivariantly; deliberate exemption |
 
+![The six verdicts in three groups: two the checker rejects, one that compiles and is sound, and three that compile and are documented holes.](images/checks-against-holes.svg)
+
+Sorted by the last column rather than the middle one. Four of the six compile, and only structural assignability is the compiler making a promise; the other three are places it has agreed not to look. That is the difference worth carrying away, because "it compiles" reads the same in all four cases and means something different in three of them.
+
 See [lesson 9](../lessons/0009-tuples-and-readonly.md), [lesson 11](../lessons/0011-structural-assignability.md) and [lesson 13](../lessons/0013-function-types.md).
 
 ## Narrowing

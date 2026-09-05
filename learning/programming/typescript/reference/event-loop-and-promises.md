@@ -16,6 +16,22 @@ One thread. No callback interrupts running code. After the current synchronous r
 2. Take **one** task.
 3. Repeat.
 
+```mermaid
+flowchart TD
+    S["current synchronous run<br>finishes, nothing interrupts it"]
+    Q{"microtask<br>queue empty?"}
+    M["run one microtask<br>which may queue more"]
+    T["run exactly one task"]
+
+    S --> Q
+    Q -- no --> M
+    M --> Q
+    Q -- yes --> T
+    T --> Q
+```
+
+The two loops are not symmetric, and that is the whole shape: the inner one runs until the queue is empty, the outer one takes a single task each time round.
+
 | Source | Queue |
 |---|---|
 | `Promise.then`, `catch`, `finally` | microtask |

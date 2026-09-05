@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 176" width="560" height="176" role="img" aria-labelledby="title desc">
+  <title id="title">Loose equality is not transitive</title>
+  <desc id="desc">Three values arranged in a triangle: the number 0 at the top, the empty string at the lower left, and the string "0" at the lower right. Loose equality holds between 0 and the empty string, and between 0 and the string "0", but not between the empty string and the string "0". The edge that would complete the triangle is the one that is false.</desc>
+
+  <!-- Transitivity is a claim about a shape, so the broken edge is drawn as a
+       broken edge. Accent marks the comparison that fails; the word false
+       says the same thing. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <path d="M272,70 L176,110"/>
+    <path d="M288,70 L387,110"/>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none" stroke-dasharray="4 3">
+    <path d="M192,124 H246"/>
+    <path d="M312,124 H366"/>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="258" y="44" width="44" height="24" rx="3"/>
+    <rect x="148" y="112" width="44" height="24" rx="3"/>
+    <rect x="366" y="112" width="52" height="24" rx="3"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c" text-anchor="middle">
+    <text x="280" y="61">0</text>
+    <text x="170" y="129">""</text>
+    <text x="392" y="129">"0"</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="200" y="95" text-anchor="end">== true</text>
+    <text x="365" y="95">== true</text>
+  </g>
+  <text x="279" y="128" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a" text-anchor="middle">== false</text>
+
+  <text x="280" y="162" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c" text-anchor="middle">0 is loosely equal to both of them, and they are not loosely equal to each other</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">A naked type parameter distributes over a union; a tuple wrapper stops it</title>
+  <desc id="desc">The same condition asked two ways. With a naked type parameter it runs once per union member: the "a" member yields never and the "b" member yields "b", and the union of those, absorbing the never, is just "b". Wrapping both sides in a one-element tuple asks the question once about the whole union, which is not assignable, so the result is the original union.
+
+  </desc>
+
+  <!-- Two rows of the table only make sense together, distribution and never
+       being absorbed, and the difference between the two answers is a pair of
+       brackets. Accent is each side's result. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V170" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="38">T extends "a" ? never : T</text>
+    <text x="300" y="38">[T] extends ["a"] ? never : T</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">
+    <text x="20" y="58">T is naked, so it runs once per member</text>
+    <text x="300" y="58">the tuple asks once, about the whole union</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="28" y="86">"a"</text>
+    <text x="90" y="86">gives</text>
+    <text x="150" y="86">never</text>
+    <text x="28" y="106">"b"</text>
+    <text x="90" y="106">gives</text>
+    <text x="150" y="106">"b"</text>
+
+    <text x="308" y="86">"a" | "b"</text>
+    <text x="390" y="86">does not match</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.3">
+    <path d="M20,124 H265"/>
+    <path d="M300,124 H545"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="142">never | "b", and the never is absorbed</text>
+    <text x="300" y="142">the else branch, with T unchanged</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#bf7d1a">
+    <text x="20" y="164">"b"</text>
+    <text x="300" y="164">"a" | "b"</text>
+  </g>
+
+  <text x="20" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the same condition, and the brackets decide whether it is asked once or twice</text>
+</svg>

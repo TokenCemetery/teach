@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 205" width="560" height="205" role="img" aria-labelledby="title desc">
+  <title id="title">Activations as a share of a full fine-tune against an adapter run</title>
+  <desc id="desc">Two horizontal stacked bars on a shared scale in gigabytes. A full fine-tune of a 7B model with AdamW holds 112 GB of fixed memory and 21 GB of activations, so activations are 16 percent of the run. A QLoRA run over an NF4 7B base with a 20M adapter holds 3.9 GB of fixed memory and the same 21 GB of activations, so activations are 84 percent of the run. The activations block is identical in both; only the fixed memory around it collapses.</desc>
+
+  <!-- Emphasis form: activations carry the accent, everything else is the
+       de-emphasis gray. Two tones only, both validated at or above 3:1 against
+       the theme's light (#ffffff) and dark (#0d1117) surfaces, because the
+       colour mode here is a manual toggle no media query can follow. Labels
+       inside a bar sit on the fill, not on the page, so they stay legible in
+       either mode. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c">
+    <rect x="20" y="8" width="10" height="10" rx="2" fill="#7a828c"/>
+    <text x="36" y="17">fixed memory</text>
+    <rect x="140" y="8" width="10" height="10" rx="2" fill="#bf7d1a"/>
+    <text x="156" y="17">activations</text>
+  </g>
+
+  <!-- recessive gridlines at the axis ticks -->
+  <g stroke="#7a828c" stroke-width="1" opacity="0.2">
+    <path d="M137.1,48 V178"/>
+    <path d="M254.3,48 V178"/>
+    <path d="M371.4,48 V178"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c">
+    <text x="20" y="44">full fine-tune, 7B, AdamW</text>
+    <text x="20" y="104">QLoRA, NF4 7B base + 20M adapter</text>
+  </g>
+
+  <!-- 410px of plot spans 0 to 140 GB, so 2.9286px per GB -->
+  <rect x="20" y="52" width="328" height="26" fill="#7a828c"/>
+  <path d="M350,52 H407.5 A4,4 0 0 1 411.5,56 V74 A4,4 0 0 1 407.5,78 H350 Z" fill="#bf7d1a"/>
+
+  <rect x="20" y="112" width="11.4" height="26" fill="#7a828c"/>
+  <path d="M33.4,112 H90.9 A4,4 0 0 1 94.9,116 V134 A4,4 0 0 1 90.9,138 H33.4 Z" fill="#bf7d1a"/>
+
+  <!-- values sit on the fill, so a dark ink reads in either colour mode -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#10141a" text-anchor="middle">
+    <text x="184" y="69">112 GB</text>
+    <text x="380.75" y="69">21 GB</text>
+    <text x="64.15" y="129">21 GB</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">
+    <text x="419" y="69">16% activations</text>
+    <text x="102" y="129">84% activations</text>
+  </g>
+
+  <!-- the 3.9 GB segment is too narrow to label inside -->
+  <path d="M25.7,140 V150" stroke="#7a828c" stroke-width="1" opacity="0.6" fill="none"/>
+  <text x="20" y="162" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">3.9 GB fixed</text>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.5" fill="none">
+    <path d="M20,178 H430"/>
+    <path d="M20,178 V183 M137.1,178 V183 M254.3,178 V183 M371.4,178 V183"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c" text-anchor="middle">
+    <text x="20" y="195">0</text>
+    <text x="137.1" y="195">40</text>
+    <text x="254.3" y="195">80</text>
+    <text x="371.4" y="195">120 GB</text>
+  </g>
+</svg>

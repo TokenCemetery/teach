@@ -16,6 +16,10 @@ h = W₀x + (α/r) · BAx
 
 `A` random, `B` zero, so `ΔW = 0` at step 0 and the model starts identical to the base.
 
+![The input feeds two paths that are summed. The upper one is the frozen base matrix. The lower one is the trained adapter, where A projects down to a bar only r wide, B projects back up, and the result is scaled by alpha over r.](images/lora-bottleneck.svg)
+
+The bar between `A` and `B` is `r` values wide, and it is the only route the adapter has from input to output. That is what the next section means by capacity: raising the rank widens that bar and changes nothing else about the picture, which is why it buys expressiveness for almost no memory.
+
 ## Rank
 
 Capacity. Bounds how complex an update the adapter can express.

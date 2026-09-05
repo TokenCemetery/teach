@@ -34,6 +34,10 @@ Every row is a statement a person actually runs against a table that already has
 - One long-running transaction plus one ordinary `ALTER TABLE` is enough to stop every later read on the table until the transaction commits, however cheap the `ALTER TABLE` would have been on its own.
 - `lock_timeout`, set before the DDL statement, is the guard: the statement fails fast instead of joining the queue, and because it never took the lock, nothing ever queues behind it either.
 
+![Two lock queues. Without lock_timeout an open transaction holds the lock, an ALTER TABLE waits for it, and two later reads are blocked behind the waiting ALTER. With lock_timeout the ALTER fails fast and the reads run.](images/lock-queue.svg)
+
+The third row is the one worth staring at. That `SELECT` is compatible with the open transaction and would have run beside it all day; what stops it is a statement holding no lock at all, only a place in the queue. This is why the outage looks nothing like its cause: the slow transaction is often long forgotten, the `ALTER TABLE` was expected to be instant, and the symptom is every read on the table hanging.
+
 ## Expand, migrate, contract
 
 1. Expand (its own deploy): add the new column, index or constraint alongside the old shape, nullable or unvalidated so nothing already there has to be correct yet; the application starts writing to both.

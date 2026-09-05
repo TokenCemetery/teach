@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 168" width="560" height="168" role="img" aria-labelledby="title desc">
+  <title id="title">Two opposite conditions do not partition the rows</title>
+  <desc id="desc">A bar representing every row in a table, and beneath it the same bar split into three slices. The first slice is the rows where col equals x, the second is the rows where col is different from x, and the third is the rows where col is null. The two queries return the first two slices only, so the rows where col is null are returned by neither and the two results never add up to the table.</desc>
+
+  <!-- Accent is the slice nobody asked for and nobody gets. The widths are
+       illustrative; what is true is that the third slice exists and is in
+       neither result. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="34" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">every row in the table</text>
+  <rect x="20" y="42" width="500" height="20" rx="3" fill="#7a828c"/>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.35" stroke-dasharray="3 3" fill="none">
+    <path d="M221,62 V96"/>
+    <path d="M443,62 V96"/>
+  </g>
+
+  <rect x="20" y="96" width="200" height="20" rx="3" fill="#7a828c"/>
+  <rect x="222" y="96" width="220" height="20" rx="3" fill="#7a828c"/>
+  <rect x="444" y="96" width="76" height="20" rx="3" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" text-anchor="middle">
+    <text x="120" y="132" fill="#7a828c">col = 'x'</text>
+    <text x="332" y="132" fill="#7a828c">col &lt;&gt; 'x'</text>
+    <text x="482" y="132" fill="#bf7d1a">col IS NULL</text>
+  </g>
+
+  <text x="20" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the two queries return the first two slices; nothing returns the third</text>
+</svg>

@@ -19,6 +19,10 @@ Each form forbids a shape the one before it still allowed, and each fix is a spl
 | Third (3NF) | a non-key column depending on another non-key column | the transitive fact, reachable only by first finding the row, disagrees between rows that should share it | pull the two columns into their own table, keyed on the column the dependency actually runs from |
 | Boyce-Codd (BCNF) | any determinant, key or not, that is not itself a candidate key | a non-key column decides part of the key, so a single-row update leaves two rows both "correct" and mutually impossible | split so the determinant becomes the key of its own table |
 
+![Four nested boxes, 1NF outermost through Boyce-Codd innermost, each labelled with what it newly forbids.](images/normal-forms-nest.svg)
+
+The table reads as four separate rules, and the boxes are what the sentence above it means: they nest. A schema in Boyce-Codd form satisfies the three outside it as well, so the forms are not alternatives to choose between, and reaching one never costs you an earlier one.
+
 The stage stops at Boyce-Codd: fourth and fifth normal form concern multi-valued facts inside one relation, and neither has a violation this stage's schemas produce without a contrived example built just to show it.
 
 ## Every constraint kind

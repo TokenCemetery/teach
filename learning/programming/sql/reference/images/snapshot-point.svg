@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 168" width="560" height="168" role="img" aria-labelledby="title desc">
+  <title id="title">A repeatable read snapshot is taken at the first statement, not at BEGIN</title>
+  <desc id="desc">Two session timelines. Session 1 runs BEGIN, then later its first SELECT, then COMMIT. Session 2 inserts and commits in between the first two. The snapshot line falls at session 1's first SELECT, not at its BEGIN, so session 2's commit lands before the snapshot and is visible to that first query.</desc>
+
+  <!-- The claim is about where one point falls on a line, which is why the
+       table above it can state the rule but not show the gap. Accent marks
+       the snapshot instant, the thing readers place wrongly. Tones validated
+       for both surfaces; see .agents/TODO.md. -->
+
+  <text x="300" y="30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a" text-anchor="middle">snapshot taken here</text>
+  <path d="M300,38 V126" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+
+  <defs>
+    <marker id="tm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="52">session 1, repeatable read</text>
+    <text x="20" y="100">session 2</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none" marker-end="url(#tm)">
+    <path d="M20,64 H516"/>
+    <path d="M20,112 H516"/>
+  </g>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <path d="M90,59 V69 M300,59 V69 M470,59 V69"/>
+    <path d="M190,107 V117"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="90" y="82" text-anchor="middle">BEGIN</text>
+    <text x="306" y="82">first SELECT</text>
+    <text x="470" y="82" text-anchor="middle">COMMIT</text>
+    <text x="190" y="130" text-anchor="middle">INSERT, COMMIT</text>
+  </g>
+
+  <text x="20" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">session 2 commits between BEGIN and the snapshot, so the first query sees its row</text>
+</svg>

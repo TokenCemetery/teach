@@ -41,6 +41,10 @@ A frame is the subset of the partition a frame-sensitive function actually reads
 | `RANGE` | every row whose ordering value falls inside the bound, so tied rows are always framed together | **yes**: `RANGE UNBOUNDED PRECEDING AND CURRENT ROW` | only if the bound is `UNBOUNDED`; an offset bound needs an `ORDER BY` |
 | `GROUPS` | peer groups, rows sharing one ordering value counted as a single step | never the default | only if the bound is `UNBOUNDED`; an offset bound needs an `ORDER BY` |
 
+![Two tied orders of ten. With no explicit frame, both rows read the whole peer group and both totals are twenty. With ROWS, the first row reads only itself and reads ten, the second reads both and reads twenty.](images/frame-over-peers.svg)
+
+The bars are what each row actually reads. Under the default both are the full peer group, which is why a running total with no explicit frame is not per row, and why the surprise shows up only once the ordering column ties.
+
 Two restrictions a reader will hit, both re-run directly. First, a `RANGE` offset bound needs exactly one `ORDER BY` column: `sum(amount) OVER (ORDER BY amount, id RANGE BETWEEN 1 PRECEDING AND CURRENT ROW)` fails with `ERROR: RANGE with offset PRECEDING/FOLLOWING requires exactly one ORDER BY column`, SQLSTATE `42P20`, since the offset does arithmetic on the ordering value, which only means something with one subtractable column. `GROUPS` has no such limit, verified: the identical query with `GROUPS` in place of `RANGE` runs against two `ORDER BY` columns, since counting peer groups only needs equality on the whole tuple, not subtraction. Second, the tied-row behaviour: with the fixture's two `10.00` orders, the plain default gives both `20.00`, since `RANGE` frames every peer together; naming `ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` instead splits them into `10.00` and `20.00`, in whichever order the tie lands. A running total with no explicit frame is a running total over peers, not over rows, and the two agree only when the ordering column never ties.
 
 ## Where a window function may run, and where it may not

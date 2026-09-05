@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 184" width="560" height="184" role="img" aria-labelledby="title desc">
+  <title id="title">The default frame runs over peers, not over rows</title>
+  <desc id="desc">Two tied orders of ten each. With no explicit frame, the default RANGE frames both peers together for both rows, so each running total reads twenty. With ROWS UNBOUNDED PRECEDING AND CURRENT ROW, the first row frames only itself and reads ten, and the second frames both and reads twenty.</desc>
+
+  <!-- Accent is the default's behaviour, because that is the surprising one:
+       a running total that is not per row. The bars are the frame each row
+       actually reads. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V166" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="34">no explicit frame, so RANGE</text>
+    <text x="300" y="34">ROWS UNBOUNDED PRECEDING</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.8">
+    <text x="28" y="58">frame</text>
+    <text x="66" y="58">amount</text>
+    <text x="130" y="58">total</text>
+    <text x="308" y="58">frame</text>
+    <text x="346" y="58">amount</text>
+    <text x="410" y="58">total</text>
+  </g>
+
+  <!-- RANGE: both rows read the whole peer group -->
+  <g fill="#bf7d1a">
+    <rect x="30" y="66" width="4" height="44" rx="2"/>
+    <rect x="44" y="66" width="4" height="44" rx="2"/>
+  </g>
+  <!-- ROWS: the first row reads only itself -->
+  <g fill="#7a828c">
+    <rect x="310" y="66" width="4" height="20" rx="2"/>
+    <rect x="324" y="66" width="4" height="44" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="66" y="80">10.00</text>
+    <text x="66" y="104">10.00</text>
+    <text x="346" y="80">10.00</text>
+    <text x="346" y="104">10.00</text>
+    <text x="410" y="80">10.00</text>
+    <text x="410" y="104">20.00</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a">
+    <text x="130" y="80">20.00</text>
+    <text x="130" y="104">20.00</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9">
+    <text x="20" y="136" fill="#bf7d1a">both peers framed together</text>
+    <text x="300" y="136" fill="#7a828c">one row at a time</text>
+  </g>
+
+  <text x="20" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the two agree only when the ordering column never ties</text>
+</svg>

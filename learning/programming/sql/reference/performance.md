@@ -72,13 +72,17 @@ Raising `random_page_cost` or lowering `seq_page_cost` moves every crossover tow
 
 | Decision | What it means |
 |---|---|
-| Leftmost-prefix rule | An index on `(a, b, c)` serves a filter on `a`, on `a` and `b`, or on all three; `b` or `c` alone gets nothing, since only the leading column can start a walk |
+| Leftmost-prefix rule | An index on `(a, b, c)` serves a filter on `a`, on `a` and `b`, or on all three; `b` or `c` alone gets nothing, since only the leading column can start a walk (see below) |
 | Multicolumn | Serves the query shapes sharing a leading column; `(customer_id, amount)` answers `customer_id` alone or with `amount`, and can remove a `Sort` on the trailing column too |
 | `INCLUDE` | Rides a column in the leaf pages for reading only, not searching; turns an `Index Scan` into an `Index Only Scan`, but a filter or `ORDER BY` on it still falls back to a scan or a `Sort` |
 | Partial | Restricted by a `WHERE` on `CREATE INDEX`, staying small and serving only a query whose predicate implies the index's; a query outside that predicate cannot use it |
 | Expression | Indexes a function's output, `lower(email)` rather than `email`, so a query wrapping the column the same way can match it; the plain column index cannot |
 | Skip scan | New in release 18; reaches a non-leading column when the leading one has few distinct values, restarting once per value, seen as `Index Searches` above one for a single row; does nothing for a high-cardinality leading column |
 | Refuse an index when | Not selective enough, so a sequential scan already wins; an existing index already serves it as a leftmost prefix; or the write cost, one more structure every `INSERT`/`UPDATE`/`DELETE` maintains, outweighs the read it buys |
+
+![The same index on a and b twice, in stored order. Filtering on a selects entries sitting next to each other in one run. Filtering on b alone selects entries scattered through the index with non-matching entries between them.](images/leftmost-prefix.svg)
+
+The leftmost-prefix rule is a fact about storage order, shown here on two columns rather than three. Sorting by `a` first puts every row sharing an `a` next to every other, so a filter on it is one run: find the start, then walk until the value changes. Sorting by `a` first also scatters the rows sharing a `b`, so a filter on `b` alone has no run to find and the walk never starts. The same reasoning is why the rule extends to `c`, and why `(a, b)` and `(b, a)` are different indexes.
 
 See [Lesson 38](../lessons/0038-choosing-an-index.md).
 

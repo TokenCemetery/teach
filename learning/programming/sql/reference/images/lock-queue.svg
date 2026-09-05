@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 176" width="560" height="176" role="img" aria-labelledby="title desc">
+  <title id="title">Reads queue behind a waiting ALTER TABLE, not behind the transaction holding the lock</title>
+  <desc id="desc">Two lock queues. Without lock_timeout, an open transaction holds the lock, an ALTER TABLE waits for it, and two later plain reads are blocked even though each is compatible with the open transaction, because they queue behind the waiting ALTER. With lock_timeout set on the DDL, the ALTER fails fast without taking the lock, so no queue forms behind it and the reads run.</desc>
+
+  <!-- The surprising row is the third one: a read stopped by a statement that
+       holds nothing. Accent marks that, and the word blocked says the same
+       thing without colour. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <path d="M285,24 V168" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c" text-anchor="middle">
+    <text x="145" y="36">no lock_timeout</text>
+    <text x="425" y="36">lock_timeout set on the DDL</text>
+  </g>
+
+  <!-- everything from the waiting DDL down is stuck -->
+  <rect x="18" y="74" width="4" height="62" rx="2" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">
+    <text x="30" y="62">open transaction</text>
+    <text x="30" y="84">ALTER TABLE</text>
+    <text x="30" y="106">SELECT</text>
+    <text x="30" y="128">SELECT</text>
+
+    <text x="156" y="62">holds the lock</text>
+    <text x="156" y="84">waiting</text>
+
+    <text x="304" y="62">open transaction</text>
+    <text x="304" y="84">ALTER TABLE</text>
+    <text x="304" y="106">SELECT</text>
+    <text x="304" y="128">SELECT</text>
+
+    <text x="430" y="62">holds the lock</text>
+    <text x="430" y="84">fails fast</text>
+    <text x="430" y="106">runs</text>
+    <text x="430" y="128">runs</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#bf7d1a">
+    <text x="156" y="106">blocked</text>
+    <text x="156" y="128">blocked</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10">
+    <text x="18" y="158" fill="#bf7d1a">blocked by the ALTER, which holds nothing</text>
+    <text x="304" y="158" fill="#7a828c">nothing queues behind a lock never taken</text>
+  </g>
+</svg>

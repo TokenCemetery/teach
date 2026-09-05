@@ -23,6 +23,25 @@ Lookup sheet for stage 1. The question it exists to answer: **why does this clau
 
 Written order is 5, 1, 2, 3, 4, 6, 7, 8. Evaluation order is what the errors follow.
 
+```mermaid
+flowchart TD
+    F["1. FROM, JOIN<br>which rows exist at all"]
+    W["2. WHERE<br>one row at a time"]
+    G["3. GROUP BY<br>collapses rows into groups"]
+    H["4. HAVING<br>one group at a time"]
+    S["5. SELECT<br>computes expressions, creates aliases"]
+    D["6. DISTINCT<br>whole output rows"]
+    O["7. ORDER BY<br>the output"]
+    L["8. LIMIT, OFFSET<br>a slice of the ordered output"]
+
+    F --> W --> G --> H --> S --> D --> O --> L
+
+    agg(["aggregates first exist here"]) -.- G
+    alias(["aliases first exist here"]) -.- S
+```
+
+A name is invisible to every step above the one that creates it. That is the whole of the next two sections.
+
 ## What each clause can see
 
 | Clause | Sees a `SELECT` alias | Sees an aggregate |

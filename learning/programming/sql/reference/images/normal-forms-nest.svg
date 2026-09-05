@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">The normal forms nest, each allowing less than the one outside it</title>
+  <desc id="desc">Four nested boxes. The outermost is first normal form, which forbids more than one value in a column. Inside it is second normal form, which additionally forbids a column depending on part of a composite key. Inside that is third normal form, forbidding a non-key column depending on another non-key column. Innermost is Boyce-Codd, forbidding any determinant that is not a candidate key, and it is where this stage stops.</desc>
+
+  <!-- The table reads as four independent rules. The nesting is the sentence
+       above it, that each form forbids a shape the one before still allowed,
+       and only a picture carries it. Accent marks where the stage stops.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c" opacity="0.9">
+    <text x="20" y="30">each box allows less than the one around it</text>
+    <text x="288" y="30">newly forbids</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="44" width="260" height="136" rx="4"/>
+    <rect x="36" y="60" width="228" height="104" rx="4"/>
+    <rect x="52" y="76" width="196" height="72" rx="4"/>
+  </g>
+  <rect x="68" y="92" width="164" height="40" rx="4" fill="none" stroke="#bf7d1a" stroke-width="2"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="26" y="57">1NF</text>
+    <text x="42" y="73">2NF</text>
+    <text x="58" y="89">3NF</text>
+  </g>
+  <text x="74" y="105" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a">BCNF</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="288" y="57">more than one value in a column</text>
+    <text x="288" y="73">a column depending on part of a composite key</text>
+    <text x="288" y="89">a non-key column depending on another non-key</text>
+  </g>
+  <text x="288" y="105" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">a determinant that is not a candidate key</text>
+
+  <text x="288" y="128" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">the stage stops here</text>
+
+  <text x="20" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">each fix is a split along the boundary the anomaly pointed at</text>
+</svg>

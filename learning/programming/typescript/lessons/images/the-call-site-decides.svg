@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">One function, four call sites, four different values of this</title>
+  <desc id="desc">Four rows sharing one function. Under the new rule the call site new Service gives this as the newly created object. Under the explicit rule, describe.call(svc) gives svc. Under the method rule, svc.describe() gives svc because of the dot. Under the default rule, extracting the function into fn and calling fn() gives undefined. The fourth row is the third with the dot removed.</desc>
+
+  <!-- The function is identical in every row, so the rows differ only in
+       their middle column. Accent marks the row that produces undefined,
+       which is the one reached by extracting a method. Tones validated for
+       both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the same function in all four rows; only the call site differs</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.8">
+    <text x="20" y="48">rule</text>
+    <text x="120" y="48">the call site</text>
+    <text x="400" y="48">this is</text>
+  </g>
+  <path d="M20,54 H540" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.8">
+    <text x="20" y="70">new</text>
+    <text x="20" y="94">explicit</text>
+    <text x="20" y="118">method call</text>
+  </g>
+  <text x="20" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a" opacity="0.9">default</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="120" y="70">new Service("api")</text>
+    <text x="120" y="94">describe.call(svc)</text>
+    <text x="120" y="118">svc.describe()</text>
+  </g>
+  <text x="120" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">const fn = svc.describe; fn()</text>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.6" fill="none">
+    <path d="M360,67 H392"/>
+    <path d="M360,91 H392"/>
+    <path d="M360,115 H392"/>
+  </g>
+  <path d="M360,139 H392" stroke="#bf7d1a" stroke-width="1" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="400" y="70">the new object</text>
+    <text x="400" y="94">svc</text>
+    <text x="400" y="118">svc</text>
+  </g>
+  <text x="400" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">undefined</text>
+
+  <text x="20" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">the last row is the one above it with the dot removed</text>
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">precedence runs down the list, so new wins over explicit and explicit over the dot</text>
+</svg>

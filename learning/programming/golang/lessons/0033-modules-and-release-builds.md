@@ -34,6 +34,10 @@ Preallocating a slice with `make([]T, 0, n)` when the final size is known. It tu
 
 Go does not resolve dependencies to the newest compatible version. It selects the **minimum version that satisfies every requirement** in the graph. If your module needs `v1.2.0` and a dependency needs `v1.4.0`, you get `v1.4.0`, the highest of the minimums rather than the highest that exists.
 
+![A version axis from v1.2.0 to v1.6.0. Your module accepts v1.2.0 and up, a dependency accepts v1.4.0 and up, and the stretch where both hold begins at v1.4.0, which is the version selected even though v1.6.0 exists.](images/highest-of-the-minimums.svg)
+
+Each requirement is everything at or above its minimum, so the answer is just the left edge of the overlap. `v1.6.0` is sitting right there on the axis and nothing reaches for it.
+
 The consequence is worth internalising: **builds are reproducible without a lockfile**, because the answer is a function of the requirements rather than of the day you ran it. Upgrades only happen when someone edits `go.mod`.
 
 ```bash

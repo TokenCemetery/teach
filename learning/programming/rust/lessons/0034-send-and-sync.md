@@ -46,7 +46,11 @@ This compiles for any `T: Sync`: `&T` satisfies `assert_send`'s bound solely bec
 
 ### Auto traits: derived, not written
 
-Neither trait has an `impl` block an ordinary author writes. The Reference states the rule instead: "structs, enums, unions, and tuples implement the trait if all of their fields do", and "closures implement the trait if the types of all of their captures do". An error about `Send` can therefore name a type absent from the line you wrote, since the compiler walks a type's fields structurally, and the moment one lacks the trait, everything containing it loses it too, silently. To see this, bury the losing field two structs deep, then move the whole thing into a thread:
+Neither trait has an `impl` block an ordinary author writes. The Reference states the rule instead: "structs, enums, unions, and tuples implement the trait if all of their fields do", and "closures implement the trait if the types of all of their captures do". An error about `Send` can therefore name a type absent from the line you wrote, since the compiler walks a type's fields structurally, and the moment one lacks the trait, everything containing it loses it too, silently.
+
+![A nesting from the closure down through Outer to Inner to a raw pointer field. String is Send; the raw pointer is not, and Inner, Outer and the closure all lose it in turn.](images/the-verdict-travels-up.svg)
+
+Read the arrow, not the indentation: the verdict is decided at the bottom and carried upward, while the code is written at the top. That mismatch is the whole reason the message names a type you never typed, and it is why the fix is found by reading downward through the fields rather than by adding a bound at the line that failed. To see this, bury the losing field two structs deep, then move the whole thing into a thread:
 
 ```rust
 struct Inner {

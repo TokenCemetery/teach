@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 212" width="560" height="212" role="img" aria-labelledby="title desc">
+  <title id="title">The same condition in ON and in WHERE after a left join</title>
+  <desc id="desc">Two results of the same left join. With the condition in ON, all eight customers appear: five with a matching order and three carrying invented nulls. With the identical condition in WHERE, the three rows holding nulls are compared against a value, which is unknown rather than true, so they are dropped and five rows remain.</desc>
+
+  <!-- The counts are the sheet's own verified figures, eight and five. Accent
+       marks the rows the WHERE placement removes, and the strike says the
+       same without colour. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <path d="M285,26 V182" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="34">ON ... AND o.amount &gt; 100</text>
+    <text x="300" y="34">WHERE o.amount &gt; 100</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="34" y="56">customer with a matching order</text>
+    <text x="34" y="72">customer with a matching order</text>
+    <text x="34" y="88">customer with a matching order</text>
+    <text x="34" y="104">customer with a matching order</text>
+    <text x="34" y="120">customer with a matching order</text>
+    <text x="34" y="136">customer, NULL on the right</text>
+    <text x="34" y="152">customer, NULL on the right</text>
+    <text x="34" y="168">customer, NULL on the right</text>
+
+    <text x="314" y="56">customer with a matching order</text>
+    <text x="314" y="72">customer with a matching order</text>
+    <text x="314" y="88">customer with a matching order</text>
+    <text x="314" y="104">customer with a matching order</text>
+    <text x="314" y="120">customer with a matching order</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">
+    <text x="314" y="136">customer, NULL on the right</text>
+    <text x="314" y="152">customer, NULL on the right</text>
+    <text x="314" y="168">customer, NULL on the right</text>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1.25" fill="none">
+    <path d="M312,133 H460"/>
+    <path d="M312,149 H460"/>
+    <path d="M312,165 H460"/>
+  </g>
+
+  <g fill="#7a828c">
+    <rect x="22" y="49" width="3" height="9"/><rect x="22" y="65" width="3" height="9"/>
+    <rect x="22" y="81" width="3" height="9"/><rect x="22" y="97" width="3" height="9"/>
+    <rect x="22" y="113" width="3" height="9"/><rect x="22" y="129" width="3" height="9"/>
+    <rect x="22" y="145" width="3" height="9"/><rect x="22" y="161" width="3" height="9"/>
+    <rect x="302" y="49" width="3" height="9"/><rect x="302" y="65" width="3" height="9"/>
+    <rect x="302" y="81" width="3" height="9"/><rect x="302" y="97" width="3" height="9"/>
+    <rect x="302" y="113" width="3" height="9"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="192">8 rows, one per customer</text>
+  </g>
+  <text x="300" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a">5 rows, and it is an inner join now</text>
+</svg>

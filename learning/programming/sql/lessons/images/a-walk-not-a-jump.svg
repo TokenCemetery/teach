@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 194" width="560" height="194" role="img" aria-labelledby="title desc">
+  <title id="title">OFFSET walks the order; a keyset condition lands on the page</title>
+  <desc id="desc">One ordered list drawn top to bottom: row 1, row 2, an elided stretch standing for rows 3 to 500000, and the page itself, rows 500001 to 500020. OFFSET enters at the top and runs down past every row above the page, touching each one, and reports 500020 rows read and 4993 buffers. A keyset condition arrives from the side directly at the page and reports 7 buffers.</desc>
+
+  <!-- The elided stretch is drawn as one cell on purpose: half a million rows
+       cannot be drawn to scale without turning the page into an invisible
+       sliver. Accent is the path that skips the walk. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <text x="200" y="46" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">ORDER BY id DESC</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="200" y="56" width="140" height="16" rx="2"/>
+    <rect x="200" y="76" width="140" height="16" rx="2"/>
+    <rect x="200" y="126" width="140" height="20" rx="2"/>
+  </g>
+  <rect x="200" y="96" width="140" height="24" rx="2" stroke="#7a828c" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="3 3" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="208" y="67">row 1</text>
+    <text x="208" y="87">row 2</text>
+    <text x="208" y="112">rows 3 to 500000</text>
+  </g>
+  <text x="208" y="139" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">rows 500001 to 500020</text>
+
+  <path d="M180,50 V136 H196" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none">
+    <path d="M180,64 H198"/>
+    <path d="M180,84 H198"/>
+    <path d="M180,108 H198"/>
+  </g>
+
+  <path d="M420,136 H344" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="112">OFFSET 500000</text>
+    <text x="20" y="126">reads 500020 rows</text>
+    <text x="20" y="140">4993 buffers</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="360" y="118">WHERE id &lt; the last row seen</text>
+    <text x="360" y="160">7 buffers</text>
+  </g>
+
+  <text x="20" y="184" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">both return the same twenty rows, and only one of them had to arrive from the top</text>
+</svg>

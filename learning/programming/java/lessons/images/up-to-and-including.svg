@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 196" width="560" height="196" role="img" aria-labelledby="title desc">
+  <title id="title">Naming a phase runs every phase up to and including it</title>
+  <desc id="desc">The default lifecycle drawn as eight phases in order. Three commands are drawn as spans over them: mvn compile covers validate and compile, mvn package covers everything through package, and mvn install covers everything through install. All three begin at the same phase, and only where they stop differs.</desc>
+
+  <!-- The three spans share a left edge on purpose: that is the rule. Accent
+       marks the common start. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <text x="20" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">naming a phase runs everything up to it</text>
+  <text x="20" y="82" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">the lifecycle</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="110" y="70" width="52" height="18" rx="2"/>
+    <rect x="164" y="70" width="52" height="18" rx="2"/>
+    <rect x="218" y="70" width="52" height="18" rx="2"/>
+    <rect x="272" y="70" width="52" height="18" rx="2"/>
+    <rect x="326" y="70" width="52" height="18" rx="2"/>
+    <rect x="380" y="70" width="52" height="18" rx="2"/>
+    <rect x="434" y="70" width="52" height="18" rx="2"/>
+    <rect x="488" y="70" width="52" height="18" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6" fill="#7a828c" text-anchor="middle">
+    <text x="136" y="82">validate</text>
+    <text x="190" y="82">compile</text>
+    <text x="244" y="82">test-compile</text>
+    <text x="298" y="82">test</text>
+    <text x="352" y="82">package</text>
+    <text x="406" y="82">verify</text>
+    <text x="460" y="82">install</text>
+    <text x="514" y="82">deploy</text>
+  </g>
+
+  <path d="M108,64 V166" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+  <text x="110" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">every command starts here</text>
+
+  <g fill="#7a828c" fill-opacity="0.45">
+    <rect x="110" y="104" width="106" height="8" rx="2"/>
+    <rect x="110" y="128" width="268" height="8" rx="2"/>
+    <rect x="110" y="152" width="376" height="8" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="111">mvn compile</text>
+    <text x="20" y="135">mvn package</text>
+    <text x="20" y="159">mvn install</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="end">
+    <text x="216" y="100">stops at compile</text>
+    <text x="378" y="124">stops at package</text>
+    <text x="486" y="148">stops at install</text>
+  </g>
+
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same eight phases every time, and only the stopping point changes</text>
+</svg>

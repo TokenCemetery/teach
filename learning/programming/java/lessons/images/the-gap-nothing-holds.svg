@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 196" width="560" height="196" role="img" aria-labelledby="title desc">
+  <title id="title">Two atomic calls leave a gap between them; one atomic call does not</title>
+  <desc id="desc">On the left, thread one reads the key and later writes it, and thread two's read lands in the interval between those two calls, so both threads see nothing and both write. On the right the same work is one computeIfAbsent call per thread, and the second thread waits for the key rather than reading in the middle of the first thread's work.</desc>
+
+  <!-- The interval between T1's two calls is drawn as a span so that T2's read
+       landing inside it is a fact of the layout. Accent marks the interval.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V176" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="40">get, then put</text>
+    <text x="300" y="40">computeIfAbsent</text>
+  </g>
+
+  <text x="140" y="54" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">the gap nothing holds</text>
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M104,60 H176"/>
+    <path d="M104,57 V63"/>
+    <path d="M176,57 V63"/>
+  </g>
+  <path d="M142,62 V96" stroke="#bf7d1a" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.4" fill="none">
+    <path d="M40,76 H264"/>
+    <path d="M40,106 H264"/>
+    <path d="M320,76 H544"/>
+    <path d="M320,106 H544"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="22" y="79">T1</text>
+    <text x="22" y="109">T2</text>
+    <text x="302" y="79">T1</text>
+    <text x="302" y="109">T2</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.18">
+    <rect x="56" y="68" width="48" height="16" rx="2"/>
+    <rect x="176" y="68" width="48" height="16" rx="2"/>
+    <rect x="118" y="98" width="48" height="16" rx="2"/>
+    <rect x="216" y="98" width="48" height="16" rx="2"/>
+    <rect x="336" y="68" width="96" height="16" rx="2"/>
+    <rect x="436" y="98" width="96" height="16" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="80" y="79">get</text>
+    <text x="200" y="79">put w1</text>
+    <text x="142" y="109">get</text>
+    <text x="240" y="109">put w2</text>
+    <text x="384" y="79">computeIfAbsent</text>
+    <text x="484" y="109">computeIfAbsent</text>
+  </g>
+
+  <path d="M336,106 H432" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="3 3" fill="none"/>
+  <text x="338" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">waits for the key</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="146">both saw nothing, and both wrote</text>
+    <text x="300" y="146">one Widget, on every run</text>
+  </g>
+
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">sixteen threads on one key gave between two and four Widgets the first way</text>
+</svg>

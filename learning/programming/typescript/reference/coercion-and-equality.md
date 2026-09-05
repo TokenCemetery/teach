@@ -59,6 +59,10 @@ Everything else is truthy, including `"0"`, `"false"`, `" "`, `[]`, `{}`, and ev
 
 `==` is not transitive: `0 == ""` and `0 == "0"` hold while `"" == "0"` does not.
 
+![Three values in a triangle. Loose equality holds between 0 and the empty string, and between 0 and the string "0", but the edge between those two is false, so the triangle never closes.](images/loose-equality-not-transitive.svg)
+
+Three rows of the table above, drawn as the shape they make. A relation that fails to close like this cannot be used to reason with: knowing `a == b` tells you nothing you may carry to `c`, so no chain of `==` comparisons is safe to follow even when every individual row of the table looks harmless. That is the argument for the rule below, rather than a list of surprising pairs to memorise.
+
 **Rule:** use `===` everywhere, with one exception: `x == null` tests for `null` or `undefined` in one operator and is idiomatic.
 
 ## Special comparisons

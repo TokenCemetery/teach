@@ -109,6 +109,10 @@ println!("{log:?}, {result:?}");
 
 This prints `[1, 2, 3], [2, 4, 6]`; `collect` called `next` three times, running the closure once each time.
 
+![One vector and one map closure feeding two endings. Dropping the chain leaves the log empty; collecting it leaves the log holding all three input values.](images/nothing-until-something-asks.svg)
+
+Both endings hang off the same two boxes. The log is not a property of the chain, it is a property of what was asked of it.
+
 That closure captured `log` by mutable reference, and the borrow lasts as long as the chain does, lesson 3's rule again. Read the captured local before the borrowing chain is done, and the borrow is still live:
 
 ```rust

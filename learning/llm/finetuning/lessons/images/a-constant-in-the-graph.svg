@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" width="560" height="240" role="img" aria-labelledby="title desc">
+  <title id="title">The quantized base carries gradient through without ever storing one</title>
+  <desc id="desc">One adapted layer drawn twice with the same four boxes. Going forward, the input reaches both the 4-bit base and the bf16 adapter and the two meet at the output. Going backward, gradient arrives at the output and travels back through both, but only the adapter has a gradient stored for it; the base is dequantised again and keeps nothing.</desc>
+
+  <!-- Both panels hold the same boxes in the same places, so the only thing
+       that changes is which way the arrows run. Accent marks the one tensor a
+       gradient is kept for. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="42">forward</text>
+    <text x="20" y="142">backward</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="60" y="66" width="44" height="20" rx="2"/>
+    <rect x="150" y="52" width="96" height="20" rx="2"/>
+    <rect x="150" y="86" width="96" height="20" rx="2"/>
+    <rect x="300" y="66" width="44" height="20" rx="2"/>
+    <rect x="60" y="166" width="44" height="20" rx="2"/>
+    <rect x="150" y="152" width="96" height="20" rx="2"/>
+    <rect x="300" y="166" width="44" height="20" rx="2"/>
+  </g>
+  <rect x="150" y="186" width="96" height="20" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="82" y="80">x</text>
+    <text x="198" y="66">W0  (4-bit)</text>
+    <text x="198" y="100">B A  (bf16)</text>
+    <text x="322" y="80">h</text>
+    <text x="82" y="180">x</text>
+    <text x="198" y="166">W0  (4-bit)</text>
+    <text x="198" y="200">B A  (bf16)</text>
+    <text x="322" y="180">h</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M104,72 L144,64" marker-end="url(#g)"/>
+    <path d="M104,80 L144,94" marker-end="url(#g)"/>
+    <path d="M246,64 L296,72" marker-end="url(#g)"/>
+    <path d="M246,94 L296,80" marker-end="url(#g)"/>
+    <path d="M296,172 L250,164" marker-end="url(#g)"/>
+    <path d="M296,180 L250,194" marker-end="url(#g)"/>
+    <path d="M146,164 L110,172" marker-end="url(#g)"/>
+    <path d="M146,194 L110,180" marker-end="url(#g)"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="366" y="66">dequantised for the matmul,</text>
+    <text x="366" y="78">and the copy discarded</text>
+    <text x="366" y="166">dequantised again, and</text>
+    <text x="366" y="178">nothing is stored for it</text>
+  </g>
+  <text x="366" y="200" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the only gradient stored</text>
+
+  <text x="20" y="228" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the quantized base is a constant in the graph: read at high precision, never updated</text>
+</svg>

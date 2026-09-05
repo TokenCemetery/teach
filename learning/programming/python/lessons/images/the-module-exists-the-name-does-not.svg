@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 226" width="560" height="226" role="img" aria-labelledby="title desc">
+  <title id="title">The module is already in sys.modules; the name it needs is not defined yet</title>
+  <desc id="desc">Running pkg/a.py reaches its first line, which runs pkg/b.py. That file imports a name from pkg.a, finds pkg.a already present in sys.modules and still executing, and looks for thing. The execution frontier in pkg/a.py sits above the line that defines thing, so the lookup arrives at a name that does not exist yet and stops.</desc>
+
+  <!-- The frontier is drawn between the two lines of pkg/a.py, so the blocked
+       lookup aiming below it is a fact of the layout. Accent marks the frontier
+       and the lookup it defeats. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="30" y="64">pkg/a.py</text>
+    <text x="350" y="64">pkg/b.py</text>
+    <text x="350" y="136">sys.modules</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5">
+    <rect x="30" y="70" width="180" height="58" rx="2"/>
+    <rect x="350" y="70" width="180" height="40" rx="2"/>
+    <rect x="350" y="140" width="180" height="40" rx="2"/>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="40" y="78" width="160" height="18" rx="2"/>
+    <rect x="40" y="102" width="160" height="18" rx="2"/>
+    <rect x="360" y="78" width="160" height="18" rx="2"/>
+    <rect x="360" y="148" width="160" height="18" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="46" y="91">from pkg.b import helper</text>
+    <text x="46" y="115">def thing(): ...</text>
+    <text x="366" y="91">from pkg.a import thing</text>
+    <text x="366" y="161">pkg.a: still executing</text>
+  </g>
+
+  <path d="M40,99 H200" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+
+  <path d="M204,87 H346" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <path d="M440,96 V136" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <path d="M350,162 H240 V112 H216" stroke="#bf7d1a" stroke-width="1.5" fill="none"/>
+  <path d="M212,106 V118" stroke="#bf7d1a" stroke-width="1.5" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="240" y="80">1. runs pkg/b.py</text>
+    <text x="446" y="120">2. already there</text>
+  </g>
+  <text x="246" y="126" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">3. looks for thing, not defined yet</text>
+
+  <text x="30" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" opacity="0.85">the dashed line is how far pkg/a.py has run</text>
+  <text x="20" y="214" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the module object exists before its names do, and that gap is the whole error</text>
+</svg>

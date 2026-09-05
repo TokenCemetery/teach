@@ -60,6 +60,10 @@ E       )
 
 The bug is real and the report is minimal: with `n` below 3, `s[: n - 3]` slices from the end and the ellipsis alone already exceeds the limit. Nobody writes `truncate("0", 0)` by hand, and the property found it in under a second.
 
+![The declared range of n from 0 to 50 drawn as a bar, with the values below 3 shaded at its left end and the reported counterexample sitting at the very start of that stretch.](images/inside-the-range-you-declared.svg)
+
+The failing values are three out of the fifty-one you declared, at one end of the range. Nothing about that stretch is special to look at; it is only special to `truncate`.
+
 Shrinking is what makes this practical. Without it a failure arrives as a 400-character string of astral-plane characters, and reading it is the whole job.
 
 ### Strategies

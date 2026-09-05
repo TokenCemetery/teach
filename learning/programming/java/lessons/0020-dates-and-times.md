@@ -68,6 +68,10 @@ Instant asTokyo = wall.atZone(ZoneId.of("Asia/Tokyo")).toInstant();
 
 `asLondon` comes out as `2026-06-15T11:00:00Z` and `asTokyo` as `2026-06-15T03:00:00Z`, two different instants from one `LocalDateTime`, because "12:00" was never a claim about the universal timeline in the first place. Store a `LocalDateTime` as "when this happened" and every comparison across two services in different zones, or the same service after a deployment changes the default zone, is comparing numbers that were never on the same timeline to begin with.
 
+![A universal timeline from 02:00Z to 12:00Z. The local reading 2026-06-15T12:00 sits above it, off the line, with no zone. Read as Asia/Tokyo it lands at 03:00Z; read as Europe/London it lands at 11:00Z, eight hours away.](images/two-places-to-land.svg)
+
+The reading itself is drawn off the line, because that is where it is: it names no point on the timeline until a zone is supplied, and the two zones here put it eight hours apart. The compiler's refusal above is that gap, caught before it becomes a stored value.
+
 ### `ZoneId` against `ZoneOffset`
 
 A `ZoneOffset`, such as `+02:00`, is a fixed difference from UTC and nothing else; it is also a `ZoneId`, since `ZoneOffset extends ZoneId` and an offset can be used anywhere a zone is asked for, confirmed with `instanceof`. A region-based `ZoneId`, such as `America/New_York`, is not fixed: it carries a table of rules that can hand back a different offset depending on the date asked about.

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 194" width="560" height="194" role="img" aria-labelledby="title desc">
+  <title id="title">One bound, read in two directions</title>
+  <desc id="desc">The bound T colon Cost sits in the middle of the signature. Read towards the caller it is a demand: a conforming type passes and a String is rejected with E0277. Read towards the body it is a permission: the body may call cost, and without the bound that call is refused with E0599.</desc>
+
+  <!-- One chip with an arrow leaving each side, because the same three words
+       face two audiences. Accent marks the bound and what each side is refused
+       without it. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="280" y="80" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">fn total&lt;T: Cost&gt;(items: &amp;[T])</text>
+  <rect x="240" y="92" width="80" height="22" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="280" y="106" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">T: Cost</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M238,103 H174" marker-end="url(#g)"/>
+    <path d="M322,103 H386" marker-end="url(#g)"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="30" y="68">the caller</text>
+    <text x="395" y="68">the body</text>
+    <text x="100" y="98">demands of it</text>
+    <text x="330" y="98">promises it</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="30" y="130">a Parcel passes</text>
+    <text x="395" y="130">it may call .cost()</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="30" y="146">a String: E0277</text>
+    <text x="395" y="146">no bound: E0599</text>
+  </g>
+
+  <text x="20" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same three words are a demand on one side and a permission on the other</text>
+</svg>

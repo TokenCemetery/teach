@@ -49,6 +49,10 @@ method: public double Point.x()
 method: public double Point.y()
 ```
 
+![The record header above two columns of generated members: four that come once per component, a private final field and an accessor for each of x and y, and four that come once per record, the canonical constructor, equals, hashCode and toString.](images/eight-from-one-line.svg)
+
+Four of the eight scale with the header's component list and four do not. Add a third component and the left column grows by two while the right column stays as it is.
+
 A private final field per component, an accessor named for the component, never `getX()`, a **canonical constructor** taking every component in header order, and `equals`, `hashCode` and `toString`, all three declared `final` so nothing downstream can override just one of them. `toString` prints every component in header order, `Point[x=1.0, y=2.0]`. `equals` requires the same runtime type and every component equal; `hashCode` combines the components' hash codes, so equal records always hash the same. For a `double` component specifically, "equal" follows `Double`'s boxed semantics rather than the `==` operator: two `NaN` values compare equal, and `-0.0` does not equal `0.0`, the opposite of what `-0.0 == 0.0` gives as primitives. Every record also implicitly extends `java.lang.Record`, which is verifiable directly: `Point.class.getSuperclass()` reports `class java.lang.Record`. That is not a technicality, it is the reason a record cannot extend anything else, covered below.
 
 ### The compact constructor: validate, then normalise

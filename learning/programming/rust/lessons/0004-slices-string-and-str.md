@@ -82,6 +82,10 @@ let sub = &s[0..2];         // compiles, and PANICS: not a char boundary
 
 There is no `Index<usize>` for `String`, deliberately: a byte is not a character, and returning one would be a lie. Range slicing exists and is checked at run time, so slicing across a multi-byte character panics rather than producing invalid UTF-8.
 
+![The string héllo as six bytes 68 c3 a9 6c 6c 6f, with each character's box as wide as the bytes it occupies. A cut at byte 2 falls inside é's two bytes; a cut at byte 3 falls at the edge between é and l.](images/where-the-cut-falls.svg)
+
+Every character's box is as wide as the bytes it occupies, so `é` covers two cells and byte 2 is a position *inside* a character rather than between two of them. There is nothing valid for `&s[0..2]` to hand back, which is why it panics instead of returning half of a character.
+
 What to write instead:
 
 ```rust

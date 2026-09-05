@@ -67,6 +67,10 @@ def append_to(item, target=None):
     return target
 ```
 
+![Three calls that omit the argument, drawn twice. With a list literal as the default all three arrows reach one list and the results accumulate; with None and a guard, each call reaches a list of its own and every result holds one element.](images/one-list-or-three.svg)
+
+The convergence on the left is the bug drawn out: three calls, one object. Nothing in the body changed between the two versions except where the list comes from.
+
 This is also why `datetime.now()` as a default is wrong: it is evaluated at import time, so every caller gets the moment the module loaded.
 
 Immutable defaults are safe, because there is nothing to accumulate: `def f(x=0)`, `def f(name="")`, `def f(point=(0, 0))`.

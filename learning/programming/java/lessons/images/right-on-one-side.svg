@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 182" width="560" height="182" role="img" aria-labelledby="title desc">
+  <title id="title">One comparison stops at the cache boundary and the other does not</title>
+  <desc id="desc">A value line broken between 127 and 128. The span over which == answers true covers only the cached stretch from minus 128 to 127 and stops there; the span over which equals answers true continues across the break. So 127 == 127 is true and 128 == 128 is false, while equals is true on both sides.</desc>
+
+  <!-- The two spans are drawn over the same line, so where one of them ends is
+       the whole claim. Accent marks the span that stops. Tones validated for
+       both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="78">==</text>
+    <text x="20" y="96">equals</text>
+  </g>
+
+  <rect x="90" y="72" width="290" height="8" rx="2" fill="#bf7d1a"/>
+  <g fill="#7a828c" fill-opacity="0.45">
+    <rect x="90" y="90" width="290" height="8" rx="2"/>
+    <rect x="400" y="90" width="120" height="8" rx="2"/>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none">
+    <path d="M90,110 H380"/>
+    <path d="M400,110 H520"/>
+    <path d="M383,116 L389,104"/>
+    <path d="M391,116 L397,104"/>
+    <path d="M90,106 V114"/>
+    <path d="M380,106 V114"/>
+    <path d="M400,106 V114"/>
+    <path d="M520,106 V114"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="90" y="126">-128</text>
+    <text x="380" y="126">127</text>
+    <text x="400" y="126">128</text>
+    <text x="520" y="126">and up</text>
+  </g>
+
+  <text x="380" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="end">127 == 127 is true</text>
+  <text x="400" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">128 == 128 is false</text>
+
+  <text x="20" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">equals is right on both sides of that line, and == only on one</text>
+</svg>

@@ -28,7 +28,11 @@ PostgreSQL's `BEGIN` accepts four standard level names but implements three beha
 | Repeatable Read | once, at the transaction's first statement, not at `BEGIN` | the transaction's `COMMIT` or `ROLLBACK` |
 | Serializable | once, at the same point Repeatable Read takes its snapshot | the transaction's end, plus the read/write tracking a commit can still fail against |
 
-A statement committed by another session between `BEGIN` and a Repeatable Read or Serializable transaction's first query is visible to that first query: `BEGIN` alone takes no snapshot, the first statement does. See [Lesson 29](../lessons/0029-mvcc.md) for the mechanism a snapshot is built from, `xmin`, `xmax` and `ctid`, and for why a reader is never made to wait on a writer regardless of level.
+A statement committed by another session between `BEGIN` and a Repeatable Read or Serializable transaction's first query is visible to that first query: `BEGIN` alone takes no snapshot, the first statement does.
+
+![Two session timelines. Session 1 runs BEGIN, then later its first SELECT, then COMMIT. Session 2 inserts and commits in between. The snapshot line falls at the first SELECT rather than at BEGIN, so session 2's commit lands before it.](images/snapshot-point.svg)
+
+The whole claim is where that dashed line sits. Move it left to `BEGIN`, where it is usually assumed to be, and session 2's row would be invisible for the rest of the transaction. The distance between the two is however long the application waits before issuing its first query, which is exactly the interval nobody writing the transaction is thinking about. See [Lesson 29](../lessons/0029-mvcc.md) for the mechanism a snapshot is built from, `xmin`, `xmax` and `ctid`, and for why a reader is never made to wait on a writer regardless of level.
 
 ## The anomalies, and how to recognise yours
 

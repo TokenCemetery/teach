@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 216" width="560" height="216" role="img" aria-labelledby="title desc">
+  <title id="title">One %v anywhere in the chain makes errors.Is return false</title>
+  <desc id="desc">Two error chains of three links each. On the left every step wraps with %w, so errors.Is walks from the handler error through the service error to ErrNotFound and returns true. On the right the service step used %v instead, which severs the link below it, so errors.Is stops at the service error and returns false. Both errors format to the same string.</desc>
+
+  <!-- The chain is the subject, so the break is drawn as a break. Accent marks
+       the severed link and the false result; the words say the same. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V196" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="34">%w at every step</text>
+    <text x="300" y="34">%v at one step</text>
+  </g>
+
+  <defs>
+    <marker id="w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="40" y="52" width="190" height="24" rx="3"/>
+    <rect x="40" y="92" width="190" height="24" rx="3"/>
+    <rect x="40" y="132" width="190" height="24" rx="3"/>
+    <rect x="320" y="52" width="190" height="24" rx="3"/>
+    <rect x="320" y="132" width="190" height="24" rx="3"/>
+  </g>
+  <rect x="320" y="92" width="190" height="24" rx="3" fill="none" stroke="#bf7d1a" stroke-width="2"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c" text-anchor="middle">
+    <text x="135" y="68">handler: %w</text>
+    <text x="135" y="108">service: %w</text>
+    <text x="135" y="148">ErrNotFound</text>
+    <text x="415" y="68">handler: %w</text>
+    <text x="415" y="148">ErrNotFound</text>
+  </g>
+  <text x="415" y="108" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a" text-anchor="middle">service: %v</text>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5" marker-end="url(#w)">
+    <path d="M135,76 V88"/>
+    <path d="M135,116 V128"/>
+    <path d="M415,76 V88"/>
+  </g>
+
+  <!-- the severed link -->
+  <path d="M415,116 V128" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="3 2" fill="none"/>
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M409,116 L421,128"/>
+    <path d="M421,116 L409,128"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10">
+    <text x="135" y="180" fill="#7a828c" text-anchor="middle">errors.Is walks to the end: true</text>
+    <text x="415" y="180" fill="#bf7d1a" text-anchor="middle">errors.Is stops here: false</text>
+  </g>
+
+  <text x="20" y="208" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">both errors format to the same string, so the difference is invisible in a log</text>
+</svg>

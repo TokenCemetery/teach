@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 192" width="560" height="192" role="img" aria-labelledby="title desc">
+  <title id="title">Where an object's bytes go: header, fields, then padding</title>
+  <desc id="desc">Three objects drawn to a byte scale. A Point with the default 12-byte header holds 8 bytes of fields and 4 of padding, 24 bytes in all. The same Point with the 8-byte compact header holds the same 8 bytes of fields and needs no padding, 16 in all. An int array of five has a 16-byte header, 20 bytes of payload and 4 of padding, 40 in all. Every bar ends exactly on an eight-byte mark.</desc>
+
+  <!-- Padding is drawn as an outline with no fill because it holds nothing.
+       The accent is the part you actually declared, so its smallness is the
+       point. Segments are contiguous with no gaps, since the bytes are.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <rect x="140" y="32" width="10" height="10" fill="#7a828c"/>
+    <text x="156" y="41">header</text>
+    <rect x="200" y="32" width="10" height="10" fill="#bf7d1a"/>
+    <text x="216" y="41">the fields you declared</text>
+    <rect x="336" y="32" width="10" height="10" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+    <text x="352" y="41">padding, holding nothing</text>
+  </g>
+
+  <!-- 8.5px per byte from x=140; ticks every 8 bytes -->
+  <g stroke="#7a828c" stroke-width="1" opacity="0.25">
+    <path d="M208,52 V148"/>
+    <path d="M276,52 V148"/>
+    <path d="M344,52 V148"/>
+    <path d="M412,52 V148"/>
+    <path d="M480,52 V148"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="74">Point, 12-byte header</text>
+    <text x="20" y="106">Point, 8-byte header</text>
+    <text x="20" y="138">int[5]</text>
+  </g>
+
+  <g fill="#7a828c">
+    <rect x="140" y="58" width="102" height="20"/>
+    <rect x="140" y="90" width="68" height="20"/>
+    <rect x="140" y="122" width="136" height="20"/>
+  </g>
+  <g fill="#bf7d1a">
+    <rect x="242" y="58" width="68" height="20"/>
+    <rect x="208" y="90" width="68" height="20"/>
+    <rect x="276" y="122" width="170" height="20"/>
+  </g>
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="310" y="58" width="34" height="20"/>
+    <rect x="446" y="122" width="34" height="20"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="352" y="72">24 bytes</text>
+    <text x="284" y="104">16 bytes</text>
+    <text x="488" y="136">40 bytes</text>
+  </g>
+
+  <text x="20" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">two thirds of the default Point is header and padding around the 8 bytes you asked for</text>
+  <text x="20" y="184" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">every bar ends on an 8-byte mark, which is what the padding is for</text>
+</svg>

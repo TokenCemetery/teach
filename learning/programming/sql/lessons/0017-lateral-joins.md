@@ -87,6 +87,10 @@ SQLSTATE: 42P01
 
 The `SQLSTATE` matches, but the message does not, and there is no `HINT` this time: `c` genuinely has not been reached yet. Writing `LATERAL` does not reorder anything in `FROM`; it only grants permission to look left.
 
+![Three FROM clauses laid out left to right. Without LATERAL the subquery sees nothing outside itself; with LATERAL written after the table its reach covers everything to its left; with LATERAL written first there is nothing to its left and it fails again.](images/permission-to-look-left.svg)
+
+The second and third rows contain the same word and the same subquery. What differs is what is standing to the left of it when the reach is measured.
+
 ### The archetypal use: the top row per group
 
 The largest order per customer, run properly:

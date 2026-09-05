@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 234" width="560" height="234" role="img" aria-labelledby="title desc">
+  <title id="title">Both candidates sit at the same depth, so declaration order decides</title>
+  <desc id="desc">The project depends on guice and on google-cloud-core, and each brings its own Guava one hop further down. The two Guava nodes are the same distance from the root, so depth cannot separate them, and the one on the branch declared first wins even though the other is newer.</desc>
+
+  <!-- The two candidates are drawn at the same depth on purpose: that is why
+       depth cannot decide. Accent marks the version that won. Tones validated
+       for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="20" y="124">depth 1</text>
+    <text x="20" y="184">depth 2</text>
+    <text x="60" y="102">declared first</text>
+    <text x="300" y="102">declared second</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="230" y="50" width="120" height="22" rx="2"/>
+    <rect x="60" y="110" width="180" height="22" rx="2"/>
+    <rect x="300" y="110" width="220" height="22" rx="2"/>
+  </g>
+  <rect x="60" y="170" width="180" height="22" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <rect x="300" y="170" width="220" height="22" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 3"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="290" y="64">the project</text>
+    <text x="150" y="124">guice 5.1.0</text>
+    <text x="410" y="124">google-cloud-core 2.30.0</text>
+    <text x="410" y="184">guava 32.1.3-jre</text>
+  </g>
+  <text x="150" y="184" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">guava 30.1-jre</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M262,72 L154,106" marker-end="url(#g)"/>
+    <path d="M318,72 L406,106" marker-end="url(#g)"/>
+    <path d="M150,132 L150,166" marker-end="url(#g)"/>
+    <path d="M410,132 L410,166" marker-end="url(#g)"/>
+  </g>
+
+  <text x="60" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">this one wins</text>
+  <text x="300" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">omitted for conflict, though it is newer</text>
+
+  <text x="20" y="228" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">both sit the same distance from the root, so the earlier declaration decides</text>
+</svg>

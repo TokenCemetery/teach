@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 182" width="560" height="182" role="img" aria-labelledby="title desc">
+  <title id="title">One field store, and both measurements that follow from it</title>
+  <desc id="desc">Two methods doing identical arithmetic, differing only by a store into a static field. The version that does not escape runs in 0.597 nanoseconds per operation and allocates effectively nothing. The version that escapes runs in 2.878 nanoseconds, about 4.8 times slower, and allocates the full 24 bytes of the record. Time and allocation are shown on separate scales.</desc>
+
+  <!-- Two measurements in different units, so two scales, each labelled with
+       its own range rather than sharing an axis. Accent is the escaping
+       version. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="32" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the two methods do identical arithmetic and differ by one line</text>
+  <text x="20" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">escapes adds:  lastSeen = p;</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.8">
+    <text x="140" y="76">time per op, 0 to 3 ns</text>
+    <text x="370" y="76">allocated per op, 0 to 24 bytes</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="96">noEscape</text>
+  </g>
+  <rect x="140" y="86" width="38" height="12" fill="#7a828c"/>
+  <text x="184" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">0.597</text>
+  <text x="376" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">none, to measurement noise</text>
+
+  <text x="20" y="124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">escapes</text>
+  <rect x="140" y="114" width="184" height="12" fill="#bf7d1a"/>
+  <text x="330" y="124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">2.878</text>
+  <rect x="370" y="114" width="160" height="12" fill="#bf7d1a"/>
+  <text x="536" y="124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">24</text>
+
+  <text x="20" y="154" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">about 4.8 times the time, and the full 24 bytes where there had been none</text>
+  <text x="20" y="174" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the ratio is what travels to other hardware; the two absolute figures are not</text>
+</svg>

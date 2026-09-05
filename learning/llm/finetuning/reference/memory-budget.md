@@ -81,6 +81,10 @@ Gradient checkpointing cuts this by roughly an order of magnitude for ~20 to 40%
 
 **In an adapter run, activations usually dominate.** This inverts the full fine-tuning profile.
 
+![Two stacked bars on one scale in gigabytes. A full fine-tune of 7B with AdamW is 112 GB fixed plus 21 GB of activations, so activations are 16% of it. A QLoRA run on an NF4 7B base with a 20M adapter is 3.9 GB fixed plus the same 21 GB, so activations are 84% of it.](images/activations-dominate.svg)
+
+Both bars take the fixed memory from the table below and the activations from the 32-layer, d=4096, batch 2, seq 4096 row above, with no gradient checkpointing. The activation block is the same size in both, because it depends on the shape of the forward pass rather than on how many parameters are trainable. Only the memory around it collapses, which is why the thing to cut is rarely the adapter.
+
 ## Worked totals, excluding activations
 
 | Setup | Fixed memory |

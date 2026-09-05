@@ -73,6 +73,10 @@ Limit (actual rows=20.00 loops=1)
 
 Seven buffers, for the same depth that `OFFSET` paid 4993 for, because the index condition starts the scan exactly where the last page ended rather than walking past everything before it. That is the whole trade: a client stops sending "page 25001" and starts sending "the last row I saw was id 550905", and every page then costs the same seven buffers regardless of depth. What crosses the wire changes shape too: not a page number, but a key, opaque to the client beyond "send this back next time".
 
+![One ordered list: row 1, row 2, an elided stretch standing for rows 3 to 500000, and the page itself. OFFSET enters at the top and runs down past every row above the page, touching each; the keyset condition arrives from the side directly at the page.](images/a-walk-not-a-jump.svg)
+
+The elided stretch is one cell because half a million rows cannot be drawn to scale without the page becoming invisible, which is itself the point: both queries return the same twenty rows, and only one of them had to arrive from the top.
+
 That key has to be unique, or the order it walks is not stable, the warm-up's problem now applied to `WHERE` as well as `ORDER BY`. Sorting by `customer_id` alone, a column many orders share, shows why a bare comparison breaks. With an index on `(customer_id, id)` built for this, and a page's last row recorded as `(9, 1008)`, the naive rewrite drops the tiebreaker:
 
 ```sql

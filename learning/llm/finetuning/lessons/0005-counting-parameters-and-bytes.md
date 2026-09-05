@@ -98,6 +98,10 @@ total                                   ≈ 1.12B
 
 In bf16 that is about 2.2 GB of weights. Note that the MLP is 79% of the block; carry that forward to Lesson 10.
 
+![Two proportion bars. One layer of 44.0M is about 21 per cent attention and 79 per cent MLP. The whole model of 1.12B is about 94 per cent stacked layers and 5.9 per cent embeddings.](images/where-the-parameters-are.svg)
+
+The same sums as shares, at the two levels that matter. Inside a block, attention is the smaller half by a wide margin, which is why the target-module question in Lesson 10 is mostly a question about the MLP. Across the model, the embedding term is small here and grows as a share as the model shrinks, which is the case the paragraph above is warning about.
+
 ### What this does not yet include
 
 You now have the weight cost. Training adds three more categories, and they dominate:

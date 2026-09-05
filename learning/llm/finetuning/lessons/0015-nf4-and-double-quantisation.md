@@ -89,7 +89,11 @@ weights:                                     0.5      bytes/param
 
 The paper reports the saving as approximately **0.37 bits per parameter** on average, which for a 65B model is around 3 GB. That is a real amount of memory recovered from pure bookkeeping.
 
-Note the shape of the idea: the quantisation constants were a fixed tax on the scheme, and double quantisation reduced the tax rather than the payload. It is a small, clever, entirely mechanical win, and it is why 4-bit QLoRA lands near 4.1 bits per parameter in practice rather than 4.5.
+![Three bars of bits per parameter. The four-bit weight segment is identical in all three. Alone it is 4 bits; with fp32 block scales a half-bit segment is added, reaching 4.5; with double quantisation that segment shrinks to about an eighth of a bit, reaching about 4.13.](images/the-tax-not-the-payload.svg)
+
+Note the shape of the idea: the quantisation constants were a fixed tax on the scheme, and double quantisation reduced the tax rather than the payload.
+
+The bars say the same thing without the arithmetic. The grey segment is the same length three times over, because nothing about the weights changed; every difference between 4, 4.5 and 4.13 bits is the small accented piece on the end. A scheme that had reduced the payload instead would have moved the grey. It is a small, clever, entirely mechanical win, and it is why 4-bit QLoRA lands near 4.1 bits per parameter in practice rather than 4.5.
 
 ### The memory result
 

@@ -73,6 +73,10 @@ Patching where the function is **defined** does nothing to a module that did `fr
 1. The patch target is `where.it.is.used`, not `where.it.is.defined`.
 2. Importing modules rather than names, `from pkg import clock` then `clock.now()`, makes the patch target stable and the code easier to test. That is a design argument for the `import module` style, not just a testing trick.
 
+![Three module namespaces after patching pkg.clock.now. The name inside pkg.clock now points at the fake; pkg.report_from holds its own name still pointing at the real function; pkg.report_mod holds a name pointing at the pkg.clock namespace itself.](images/which-name-moved.svg)
+
+Two of the three arrows end on an object and one ends on a namespace, and that is the whole difference between the import styles. Follow them and the two results fall out: `report_from` reaches `real` directly, `report_mod` reaches `pkg.clock` first and finds whatever `now` is bound to at that moment.
+
 `monkeypatch.setattr("pkg.report_from.now", fake)` from lesson 29 does the same job with automatic undo, and is the pytest-native spelling.
 
 ### `Mock` believes everything

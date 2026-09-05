@@ -83,6 +83,10 @@ srv := &http.Server{
 | `WriteTimeout` | from end of headers to end of response; too low truncates slow responses |
 | `IdleTimeout` | how long a keep-alive connection may sit unused |
 
+![One connection drawn left to right through headers, body, handler, response and idle, with each timeout drawn as a bar over the stretch it covers. ReadHeaderTimeout covers the headers, ReadTimeout the headers and body, WriteTimeout from the end of the headers to the end of the response, and IdleTimeout only the stretch afterwards.](images/what-each-timeout-covers.svg)
+
+The bars are the table drawn to scale, and they show one thing the rows cannot: the body sits inside two of them at once. `WriteTimeout` is timed from the end of the headers, not from the start of the response, so a slow upload spends the same seconds the write budget is counting.
+
 There is no correct set of numbers, only numbers chosen against your slowest legitimate request. The mistake is leaving them at zero, which means infinite.
 
 ### Middleware

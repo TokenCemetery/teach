@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" width="560" height="240" role="img" aria-labelledby="title desc">
+  <title id="title">Prefill is one pass over the whole prompt; decode is one pass per token</title>
+  <desc id="desc">The prompt's eight tokens all feed a single pass, which is why prefill's cost grows with prompt length but its pass count does not. Decode is a chain of separate passes, one per output token, each reading every weight, which is why its cost grows with the number of tokens produced.</desc>
+
+  <!-- One box on the top row against four on the bottom is the asymmetry, so
+       the counts are drawn literally. Accent marks the chain that repeats.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the same model, two shapes of work</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="80">prefill</text>
+    <text x="20" y="164">decode</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="80" y="66" width="20" height="18" rx="2"/>
+    <rect x="102" y="66" width="20" height="18" rx="2"/>
+    <rect x="124" y="66" width="20" height="18" rx="2"/>
+    <rect x="146" y="66" width="20" height="18" rx="2"/>
+    <rect x="168" y="66" width="20" height="18" rx="2"/>
+    <rect x="190" y="66" width="20" height="18" rx="2"/>
+    <rect x="212" y="66" width="20" height="18" rx="2"/>
+    <rect x="234" y="66" width="20" height="18" rx="2"/>
+    <rect x="300" y="66" width="170" height="18" rx="2"/>
+  </g>
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="80" y="150" width="80" height="18" rx="2"/>
+    <rect x="190" y="150" width="80" height="18" rx="2"/>
+    <rect x="300" y="150" width="80" height="18" rx="2"/>
+    <rect x="410" y="150" width="80" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="385" y="79">one pass, all 8 at once</text>
+    <text x="120" y="163">pass 1</text>
+    <text x="230" y="163">pass 2</text>
+    <text x="340" y="163">pass 3</text>
+    <text x="450" y="163">pass 4</text>
+  </g>
+  <text x="80" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">8 prompt tokens</text>
+
+  <path d="M258,75 H296" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M160,159 H186" marker-end="url(#a)"/>
+    <path d="M270,159 H296" marker-end="url(#a)"/>
+    <path d="M380,159 H406" marker-end="url(#a)"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="300" y="102">cost grows with prompt length</text>
+    <text x="300" y="196">cost grows with output length</text>
+  </g>
+  <text x="80" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">each pass reads every weight</text>
+
+  <text x="20" y="228" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">one pass however long the prompt, and one pass for every token produced</text>
+</svg>

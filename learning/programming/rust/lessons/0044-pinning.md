@@ -52,6 +52,10 @@ async fn main() {
 
 This printed `hello`. The compiler's generated future has a field for `value` and, across the `.await`, a field borrowing it, exactly the struct lesson 27 rejected. It compiles because `.await` already carries the ceremony this lesson makes explicit: the moment a reader drives that future by calling `poll` directly, storing it, or handing it to something generic, the compiler stops covering for them.
 
+![A generated future at 0x1000 whose reference field points at its own value field, and the same future after moving to 0x2000, where the reference field still names 0x1000 and its arrow now leaves the struct and lands on memory the value has left.](images/the-address-it-kept.svg)
+
+Both fields move together, and the address stored in one of them does not move with them. That is the whole reason the ceremony exists: nothing about the struct is wrong until it is relocated, so the guarantee has to be about *where the value stays*, not about what it contains.
+
 ### What Pin promises, and the error without it
 
 The standard library states plainly what pinning buys: "we say that a value has been pinned when it has been put into a state where it is guaranteed to remain located at the same place in memory from the time it is pinned until its drop is called." `Pin` wraps a pointer, `&mut T`, `Box<T>` and so on, promising that about its target, which is why `Future::poll` takes `Pin<&mut Self>`, not plain `&mut Self`. Calling `poll` on an unpinned value fails at the method-lookup stage:

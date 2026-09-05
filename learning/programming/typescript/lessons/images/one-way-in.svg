@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 224" width="560" height="224" role="img" aria-labelledby="title desc">
+  <title id="title">A brand lets values out freely and admits them through one function</title>
+  <desc id="desc">Four rows, each naming a source type, a direction and a target type. A UserId assigned to a string is allowed, because it is a string. A string assigned to a UserId is rejected, because it carries no brand. An OrderId assigned to a UserId is rejected, because its brand is a different one. A string reaching UserId through makeUserId is allowed, and that function holds the single assertion.</desc>
+
+  <!-- The first two rows are the same pair in opposite directions, so their
+       verdicts sitting in one column is the asymmetry. Accent marks the only
+       way in. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="40" y="44">from</text>
+    <text x="296" y="44">to</text>
+    <text x="390" y="44">verdict</text>
+    <text x="440" y="44">because</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="40" y="56" width="76" height="18" rx="2"/>
+    <rect x="296" y="56" width="76" height="18" rx="2"/>
+    <rect x="40" y="90" width="76" height="18" rx="2"/>
+    <rect x="296" y="90" width="76" height="18" rx="2"/>
+    <rect x="40" y="124" width="76" height="18" rx="2"/>
+    <rect x="296" y="124" width="76" height="18" rx="2"/>
+    <rect x="40" y="162" width="76" height="18" rx="2"/>
+    <rect x="296" y="162" width="76" height="18" rx="2"/>
+  </g>
+  <rect x="175" y="162" width="70" height="18" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <path d="M120,65 H292" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.4" fill="none">
+    <path d="M120,99 H284"/>
+    <path d="M120,133 H284"/>
+  </g>
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M288,93 V105"/>
+    <path d="M288,127 V139"/>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M120,171 H171" marker-end="url(#a)"/>
+    <path d="M249,171 H292" marker-end="url(#a)"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="78" y="69">UserId</text>
+    <text x="334" y="69">string</text>
+    <text x="78" y="103">string</text>
+    <text x="334" y="103">UserId</text>
+    <text x="78" y="137">OrderId</text>
+    <text x="334" y="137">UserId</text>
+    <text x="78" y="175">string</text>
+    <text x="334" y="175">UserId</text>
+  </g>
+  <text x="210" y="175" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">makeUserId</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="390" y="69">allowed</text>
+    <text x="390" y="103">rejected</text>
+    <text x="390" y="137">rejected</text>
+    <text x="440" y="69">it is a string</text>
+    <text x="440" y="103">no __brand</text>
+    <text x="440" y="137">a different brand</text>
+    <text x="440" y="175">one assertion, written once</text>
+  </g>
+  <text x="390" y="175" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">allowed</text>
+
+  <text x="20" y="204" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the first two rows are the same pair of types in opposite directions</text>
+  <text x="20" y="218" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">and the last row is the only door back in</text>
+</svg>

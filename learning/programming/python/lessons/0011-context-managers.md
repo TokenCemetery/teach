@@ -112,6 +112,10 @@ class Transaction:
 
 The `exc_type is None` test is the reason to reach for a class: entry and exit differ by outcome, not just by cleanup. Note the explicit `return None`, and note how easy the bug is: `return True` here would roll back and then tell the caller everything succeeded.
 
+![Two runs of the same failing block. In both, the block raises and __exit__ runs the rollback; returning None lets the caller see the error, while returning True leaves the caller seeing success.](images/the-same-cleanup-either-way.svg)
+
+The first two steps are identical in both columns. The rollback is not what changes; what changes is whether anyone downstream is allowed to know it happened.
+
 ### Several at once
 
 ```python

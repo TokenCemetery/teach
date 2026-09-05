@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">Stored activations against depth, with and without checkpointing</title>
+  <desc id="desc">Two curves over model depth. Without checkpointing, stored activations grow in a straight line with the number of layers. With checkpointing they grow as the square root of the depth, so the curve flattens almost immediately. At the worked example's 24 layers the two are about five times apart, and the gap widens with depth.</desc>
+
+  <!-- Curve points were computed rather than sketched, so the shapes are the
+       functions the lesson names. Accent is the checkpointed curve. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <rect x="150" y="22" width="10" height="10" fill="#7a828c"/>
+    <text x="166" y="31">stored, no checkpointing</text>
+    <rect x="320" y="22" width="10" height="10" fill="#bf7d1a"/>
+    <text x="336" y="31">stored, with checkpointing</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.5" fill="none">
+    <path d="M80,40 V160 H500"/>
+    <path d="M80,160 V165 M185,160 V165 M290,160 V165 M395,160 V165 M500,160 V165"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="80" y="177">0</text>
+    <text x="185" y="177">12</text>
+    <text x="290" y="177">24</text>
+    <text x="395" y="177">36</text>
+    <text x="500" y="177">48 layers</text>
+  </g>
+
+  <path d="M290,100 V147.8" stroke="#7a828c" stroke-width="1" stroke-dasharray="3 2" opacity="0.7" fill="none"/>
+
+  <path d="M80.0,160.0 L115.0,150.0 L150.0,140.0 L185.0,130.0 L220.0,120.0 L255.0,110.0 L290.0,100.0 L325.0,90.0 L360.0,80.0 L395.0,70.0 L430.0,60.0 L465.0,50.0 L500.0,40.0" stroke="#7a828c" stroke-width="2" fill="none"/>
+  <path d="M80.0,160.0 L97.5,156.5 L115.0,155.0 L132.5,153.9 L150.0,152.9 L167.5,152.1 L185.0,151.3 L202.5,150.6 L220.0,150.0 L237.5,149.4 L255.0,148.8 L272.5,148.3 L290.0,147.8 L307.5,147.3 L325.0,146.8 L342.5,146.3 L360.0,145.9 L377.5,145.4 L395.0,145.0 L412.5,144.6 L430.0,144.2 L447.5,143.8 L465.0,143.4 L482.5,143.0 L500.0,142.7" stroke="#bf7d1a" stroke-width="2" fill="none"/>
+
+  <circle cx="290" cy="100" r="3" fill="#7a828c"/>
+  <circle cx="290" cy="147.8" r="3" fill="#bf7d1a"/>
+  <text x="298" y="90" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">24 units</text>
+  <text x="298" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">about 5</text>
+  <text x="298" y="126" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the worked example</text>
+
+  <text x="20" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">about five times less at 24 layers, seven at 48, and the price is one extra forward pass</text>
+</svg>

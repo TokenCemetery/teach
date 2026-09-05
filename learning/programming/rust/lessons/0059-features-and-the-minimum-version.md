@@ -103,6 +103,10 @@ assertion `left == right` failed
 test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 ```
 
+![A diamond: top depends on consumer-a and consumer-b, and both depend on one engine. consumer-a asks for no features and consumer-b asks for loud, and the single engine box is built with loud.](images/one-build-of-engine.svg)
+
+Both edges arrive at the same box. There is no second `engine` for the crate that asked for nothing, which is the whole of it.
+
 (Repeated failure-summary lines and a machine-specific thread number are trimmed.) `consumer-a` asked for nothing and its test still fails, because `consumer-b`'s request for `loud` reached the one build of `engine` the workspace shares; running `top` confirms it, both consumers print `3!!!`. The primary source's conclusion follows directly: "A consequence of this is that features should be additive. That is, enabling a feature should not disable functionality, and it should usually be safe to enable any combination of features. A feature should not introduce a SemVer-incompatible change." A feature that switches behaviour is not a configuration option a careful user can avoid, since `consumer-a` never touched the feature that broke it; it is a design error.
 
 ### 3. `cfg` and what it does to a public item

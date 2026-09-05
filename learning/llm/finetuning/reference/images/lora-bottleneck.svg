@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 196" width="560" height="196" role="img" aria-labelledby="title desc">
+  <title id="title">The two paths of the LoRA equation, and the rank bottleneck in one of them</title>
+  <desc id="desc">The input x feeds two paths that are summed to give h. The upper path is the frozen base matrix W nought, of size d by d. The lower path is the trained adapter: A projects the input down to a bar only r wide, B projects it back up to d, and the result is scaled by alpha over r. Everything the adapter can express has to pass through that narrow bar, which is what low rank means. B starts at zero, so at step 0 the lower path contributes nothing and the model matches the base exactly.</desc>
+
+  <!-- Gray is the frozen base, accent is what training touches. That split is
+       the whole point of the picture, so it also carries the legend. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <rect x="20" y="8" width="10" height="10" rx="2" fill="#7a828c"/>
+    <text x="36" y="17">frozen</text>
+    <rect x="100" y="8" width="10" height="10" rx="2" fill="#bf7d1a"/>
+    <text x="116" y="17">trained</text>
+  </g>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="102" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#7a828c">x</text>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5" marker-end="url(#a)">
+    <path d="M36,94 L82,64"/>
+    <path d="M36,106 L82,132"/>
+    <path d="M218,60 L384,92"/>
+    <path d="M348,134 L388,112"/>
+    <path d="M158,134 H192"/>
+    <path d="M214,134 H244"/>
+    <path d="M415,100 H448"/>
+  </g>
+
+  <rect x="88" y="42" width="130" height="36" rx="3" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="153" y="65" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c" text-anchor="middle">W₀, d x d</text>
+
+  <g fill="none" stroke="#bf7d1a" stroke-width="2">
+    <rect x="88" y="116" width="70" height="36" rx="3"/>
+    <rect x="246" y="116" width="70" height="36" rx="3"/>
+  </g>
+  <rect x="194" y="127" width="18" height="14" rx="2" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#bf7d1a" text-anchor="middle">
+    <text x="123" y="139">A</text>
+    <text x="281" y="139">B</text>
+  </g>
+  <text x="203" y="122" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a" text-anchor="middle">r</text>
+  <text x="322" y="138" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a">α/r</text>
+
+  <circle cx="400" cy="100" r="14" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="400" y="105" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" fill="#7a828c" text-anchor="middle">+</text>
+
+  <text x="456" y="105" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#7a828c">h</text>
+
+  <text x="203" y="168" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c" text-anchor="middle">everything the adapter learns passes through here</text>
+  <text x="20" y="188" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">B is zero at step 0, so the lower path adds nothing and h matches the base</text>
+</svg>

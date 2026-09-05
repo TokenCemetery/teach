@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 216" width="560" height="216" role="img" aria-labelledby="title desc">
+  <title id="title">What reaches default is whatever the case labels did not remove</title>
+  <desc id="desc">On the left a union of two members with a case label under each, so nothing is left and the assignment to never holds. On the right the same two case labels under a union of three, so the third member is still there when default runs, and the compiler reports it by name.</desc>
+
+  <!-- The leftover is whichever cell has no case marker beneath it, so the box
+       below is a consequence of the row above. Accent marks that cell. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <path d="M285,26 V190" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="40">two members, two cases</text>
+    <text x="300" y="40">three members, two cases</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="58" width="70" height="18" rx="2"/>
+    <rect x="106" y="58" width="70" height="18" rx="2"/>
+    <rect x="310" y="58" width="70" height="18" rx="2"/>
+    <rect x="386" y="58" width="70" height="18" rx="2"/>
+    <rect x="30" y="130" width="146" height="20" rx="2"/>
+    <rect x="310" y="130" width="228" height="20" rx="2"/>
+  </g>
+  <rect x="462" y="58" width="76" height="18" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="65" y="71">circle</text>
+    <text x="141" y="71">square</text>
+    <text x="345" y="71">circle</text>
+    <text x="421" y="71">square</text>
+    <text x="103" y="144">nothing left</text>
+  </g>
+  <text x="500" y="71" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">triangle</text>
+  <text x="424" y="144" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">the triangle shape</text>
+
+  <g fill="#7a828c" fill-opacity="0.45">
+    <rect x="30" y="84" width="70" height="3" rx="1"/>
+    <rect x="106" y="84" width="70" height="3" rx="1"/>
+    <rect x="310" y="84" width="70" height="3" rx="1"/>
+    <rect x="386" y="84" width="70" height="3" rx="1"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="65" y="98">case</text>
+    <text x="141" y="98">case</text>
+    <text x="345" y="98">case</text>
+    <text x="421" y="98">case</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M103,104 V126" marker-end="url(#g)"/>
+    <path d="M424,104 V126" marker-end="url(#g)"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="20" y="120">default sees</text>
+    <text x="300" y="120">default sees</text>
+  </g>
+
+  <text x="20" y="172" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">never holds, and it compiles</text>
+  <text x="300" y="172" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">TS2322: not assignable to never</text>
+
+  <text x="20" y="204" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the leftover is the cell with no case beneath it, and that is what the error names</text>
+</svg>

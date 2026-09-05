@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 238" width="560" height="238" role="img" aria-labelledby="title desc">
+  <title id="title">A tie that reshuffles repeats one row and skips another</title>
+  <desc id="desc">The same five tied rows come back in one order for the first request and another for the second. Taking the first 3 from one and the rest from the other, the reader sees B twice and never sees D.</desc>
+
+  <!-- Both rows hold the same five values; only the sequence differs, and the
+       page windows are taken at the same positions. Accent marks what that
+       costs. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="78">first request</text>
+    <text x="20" y="130">second request</text>
+    <text x="20" y="184">the reader saw</text>
+  </g>
+
+  <rect x="150" y="64" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.30"/>
+  <rect x="220" y="64" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.30"/>
+  <rect x="290" y="64" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.30"/>
+  <rect x="360" y="64" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <rect x="430" y="64" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <rect x="150" y="116" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <rect x="220" y="116" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <rect x="290" y="116" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <rect x="360" y="116" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.30"/>
+  <rect x="430" y="116" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.30"/>
+  <rect x="150" y="170" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <rect x="220" y="170" width="60" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <rect x="290" y="170" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <rect x="360" y="170" width="60" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <rect x="430" y="170" width="60" height="20" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="180" y="78">A</text>
+    <text x="250" y="78">B</text>
+    <text x="320" y="78">C</text>
+    <text x="390" y="78">D</text>
+    <text x="460" y="78">E</text>
+    <text x="180" y="130">C</text>
+    <text x="250" y="130">A</text>
+    <text x="320" y="130">D</text>
+    <text x="390" y="130">B</text>
+    <text x="460" y="130">E</text>
+    <text x="180" y="184">A</text>
+    <text x="320" y="184">C</text>
+    <text x="460" y="184">E</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">
+    <text x="250" y="184">B</text>
+    <text x="390" y="184">B</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.55" fill="none">
+    <path d="M150,90 H350"/><path d="M150,86 V94"/><path d="M350,86 V94"/>
+    <path d="M360,142 H490"/><path d="M360,138 V146"/><path d="M490,138 V146"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="250" y="104">page 1</text>
+    <text x="425" y="156">page 2</text>
+  </g>
+
+  <text x="150" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">B twice, and D never appeared</text>
+  <text x="20" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same five rows both times, and the tie was free to reshuffle</text>
+</svg>

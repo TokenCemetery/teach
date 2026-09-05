@@ -85,6 +85,10 @@ Aggregate (actual rows=1.00 loops=1)
         Filter: ((group_a = 'A0500'::text) AND (group_b = 'B0500'::text))
 ```
 
+![The table narrowed step by step. Both columns agree that the first condition leaves 100 rows. They part on the second: the planner estimates one row, while in truth 100 remain.](images/multiplied-as-if-unrelated.svg)
+
+The two columns agree until the second condition, and the whole error is one step. Nothing is wrong with either selectivity on its own, which is why no single-column statistic can fix this and why the repair is an object that describes the pair.
+
 The estimate, `rows=1`, is a hundred times smaller than the actual `rows=100.00`: the planner multiplied each column's one-in-a-thousand selectivity as if unrelated, when the second condition adds nothing once the first is true. `CREATE STATISTICS i37_group_dep (dependencies, ndistinct) ON group_a, group_b FROM pairs`, followed by another `ANALYZE`, tells the planner about the dependency directly:
 
 ```text

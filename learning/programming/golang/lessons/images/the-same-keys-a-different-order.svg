@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">The same keys, a different order each run</title>
+  <desc id="desc">Three runs over the same map visit its 4 keys in three different orders. Collecting the keys and sorting them gives a fourth row whose order is the same on every run.</desc>
+
+  <!-- All four rows hold the same key set; only the sequence differs, which is
+       the whole reason the last row exists. Accent marks the order you can rely
+       on. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="77">run 1</text>
+    <text x="20" y="103">run 2</text>
+    <text x="20" y="129">run 3</text>
+    <text x="20" y="163">sorted</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="140" y="64" width="50" height="18" rx="2"/>
+    <rect x="200" y="64" width="50" height="18" rx="2"/>
+    <rect x="260" y="64" width="50" height="18" rx="2"/>
+    <rect x="320" y="64" width="50" height="18" rx="2"/>
+    <rect x="140" y="90" width="50" height="18" rx="2"/>
+    <rect x="200" y="90" width="50" height="18" rx="2"/>
+    <rect x="260" y="90" width="50" height="18" rx="2"/>
+    <rect x="320" y="90" width="50" height="18" rx="2"/>
+    <rect x="140" y="116" width="50" height="18" rx="2"/>
+    <rect x="200" y="116" width="50" height="18" rx="2"/>
+    <rect x="260" y="116" width="50" height="18" rx="2"/>
+    <rect x="320" y="116" width="50" height="18" rx="2"/>
+  </g>
+  <g fill="#bf7d1a" fill-opacity="0.9">
+    <rect x="140" y="150" width="50" height="18" rx="2"/>
+    <rect x="200" y="150" width="50" height="18" rx="2"/>
+    <rect x="260" y="150" width="50" height="18" rx="2"/>
+    <rect x="320" y="150" width="50" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="165" y="77">c</text>
+    <text x="225" y="77">a</text>
+    <text x="285" y="77">d</text>
+    <text x="345" y="77">b</text>
+    <text x="165" y="103">b</text>
+    <text x="225" y="103">d</text>
+    <text x="285" y="103">a</text>
+    <text x="345" y="103">c</text>
+    <text x="165" y="129">a</text>
+    <text x="225" y="129">c</text>
+    <text x="285" y="129">b</text>
+    <text x="345" y="129">d</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">
+    <text x="165" y="163">a</text>
+    <text x="225" y="163">b</text>
+    <text x="285" y="163">c</text>
+    <text x="345" y="163">d</text>
+  </g>
+
+  <text x="400" y="103" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">a different order each run</text>
+  <text x="400" y="163" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the same order every run</text>
+  <text x="20" y="190" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same 4 keys in every row, and only the last row's order is promised</text>
+</svg>

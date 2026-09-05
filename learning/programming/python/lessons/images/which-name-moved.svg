@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 236" width="560" height="236" role="img" aria-labelledby="title desc">
+  <title id="title">Patching a definition moves one name, not every name bound to it</title>
+  <desc id="desc">Three module namespaces. Patching pkg.clock.now rebinds the name now inside pkg.clock, which the accent arrow shows pointing at the fake. pkg.report_from holds its own name now, bound at import, still pointing at the real function. pkg.report_mod holds the name clock, which points at the pkg.clock namespace itself, so it resolves now at call time and reaches the fake.</desc>
+
+  <!-- The third arrow ends on a namespace rather than on an object, which is
+       the whole difference between the two import styles. Accent marks the one
+       binding the patch actually moved. Tones validated for both surfaces;
+       see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">after patch("pkg.clock.now")</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="20" y="58">pkg.clock</text>
+    <text x="20" y="108">pkg.report_from</text>
+    <text x="20" y="158">pkg.report_mod</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="20" y="62" width="120" height="20" rx="2"/>
+    <rect x="20" y="112" width="120" height="20" rx="2"/>
+    <rect x="20" y="162" width="120" height="20" rx="2"/>
+    <rect x="400" y="112" width="90" height="20" rx="2"/>
+  </g>
+  <rect x="400" y="62" width="90" height="20" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="80" y="76">now</text>
+    <text x="80" y="126">now</text>
+    <text x="80" y="176">clock</text>
+    <text x="445" y="76">fake</text>
+    <text x="445" y="126">real</text>
+  </g>
+
+  <path d="M140,72 H396" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M140,122 H396" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <path d="M20,172 H8 V72 H19" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="270" y="64" fill="#bf7d1a">the patch rebound this name</text>
+    <text x="270" y="114">its own binding, untouched</text>
+    <text x="150" y="176">points at the namespace, not the function</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="212">report_from.stamp() gives 'at real'</text>
+    <text x="20" y="228">report_mod.stamp() gives 'at fake'</text>
+  </g>
+</svg>

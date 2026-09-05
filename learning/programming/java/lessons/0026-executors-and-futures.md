@@ -91,6 +91,19 @@ Exception in thread "pool-2-thread-1" java.lang.IllegalStateException: boom from
 
 `execute` takes a plain `Runnable` with nowhere to store a result, so the pool's worker thread lets the exception reach its own uncaught exception handler, the one lesson 22 covered, and by default that prints the trace to standard error immediately. The trap is not that one method is broken, it is that the two look interchangeable for a task that returns nothing, and only one of them tells you when that task fails.
 
+```mermaid
+flowchart TD
+    T["the task throws"] --> Q{"submitted how?"}
+    Q -- execute --> U["the worker's own<br>uncaught exception handler"]
+    U --> P["printed to stderr, at once"]
+    Q -- submit --> F["captured inside the Future"]
+    F --> G{"does anything call get?"}
+    G -- yes --> E["ExecutionException,<br>wrapping the cause"]
+    G -- no --> N["nothing, anywhere, ever"]
+```
+
+Only one branch of that tree ends without telling anyone, and reaching it takes no mistake beyond calling the method whose return value you had no use for. A task that returns nothing invites `submit` and then invites discarding the `Future` it hands back, which is exactly the path to the bottom right.
+
 ### `Future.get`, `ExecutionException`, and the cause underneath
 
 `Future.get()` blocks until the task finishes, then either returns its result or throws `ExecutionException` wrapping whatever the task actually threw. `getCause()` is what recovers the original:

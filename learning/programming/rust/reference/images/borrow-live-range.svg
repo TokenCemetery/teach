@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" width="560" height="160" role="img" aria-labelledby="title desc">
+  <title id="title">A borrow's live range against the line that conflicts with it</title>
+  <desc id="desc">Two versions of the same three lines. On the left, first borrows v, then v.push runs, then first is printed; the borrow's live range covers all three lines, so the push falls inside it and the compiler reports E0502. On the right, first is printed before v.push, so the live range ends one line earlier, the push falls outside it, and the code compiles. Nothing was restructured; only the last use moved.</desc>
+
+  <!-- The bar is the borrow's live range, which is what the sheet means by a
+       borrow ending at its last use. Gray is structure, the accent marks the
+       rejection, and the E0502 label carries that meaning in text as well as
+       in colour. Both tones are validated for the light and dark surfaces;
+       see .agents/TODO.md. -->
+
+  <path d="M285,12 V150" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c">
+    <text x="36" y="26">as written</text>
+    <text x="316" y="26">last use moved up</text>
+
+    <text x="36" y="60">let first = &amp;v[0];</text>
+    <text x="36" y="84">v.push(4);</text>
+    <text x="36" y="108">println!("{first}");</text>
+
+    <text x="316" y="60">let first = &amp;v[0];</text>
+    <text x="316" y="84">println!("{first}");</text>
+    <text x="316" y="108">v.push(4);</text>
+  </g>
+
+  <!-- live range: to the last use, not to the end of the scope -->
+  <rect x="20" y="50" width="4" height="62" rx="2" fill="#7a828c"/>
+  <rect x="300" y="50" width="4" height="38" rx="2" fill="#7a828c"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">
+    <text x="120" y="84" fill="#bf7d1a">E0502</text>
+    <text x="400" y="108" fill="#7a828c">compiles</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">
+    <text x="20" y="140">the push falls inside the live range</text>
+    <text x="300" y="140">the live range ended a line earlier</text>
+  </g>
+</svg>

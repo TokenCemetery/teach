@@ -56,6 +56,10 @@ rows, err := db.QueryContext(ctx, q)   // the query observes the same deadline
 | `WithDeadline(parent, t)` | at `t`, or you call `cancel`, or the parent is cancelled |
 | `WithValue(parent, k, v)` | never, it only carries a value |
 
+![A context tree from Background through a request context to a query context and a sibling. Cancelling the query context shades it and both calls beneath it; the request context above, the root, and the sibling stay unshaded.](images/down-the-subtree-only.svg)
+
+The shaded set is exactly the cancelled node and what hangs below it. Nothing above it and nothing beside it changes, which is why a handler can bound one query without touching the request it belongs to.
+
 **Always call `cancel`.** `defer cancel()` immediately after the constructor is not optional politeness: until cancel runs, the child stays attached to the parent and the timer stays live. `go vet`'s `lostcancel` check reports the ones it can see.
 
 `ctx.Err()` says why it stopped, either `context.Canceled` or `context.DeadlineExceeded`, and both are matchable with `errors.Is` through any amount of wrapping.

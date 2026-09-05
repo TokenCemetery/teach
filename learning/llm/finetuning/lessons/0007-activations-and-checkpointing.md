@@ -78,6 +78,10 @@ The trade that fixes it: do not store most activations. Store a few, and recompu
 
 Keep the input to each block (a *checkpoint*), discard everything inside it, and when the backward pass reaches that block, re-run its forward pass to regenerate what is needed. Storage drops from roughly linear in depth to roughly the square root of it, at the cost of about one extra forward pass, commonly 20 to 40% slower per step.
 
+![Two curves over depth. Without checkpointing, stored activations rise in a straight line with the layer count. With checkpointing they follow the square root and flatten almost at once. At 24 layers the two are about five times apart.](images/linear-against-square-root.svg)
+
+The shape of that trade is why it is close to a default. A straight line and a square root are barely apart at two or three layers, so on a toy model the technique looks pointless; the gap is about five times at the worked example's 24 layers and keeps widening, and the price stays one extra forward pass however deep the model gets.
+
 ```python
 model.gradient_checkpointing_enable()
 model.config.use_cache = False  # incompatible with checkpointing during training

@@ -57,6 +57,10 @@ Running sixteen threads through that pattern against one key produced between tw
 map.computeIfAbsent("key", k -> new Widget(id++));
 ```
 
+![Two thread lanes. On the left, thread one reads and later writes, and thread two's read lands in the marked interval between those two calls, so both write. On the right each thread makes one computeIfAbsent call and the second waits for the key.](images/the-gap-nothing-holds.svg)
+
+Each box on the left is atomic on its own; the accent span between the first thread's two boxes is not, and the second thread's read sits inside it. On the right there is no such span to sit inside, because the read and the write are one call.
+
 `putIfAbsent` and `merge` exist for the same reason: each names a get-then-write pattern common enough to deserve its own atomic method, so the caller never has to hold anything for the gap between the read and the write. Reach for one of them instead of a hand-written check-then-act, on `ConcurrentHashMap` or on any concurrent collection that offers one.
 
 ### A `computeIfAbsent` mapping function must leave the map alone

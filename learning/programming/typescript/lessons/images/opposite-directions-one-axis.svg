@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">A return position and a parameter position travel opposite ways along one axis</title>
+  <desc id="desc">One axis runs from narrower on the left to wider on the right. Both rows start from the same written type in the middle. A return position may be replaced by something narrower, so its arrow points left: a function returning Dog stands in for one typed to return Animal. A parameter position may be replaced by something wider, so its arrow points right: a function accepting unknown stands in for one typed to accept Animal.</desc>
+
+  <!-- Both arrows leave the same point, which is why the axis is drawn once and
+       the rows share it. Accent marks the direction that surprises readers.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">
+    <text x="20" y="38">narrower</text>
+    <text x="540" y="38" text-anchor="end">wider</text>
+  </g>
+  <path d="M20,44 H540" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <path d="M280,88 V168" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="3 3" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="74">a return position</text>
+    <text x="20" y="130">a parameter position</text>
+  </g>
+
+  <path d="M280,88 H160" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="288" y="92">() =&gt; Animal</text>
+    <text x="152" y="92" text-anchor="end">() =&gt; Dog</text>
+  </g>
+
+  <path d="M280,144 H420" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="272" y="148" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">(a: Animal) =&gt; void</text>
+  <text x="428" y="148" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">(a: unknown) =&gt; void</text>
+
+  <text x="280" y="176" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">what is written</text>
+  <text x="20" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">accept at least as much, return at least as little, on one axis and in two directions</text>
+</svg>

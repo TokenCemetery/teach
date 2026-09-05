@@ -56,6 +56,10 @@ error TS2322: Type '{ kind: "triangle"; base: number; height: number; }' is not 
 
 `default` used to see `never`; now it sees the leftover `triangle` shape, the one member the two `case` labels do not exclude. Run the same experiment on a bare literal union such as `"a" | "b"` with a third member `"c"` added, and the message shrinks to `error TS2322: Type '"c"' is not assignable to type 'never'.`, no object shape, just the literal. Same mechanism either way; a discriminated union just has more to print.
 
+![Two panels. On the left a union of two members with a case beneath each, so what reaches default is nothing. On the right the same two cases under a union of three, so triangle is still there when default runs.](images/what-reaches-default.svg)
+
+Nothing about the `switch` changed between the panels; a member was added above it. The leftover is simply the cell with no `case` beneath it, and that is exactly what the error names.
+
 ### Why this is the good failure
 
 That diagnostic does not say "something is wrong with this switch." It names the value left over, `"c"` or the `triangle` shape, at the exact `switch` that failed to handle it. Without the guard, a new member is a silent change: every switch that used to be exhaustive keeps compiling and does the wrong thing for the case nobody told it about, discovered from a bug report rather than a build. With the guard, a new member becomes a list of compile errors, one at every site not yet updated, each naming the member responsible. This is the mechanism behind stage 4's completion criterion, illegal states unrepresentable and the compiler proving it: lesson 22 shaped the type so a bad combination cannot be constructed, and this guard makes the compiler enforce that every consumer kept up. Without the guard, a discriminated union is a convenience; with it, a guarantee.

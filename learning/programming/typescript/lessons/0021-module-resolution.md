@@ -39,6 +39,10 @@ Here is the fact this lesson rests on. One project, one `tsconfig.json` with `mo
 | `{"type": "module"}` | `from "./dep.ts"` | `TS5097: An import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.` |
 | `{}` | `from "./dep"` | compiles |
 
+![The compiler options and the import specifier drawn once as unchanged, feeding two branches that differ only in package.json's type field, and reaching opposite verdicts.](images/one-field-moved.svg)
+
+The specifier is drawn once because it never changes. Everything the compiler was configured with is on the left, and the thing that decided the answer is not in it.
+
 The only thing that moved is one field the compiler options never mention. `package.json`'s `type` field tells Node whether a plain file in that package is an ES module or a CommonJS module, and once `module` is `nodenext` the compiler reads exactly the same field, for exactly the same reason: it must decide which module system a file belongs to before saying anything about how its imports resolve. `{"type": "module"}` puts the package under ES module rules, which require a relative specifier to carry the extension the file will actually have at run time. Leave the field out and the package falls back to CommonJS rules, where an extension has always been optional. The compiler is not consulting its options in isolation, it is doing what Node would do with the same two files.
 
 ### The extension you write is the extension that will exist

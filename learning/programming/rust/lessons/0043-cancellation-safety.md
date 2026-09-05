@@ -61,6 +61,10 @@ Fed the values one to five, sent every twenty milliseconds against a thirty mill
 
 ### The fix is where the state lives, not a different method
 
+![The same function drawn twice. On the left batch sits inside the box a lost race ends; on the right it sits beside seen, outside that box.](images/inside-the-lap-or-outside.svg)
+
+The lap box is the same size in both drawings, and `seen` is outside it in both. The only thing that moves is `batch`, and a lost race ends the lap either way; what changes is whether the lap has anything of yours inside it when it does.
+
 Moving `batch` above the loop is the entire change: the variable survives a lost race, so a version of `collect_two` that fills to a target length, rather than always adding two more, picks up next lap where it left off.
 
 ```rust

@@ -93,6 +93,10 @@ Wrap any total that feeds arithmetic or a report: `coalesce(sum(amount), 0)`.
 | `avg()` treating NULL as zero | it does not | `avg(coalesce(col, 0))` when zero is meant |
 | a `CHECK` that is unknown | unknown passes | state the null case explicitly |
 
+![A bar of every row in a table, and beneath it the same bar in three slices: the rows where col equals x, the rows where col is different from x, and the rows where col is null. The first two are what the two queries return.](images/null-partitions-nothing.svg)
+
+The second row of that table, seen from one level up. Two opposite conditions look like they cut the table in two, and they do not: the third slice is in neither result, so the two counts never add up to the row count. This is review question 4 below, and the reason it is worth asking is that nothing about either query looks wrong on its own.
+
 ## Expanding `NOT IN`
 
 ```sql

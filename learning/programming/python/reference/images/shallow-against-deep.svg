@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">A shallow copy against a deep copy of a nested dict</title>
+  <desc id="desc">Starting from data equals a dict whose tags key holds the list a. After copy.copy, the name other holds a new dict, but both dicts point at the one original list, so mutating it is visible through both names. After copy.deepcopy, other holds a new dict pointing at a new list, and the two graphs share nothing.</desc>
+
+  <!-- Emphasis form again: the accent marks what the idiom newly allocated,
+       the gray is the graph that already existed. Stroke weight repeats the
+       distinction so it is never carried by colour alone. Both tones are
+       validated against the light and dark surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c">
+    <rect x="20" y="8" width="10" height="10" rx="2" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+    <text x="36" y="17">already existed</text>
+    <rect x="170" y="8" width="10" height="10" rx="2" fill="none" stroke="#bf7d1a" stroke-width="2.5"/>
+    <text x="186" y="17">newly allocated</text>
+  </g>
+
+  <path d="M277.5,34 V190" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <defs>
+    <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c" text-anchor="middle">
+    <text x="137.5" y="42">other = copy.copy(data)</text>
+    <text x="417.5" y="42">other = copy.deepcopy(data)</text>
+
+    <text x="75" y="66">data</text>
+    <text x="200" y="66">other</text>
+    <text x="355" y="66">data</text>
+    <text x="480" y="66">other</text>
+
+    <text x="75" y="97">{"tags": ...}</text>
+    <text x="200" y="97">{"tags": ...}</text>
+    <text x="355" y="97">{"tags": ...}</text>
+    <text x="480" y="97">{"tags": ...}</text>
+
+    <text x="137.5" y="171">["a"]</text>
+    <text x="355" y="171">["a"]</text>
+    <text x="480" y="171">["a"]</text>
+  </g>
+
+  <!-- the graphs that already existed -->
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="78" width="110" height="30" rx="3"/>
+    <rect x="82.5" y="152" width="110" height="30" rx="3"/>
+    <rect x="300" y="78" width="110" height="30" rx="3"/>
+    <rect x="300" y="152" width="110" height="30" rx="3"/>
+  </g>
+
+  <!-- what each idiom allocated -->
+  <g fill="none" stroke="#bf7d1a" stroke-width="2.5">
+    <rect x="145" y="78" width="110" height="30" rx="3"/>
+    <rect x="425" y="78" width="110" height="30" rx="3"/>
+    <rect x="425" y="152" width="110" height="30" rx="3"/>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5" marker-end="url(#tip)">
+    <path d="M75,70 V74"/>
+    <path d="M200,70 V74"/>
+    <path d="M355,70 V74"/>
+    <path d="M480,70 V74"/>
+
+    <!-- shallow: both dicts reach the one list -->
+    <path d="M75,108 L128,148"/>
+    <path d="M200,108 L147,148"/>
+
+    <!-- deep: each dict reaches its own -->
+    <path d="M355,108 V148"/>
+    <path d="M480,108 V148"/>
+  </g>
+</svg>

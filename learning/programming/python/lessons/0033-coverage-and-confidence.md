@@ -86,6 +86,10 @@ src/shop/pricing.py       7      0      4      0   100%
 
 100 per cent of statements, 100 per cent of branches, three passing tests, and a function that doubles the price where it should halve it. Coverage measures execution. Only an assertion measures correctness.
 
+![Two full bars, statements and branches, both at 100 per cent, and a third empty dashed track labelled any output asserted, with no column.](images/no-column-for-correctness.svg)
+
+The third row is drawn empty rather than at zero, because zero would mean the tool looked and found none. It did not look: there is no such column in the report, and no threshold you can set against it. Every number the run printed was about the first two rows, and the defect was in the third.
+
 That is the whole argument against a coverage target: a number that can be reached without asserting anything will be, once someone is required to reach it.
 
 ### What the number is actually good for

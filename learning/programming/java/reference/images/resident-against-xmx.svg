@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 216" width="560" height="216" role="img" aria-labelledby="title desc">
+  <title id="title">Why -Xmx equal to the container limit gets the container killed</title>
+  <desc id="desc">Two schematic bars of resident memory against a container's memory limit. In the first, the heap alone is set to the whole limit, so metaspace, thread stacks, the code cache and native memory all sit past the limit line and the container is killed from outside the JVM. In the second, the heap is set below the limit and the same four areas fit underneath it. The four areas are the same width in both bars, because -Xmx does not bound them. Proportions are illustrative, not measured.</desc>
+
+  <!-- Schematic, deliberately without an axis: the sheet gives no byte figures
+       for the four non-heap areas, so drawing a scale would invent them. The
+       one measurable claim is the ordering, that resident memory is the sum of
+       all five while -Xmx bounds one. Same two validated tones as the rest of
+       the sweep; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">
+    <rect x="20" y="8" width="10" height="10" rx="2" fill="#7a828c"/>
+    <text x="36" y="17">heap, bounded by -Xmx</text>
+    <rect x="190" y="8" width="10" height="10" rx="2" fill="#bf7d1a"/>
+    <text x="206" y="17">metaspace, stacks, code cache, native</text>
+  </g>
+
+  <text x="400" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c" text-anchor="middle">container limit</text>
+  <path d="M400,46 V192" stroke="#7a828c" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c">
+    <text x="20" y="62">-Xmx equal to the container limit</text>
+    <text x="20" y="152">-Xmx set below it</text>
+  </g>
+
+  <rect x="20" y="70" width="380" height="28" fill="#7a828c"/>
+  <rect x="402" y="70" width="118" height="28" fill="#bf7d1a"/>
+
+  <rect x="20" y="160" width="250" height="28" fill="#7a828c"/>
+  <rect x="272" y="160" width="118" height="28" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#10141a" text-anchor="middle">
+    <text x="210" y="88">heap</text>
+    <text x="145" y="178">heap</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">
+    <text x="20" y="114">killed from outside the JVM, with no OutOfMemoryError</text>
+    <text x="20" y="204">resident memory stays under the limit</text>
+  </g>
+</svg>

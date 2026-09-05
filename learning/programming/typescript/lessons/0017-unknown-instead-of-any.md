@@ -34,6 +34,10 @@ const s: string = u;
 
 `any` never does that. Assign `any` anywhere and it fits, silently, in both directions. `unknown` is compatible with every type in one direction only: values flow in freely, nothing flows out until you have shown the compiler what it actually is. That asymmetry is the whole idea. `unknown` is the honest type for a value you have not yet established anything about; `any` is not a type for not-yet-established, it is an instruction to stop asking.
 
+![The same values assigned into unknown and into any. Both rows have an inbound arrow; only the any row has an outbound one, and the unknown row carries TS2322 and TS18046 instead.](images/in-both-out-once.svg)
+
+The left half of the two rows is identical. The right half is where they part, and on the `unknown` row there is simply no arrow to draw.
+
 ### Nothing flows out, not even a method call
 
 The restriction is not limited to assignment. Reading a property or calling an `unknown` value is refused before the assignment question even arises:

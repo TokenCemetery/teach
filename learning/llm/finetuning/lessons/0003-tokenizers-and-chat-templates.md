@@ -97,6 +97,10 @@ print(repr(full))
 
 `add_generation_prompt` is where this most often goes wrong: it belongs in inference, where you want the model to continue as the assistant, and not in a training example, where the assistant text is part of the sequence being learned.
 
+![One conversation rendered twice as a strip of template pieces. Both share the same three pieces ending with the assistant marker; the inference rendering stops there, while the training rendering carries one more piece, the assistant's own text and end marker.](images/where-the-turn-begins.svg)
+
+Both renderings are the same pieces in the same places up to the assistant marker. The one that differs is the piece after it, which is exactly what the model is supposed to produce at inference and exactly what it is supposed to learn during training.
+
 ### Base models have no template
 
 If a base model's tokenizer has no chat template, that is not a bug, because there is no conversation format to preserve. You are choosing the format, so choose one, write it down, and use it identically in training and serving.

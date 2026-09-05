@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">The same empty object answers the two tests differently</title>
+  <desc id="desc">One empty Response is put to two tests. Asking if response falls through a missing __bool__ to __len__, reads zero and answers false. Asking if response is not None answers true. The object is the same in both.</desc>
+
+  <!-- The fallback chain is drawn as the steps it actually takes, so the false
+       answer is the end of a path rather than a rule. Accent marks that answer.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="86" width="130" height="22" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <text x="85" y="100" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">an empty Response</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="200" y="50">if response:</text>
+    <text x="200" y="104">if response is not None:</text>
+  </g>
+
+  <rect x="200" y="58" width="80" height="18" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="3 3"/>
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="300" y="58" width="80" height="18" rx="2"/>
+    <rect x="400" y="58" width="40" height="18" rx="2"/>
+    <rect x="200" y="110" width="110" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="340" y="71">__len__</text>
+    <text x="420" y="71">0</text>
+    <text x="255" y="123">is not None</text>
+  </g>
+  <text x="240" y="71" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.5" text-anchor="middle">__bool__</text>
+  <text x="200" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.5">not defined</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M150,92 L196,69" marker-end="url(#g)"/>
+    <path d="M150,102 L196,120" marker-end="url(#g)"/>
+    <path d="M280,67 H296" marker-end="url(#g)"/>
+    <path d="M380,67 H396" marker-end="url(#g)"/>
+    <path d="M440,67 H466" marker-end="url(#g)"/>
+    <path d="M310,119 H336" marker-end="url(#g)"/>
+  </g>
+
+  <text x="470" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">False</text>
+  <text x="340" y="122" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">True</text>
+
+  <text x="200" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">so if response: silently means if it has content</text>
+
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">an empty response is a real response, and only one of the two tests says so</text>
+</svg>

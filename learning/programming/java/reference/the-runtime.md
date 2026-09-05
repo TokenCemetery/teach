@@ -20,6 +20,10 @@ A JVM process is at least five separate pools, not one. `-Xmx` bounds exactly on
 
 Resident memory, the number a container's own out-of-memory killer watches, is the sum of all five rows. A container given a memory limit, with a JVM inside it told only `-Xmx` equal to that same limit, has zero headroom for the other four, and the kill that follows leaves no `OutOfMemoryError` and no application log line, because the JVM was never asked to throw anything.
 
+![Two schematic bars of resident memory against a container limit. With -Xmx equal to the limit, the heap alone fills it and metaspace, stacks, code cache and native memory sit past the line. With -Xmx set below it, the same four areas fit underneath.](images/resident-against-xmx.svg)
+
+The four non-heap areas are drawn the same width in both bars, which is the point: `-Xmx` does not bound them, so lowering it does not shrink them. It only buys them somewhere to live. The proportions above are illustrative, since what each of the four actually costs is a property of the workload and has to be measured.
+
 ## Heap sizing flags that matter
 
 | Flag | Sets | Reported tag | Notes |

@@ -69,6 +69,10 @@ const p: P = src;   // compiles
 
 The shape did not change between the two. What changed is that the rejected one is a **fresh object literal** assigned directly to a typed target, which triggers a separate check, excess property checking, that is not part of ordinary structural assignability.
 
+![One object literal with an extra property, reaching one typed target by two routes. Assigned directly it passes through the excess property check and is stopped; assigned to a variable first it meets no such check and arrives.](images/one-route-has-a-gate.svg)
+
+The value is the same on both routes and so is the target. The only difference is that one route passes through a check the other never meets, which is why the fix that "works" changes nothing about the value.
+
 The reasoning: a fresh literal is the one place the compiler can be fairly sure what you meant, since you wrote `{ a: 1, b: 2 }` right next to a type that says `{ a: number }`. A `b` there is almost certainly a typo, or a misremembered option name, not deliberate extra data being carried through, so the check catches it where catching it costs nothing else. It cannot be the general rule, since the general rule must keep working for the case above, where a value legitimately carries more than a function needs. The same check fires anywhere a fresh literal meets a typed target, including a function call passing one directly, which practice 4 asks you to predict.
 
 ### The practical consequence

@@ -27,6 +27,10 @@ Check 2 catches template mismatch, missing end-of-turn tokens, masking bugs and 
 
 ## Symptom → cause
 
+![Six sketches of loss against steps: flat from step 1, a fall that stops well above zero, train and held-out curves separating with the held-out one turning back up, a staircase of flat runs and sharp drops, a descent interrupted by one spike, and a descent that ends abruptly at NaN.](images/loss-curve-shapes.svg)
+
+The first eleven rows below name a curve rather than an event, and several of them share a shape: three say flat, two say barely moves. Match the sketch, then read every row that names it, since one shape can have more than one cause. From row twelve the symptom was observed somewhere else, in an output, a load error or a regression suite, and there is no curve to match.
+
 | Symptom | Likely cause | Check |
 |---|---|---|
 | Loss exactly flat from step 1 | Adapter matched nothing | `print_trainable_parameters()` |

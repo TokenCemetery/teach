@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 244" width="560" height="244" role="img" aria-labelledby="title desc">
+  <title id="title">Four configurations fit the grid; the fifth is not a cell in it</title>
+  <desc id="desc">Base precision against adapter gives four configurations: a reference point, a training ceiling, quantisation damage alone, and both costs together. The fifth configuration, an adapter trained against a 4-bit base and merged into a bf16 one, uses a different base for training than for deployment, so it sits outside the grid.</desc>
+
+  <!-- Four cells and one box that will not fit in them, which is why the fifth
+       configuration is the one people skip. Accent marks it. Tones validated
+       for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="200" y="54">no adapter</text>
+    <text x="350" y="54">with an adapter</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="83">bf16 base</text>
+    <text x="20" y="129">4-bit base</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="140" y="64" width="120" height="30" rx="2"/>
+    <rect x="290" y="64" width="120" height="30" rx="2"/>
+    <rect x="140" y="110" width="120" height="30" rx="2"/>
+    <rect x="290" y="110" width="120" height="30" rx="2"/>
+  </g>
+  <rect x="290" y="170" width="180" height="30" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="200" y="83">the reference point</text>
+    <text x="350" y="83">the training ceiling</text>
+    <text x="200" y="129">cost 1 alone</text>
+    <text x="350" y="129">costs 1 and 2</text>
+  </g>
+  <text x="380" y="189" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">merged into a bf16 base</text>
+
+  <path d="M350,140 V166" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+
+  <text x="290" y="214" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">trained against one base, deployed against another</text>
+
+  <text x="20" y="232" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">four configurations fit the grid, and the one most often skipped does not</text>
+</svg>

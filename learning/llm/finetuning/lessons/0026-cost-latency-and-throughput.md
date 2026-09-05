@@ -46,6 +46,10 @@ Generation has two phases with completely different performance characteristics,
 
 **Decode** generates one token at a time, each depending on the last. Each step reads the entire model's weights to produce a single token, so the arithmetic per byte moved is tiny, making it **memory-bandwidth-bound.** Cost scales with output length.
 
+![Eight prompt tokens all feeding one pass on the prefill row, against four separate chained passes on the decode row, one per output token.](images/one-pass-or-one-each.svg)
+
+One box on the top row against four on the bottom is the whole asymmetry. Lengthening the prompt widens the single pass; lengthening the output adds boxes to the chain.
+
 Consequences:
 
 - **Long prompts are cheap per token; long outputs are expensive per token.** Not symmetric, and the asymmetry is large.

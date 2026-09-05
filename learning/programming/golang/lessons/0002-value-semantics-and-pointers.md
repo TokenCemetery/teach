@@ -83,6 +83,10 @@ Copying is always shallow, and four built-in types are small headers that point 
 
 So `func add(m map[string]int)` can insert entries the caller sees, even though `m` was copied, because the copy points at the same table. A map argument is a copied header, not a reference parameter, and the distinction shows up the moment you assign to `m` itself rather than into it.
 
+![Left: the caller's header and the callee's copy both point at one table, so an entry written through either is visible to both. Right: the callee assigns a new map to its own header, which now points at a new empty table while the caller's header still points at the original.](images/into-it-or-at-it.svg)
+
+Both panels start from the same pair of headers, and only the callee's arrow ever moves. That is the whole distinction: writing goes through the header to the shared table, while assigning replaces the header itself, which nobody else is holding.
+
 Everything else (structs, arrays, strings, numbers) is copied in full. `[1000]int` passed to a function copies eight kilobytes.
 
 ### When to use a pointer

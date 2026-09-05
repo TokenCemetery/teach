@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 224" width="560" height="224" role="img" aria-labelledby="title desc">
+  <title id="title">Three independent fields permit eight states where the domain has three</title>
+  <desc id="desc">On the left, every combination of loading being true or false, data being set or unset, and error being set or unset: eight rows. Three of them are the states a request really has, namely loading with nothing else, not loading with data, and not loading with an error. The other five cannot happen. On the right, a discriminated union with one arm per real state, so the five are no longer expressible.</desc>
+
+  <!-- Accent is the rows the domain produces; the gray rows are the difference
+       the sheet's method asks you to name. Counts are the repository's own,
+       from lesson 24. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V196" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="34">what the type permits: eight</text>
+    <text x="300" y="34">what the domain produces: three</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c" text-anchor="middle" opacity="0.8">
+    <text x="55" y="56">loading</text>
+    <text x="130" y="56">data</text>
+    <text x="200" y="56">error</text>
+  </g>
+
+  <!-- the three the domain produces -->
+  <g fill="#bf7d1a">
+    <rect x="22" y="110" width="3" height="14"/>
+    <rect x="22" y="142" width="3" height="14"/>
+    <rect x="22" y="158" width="3" height="14"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c" text-anchor="middle">
+    <text x="55" y="72">true</text><text x="130" y="72">set</text><text x="200" y="72">set</text>
+    <text x="55" y="88">true</text><text x="130" y="88">set</text><text x="200" y="88">unset</text>
+    <text x="55" y="104">true</text><text x="130" y="104">unset</text><text x="200" y="104">set</text>
+    <text x="55" y="136">false</text><text x="130" y="136">set</text><text x="200" y="136">set</text>
+    <text x="55" y="184">false</text><text x="130" y="184">unset</text><text x="200" y="184">unset</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a" text-anchor="middle">
+    <text x="55" y="120">true</text><text x="130" y="120">unset</text><text x="200" y="120">unset</text>
+    <text x="55" y="152">false</text><text x="130" y="152">set</text><text x="200" y="152">unset</text>
+    <text x="55" y="168">false</text><text x="130" y="168">unset</text><text x="200" y="168">set</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1" opacity="0.5" stroke-dasharray="3 3" fill="none">
+    <path d="M240,117 H296"/>
+    <path d="M240,149 H296"/>
+    <path d="M240,165 H296"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a">
+    <text x="300" y="120">{ status: "loading" }</text>
+    <text x="300" y="152">{ status: "success"; data }</text>
+    <text x="300" y="168">{ status: "error"; error }</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="212">the five gray rows are the difference</text>
+    <text x="300" y="212">after the rewrite they cannot be written</text>
+  </g>
+</svg>

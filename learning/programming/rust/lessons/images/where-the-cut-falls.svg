@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 186" width="560" height="186" role="img" aria-labelledby="title desc">
+  <title id="title">A byte range panics when it ends inside a character</title>
+  <desc id="desc">The string héllo laid out as six bytes, 68 c3 a9 6c 6c 6f, with the characters above them: h covers one byte, é covers two, and l, l and o cover one each. A cut at byte 2 falls between é's two bytes and panics. A cut at byte 3 falls at the edge between é and l and yields hé.</desc>
+
+  <!-- Each character's box is as wide as the bytes it occupies, so the cut at
+       byte 2 landing inside é is a fact of the layout rather than a label.
+       Accent marks the cut that panics. Tones validated for both surfaces;
+       see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="40">"héllo"</text>
+  </g>
+  <text x="130" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">6 bytes, 5 chars</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="130" y="64" width="50" height="20" rx="2"/>
+    <rect x="182" y="64" width="102" height="20" rx="2"/>
+    <rect x="286" y="64" width="50" height="20" rx="2"/>
+    <rect x="338" y="64" width="50" height="20" rx="2"/>
+    <rect x="390" y="64" width="50" height="20" rx="2"/>
+
+    <rect x="130" y="94" width="50" height="22" rx="2"/>
+    <rect x="182" y="94" width="50" height="22" rx="2"/>
+    <rect x="234" y="94" width="50" height="22" rx="2"/>
+    <rect x="286" y="94" width="50" height="22" rx="2"/>
+    <rect x="338" y="94" width="50" height="22" rx="2"/>
+    <rect x="390" y="94" width="50" height="22" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="155" y="78">h</text>
+    <text x="205" y="78">é</text>
+    <text x="311" y="78">l</text>
+    <text x="363" y="78">l</text>
+    <text x="415" y="78">o</text>
+
+    <text x="155" y="109">68</text>
+    <text x="207" y="109">c3</text>
+    <text x="259" y="109">a9</text>
+    <text x="311" y="109">6c</text>
+    <text x="363" y="109">6c</text>
+    <text x="415" y="109">6f</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="155" y="128">0</text>
+    <text x="207" y="128">1</text>
+    <text x="259" y="128">2</text>
+    <text x="311" y="128">3</text>
+    <text x="363" y="128">4</text>
+    <text x="415" y="128">5</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="20" y="78">chars</text>
+    <text x="20" y="109">bytes</text>
+    <text x="20" y="128">index</text>
+  </g>
+
+  <path d="M233,56 V136" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+  <path d="M285,56 V136" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="4 3" fill="none"/>
+
+  <text x="233" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">0..2</text>
+  <text x="285" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">0..3</text>
+
+  <text x="20" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">&amp;s[0..2] panics, because the cut lands between é's two bytes</text>
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">&amp;s[0..3] gives "hé", because byte 3 is where a character starts</text>
+</svg>

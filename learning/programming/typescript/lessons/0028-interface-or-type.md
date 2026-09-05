@@ -67,6 +67,10 @@ error TS2322: Type 'number' is not assignable to type 'never'.
 
 A `string` gives the identical shape of error. This `never` is not lesson 23's exhaustiveness guard, written on purpose to prove every case of a union was handled; this one arrives uninvited, forced onto a property two conflicting declarations both claimed, and it tells you, late and from the wrong place, that the type cannot be constructed. `interface extends` reports a conflict where you wrote it; `&` reports it later, at whichever call site first builds a value, as a `never` that gives no hint an intersection caused it.
 
+![Two three-line panels writing the same conflicting type. The interface version is marked on its second line with TS2430; the type-and-intersection version is marked on its third line, the value, with TS2322.](images/where-the-error-lands.svg)
+
+The third line is the same in both panels. Only the marker moves, and where it lands is how far the mistake travels before anyone hears about it.
+
 ### Declaration merging, and its one real use
 
 Two `interface` declarations with the same name do not conflict; they merge.

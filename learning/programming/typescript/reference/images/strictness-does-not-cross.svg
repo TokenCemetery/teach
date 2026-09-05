@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 186" width="560" height="186" role="img" aria-labelledby="title desc">
+  <title id="title">A consumer's strictness does not reach back across the package boundary</title>
+  <desc id="desc">Two builds side by side. In the library's build, strictNullChecks is off, the implementation can return null, and the declaration nonetheless says string. That declaration crosses to your build, where strict is on but governs only the code you write and cannot re-check what arrived. The claim was already false when it crossed.</desc>
+
+  <!-- The table's last column says what a consumer cannot do, and the reason
+       is a boundary rather than a rule. Drawing the two builds is what makes
+       the arrow, and the fact that nothing travels back along it, visible.
+       Accent follows the false claim. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="40">the library's build</text>
+    <text x="310" y="40">your build</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="48" width="230" height="82" rx="3"/>
+    <rect x="310" y="48" width="230" height="82" rx="3"/>
+  </g>
+
+  <defs>
+    <marker id="x" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+  <text x="280" y="78" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a" text-anchor="middle">index.d.ts</text>
+  <path d="M252,90 H304" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#x)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="30" y="92">the implementation can return null</text>
+    <text x="320" y="92">checks the code you write</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="30" y="70">strictNullChecks: off</text>
+    <text x="30" y="114">the declaration says string</text>
+    <text x="320" y="114">cannot re-check what arrived</text>
+  </g>
+  <text x="320" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">strict: on</text>
+
+  <text x="20" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">the claim was already false when it crossed the line</text>
+  <text x="20" y="174" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">and nothing a consumer sets travels back along that arrow</text>
+</svg>

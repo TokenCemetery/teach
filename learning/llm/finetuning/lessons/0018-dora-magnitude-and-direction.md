@@ -67,6 +67,10 @@ Read that carefully, because it is where descriptions go wrong. `BA` is added to
 
 So `BA` can no longer change magnitude even accidentally, since it only steers direction, and `m` handles scale. That is the decoupling, and it is the entire contribution.
 
+![One column of a weight matrix as a vector from an origin, with a dotted quarter circle marking unit norm. On the left, W0 plus BA lands somewhere with a different angle and a different length. On the right, only the angle survives: the direction sits on the unit circle and m sets the length, here back to W0's.](images/length-and-angle.svg)
+
+The two panels use the same `W0` and the same `BA`. On the left one term moved both quantities at once; on the right the angle is everything `BA` contributed, and the length is whatever `m` says it is.
+
 ### What it costs
 
 **Parameters:** one extra vector per adapted layer, of length `d_out`. For a 4096-wide layer that is 4096 numbers against a rank-16 adapter's 131,072. Essentially free.

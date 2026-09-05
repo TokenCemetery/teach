@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 216" width="560" height="216" role="img" aria-labelledby="title desc">
+  <title id="title">What wrapping a value in Option costs, by type</title>
+  <desc id="desc">Five bars of the size of Option of a type, split into the size of the value itself and whatever Option added. For a reference, a boxed value and a string slice, Option adds nothing at all: eight, eight and sixteen bytes either way. For a u8 it adds one byte, taking two, and for a u32 it adds four, taking eight.</desc>
+
+  <!-- Accent is only what Option added, so the niche rows have no accent at
+       all and the cost is visible as absence. Paired figures for the first
+       three rows are the sheet's; the last two split the sheet's Option size
+       against the language-defined width of the integer. Tones validated for
+       both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <rect x="120" y="26" width="10" height="10" rx="2" fill="#7a828c"/>
+    <text x="136" y="35">the value itself</text>
+    <rect x="240" y="26" width="10" height="10" rx="2" fill="#bf7d1a"/>
+    <text x="256" y="35">what Option added</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.2">
+    <path d="M200,52 V176"/>
+    <path d="M280,52 V176"/>
+    <path d="M360,52 V176"/>
+    <path d="M440,52 V176"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="70">Option&lt;&amp;u8&gt;</text>
+    <text x="20" y="92">Option&lt;Box&lt;u8&gt;&gt;</text>
+    <text x="20" y="114">Option&lt;&amp;str&gt;</text>
+    <text x="20" y="136">Option&lt;u8&gt;</text>
+    <text x="20" y="158">Option&lt;u32&gt;</text>
+  </g>
+
+  <!-- 20px per byte, from x=120 -->
+  <g fill="#7a828c">
+    <rect x="120" y="60" width="160" height="12" rx="2"/>
+    <rect x="120" y="82" width="160" height="12" rx="2"/>
+    <rect x="120" y="104" width="320" height="12" rx="2"/>
+    <rect x="120" y="126" width="20" height="12" rx="2"/>
+    <rect x="120" y="148" width="80" height="12" rx="2"/>
+  </g>
+  <g fill="#bf7d1a">
+    <rect x="142" y="126" width="20" height="12" rx="2"/>
+    <rect x="202" y="148" width="80" height="12" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="288" y="70">8, and 8 without it</text>
+    <text x="288" y="92">8, and 8 without it</text>
+    <text x="448" y="114">16</text>
+    <text x="170" y="136">2</text>
+    <text x="290" y="158">8</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.5" fill="none">
+    <path d="M120,176 H460"/>
+    <path d="M120,176 V181 M200,176 V181 M280,176 V181 M360,176 V181 M440,176 V181"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c" text-anchor="middle">
+    <text x="120" y="193">0</text>
+    <text x="200" y="193">4</text>
+    <text x="280" y="193">8</text>
+    <text x="360" y="193">12</text>
+    <text x="440" y="193">16 bytes</text>
+  </g>
+
+  <text x="20" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">only the reference and Box rows are promised; the rest is this target</text>
+</svg>

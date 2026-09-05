@@ -117,6 +117,10 @@ console.log(userId.toUpperCase());
 
 Everywhere else, a `UserId` is obtained by calling `makeUserId`, never by writing `as UserId` again. That function is where a real check belongs, stage 5's material once a value can be validated rather than merely asserted, but even before that stage the one assertion site can be audited: read `makeUserId` and you know everything ever allowed to become a `UserId`. A brand asserted at fifty call sites is worse than no brand at all: it looks like a guarantee everywhere it appears while being fifty unchecked claims, and nothing distinguishes the careful nine from the careless one.
 
+![Four rows naming a source type, a direction and a target type: UserId to string is allowed, string to UserId is rejected, OrderId to UserId is rejected, and string reaching UserId through makeUserId is allowed.](images/one-way-in.svg)
+
+The first two rows are the same pair of types in opposite directions, with opposite verdicts, which is the asymmetry stated above. The last row is the same pair as the second, allowed only because it goes through the one function that holds the assertion.
+
 ### Gone by the time the program runs
 
 The `__brand` property is missing not just from `"u-123"` but from every value that has ever existed while the program ran, because lesson 2's erasure applies here exactly as it applies to `readonly`, and lesson 18's assertion never converts anything. `typeof userId` reports `"string"`, `JSON.stringify(userId)` writes `"u-123"` with no trace of a brand, and no property called `__brand` is ever set on anything, since the type only ever existed for the compiler. So a brand cannot be checked at run time, there is nothing there to check: a `UserId` in a running program is not a value guaranteed valid, it is a value the compiler was once told to believe was valid. The brand is a record that a check happened at `makeUserId`, not a check repeated wherever the value travels afterwards.

@@ -55,6 +55,10 @@ Given `data = {"tags": ["a"]}`:
 | `copy.copy(data)` | shallow | yes | no |
 | `copy.deepcopy(data)` | deep | yes | yes |
 
+![Two object graphs. After copy.copy the name other holds a new dict, but both dicts point at the one original list. After copy.deepcopy, other holds a new dict pointing at a new list, and the two graphs share nothing.](images/shallow-against-deep.svg)
+
+The two columns of the table are the two rows of boxes. A shallow copy allocates the outer object and nothing else, so `data["tags"] is other["tags"]` stays true and appending to it is visible through both names.
+
 For sequences, `items[:]`, `list(items)` and `copy.copy(items)` are the same shallow copy.
 
 **Choosing:** shallow is enough when you only reorder or add and remove elements. Deep is needed when the elements themselves will be modified. If neither feels right, the real answer is usually to stop sharing the mutable object.

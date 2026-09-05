@@ -79,6 +79,10 @@ per-tensor:  one absmax  → one outlier ruins everything
 per-block:   one absmax per 64 → one outlier ruins 64 values
 ```
 
+![Two number lines with the same sixteen levels. On the first, the scale is set by an outlier, and five typical values collapse onto two levels near the centre. On the second, a block with no outlier sets its own scale and the same five values land on five distinct levels.](images/outlier-sets-the-scale.svg)
+
+Both rows have sixteen levels, spaced identically. The only thing that changed is how much numeric range those sixteen levels are asked to cover, and that is set by the largest value in whatever the scale is computed over. Spend the grid on a range the data never visits and the data arrives at a handful of levels; spend it on the range the data actually occupies and each value keeps a level of its own.
+
 The damage is contained. This is why blockwise quantisation is standard and per-tensor quantisation is not.
 
 It has a cost, and this cost is the whole subject of the next lesson. Each block needs its scale stored, and that scale is a real number:

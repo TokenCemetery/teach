@@ -81,6 +81,10 @@ The rest of this stage assumes a shape for changing what a column means without 
 3. Deploy 2, migrate: the application switches its reads to `email_address`. Both columns still exist and are both written, so code from either deploy still gets a correct answer.
 4. Deploy 3, contract: `ALTER TABLE accounts DROP COLUMN email;`, once nothing reads or writes it.
 
+![A timeline across three deploys. The email column runs from the start to contract, email_address from expand to the end, and the two overlap in between. The accented read line follows the old column until migrate and the new one afterwards.](images/expand-migrate-contract.svg)
+
+The four steps are what you type; the overlap is what they are for. Notice where the read line steps down: not at either edge of the overlap but in the middle of it, with room on both sides. That margin is the whole safety property, and it is why the expand deploy has to write both columns rather than merely create the second one.
+
 What the pattern buys is that no single step ever depends on both the old and the new schema being correct at once: at every step exactly one of "the old column matters" or "the new column matters" is true, and the overlap deploy exists only so that whichever version of the application code happens to be running gets a correct answer.
 
 ### What a reviewer should ask

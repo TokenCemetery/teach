@@ -73,6 +73,10 @@ github.com/you/svc/
 └── httpapi/server.go            # importable by anyone
 ```
 
+![The module drawn as a dashed subtree holding cmd/svc, internal/store and httpapi. An import inside the subtree reaches internal/store; another module's import of httpapi crosses the boundary and arrives, while its import of internal/store stops at that boundary.](images/only-from-inside-the-subtree.svg)
+
+Two imports cross the boundary and one of them is turned back. Which one depends only on where the target sits in the tree.
+
 This is not a convention: the toolchain rejects the import. It is the mechanism for having a large package surface inside your own module while publishing a small one, and it is the first tool to reach for when you are unsure whether something should be public. Start everything in `internal/`; move it out when an external caller genuinely needs it. That direction is easy, and the reverse is a breaking change.
 
 ### The package name is part of every call site

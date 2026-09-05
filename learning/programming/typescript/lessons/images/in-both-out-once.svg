@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">Both accept every value; only one lets anything back out</title>
+  <desc id="desc">The same values are assigned into unknown and into any. Both accept them. From any, a value flows on into a typed variable with no diagnostic. From unknown, nothing flows on at all: assignment is refused with TS2322 and a property read or call with TS18046.</desc>
+
+  <!-- The outbound edge is simply absent on the unknown row, which is the whole
+       asymmetry. Accent marks what that costs. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="85" y="54">values in</text>
+    <text x="255" y="54">the type</text>
+    <text x="440" y="54">a typed variable</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="62" width="110" height="20" rx="2"/>
+    <rect x="200" y="62" width="110" height="20" rx="2"/>
+    <rect x="370" y="62" width="140" height="20" rx="2"/>
+    <rect x="30" y="112" width="110" height="20" rx="2"/>
+    <rect x="200" y="112" width="110" height="20" rx="2"/>
+    <rect x="370" y="112" width="140" height="20" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="85" y="76">1, "x", {}</text>
+    <text x="255" y="76">unknown</text>
+    <text x="440" y="76">const s: string</text>
+    <text x="85" y="126">1, "x", {}</text>
+    <text x="255" y="126">any</text>
+    <text x="440" y="126">const s: string</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M140,72 H196" marker-end="url(#g)"/>
+    <path d="M140,122 H196" marker-end="url(#g)"/>
+    <path d="M310,122 H366" marker-end="url(#g)"/>
+  </g>
+
+  <text x="200" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">TS2322 on the assignment, TS18046 on any use</text>
+  <text x="200" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">no diagnostic in either direction</text>
+
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">both accept every value, and only one of them lets anything back out</text>
+</svg>

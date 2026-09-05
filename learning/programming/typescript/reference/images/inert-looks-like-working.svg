@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">An inert flag differs from a working one only where you cannot look</title>
+  <desc id="desc">The three tiers compared on three questions. A refused flag is not accepted and the build fails with TS5052. An inert flag and a working flag are both accepted, and on a codebase with no bugs both show nothing. They differ on only one question, whether any check runs, and that is the one question a clean run cannot answer.</desc>
+
+  <!-- The table gives each tier a row. What it cannot show is that two of the
+       three columns agree everywhere a reader can observe them. Accent is the
+       inert column, and the single row where it differs. Tones validated for
+       both surfaces; see .agents/TODO.md. -->
+
+  <rect x="288" y="36" width="136" height="110" rx="4" fill="none" stroke="#bf7d1a" stroke-width="2"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" text-anchor="middle">
+    <text x="215" y="52" fill="#7a828c">refused</text>
+    <text x="356" y="52" fill="#bf7d1a">inert</text>
+    <text x="490" y="52" fill="#7a828c">working</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.2">
+    <path d="M20,62 H545"/>
+    <path d="M20,88 H545"/>
+    <path d="M20,114 H545"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="80">config accepted</text>
+    <text x="20" y="106">any check runs</text>
+    <text x="20" y="132">a clean run shows</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="215" y="80">no, TS5052</text>
+    <text x="356" y="80">yes</text>
+    <text x="490" y="80">yes</text>
+
+    <text x="215" y="106">nothing runs</text>
+    <text x="490" y="106">yes</text>
+
+    <text x="215" y="132">the build fails</text>
+    <text x="356" y="132">nothing</text>
+    <text x="490" y="132">nothing</text>
+  </g>
+  <text x="356" y="106" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a" text-anchor="middle">no</text>
+
+  <text x="20" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the middle column matches the right one on every row you can observe</text>
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">it differs on the one row a clean run cannot answer</text>
+</svg>

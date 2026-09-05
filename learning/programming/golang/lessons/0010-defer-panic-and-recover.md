@@ -54,6 +54,10 @@ defer fmt.Println(i)   // prints 0
 i = 42
 ```
 
+![Four moments in one function with the value of i beside each. An arrow marks the argument being read on the defer line, where i is still 0; another marks a closure reading at return, where i is 42.](images/read-on-the-defer-line.svg)
+
+Both forms read the same variable from the same column; they differ only in which row they read it on, and what each prints is the value sitting there.
+
 The value `0` was captured at the `defer` line. To see the final value, defer a closure, `defer func() { fmt.Println(i) }()`, which captures the variable rather than its value.
 
 **A deferred closure can modify named results.** This is the idiomatic way to add context to every error path at once:

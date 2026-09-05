@@ -41,6 +41,10 @@ See [lesson 36](../lessons/0036-mapped-types.md).
 | Switching distribution off | wrap both sides in a one-element tuple, `[T] extends [U] ? X : Y`; the union is then tested once, as a whole |
 | Built from exactly this | `Exclude`, `Extract` and `NonNullable`: ordinary conditional types, no separate mechanism |
 
+![The same condition asked two ways. With a naked type parameter it runs once per member, giving never and "b", whose union is "b". With both sides wrapped in a tuple it is asked once about the whole union, which does not match, so the result is the original union.](images/distribution.svg)
+
+Three rows of the table above, run as one worked example: distribution, the `never` that gets absorbed, and the tuple that switches distribution off. Nothing in the condition changed between the two sides, and neither did `T`. The brackets alone decide whether the question is asked about the members or about the union, and that is the difference between `"b"` and `"a" | "b"`.
+
 See [lesson 37](../lessons/0037-conditional-types.md).
 
 ## `infer` positions

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 198" width="560" height="198" role="img" aria-labelledby="title desc">
+  <title id="title">Double quantisation shrinks the constants, not the weights</title>
+  <desc id="desc">Three bars of bits per parameter. The weights alone are four bits. Adding fp32 block scales at block size 64 adds half a bit, reaching four and a half. Replacing those with double quantisation adds about an eighth of a bit instead, reaching about four point one three. The four-bit weight segment is identical in all three bars; only the segment on top of it changes.
+
+  </desc>
+
+  <!-- The payload segment is drawn identical in all three rows because it is,
+       so the whole visible difference is the accent, which is the tax. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <rect x="170" y="24" width="10" height="10" fill="#7a828c"/>
+    <text x="186" y="33">the weights</text>
+    <rect x="270" y="24" width="10" height="10" fill="#bf7d1a"/>
+    <text x="286" y="33">the quantisation constants</text>
+  </g>
+
+  <!-- 70px per bit from x=170 -->
+  <g stroke="#7a828c" stroke-width="1" opacity="0.2">
+    <path d="M240,44 V136"/>
+    <path d="M310,44 V136"/>
+    <path d="M380,44 V136"/>
+    <path d="M450,44 V136"/>
+    <path d="M520,44 V136"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="62">4-bit weights alone</text>
+    <text x="20" y="90">plus fp32 scales, block 64</text>
+    <text x="20" y="118">plus double quantisation</text>
+  </g>
+
+  <g fill="#7a828c">
+    <rect x="170" y="50" width="280" height="16"/>
+    <rect x="170" y="78" width="280" height="16"/>
+    <rect x="170" y="106" width="280" height="16"/>
+  </g>
+  <g fill="#bf7d1a">
+    <rect x="450" y="78" width="35" height="16"/>
+    <rect x="450" y="106" width="9" height="16"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="458" y="62">4 bits</text>
+    <text x="493" y="90">4.5 bits</text>
+    <text x="467" y="118">4.13 bits</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.5" fill="none">
+    <path d="M170,136 H520"/>
+    <path d="M170,136 V141 M240,136 V141 M310,136 V141 M380,136 V141 M450,136 V141 M520,136 V141"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="170" y="153">0</text>
+    <text x="240" y="153">1</text>
+    <text x="310" y="153">2</text>
+    <text x="380" y="153">3</text>
+    <text x="450" y="153">4</text>
+    <text x="520" y="153">5 bits</text>
+  </g>
+
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the payload never moves; only the tax sitting on top of it shrinks</text>
+  <text x="20" y="191" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">about 0.37 bits per parameter, which the paper puts near 3 GB on a 65B model</text>
+</svg>

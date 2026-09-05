@@ -63,6 +63,10 @@ func Generate(ctx context.Context, s UserStore) error { ... }
 - The implementation package stays free of abstractions it does not use.
 - The import cycle from Lesson 7 goes away, because the arrow only points one way.
 
+![Three packages. main imports report and store with solid arrows; the only line between report and store is a dashed satisfaction link, and neither imports the other.](images/satisfies-without-importing.svg)
+
+Two of the three lines are imports and one is not. The one that is not is the only line joining the two packages that actually have to agree.
+
 The corollary is the phrase you will hear in review: **accept interfaces, return structs.** Take the narrowest interface you can use as a parameter; return the concrete type, so callers keep every method and can decide their own abstraction.
 
 ### Small is not a slogan

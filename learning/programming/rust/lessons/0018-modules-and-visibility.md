@@ -417,6 +417,10 @@ error[E0603]: module `layout` is private
   |                        private module
 ```
 
+![The same struct in two arrangements. With a public layout module the long path compiles and the short one does not exist. After the module is made private and the struct re-exported, the short path compiles and the long one fails with E0603.](images/re-export-swaps-the-path.svg)
+
+Exactly one of the two paths works in each arrangement, and it is a different one each time. The `Widget` declaration is the same on both sides; what changed is only which spelling a caller is allowed to reach it by.
+
 The rule: the module path a caller types is part of your API just as much as a function's name, so re-exporting buys the freedom to move a file later.
 
 That is a checklist for "the public API": every `pub` item, every field of a `pub` struct, every variant of a `pub` enum, every trait implementation on a public type, and the error type in every public signature, such as a project's own `ParseError`. Stage 8 is where changing any of these earns a version number; this stage is where you decide which ones to promise.

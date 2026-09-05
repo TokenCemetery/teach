@@ -50,6 +50,10 @@ fmt.Println(err == nil)   // false, the interface holds a type
 
 Both lines are correct and they disagree, because they are asking different questions. `p == nil` asks whether the pointer is nil. `err == nil` asks whether the interface is empty.
 
+![Three interface values as a pair of words. Nothing stored gives nil in both words and equals nil; a nil pointer stored keeps the value word at nil but fills the type word, and does not equal nil; a real pointer fills both words and does not equal nil either.](images/one-word-decides.svg)
+
+The first two rows carry the same value word. One filled cell is the whole difference, and the verdict follows it rather than following the pointer you put in.
+
 ### How it reaches production
 
 Almost always through a concrete error type used as a return variable:

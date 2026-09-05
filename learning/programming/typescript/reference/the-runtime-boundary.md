@@ -21,6 +21,10 @@ Every type is a claim checked against a program that is then thrown away, so not
 | `import type { X }` | a value import that is actually used, such as `import { f }` |
 | `declare const x: T` | nothing; `declare` never produces a binding at all |
 
+![The same four lines before and after compilation. The type-only import disappears entirely, the unknown annotation disappears, and the as User assertion disappears, leaving const u equals raw. The final line is unchanged.](images/what-erases.svg)
+
+Three rows of that table acting on four lines. The point is the last one, which did not change: `u.name.trim()` runs against whatever the JSON actually held, and `as User` did not check it, defer a check, or leave anything behind that could. The assertion moved the compiler's objection, not the risk.
+
 The one exception is `instanceof`, which keeps working after compilation because a class's constructor has to exist at run time for the class to work as JavaScript at all. It tests only that the object came from that constructor, not that the constructor's parameters were what their types claimed. See [lesson 29](../lessons/0029-nothing-survives-to-run-time.md).
 
 ## The edges

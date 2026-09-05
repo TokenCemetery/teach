@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">The two columns overlap so that either version of the code is correct</title>
+  <desc id="desc">A timeline across three deploys. The old email column exists from the start until the contract deploy. The new email_address column exists from the expand deploy onward. Between expand and contract both exist and both are written. The accented read line runs along the old column until the migrate deploy and along the new one afterwards, and the handover happens in the middle of the overlap rather than at either edge of it.</desc>
+
+  <!-- The four numbered steps are correct but sequential, and the safety comes
+       from the overlap they create rather than from their order. Accent is
+       which column is being read, because that is the thing that moves.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="240" y="40">expand</text>
+    <text x="340" y="40">migrate</text>
+    <text x="420" y="40">contract</text>
+  </g>
+  <g stroke="#7a828c" stroke-width="1" stroke-dasharray="4 3" opacity="0.6" fill="none">
+    <path d="M240,46 V140"/>
+    <path d="M340,46 V140"/>
+    <path d="M420,46 V140"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="72">email</text>
+    <text x="20" y="104">email_address</text>
+  </g>
+
+  <rect x="140" y="60" width="280" height="16" rx="2" fill="#7a828c"/>
+  <rect x="240" y="92" width="300" height="16" rx="2" fill="#7a828c"/>
+
+  <g stroke="#bf7d1a" stroke-width="2.5" fill="none">
+    <path d="M140,82 H340"/>
+    <path d="M340,114 H540"/>
+  </g>
+  <path d="M340,82 V114" stroke="#bf7d1a" stroke-width="2.5" stroke-dasharray="3 2" fill="none"/>
+  <text x="334" y="130" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a" text-anchor="end">reads move here</text>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.7" fill="none">
+    <path d="M240,146 V150 M240,150 H420 M420,146 V150"/>
+  </g>
+  <text x="330" y="162" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">both columns exist and both are written</text>
+
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the reads hand over inside the overlap, never at either edge of it</text>
+</svg>

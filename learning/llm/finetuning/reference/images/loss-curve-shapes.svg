@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 232" width="560" height="232" role="img" aria-labelledby="title desc">
+  <title id="title">Six loss curve shapes, matching the symptom column of the table</title>
+  <desc id="desc">Six small sketches of loss against steps. Flat from step 1: a horizontal line that never falls. Plateaus high: a fall that stops well above zero. Train falls while held-out rises: two curves that separate, the held-out one turning back upward. Staircases at epoch boundaries: a series of flat runs with sharp drops between them. Spikes then recovers: a descent interrupted by one sharp rise. Loss becomes NaN: a descent that ends abruptly. The shapes are schematic, not measurements.</desc>
+
+  <!-- These are shapes, deliberately without tick values: the table names the
+       symptom in words and a reader is holding a curve, so the useful form is
+       one they can match against. Accent marks the diagnostic element inside
+       a panel, not the panel. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="38">flat from step 1</text>
+    <text x="200" y="38">plateaus high</text>
+    <text x="380" y="38">train falls, held-out rises</text>
+    <text x="20" y="138">staircases at epochs</text>
+    <text x="200" y="138">spikes, then recovers</text>
+    <text x="380" y="138">loss becomes NaN</text>
+  </g>
+
+  <!-- axes -->
+  <g stroke="#7a828c" stroke-width="1" opacity="0.35" fill="none">
+    <path d="M20,44 V100 H170"/>
+    <path d="M200,44 V100 H350"/>
+    <path d="M380,44 V100 H530"/>
+    <path d="M20,144 V200 H170"/>
+    <path d="M200,144 V200 H350"/>
+    <path d="M380,144 V200 H530"/>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.75" fill="none">
+    <path d="M22,54 H168"/>
+    <path d="M202,50 C227,52 237,74 267,77 L348,78"/>
+    <path d="M382,52 C412,64 462,82 528,92"/>
+    <path d="M22,152 H56 V168 H92 V180 H127 V188 H168"/>
+    <path d="M202,154 L232,170 L242,150 L252,172 L282,182 L348,188"/>
+    <path d="M382,152 C402,164 422,172 442,176"/>
+  </g>
+
+  <!-- the diagnostic element in each of these two -->
+  <path d="M382,54 C407,64 427,70 447,72 C482,74 507,66 528,58" stroke="#bf7d1a" stroke-width="1.75" fill="none"/>
+  <path d="M447,176 V148" stroke="#bf7d1a" stroke-width="1.75" fill="none" stroke-dasharray="3 2"/>
+  <text x="453" y="154" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">NaN</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <path d="M380,110 H392" stroke="#7a828c" stroke-width="1.75"/>
+    <text x="396" y="113">train</text>
+    <path d="M440,110 H452" stroke="#bf7d1a" stroke-width="1.75"/>
+    <text x="456" y="113">held-out</text>
+  </g>
+
+  <text x="20" y="222" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">shapes only, loss against steps; match yours, then read the cause from the table</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 236" width="560" height="236" role="img" aria-labelledby="title desc">
+  <title id="title">LATERAL grants permission to look left, and only left</title>
+  <desc id="desc">Three FROM clauses laid out left to right. Without LATERAL the subquery sees nothing outside itself and the query is refused. With LATERAL, written after the table, its reach covers everything to its left and the query runs. With LATERAL written before the table, there is nothing to its left yet and the query is refused again, with the same SQLSTATE and no hint.</desc>
+
+  <!-- The reach is drawn as a span running leftward from the subquery, so the
+       third row fails because the span has nowhere to go. Accent marks the
+       reach that exists. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="78">no LATERAL</text>
+    <text x="20" y="130">LATERAL, after</text>
+    <text x="20" y="182">LATERAL, before</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="140" y="64" width="120" height="20" rx="2"/>
+    <rect x="270" y="64" width="150" height="20" rx="2"/>
+    <rect x="140" y="116" width="120" height="20" rx="2"/>
+    <rect x="270" y="116" width="150" height="20" rx="2"/>
+    <rect x="140" y="168" width="150" height="20" rx="2"/>
+    <rect x="300" y="168" width="120" height="20" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="200" y="78">customers c</text>
+    <text x="345" y="78">( ... c.id ... )</text>
+    <text x="200" y="130">customers c</text>
+    <text x="345" y="130">LATERAL ( ... c.id ... )</text>
+    <text x="215" y="182">LATERAL ( ... c.id ... )</text>
+    <text x="360" y="182">customers c</text>
+  </g>
+
+  <rect x="140" y="142" width="128" height="6" rx="2" fill="#bf7d1a"/>
+  <text x="274" y="148" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">it can see what is to its left</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="140" y="98">without LATERAL it sees nothing outside itself</text>
+    <text x="140" y="202">with LATERAL, but nothing is to its left yet</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="440" y="78">42P01, with a HINT</text>
+    <text x="440" y="130">it runs</text>
+    <text x="440" y="182">42P01, no HINT</text>
+  </g>
+
+  <text x="20" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">LATERAL grants permission to look left, and does not reorder the clause</text>
+</svg>

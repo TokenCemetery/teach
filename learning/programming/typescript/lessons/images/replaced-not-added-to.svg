@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 194" width="560" height="194" role="img" aria-labelledby="title desc">
+  <title id="title">Naming lib replaces the target's bundle instead of adding to it</title>
+  <desc id="desc">With no lib named, target es2020 supplies three libraries: es2020, dom and dom.iterable, and console is declared in dom. Naming lib es2022 leaves one library in place and drops the other two, so console is no longer declared and the file fails with TS2584.</desc>
+
+  <!-- The dropped libraries are drawn in the same slots they occupied, so the
+       replacement is visible as absence rather than described. Accent marks
+       what console depended on. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="66">target es2020</text>
+    <text x="20" y="78" opacity="0.85">no lib named</text>
+    <text x="20" y="126">target es2020</text>
+    <text x="20" y="138" opacity="0.85">lib es2022</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="110" y="60" width="80" height="20" rx="2"/>
+    <rect x="198" y="60" width="80" height="20" rx="2"/>
+    <rect x="286" y="60" width="90" height="20" rx="2"/>
+    <rect x="110" y="120" width="80" height="20" rx="2"/>
+  </g>
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.35" stroke-dasharray="3 3">
+    <rect x="198" y="120" width="80" height="20" rx="2"/>
+    <rect x="286" y="120" width="90" height="20" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="150" y="74">es2020</text>
+    <text x="238" y="74">dom</text>
+    <text x="331" y="74">dom.iterable</text>
+    <text x="150" y="134">es2022</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.35" text-anchor="middle">
+    <text x="238" y="134">dom</text>
+    <text x="331" y="134">dom.iterable</text>
+  </g>
+
+  <text x="198" y="94" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">console is declared here</text>
+  <text x="198" y="154" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">TS2584: cannot find name 'console'</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="400" y="74">console resolves</text>
+  </g>
+  <text x="400" y="134" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">console is gone</text>
+
+  <text x="20" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">naming lib replaces the bundle rather than adding to it</text>
+</svg>

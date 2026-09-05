@@ -122,6 +122,10 @@ Finalize Aggregate (actual rows=1.00 loops=1)
                                 Buffers: shared hit=278
 ```
 
+![The same customer looked up two ways. With c.id = 4242 the planner estimates one row, picks a nested loop, and reads 3 buffers on that side. With c.id + 0 = 4242 it estimates 208 per worker, picks a parallel hash join, and reads 278.](images/a-wrong-estimate-costs.svg)
+
+Read the row left to right and the causation is in the order: the estimate is what changed first, the strategy followed from it, and the bar is what followed from the strategy. Nothing about the data, the answer, or the index moved between the two rows.
+
 The bare plan for that scan reads `rows=208` per worker, over `600` times the true count of one: an opaque expression gets the planner's default guess instead of a lookup in its statistics, the same failure lesson 37 named for a correlated pair of columns. Believing the small side is no longer tiny, the planner drops the loop for a `Parallel Hash Join`; the `278` buffers that side alone now takes, against the `3` the correct plan touched for the same customer, is that belief showing up as work. `enable_hashjoin`, `enable_mergejoin` and `enable_nestloop` exist for exactly this kind of investigation, not as a fix to leave set.
 
 ### `work_mem`, and the spill that reads like a signature

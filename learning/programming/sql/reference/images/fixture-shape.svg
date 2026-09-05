@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">The fixture's three tables, and the one relationship the schema does not enforce</title>
+  <desc id="desc">Three tables. Orders references customers through a declared foreign key on customer_id. Customers relates to countries only through the country column, which carries no foreign key at all, which is why one customer holds a code with no matching row. Countries has five rows nobody references, customers has two nulls and one unmatched code, and one customer appears in no order.</desc>
+
+  <!-- Both relationships are used by the join lessons but only one is
+       declared, and the sheet says so only in the DDL. Accent marks the
+       undeclared one, which is what makes the awkward rows possible. Row
+       facts checked against the fixture. Tones validated for both surfaces;
+       see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" text-anchor="middle">
+    <text x="190" y="48" fill="#bf7d1a">no foreign key</text>
+    <text x="380" y="48" fill="#7a828c">foreign key</text>
+  </g>
+
+  <defs>
+    <marker id="fk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+    <marker id="nofk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <path d="M215,95 H171" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none" marker-end="url(#nofk)"/>
+  <path d="M400,95 H366" stroke="#7a828c" stroke-width="1.5" fill="none" marker-end="url(#fk)"/>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="60" width="145" height="70" rx="3"/>
+    <rect x="215" y="60" width="145" height="70" rx="3"/>
+    <rect x="400" y="60" width="145" height="70" rx="3"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="30" y="78">countries</text>
+    <text x="225" y="78">customers</text>
+    <text x="410" y="78">orders</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="30" y="96">code   PK</text>
+    <text x="30" y="110">name</text>
+    <text x="30" y="124">region</text>
+
+    <text x="225" y="96">id   PK</text>
+    <text x="225" y="110">email   UNIQUE</text>
+
+    <text x="410" y="96">id   PK</text>
+    <text x="410" y="110">customer_id   FK</text>
+    <text x="410" y="124">amount, shipped_at</text>
+  </g>
+  <text x="225" y="124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">country</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="152">5 rows nobody references</text>
+    <text x="215" y="152">2 NULL, 1 code with no match</text>
+    <text x="400" y="152">customer 6 appears in none</text>
+  </g>
+
+  <text x="20" y="186" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the undeclared side is the point: it is what lets a lookup join lose a customer</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 172" width="560" height="172" role="img" aria-labelledby="title desc">
+  <title id="title">The coverage report has no column for the thing that was wrong</title>
+  <desc id="desc">Two rows from the coverage report, statements and branches, both full at one hundred per cent. A third row, whether any output was asserted, is drawn as an empty dashed track because the report has no such column; the three tests contained no assertion at all. The bug was in that third row.</desc>
+
+  <!-- The third row is dashed rather than zero-filled on purpose: a zero bar
+       would imply the tool measured it and found none, when in fact it does
+       not measure it. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="32" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">what the run reported, and what it did not</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="62">statements executed</text>
+    <text x="20" y="88">branches executed</text>
+  </g>
+  <text x="20" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">any output asserted</text>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1" opacity="0.35">
+    <rect x="200" y="52" width="280" height="13"/>
+    <rect x="200" y="78" width="280" height="13"/>
+  </g>
+  <rect x="200" y="104" width="280" height="13" fill="none" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <rect x="200" y="52" width="280" height="13" fill="#7a828c"/>
+  <rect x="200" y="78" width="280" height="13" fill="#7a828c"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="488" y="62">100%</text>
+    <text x="488" y="88">100%</text>
+  </g>
+  <text x="488" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">no column</text>
+
+  <text x="20" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">three tests passed, and the function doubles the price where it should halve it</text>
+  <text x="20" y="164" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">the bug is in the row the report cannot show</text>
+</svg>

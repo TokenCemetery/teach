@@ -110,6 +110,10 @@ mod report {
 }
 ```
 
+![Two modules of the same size. shapes holds the trait, the struct and the impl; report holds the type's import, an empty slot where the trait's import would be, and the call, which is refused with E0599.](images/the-impl-exists-the-name-does-not.svg)
+
+Everything the call needs exists, and one of the two things it needs *here* does not. The empty slot is drawn in the position the missing import would occupy.
+
 `report` imports `Square` but not `Shape`, and that omission is the whole bug:
 
 ```text

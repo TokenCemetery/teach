@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 192" width="560" height="192" role="img" aria-labelledby="title desc">
+  <title id="title">The question mark unwraps on one path and converts on the other</title>
+  <desc id="desc">A question mark splits into two paths. On the Ok path the value is unwrapped and the function carries on. On the Err path the error passes through a From conversion before being returned, and what that conversion has to produce is the error type in the function's own signature.</desc>
+
+  <!-- Only one of the two paths has a conversion box on it, and that box is
+       where every consequence in the lesson comes from. Accent marks it. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="86" width="100" height="22" rx="2"/>
+    <rect x="210" y="60" width="90" height="22" rx="2"/>
+    <rect x="330" y="60" width="150" height="22" rx="2"/>
+    <rect x="360" y="110" width="130" height="22" rx="2"/>
+  </g>
+  <rect x="210" y="110" width="120" height="22" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="80" y="100">parse(line)?</text>
+    <text x="255" y="74">v</text>
+    <text x="405" y="74">the function carries on</text>
+    <text x="425" y="124">Err(ReadError)</text>
+  </g>
+  <text x="270" y="124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">From::from(e)</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M130,92 L206,71" marker-end="url(#g)"/>
+    <path d="M130,102 L206,121" marker-end="url(#g)"/>
+    <path d="M300,71 H326" marker-end="url(#g)"/>
+    <path d="M330,121 H356" marker-end="url(#g)"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="140" y="72">Ok(v)</text>
+    <text x="132" y="130">Err(ParseError)</text>
+  </g>
+
+  <text x="210" y="152" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the signature's error type decides what this accepts</text>
+
+  <text x="20" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the half everyone remembers is the unwrap, and the half that decides everything is the conversion</text>
+</svg>

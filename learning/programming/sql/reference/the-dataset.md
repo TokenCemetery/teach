@@ -76,7 +76,11 @@ INSERT INTO orders (id, customer_id, amount, shipped_at) VALUES
     (112, 8, '500.00', '2026-03-03 09:00+00');
 ```
 
+![Three tables. Orders references customers through a declared foreign key. Customers relates to countries only through the country column, which carries no foreign key at all.](images/fixture-shape.svg)
+
 Twelve orders, eight customers, eight countries. Every awkward row is deliberate, because a dataset where everything matches teaches nothing about the cases that produce wrong answers.
+
+Only one of the two relationships is declared, which is the quiet half of that design. `orders.customer_id` has a `REFERENCES` clause, so the database itself refuses an order pointing at a customer who is not there. `customers.country` has none, so `NL` is allowed to sit in a row with nothing to match, and the table below can exist at all.
 
 | The row | Why it is there |
 |---|---|

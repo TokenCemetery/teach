@@ -84,6 +84,10 @@ Exception in thread "main" java.lang.NoSuchMethodError: 'java.util.List lib.Conf
 
 Three changes, made at the same time, to the same class, and three different results. `MAX` still reports the old value, ten, even though the new jar on the classpath defines it as twenty. `name()` reports the new value, `v2`, immediately, with no recompilation at all. `items()` does not report anything: the program crashes before it gets there, with an error naming a method that, as far as the loaded classes are concerned, no longer exists. Each of those three outcomes is a different one of the compatibilities from the previous section, and each is worth taking apart on its own.
 
+![Three rows. For MAX the class file holds the literal ten and nothing crosses to version 2, which still defines twenty. For name the call crosses and finds a match. For items the call crosses and is stopped, because version 2 provides a different return type.](images/three-members-three-answers.svg)
+
+The `MAX` row has an empty gap on purpose: nothing crosses, because nothing is looked up. The other two rows both cross, and only the descriptor decides whether what they find counts as the same method.
+
 ### The constant that was never a read
 
 `MAX` reporting ten is not a stale cache and not a delayed update. It is the compiler, back when `App.java` was compiled against version 1, deciding there was nothing left to look up at run time. Disassembling the application's class file confirms it directly:

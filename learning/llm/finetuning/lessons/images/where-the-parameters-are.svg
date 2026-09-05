@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180" width="560" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">Where the parameters sit, within a layer and across the model</title>
+  <desc id="desc">Two proportion bars from the worked example. One layer of 44 million parameters is about 21 per cent attention and 79 per cent multi-layer perceptron. The whole model of 1.12 billion is about 94 per cent stacked layers and 5.9 per cent embeddings.</desc>
+
+  <!-- Both bars are normalised because the claim is a share, not a size; the
+       two totals differ by a factor of twenty-five and are printed instead.
+       Accent is the part the lesson says to carry forward. Tones validated
+       for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="34" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the worked example, as shares rather than sums</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="70">one layer, 44.0M</text>
+    <text x="20" y="112">the model, 1.12B</text>
+  </g>
+
+  <!-- 320px spans 100 per cent, from x=170 -->
+  <rect x="170" y="58" width="68.6" height="16" fill="#7a828c"/>
+  <rect x="238.6" y="58" width="251.4" height="16" fill="#bf7d1a"/>
+  <rect x="170" y="100" width="301.2" height="16" fill="#7a828c"/>
+  <rect x="471.2" y="100" width="18.8" height="16" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#10141a">
+    <text x="204" y="70" text-anchor="middle">attention</text>
+    <text x="364" y="70" text-anchor="middle">mlp, 79% of the block</text>
+    <text x="320" y="112" text-anchor="middle">24 stacked layers</text>
+  </g>
+  <text x="496" y="112" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">embeddings</text>
+
+  <text x="20" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">the mlp is 79 per cent of a block, which is the number lesson 10 acts on</text>
+  <text x="20" y="164" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">embeddings are 5.9 per cent here, and a larger share the smaller the model is</text>
+</svg>

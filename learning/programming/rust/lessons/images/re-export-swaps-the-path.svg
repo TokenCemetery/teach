@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 194" width="560" height="194" role="img" aria-labelledby="title desc">
+  <title id="title">A re-export swaps which path a caller may type</title>
+  <desc id="desc">The same struct in two arrangements. With a public layout module, the long path through layout compiles and the short path at the crate root does not exist. After the module is made private and the struct re-exported, the short path compiles and the long one fails with E0603. The struct itself is declared identically in both.</desc>
+
+  <!-- The Widget line is byte for byte the same in both columns; only the
+       module above it and the re-export below it changed. Accent marks the
+       path that does not work in each arrangement. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V172" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="34">pub mod layout</text>
+    <text x="300" y="34">mod layout, plus pub use</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="54">widgetlib</text>
+    <text x="34" y="70">layout</text>
+    <text x="150" y="70">pub</text>
+    <text x="48" y="86">Widget</text>
+    <text x="150" y="86">pub</text>
+
+    <text x="300" y="54">widgetlib</text>
+    <text x="314" y="70">layout</text>
+    <text x="328" y="86">Widget</text>
+    <text x="430" y="86">pub</text>
+    <text x="314" y="102">pub use layout::Widget</text>
+  </g>
+  <text x="430" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">private</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.8">
+    <text x="20" y="126">a caller may type</text>
+    <text x="300" y="126">a caller may type</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="144">widgetlib::layout::Widget</text>
+    <text x="180" y="144">compiles</text>
+    <text x="300" y="162">widgetlib::Widget</text>
+    <text x="440" y="162">compiles</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="20" y="162">widgetlib::Widget</text>
+    <text x="180" y="162">no such path</text>
+    <text x="300" y="144">widgetlib::layout::Widget</text>
+    <text x="440" y="144">E0603</text>
+  </g>
+
+  <text x="20" y="188" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the struct is declared identically in both; only the path a caller may type moved</text>
+</svg>

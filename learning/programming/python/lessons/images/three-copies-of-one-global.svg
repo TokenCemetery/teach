@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 186" width="560" height="186" role="img" aria-labelledby="title desc">
+  <title id="title">Each interpreter has its own copy of a module-level global</title>
+  <desc id="desc">Three boxes. The parent holds COUNTER with n equal to zero. Each of two interpreters holds its own COUNTER, which reached two, and each returned one and then two. Four increments happened in total and the parent's dictionary is unchanged, because each interpreter incremented a different dictionary.</desc>
+
+  <!-- Only measured state is drawn: the three values are the lesson's own
+       output. The comparison with threads is made in words rather than by
+       drawing an unmeasured fourth box. Accent is the parent's zero, which is
+       the surprising one. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="40">parent</text>
+    <text x="200" y="40">interpreter 1</text>
+    <text x="380" y="40">interpreter 2</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="48" width="160" height="64" rx="3"/>
+    <rect x="200" y="48" width="160" height="64" rx="3"/>
+    <rect x="380" y="48" width="160" height="64" rx="3"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="32" y="70">COUNTER</text>
+    <text x="212" y="70">COUNTER</text>
+    <text x="392" y="70">COUNTER</text>
+    <text x="212" y="88">{'n': 2}</text>
+    <text x="392" y="88">{'n': 2}</text>
+    <text x="212" y="104">returned 1, then 2</text>
+    <text x="392" y="104">returned 1, then 2</text>
+  </g>
+  <text x="32" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">{'n': 0}</text>
+
+  <text x="20" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">four increments ran, and the pool returned [1, 1, 2, 2]</text>
+  <text x="20" y="154" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">none of them reached the parent's dictionary</text>
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">a thread pool would be one box, with one counter reaching four</text>
+</svg>

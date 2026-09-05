@@ -18,6 +18,10 @@ Lookup sheet for stage 7. The question it exists to answer: **does this `unsafe`
 | Read or write a mutable or unsafe external static | Touch global state with no compiler-enforced exclusivity | Lesson 46 |
 | Access a union field, other than to assign to it | Read a field the type cannot track as the active one | Lesson 46 |
 
+![Two columns. On the left, what an unsafe block leaves unchanged: the borrow checker, type checking, and everything else the compiler does. On the right, the five abilities it newly permits.](images/what-unsafe-adds.svg)
+
+The table above is the right-hand column. The left one is the answer to what `unsafe` removes, and it is empty: nothing crosses from right to left. Read that way, `unsafe` is not a weaker mode of the language but a strictly larger set of moves, with a comment owed for each one taken.
+
 `unsafe` grants exactly these five abilities and nothing else: it does not disable the borrow checker or type checking, and a block that uses none of the five compiles to the same thing without it, plus a compiler warning that it was unnecessary. The obligation it creates in exchange is a `SAFETY:` comment naming the invariant that makes each use sound, addressed to the next reader rather than to the compiler, which stopped checking the moment the block was written.
 
 ## The undefined-behaviour list, as a checkable table

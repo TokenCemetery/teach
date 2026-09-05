@@ -74,7 +74,11 @@ Index Scan using i36_customer_id on orders (actual rows=7.00 loops=1)
   Index Searches: 1
 ```
 
-Both find the same seven rows at 7 buffers, but the second is `select id, amount from orders where customer_id = 4242`, and `amount` is not in `i36_customer_id`, so it drops the word `Only`. `Heap Fetches: 0` answers the real question, not the buffer count, since a heap fetch and an index-only page can both cost one buffer. Lesson 29's caveat still applies: visibility lives in the table, not the index, so an index-only scan still checks a visibility map before trusting a leaf entry alone. A five-thousand-row scratch table shows the mechanism directly, one row updated with no `VACUUM` in between:
+![Two queries against the same index. Counting reads only the index and the table box is drawn as never read. Selecting a column the index does not hold adds a step from the index down to the table.](images/heap-fetches-zero.svg)
+
+Both find the same seven rows at 7 buffers, but the second is `select id, amount from orders where customer_id = 4242`, and `amount` is not in `i36_customer_id`, so it drops the word `Only`.
+
+The whole difference is whether that arrow exists. It is not a difference in how much work the index did, which is why the buffer count is the same on both sides and cannot be used to tell them apart. `Heap Fetches: 0` answers the real question, not the buffer count, since a heap fetch and an index-only page can both cost one buffer. Lesson 29's caveat still applies: visibility lives in the table, not the index, so an index-only scan still checks a visibility map before trusting a leaf entry alone. A five-thousand-row scratch table shows the mechanism directly, one row updated with no `VACUUM` in between:
 
 ```text
 Index Only Scan using i36_demo_val on demo (actual rows=1.00 loops=1)

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 206" width="560" height="206" role="img" aria-labelledby="title desc">
+  <title id="title">super() steps along the MRO, where M1 is followed by M2</title>
+  <desc id="desc">On the left, the inheritance tree of Both: M1 and M2 each inherit from Base, and Both inherits from M1 and M2. No edge joins M1 to M2. On the right, the method resolution order of Both is the flat list Both, M1, M2, Base, object, and an arrow marks super() moving from M1 to the next entry, which is M2.</desc>
+
+  <!-- The arrow exists only on the right, because there is no edge on the left
+       for it to follow. Accent marks the step super() actually takes. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <path d="M285,26 V186" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="34">the tree</text>
+    <text x="300" y="34">the MRO of Both</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="76" y="48" width="44" height="16" rx="2"/>
+    <rect x="34" y="88" width="44" height="16" rx="2"/>
+    <rect x="118" y="88" width="44" height="16" rx="2"/>
+    <rect x="76" y="128" width="44" height="16" rx="2"/>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.6" fill="none">
+    <path d="M56,88 L86,64"/>
+    <path d="M140,88 L110,64"/>
+    <path d="M98,128 L56,104"/>
+    <path d="M98,128 L140,104"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="98" y="61">Base</text>
+    <text x="56" y="101">M1</text>
+    <text x="140" y="101">M2</text>
+    <text x="98" y="141">Both</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="330" y="56">Both</text>
+    <text x="330" y="80">M1</text>
+    <text x="330" y="128">Base</text>
+    <text x="330" y="152">object</text>
+  </g>
+  <text x="330" y="104" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">M2</text>
+
+  <path d="M316,84 V97" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="372" y="94" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">super() from M1</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="176">no edge joins M1 to M2</text>
+    <text x="300" y="176">yet M2 is what comes next</text>
+  </g>
+  <text x="20" y="198" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">super() takes one step down this list, so where it lands depends on the instance, not the class</text>
+</svg>

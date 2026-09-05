@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 186" width="560" height="186" role="img" aria-labelledby="title desc">
+  <title id="title">Why list is invariant and Sequence is not</title>
+  <desc id="desc">Two chains of four steps. On the left, a caller holds a list of int, the callee sees it as a list of object, the callee appends a string, and the caller's list of int now holds a string; the checker rejects the second step to stop the third. On the right, the same substitution with Sequence: the callee sees a Sequence of object, there is no append to call, and nothing can change, so the substitution is allowed.
+
+  </desc>
+
+  <!-- The sheet compresses this into one clause, that the callee could
+       append. The steps are the argument, and accent marks the two that
+       cannot be allowed to happen. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <path d="M285,26 V160" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="34">list[int] as list[object]</text>
+    <text x="300" y="34">Sequence[int] as Sequence[object]</text>
+  </g>
+
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none" opacity="0.6" marker-end="url(#d)">
+    <path d="M26,50 V144"/>
+    <path d="M306,50 V144"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="38" y="60">caller holds list[int]</text>
+    <text x="38" y="86">callee sees list[object]</text>
+    <text x="318" y="60">caller holds Sequence[int]</text>
+    <text x="318" y="86">callee sees Sequence[object]</text>
+    <text x="318" y="112">Sequence has no append</text>
+    <text x="318" y="138">so nothing can change it</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">
+    <text x="38" y="112">callee appends a str</text>
+    <text x="38" y="138">caller's list[int] holds a str</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <text x="20" y="172" fill="#bf7d1a">rejected, because the third step would be legal</text>
+    <text x="300" y="172" fill="#7a828c">allowed, because the third step does not exist</text>
+  </g>
+</svg>

@@ -20,6 +20,10 @@ Lookup sheet for stage 4. The question it exists to answer: **which shape remove
 
 The method behind every row above: count what the type permits, count what the domain produces, and if the first number is larger, name the difference and remove it. See [lesson 24](../lessons/0024-illegal-states.md).
 
+![Every combination of loading true or false, data set or unset, and error set or unset: eight rows. Three are the states a request really has, and each connects to one arm of a discriminated union. The other five have no counterpart.](images/eight-states-down-to-three.svg)
+
+The method run on the second row of the table, with the counts from [lesson 24](../lessons/0024-illegal-states.md): eight permitted, three produced. The five with no arm beside them are the difference, and they are not exotic. `{ loading: true, data: "x", error: "oops" }` is one of them, and it compiles.
+
 ## Discriminated union anatomy
 
 | Requirement | What satisfies it |

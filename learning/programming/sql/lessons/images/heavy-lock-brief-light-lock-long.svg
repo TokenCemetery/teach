@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 204" width="560" height="204" role="img" aria-labelledby="title desc">
+  <title id="title">The statement that blocks everything is the quick one</title>
+  <desc id="desc">Two statements watched from a second session. Adding the constraint as NOT VALID is metadata only and finishes at once, but it takes an AccessExclusiveLock and a plain select in another session blocked until it committed. Validating the constraint scans every row and can take real time, but it takes only a ShareUpdateExclusiveLock and an update in another session ran throughout. Bar lengths are schematic; the locks and the blocking were observed.</desc>
+
+  <!-- Durations were not timed, so the bar lengths say only short and long and
+       the footer says so. What is measured is the lock each statement took
+       and what a second session could do meanwhile. Accent is the session
+       that had to wait. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <text x="20" y="32" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">what a second session could do while each statement ran</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="57">add constraint ... not valid</text>
+    <text x="20" y="87">another session: select count(*)</text>
+    <text x="20" y="127">validate constraint</text>
+    <text x="20" y="157">another session: update</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.8">
+    <text x="20" y="69">AccessExclusiveLock</text>
+    <text x="20" y="139">ShareUpdateExclusiveLock</text>
+  </g>
+
+  <rect x="250" y="48" width="50" height="12" fill="#7a828c"/>
+  <rect x="250" y="78" width="50" height="12" fill="#bf7d1a"/>
+  <rect x="250" y="118" width="220" height="12" fill="#7a828c"/>
+  <rect x="250" y="148" width="220" height="12" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="308" y="57">metadata only</text>
+    <text x="478" y="127">scans every row</text>
+  </g>
+  <text x="308" y="87" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">blocked until commit</text>
+  <text x="478" y="157" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">ran throughout</text>
+
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">the statement that queues everyone is the one that finishes at once</text>
+  <text x="20" y="198" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">bar lengths are schematic; the locks and the blocking were observed, the durations were not timed</text>
+</svg>

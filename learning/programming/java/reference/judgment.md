@@ -16,6 +16,10 @@ type: reference
 | Binary | Code already compiled against the old version still links and runs against the new one, with no recompilation at all | Leave the caller's `.class` files untouched and run them against the new jar |
 | Behavioural | Code that compiles and links successfully still does the same thing it did before | Run it and compare the output |
 
+![A left to right timeline. Source surfaces in your own build as a compile error. Past the point where your build ends, Binary surfaces at their class load as a NoSuchMethodError and Behavioural surfaces in their output with no error at all.](images/when-it-surfaces.svg)
+
+The table gives each compatibility its own test, and the picture adds the one thing the tests share: an order. Only the leftmost is checked by a machine you own. Everything past that dashed line is checked, if at all, by someone running your code somewhere you are not, which is the argument for the paragraph below rather than a restatement of it.
+
 Knowing one of the three holds tells you nothing about the other two: the same edit to `Config` in lesson 43 was source-incompatible for one member, binary-incompatible for another, and left a third silently correct on the surface while inlining stale data underneath it. What decides which of the three actually matters for a given piece of code is the caller, not the code: does everyone who depends on this rebuild before running it, or could an already-compiled caller run against the new version unchanged. A module always rebuilt from a clean checkout has no binary-compatibility risk, since nothing of its own ever runs unrecompiled against itself; a published library or anything else consumed as a jar rather than as rebuilt source has all three live, and binary compatibility is the dangerous one precisely because it fails later, in someone else's production, rather than in a build that would have stopped it. See [lesson 43](../lessons/0043-what-counts-as-breaking.md) and [lesson 45](../lessons/0045-evolving-a-type.md).
 
 ## Change to compatibility cost

@@ -49,6 +49,10 @@ help: turn the generic argument into an associated item binding
 
 A `note` line normally follows, quoting the trait's declaration by pointing at the standard library's own source file with a full path into the installed toolchain; it is trimmed here, since that path names one machine's toolchain install and tells a reader nothing. The `help` is the whole story: `Iterator` takes zero generic arguments, and what looked like one is an associated item waiting for a `Name = Type` binding instead.
 
+![One type reaching several parameterised implementations on the left, against one implementation with Item fixed inside it on the right.](images/once-or-once-per-caller.svg)
+
+Same type on both sides, and the only thing that changes is how many implementations it can have. On the right there is one, and the binding inside it is the answer every caller gets.
+
 Going the other way, a trait object that never says what `Item` is fails just as directly, because `&dyn Iterator` needs one concrete shape for its vtable:
 
 ```text

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">A pub fn returning a private type warns where it is written and fails where it is called</title>
+  <desc id="desc">Two sides of the same item. Where it is defined, a pub function returning a private type compiles, with the private_interfaces warning saying the type is more private than the item. At a caller outside the module, the same function does not compile, reporting that the type is private, with no error code at all.</desc>
+
+  <!-- Every other visibility failure on the sheet is silent at the definition
+       and E0603 at the call. This one is the exception on both halves, so the
+       two halves are drawn side by side. Accent marks the diagnostics. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V160" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="34">where it is defined</text>
+    <text x="300" y="34">at a caller outside the module</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="62">pub fn f() -&gt; Private</text>
+    <text x="300" y="62">let x = f();</text>
+  </g>
+
+  <defs>
+    <marker id="v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none" opacity="0.6" marker-end="url(#v)">
+    <path d="M26,70 V88"/>
+    <path d="M306,70 V88"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="20" y="104">compiles</text>
+    <text x="300" y="104">does not compile</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">
+    <text x="20" y="126">warning: private_interfaces</text>
+    <text x="300" y="126">error: type 'X' is private</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="144">type 'X' is more private than the item</text>
+  </g>
+  <text x="300" y="144" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">and no error code at all</text>
+
+  <text x="20" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">everywhere else on this sheet the definition is silent and the call gets E0603</text>
+</svg>

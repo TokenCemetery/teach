@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 246" width="560" height="246" role="img" aria-labelledby="title desc">
+  <title id="title">The branches line up by position, and the header comes from the first</title>
+  <desc id="desc">Two queries combined by UNION. Their first columns are named differently, order_id in one and cust in the other, and are paired anyway because they sit in the same position. The result's header is the first query's, the second query's alias appears nowhere, and the first column ends up holding an order id in one row and a customer id in the other.</desc>
+
+  <!-- The two branches are drawn in the same two columns, because position is
+       the only thing pairing them. Accent marks the position where the names
+       disagree. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="200" y="48">position 1</text>
+    <text x="340" y="48">position 2</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="72">first query</text>
+    <text x="20" y="100">second query</text>
+    <text x="20" y="145">the result</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="280" y="58" width="120" height="20" rx="2"/>
+    <rect x="280" y="86" width="120" height="20" rx="2"/>
+    <rect x="140" y="132" width="120" height="18" rx="2"/>
+    <rect x="280" y="132" width="120" height="18" rx="2"/>
+    <rect x="140" y="156" width="120" height="18" rx="2"/>
+    <rect x="280" y="156" width="120" height="18" rx="2"/>
+    <rect x="140" y="180" width="120" height="18" rx="2"/>
+    <rect x="280" y="180" width="120" height="18" rx="2"/>
+  </g>
+  <g fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5">
+    <rect x="140" y="58" width="120" height="20" rx="2"/>
+    <rect x="140" y="86" width="120" height="20" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="340" y="72">amount</text>
+    <text x="340" y="100">amount</text>
+    <text x="200" y="145">order_id</text>
+    <text x="340" y="145">amount</text>
+    <text x="200" y="169">2</text>
+    <text x="340" y="169">200.00</text>
+    <text x="200" y="193">101</text>
+    <text x="340" y="193">120.00</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">
+    <text x="200" y="72">order_id</text>
+    <text x="200" y="100">cust</text>
+  </g>
+
+  <path d="M140,68 H124 V141 H136" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <text x="150" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">the header comes from the first query</text>
+
+  <text x="140" y="216" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">position 1 holds an order id in one row and a customer id in the other</text>
+
+  <text x="20" y="238" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the alias in the second query appears nowhere in the result</text>
+</svg>

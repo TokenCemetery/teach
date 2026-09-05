@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 214" width="560" height="214" role="img" aria-labelledby="title desc">
+  <title id="title">Where 630 execution samples landed</title>
+  <desc id="desc">Eight methods by how many of the 630 sampled stacks contained them. Five regular-expression internals sit between 462 and 502, then Pattern.compile at 104 and String.split at 83. The program's own method, countByLevel, is last at 54, the smallest bar in the table.</desc>
+
+  <!-- Accent is the reader's own method, which is the smallest bar; that
+       inversion is the finding. Counts are the lesson's own tally. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="34" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">frames counted across 630 execution samples</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="59">Pattern$BmpCharPropertyGreedy.match</text>
+    <text x="20" y="75">Pattern.split</text>
+    <text x="20" y="91">Pattern$Start.match</text>
+    <text x="20" y="107">Matcher.search</text>
+    <text x="20" y="123">Matcher.find</text>
+    <text x="20" y="139">Pattern.compile</text>
+    <text x="20" y="155">String.split</text>
+  </g>
+  <text x="20" y="171" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">Indexer.countByLevel</text>
+
+  <!-- 0.5179px per sample from x=250 -->
+  <g fill="#7a828c">
+    <rect x="250" y="51" width="260" height="10"/>
+    <rect x="250" y="67" width="256.4" height="10"/>
+    <rect x="250" y="83" width="248.1" height="10"/>
+    <rect x="250" y="99" width="248.1" height="10"/>
+    <rect x="250" y="115" width="239.3" height="10"/>
+    <rect x="250" y="131" width="53.9" height="10"/>
+    <rect x="250" y="147" width="43" height="10"/>
+  </g>
+  <rect x="250" y="163" width="28" height="10" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="516" y="59">502</text>
+    <text x="516" y="75">495</text>
+    <text x="516" y="91">479</text>
+    <text x="516" y="107">479</text>
+    <text x="516" y="123">462</text>
+    <text x="516" y="139">104</text>
+    <text x="516" y="155">83</text>
+  </g>
+  <text x="516" y="171" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">54</text>
+
+  <text x="20" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">the one method you wrote is the smallest bar here</text>
+  <text x="20" y="208" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">630 samples show a lopsided signal; they do not defend an exact share for any one method</text>
+</svg>

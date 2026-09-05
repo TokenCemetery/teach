@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 204" width="560" height="204" role="img" aria-labelledby="title desc">
+  <title id="title">What a happens-before edge does between two threads</title>
+  <desc id="desc">Two pairs of thread timelines. On the left, thread 1 writes x and thread 2 reads x with nothing connecting the two timelines, so there is no ordering or visibility guarantee and thread 2 may see the old value. On the right, thread 1 writes x and then writes a volatile flag, and thread 2 reads that flag before reading x. The volatile write and read form an edge between the timelines, and program order on each side carries the plain write and the plain read along with it, so thread 2 is guaranteed to see the new value of x.</desc>
+
+  <!-- The subject is the arrow, and its absence on the left. Accent marks the
+       case with no edge, and the words "no edge" carry the same meaning, so
+       nothing depends on colour. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <path d="M265,28 V190" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c" text-anchor="middle">
+    <text x="135" y="40">no edge between them</text>
+    <text x="420" y="40">a volatile write and its read</text>
+
+    <text x="100" y="64">thread 1</text>
+    <text x="190" y="64">thread 2</text>
+    <text x="360" y="64">thread 1</text>
+    <text x="480" y="64">thread 2</text>
+  </g>
+
+  <!-- the timelines, and a tick at each action -->
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <path d="M100,74 V170"/>
+    <path d="M190,74 V170"/>
+    <path d="M360,74 V170"/>
+    <path d="M480,74 V170"/>
+  </g>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none" opacity="0.8">
+    <path d="M95,100 H105"/>
+    <path d="M185,136 H195"/>
+    <path d="M355,100 H365"/>
+    <path d="M355,136 H365"/>
+    <path d="M475,136 H485"/>
+    <path d="M475,158 H485"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">
+    <text x="93" y="104" text-anchor="end">x = 1</text>
+    <text x="198" y="140">read x</text>
+
+    <text x="353" y="104" text-anchor="end">x = 1</text>
+    <text x="353" y="140" text-anchor="end">flag = true</text>
+    <text x="488" y="140">read flag</text>
+    <text x="488" y="162">read x</text>
+  </g>
+
+  <!-- the edge itself, and the gap where there is none -->
+  <defs>
+    <marker id="hb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+  <path d="M366,136 H472" stroke="#7a828c" stroke-width="1.5" fill="none" marker-end="url(#hb)"/>
+  <text x="419" y="130" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c" text-anchor="middle">sees it</text>
+
+  <text x="145" y="122" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#bf7d1a" text-anchor="middle">no edge</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" text-anchor="middle">
+    <text x="135" y="190" fill="#bf7d1a">no guarantee about x</text>
+    <text x="420" y="190" fill="#7a828c">guaranteed to see x == 1</text>
+  </g>
+</svg>

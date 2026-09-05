@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 188" width="560" height="188" role="img" aria-labelledby="title desc">
+  <title id="title">A pipeline runs across a row, not down a column</title>
+  <desc id="desc">The same seven steps arranged in a grid whose columns are filter, map and sink and whose rows are the three source elements. On the left the steps are numbered down each column: every element is filtered, then every survivor is mapped, then every result is sunk. On the right they are numbered across each row: element one is filtered, mapped and sunk before element two is looked at. Element two fails the filter in both, so it has no map or sink step.</desc>
+
+  <!-- Same seven cells in both panels; only the numbering and the path differ,
+       which is the entire comparison. Accent traces the order the printed
+       output showed. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M280,26 V166" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="36">not this</text>
+    <text x="300" y="36">what actually runs</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="30" y="54">n</text>
+    <text x="76" y="54">filter</text>
+    <text x="140" y="54">map</text>
+    <text x="204" y="54">sink</text>
+    <text x="310" y="54">n</text>
+    <text x="356" y="54">filter</text>
+    <text x="420" y="54">map</text>
+    <text x="484" y="54">sink</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="46" y="64" width="60" height="18" rx="2"/>
+    <rect x="110" y="64" width="60" height="18" rx="2"/>
+    <rect x="174" y="64" width="60" height="18" rx="2"/>
+    <rect x="46" y="88" width="60" height="18" rx="2"/>
+    <rect x="46" y="112" width="60" height="18" rx="2"/>
+    <rect x="110" y="112" width="60" height="18" rx="2"/>
+    <rect x="174" y="112" width="60" height="18" rx="2"/>
+
+    <rect x="326" y="64" width="60" height="18" rx="2"/>
+    <rect x="390" y="64" width="60" height="18" rx="2"/>
+    <rect x="454" y="64" width="60" height="18" rx="2"/>
+    <rect x="326" y="88" width="60" height="18" rx="2"/>
+    <rect x="326" y="112" width="60" height="18" rx="2"/>
+    <rect x="390" y="112" width="60" height="18" rx="2"/>
+    <rect x="454" y="112" width="60" height="18" rx="2"/>
+  </g>
+
+  <path d="M76,77 L76,101 L76,125 L140,77 L140,125 L204,77 L204,125" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.5" fill="none"/>
+  <path d="M356,77 L420,77 L484,77 L356,101 L356,125 L420,125 L484,125" stroke="#bf7d1a" stroke-width="1.5" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="30" y="72">1</text>
+    <text x="30" y="96">2</text>
+    <text x="30" y="120">3</text>
+    <text x="310" y="72">1</text>
+    <text x="310" y="96">2</text>
+    <text x="310" y="120">3</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="54" y="72">1</text>
+    <text x="54" y="96">2</text>
+    <text x="54" y="120">3</text>
+    <text x="118" y="72">4</text>
+    <text x="118" y="120">5</text>
+    <text x="182" y="72">6</text>
+    <text x="182" y="120">7</text>
+
+    <text x="334" y="72">1</text>
+    <text x="398" y="72">2</text>
+    <text x="462" y="72">3</text>
+    <text x="334" y="96">4</text>
+    <text x="334" y="120">5</text>
+    <text x="398" y="120">6</text>
+    <text x="462" y="120">7</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="152">one stage at a time, over the source</text>
+    <text x="300" y="152">one element at a time, end to end</text>
+  </g>
+  <text x="20" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same seven steps either way, and the printed order was the one on the right</text>
+</svg>

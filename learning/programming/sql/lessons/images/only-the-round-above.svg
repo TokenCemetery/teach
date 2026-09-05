@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 292" width="560" height="292" role="img" aria-labelledby="title desc">
+  <title id="title">Each round of a recursive term reads the previous round, not the result</title>
+  <desc id="desc">Six rows, one per round of the countdown query. The working table holds five, then four, three, two, one, and finally nothing, and each round's arrow comes from the row directly above it. The result column accumulates all the values produced so far, and the blocked arrow shows that this accumulation is not what the next round reads.</desc>
+
+  <!-- The chain runs down the working column only. The blocked arrow is the
+       misreading it corrects: the result column is not an input. Accent marks
+       what the next round actually reads. Tones validated for both surfaces;
+       see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the working table, round by round</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="170" y="58">working table</text>
+    <text x="315" y="58">result so far</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="82">anchor</text>
+    <text x="20" y="116">round 1</text>
+    <text x="20" y="150">round 2</text>
+    <text x="20" y="184">round 3</text>
+    <text x="20" y="218">round 4</text>
+    <text x="20" y="252">round 5</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="140" y="69" width="60" height="18" rx="2"/>
+    <rect x="140" y="103" width="60" height="18" rx="2"/>
+    <rect x="140" y="137" width="60" height="18" rx="2"/>
+    <rect x="140" y="171" width="60" height="18" rx="2"/>
+    <rect x="140" y="205" width="60" height="18" rx="2"/>
+    <rect x="260" y="69" width="110" height="18" rx="2"/>
+    <rect x="260" y="103" width="110" height="18" rx="2"/>
+    <rect x="260" y="137" width="110" height="18" rx="2"/>
+    <rect x="260" y="171" width="110" height="18" rx="2"/>
+    <rect x="260" y="205" width="110" height="18" rx="2"/>
+    <rect x="260" y="239" width="110" height="18" rx="2"/>
+  </g>
+  <rect x="140" y="239" width="60" height="18" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="3 3"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="170" y="82">5</text>
+    <text x="170" y="116">4</text>
+    <text x="170" y="150">3</text>
+    <text x="170" y="184">2</text>
+    <text x="170" y="218">1</text>
+    <text x="170" y="252">(none)</text>
+    <text x="315" y="82">5</text>
+    <text x="315" y="116">5 4</text>
+    <text x="315" y="150">5 4 3</text>
+    <text x="315" y="184">5 4 3 2</text>
+    <text x="315" y="218">5 4 3 2 1</text>
+    <text x="315" y="252">5 4 3 2 1</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M170,87 V99" marker-end="url(#a)"/>
+    <path d="M170,121 V133" marker-end="url(#a)"/>
+    <path d="M170,155 V167" marker-end="url(#a)"/>
+    <path d="M170,189 V201" marker-end="url(#a)"/>
+    <path d="M170,223 V235" marker-end="url(#a)"/>
+  </g>
+  <text x="206" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">only the previous round's rows</text>
+
+  <path d="M260,112 H240 V146 H216" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.45" fill="none"/>
+  <path d="M212,140 V152" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none"/>
+  <text x="244" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">not everything so far</text>
+
+  <text x="20" y="278" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">each round reads only the row above it, and the query stops when a round produces nothing</text>
+</svg>

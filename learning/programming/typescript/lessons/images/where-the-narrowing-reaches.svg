@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">A predicate narrows a branch; an assertion narrows the rest of the scope</title>
+  <desc id="desc">Two snippets with the narrowed region marked beside them. Calling a type predicate in an if narrows only the lines inside the true branch, and the value is unknown again in the else and after the block. Calling an assertion function narrows every line from the call to the end of the scope, with no branch involved.</desc>
+
+  <!-- The bars are the region where the value is narrowed, so their extent is
+       the whole comparison. Accent marks the narrowed region. Tones validated
+       for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V166" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="34">a type predicate</text>
+    <text x="300" y="34">an assertion function</text>
+  </g>
+
+  <rect x="26" y="66" width="4" height="14" rx="2" fill="#bf7d1a"/>
+  <rect x="306" y="66" width="4" height="46" rx="2" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="38" y="62">if (isString(x)) {</text>
+    <text x="38" y="94">} else {</text>
+    <text x="38" y="110">  x is unknown again</text>
+    <text x="38" y="126">}</text>
+
+    <text x="318" y="62">assertString(x)</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="38" y="78">  x.toUpperCase()</text>
+    <text x="318" y="78">x.toUpperCase()</text>
+    <text x="318" y="94">more(x)</text>
+    <text x="318" y="110">x is still string</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="152">one branch, and unknown again outside it</text>
+    <text x="300" y="152">from the call to the end of the scope</text>
+  </g>
+  <text x="20" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same check, and the difference is only how far its answer reaches</text>
+</svg>

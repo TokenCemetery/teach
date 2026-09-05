@@ -54,6 +54,10 @@ class Upper(str):
 Upper("abc")        # 'ABC'
 ```
 
+![The call running __new__ and then __init__, with a dashed line between them marking where the value comes into existence. The stretch covering __new__ is accented as the only place the value can still be chosen.](images/before-the-value-exists.svg)
+
+The two methods sit on opposite sides of one line. `__new__` is the only one that runs while the value is still undecided, which is why it is the only one that can decide it.
+
 The same applies to `int`, `float`, `tuple`, `bytes` and `frozenset`. Doing this in `__init__` has no effect, because `self` is already the finished string.
 
 **Returning an existing instance**, such as a cache or a singleton. Note the consequence: `__init__` still runs on the cached instance unless you guard it, which quietly reinitialises shared state.

@@ -32,6 +32,8 @@ For an inner join the two are interchangeable: `customers, orders WHERE customer
 | `ON`, on the outer table's own columns | decides what counts as a match, before the row is invented; a customer matching nothing still appears once, with `NULL`s |
 | `WHERE`, after a `LEFT`/`RIGHT`/`FULL JOIN` | filters the already-built result; a real comparison against an invented `NULL` evaluates to unknown and drops the row, quietly turning the outer join back into an inner one |
 
+![The same left join twice. With the condition in ON, eight rows: five customers with a matching order and three carrying nulls. With the condition in WHERE, the three rows holding nulls are struck out and five remain.](images/on-against-where.svg)
+
 Verified on `customers LEFT JOIN orders ON o.customer_id = c.id`: adding `WHERE o.amount > 100` gives 5 rows; moving the identical condition into `ON ... AND o.amount > 100` gives 8, one per customer. The one safe test to run in `WHERE` after an outer join is `IS NULL` on the invented side, since `IS NULL` never returns unknown: that idiom is the anti-join, `WHERE o.id IS NULL` after `customers LEFT JOIN orders`, isolating customer 6 alone.
 
 ## What each aggregate does with NULL

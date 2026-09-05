@@ -48,6 +48,10 @@ Therefore `BA = 0` at step zero, so `ΔW = 0`, so **the adapted model is bit-for
 - There is no initial shock to pretrained behaviour, so no early damage to undo.
 - Any degradation you observe is something training did, not something initialisation did.
 
+![B drawn as a grid of zeros, A as a grid of varied values, and their product as a grid of zeros, with the two rejected initialisations named underneath.](images/zero-whatever-a-holds.svg)
+
+`A`'s entries are visible and none of them matter: every one of them is multiplied by a zero on its way into the product.
+
 The asymmetry is necessary. If both were zero, the gradient of both would be zero and nothing would ever learn: the product needs one factor non-zero to carry signal. If both were random, `ΔW` would start as structured noise injected into every targeted layer.
 
 This is also why LoRA tolerates much higher learning rates than full fine-tuning. You are not nudging weights that already encode everything the model knows; you are growing a term from zero.

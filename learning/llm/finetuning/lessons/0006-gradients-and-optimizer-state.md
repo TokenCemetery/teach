@@ -48,7 +48,11 @@ Everything a trainable parameter costs, per parameter:
 | AdamW second moment | 4 | 4 |
 | **Total** | **16 bytes** | **16 bytes** |
 
-The right-hand column is the part that surprises people. **Mixed precision does not reduce the total.** It halves the weight and gradient tensors, then adds back an fp32 master copy of the weights, because accumulating tiny updates into a bf16 value silently loses them. Optimizer moments stay in fp32 for the same reason. The win from mixed precision is arithmetic throughput, not memory.
+![Two bars of bytes per trainable parameter, both sixteen bytes long. Under fp32 the sixteen bytes are four each of weights, gradients and two moments. Under mixed precision the weights are two bytes of bf16 plus a four-byte master copy, the gradients are two bytes, and both moments stay at four.](images/mixed-precision-same-total.svg)
+
+The right-hand column is the part that surprises people. **Mixed precision does not reduce the total.**
+
+Both bars reach the same mark, which is the whole finding. The two accented pieces are the tensors that really were halved, four bytes saved between them, and the master copy sitting beside the first one is four bytes put straight back. Everything to the right of it never moved at all. It halves the weight and gradient tensors, then adds back an fp32 master copy of the weights, because accumulating tiny updates into a bf16 value silently loses them. Optimizer moments stay in fp32 for the same reason. The win from mixed precision is arithmetic throughput, not memory.
 
 So: **16 bytes per trainable parameter**, before a single activation.
 

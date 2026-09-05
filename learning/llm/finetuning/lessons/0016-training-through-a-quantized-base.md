@@ -52,6 +52,10 @@ forward:   h = W₀_dequant(x) + (α/r) · B A x
 
 The frozen weights participate in the backward pass only by **passing gradient through** to earlier layers. That requires multiplying by `W₀`, which requires dequantising it again rather than differentiating with respect to it. No gradient is ever stored for a base weight, because none is requested.
 
+![One adapted layer drawn twice with the same four boxes. Forward, the input reaches both the 4-bit base and the bf16 adapter and they meet at the output; backward, gradient travels the same edges in reverse, but only the adapter has a gradient stored for it.](images/a-constant-in-the-graph.svg)
+
+The two panels hold the same boxes in the same places, and the backward edges are the forward ones reversed. The base appears in both, doing work in both, and keeping nothing from either.
+
 So there is nothing exotic here. The quantized base is a constant in the computation graph. It has to be read at high precision, but it never has to be updated, and updating is the expensive part.
 
 The cost is compute: dequantisation happens on every forward and again in the backward pass, on every step. QLoRA trades speed for memory, and it is meaningfully slower per step than a bf16 base.

@@ -82,6 +82,10 @@ Save the tokenizer alongside. A model directory without its tokenizer is a suppo
 | Deployment | Serving stack must support adapters | Any stack that loads a model |
 | Composability | Adapters can be swapped or weighted at runtime | Fixed at merge time |
 
+![Serving three tasks. Merged, three full models each hold their own copy of the base weights beside one delta. Unmerged, one copy of the base weights sits above the same three deltas.](images/how-many-copies-of-the-base.svg)
+
+The three deltas are the same three on both sides. What multiplies is the shaded part, which is also the part that is large.
+
 The rule of thumb: **merge for a single-purpose deployment, stay unmerged when serving several tasks from one base.** Lesson 25 goes into multi-adapter serving properly.
 
 ### Merging is exact, with two exceptions

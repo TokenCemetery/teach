@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 192" width="560" height="192" role="img" aria-labelledby="title desc">
+  <title id="title">Mixed precision changes the composition, not the total</title>
+  <desc id="desc">Two bars of bytes per trainable parameter, both sixteen bytes long. Under fp32 training the sixteen bytes are four each of weights, gradients, first moment and second moment. Under mixed precision the weights are two bytes of bf16 plus a four-byte fp32 master copy, the gradients are two bytes, and both moments remain four each. The two halved tensors are accented, and the master copy restores exactly what they saved.</desc>
+
+  <!-- Both bars are drawn to the same length because they are the same
+       length, which is the claim. Accent marks only the tensors mixed
+       precision actually halved. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="72">fp32 training</text>
+    <text x="20" y="110">mixed precision</text>
+  </g>
+
+  <!-- 23.125px per byte from x=130 -->
+  <g stroke="#10141a" stroke-width="1" stroke-opacity="0.25">
+    <rect x="130" y="56" width="92.5" height="22" fill="#7a828c"/>
+    <rect x="222.5" y="56" width="92.5" height="22" fill="#7a828c"/>
+    <rect x="315" y="56" width="92.5" height="22" fill="#7a828c"/>
+    <rect x="407.5" y="56" width="92.5" height="22" fill="#7a828c"/>
+
+    <rect x="130" y="94" width="46.25" height="22" fill="#bf7d1a"/>
+    <rect x="176.25" y="94" width="92.5" height="22" fill="#7a828c"/>
+    <rect x="268.75" y="94" width="46.25" height="22" fill="#bf7d1a"/>
+    <rect x="315" y="94" width="92.5" height="22" fill="#7a828c"/>
+    <rect x="407.5" y="94" width="92.5" height="22" fill="#7a828c"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#10141a" text-anchor="middle">
+    <text x="176.25" y="70">weights</text>
+    <text x="268.75" y="70">gradients</text>
+    <text x="361.25" y="70">moment 1</text>
+    <text x="453.75" y="70">moment 2</text>
+
+    <text x="153" y="108">bf16</text>
+    <text x="222.5" y="108">master</text>
+    <text x="292" y="108">grad</text>
+    <text x="361.25" y="108">moment 1</text>
+    <text x="453.75" y="108">moment 2</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="508" y="72">16 bytes</text>
+    <text x="508" y="110">16 bytes</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.5" fill="none">
+    <path d="M130,128 H500"/>
+    <path d="M130,128 V133 M222.5,128 V133 M315,128 V133 M407.5,128 V133 M500,128 V133"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="130" y="145">0</text>
+    <text x="222.5" y="145">4</text>
+    <text x="315" y="145">8</text>
+    <text x="407.5" y="145">12</text>
+    <text x="500" y="145">16 bytes</text>
+  </g>
+
+  <text x="20" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the composition changed and the sum did not</text>
+  <text x="20" y="185" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">the two accented pieces are what it halved; the master copy puts those bytes back</text>
+</svg>

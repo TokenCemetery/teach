@@ -28,6 +28,10 @@ A **base** model has been trained on one objective only: predict the next token 
 
 An **instruct** or **chat** model is a base model that has been trained further on pairs of instructions and responses, which is supervised fine-tuning, and usually on human or model preference data after that. The instruction-following behaviour you take for granted is a trained layer, not a property of the architecture.
 
+![The same question feeding a base model and the same base with instruction tuning added. The base continues with more exam questions; the tuned one produces a response.](images/one-prompt-two-continuations.svg)
+
+One prompt, two continuations, and the same next-token function underneath both. The second box is the first box plus training, which is where the difference lives.
+
 Which one you start from is a real decision:
 
 | Starting point | You inherit | You must supply |

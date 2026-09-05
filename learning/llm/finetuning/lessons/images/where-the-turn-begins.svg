@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 188" width="560" height="188" role="img" aria-labelledby="title desc">
+  <title id="title">The inference rendering stops where the training rendering keeps going</title>
+  <desc id="desc">One conversation rendered twice as a strip of template pieces. Both renderings share the same three pieces, ending with the assistant marker. The inference rendering stops there, ready for the model to continue. The training rendering carries one more piece, the assistant's own text and its end marker, which is the part being learned.</desc>
+
+  <!-- Both strips are literally the same three segments at the same positions,
+       so the boundary is a fact of the layout. Accent marks the piece that
+       exists only when training. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">one conversation, two renderings</text>
+
+  <text x="381" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">where the assistant turn begins</text>
+  <path d="M381,58 V146" stroke="#bf7d1a" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="130" y="64" width="72" height="20" rx="2"/>
+    <rect x="204" y="64" width="72" height="20" rx="2"/>
+    <rect x="278" y="64" width="102" height="20" rx="2"/>
+    <rect x="130" y="118" width="72" height="20" rx="2"/>
+    <rect x="204" y="118" width="72" height="20" rx="2"/>
+    <rect x="278" y="118" width="102" height="20" rx="2"/>
+  </g>
+  <rect x="382" y="118" width="64" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="166" y="77">&lt;|im_start|&gt;user</text>
+    <text x="240" y="77">Hello&lt;|im_end|&gt;</text>
+    <text x="329" y="77">&lt;|im_start|&gt;assistant</text>
+    <text x="166" y="131">&lt;|im_start|&gt;user</text>
+    <text x="240" y="131">Hello&lt;|im_end|&gt;</text>
+    <text x="329" y="131">&lt;|im_start|&gt;assistant</text>
+  </g>
+  <text x="414" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">Hi.&lt;|im_end|&gt;</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="78">inference</text>
+    <text x="20" y="132">training</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="130" y="98">add_generation_prompt=True, and the sequence stops here</text>
+    <text x="130" y="152">no generation prompt, because the assistant text is the target</text>
+  </g>
+
+  <text x="20" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same prefix either way, and the only difference is whether what follows it is in the sequence</text>
+</svg>

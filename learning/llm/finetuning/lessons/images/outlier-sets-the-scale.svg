@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 206" width="560" height="206" role="img" aria-labelledby="title desc">
+  <title id="title">One outlier spends the whole grid, and blockwise quantisation takes it back</title>
+  <desc id="desc">Two number lines, each with the same sixteen evenly spaced levels. On the first, the scale is set by an outlier ten times the typical magnitude, so five typical values all collapse onto just two levels near the centre. On the second, a block containing no outlier sets its own scale, the same sixteen levels cover only the range the values occupy, and the same five values land on five distinct levels.</desc>
+
+  <!-- Both rows have sixteen levels at identical pixel spacing, so the only
+       difference is the range they cover. Accent is where the values actually
+       land. Illustrative values, chosen so the arithmetic is checkable.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="32" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">one scale for the whole tensor, set by the outlier</text>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.55" fill="none">
+    <path d="M60,68 V76 M90.67,68 V76 M121.33,68 V76 M152,68 V76 M182.67,68 V76 M213.33,68 V76 M244,68 V76 M274.67,68 V76 M305.33,68 V76 M336,68 V76 M366.67,68 V76 M397.33,68 V76 M428,68 V76 M458.67,68 V76 M489.33,68 V76 M520,68 V76"/>
+  </g>
+  <path d="M60,72 H520" stroke="#7a828c" stroke-width="1" opacity="0.4" fill="none"/>
+
+  <g stroke="#bf7d1a" stroke-width="1" opacity="0.7" fill="none">
+    <path d="M271.6,58 L274.67,68"/>
+    <path d="M283.1,58 L274.67,68"/>
+    <path d="M292.3,58 L305.33,68"/>
+    <path d="M301.5,58 L305.33,68"/>
+    <path d="M310.7,58 L305.33,68"/>
+  </g>
+  <g fill="none" stroke="#7a828c" stroke-width="1">
+    <circle cx="271.6" cy="56" r="2"/><circle cx="283.1" cy="56" r="2"/>
+    <circle cx="292.3" cy="56" r="2"/><circle cx="301.5" cy="56" r="2"/>
+    <circle cx="310.7" cy="56" r="2"/>
+  </g>
+  <g fill="#bf7d1a">
+    <circle cx="274.67" cy="72" r="3"/><circle cx="305.33" cy="72" r="3"/>
+  </g>
+  <circle cx="520" cy="56" r="2.5" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="520" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">the outlier</text>
+
+  <text x="20" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">five typical values, and every one of them lands on one of two levels</text>
+
+  <text x="20" y="126" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">one scale for a block of 64 that holds no outlier</text>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.55" fill="none">
+    <path d="M60,152 V160 M90.67,152 V160 M121.33,152 V160 M152,152 V160 M182.67,152 V160 M213.33,152 V160 M244,152 V160 M274.67,152 V160 M305.33,152 V160 M336,152 V160 M366.67,152 V160 M397.33,152 V160 M428,152 V160 M458.67,152 V160 M489.33,152 V160 M520,152 V160"/>
+  </g>
+  <path d="M60,156 H520" stroke="#7a828c" stroke-width="1" opacity="0.4" fill="none"/>
+
+  <g stroke="#bf7d1a" stroke-width="1" opacity="0.7" fill="none">
+    <path d="M85.6,142 L90.67,152"/>
+    <path d="M213.3,142 L213.33,152"/>
+    <path d="M315.6,142 L305.33,152"/>
+    <path d="M417.8,142 L428,152"/>
+    <path d="M520,142 L520,152"/>
+  </g>
+  <g fill="none" stroke="#7a828c" stroke-width="1">
+    <circle cx="85.6" cy="140" r="2"/><circle cx="213.3" cy="140" r="2"/>
+    <circle cx="315.6" cy="140" r="2"/><circle cx="417.8" cy="140" r="2"/>
+    <circle cx="520" cy="140" r="2"/>
+  </g>
+  <g fill="#bf7d1a">
+    <circle cx="90.67" cy="156" r="3"/><circle cx="213.33" cy="156" r="3"/>
+    <circle cx="305.33" cy="156" r="3"/><circle cx="428" cy="156" r="3"/>
+    <circle cx="520" cy="156" r="3"/>
+  </g>
+
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">the same five values, now on five distinct levels</text>
+
+  <text x="20" y="200" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">illustrative, with the outlier ten times the typical magnitude; sixteen levels in both rows</text>
+</svg>

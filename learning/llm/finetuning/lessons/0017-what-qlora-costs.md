@@ -68,6 +68,10 @@ Measure them separately:
 | 4-bit base + adapter | Cost 1 and 2 combined |
 | 4-bit-trained adapter merged into bf16 base | Whether cost 1 survives into the artifact |
 
+![Base precision against adapter as a two by two grid holding the reference point, the training ceiling, cost 1 alone and both costs together, with a fifth box below the grid for an adapter trained at 4-bit and merged into a bf16 base.](images/the-one-that-is-not-a-cell.svg)
+
+Four of the five configurations are cells in one grid. The fifth is not, because it uses a different base for training than for deployment, and a configuration with no cell to sit in is an easy one to forget to run.
+
 That last row is the interesting one and it is routinely skipped. You trained against a degraded base, but you can *deploy* against the full-precision one. Whether the adapter learned to compensate for quantisation error, and so is mismatched when the error disappears, is an empirical question with a real answer for your task. Measure it rather than assuming either way.
 
 ### How to measure it honestly

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 224" width="560" height="224" role="img" aria-labelledby="title desc">
+  <title id="title">The same parts either way, and only the number of base copies changes</title>
+  <desc id="desc">Serving three tasks. Merged, there are three full models, each holding its own copy of the base weights alongside one task delta. Unmerged, there is one copy of the base weights and three deltas beside it.</desc>
+
+  <!-- The deltas are the same three in both panels; what multiplies is the
+       shaded base. Accent marks the base weights wherever they are stored.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,36 V196" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+  <text x="20" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">merged, three tasks</text>
+  <text x="300" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">unmerged, three tasks</text>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5">
+    <rect x="30" y="66" width="220" height="26" rx="2"/>
+    <rect x="30" y="100" width="220" height="26" rx="2"/>
+    <rect x="30" y="134" width="220" height="26" rx="2"/>
+    <rect x="310" y="66" width="220" height="26" rx="2"/>
+  </g>
+
+  <g fill="#bf7d1a" fill-opacity="0.9">
+    <rect x="36" y="70" width="170" height="18" rx="2"/>
+    <rect x="36" y="104" width="170" height="18" rx="2"/>
+    <rect x="36" y="138" width="170" height="18" rx="2"/>
+    <rect x="316" y="70" width="170" height="18" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">
+    <text x="121" y="83">base weights</text>
+    <text x="121" y="117">base weights</text>
+    <text x="121" y="151">base weights</text>
+    <text x="401" y="83">base weights</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.18">
+    <rect x="210" y="70" width="34" height="18" rx="2"/>
+    <rect x="210" y="104" width="34" height="18" rx="2"/>
+    <rect x="210" y="138" width="34" height="18" rx="2"/>
+    <rect x="316" y="110" width="50" height="18" rx="2"/>
+    <rect x="376" y="110" width="50" height="18" rx="2"/>
+    <rect x="436" y="110" width="50" height="18" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="227" y="83">A</text>
+    <text x="227" y="117">B</text>
+    <text x="227" y="151">C</text>
+    <text x="341" y="123">A</text>
+    <text x="401" y="123">B</text>
+    <text x="461" y="123">C</text>
+  </g>
+
+  <text x="20" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">three copies of the base weights</text>
+  <text x="300" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">one copy, and the same three deltas</text>
+  <text x="20" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same parts either way, and only the number of base copies changes</text>
+</svg>

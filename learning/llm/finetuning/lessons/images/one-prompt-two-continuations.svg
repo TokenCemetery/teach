@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" width="560" height="210" role="img" aria-labelledby="title desc">
+  <title id="title">One prompt, and what follows it depends on what was trained in</title>
+  <desc id="desc">The same question goes to a base model and to the same base with instruction tuning added. The base continues with more questions, because that is what the surrounding text looked like in its corpus. The tuned one answers. Both are the same next-token function.</desc>
+
+  <!-- Both models take the same prompt and both are the same function; the only
+       difference is the extra training named in the second box. Accent marks
+       the continuation that surprises people. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="20" y="96" width="150" height="22" rx="2"/>
+    <rect x="220" y="60" width="130" height="22" rx="2"/>
+    <rect x="220" y="120" width="130" height="22" rx="2"/>
+    <rect x="380" y="120" width="170" height="22" rx="2"/>
+  </g>
+  <rect x="380" y="60" width="170" height="22" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="95" y="110">What is the capital of France?</text>
+    <text x="285" y="74">base</text>
+    <text x="285" y="134">base + instruction tuning</text>
+    <text x="465" y="134">a response to it</text>
+  </g>
+  <text x="465" y="74" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">three more exam questions</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M170,101 L216,77" marker-end="url(#g)"/>
+    <path d="M170,113 L216,131" marker-end="url(#g)"/>
+    <path d="M350,71 H376" marker-end="url(#g)"/>
+    <path d="M350,131 H376" marker-end="url(#g)"/>
+  </g>
+
+  <text x="220" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">the same next-token function in both</text>
+
+  <text x="20" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">instruction following is a trained layer, not a property of the architecture</text>
+</svg>

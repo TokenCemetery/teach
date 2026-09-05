@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 226" width="560" height="226" role="img" aria-labelledby="title desc">
+  <title id="title">A random split can leave one document on both sides</title>
+  <desc id="desc">Six examples, four from document A and two from document B, split two ways. Split at random, document A has examples in the training bin and in the test bin. Split by document, all of A is in one bin and all of B in the other, so no document is on both sides.</desc>
+
+  <!-- The same six examples appear in both panels; only the assignment changes.
+       Accent follows document A, so which bins carry accent is the claim. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V196" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <text x="20" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">split at random</text>
+  <text x="30" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">train</text>
+  <rect x="30" y="64" width="105" height="74" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5"/>
+  <rect x="40" y="72" width="85" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="82" y="85" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">A-1</text>
+  <rect x="40" y="94" width="85" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="82" y="107" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">A-2</text>
+  <rect x="40" y="116" width="85" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="82" y="129" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">A-3</text>
+  <text x="155" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">test</text>
+  <rect x="155" y="64" width="105" height="74" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5"/>
+  <rect x="165" y="72" width="85" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="207" y="85" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">A-4</text>
+  <rect x="165" y="94" width="85" height="18" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <text x="207" y="107" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">B-1</text>
+  <rect x="165" y="116" width="85" height="18" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <text x="207" y="129" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">B-2</text>
+  <text x="300" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">split by document</text>
+  <text x="310" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">train</text>
+  <rect x="310" y="64" width="105" height="96" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5"/>
+  <rect x="320" y="72" width="85" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="362" y="85" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">A-1</text>
+  <rect x="320" y="94" width="85" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="362" y="107" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">A-2</text>
+  <rect x="320" y="116" width="85" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="362" y="129" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">A-3</text>
+  <rect x="320" y="138" width="85" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="362" y="151" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">A-4</text>
+  <text x="435" y="58" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">test</text>
+  <rect x="435" y="64" width="105" height="52" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5"/>
+  <rect x="445" y="72" width="85" height="18" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <text x="487" y="85" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">B-1</text>
+  <rect x="445" y="94" width="85" height="18" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <text x="487" y="107" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">B-2</text>
+
+  <text x="20" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">document A is in both bins</text>
+  <text x="300" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">no document is in both</text>
+
+  <text x="20" y="200" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">A-1 to A-4 come from one document, B-1 and B-2 from another</text>
+  <text x="20" y="218" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same six examples in both panels, and only the assignment changes</text>
+</svg>

@@ -58,6 +58,10 @@ Random splitting is the default and it is frequently wrong. What you split *by* 
 
 **Group leakage** is the classic silent failure. Ten examples derived from one source document, split randomly, put some in train and some in test. The model has seen that document's content and its held-out score reflects that. Split by document.
 
+![Six examples, four from document A and two from B, split two ways. Split at random, A's examples land in both the train bin and the test bin; split by document, all of A is in one bin and all of B in the other.](images/on-both-sides.svg)
+
+The same six examples are in both panels; only the assignment changes. On the left one document is in both bins, which is the leak, and no amount of held-out discipline elsewhere undoes it.
+
 **Temporal leakage** is the other. Training on data that postdates your test period means the model has seen the future, and your score is optimistic in a way that cannot survive deployment. Any dataset with a time dimension should be split by time, and this is the split people most often skip because random is easier.
 
 ### Three splits, not two

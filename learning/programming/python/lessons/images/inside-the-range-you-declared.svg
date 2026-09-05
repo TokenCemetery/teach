@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 196" width="560" height="196" role="img" aria-labelledby="title desc">
+  <title id="title">The failing values, inside the range the property was given</title>
+  <desc id="desc">The strategy declares n from 0 to 50. The values below 3 are the ones that fail, a short stretch at the left end of that range, and the reported counterexample sits at the very start of it.</desc>
+
+  <!-- The failing stretch is placed by the axis scale, so its size relative to
+       the declared range is measured. Accent marks it and the point reported.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="110" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">st.integers(min_value=0, max_value=50)</text>
+  <text x="140" y="66" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">n &lt; 3 fails</text>
+
+  <rect x="110.0" y="70" width="410.0" height="8" rx="2" fill="#7a828c" fill-opacity="0.35"/>
+  <rect x="110.0" y="70" width="24.6" height="8" rx="2" fill="#bf7d1a"/>
+
+  <path d="M110,96 H520" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none"/>
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none">
+    <path d="M110,92 V100"/>
+    <path d="M192,92 V100"/>
+    <path d="M274,92 V100"/>
+    <path d="M356,92 V100"/>
+    <path d="M438,92 V100"/>
+    <path d="M520,92 V100"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="110" y="112">0</text>
+    <text x="192" y="112">10</text>
+    <text x="274" y="112">20</text>
+    <text x="356" y="112">30</text>
+    <text x="438" y="112">40</text>
+    <text x="520" y="112">50</text>
+  </g>
+  <circle cx="110" cy="96" r="3" fill="#bf7d1a"/>
+
+  <text x="110" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the report: s='0', n=0, the smallest input that still fails</text>
+  <text x="110" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">3 of the 51 values in the declared range</text>
+  <text x="20" y="184" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the property searched the range you declared, and reported its smallest failing point</text>
+</svg>

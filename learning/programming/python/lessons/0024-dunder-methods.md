@@ -94,6 +94,10 @@ The fallbacks are the interesting part:
 
 So a class with `__len__` and nothing else already answers `if x:` correctly, and a class with `__iter__` already supports `in` at linear cost. Implement `__contains__` when you can beat that, for example with a set inside.
 
+![One empty Response put to two tests. The truthiness test falls through a missing __bool__ to __len__, reads 0 and answers False; asking whether it is not None answers True.](images/two-questions-one-object.svg)
+
+The same object goes into both tests. One of them walks a chain to a length and reports on the content; the other reports on the object.
+
 The trap is a class with `__len__` that can legitimately be empty and meaningful. An empty `Response` object is falsy, so `if response:` silently means "if it has content". Either define `__bool__` returning `True`, or make callers write `if response is not None:`.
 
 ### Calling, and context

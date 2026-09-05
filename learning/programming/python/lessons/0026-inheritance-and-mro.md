@@ -82,6 +82,8 @@ M2
 Base
 ```
 
+![The inheritance tree of Both beside the flat MRO of Both. In the tree M1 and M2 each inherit from Base and nothing joins them to each other; in the MRO list, M2 is the entry directly after M1, and an arrow marks super() stepping there.](images/super-goes-sideways.svg)
+
 `M1.__init__` called `super()`, and got `M2`, which is not its base. `super()` means "the next class after me in the MRO of the object being constructed", so what it resolves to depends on the instance, not on where the code was written. That is the mechanism that makes cooperative multiple inheritance work, and it is why every class in such a chain has to follow the same protocol:
 
 - always call `super().__init__(**kwargs)`, exactly once;

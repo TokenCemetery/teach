@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 296" width="560" height="296" role="img" aria-labelledby="title desc">
+  <title id="title">Eight blocking sleeps run one after another on the one thread</title>
+  <desc id="desc">Eight tasks each sleeping two tenths of a second, drawn against a time axis. With a blocking sleep the bars form a staircase, each starting where the last ended, and the run takes 1.65 seconds. Handed to a thread pool the same eight bars all start together and the run takes 0.21 seconds.</desc>
+
+  <!-- Bar widths and the two totals are placed by the axis scale, so the
+       staircase is measured rather than suggested. Accent marks the run that
+       lost its concurrency. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="46" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">eight tasks, blocking sleep</text>
+  <text x="20" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">eight tasks, asyncio.to_thread</text>
+
+  <g fill="#bf7d1a">
+    <rect x="100.0" y="56" width="48.0" height="6" rx="2"/>
+    <rect x="148.0" y="66" width="48.0" height="6" rx="2"/>
+    <rect x="196.0" y="76" width="48.0" height="6" rx="2"/>
+    <rect x="244.0" y="86" width="48.0" height="6" rx="2"/>
+    <rect x="292.0" y="96" width="48.0" height="6" rx="2"/>
+    <rect x="340.0" y="106" width="48.0" height="6" rx="2"/>
+    <rect x="388.0" y="116" width="48.0" height="6" rx="2"/>
+    <rect x="436.0" y="126" width="48.0" height="6" rx="2"/>
+  </g>
+  <g fill="#7a828c" fill-opacity="0.45">
+    <rect x="100.0" y="160" width="48.0" height="6" rx="2"/>
+    <rect x="100.0" y="170" width="48.0" height="6" rx="2"/>
+    <rect x="100.0" y="180" width="48.0" height="6" rx="2"/>
+    <rect x="100.0" y="190" width="48.0" height="6" rx="2"/>
+    <rect x="100.0" y="200" width="48.0" height="6" rx="2"/>
+    <rect x="100.0" y="210" width="48.0" height="6" rx="2"/>
+    <rect x="100.0" y="220" width="48.0" height="6" rx="2"/>
+    <rect x="100.0" y="230" width="48.0" height="6" rx="2"/>
+  </g>
+
+  <path d="M496.0,50 V132" stroke="#7a828c" stroke-width="1" stroke-opacity="0.6" stroke-dasharray="3 3" fill="none"/>
+  <text x="501.0" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">1.65s</text>
+  <path d="M150.4,154 V236" stroke="#7a828c" stroke-width="1" stroke-opacity="0.6" stroke-dasharray="3 3" fill="none"/>
+  <text x="155.4" y="164" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">0.21s</text>
+
+  <path d="M90,250 H540" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none"/>
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none">
+    <path d="M100.0,246 V254"/>
+    <path d="M220.0,246 V254"/>
+    <path d="M340.0,246 V254"/>
+    <path d="M460.0,246 V254"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="100.0" y="264">0s</text>
+    <text x="220.0" y="264">0.5s</text>
+    <text x="340.0" y="264">1.0s</text>
+    <text x="460.0" y="264">1.5s</text>
+  </g>
+
+  <text x="20" y="284" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">eight sleeps of 0.2s, one after another, because the loop never got the thread back</text>
+</svg>

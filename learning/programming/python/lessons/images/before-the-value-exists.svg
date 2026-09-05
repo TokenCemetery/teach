@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 172" width="560" height="172" role="img" aria-labelledby="title desc">
+  <title id="title">Only one of the two methods runs before the value exists</title>
+  <desc id="desc">Calling the class runs __new__ and then __init__. The value comes into existence between them, so the stretch covering __new__ is the only place a subclass of an immutable type can choose what the value is; from __init__ onward the object is already finished.</desc>
+
+  <!-- The boundary sits between the two calls, so which span each method falls
+       in is the whole claim. Accent marks the stretch before the value exists.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="275" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">the value exists from here</text>
+  <path d="M275,56 V130" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="68" width="90" height="22" rx="2"/>
+    <rect x="150" y="68" width="100" height="22" rx="2"/>
+    <rect x="300" y="68" width="100" height="22" rx="2"/>
+    <rect x="430" y="68" width="110" height="22" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="75" y="82">Order(10)</text>
+    <text x="200" y="82">__new__</text>
+    <text x="350" y="82">__init__</text>
+    <text x="485" y="82">the finished object</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M120,79 H146" marker-end="url(#g)"/>
+    <path d="M250,79 H296" marker-end="url(#g)"/>
+    <path d="M400,79 H426" marker-end="url(#g)"/>
+  </g>
+
+  <rect x="150" y="104" width="124" height="6" rx="2" fill="#bf7d1a"/>
+  <rect x="276" y="104" width="264" height="6" rx="2" fill="#7a828c" fill-opacity="0.45"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="280" y="124">self is already finished</text>
+  </g>
+  <text x="150" y="124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">you can still choose it</text>
+
+  <text x="20" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">changing it in __init__ has no effect, because self is already the finished string</text>
+</svg>

@@ -113,6 +113,10 @@ parent: {'n': 0}
 
 Two interpreters each counted to two, and the parent's dictionary never changed. Each also has its own `sys.modules`, so imports happen per interpreter.
 
+![Three boxes. The parent holds COUNTER with n equal to zero. Each interpreter holds its own COUNTER, which reached two, and each returned one and then two.](images/three-copies-of-one-global.svg)
+
+`COUNTER` is written once in the source and exists three times at run time. The four increments are all accounted for, two in each interpreter, and none of them landed in the box the source file appears to describe. That is what makes the isolation worth trusting and also what makes it a trap: code that quietly relied on a shared global does not fail here, it just stops having any effect.
+
 Where they sit between threads and processes:
 
 | | Threads | Subinterpreters | Processes |

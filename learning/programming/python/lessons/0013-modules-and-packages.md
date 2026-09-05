@@ -122,6 +122,10 @@ ImportError: cannot import name 'thing' from partially initialized module 'pkg.a
 
 The cause is rule one: `pkg.a` is already in `sys.modules`, still executing, and `thing` is not defined yet.
 
+![pkg/a.py with a dashed line marking how far it has run, sitting above the line that defines thing. Its first line runs pkg/b.py, which finds pkg.a already in sys.modules and still executing, then looks for thing and is stopped short of the definition.](images/the-module-exists-the-name-does-not.svg)
+
+The dashed line is the whole explanation: `pkg.a` is a real module object, present and findable, whose body has only run as far as its own first line. The lookup arrives below that line, where nothing has been defined yet.
+
 Read the message rather than trusting it. For two **top-level** modules in the same cycle, CPython currently reports `cannot import name 'thing' from 'a' (consider renaming 'a.py' if it has the same name as a library you intended to import)`, which points at shadowing when the actual cause is the cycle. Same defect, different hint.
 
 Three fixes, in order of preference:

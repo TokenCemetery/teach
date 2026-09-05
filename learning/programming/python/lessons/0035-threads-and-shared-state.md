@@ -121,6 +121,10 @@ with lock:
 
 Verified: a plain `Lock` acquired twice from one thread reported `True` then `False` with a timeout, and without a timeout the second acquire waits forever. An `RLock` nested inside itself is fine. That is the whole difference, and it matters when a locked method calls another locked method of the same object.
 
+![One thread running a locked method that calls another locked method. With a Lock the second acquire waits for a lock the same thread holds and nothing below it runs. With an RLock the two acquires take the depth to two and the two releases bring it back to zero.](images/lock-against-rlock.svg)
+
+The call sequence is identical on both sides; only what the second acquire does differs. That is what makes the plain `Lock` version so hard to spot in review: neither method is wrong on its own, and the deadlock exists only in the fact that one of them calls the other.
+
 Four rules that prevent nearly all lock bugs:
 
 1. **Hold it for as little as possible.** Never across I/O if it can be avoided; compute outside, assign inside.

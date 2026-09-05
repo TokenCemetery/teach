@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">One thread acquiring twice: Lock stops, RLock counts</title>
+  <desc id="desc">One thread runs a locked method that calls another locked method of the same object. With a plain Lock, the outer acquire succeeds and the inner acquire waits for a lock the same thread already holds, so nothing after it runs. With an RLock, the same two acquires take the depth to two and the two matching releases bring it back to zero.</desc>
+
+  <!-- The same call sequence in both columns, so the difference is only what
+       the second acquire does. Accent marks the step that never returns.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V158" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="36">Lock</text>
+    <text x="300" y="36">RLock</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="34" y="62">outer() acquires</text>
+    <text x="170" y="62">held</text>
+    <text x="314" y="62">outer() acquires</text>
+    <text x="450" y="62">depth 1</text>
+    <text x="314" y="86">inner() acquires</text>
+    <text x="450" y="86">depth 2</text>
+    <text x="314" y="110">inner() releases</text>
+    <text x="450" y="110">depth 1</text>
+    <text x="314" y="134">outer() releases</text>
+    <text x="450" y="134">depth 0</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="34" y="86">inner() acquires</text>
+    <text x="170" y="86">waits for itself</text>
+  </g>
+  <text x="34" y="110" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.45">nothing below here runs</text>
+
+  <rect x="22" y="54" width="4" height="60" rx="2" fill="#7a828c"/>
+  <rect x="302" y="54" width="4" height="88" rx="2" fill="#7a828c"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <text x="20" y="160" fill="#bf7d1a">it waits for a lock this thread already holds</text>
+    <text x="300" y="160" fill="#7a828c">re-entry is counted, and released as often</text>
+  </g>
+
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">which is what matters when a locked method calls another locked method of the same object</text>
+</svg>

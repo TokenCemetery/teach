@@ -116,6 +116,10 @@ asyncio.to_thread              0.21s
 
 Eight tasks, each calling `time.sleep(0.2)` instead of `await asyncio.sleep(0.2)`, took as long as doing them one at a time, because there is **one thread** and a blocking call does not release it to the loop. Nothing raises, nothing warns, and the concurrency silently disappears.
 
+![Eight tasks against a time axis. With a blocking sleep the bars form a staircase ending at 1.65 seconds; handed to a thread pool the same eight bars all start together and finish by 0.21 seconds.](images/one-after-another.svg)
+
+Both runs are the same eight sleeps of the same length, drawn on the same axis. The staircase is what "one thread" looks like when nothing gives it back.
+
 Everything in this category behaves the same way: `requests.get`, a synchronous database driver, `open(...).read()` on a slow disk, `subprocess.run`, `hashlib` over a large file, a tight computation loop. In a server, one such call in one handler adds its full duration to the latency of **every** other request in flight.
 
 Three fixes, in order:

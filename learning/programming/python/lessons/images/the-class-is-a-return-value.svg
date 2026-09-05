@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" width="560" height="230" role="img" aria-labelledby="title desc">
+  <title id="title">The body runs into a dict, and the class comes back from a call</title>
+  <desc id="desc">A class statement's body executes into a namespace holding the names it defined, currency and total. That namespace is then passed to type along with the name and bases, and the class is what the call returns. A metaclass replaces that call.</desc>
+
+  <!-- The namespace holds exactly the names the body defined, and the class is
+       the value the call returns. Accent marks the call a metaclass replaces.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5">
+    <rect x="20" y="60" width="170" height="60" rx="2"/>
+    <rect x="240" y="60" width="150" height="60" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="26" y="76">class Order:</text>
+    <text x="36" y="92">currency = "GBP"</text>
+    <text x="36" y="108">def total(self)</text>
+  </g>
+  <text x="315" y="74" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">namespace</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="250" y="80" width="130" height="16" rx="2"/>
+    <rect x="250" y="100" width="130" height="16" rx="2"/>
+    <rect x="440" y="150" width="100" height="26" rx="2"/>
+  </g>
+  <rect x="240" y="150" width="150" height="26" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="315" y="91">currency</text>
+    <text x="315" y="111">total</text>
+    <text x="490" y="167">Order</text>
+  </g>
+  <text x="315" y="167" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">type("Order", (), ns)</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M190,90 H236" marker-end="url(#g)"/>
+    <path d="M315,120 V146" marker-end="url(#g)"/>
+    <path d="M390,163 H436" marker-end="url(#g)"/>
+  </g>
+
+  <text x="240" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">a metaclass replaces this call</text>
+  <text x="440" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">type(Order) is type</text>
+
+  <text x="20" y="220" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the body ran before the class existed, and the class is what the call returned</text>
+</svg>

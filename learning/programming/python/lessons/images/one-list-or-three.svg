@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 216" width="560" height="216" role="img" aria-labelledby="title desc">
+  <title id="title">A mutable default is one object; the None guard makes one per call</title>
+  <desc id="desc">Three calls that omit the argument, drawn twice. With a list literal as the default, all three arrows reach the same list, made when the def statement ran, and the results accumulate to one element, then two, then three. With None as the default and a guard in the body, each call reaches a list of its own and every result holds a single element.</desc>
+
+  <!-- Three arrows into one box against three arrows into three boxes: the
+       convergence is the bug. Accent marks the shared object. Tones validated
+       for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <path d="M285,26 V190" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="40">def append_to(item, target=[])</text>
+    <text x="300" y="40">def append_to(item, target=None)</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="110" y="96">made at def</text>
+    <text x="390" y="96">made at each call</text>
+  </g>
+
+  <rect x="130" y="104" width="56" height="68" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="410" y="103" width="56" height="18" rx="2"/>
+    <rect x="410" y="127" width="56" height="18" rx="2"/>
+    <rect x="410" y="151" width="56" height="18" rx="2"/>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M84,115 H126" marker-end="url(#a)"/>
+    <path d="M84,139 H126" marker-end="url(#a)"/>
+    <path d="M84,163 H126" marker-end="url(#a)"/>
+  </g>
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M364,115 H406" marker-end="url(#g)"/>
+    <path d="M364,139 H406" marker-end="url(#g)"/>
+    <path d="M364,163 H406" marker-end="url(#g)"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="118">append_to(1)</text>
+    <text x="20" y="142">append_to(2)</text>
+    <text x="20" y="166">append_to(3)</text>
+    <text x="300" y="118">append_to(1)</text>
+    <text x="300" y="142">append_to(2)</text>
+    <text x="300" y="166">append_to(3)</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="158" y="141">list</text>
+    <text x="438" y="115">list</text>
+    <text x="438" y="139">list</text>
+    <text x="438" y="163">list</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="200" y="118">[1]</text>
+    <text x="200" y="142">[1, 2]</text>
+    <text x="200" y="166">[1, 2, 3]</text>
+    <text x="480" y="118">[1]</text>
+    <text x="480" y="142">[2]</text>
+    <text x="480" y="166">[3]</text>
+  </g>
+
+  <text x="20" y="204" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the default expression ran once, so every call that omits the argument reaches the same object</text>
+</svg>

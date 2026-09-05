@@ -46,6 +46,10 @@ exec(class_body, globals(), namespace)
 Order = type("Order", (), namespace)  # call the metaclass to build the class
 ```
 
+![A class body running into a namespace holding currency and total, that namespace passed to type along with the name and bases, and the class coming back from the call.](images/the-class-is-a-return-value.svg)
+
+The namespace holds exactly the names the body defined, and it exists before any class does. What comes out of the call is the class, which is why replacing the call is all a metaclass has to do.
+
 `type` is the default metaclass. Calling it with three arguments, name, bases and namespace, builds a class, which is why `type(Order)` is `type` and why classes can be created at run time.
 
 A **metaclass** replaces that call:

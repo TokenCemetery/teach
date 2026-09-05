@@ -65,6 +65,10 @@ map 3
 sink 30
 ```
 
+![The same seven steps in a grid of filter, map and sink columns against three element rows, numbered two ways: down the columns on the left, across the rows on the right. Element two fails the filter in both, so it has no map or sink step.](images/down-a-column-or-across-a-row.svg)
+
+The same seven steps happen either way; only the order differs, and the numbering on the right is the order the output above printed.
+
 Nothing printed until `forEach` ran, and then each element travelled all the way through the pipeline before the next one started. A stream is not "filter everything, then map everything"; it is one element at a time, end to end, pulled through by the terminal operation. That pull is also why an intermediate operation cannot see the whole stream: it only ever sees the one element passing through at that moment.
 
 ### A stream is consumed once

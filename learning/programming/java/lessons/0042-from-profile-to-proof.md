@@ -111,6 +111,10 @@ Tally which method names appear in those 630 execution-sample stacks, and the re
 | 83 | `java.lang.String.split` |
 | 54 | `indexer.Indexer.countByLevel` |
 
+![Eight methods by how many of the 630 sampled stacks contained them. Five regex internals sit between 462 and 502, then Pattern.compile at 104 and String.split at 83, and the program's own countByLevel is last at 54.](images/where-the-samples-landed.svg)
+
+The shape is the point rather than any single count: a wall of library frames, then a gap, then your code at the bottom of it. A reader who arrived here intending to optimise `countByLevel` would be working on the smallest bar in the picture.
+
 Your own method, `countByLevel`, appears 54 times. Everything above it in that table belongs to `java.util.regex`. The allocation samples agree from a different angle: `int[]` at 668, `byte[]` at 425, `String` at 212, `java.util.regex.Pattern` at 158 and `java.util.regex.Matcher` at 149, on top of the internal arrays the `Pattern` engine keeps for its own bookkeeping. Two different sampling mechanisms, one watching the call stack and one watching the allocator, pointing at the same neighbourhood.
 
 The cause is a fact about `String.split` that the method signature does not advertise: it only takes a fast, allocation-light path when the argument is a single literal character. `"\\s*\\|\\s*"` is a full regular expression, so every call to `line.split(...)` compiles that regular expression into a fresh `Pattern` from scratch, uses it once, and discards it. Two hundred thousand lines means two hundred thousand `Pattern` objects that live for exactly one line each. `Pattern.compile` sitting at 104 of the 630 samples is the profiler catching that compilation in the act, repeated on every single line of input.

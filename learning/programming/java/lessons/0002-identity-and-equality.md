@@ -77,6 +77,10 @@ big1 == big2            // false, two objects
 big1.equals(big2)       // true
 ```
 
+![A value line broken between 127 and 128. The span over which == answers true covers the cached stretch and stops at 127; the span over which equals answers true continues past the break.](images/right-on-one-side.svg)
+
+Two spans over the same line, and one of them ends. Where it ends is not a property of your data, it is where the cache stops.
+
 So `==` on boxed integers is correct for small numbers and wrong for large ones. An `id` field is exactly where this bites, because ids grow past 127.
 
 Mixing a boxed and a primitive type is different again: one operand is unboxed, so `==` compares numbers and behaves as you expect. That makes the rule harder to remember, not easier, so use the simple one: **never write `==` between two reference types unless you mean identity.**

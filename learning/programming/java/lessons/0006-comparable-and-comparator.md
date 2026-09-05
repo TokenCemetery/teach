@@ -71,6 +71,10 @@ set.add(new Task("review", 1));
 System.out.println(set.size());     // 1
 ```
 
+![Two tasks feeding two questions. Asked whether they are equal the answer is false; asked to compare them the answer is zero, and only that second answer has an arrow leading on to the set's decision.](images/the-collection-never-asks.svg)
+
+Two answers exist, and only one of them goes anywhere. The equality answer is drawn with nothing leaving it because nothing consults it.
+
 Two tasks that are not `equals` compared as zero, so the `TreeSet` treated the second as a duplicate and discarded it. Nothing was thrown, and `size()` is the only evidence.
 
 The fix is to make the ordering a total order over distinct elements, by adding a tie-breaker that ends in something unique:

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 258" width="560" height="258" role="img" aria-labelledby="title desc">
+  <title id="title">One header line, and every member the compiler derives from it</title>
+  <desc id="desc">The record header declares two components. Four of the generated members come once per component, a private final field and an accessor for each, and four come once per record: the canonical constructor, equals, hashCode and toString. Eight in all, which is what reflection lists.</desc>
+
+  <!-- The two columns split the generated members by what produced them, so the
+       per-component count follows from the header. Accent marks the one line
+       everything came from. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <rect x="150" y="50" width="260" height="22" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="280" y="64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">record Point(double x, double y)</text>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5">
+    <rect x="30" y="90" width="230" height="110" rx="2"/>
+    <rect x="300" y="90" width="230" height="110" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="145" y="104">one per component</text>
+    <text x="415" y="104">one per record</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="42" y="110" width="206" height="18" rx="2"/>
+    <rect x="42" y="132" width="206" height="18" rx="2"/>
+    <rect x="42" y="154" width="206" height="18" rx="2"/>
+    <rect x="42" y="176" width="206" height="18" rx="2"/>
+    <rect x="312" y="110" width="206" height="18" rx="2"/>
+    <rect x="312" y="132" width="206" height="18" rx="2"/>
+    <rect x="312" y="154" width="206" height="18" rx="2"/>
+    <rect x="312" y="176" width="206" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="145" y="123">private final double x</text>
+    <text x="145" y="145">public double x()</text>
+    <text x="145" y="167">private final double y</text>
+    <text x="145" y="189">public double y()</text>
+    <text x="415" y="123">Point(double,double)</text>
+    <text x="415" y="145">equals(Object)</text>
+    <text x="415" y="167">hashCode()</text>
+    <text x="415" y="189">toString()</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M200,72 L149,86" marker-end="url(#g)"/>
+    <path d="M360,72 L411,86" marker-end="url(#g)"/>
+  </g>
+
+  <text x="30" y="224" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">eight members in all, which is exactly what reflection lists</text>
+
+  <text x="20" y="246" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the header is the declaration, and everything below it is derived</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 216" width="560" height="216" role="img" aria-labelledby="title desc">
+  <title id="title">One LocalDateTime lands on two different instants</title>
+  <desc id="desc">A universal timeline marked from 02:00Z to 12:00Z. Above it, off the line, sits the local reading 2026-06-15T12:00 with no zone. Two arrows leave it: read as Asia/Tokyo it lands at 03:00Z, read as Europe/London it lands at 11:00Z. The two landing points are eight hours apart on the same timeline.</desc>
+
+  <!-- The two landing points are placed by the timeline's own scale, so the
+       eight hours between them is measured rather than asserted. Accent marks
+       the instants. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">one LocalDateTime</text>
+
+  <rect x="250" y="52" width="100" height="32" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="300" y="68">2026-06-15T12:00</text>
+    <text x="300" y="80">no zone</text>
+  </g>
+
+  <path d="M280,84 L106,118" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M320,84 L474,118" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+
+  <path d="M60,124 H520" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none"/>
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none">
+    <path d="M60,120 V128"/>
+    <path d="M152,120 V128"/>
+    <path d="M244,120 V128"/>
+    <path d="M336,120 V128"/>
+    <path d="M428,120 V128"/>
+    <path d="M520,120 V128"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="60" y="138">02:00Z</text>
+    <text x="152" y="138">04:00Z</text>
+    <text x="244" y="138">06:00Z</text>
+    <text x="336" y="138">08:00Z</text>
+    <text x="428" y="138">10:00Z</text>
+    <text x="520" y="138">12:00Z</text>
+  </g>
+
+  <circle cx="106" cy="124" r="3" fill="#bf7d1a"/>
+  <circle cx="474" cy="124" r="3" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">
+    <text x="106" y="154">03:00Z</text>
+    <text x="474" y="154">11:00Z</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="106" y="166">Asia/Tokyo</text>
+    <text x="474" y="166">Europe/London</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.45" fill="none">
+    <path d="M106,178 H474"/>
+    <path d="M106,174 V182"/>
+    <path d="M474,174 V182"/>
+  </g>
+  <text x="290" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">eight hours apart</text>
+
+  <text x="20" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same reading, two places to land, and no way to choose without a zone</text>
+</svg>

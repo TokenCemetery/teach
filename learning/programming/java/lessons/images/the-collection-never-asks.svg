@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 224" width="560" height="224" role="img" aria-labelledby="title desc">
+  <title id="title">Two questions about the same pair, and the collection asks only one</title>
+  <desc id="desc">Two tasks with different names and the same priority. Asked whether they are equal, the answer is false. Asked to compare them, the answer is zero. A sorted set consults the comparator and never the equality check, so the second task is treated as a duplicate and the set ends up holding one element.</desc>
+
+  <!-- Only one of the two answers has an arrow leaving it, because only one of
+       them is consulted. Accent marks that answer and what follows from it.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="64" width="150" height="22" rx="2"/>
+    <rect x="30" y="96" width="150" height="22" rx="2"/>
+    <rect x="230" y="58" width="130" height="22" rx="2"/>
+    <rect x="230" y="102" width="130" height="22" rx="2"/>
+    <rect x="380" y="58" width="90" height="22" rx="2"/>
+    <rect x="230" y="150" width="240" height="22" rx="2"/>
+  </g>
+  <rect x="380" y="102" width="90" height="22" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="105" y="78">Task("write", 1)</text>
+    <text x="105" y="110">Task("review", 1)</text>
+    <text x="295" y="72">x.equals(y)</text>
+    <text x="295" y="116">compare(x, y)</text>
+    <text x="425" y="72">false</text>
+    <text x="350" y="164">a TreeSet asks the comparator</text>
+  </g>
+  <text x="425" y="116" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">0</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M180,86 L226,71" marker-end="url(#g)"/>
+    <path d="M180,96 L226,111" marker-end="url(#g)"/>
+    <path d="M360,69 H376" marker-end="url(#g)"/>
+    <path d="M360,113 H376" marker-end="url(#g)"/>
+    <path d="M425,124 V146" marker-end="url(#g)"/>
+  </g>
+
+  <text x="230" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">so size() is 1, and nothing was thrown</text>
+
+  <text x="20" y="214" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the two objects are not equal, and the collection never asks</text>
+</svg>

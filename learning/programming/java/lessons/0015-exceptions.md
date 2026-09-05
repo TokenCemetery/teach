@@ -137,6 +137,10 @@ Exception in thread "main" java.lang.IllegalStateException: close failed
 
 The `RuntimeException` from the body is gone without a trace, replaced by the `IllegalStateException` from `close`, and nothing at the call site can tell the query ever failed at all. That silent replacement, not the extra typing of writing `close()` by hand, is the real reason try-with-resources replaced `finally` for anything closeable.
 
+![Both forms are given the same two failures. With try-with-resources both reach the caller, the close failure attached as suppressed; with a finally block only the close failure arrives and the body's is an empty outline where it would have been.](images/one-form-keeps-both.svg)
+
+The left column is identical in both panels. Only the right one differs, and the failure that goes missing there is the one that says what actually went wrong.
+
 ### Exception chaining, and the cost of dropping the cause
 
 ```java

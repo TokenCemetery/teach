@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 196" width="560" height="196" role="img" aria-labelledby="title desc">
+  <title id="title">Four measured runs against the experiment's two predicted outcomes</title>
+  <desc id="desc">Four workloads on one time scale, with the two predictions marked. The platform-thread control and the virtual threads making a blocking native call both land near twelve and a half seconds, the predicted time if the carrier is pinned. The virtual threads using synchronized and Object.wait both land near five hundred milliseconds, the predicted time if they unmount. Nothing lands between the two predictions.</desc>
+
+  <!-- The experiment had two predicted times and every row lands on one of
+       them, which is what makes the result readable at all. Accent is the
+       pinned outcome. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <rect x="150" y="24" width="10" height="10" fill="#bf7d1a"/>
+    <text x="166" y="33">the carrier stays pinned</text>
+    <rect x="300" y="24" width="10" height="10" fill="#7a828c"/>
+    <text x="316" y="33">the virtual thread unmounts</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1" stroke-dasharray="4 3" opacity="0.6" fill="none">
+    <path d="M164.6,56 V150"/>
+    <path d="M515.4,56 V150"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.9">
+    <text x="168" y="52">predicted if it unmounts, 500 ms</text>
+    <text x="515.4" y="52" text-anchor="end">predicted if pinned, 25 x 500 ms</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="74">platform pool, control</text>
+    <text x="20" y="96">virtual, synchronized</text>
+    <text x="20" y="118">virtual, Object.wait</text>
+    <text x="20" y="140">virtual, native call</text>
+  </g>
+
+  <rect x="150" y="64" width="368" height="12" fill="#bf7d1a"/>
+  <rect x="150" y="86" width="15" height="12" fill="#7a828c"/>
+  <rect x="150" y="108" width="15" height="12" fill="#7a828c"/>
+  <rect x="150" y="130" width="368" height="12" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="171" y="96">510 ms</text>
+    <text x="171" y="118">512 ms</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="524" y="74">12.6 s</text>
+    <text x="524" y="140">12.6 s</text>
+  </g>
+
+  <text x="20" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">every row landed on one prediction or the other, and none in between</text>
+  <text x="20" y="188" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the roughly 25-fold gap is what transfers; the seconds are one machine's</text>
+</svg>

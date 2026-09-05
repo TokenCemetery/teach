@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">The same two implementations, benchmarked twice, with opposite verdicts</title>
+  <desc id="desc">Four confidence intervals on one scale in microseconds per operation. In the underpowered run the precompiled version's interval, about 1591 to 1767, sits entirely inside the original's, about 1262 to 2262, so the run cannot tell them apart. In the properly configured run the original spans about 1770 to 1991 and the precompiled version about 1644 to 1682, which do not overlap and do support a conclusion.</desc>
+
+  <!-- Drawn as intervals rather than means because that is what the lesson
+       asks the reader to compare. Accent marks the run that supports no
+       conclusion. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="60">original</text>
+    <text x="20" y="76">precompiled</text>
+    <text x="20" y="132">original</text>
+    <text x="20" y="148">precompiled</text>
+  </g>
+  <text x="20" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">one fork, five iterations</text>
+  <text x="20" y="112" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">three forks, five warmup and five measurement</text>
+
+  <!-- 0.3636px per unit from x=130, covering 1200 to 2300 -->
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M152.4,57 H516"/>
+    <path d="M152.4,52 V62 M516,52 V62"/>
+    <path d="M272.2,73 H336.3"/>
+    <path d="M272.2,68 V78 M336.3,68 V78"/>
+  </g>
+  <g fill="#bf7d1a">
+    <circle cx="334.2" cy="57" r="2.5"/>
+    <circle cx="304.2" cy="73" r="2.5"/>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <path d="M337.2,129 H417.6"/>
+    <path d="M337.2,124 V134 M417.6,124 V134"/>
+    <path d="M291.3,145 H305.2"/>
+    <path d="M291.3,140 V150 M305.2,140 V150"/>
+  </g>
+  <g fill="#7a828c">
+    <circle cx="377.4" cy="129" r="2.5"/>
+    <circle cx="298.3" cy="145" r="2.5"/>
+  </g>
+
+  <text x="20" y="94" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">one interval sits entirely inside the other, so the run cannot tell them apart</text>
+  <text x="20" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">these do not overlap, and support a real improvement of about 13 per cent</text>
+
+  <g stroke="#7a828c" stroke-width="1" opacity="0.5" fill="none">
+    <path d="M130,180 H530"/>
+    <path d="M130,180 V185 M202.7,180 V185 M275.5,180 V185 M348.2,180 V185 M420.9,180 V185 M493.6,180 V185"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="130" y="196">1200</text>
+    <text x="202.7" y="196">1400</text>
+    <text x="275.5" y="196">1600</text>
+    <text x="348.2" y="196">1800</text>
+    <text x="420.9" y="196">2000</text>
+    <text x="493.6" y="196">2200 us/op</text>
+  </g>
+</svg>

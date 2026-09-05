@@ -72,6 +72,10 @@ Measured on one machine, with this exact workload, the two methods land in diffe
 
 `noEscape` allocates nothing at all. The `10^-5` bytes per operation is not a small allocation, it is measurement noise around a true value of zero: no `Point` was built, so there was nothing to allocate. `escapes` allocates the full object every single call, exactly the 24 bytes lesson 37 measured for this record with default object headers, because a real `Point` now has to exist on the heap for that field store to point at. The time follows the allocation: `escapes` is about 4.8 times slower, and that ratio, not the two absolute numbers, is what should travel to different hardware. A reader running the same comparison on a different machine will see different nanosecond figures and the same shape: the version that cannot escape is dramatically cheaper, because it was never really there.
 
+![Two methods differing by one field store. The version that does not escape runs in 0.597 nanoseconds and allocates nothing. The version that escapes runs in 2.878 nanoseconds and allocates the full 24 bytes. Time and allocation are on separate labelled scales.](images/one-line-of-difference.svg)
+
+The two measurements are in different units, so they are two scales rather than one axis, but they move together and for the same reason. The empty right-hand cell on the first row is the whole of escape analysis: not a smaller object, no object.
+
 It is worth sitting with how small the source difference is against how large the runtime difference is. Nothing about the arithmetic changed. Nothing about the record changed. One assignment turned an object that did not need to exist into a real, header-bearing, eventually-collected one: about 4.8 times the time per operation, and the full 24 bytes of allocation that lesson 37 measured for this record, where a moment earlier there had been none at all. This is the entire argument for caring about escape analysis: not because it is exotic, but because the distance between "optimised away" and "the full cost" is exactly one line, and the line does not announce itself as special.
 
 ### What defeats it

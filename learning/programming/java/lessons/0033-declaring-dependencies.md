@@ -96,6 +96,10 @@ Built and verified: a project directly depends on `com.google.inject:guice:5.1.0
 
 That second line, from `mvn dependency:tree -Dverbose`, is Maven telling you exactly what it discarded and why: `guava 32.1.3-jre`, newer than the version that won, was **omitted for conflict**. Both candidates sit one hop below a direct dependency, so depth alone does not separate them, and `guice` is declared first in the POM, so its Guava wins. The rest of the verbose output shows the same pattern: `error_prone_annotations`, `j2objc-annotations` and `gson` all resolve to whichever version came from the earlier-declared branch, sometimes older, sometimes newer, because age was never the criterion.
 
+![The project with two direct dependencies, each bringing its own Guava one hop below. Both Guava nodes sit at depth two; the one under the branch declared first is shaded as the winner, and the newer one beside it is drawn as an outline, omitted for conflict.](images/the-newer-one-lost.svg)
+
+Both candidates are the same distance from the root, so nothing about the shape of the tree separates them. The version that wins is the older one, and the only thing that chose it was the order the two branches were written in.
+
 Two ways to take control, both verified against the same conflict:
 
 **Declare the version directly.** A dependency written in your own `<dependencies>` block sits at depth zero from the resolver's point of view, which beats anything transitive:

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 178" width="560" height="178" role="img" aria-labelledby="title desc">
+  <title id="title">The pause fraction is the ceiling on what tuning the collector can win</title>
+  <desc id="desc">Two runs, each drawn as its whole wall-clock time. In this lesson's log, 44.2 milliseconds of pauses out of 7441 is six tenths of one per cent, a sliver barely wide enough to see. In the lesson's contrasting case, 1.8 seconds out of 12 is fifteen per cent, a clearly visible block. The accented slice is the entire amount any collector change could win back.</desc>
+
+  <!-- Both runs are normalised to their own full length because the claim is
+       about the fraction, not the duration. The first slice is meant to be
+       almost invisible; that is the finding, so it is called out rather than
+       enlarged. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">each bar is one whole run; the accent is the time every thread spent stopped</text>
+
+  <text x="156" y="49" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">44.2 ms of 7441 ms</text>
+  <path d="M151,52 V56" stroke="#bf7d1a" stroke-width="1" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="70">this lesson's log</text>
+    <text x="20" y="108">a double-figure log</text>
+  </g>
+
+  <rect x="150" y="56" width="370" height="20" fill="#7a828c"/>
+  <rect x="150" y="56" width="2.2" height="20" fill="#bf7d1a"/>
+
+  <rect x="150" y="94" width="370" height="20" fill="#7a828c"/>
+  <rect x="150" y="94" width="55.5" height="20" fill="#bf7d1a"/>
+
+  <path d="M177.75,116 V122" stroke="#bf7d1a" stroke-width="1" fill="none"/>
+  <text x="182.75" y="125" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">1.8 s of 12 s, the lesson's contrast case</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">
+    <text x="528" y="70">0.6%</text>
+    <text x="528" y="108">15%</text>
+  </g>
+
+  <text x="20" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">no collector change can win back more than the accented slice</text>
+  <text x="20" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">which is why the fraction is computed before any flag is touched</text>
+</svg>

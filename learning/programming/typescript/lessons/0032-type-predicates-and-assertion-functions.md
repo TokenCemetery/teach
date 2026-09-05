@@ -56,6 +56,10 @@ A bare `as T` is visible at the exact place the lie happens; a reader staring at
 
 A predicate narrows inside the branch that called it. An assertion function narrows everything after the call, no branch needed, using `asserts x is T` instead of `x is T`:
 
+![Two snippets with the narrowed region marked beside them. The predicate's bar covers one line inside the true branch; the assertion's bar runs from the call to the end of the scope.](images/where-the-narrowing-reaches.svg)
+
+Both bars begin on the same line, and only their ends differ. The check itself is identical in the two versions, so what the signature buys is not a better answer but a wider region over which the answer keeps applying.
+
 ```ts
 function assertString(x: unknown): asserts x is string {
   if (typeof x !== "string") {

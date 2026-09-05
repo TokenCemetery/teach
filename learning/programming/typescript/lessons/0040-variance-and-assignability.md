@@ -39,6 +39,10 @@ Verified: this compiles. **Contravariant** means a position travels the opposite
 
 The rule is not arbitrary; it falls out of what a function's type promises. Accepting is a promise made to every caller, so a function standing in for a wider parameter type must handle every value that type's callers may send: narrowing what it accepts breaks that promise, which is why a handler accepting only `string` cannot stand in for a type promising callers a `number` would also work. Returning is a promise read by one caller at a time, so a function may return something more specific than promised: a caller expecting an `Animal` is satisfied by a `Dog`, since everything it can do with an `Animal` a `Dog` can also do. Accept at least as much, return at least as little, is why parameters and return types travel in opposite directions, and it is the same reasoning lesson 13 applied without naming it.
 
+![One axis from narrower to wider. Both rows leave the same written type in the middle: the return position's arrow goes left, toward a function returning Dog, and the parameter position's arrow goes right, toward a function accepting unknown.](images/opposite-directions-one-axis.svg)
+
+One axis, and the two positions leave the same point in opposite directions. Nothing about the axis changes between the rows; only which way a substitute is allowed to travel along it.
+
 ### The array, and the hole the compiler leaves open on purpose
 
 Arrays are the case every discussion of TypeScript's variance eventually reaches, because arrays are both mutable and covariant, and that combination is unsound. Watch the sequence:

@@ -79,6 +79,10 @@ error TS2322: Type 'ZodSafeParseError<{ id: string; age: number; }>' is not assi
 
 `default` no longer sees `never`, it sees the failure shape itself, named in full, lesson 23's mechanism applied to a validation result. That is the whole argument: because the failure lives in the return type, the compiler forces the build to fail the moment a caller stops handling it, naming the exact site. Compare the weaker signal lesson 23 already showed: an `if (result.success) { return ...; }` with no `else` gives `error TS2366: Function lacks ending return statement and return type does not include 'undefined'.`, real, but naming a missing return rather than a missing case, and silent once the return type is `void`. The `never` guard names the value left over instead.
 
+![Two signature boxes of the same size. The throwing one returns a number with its failure drawn outside the box entirely; the other's return type is the Result itself, drawn inside the box.](images/inside-the-signature-or-outside.svg)
+
+Both declarations are the same shape. The failure exists in both; the difference is whether it falls inside the box the caller reads.
+
 ### A Result shape of your own
 
 `safeParse`'s union belongs to Zod, and most functions run no schema, so they need a failure shape not borrowed from a validation library, the same idea lesson 22 named, written out plainly.

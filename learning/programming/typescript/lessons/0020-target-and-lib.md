@@ -94,6 +94,10 @@ Given the last section, the obvious fix for a method missing at an older target 
 error TS2584: Cannot find name 'console'. Do you need to change your target library? Try changing the 'lib' compiler option to include 'dom'.
 ```
 
+![Two rows of library chips. With no lib named, es2020, dom and dom.iterable are all present and console is declared in dom. With lib es2022 named, only one chip remains and the other two are drawn as empty outlines in the same slots.](images/replaced-not-added-to.svg)
+
+The two dropped libraries are drawn in the slots they used to occupy, because that is what the option did: it did not leave them and add one, it put one where three had been.
+
 Most options in a configuration merge with their default or add to a list. `lib` does not. Naming it at all replaces the whole bundle a target would otherwise have supplied, rather than adding one entry to it. The default bundle behind `es2020` is not `es2020` on its own, it is `es2020` plus `dom` plus `dom.iterable`, and `console` is declared inside `dom`, not inside any `esXXXX` library. Writing `--lib es2022` said "use exactly this and nothing else", and "nothing else" turned out to include the one declaration this file actually used. The fix is to name the whole bundle you mean, `--lib es2022,dom` here, or to raise `target` instead and let its default follow.
 
 ### The DOM library is present by default, whether or not that is wanted

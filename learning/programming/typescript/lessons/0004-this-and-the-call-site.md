@@ -61,6 +61,10 @@ setTimeout(svc.describe, 0);        // same failure
 
 Nothing was mutated and no reference was lost. `svc.describe` evaluates to the function, and the function has no attachment to `svc`. The dot is what supplied `this`, and once you extract the function there is no dot.
 
+![Four rows sharing one function. Under new, the call site gives the newly created object; under explicit, svc; under the method rule, svc; under the default rule, extracting the function into fn and calling it gives undefined.](images/the-call-site-decides.svg)
+
+Read the middle column as the only thing that changes. The function is byte for byte identical in all four rows, which is why no amount of reading `describe` will tell you what `this` is inside it; the answer is not written there. The last row is the third one with the dot taken away, and that single edit is the whole distance between `"api"` and a `TypeError`.
+
 TypeScript catches part of this, and only part. With `strictBindCallApply` and `noImplicitThis` on, a function that uses `this` and is called without a receiver can be reported, but a method passed as a callback usually type-checks fine, because its signature says nothing about needing a receiver.
 
 ### Three fixes, and when each is right

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" width="560" height="210" role="img" aria-labelledby="title desc">
+  <title id="title">The same failure, inside the type the caller reads or outside it</title>
+  <desc id="desc">Two declarations of the same size. The throwing one returns a number and its failure sits outside the signature entirely, so nothing the caller reads mentions it. The other returns a Result whose failure case is part of the return type, inside the signature, so the caller has to branch on it.</desc>
+
+  <!-- Both signature boxes are the same shape; the only difference is whether
+       the failure chip falls inside one. Accent marks the failure in each case.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="81">throws</text>
+    <text x="20" y="147">returns a Result</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5">
+    <rect x="120" y="64" width="300" height="26" rx="2"/>
+    <rect x="120" y="130" width="300" height="26" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="128" y="81">(raw: string) =&gt; number</text>
+    <text x="128" y="147">(raw: string) =&gt;</text>
+  </g>
+
+  <rect x="440" y="68" width="100" height="18" rx="2" fill="none" stroke="#bf7d1a" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="490" y="81" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">or throws</text>
+
+  <rect x="270" y="134" width="140" height="18" rx="2" fill="#bf7d1a" fill-opacity="0.9"/>
+  <text x="340" y="147" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">Result: ok | failed</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="120" y="106">nothing in the signature says it can fail</text>
+  </g>
+  <text x="120" y="172" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the caller has to branch on it</text>
+
+  <text x="20" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same failure, inside the type the caller reads or outside it</text>
+</svg>

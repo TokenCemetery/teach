@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 204" width="560" height="204" role="img" aria-labelledby="title desc">
+  <title id="title">The same import and the same options, and one field decides the verdict</title>
+  <desc id="desc">The compiler options and the import specifier are identical on both branches. Only the type field in package.json differs: set to module, the extensionless relative import is refused with TS2835; left out, the same import compiles.</desc>
+
+  <!-- The specifier and the options are drawn once, because they do not change.
+       Accent marks the one field that does. Tones validated for both surfaces;
+       see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="74" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">unchanged in both</text>
+  <rect x="20" y="80" width="180" height="56" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="28" y="98">module: nodenext</text>
+    <text x="28" y="114">strict</text>
+    <text x="28" y="130">from "./dep"</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="430" y="64" width="120" height="22" rx="2"/>
+    <rect x="430" y="128" width="120" height="22" rx="2"/>
+  </g>
+  <g fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5">
+    <rect x="250" y="64" width="150" height="22" rx="2"/>
+    <rect x="250" y="128" width="150" height="22" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">
+    <text x="325" y="78">{"type": "module"}</text>
+    <text x="325" y="142">{}</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="490" y="78">TS2835</text>
+    <text x="490" y="142">compiles</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M200,98 L246,79" marker-end="url(#g)"/>
+    <path d="M200,118 L246,135" marker-end="url(#g)"/>
+    <path d="M400,75 H426" marker-end="url(#g)"/>
+    <path d="M400,139 H426" marker-end="url(#g)"/>
+  </g>
+
+  <text x="250" y="172" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the only thing that moved, and the options never mention it</text>
+
+  <text x="20" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same specifier and the same compiler options, and opposite verdicts</text>
+</svg>

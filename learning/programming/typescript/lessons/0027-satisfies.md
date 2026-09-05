@@ -62,6 +62,10 @@ This compiles. `c` is checked against `Cfg` exactly as before, so a misspelt key
 
 The `as` row is lesson 18's territory: it does not check at all, so `extra` slips through even though `Cfg` says nothing about one.
 
+![A two by two grid. Down the side, whether the value is checked against Cfg; across the top, whether it keeps the type inference gave it. The annotation sits at checked-but-widened, satisfies at checked-and-kept, the assertion at neither, and a bare const at kept-but-unchecked.](images/two-questions-four-corners.svg)
+
+The three forms above are three corners of the same grid, and the fourth is writing no type at all. Placed this way, `satisfies` is not a fourth kind of thing to remember; it is the one combination the other three leave empty.
+
 ### Still a check, not a softer one
 
 "Keeps the narrower type" does not mean "checks less strictly"; both cases below refuse `satisfies` exactly as they would refuse an annotation.

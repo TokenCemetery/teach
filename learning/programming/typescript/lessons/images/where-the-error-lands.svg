@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 208" width="560" height="208" role="img" aria-labelledby="title desc">
+  <title id="title">The same conflict is reported at the declaration or at the first value</title>
+  <desc id="desc">Two ways of writing the same conflicting type. With interface extends, the error is marked on the declaration line and names both types. With a type alias and an intersection, the declaration is accepted and the error is marked three lines later, on the value, as an assignment to never.</desc>
+
+  <!-- The third line is identical in both panels, so which line carries the
+       marker is the only difference. Accent marks where each error lands.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,36 V166" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="48">interface extends</text>
+    <text x="300" y="48">type and &amp;</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="20" y="64" width="250" height="18" rx="2"/>
+    <rect x="20" y="88" width="250" height="18" rx="2"/>
+    <rect x="20" y="112" width="250" height="18" rx="2"/>
+    <rect x="300" y="64" width="250" height="18" rx="2"/>
+    <rect x="300" y="88" width="250" height="18" rx="2"/>
+    <rect x="300" y="112" width="250" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="26" y="77">interface A { a: number }</text>
+    <text x="26" y="101">interface B extends A { a: string }</text>
+    <text x="26" y="125">const b: B = { a: 1 }</text>
+    <text x="306" y="77">type A = { a: number }</text>
+    <text x="306" y="101">type B = A &amp; { a: string }</text>
+    <text x="306" y="125">const b: B = { a: 1 }</text>
+  </g>
+
+  <g fill="#bf7d1a">
+    <rect x="12" y="88" width="4" height="18" rx="2"/>
+    <rect x="292" y="112" width="4" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="20" y="148">TS2430, at the declaration</text>
+    <text x="300" y="148">TS2322, at the first value built</text>
+  </g>
+
+  <text x="20" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same conflict, reported where you wrote it or where someone used it</text>
+  <text x="20" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">and the second message never mentions an intersection</text>
+</svg>

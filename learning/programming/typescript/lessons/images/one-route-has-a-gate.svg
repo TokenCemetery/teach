@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">The same value reaches the same type by two routes, and only one has a gate</title>
+  <desc id="desc">One object literal with an extra property leads to one typed target by two routes. Assigned directly, it passes through the excess property check and is rejected with TS2353. Assigned to a variable first and then to the target, it meets no such check and arrives, unchanged.</desc>
+
+  <!-- Both routes start from the same value and end at the same type; the only
+       difference is that one passes through the check. Accent marks the gate.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the same value, two routes to the same target</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="100" width="110" height="22" rx="2"/>
+    <rect x="240" y="142" width="130" height="22" rx="2"/>
+    <rect x="430" y="100" width="110" height="22" rx="2"/>
+  </g>
+  <rect x="240" y="58" width="130" height="22" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="85" y="115">{ a: 1, b: 2 }</text>
+    <text x="305" y="157">src (a variable)</text>
+    <text x="485" y="115">P = { a: number }</text>
+  </g>
+  <text x="305" y="73" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">excess property check</text>
+
+  <path d="M140,106 V70 H234" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M370,70 H414" stroke="#bf7d1a" stroke-width="1.5" fill="none"/>
+  <path d="M418,62 V78" stroke="#bf7d1a" stroke-width="1.5" fill="none"/>
+
+  <path d="M140,116 V156 H234" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <path d="M370,156 H420 V120 H426" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="150" y="64">assigned directly</text>
+    <text x="150" y="150">via a variable</text>
+    <text x="424" y="180">accepted</text>
+  </g>
+  <text x="424" y="62" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">rejected: TS2353</text>
+
+  <text x="20" y="206" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">routing through a variable removes the check, not the extra property</text>
+</svg>

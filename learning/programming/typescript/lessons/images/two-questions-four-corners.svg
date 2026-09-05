@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 224" width="560" height="224" role="img" aria-labelledby="title desc">
+  <title id="title">The two questions a type near a value answers, as four corners</title>
+  <desc id="desc">A two by two grid. Down the side, whether the value is checked against Cfg; across the top, whether it keeps the type inference gave it. An annotation checks and then discards the inferred type. satisfies checks and keeps it. An assertion does neither. Writing no type at all keeps the inference but checks nothing.</desc>
+
+  <!-- Each form's position is the pair of answers, so the grid says what the
+       table says and also shows the fourth corner. Accent marks the corner
+       satisfies exists to reach. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">two questions, and four corners</text>
+
+  <text x="345" y="56" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">keeps the type inference gave it</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="250" y="72">no</text>
+    <text x="440" y="72">yes</text>
+  </g>
+  <text x="20" y="138" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">checked against Cfg</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="end">
+    <text x="152" y="110">yes</text>
+    <text x="152" y="170">no</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="160" y="80" width="180" height="52" rx="2"/>
+    <rect x="160" y="140" width="180" height="52" rx="2"/>
+    <rect x="350" y="140" width="180" height="52" rx="2"/>
+  </g>
+  <rect x="350" y="80" width="180" height="52" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="170" y="102">const c: Cfg = { ... }</text>
+    <text x="170" y="162">const c = { ... } as Cfg</text>
+    <text x="360" y="162">const c = { ... }</text>
+  </g>
+  <text x="360" y="102" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">const c = { ... } satisfies Cfg</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="170" y="120">c.port is string | number</text>
+    <text x="360" y="120">c.port is number</text>
+    <text x="170" y="180">extra slips through unchecked</text>
+    <text x="360" y="180">nothing compared it to Cfg</text>
+  </g>
+
+  <text x="20" y="214" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the top right corner is the combination the other three forms cannot reach</text>
+</svg>

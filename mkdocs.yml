@@ -38,7 +38,15 @@ markdown_extensions:
   # The theme ships Pygments stylesheets but nothing was emitting Pygments
   # markup, so every code block rendered unhighlighted.
   - pymdownx.highlight
-  - pymdownx.superfences
+  # Without the custom fence, superfences claims every ```mermaid block and
+  # hands it to Pygments, so the diagram ships as highlighted source. The
+  # `div` formatter is the one for a non-Material theme, and the class it
+  # emits is what the theme's own `.markdown-body .mermaid` rules style.
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
   # GitHub puts a hover anchor beside every heading, and the same files are
   # read there. The theme draws the octicon itself, so the permalink text
   # stays empty and no stray glyph reaches the search index.
@@ -111,6 +119,15 @@ plugins:
   - git-revision-date-localized:
       # A shallow clone has no log for a page; fall back rather than fail.
       fallback_to_build_date: true
+  # Draws the ```mermaid fences. Listed last because it injects its loader in
+  # `on_post_page`, and i18n rebuilds the page once per language above.
+  #
+  # The version is pinned for the same reason the theme is: mermaid changes
+  # its default layout between releases, and the diagrams here are checked
+  # against one of them. The plugin fetches this exact build from unpkg and
+  # verifies the URL resolves at build time, so a bump is a visible change.
+  - mermaid2:
+      version: 10.4.0
 
 exclude_docs: |
   **/NOTES.md

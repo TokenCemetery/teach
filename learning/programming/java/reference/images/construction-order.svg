@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 186" width="560" height="186" role="img" aria-labelledby="title desc">
+  <title id="title">Why an overridden method called from a superclass constructor sees defaults</title>
+  <desc id="desc">A downward timeline of construction. The superclass constructor runs first, and anything it calls that the subclass overrides runs at that moment, when the subclass field still holds its default. Only afterwards do the subclass field initialisers run and assign it, followed by the subclass constructor body. The override therefore reads a field whose initialiser has not been reached yet.</desc>
+
+  <!-- The list gives the three phases in order, which is correct but flat.
+       What it cannot show is that the override runs inside phase one, before
+       the initialiser in phase two. The right-hand column is the same field
+       read at each moment. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <path d="M410,20 V162" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c">
+    <text x="36" y="32">what runs</text>
+    <text x="470" y="32" text-anchor="middle">the subclass field</text>
+  </g>
+
+  <defs>
+    <marker id="t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+  <path d="M24,48 V150" stroke="#7a828c" stroke-width="1.5" fill="none" marker-end="url(#t)" opacity="0.6"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c">
+    <text x="36" y="62">1  the superclass constructor</text>
+    <text x="36" y="116">2  the subclass field initialisers</text>
+    <text x="36" y="144">3  the subclass constructor body</text>
+  </g>
+  <text x="69" y="86" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#bf7d1a">it calls a method the subclass overrides</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" text-anchor="middle">
+    <text x="470" y="62" fill="#7a828c">default</text>
+    <text x="470" y="86" fill="#bf7d1a">default</text>
+    <text x="470" y="116" fill="#7a828c">assigned</text>
+    <text x="470" y="144" fill="#7a828c">assigned</text>
+  </g>
+
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a">the override reads a field whose initialiser has not run yet</text>
+</svg>

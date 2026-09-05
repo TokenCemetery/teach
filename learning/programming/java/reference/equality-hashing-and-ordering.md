@@ -45,6 +45,10 @@ Lookup sheet for stage 1. The question it exists to answer: **which comparison d
 
 Nothing in this table throws at the point of the mistake. That is what makes it a contract rather than a rule.
 
+![Two bucket arrays, with a.equals(b) true in both. Where hashCode is overridden, a and b select the same bucket and the entry is found. Where hashCode is left at identity, a is stored in bucket 1 while the lookup for b reads bucket 3, finds it empty, and returns null without calling equals.](images/hashcode-picks-the-bucket.svg)
+
+`hashCode` chooses the bucket and `equals` only compares what is already in it, so a wrong `hashCode` sends the lookup to a bucket the entry was never in. The comparison that would have said "yes" is never reached. That is why the first row of the table above fails silently: the map is not disagreeing with your `equals`, it is never asking it.
+
 ## Keys
 
 A hash key must be **effectively immutable in every field `equals` and `hashCode` read.**

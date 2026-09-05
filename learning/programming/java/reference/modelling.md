@@ -46,6 +46,10 @@ Lookup sheet for stage 2. The question it exists to answer: **which construct sh
 
 Consequence: a superclass constructor that calls a method the subclass overrides sees that override read the subclass's own fields still at their default, because the subclass's field initialisers have not run yet.
 
+![A downward timeline of construction. The overridden method is called inside step 1, while the subclass field still holds its default. Only in step 2 do the subclass field initialisers assign it.](images/construction-order.svg)
+
+The override does not run between the numbered steps, it runs **inside** step 1, and step 2 is what would have given the field its value. That ordering is why calling an overridable method from a constructor is a defect rather than a style preference: no amount of care in the subclass can fix it, because the subclass has not started yet.
+
 ## Overriding rules
 
 | An override may | An override may never |

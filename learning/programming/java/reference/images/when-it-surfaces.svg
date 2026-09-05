@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">Where each kind of incompatibility surfaces, and where your build stops seeing it</title>
+  <desc id="desc">A left to right timeline. A source incompatibility surfaces in your own build, as a compile error. Past the point where your build ends, a binary incompatibility surfaces at someone else's class load or first call, as a NoSuchMethodError, and a behavioural incompatibility surfaces in their output with no error at all. The two that fall outside your build are the two you cannot catch.</desc>
+
+  <!-- The table gives each compatibility its own test but not their order in
+       time, which is the sheet's argument for why binary is the dangerous
+       one. Accent is everything past the end of your own build. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="30" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">when the failure surfaces, earliest on the left</text>
+
+  <text x="185" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a" text-anchor="middle">your build ends here</text>
+  <path d="M185,58 V152" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+
+  <defs>
+    <marker id="t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+  <path d="M40,110 H514" stroke="#7a828c" stroke-width="1.5" fill="none" marker-end="url(#t)" opacity="0.6"/>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <path d="M110,100 V120"/>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M300,100 V120"/>
+    <path d="M460,100 V120"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle" opacity="0.9">
+    <text x="110" y="72">your build</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a" text-anchor="middle" opacity="0.9">
+    <text x="300" y="72">their class load</text>
+    <text x="460" y="72">their output</text>
+  </g>
+
+  <text x="110" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7a828c" text-anchor="middle">Source</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#bf7d1a" text-anchor="middle">
+    <text x="300" y="92">Binary</text>
+    <text x="460" y="92">Behavioural</text>
+  </g>
+
+  <text x="110" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">a compile error</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a" text-anchor="middle">
+    <text x="300" y="142">NoSuchMethodError</text>
+    <text x="460" y="142">no error at all</text>
+  </g>
+
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the further right, the later it fails and the less of it is yours to catch</text>
+</svg>

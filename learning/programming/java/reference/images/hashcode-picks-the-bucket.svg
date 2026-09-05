@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 186" width="560" height="186" role="img" aria-labelledby="title desc">
+  <title id="title">Why equals without hashCode fails silently</title>
+  <desc id="desc">Two bucket arrays, with a.equals(b) true in both. On the left hashCode is overridden too, so a and b select the same bucket, the entry stored under a is found there, and equals is asked and answers true. On the right hashCode is left at identity, so a selects bucket 1 and b selects bucket 3; the lookup reads bucket 3, finds it empty, and returns null without ever calling equals.</desc>
+
+  <!-- The point is which bucket the lookup reads, not what equals would have
+       answered. Accent marks the path that fails; the "never asked" label
+       carries the same meaning in text. Tones validated for both surfaces;
+       see .agents/TODO.md. -->
+
+  <text x="280" y="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c" text-anchor="middle">a.equals(b) is true in both</text>
+
+  <path d="M270,28 V172" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c" text-anchor="middle">
+    <text x="130" y="42">hashCode() overridden too</text>
+    <text x="410" y="42">hashCode() left at identity</text>
+
+    <text x="70" y="68">a</text>
+    <text x="135" y="68">b</text>
+    <text x="382.5" y="68">a</text>
+  </g>
+  <text x="492.5" y="68" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#bf7d1a" text-anchor="middle">b</text>
+
+  <!-- the bucket arrays -->
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="94" width="55" height="30"/>
+    <rect x="75" y="94" width="55" height="30"/>
+    <rect x="130" y="94" width="55" height="30"/>
+    <rect x="185" y="94" width="55" height="30"/>
+
+    <rect x="300" y="94" width="55" height="30"/>
+    <rect x="355" y="94" width="55" height="30"/>
+    <rect x="410" y="94" width="55" height="30"/>
+  </g>
+  <rect x="465" y="94" width="55" height="30" fill="none" stroke="#bf7d1a" stroke-width="2.5"/>
+
+  <!-- the stored entry, in both cases under a -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c" text-anchor="middle">
+    <text x="102.5" y="113">a</text>
+    <text x="382.5" y="113">a</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#7a828c" text-anchor="middle">
+    <text x="47.5" y="140">0</text>
+    <text x="102.5" y="140">1</text>
+    <text x="157.5" y="140">2</text>
+    <text x="212.5" y="140">3</text>
+    <text x="327.5" y="140">0</text>
+    <text x="382.5" y="140">1</text>
+    <text x="437.5" y="140">2</text>
+    <text x="492.5" y="140">3</text>
+  </g>
+
+  <defs>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5" marker-end="url(#g)">
+    <path d="M70,74 L96,90"/>
+    <path d="M135,74 L109,90"/>
+    <path d="M382.5,74 V90"/>
+  </g>
+  <path d="M492.5,74 V90" fill="none" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#o)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" text-anchor="middle">
+    <text x="130" y="166" fill="#7a828c">found, after equals() confirms it</text>
+    <text x="410" y="166" fill="#bf7d1a">null, and equals() is never called</text>
+  </g>
+</svg>

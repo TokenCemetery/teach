@@ -19,6 +19,10 @@ A read and a write connected by none of these edges have no ordering or visibili
 - Everything a thread does happens-before another thread's successful `Thread.join` on it.
 - Each `java.util.concurrent` utility publishes its own edge, such as a `put` on a `BlockingQueue` happening-before the matching `take`.
 
+![Two pairs of thread timelines. On the left, one thread writes x and another reads it with nothing connecting the timelines, so there is no guarantee. On the right, the writer sets a volatile flag after writing x and the reader reads that flag first, which connects the two timelines.](images/happens-before-edge.svg)
+
+Only one arrow crosses between threads, and it is the `volatile` edge, the third bullet above. The plain write and the plain read are carried along by program order, the first bullet: `x = 1` is before `flag = true` on one side, and `read flag` is before `read x` on the other. Neither `x` access is special, and neither needs to be. Take the flag away and nothing connects the two columns, which is what the first sentence of this section means by no guarantee at all.
+
 ## Visibility against atomicity
 
 | | Asks | Given by | Not given by |

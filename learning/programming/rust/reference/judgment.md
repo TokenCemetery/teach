@@ -23,6 +23,10 @@ A type's variance over a lifetime parameter answers one question: given `'long: 
 | `PhantomData<&'a T>` | Covariant | declares a borrow, exactly as a real `&'a T` field would |
 | A struct mixing covariant and invariant fields | Invariant overall | one field asking for the strictest answer decides the whole type |
 
+![The same struct before and after. Before, two borrowed fields, both covariant, and the struct is covariant. After, one private Cell field is added, which is invariant, and so is the struct.](images/one-field-decides.svg)
+
+The last row of the table, on one concrete type. Everything a caller can name is identical on both sides: the same two public fields, the same signatures, the same documentation. The field that changed the answer is the one they cannot see, which is why the failure arrives in their code rather than in yours.
+
 The compiler names this for you once a type is your own: `` = note: the struct `Name<'a>` is invariant over the parameter `'a` ``, with a help line pointing at the Nomicon's subtyping chapter. A type's variance is part of its public contract exactly as its signatures are: adding a `Cell` to a private field for an internal cache flips a type from covariant to invariant with no change to any public signature, and a caller's code simply stops compiling with that same note, far from the change that caused it.
 
 ## Where `for<'a>` is required rather than optional

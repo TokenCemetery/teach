@@ -18,7 +18,21 @@ Lookup sheet for stage 6. The question it exists to answer: **which of the ways 
 | The waker contract | Returning `Pending` obliges the future to arrange, by whatever means it needs, for the `Waker` it was given to be called once progress is possible; skipping that half of the contract is what leaves a future polled once and never again |
 | Busy-spin | An executor that polls again immediately after `Pending`, with nothing telling it to wait; correct, since a future's own answer never depends on how eagerly it is asked, and wasteful, since it spends a processor on nothing between real changes |
 
+```mermaid
+flowchart LR
+    E["the executor polls it"] --> P{"what did poll return?"}
+    P -- Ready --> D["the value comes out"]
+    P -- Pending --> W{"did it arrange<br>for its Waker?"}
+    W -- yes --> K["something calls the waker<br>once progress is possible"]
+    K --> E
+    W -- no --> S["nothing will ever wake it:<br>polled once, never again"]
+```
+
+The loop is the contract. A future that returns `Pending` owes the arrangement that closes it, and the bottom branch is not an error anyone reports: the task simply stops, with no panic and no log line.
+
 `Waker::noop`, stable since release 1.85, builds an executor loop with no waker at all, which is the busy-spin made concrete rather than a tool to reach for outside a demonstration.
+
+A busy-spin executor is the one place the bottom branch stays hidden, since it re-polls without being told to and a future that never arranged a wake still makes progress. That is why a stall can appear only once the code moves to a real runtime.
 
 ## What a runtime adds, and the flavour decision
 

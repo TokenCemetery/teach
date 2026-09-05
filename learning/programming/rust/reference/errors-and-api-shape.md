@@ -70,6 +70,10 @@ Every one of these diagnoses `E0603` when it fails: to the compiler, private-by-
 
 A struct's visibility and its fields' visibility are separate decisions: a `pub` struct with a private field blocks the struct literal from outside (`E0451`), which is the mechanism behind the constructor pattern, `pub fn new(...) -> Self`, that lets a type enforce an invariant no caller can bypass by naming every field. `pub use` re-exports an item at a shorter path than where it lives, so a library can hide its internal layout while keeping a caller's path stable; the old long path then fails with `E0603` once the module it passed through loses its own `pub`.
 
+![Two sides of the same item. Where it is defined, a pub function returning a private type compiles with the private_interfaces warning. At a caller outside the module it does not compile, reporting that the type is private, with no error code.](images/more-private-than-the-item.svg)
+
+This is the one row on the sheet where the two sides disagree. Everywhere above, the definition is silent and the caller gets `E0603`; here the author is warned and the caller is stopped by something with no code to look up. Both halves are easy to miss on their own, which is why the shape is worth seeing before the paragraph that follows.
+
 A `pub fn` returning a private type compiles with a warning, `private_interfaces`, on by default, rather than a hard error: `type 'X' is more private than the item`, noting the function is reachable at a wider visibility than the type it returns. This replaced a hard error, `private_in_public`, as of Rust 1.74.0. A caller outside the defining module who tries to call such a function anyway still fails, with `type 'X' is private` and no code.
 
 ## What the public API is

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">What the summariser decides about each line of the sample input</title>
+  <desc id="desc">The seven lines of the sample input, each labelled with what the summariser should decide about it. Three are requests, one is a note, one is blank, and the last two are rejected: one has a byte count that is not a number, and one is missing a field.</desc>
+
+  <!-- These labels cannot be written into the sample itself, because a line
+       beginning with # is a note in this format rather than a comment, so
+       annotating in place would change the input. Accent marks the two lines
+       the sheet says are deliberately broken. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c" opacity="0.9">
+    <text x="30" y="40">the sample input</text>
+    <text x="250" y="40">what the summariser decides</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="30" y="58">/index 200 1200</text>
+    <text x="30" y="74"># deploy started</text>
+    <text x="30" y="90">/index 200 800</text>
+    <text x="30" y="106">/login 500 90</text>
+    <text x="30" y="138">/login 200 not-a-number</text>
+    <text x="30" y="154">/missing 200</text>
+  </g>
+  <text x="30" y="122" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c" opacity="0.45">(an empty line)</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="250" y="58">a request</text>
+    <text x="250" y="74">a note</text>
+    <text x="250" y="90">a request</text>
+    <text x="250" y="106">a request</text>
+    <text x="250" y="122">blank</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">
+    <text x="250" y="138">rejected: the byte count is not a number</text>
+    <text x="250" y="154">rejected: a field is missing</text>
+  </g>
+
+  <text x="30" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">three requests, one note, one blank, two rejected</text>
+  <text x="30" y="193" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">a # line is a note here rather than a comment, so these labels cannot live in the file</text>
+</svg>

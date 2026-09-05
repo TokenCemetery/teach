@@ -41,6 +41,10 @@ The input format is one record per line, and three kinds of line:
 
 A request line is a path, a status and a byte count separated by spaces. A line starting with `#` is a note. An empty line is blank. The last two lines are deliberately broken: one has a byte count that is not a number, and one is missing a field. A summariser that silently counts those as requests is wrong, and noticing that is part of the point.
 
+![The seven sample lines with what the summariser should decide about each: three requests, one note, one blank, and two rejected, one for a byte count that is not a number and one for a missing field.](images/what-each-line-is.svg)
+
+These labels have to sit beside the input rather than inside it, because a line beginning with `#` is a note in this format and not a comment: annotating the sample in place would add an eighth line and change what it tests. The counts underneath are what a correct stage 2 summariser reports for this input, and the two rejections are the part a first attempt usually gets wrong.
+
 ## Where it should be at the end of each stage
 
 | Stage | The project should | Which lessons' reps get it there |

@@ -23,6 +23,10 @@ The deciding question is heterogeneity, not speed. A generic function bounded by
 | `&dyn Trait` | One extra pointer per value, a vtable pointer beside the data pointer, doubling a reference's size on a given target; no allocation |
 | `Box<dyn Trait>` | The same doubled pointer, plus one heap allocation per value |
 
+![On the left a Vec of a generic parameter, where every element is the same concrete type and a Circle is a type error. On the right a Vec of boxed trait objects, where every element is a data pointer beside a vtable pointer, all one width, pointing at values of different types and sizes.](images/dyn-uniform-elements.svg)
+
+The costs in the table follow from the widths in the picture. A collection needs one element width, and the generic side spends it on the value itself, which fixes the type. The `dyn` side spends it on two pointers instead, which is where both the doubled reference and the heterogeneity come from: the same choice buys the one and costs the other.
+
 Not every trait can fill the `dyn` side. A trait is dyn compatible only if every method can sit in a fixed vtable slot, so an associated function with no `self` (`E0038`, naming the method, with a `help` suggesting either a `&self` parameter or `where Self: Sized` to exclude that one method) and a generic method (the same code, the same `where Self: Sized` escape) are the two common ways to lose it. "Object safety" is the same property under its pre-rename name; current rustc and rustdoc call it dyn compatibility instead.
 
 ## Associated type or generic parameter

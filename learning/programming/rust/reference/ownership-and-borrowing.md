@@ -75,6 +75,10 @@ Three spans matter, and the third is the useful one:
 
 If span 3 can move above span 2, the error disappears with no restructuring.
 
+![The same three lines twice. On the left the borrow of v is live across all three, so v.push falls inside the live range and the compiler reports E0502. On the right the print happens first, the live range ends a line earlier, and the push falls outside it.](images/borrow-live-range.svg)
+
+The bar is the borrow's live range, and only its **end** moved. No data was cloned, no signature changed, and no struct was split: the last use went above the mutation, which is the first of the four honest fixes below.
+
 ## The four honest fixes
 
 1. **End the borrow sooner.** Move the last use up, or wrap it in a block.

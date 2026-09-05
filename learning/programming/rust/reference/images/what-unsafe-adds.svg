@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 206" width="560" height="206" role="img" aria-labelledby="title desc">
+  <title id="title">unsafe adds five abilities and takes nothing away</title>
+  <desc id="desc">Two columns. On the left, what an unsafe block leaves exactly as it was: the borrow checker, type checking, and everything else the compiler does. On the right, the five abilities it newly permits: dereferencing a raw pointer, calling an unsafe function, implementing an unsafe trait, reading or writing a mutable static, and reading a union field. Nothing moves from the right column to the left.</desc>
+
+  <!-- The table lists what is added, and the misconception is about what is
+       removed, which is nothing. Drawing both columns is the only way to show
+       an empty set. Accent is the added side. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="34">still checked, exactly as before</text>
+  </g>
+  <text x="290" y="34" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">newly permitted, and only these</text>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="46" width="230" height="20" rx="3"/>
+    <rect x="20" y="72" width="230" height="20" rx="3"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="28" y="60">the borrow checker</text>
+    <text x="28" y="86">type checking</text>
+    <text x="20" y="112">and everything else the compiler does</text>
+  </g>
+
+  <g fill="none" stroke="#bf7d1a" stroke-width="2">
+    <rect x="290" y="46" width="250" height="20" rx="3"/>
+    <rect x="290" y="72" width="250" height="20" rx="3"/>
+    <rect x="290" y="98" width="250" height="20" rx="3"/>
+    <rect x="290" y="124" width="250" height="20" rx="3"/>
+    <rect x="290" y="150" width="250" height="20" rx="3"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="298" y="60">dereference a raw pointer</text>
+    <text x="298" y="86">call an unsafe function</text>
+    <text x="298" y="112">implement an unsafe trait</text>
+    <text x="298" y="138">read or write a mutable static</text>
+    <text x="298" y="164">read a union field</text>
+  </g>
+
+  <text x="20" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">a block using none of the five compiles the same, and warns it was unnecessary</text>
+</svg>

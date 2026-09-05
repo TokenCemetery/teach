@@ -18,6 +18,26 @@ Ask these in order. Stop at the first question that settles it.
 4. **Is it one value, or a structure?** A single number only ever updated is what an atomic is for (Lesson 36). A structure, or a value that must be read and acted on before it is written, needs a `Mutex` or `RwLock` (Lesson 33) so the whole step happens under one guard.
 5. **Is the read-to-write ratio lopsided?** Mostly reads with rare writes is what `RwLock` is for. Even reads and writes gain nothing over a plain `Mutex`, since every access still pays the reader-count bookkeeping a `Mutex` does not need.
 
+```mermaid
+flowchart TD
+    Q1{"joined before the spawning<br>function returns?"}
+    Q2{"changes after start-up?"}
+    Q3{"produced by one thread,<br>consumed by one other?"}
+    Q4{"one number, or a structure?"}
+    Q5{"mostly reads,<br>rare writes?"}
+
+    Q1 -- yes --> R1["thread::scope"]
+    Q1 -- no --> Q2
+    Q2 -- no --> R2["Arc, built once by<br>OnceLock or LazyLock"]
+    Q2 -- yes --> Q3
+    Q3 -- yes --> R3["a channel"]
+    Q3 -- no --> Q4
+    Q4 -- "one number" --> R4["AtomicUsize"]
+    Q4 -- "a structure" --> Q5
+    Q5 -- yes --> R5["RwLock"]
+    Q5 -- no --> R6["Mutex"]
+```
+
 Scoped threads first, `Arc` once the data outlives the scope, and a lock only once a write has to be coordinated. Interior mutability (Lesson 32) and `Send`/`Sync` (Lesson 34) are not a sixth question: they explain why the compiler accepts or rejects whatever tool the five questions above already pointed at, not which tool to pick.
 
 ## The sharing types

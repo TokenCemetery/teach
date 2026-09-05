@@ -158,6 +158,10 @@ A refutable pattern in an irrefutable position fails with `E0005`, refutable pat
 | A three-variant enum with payloads up to two `f64`s | 24 |
 | A three-field struct of `String`, `u16`, `u64` | 40 |
 
+![Five bars of the size of Option of a type, split into the value and whatever Option added. The reference, boxed and string-slice rows have no added part at all; the u8 row adds one byte and the u32 row adds four.](images/option-niche.svg)
+
+The accent is the entire cost of `Option`, so the first three rows have none: nothing was added, which is what a niche is. The last two are where a discriminant had nowhere free to hide and had to be paid for in bytes. Splitting the first three is the sheet's own paired figures; splitting the last two is its `Option` size against the width the integer already had.
+
 Only the reference and `Box` niche cases are a documented promise of the standard library; every other number here is this target's measurement, not a language guarantee. An enum's size is its largest variant plus a discriminant, rounded up to alignment; the discriminant often hides for free in existing padding, which is why a struct and the enum built from the same fields can measure the same.
 
 ## Where the project should be

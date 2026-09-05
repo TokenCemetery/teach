@@ -37,6 +37,10 @@ c := a[1:3:3]        // len 2, cap 2
 c = append(c, 99)    // allocates; a untouched
 ```
 
+![Two slice headers over one backing array of 1 to 5. Slice a starts at index 0. Slice b starts at index 1 with length 2, covering indices 1 and 2, and capacity 4, reaching the end of the array. The append lands on index 3, which a still sees.](images/slice-aliasing.svg)
+
+The spare capacity is the whole story: `b` may write four elements from where it starts, so the fourth one has somewhere to go, and that somewhere already belongs to `a`. The three-index form of `c` cuts the capacity to the length, which leaves no spare and forces the allocation.
+
 ## Handing out a sub-slice safely
 
 ```go

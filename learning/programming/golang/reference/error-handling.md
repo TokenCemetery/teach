@@ -38,6 +38,10 @@ Error strings: lowercase, no trailing punctuation. They get embedded in longer m
 
 **`%w` makes the wrapped error part of your API.** Anything a caller can `errors.Is` or `errors.As` is a compatibility commitment.
 
+![Two error chains of three links. On the left every step wraps with %w and errors.Is reaches ErrNotFound. On the right one step used %v, which severs the link below it, so errors.Is stops there.](images/wrap-chain.svg)
+
+The chain is the whole mechanism, and `%v` is a pair of scissors. This is why the choice above is an API decision rather than a formatting one: both errors read the same in a log, print the same in a test failure, and differ only in an `errors.Is` result somewhere in a caller you may not own.
+
 ## Matching
 
 ```go

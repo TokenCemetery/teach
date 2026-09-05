@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" width="560" height="240" role="img" aria-labelledby="title desc">
+  <title id="title">Two slice headers over one backing array</title>
+  <desc id="desc">A five element backing array holding 1 to 5. Slice a points at index 0. Slice b points at index 1 with length 2, covering indices 1 and 2, and capacity 4, reaching to the end of the array. Appending to b writes into index 3, which slice a still sees.</desc>
+
+  <!-- One palette for both colour modes. The theme's dark mode is a manual
+       toggle, so a prefers-color-scheme rule in here would not follow it, and
+       GitHub strips inline SVG, so the file cannot inherit currentColor
+       either. These two tones carry enough contrast on a white and on a near
+       black background; nothing is filled, so the page shows through. -->
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="130" y="104" width="80" height="44"/>
+    <rect x="210" y="104" width="80" height="44"/>
+    <rect x="290" y="104" width="80" height="44"/>
+    <rect x="370" y="104" width="80" height="44"/>
+    <rect x="450" y="104" width="80" height="44"/>
+  </g>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a828c"/>
+    </marker>
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#7a828c" text-anchor="middle">
+    <text x="170" y="132">1</text>
+    <text x="250" y="132">2</text>
+    <text x="330" y="132">3</text>
+    <text x="410" y="132">4</text>
+    <text x="490" y="132">5</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#7a828c" text-anchor="middle">
+    <text x="170" y="168">0</text>
+    <text x="250" y="168">1</text>
+    <text x="330" y="168">2</text>
+    <text x="410" y="168">3</text>
+    <text x="490" y="168">4</text>
+  </g>
+
+  <!-- cap(b) reaches the end of the array; len(b) stops two elements in -->
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <path d="M210,38 V50 M210,44 H530 M530,38 V50"/>
+    <path d="M210,74 V86 M210,80 H370 M370,74 V86"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#7a828c" text-anchor="middle">
+    <text x="370" y="32">cap(b) = 4</text>
+    <text x="290" y="68">len(b) = 2</text>
+  </g>
+
+  <!-- the two headers, each pointing at the element it starts from -->
+  <g fill="none" stroke="#7a828c" stroke-width="1.5" marker-end="url(#arrow)">
+    <path d="M104,126 H126"/>
+    <path d="M50,207 H210 V154"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#7a828c">
+    <text x="86" y="131" text-anchor="end">a</text>
+    <text x="30" y="212">b</text>
+  </g>
+
+  <!-- the payoff: b has room, so append writes inside a's array -->
+  <g fill="none" stroke="#bf7d1a" stroke-width="1.5">
+    <rect x="370" y="104" width="80" height="44" stroke-dasharray="4 3"/>
+  </g>
+  <path d="M410,196 V154" fill="none" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow-accent)"/>
+  <text x="410" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#bf7d1a" text-anchor="middle">append(b, 99) writes here</text>
+</svg>

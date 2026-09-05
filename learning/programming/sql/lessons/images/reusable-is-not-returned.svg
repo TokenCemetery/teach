@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 212" width="560" height="212" role="img" aria-labelledby="title desc">
+  <title id="title">A plain VACUUM changes what is inside the file, not how big it is</title>
+  <desc id="desc">One table's file in four states. After loading it is 27 megabytes, all in use. After an UPDATE touching every row it is 54 megabytes, of which 47.08 per cent is dead. After a plain VACUUM it is still 54 megabytes, with the dead portion now free rather than dead, 50.13 per cent. After VACUUM FULL it is 27 megabytes again. The row count is unchanged throughout.</desc>
+
+  <!-- The second and third bars are deliberately the same length, because the
+       file did not change size; only the classification of half of it did.
+       Percentages are the lesson's measured figures. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <rect x="170" y="22" width="10" height="10" fill="#7a828c"/>
+    <text x="186" y="31">in use</text>
+    <rect x="240" y="22" width="10" height="10" fill="#bf7d1a"/>
+    <text x="256" y="31">dead</text>
+    <rect x="300" y="22" width="10" height="10" fill="none" stroke="#7a828c" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="316" y="31">free, but still in the file</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="65">after loading</text>
+    <text x="20" y="93">after one UPDATE of every row</text>
+    <text x="20" y="121">after plain VACUUM</text>
+    <text x="20" y="149">after VACUUM FULL</text>
+  </g>
+
+  <!-- 6.296px per MB from x=170 -->
+  <g fill="#7a828c">
+    <rect x="170" y="56" width="170" height="14"/>
+    <rect x="170" y="84" width="179.9" height="14"/>
+    <rect x="170" y="112" width="169.5" height="14"/>
+    <rect x="170" y="140" width="170" height="14"/>
+  </g>
+  <rect x="349.9" y="84" width="160.1" height="14" fill="#bf7d1a"/>
+  <rect x="339.5" y="112" width="170.4" height="14" fill="none" stroke="#7a828c" stroke-width="1" stroke-dasharray="3 2"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="518" y="65">27 MB</text>
+    <text x="518" y="93">54 MB</text>
+    <text x="518" y="121">54 MB</text>
+    <text x="518" y="149">27 MB</text>
+  </g>
+
+  <text x="20" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">the middle step changed what half the file is called, not how big it is</text>
+  <text x="20" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">dead was 47.08 per cent, then free was 50.13 per cent, and the file stayed 54 MB</text>
+  <text x="20" y="208" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">200,000 rows in every one of these four bars</text>
+</svg>

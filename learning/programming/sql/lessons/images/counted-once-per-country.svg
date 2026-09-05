@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" width="560" height="230" role="img" aria-labelledby="title desc">
+  <title id="title">One order becomes three rows, and the sum adds it three times</title>
+  <desc id="desc">A single order for ten survives the join once for each of the three country rows matching Europe, giving three rows that differ only in the country. Every additive aggregate then runs once per row, so the grand total comes out three times too big, and a DISTINCT on the amount removes a duplicate the data really had.</desc>
+
+  <!-- Three rows out of one is the whole bug, so the fan is drawn at its real
+       count. Accent marks the multiplier and the total it produced. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">one order, three surviving rows</text>
+
+  <text x="170" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">one row per matching country</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="90" width="120" height="20" rx="2"/>
+    <rect x="260" y="60" width="190" height="18" rx="2"/>
+    <rect x="260" y="86" width="190" height="18" rx="2"/>
+    <rect x="260" y="112" width="190" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="36" y="104">order 107, 10.00</text>
+    <text x="266" y="73">order 107, 10.00, GB</text>
+    <text x="266" y="99">order 107, 10.00, DE</text>
+    <text x="266" y="125">order 107, 10.00, FR</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M150,96 L256,69" marker-end="url(#g)"/>
+    <path d="M150,100 L256,95" marker-end="url(#g)"/>
+    <path d="M150,104 L256,121" marker-end="url(#g)"/>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <path d="M458,60 V130"/>
+    <path d="M458,60 H452"/>
+    <path d="M458,130 H452"/>
+  </g>
+  <text x="466" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">x3</text>
+
+  <text x="260" y="152" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">sum counts 10.00 once per row</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="30" y="180">true total 2406.49</text>
+  </g>
+  <text x="30" y="196" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">after the fan-out 7219.47</text>
+
+  <text x="20" y="220" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">sum(DISTINCT amount) gives 2396.49, dropping a duplicate the data really had</text>
+</svg>

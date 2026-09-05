@@ -78,6 +78,10 @@ B: SELECT sum(balance) FROM accounts;                       -- 140.00, B chose n
 
 `140.00` minus another `60` is still `80.00`, below the floor, so the retry that re-reads refuses the withdrawal and writes nothing, leaving `140.00`, exactly what `A`'s withdrawal alone should leave. Both had the identical `UPDATE` available; one resent a decision, the other made one. A retry is a re-decision, not a replay.
 
+![A value line with the floor at 90.00 marked. Both retries compute 140.00 minus 60, which is 80.00; the replay writes it and lands left of the floor, while the retry that reads again leaves 140.00, to the right of it.](images/only-one-asked.svg)
+
+Both arrived at 80.00. The floor is on the same line as the two outcomes, so which side each ends on is visible rather than argued, and only one of the two consulted it before writing.
+
 ### The shape of a correct retry
 
 A retry loop that gets this right has four properties, none specific to any driver:

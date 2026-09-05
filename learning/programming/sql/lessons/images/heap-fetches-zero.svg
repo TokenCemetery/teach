@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">An index-only scan never reaches the table</title>
+  <desc id="desc">Two queries against the same index. Counting rows needs nothing the index does not already hold, so the table is never read and Heap Fetches is zero. Selecting a column the index does not contain adds a step from the index to the table for the rows found. Both plans read seven buffers, so the buffer count does not distinguish them.</desc>
+
+  <!-- The difference is whether an arrow exists, not how long anything is.
+       Accent is the step the second query has to take. Tones validated for
+       both surfaces; see .agents/TODO.md. -->
+
+  <path d="M285,26 V178" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="34">select count(*) where customer_id = 4242</text>
+    <text x="300" y="34">select id, amount where customer_id = 4242</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="30" y="52" width="230" height="24" rx="3"/>
+    <rect x="310" y="52" width="230" height="24" rx="3"/>
+    <rect x="310" y="104" width="230" height="24" rx="3"/>
+  </g>
+  <rect x="30" y="104" width="230" height="24" rx="3" fill="none" stroke="#7a828c" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.55"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="145" y="68">index on customer_id</text>
+    <text x="425" y="68">index on customer_id</text>
+    <text x="425" y="120">the table</text>
+  </g>
+  <text x="145" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle" opacity="0.5">the table, never read</text>
+
+  <defs>
+    <marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+  <path d="M425,76 V100" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#h)"/>
+  <text x="433" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">amount is not in it</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="152">Index Only Scan</text>
+    <text x="20" y="168">Heap Fetches: 0</text>
+    <text x="300" y="152">Index Scan</text>
+    <text x="300" y="168">the heap is read for the rows found</text>
+  </g>
+
+  <text x="20" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">both plans read 7 buffers, so the buffer count does not tell them apart</text>
+</svg>

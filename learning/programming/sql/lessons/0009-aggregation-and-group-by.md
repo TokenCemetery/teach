@@ -174,6 +174,10 @@ n  | total
 
 Thirty six rows, and 7219.47 against a true total of 2406.49, exactly three times too big. Three country rows, `GB`, `DE` and `FR`, satisfy `region = 'Europe'`, and the join never relates a specific customer or order to a specific country, so every order survives once per matching country. The rule is arithmetic: a join that multiplies rows multiplies every additive aggregate built on it, `sum` and `count(*)` alike, by exactly the row multiplier, since both are addition run once per surviving row. `avg` came out unaffected, 200.5408333333333333, because its numerator and denominator scaled by three and cancelled; that is a coincidence of an even fan-out, not something to rely on.
 
+![One order for 10.00 fanning out into three rows that differ only in the country, GB, DE and FR, with a bracket marking the multiplier of three and the two totals below.](images/counted-once-per-country.svg)
+
+Every additive aggregate runs once per surviving row, so the multiplier on the right of the fan is the multiplier on the total: 2406.49 times three is 7219.47, with nothing in between to notice.
+
 The instinctive repair fails, and it is worth seeing why:
 
 ```sql

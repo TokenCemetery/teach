@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 208" width="560" height="208" role="img" aria-labelledby="title desc">
+  <title id="title">Both retries reached the same number; only one asked whether it was allowed</title>
+  <desc id="desc">A value line with the floor of 90.00 marked. Both retries compute 140.00 minus 60, which is 80.00. The replay writes it and lands on the wrong side of the floor. The retry that reads again compares it with the floor first, writes nothing, and leaves 140.00.</desc>
+
+  <!-- The floor is a line on the same axis the two outcomes sit on, so which
+       side each lands is visible rather than stated. Accent marks the one that
+       crossed it. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">after A's withdrawal the total is 140.00</text>
+  <text x="20" y="56" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">both retries compute 140.00 - 60 = 80.00</text>
+
+  <text x="230" y="76" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">the floor, 90.00</text>
+  <path d="M230,82 V182" stroke="#7a828c" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+
+  <path d="M110,110 H510" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none"/>
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none">
+    <path d="M110,106 V114"/>
+    <path d="M190,106 V114"/>
+    <path d="M270,106 V114"/>
+    <path d="M350,106 V114"/>
+    <path d="M430,106 V114"/>
+    <path d="M510,106 V114"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="110" y="126">60</text>
+    <text x="190" y="126">80</text>
+    <text x="270" y="126">100</text>
+    <text x="350" y="126">120</text>
+    <text x="430" y="126">140</text>
+    <text x="510" y="126">160</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="149">replay</text>
+    <text x="20" y="173">re-read and decide</text>
+  </g>
+  <circle cx="190" cy="146" r="3" fill="#bf7d1a"/>
+  <text x="182" y="149" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">80.00, below the floor</text>
+  <circle cx="430" cy="170" r="3" fill="#7a828c"/>
+  <text x="438" y="173" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">140.00, unchanged</text>
+
+  <text x="20" y="198" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">both reached the same number, and only one asked whether it was allowed</text>
+</svg>

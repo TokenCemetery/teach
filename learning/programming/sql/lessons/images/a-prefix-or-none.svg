@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 192" width="560" height="192" role="img" aria-labelledby="title desc">
+  <title id="title">One generator shares a leading prefix and the other shares nothing</title>
+  <desc id="desc">Three values from each generator, one per row. The random ones begin with different characters and are in no particular order. The time-ordered ones share their first 16 characters, marked by a bar of the same length under each, and increase from top to bottom.</desc>
+
+  <!-- The bars are as long as the prefix the three values actually share, and
+       they line up because the text is monospaced. Accent marks the shared run.
+       Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/></marker>
+  </defs>
+
+  <text x="20" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">gen_random_uuid()</text>
+  <text x="300" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">uuidv7()</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="30" y="70">15c4b061-c90d-4b62-...</text>
+    <text x="30" y="92">6435fb38-8743-40f6-...</text>
+    <text x="30" y="114">6ee77620-0b80-4900-...</text>
+    <text x="310" y="70">01a062fb-cf7d-7de6-...</text>
+    <text x="310" y="92">01a062fb-cf7d-7df3-...</text>
+    <text x="310" y="114">01a062fb-cf7d-7df8-...</text>
+  </g>
+
+  <g fill="#bf7d1a">
+    <rect x="310" y="73" width="67.2" height="2" rx="1"/>
+    <rect x="310" y="95" width="67.2" height="2" rx="1"/>
+    <rect x="310" y="117" width="67.2" height="2" rx="1"/>
+  </g>
+
+  <path d="M410,62 V120" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="416" y="94" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">increasing</text>
+
+  <text x="20" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">no shared prefix, no order</text>
+  <text x="300" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">a shared prefix, and increasing</text>
+
+  <text x="20" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the bar is the 16 characters all three values on the right begin with</text>
+</svg>

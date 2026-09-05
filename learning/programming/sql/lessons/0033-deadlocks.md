@@ -69,6 +69,10 @@ A: SELECT balance FROM accounts WHERE id = 2;                -- 98.00
 
 No error anywhere. B waits for A to finish with row 1, then proceeds through both updates and commits, exactly the ordinary lock wait lesson 32 already covered. Same two sessions, same two rows, same net effect on the balances; only the order one session took its locks in changed. That contrast is the whole lesson: a deadlock is a property of two pieces of code that disagree about lock order, not of concurrency itself.
 
+![Two wait-for graphs. On the left, with the rows taken in opposite orders, A waits for B and B waits for A, closing a loop. On the right, with both taking the same order, only B waits for A.](images/a-cycle-or-a-chain.svg)
+
+Both panels hold the same two sessions and the same two rows. The loop on the left is what the server detects and breaks; the chain on the right is an ordinary wait. Nothing but the printed orders above them decides which one you get.
+
 ### A second deadlock that does not look like one
 
 A unique index makes a second inserter of the same key wait, verified here, since the index cannot tell yet whether the first, uncommitted insert will commit or roll back. That wait alone builds a cycle, with no explicit lock in the statements. A inserts a row with one key, B a row with another, neither conflicting. Then A inserts B's key and waits on B's uncommitted insert, and B inserts A's key and waits on A's, closing the cycle exactly as the row locks did above.

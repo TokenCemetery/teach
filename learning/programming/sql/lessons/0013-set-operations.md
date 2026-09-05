@@ -51,6 +51,10 @@ order_id | amount
 101      | 120.00
 ```
 
+![Two query branches drawn in the same two columns. Position 1 is named order_id in one and cust in the other and is paired anyway; the result's header is the first query's, and position 1 ends up holding 2 in one row and 101 in the other.](images/matched-by-position.svg)
+
+Both branches are drawn in the same two columns because position is the only thing pairing them. The names in position 1 disagree and it makes no difference to what gets combined.
+
 The alias `cust` never appears; the header comes entirely from the first query, as lesson 4 stated. The match is purely positional: the first position holds an order's own id in one branch and a customer's id in the other, and `UNION` combines them without complaint because both are `bigint`. Swap which query is written first and the header swaps to `cust`.
 
 ### Two errors a set operation refuses to paper over

@@ -47,6 +47,10 @@ n
 
 The manual describes the evaluation as a working table. The anchor term runs once; its rows go into the result and seed that table. Then, as long as the working table holds anything, the recursive term runs again, not against everything produced so far, only against the rows the previous round produced. Whatever it returns replaces the working table for the next round and joins the result. The moment a round produces no rows, the table is empty and the whole thing stops. `countdown` ran the recursive term five times: `n = 5` produced `4`, `4` produced `3`, and so on until the round working from `n = 1` found `n > 1` false and produced nothing, which is why the query stopped rather than being told to.
 
+![Six rows, one per round. The working table holds 5, then 4, 3, 2, 1, then nothing, with each round's arrow coming from the row directly above. The result column accumulates all values so far, and a blocked arrow shows that accumulation is not what the next round reads.](images/only-the-round-above.svg)
+
+The chain runs down the left column only. The right column grows every round and is never read back: that is what "not against everything produced so far" means, and it is also why the last round, working from `1`, produces nothing and ends the query.
+
 ### Termination is your job, not the engine's
 
 Nothing in PostgreSQL checks that a recursive term will eventually stop. Write one with no condition that ever fails and it produces rows forever, and running that without a limit is not something to try to see what happens.

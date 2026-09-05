@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 204" width="560" height="204" role="img" aria-labelledby="title desc">
+  <title id="title">Disagreeing about lock order closes the wait-for graph into a cycle</title>
+  <desc id="desc">On the left the two sessions take the same two rows in opposite orders, so A waits for B over row 2 while B waits for A over row 1, and the wait-for graph is a cycle that the server has to break by cancelling one of them. On the right both sessions take the rows in the same order, so only B waits for A over row 1, and the graph is a chain that resolves when A commits.</desc>
+
+  <!-- The only structural difference is whether the wait-for edges close a
+       loop, and that follows from the two orders printed above them. Accent
+       marks the cycle. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <path d="M285,26 V180" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="36">different order</text>
+    <text x="300" y="36">same order</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="20" y="48">A: row 1, then row 2</text>
+    <text x="20" y="59">B: row 2, then row 1</text>
+    <text x="300" y="48">A: row 1, then row 2</text>
+    <text x="300" y="59">B: row 1, then row 2</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="60" y="96" width="50" height="20" rx="2"/>
+    <rect x="180" y="96" width="50" height="20" rx="2"/>
+    <rect x="340" y="96" width="50" height="20" rx="2"/>
+    <rect x="460" y="96" width="50" height="20" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle">
+    <text x="85" y="109">A</text>
+    <text x="205" y="109">B</text>
+    <text x="365" y="109">A</text>
+    <text x="485" y="109">B</text>
+  </g>
+
+  <path d="M110,100 Q145,76 180,100" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M180,112 Q145,136 110,112" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M460,112 Q425,136 390,112" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">
+    <text x="145" y="72">waiting for row 2</text>
+    <text x="145" y="146">waiting for row 1</text>
+  </g>
+  <text x="425" y="146" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">waiting for row 1</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="168">a cycle, so one of them is cancelled</text>
+    <text x="300" y="168">a chain, so B proceeds when A commits</text>
+  </g>
+
+  <text x="20" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">same two sessions and same two rows, and only the order one of them took its locks in changed</text>
+</svg>

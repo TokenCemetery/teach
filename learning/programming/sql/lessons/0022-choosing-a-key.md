@@ -143,6 +143,10 @@ INSERT INTO design.always_ids (id, note) OVERRIDING SYSTEM VALUE VALUES (50, 'ex
 
 A UUID is a surrogate key generated as a value rather than counted by a sequence, and this release offers two ways to make one with no extension required. `gen_random_uuid()` produces sixteen bytes of pure randomness: three successive calls share no prefix, for example `15c4b061-c90d-4b62-...`, `6435fb38-8743-40f6-...` and `6ee77620-0b80-4900-...`. `uuidv7()` is new in PostgreSQL 18, named in that release's own notes as the "uuidv7() function for generating timestamp-ordered UUIDs", and three successive calls show exactly that, a shared leading prefix and strictly increasing values: `01a062fb-cf7d-7de6-...`, `01a062fb-cf7d-7df3-...` and `01a062fb-cf7d-7df8-...`. On an older supported major, 14 to 17, there is no such function and `gen_random_uuid()` is the only built-in generator. The honest comparison stops short of a performance claim. A UUID of either kind can be generated anywhere, including by a client before the row exists, which a sequence-backed identity column cannot do, and it costs more either way: `pg_column_size()` reports sixteen bytes against eight for a `bigint`. A time-ordered UUID keeps rows inserted together near each other in the key's own order, where a random one scatters them; whether that scattering costs anything is a question about index structure for stage 6, and nothing measured here answers it.
 
+![Three values from each generator. The random ones begin with different characters and are in no particular order; the uuidv7 ones share their first sixteen characters, marked by a bar of the same length under each, and increase downward.](images/a-prefix-or-none.svg)
+
+The bars line up because the values do, and that is the whole of what is shown here: a shared prefix and an order on one side, neither on the other. What that costs an index is still stage 6's question.
+
 ### The rule that survives all of it
 
 Whichever of the above ends up as a table's primary key, every other candidate key still needs its own constraint, because a primary key only enforces uniqueness of the column it names.

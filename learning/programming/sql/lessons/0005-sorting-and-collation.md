@@ -55,6 +55,10 @@ ORDER BY customer_id, id
 
 This is also what makes pagination correct. With `OFFSET`, a tie that reshuffles between two page requests can show the same row twice and skip another entirely, and no amount of retrying fixes it because nothing is wrong from the engine's point of view.
 
+![The same five tied rows in two different orders, one per request. Taking the first three from one and the rest from the other, the reader sees B twice and never sees D.](images/twice-and-never.svg)
+
+Both requests returned the same five rows, and both took their page from the same positions. The repeat and the gap are produced entirely by the order changing in between.
+
 ### NULLs sort somewhere, and the standard does not say where
 
 In PostgreSQL, NULLs are treated as larger than any value: last under `ASC`, first under `DESC`. The standard leaves it to the engine, so a query that must behave the same on two engines states it:

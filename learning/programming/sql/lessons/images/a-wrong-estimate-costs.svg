@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 182" width="560" height="182" role="img" aria-labelledby="title desc">
+  <title id="title">One opaque predicate, and the work it costs</title>
+  <desc id="desc">The same customer looked up two ways. With c.id equals 4242 the planner estimates one row, picks a nested loop, and that side reads three buffers. With c.id plus zero equals 4242 it estimates 208 rows per worker, picks a parallel hash join, and the same side reads 278 buffers. The two bars are drawn to one scale, so the second is about ninety times the first.</desc>
+
+  <!-- The chain runs left to right: estimate, then strategy, then cost. Both
+       bars share one scale so the cost of the wrong estimate is a length
+       rather than a ratio to work out. Accent is the misled row. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.8">
+    <text x="20" y="44">predicate</text>
+    <text x="110" y="44">estimate</text>
+    <text x="200" y="44">strategy</text>
+    <text x="340" y="44">buffers read on that side</text>
+  </g>
+  <path d="M20,50 H540" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="72">c.id = 4242</text>
+    <text x="110" y="72">1 row</text>
+    <text x="200" y="72">Nested Loop</text>
+    <text x="330" y="72" text-anchor="end">3</text>
+  </g>
+  <rect x="340" y="64" width="2" height="11" fill="#7a828c"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="20" y="102">c.id + 0 = 4242</text>
+    <text x="110" y="102">208 per worker</text>
+    <text x="200" y="102">Parallel Hash Join</text>
+    <text x="330" y="102" text-anchor="end">278</text>
+  </g>
+  <rect x="340" y="94" width="181" height="11" fill="#bf7d1a"/>
+
+  <text x="20" y="134" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">the same customer, and the same answer, both times</text>
+  <text x="20" y="152" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">an opaque expression gets the planner's default guess instead of its statistics</text>
+  <text x="20" y="172" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the estimate was wrong, and the extra work is that belief made visible</text>
+</svg>

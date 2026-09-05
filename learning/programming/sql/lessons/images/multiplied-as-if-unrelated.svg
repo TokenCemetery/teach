@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">Two correlated conditions, multiplied as if they were independent</title>
+  <desc id="desc">A table of 100,000 rows narrowed by two conditions. Both columns agree that the first condition leaves 100 rows. They part on the second: the planner assumes it removes another 999 in 1000 and estimates one row, while in truth the second condition removes nothing once the first holds, so 100 remain.</desc>
+
+  <!-- Written as counts rather than bars, because 100,000 against 1 cannot
+       share a linear axis and a log axis would obscure a three-step
+       derivation. Accent is the cell where the two columns part. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">
+    <text x="250" y="48">the planner assumed</text>
+    <text x="400" y="48">what is true</text>
+  </g>
+  <path d="M20,54 H520" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="72">rows in the table</text>
+    <text x="250" y="72">100,000</text>
+    <text x="400" y="72">100,000</text>
+
+    <text x="20" y="96">after group_a = 'A0500'</text>
+    <text x="250" y="96">100</text>
+    <text x="400" y="96">100</text>
+
+    <text x="20" y="120">after group_b = 'B0500'</text>
+    <text x="400" y="120">100</text>
+  </g>
+  <text x="250" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">1</text>
+  <path d="M246,112 H392" stroke="#bf7d1a" stroke-width="1" stroke-dasharray="3 2" opacity="0.7" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="148">the second condition removes nothing once the first one holds</text>
+    <text x="20" y="164">the planner multiplied two one-in-a-thousand selectivities as if unrelated</text>
+  </g>
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">CREATE STATISTICS with dependencies makes the left column read 100 as well</text>
+</svg>

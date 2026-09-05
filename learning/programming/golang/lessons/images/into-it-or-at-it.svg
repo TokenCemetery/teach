@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">Writing into a copied map header is shared; assigning to it is not</title>
+  <desc id="desc">On the left, the caller's header and the callee's copy of it both point at one table, so an entry written through either is visible to both. On the right, the callee assigns a new map to its own header: that header now points at a new empty table, the caller's header still points at the original, and the entry the caller had is untouched.</desc>
+
+  <!-- Both panels start from the same pair of headers. Only the callee's arrow
+       moves, and only on the right. Accent marks the arrow that moved. Tones
+       validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="f" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c" fill-opacity="0.35"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <path d="M285,26 V166" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="36">writing into it</text>
+    <text x="300" y="36">assigning to it</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="20" y="52">m["k"] = 1</text>
+    <text x="300" y="52">m = map[string]int{}</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="30" y="72" width="68" height="18" rx="2"/>
+    <rect x="30" y="104" width="68" height="18" rx="2"/>
+    <rect x="310" y="72" width="68" height="18" rx="2"/>
+    <rect x="310" y="104" width="68" height="18" rx="2"/>
+    <rect x="160" y="80" width="86" height="34" rx="2"/>
+    <rect x="440" y="64" width="86" height="26" rx="2"/>
+    <rect x="440" y="104" width="86" height="26" rx="2"/>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M98,81 H156" marker-end="url(#g)"/>
+    <path d="M98,113 L156,101" marker-end="url(#g)"/>
+    <path d="M378,81 L436,77" marker-end="url(#g)"/>
+  </g>
+  <path d="M378,110 L436,86" stroke="#7a828c" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="3 2" fill="none" marker-end="url(#f)"/>
+  <path d="M378,116 L436,117" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="64" y="85">caller m</text>
+    <text x="64" y="117">callee m</text>
+    <text x="344" y="85">caller m</text>
+    <text x="344" y="117">callee m</text>
+    <text x="203" y="94">one table</text>
+    <text x="203" y="107">{"k": 1}</text>
+    <text x="483" y="81">{"k": 1}</text>
+    <text x="483" y="121">{}</text>
+  </g>
+  <text x="300" y="164" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.7">the faded arrow is where it pointed before</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="150">the caller sees the new entry</text>
+    <text x="300" y="150">the caller still sees the old table</text>
+  </g>
+  <text x="20" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">copying the header shares the table, and assigning to the copy shares nothing</text>
+</svg>

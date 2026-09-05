@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 168" width="560" height="168" role="img" aria-labelledby="title desc">
+  <title id="title">The type word decides whether an interface is nil</title>
+  <desc id="desc">Three interface values shown as a pair of words. With nothing stored, both the type word and the value word are nil and the interface equals nil. With a nil pointer stored, the value word is still nil but the type word holds the pointer type, and the interface does not equal nil. With a real pointer stored, both words are filled and the interface does not equal nil either. The first two rows differ in exactly one cell.</desc>
+
+  <!-- The first two rows carry an identical value word, so the single accented
+       cell is the entire cause of the disagreement below it. Tones validated
+       for both surfaces; see .agents/TODO.md. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">
+    <text x="20" y="32">stored in it</text>
+    <text x="190" y="32">dynamic type</text>
+    <text x="290" y="32">dynamic value</text>
+    <text x="410" y="32">err == nil</text>
+  </g>
+
+  <path d="M394,42 V142" stroke="#7a828c" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="186" y="49" width="96" height="18" rx="2"/>
+    <rect x="286" y="49" width="96" height="18" rx="2"/>
+    <rect x="286" y="83" width="96" height="18" rx="2"/>
+    <rect x="186" y="117" width="96" height="18" rx="2"/>
+    <rect x="286" y="117" width="96" height="18" rx="2"/>
+  </g>
+  <rect x="186" y="83" width="96" height="18" rx="2" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="62">nothing</text>
+    <text x="20" y="96">a nil *MyError</text>
+    <text x="20" y="130">a real *MyError</text>
+
+    <text x="194" y="62">nil</text>
+    <text x="294" y="62">nil</text>
+    <text x="294" y="96">nil</text>
+    <text x="194" y="130">*MyError</text>
+    <text x="294" y="130">0xc0000a4018</text>
+
+    <text x="410" y="62">true</text>
+    <text x="410" y="130">false</text>
+  </g>
+  <text x="194" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#10141a">*MyError</text>
+  <text x="410" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">false</text>
+
+  <text x="20" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the first two rows carry the same value word, and one filled cell is the whole difference</text>
+</svg>

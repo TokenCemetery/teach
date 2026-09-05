@@ -81,6 +81,10 @@ var _ Incrementer = &Counter{}   // ok
 var _ Incrementer = Counter{}    // compile error: Inc method has pointer receiver
 ```
 
+![An interface needing Inc checked against two method sets. The set of pointer-to-Counter holds Value and Inc and the check arrives; the set of Counter holds only Value, with a dashed empty slot where Inc would be, and the check stops short of it.](images/in-one-set-not-the-other.svg)
+
+Satisfaction is membership, not a rule to memorise: `Inc()` is a row in one box and an empty slot in the other, and the check that fails is the one looking in the box without it.
+
 The reason is that an interface holds a copy of the value put into it, and that copy has no address. Letting `Counter{}` satisfy `Incrementer` would mean calling `Inc` on a copy nobody can name, mutating something no one can observe. Rather than allow that, the language removes the method from the set.
 
 `var _ Incrementer = (*Counter)(nil)` at package level is the idiomatic compile-time assertion that the relationship holds. It costs nothing at runtime and it fails the build the day someone changes a receiver.

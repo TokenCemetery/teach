@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 226" width="560" height="226" role="img" aria-labelledby="title desc">
+  <title id="title">The selected version is where the requirements start overlapping</title>
+  <desc id="desc">A version axis from v1.2.0 to v1.6.0. Your module accepts v1.2.0 and up, a dependency accepts v1.4.0 and up, and the stretch where both are satisfied begins at v1.4.0. That left edge is the version selected, even though v1.6.0 has been published.</desc>
+
+  <!-- Each requirement is drawn as everything at or above its minimum, so the
+       selected version is literally the left edge of the overlap. Accent marks
+       that edge. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the minimum that satisfies everything</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="20" y="80">your module</text>
+    <text x="20" y="106">a dependency</text>
+    <text x="20" y="132">both</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="80" y="68">v1.2.0 and up</text>
+    <text x="290" y="94">v1.4.0 and up</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.35">
+    <rect x="80" y="74" width="420" height="7" rx="2"/>
+    <rect x="290" y="100" width="210" height="7" rx="2"/>
+  </g>
+  <rect x="290" y="126" width="210" height="7" rx="2" fill="#bf7d1a"/>
+
+  <path d="M290,133 V154" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+  <circle cx="290" cy="160" r="3" fill="#bf7d1a"/>
+  <text x="298" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">selected: v1.4.0</text>
+
+  <path d="M70,160 H510" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none"/>
+  <g stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" fill="none">
+    <path d="M80,156 V164"/>
+    <path d="M185,156 V164"/>
+    <path d="M290,156 V164"/>
+    <path d="M395,156 V164"/>
+    <path d="M500,156 V164"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85" text-anchor="middle">
+    <text x="80" y="176">v1.2.0</text>
+    <text x="185" y="176">v1.3.0</text>
+    <text x="290" y="176">v1.4.0</text>
+    <text x="395" y="176">v1.5.0</text>
+    <text x="500" y="176">v1.6.0</text>
+  </g>
+
+  <text x="420" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">published, not chosen</text>
+
+  <text x="20" y="214" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the answer is the highest of the minimums, not the highest that exists</text>
+</svg>

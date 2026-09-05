@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 184" width="560" height="184" role="img" aria-labelledby="title desc">
+  <title id="title">The four timeouts cover different stretches of one connection</title>
+  <desc id="desc">A connection runs left to right through five stretches: headers, body, handler, response, idle. ReadHeaderTimeout covers the headers alone. ReadTimeout covers the headers and the body. WriteTimeout starts where the headers end and runs to the end of the response, so it overlaps the body with ReadTimeout. IdleTimeout covers only the stretch after the response, waiting for the next request.</desc>
+
+  <!-- The bars are spans over the same timeline, so their extents and overlaps
+       are the whole content. Accent marks the one that starts before the
+       reading is done. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <text x="20" y="40" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">one request on one connection</text>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="150" y="52" width="76" height="16" rx="2"/>
+    <rect x="228" y="52" width="76" height="16" rx="2"/>
+    <rect x="306" y="52" width="76" height="16" rx="2"/>
+    <rect x="384" y="52" width="76" height="16" rx="2"/>
+    <rect x="462" y="52" width="78" height="16" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="188" y="64">headers</text>
+    <text x="266" y="64">body</text>
+    <text x="344" y="64">handler</text>
+    <text x="422" y="64">response</text>
+    <text x="501" y="64">idle</text>
+  </g>
+
+  <path d="M227,48 V160" stroke="#7a828c" stroke-width="1" stroke-opacity="0.35" stroke-dasharray="3 3" fill="none"/>
+
+  <g fill="#7a828c" fill-opacity="0.45">
+    <rect x="150" y="92" width="76" height="8" rx="2"/>
+    <rect x="150" y="108" width="154" height="8" rx="2"/>
+    <rect x="462" y="140" width="78" height="8" rx="2"/>
+  </g>
+  <rect x="228" y="124" width="232" height="8" rx="2" fill="#bf7d1a"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="99">ReadHeaderTimeout</text>
+    <text x="20" y="115">ReadTimeout</text>
+    <text x="20" y="147">IdleTimeout</text>
+  </g>
+  <text x="20" y="131" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">WriteTimeout</text>
+
+  <text x="20" y="172" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the body is inside two of them at once, because writing is timed from the end of the headers</text>
+</svg>

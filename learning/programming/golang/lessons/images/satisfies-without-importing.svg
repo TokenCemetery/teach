@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 216" width="560" height="216" role="img" aria-labelledby="title desc">
+  <title id="title">The implementation satisfies the interface without importing it</title>
+  <desc id="desc">Three packages. main imports report and store. report declares the interface it needs and store has the method, and neither imports the other: the only line between them is the satisfaction relation, which is checked where the value is used and creates no dependency.</desc>
+
+  <!-- The two solid lines are imports and the dashed one is not, which is why
+       there is no cycle to break. Accent marks the relation that costs no
+       import. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="250" y="56" width="110" height="22" rx="2"/>
+    <rect x="60" y="124" width="160" height="34" rx="2"/>
+    <rect x="350" y="124" width="160" height="34" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="305" y="70">main</text>
+    <text x="140" y="138">report</text>
+    <text x="140" y="150">declares UserStore</text>
+    <text x="430" y="138">store</text>
+    <text x="430" y="150">has GetUser</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M280,78 L150,120" marker-end="url(#g)"/>
+    <path d="M330,78 L420,120" marker-end="url(#g)"/>
+  </g>
+  <path d="M350,141 H224" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="4 3" fill="none" marker-end="url(#a)"/>
+
+  <text x="287" y="135" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">satisfies</text>
+  <text x="287" y="172" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">and imports nothing</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="60" y="100">imports</text>
+    <text x="404" y="100">imports</text>
+  </g>
+
+  <text x="20" y="192" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">no import runs between the two, so there is no cycle to break</text>
+  <text x="20" y="208" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the implementation never mentions the interface it satisfies</text>
+</svg>

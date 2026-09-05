@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 264" width="560" height="264" role="img" aria-labelledby="title desc">
+  <title id="title">Cancelling a context reaches its descendants and nothing else</title>
+  <desc id="desc">A context tree from Background down through a request context to a query context and a sibling. Cancelling the query context cancels it and both calls beneath it, while the request context above, the root, and the sibling beside it are unaffected.</desc>
+
+  <!-- The accented set is exactly the cancelled node and its descendants, so
+       the reach of a cancel is the shape of the shading. Tones validated for
+       both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="250" y="56" width="110" height="20" rx="2"/>
+    <rect x="250" y="100" width="110" height="20" rx="2"/>
+    <rect x="370" y="144" width="110" height="20" rx="2"/>
+  </g>
+  <g fill="#bf7d1a" fill-opacity="0.9">
+    <rect x="140" y="144" width="110" height="20" rx="2"/>
+    <rect x="80" y="188" width="100" height="20" rx="2"/>
+    <rect x="200" y="188" width="100" height="20" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="305" y="70">Background</text>
+    <text x="305" y="114">request ctx</text>
+    <text x="425" y="158">other ctx</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#10141a" text-anchor="middle">
+    <text x="195" y="158">query ctx</text>
+    <text x="130" y="202">db call</text>
+    <text x="250" y="202">rows scan</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M305,76 L305,96" marker-end="url(#g)"/>
+    <path d="M305,120 L199,140" marker-end="url(#g)"/>
+    <path d="M305,120 L421,140" marker-end="url(#g)"/>
+    <path d="M195,164 L134,184" marker-end="url(#g)"/>
+    <path d="M195,164 L246,184" marker-end="url(#g)"/>
+  </g>
+
+  <text x="258" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">cancel() here</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="200" y="230">the parent and the sibling are not</text>
+  </g>
+  <text x="20" y="230" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">everything under it is cancelled</text>
+
+  <text x="20" y="252" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">cancelling a node cancels its whole subtree, never its parent</text>
+</svg>

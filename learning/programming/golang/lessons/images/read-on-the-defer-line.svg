@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 204" width="560" height="204" role="img" aria-labelledby="title desc">
+  <title id="title">The argument is read on the defer line; a closure reads at return</title>
+  <desc id="desc">Four moments in one function, with the value of i beside each. The argument to a deferred call is read on the defer line, where i is still nought, so that call prints nought. A deferred closure reads i when it runs, after the assignment, so it prints forty-two.</desc>
+
+  <!-- Both read markers point into the same value column, so what each form
+       prints is the value on the row it points at. Accent marks the read that
+       happens early. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="110" y="48">the code</text>
+    <text x="350" y="48">i</text>
+    <text x="392" y="48">when it is read</text>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="110" y="54" width="220" height="18" rx="2"/>
+    <rect x="110" y="78" width="220" height="18" rx="2"/>
+    <rect x="110" y="102" width="220" height="18" rx="2"/>
+    <rect x="110" y="126" width="220" height="18" rx="2"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="116" y="67">i := 0</text>
+    <text x="116" y="91">defer fmt.Println(i)</text>
+    <text x="116" y="115">i = 42</text>
+    <text x="116" y="139">the function returns</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="356" y="67">0</text>
+    <text x="356" y="91">0</text>
+    <text x="356" y="115">42</text>
+    <text x="356" y="139">42</text>
+  </g>
+
+  <path d="M388,87 H366" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="392" y="90" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the argument, read now</text>
+
+  <path d="M388,135 H366" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <text x="392" y="138" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">a closure, read at return</text>
+
+  <text x="110" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">defer fmt.Println(i) prints 0</text>
+  <text x="110" y="180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">defer func(){ ... }() prints 42</text>
+
+  <text x="20" y="198" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the argument was evaluated on the defer line, and the closure was not</text>
+</svg>

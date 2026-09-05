@@ -55,6 +55,10 @@ Use the one-value form when the zero value is a fine answer (counters, accumulat
 
 Ranging a map visits keys in an unspecified order, and the runtime deliberately randomises the starting point so the order differs between runs of the same program on the same data. This is not an accident of the implementation. It exists to stop code from depending on an order that was never promised.
 
+![Three runs over the same map visiting its four keys in three different orders, and a fourth row holding the same four keys sorted.](images/the-same-keys-a-different-order.svg)
+
+Every row holds the same keys. Only the sequence changes, and only the last row's sequence is something you were promised.
+
 To produce stable output, collect and sort:
 
 ```go

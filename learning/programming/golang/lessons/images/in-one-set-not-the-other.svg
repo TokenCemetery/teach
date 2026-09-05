@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 234" width="560" height="234" role="img" aria-labelledby="title desc">
+  <title id="title">A pointer-receiver method is in one method set and not the other</title>
+  <desc id="desc">An interface needing Inc is checked against two method sets. The set of pointer-to-Counter holds both Value and Inc, so the check arrives and the type satisfies the interface. The set of Counter holds only Value, so the check stops short of a method that is not there and the type is rejected.</desc>
+
+  <!-- The two sets are drawn as containers with the same rows, one of which is
+       empty, so satisfaction is membership rather than a rule to remember.
+       Accent marks the method that is missing. Tones validated for both
+       surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">the method sets, and what an interface needs</text>
+
+  <rect x="20" y="92" width="150" height="22" rx="2" fill="#7a828c" fill-opacity="0.12"/>
+  <text x="95" y="106" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">Incrementer needs Inc()</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="240" y="50">*Counter</text>
+    <text x="240" y="134">Counter</text>
+  </g>
+  <g fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5">
+    <rect x="240" y="56" width="180" height="64" rx="2"/>
+    <rect x="240" y="140" width="180" height="64" rx="2"/>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="250" y="66" width="160" height="18" rx="2"/>
+    <rect x="250" y="92" width="160" height="18" rx="2"/>
+    <rect x="250" y="150" width="160" height="18" rx="2"/>
+  </g>
+  <rect x="250" y="176" width="160" height="18" rx="2" fill="none" stroke="#bf7d1a" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="330" y="79">Value()</text>
+    <text x="330" y="105">Inc()</text>
+    <text x="330" y="163">Value()</text>
+  </g>
+  <text x="330" y="189" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">Inc() is not here</text>
+
+  <path d="M170,100 L236,101" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none" marker-end="url(#g)"/>
+  <path d="M170,112 L232,185" stroke="#bf7d1a" stroke-width="1.5" fill="none"/>
+  <path d="M236,177 V193" stroke="#bf7d1a" stroke-width="1.5" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="430" y="101">satisfies</text>
+  </g>
+  <text x="430" y="189" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">rejected</text>
+
+  <text x="20" y="220" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">an interface holds a copy of the value, and a copy has no address</text>
+</svg>

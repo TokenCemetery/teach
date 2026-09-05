@@ -41,6 +41,10 @@ buf := make(chan int, 8)  // buffered, capacity 8
 
 An unbuffered send blocks until a receiver is ready, and an unbuffered receive blocks until a sender is. Both sides leave the exchange knowing the other reached that point. That synchronisation is usually the reason to use one; the value is almost incidental.
 
+![Two pairs of timelines. On the unbuffered side the sender waits and a marked instant crosses both lanes. On the buffered side the send completes at once and the receive happens later, with nothing crossing.](images/a-shared-instant.svg)
+
+The line crossing both lanes is the guarantee, and it exists only because the sender stopped. That is the trade in one picture: the wait is not a cost the channel imposes on the way to delivering a value, it is the thing being bought.
+
 A buffered channel decouples them: a send completes as long as there is room, and the sender learns nothing about the receiver. Capacity buys throughput and gives up the guarantee. Choose the buffer size for a reason you can state, such as a known batch size or a pipeline stage's tolerance for jitter, not to make a deadlock go away. A deadlock that a buffer hides comes back under load.
 
 ### Closing is a broadcast

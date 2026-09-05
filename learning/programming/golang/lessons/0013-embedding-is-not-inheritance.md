@@ -58,6 +58,10 @@ fmt.Println(Child{}.Greet())   // hello, base
 
 In Java this prints `hello, child`. In Go it prints `hello, base`, and the reason is mechanical: `Greet` is a method on `Base` with a `Base` receiver. When it calls `b.Name()`, `b` is a `Base`, and `Base` has exactly one `Name`. `Child` is not a `Base` with extras. It is a struct that *contains* a `Base` and knows nothing about it from the inside.
 
+![A Child box containing its own Name method and, nested inside it, a Base box holding Base's Name and Greet. The call inside Greet resolves to Base's own Name one box in, while the route out to Child's Name stops short of arriving.](images/no-route-back-out.svg)
+
+`Base` is drawn inside `Child` because containment is what the language gives you here. The arrow that resolves goes one box in; the arrow that would reach back out has nothing to travel along.
+
 There is no way to make the embedded method call the outer one. If a type needs that, the outer type must implement `Greet` itself, or the dependency must be inverted with an interface field the outer type supplies. Template-method designs do not port to Go; they get rewritten as a function that takes a function.
 
 ### Name resolution

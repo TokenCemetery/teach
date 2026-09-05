@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">A promoted method resolves inside the embedded type, not the outer one</title>
+  <desc id="desc">A Child struct drawn as a box containing its own Name method and, nested inside it, a Base box holding Base's Name and Greet. Calling Greet on a Child is promoted to the Base method, and the b.Name call inside it resolves to Base's own Name, one box in. The route out to Child's Name does not exist: that arrow stops before it arrives.</desc>
+
+  <!-- Base is drawn inside Child because that is the containment the language
+       has; the blocked arrow is the subtyping it does not. Accent marks the
+       call that actually happens. Tones validated for both surfaces; see
+       .agents/TODO.md. -->
+
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#bf7d1a"/>
+    </marker>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="30" y="54" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">Child</text>
+  <rect x="30" y="60" width="200" height="124" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="42" y="106" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">Base</text>
+  <rect x="42" y="108" width="176" height="66" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5"/>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="42" y="70" width="176" height="18" rx="2"/>
+    <rect x="54" y="116" width="152" height="18" rx="2"/>
+    <rect x="54" y="142" width="152" height="18" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="48" y="83">Name() = "child"</text>
+    <text x="60" y="129">Name() = "base"</text>
+    <text x="60" y="155">Greet() calls b.Name()</text>
+  </g>
+
+  <path d="M54,151 H38 V125 H52" stroke="#bf7d1a" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M206,151 H240 V96" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.45" fill="none"/>
+  <path d="M234,96 H246" stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none"/>
+  <text x="252" y="102" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">no route out to Child</text>
+
+  <text x="300" y="72" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">Child{}.Greet()</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">
+    <text x="300" y="86">promoted to c.Base.Greet()</text>
+    <text x="300" y="124">inside Greet, b is a Base</text>
+    <text x="300" y="136">so b.Name() is Base.Name</text>
+    <text x="300" y="178">and never Child.Name</text>
+  </g>
+  <text x="300" y="162" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">"hello, base"</text>
+
+  <text x="20" y="208" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the embedded method has no way to reach the outer type's method</text>
+</svg>

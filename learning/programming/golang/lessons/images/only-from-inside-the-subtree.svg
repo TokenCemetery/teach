@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 226" width="560" height="226" role="img" aria-labelledby="title desc">
+  <title id="title">An internal directory is importable from inside its subtree and nowhere else</title>
+  <desc id="desc">Three packages sit inside one module. A package in the same module imports internal/store and the compiler allows it. Another module's import of httpapi crosses the module boundary and is allowed; its import of internal/store is refused at that boundary.</desc>
+
+  <!-- The module's subtree is drawn as a box, so which imports cross it is
+       visible. Accent marks the package the boundary protects. Tones validated
+       for both surfaces; see .agents/TODO.md. -->
+
+  <defs>
+    <marker id="g" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="30" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" opacity="0.85">github.com/you/svc</text>
+  <rect x="30" y="66" width="180" height="130" rx="2" fill="none" stroke="#7a828c" stroke-width="1" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+
+  <g fill="#7a828c" fill-opacity="0.12">
+    <rect x="46" y="76" width="140" height="22" rx="2"/>
+    <rect x="46" y="160" width="140" height="22" rx="2"/>
+    <rect x="330" y="110" width="140" height="22" rx="2"/>
+  </g>
+  <rect x="46" y="120" width="140" height="22" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="116" y="90">cmd/svc</text>
+    <text x="116" y="174">httpapi</text>
+    <text x="400" y="124">another module</text>
+  </g>
+  <text x="116" y="134" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">internal/store</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" stroke-opacity="0.7" fill="none">
+    <path d="M116,98 V116" marker-end="url(#g)"/>
+    <path d="M330,127 L192,166" marker-end="url(#g)"/>
+  </g>
+  <path d="M330,121 H218" stroke="#bf7d1a" stroke-width="1.5" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="124" y="112">allowed</text>
+    <text x="240" y="192">allowed</text>
+  </g>
+  <text x="222" y="110" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">refused at the boundary</text>
+
+  <text x="20" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">the same directory is importable from inside the subtree and from nowhere else</text>
+</svg>

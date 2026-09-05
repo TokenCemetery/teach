@@ -37,6 +37,18 @@ Every iterator is an iterable. Most iterables are not iterators.
 | open file object | **no** | its own iterator; needs `seek(0)` to repeat |
 | `itertools.*` | **no** | every one of them |
 
+```mermaid
+flowchart TD
+    O["the value you loop over"] --> Q{"iterable, or<br>already an iterator?"}
+    Q -- "list, tuple, range, dict view" --> A["__iter__ hands back<br>a fresh iterator each time"]
+    A --> R["every loop starts from the beginning"]
+    Q -- "zip, map, filter, generator, open file" --> B["__iter__ returns self,<br>so every loop shares the one"]
+    B --> X["the first loop exhausts it"]
+    X --> S["every later loop yields nothing,<br>and raises nothing"]
+```
+
+The two tables above meet here. Which column of the second table a value lands in is decided by one line of the first: whether `__iter__` builds something new or hands back `self`. Nothing about a `for` loop changes between the two branches, which is why the mistake is invisible at the call site.
+
 Exhausted iterators do not raise. They yield nothing, so `sum` returns `0`, `list` returns `[]`, and `max` raises only because it has no default.
 
 ## Getting a second pass

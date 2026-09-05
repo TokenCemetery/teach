@@ -33,6 +33,10 @@ Annotations are evaluated lazily from Python 3.14 (PEP 649). Before that they ra
 
 Take the general type, return the concrete one. `list` and `dict` are **invariant**: `list[int]` is not a `list[object]`, because the callee could append. `Sequence` and `Iterable` are covariant and safe.
 
+![Two chains of four steps. On the left, a list[int] seen as list[object] lets the callee append a str, leaving the caller's list[int] holding one. On the right, the same substitution with Sequence, where there is no append to call.](images/why-list-is-invariant.svg)
+
+The rule is the second step, and the reason is the third. Nothing is wrong with calling a `list[int]` a `list[object]` until someone writes to it, which is exactly why the distinction lands on the mutable types and not on the read-only ones. Read the first column of the table above the same way: each row asks what the body does, because that is what decides which substitutions stay safe.
+
 ## Narrowing
 
 | Form | Narrows |

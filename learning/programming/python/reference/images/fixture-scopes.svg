@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 196" width="560" height="196" role="img" aria-labelledby="title desc">
+  <title id="title">A fixture's scope is how long one object lives, and how many tests share it</title>
+  <desc id="desc">A run of four tests across two files. A session-scoped fixture is one bar spanning the whole run, so one object serves all four tests. A module-scoped fixture is two bars, one per file, each serving two tests. A function-scoped fixture is four separate bars, one per test. The wider the bar, the more tests share the same object.</desc>
+
+  <!-- Scope is a duration, so the table's "created once per" is drawn as
+       length and its count as the number of bars. Accent marks the scopes
+       whose safety is conditional, which is the table's own right-hand
+       column. Tones validated for both surfaces; see .agents/TODO.md. -->
+
+  <path d="M328,44 V142" stroke="#7a828c" stroke-width="1" opacity="0.25" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="61">session</text>
+    <text x="20" y="87">module</text>
+    <text x="20" y="113">function</text>
+  </g>
+
+  <rect x="120" y="50" width="416" height="16" rx="3" fill="#bf7d1a"/>
+  <g fill="#bf7d1a">
+    <rect x="120" y="76" width="206" height="16" rx="3"/>
+    <rect x="330" y="76" width="206" height="16" rx="3"/>
+  </g>
+  <g fill="#7a828c">
+    <rect x="120" y="102" width="101" height="16" rx="3"/>
+    <rect x="225" y="102" width="101" height="16" rx="3"/>
+    <rect x="330" y="102" width="101" height="16" rx="3"/>
+    <rect x="435" y="102" width="101" height="16" rx="3"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#10141a">
+    <text x="128" y="62">one object for the whole run</text>
+    <text x="128" y="88">one per file</text>
+    <text x="128" y="114">one per test</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="middle" opacity="0.9">
+    <text x="170" y="136">test 1</text>
+    <text x="275" y="136">test 2</text>
+    <text x="380" y="136">test 3</text>
+    <text x="485" y="136">test 4</text>
+  </g>
+
+  <text x="20" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">a wider bar is one object shared by more tests, which is what the accent marks</text>
+  <text x="20" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#bf7d1a">passes alone and fails in the suite: look at the widest bar first</text>
+</svg>

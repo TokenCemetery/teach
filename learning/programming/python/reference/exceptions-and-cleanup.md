@@ -75,6 +75,21 @@ One base per package, so callers can be complete with `except StoreError`, and s
 | `else` | the `try` body completed with no exception, and **outside** the handlers' reach |
 | `finally` | always: success, handled, unhandled, `return`, `break`, `continue` |
 
+```mermaid
+flowchart TD
+    T["try body"] --> Q{"exception raised?"}
+    Q -- no --> E["else body,<br>outside the handlers' reach"]
+    Q -- yes --> M{"matches an except clause?"}
+    M -- yes --> H["that handler runs,<br>first match wins"]
+    M -- no --> U["propagates, unhandled"]
+    E --> F["finally"]
+    H --> F
+    U --> F
+    F --> O["leaves the statement"]
+```
+
+Every path reaches `finally`, which is what "always" in the table means, and the paths that skip it do not exist. `return`, `break` and `continue` in the `try` body are three more arrows into the same box.
+
 Two sharp edges:
 
 - A `return` inside `finally` discards an exception in flight and whatever the function was returning. Almost always a bug.

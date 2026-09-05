@@ -22,6 +22,10 @@ IO sequential x8 (0.2s each)       1.66s
 IO 8 threads                       0.21s      eight-fold
 ```
 
+![The same timings as bars. Among the CPU-bound runs, four threads are as slow as sequential while processes and subinterpreters are roughly a third of it. Among the IO-bound runs, eight threads are a small fraction of sequential.](images/threads-cpu-against-io.svg)
+
+Both accented bars are the same tool. Reading down the chart, threads are the one row that changes verdict between the two groups, which is why "should I use threads" has no answer until the first question is settled.
+
 **The lock serialises the interpreter, not the waiting.** It is released around sockets, files, `sleep`, and inside C extensions that opt to release it.
 
 ## Decision order

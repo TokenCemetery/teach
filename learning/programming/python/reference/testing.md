@@ -64,7 +64,11 @@ def temp_table(connection):          # composes by requesting another fixture
 | `package` | directory | nothing mutates it |
 | `session` | run | immutable, or reset by a narrower fixture |
 
+![A run of four tests across two files. Session is one bar spanning the run, module is two bars, function is four. The wider the bar, the more tests share one object.](images/fixture-scopes.svg)
+
 **A test that passes alone and fails in the suite is shared mutable state.** Check fixture scopes first, then module-level globals.
+
+The table's middle column is the number of bars and its right column follows from their width. `function` needs no condition because no second test ever sees the object; every scope above it needs one because some later test will. Nothing about a fixture's code says which of these it is, only the `scope` argument does, which is why the scope is the first thing to read when a suite fails and a single test does not.
 
 | Built-in | Gives |
 |---|---|

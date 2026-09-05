@@ -15,6 +15,21 @@ Lookup sheet for stage 4. The question it exists to answer: **which method does 
 3. A **non-data descriptor** (`__get__` only) or a plain class attribute, along the MRO.
 4. `__getattr__`, if defined, as a last resort.
 
+```mermaid
+flowchart TD
+    S["obj.name"] --> D1{"data descriptor<br>on the class or its bases?"}
+    D1 -- yes --> R1["its __get__ wins,<br>over the instance dict too"]
+    D1 -- no --> ID{"in obj.__dict__?"}
+    ID -- yes --> R2["the instance value"]
+    ID -- no --> D2{"class attribute<br>along the MRO?"}
+    D2 -- yes --> R3["that value, through __get__<br>if it is a non-data descriptor"]
+    D2 -- no --> GA{"__getattr__ defined?"}
+    GA -- yes --> R4["__getattr__(name)"]
+    GA -- no --> R5["AttributeError"]
+```
+
+The two descriptor checks sit on opposite sides of the instance dict, and that placement is the whole of the table below. A data descriptor is asked before the instance dict, so nothing an instance stores can shadow a `@property`. A non-data descriptor is asked after it, so `obj.method = f` shadows a method and `@cached_property` can retire itself by writing the answer into the instance dict.
+
 Assignment `obj.name = v` goes to a data descriptor's `__set__` if one exists, otherwise straight into `obj.__dict__`, shadowing any class attribute.
 
 | Construct | Kind | Consequence |

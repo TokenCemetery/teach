@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [11. PagedAttention](lessons/0011-pagedattention.md)
+**Latest lesson:** [12. The vLLM Tuning Knobs That Matter](lessons/0012-vllm-tuning-knobs.md)
 
 ## Success looks like
 
@@ -55,6 +55,7 @@ Work through these in order.
 | [0009](lessons/0009-picking-a-quantization-scheme.md) | Picking and Defending a Quantization Scheme | A decision framework for choosing a serving-time quantization scheme, and the three numbers that defend it |
 | [0010](lessons/0010-standing-up-vllm.md) | Standing Up vLLM | Installing vLLM, launching its server, and finding the flags that carry the concepts already taught |
 | [0011](lessons/0011-pagedattention.md) | PagedAttention | The block table mechanism behind vLLM, its block-size trade-off, and how it lets sequences share a common prefix's cache |
+| [0012](lessons/0012-vllm-tuning-knobs.md) | The vLLM Tuning Knobs That Matter | Two more flags, gpu-memory-utilization and tensor-parallel-size, plus a decision procedure for which knob a symptom actually points at |
 
 ## Reference
 

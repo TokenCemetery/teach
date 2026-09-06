@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a topic and partition layout for a real workload and to diagnose consumer lag, rebalancing storms or unexpected message loss instead of guessing at a fix.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Partitions and the Log](lessons/0001-partitions-and-the-log.md)
 
 ## Success looks like
 
@@ -40,7 +40,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-partitions-and-the-log.md) | Partitions and the Log | The unit everything else in this workspace (ordering, parallelism, consumer groups) is built around |
 
 ## Reference
 

@@ -1,28 +1,29 @@
 ---
-title: "{Topic}"
-description: "{One clause: the outcome this topic delivers}"
+title: Evals
+description: "Prove a model change helped: build the eval, hold out the data honestly, and defend the number against contamination"
 type: topic
 ---
 
-# Learning: {Topic}
+# Learning: Evals
 
-> **Template, not a workspace.** Copy this directory to `learning/<domain>/<topic-slug>/`, then replace every `{placeholder}`.
-
-{1-3 sentences. The concrete real-world goal. What changes in your life or work when you have this skill? Not "to understand X" but the outcome underneath it.}
+Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change — a fine-tune, a prompt change, a RAG change — that you can defend with a number instead of a feeling.
 
 **Latest lesson:** _none yet_
 
 ## Success looks like
 
-- {A specific, observable thing you will be able to do}
+- Design a held-out eval set for a given model change that resists contamination and would catch a regression a casual read-through would miss.
+- Use that eval to make and defend a go/no-go call on shipping the change, naming the number and why it is trustworthy.
+- Compare an LLM-as-judge approach against task-specific metrics for a given case, and choose between them on the merits rather than by default.
 
 ## Constraints
 
-- {Time, budget, prior commitments, learning preferences: anything that bounds the approach}
+- No domain restriction: covers evaluating fine-tunes, prompt changes, and RAG changes alike, since the same eval discipline applies to all three.
+- No fixed stack or prior-experience assumption.
 
 ## Out of scope
 
-- {Adjacent topics you do not want to chase now}
+- Judging a variant, held-out design, metrics and the regression suite as taught inside one fine-tuning arc: `llm/finetuning` lessons 0020-0024 already own that, subordinated to fine-tuning specifically. This workspace owns evaluation as the subject and links back rather than restating.
 
 ## The arc
 

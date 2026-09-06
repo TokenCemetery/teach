@@ -19,7 +19,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | programming | [SQL](programming/sql/) | Own the database: write the query, read the plan, design the schema, survive the concurrency | 48 |
 | programming | [TypeScript](programming/typescript/) | Own a TypeScript codebase: make the compiler reject the states that should not exist | 49 |
 | llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 27 |
-| llm | [Inference](llm/inference/) | Mission pending the interview | 0 |
+| llm | [Inference](llm/inference/) | Serve a model: the KV cache, batching, quantization at serve time, and a latency budget you can defend | 0 |
 | llm | [Evals](llm/evals/) | Mission pending the interview | 0 |
 | llm | [RAG](llm/rag/) | Mission pending the interview | 0 |
 | llm | [Transformers](llm/transformers/) | Mission pending the interview | 0 |

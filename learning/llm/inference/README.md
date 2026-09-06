@@ -1,28 +1,28 @@
 ---
-title: "{Topic}"
-description: "{One clause: the outcome this topic delivers}"
+title: Inference
+description: "Serve a model: the KV cache, batching, quantization at serve time, and a latency budget you can defend"
 type: topic
 ---
 
-# Learning: {Topic}
+# Learning: Inference
 
-> **Template, not a workspace.** Copy this directory to `learning/<domain>/<topic-slug>/`, then replace every `{placeholder}`.
-
-{1-3 sentences. The concrete real-world goal. What changes in your life or work when you have this skill? Not "to understand X" but the outcome underneath it.}
+Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
 **Latest lesson:** _none yet_
 
 ## Success looks like
 
-- {A specific, observable thing you will be able to do}
+- Stand up a serving stack (vLLM on GPU, then llama.cpp on CPU/edge) for a given model and get it answering requests.
+- Quote a p99 latency budget for a given batch size and model, and defend the number from the KV cache, batching and quantization choices that produced it.
 
 ## Constraints
 
-- {Time, budget, prior commitments, learning preferences: anything that bounds the approach}
+- Core stacks: vLLM (GPU) and llama.cpp (CPU/edge), covered in that order. Other stacks (TGI, TensorRT-LLM) are mentioned only where a concept transfers differently.
 
 ## Out of scope
 
-- {Adjacent topics you do not want to chase now}
+- Training or fine-tuning a model or adapter: that is `llm/finetuning`, whose lessons 0025 (serving adapters) and 0026 (cost, latency and throughput) this workspace links back to rather than restates.
+- Judging output quality or building an eval for a served model: that is `llm/evals`.
 
 ## The arc
 

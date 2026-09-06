@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team, able to ship a typed, tested ASP.NET Core backend and explain what the CLR does with the code you wrote, rather than carrying Java habits into code that merely compiles.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Structs and Classes](lessons/0001-structs-and-classes.md)
 
 ## Success looks like
 
@@ -40,7 +40,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-structs-and-classes.md) | Structs and Classes | The type-system choice Java never gave you, and what the CLR actually does with each |
 
 ## Reference
 

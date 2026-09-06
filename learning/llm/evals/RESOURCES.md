@@ -1,16 +1,26 @@
 ---
 title: Resources
-description: "Trusted sources for {topic}"
+description: "Trusted sources for evals"
 type: resources
 ---
 
-# {Topic} Resources
+# Evals Resources
 
 ## Knowledge
 
-- [{Type}: "{Title}", {Author}, {Publication}]({url})
-  {What it covers.} Use for: {when to reach for it}.
+- [Docs: "Define success criteria and build evaluations", Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
+  Practitioner walkthrough of turning a vague "did it get better" question into measurable success criteria and a held-out eval set. Use for: designing the eval itself before reaching for a framework.
+- [Repo: openai/evals, OpenAI](https://github.com/openai/evals)
+  Official framework for defining and running an eval as code: prompts, grading logic, and a registry of existing evals to read as worked examples. Use for: how to structure and run a custom eval.
+- [Repo: lm-evaluation-harness, EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness)
+  The de facto standard harness for running a model against standardized benchmarks, with the task configs showing how held-out sets are structured and scored in practice. Use for: running or adapting an existing benchmark rather than building an eval from zero.
+- [Paper: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", Zheng et al., 2023](https://arxiv.org/abs/2306.05685)
+  Introduces LLM-as-judge for open-ended tasks and measures its biases against human preference: position bias, verbosity bias, self-enhancement bias. Use for: deciding whether an LLM judge is trustworthy for a given case, and what to correct for if it is.
+- [Docs: Evaluate, Hugging Face](https://huggingface.co/docs/evaluate/index)
+  Library of standard task-specific metrics (BLEU, ROUGE, exact match, F1, and more) with the definition and failure modes of each. Use for: the task-specific-metric side of the metric-vs-LLM-judge comparison.
+- [Paper: "Time Travel in LLMs: Tracing Data Contamination in Large Language Models", Golchin and Surdeanu, 2023](https://arxiv.org/abs/2308.08493)
+  A concrete method for testing whether a benchmark's data leaked into a model's training set, with the guessing-the-rest-of-the-instance technique that catches it. Use for: defending a held-out set's honesty against the specific claim "the model just memorized this".
 
 ## Gaps
 
-- {An area the mission needs and no good source covers yet}
+- No source yet on designing contamination resistance into a *custom* eval set from the start (as opposed to detecting contamination in an existing public benchmark after the fact); the mission needs this once lesson design reaches held-out set construction.

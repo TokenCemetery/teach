@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Chunking](lessons/0001-chunking.md)
 
 ## Success looks like
 
@@ -41,7 +41,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-chunking.md) | Chunking | The first pipeline choice, and the one every later stage inherits |
 
 ## Reference
 

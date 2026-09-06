@@ -57,12 +57,10 @@ gh issue create --title "..." --body "..." --label bug
 - Record progress on the issue as you go — comment on what you found and what you tried, so the next person does not repeat the investigation.
 - Reference the issue from the commit or pull request that fixes it (`Fixes #12`), so it closes together with the change.
 
-`.agents/TODO.md` is a leftover local list, not the tracker. Everything it held is filed as an issue now; do not add new items to it.
-
 ## Quality bar for anything you write
 
 - Be complete and specific, and stay consistent with yourself.
-- Write no placeholders and no TODOs. Two exceptions: `templates/learning-workspace/` keeps its `{placeholder}` markers, and `.agents/TODO.md`, which is git-ignored, holds planned work.
+- Write no placeholders. One exception: `templates/learning-workspace/` keeps its `{placeholder}` markers.
 - Make no claim you cannot support.
 - Use no em dashes in prose. Rewrite the sentence with a comma, colon, period, parentheses, or a conjunction. Pick the one the sentence wants. Never swap the character mechanically.
 - Delete any section or example that does not serve the goal.

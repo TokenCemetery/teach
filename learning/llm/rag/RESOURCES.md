@@ -1,16 +1,28 @@
 ---
 title: Resources
-description: "Trusted sources for {topic}"
+description: "Trusted sources for RAG"
 type: resources
 ---
 
-# {Topic} Resources
+# RAG Resources
 
 ## Knowledge
 
-- [{Type}: "{Title}", {Author}, {Publication}]({url})
-  {What it covers.} Use for: {when to reach for it}.
+- [Article: "Chunking Strategies for LLM Applications", Pinecone](https://www.pinecone.io/learn/chunking-strategies/)
+  Practitioner survey of chunking approaches (fixed-size, recursive, semantic, document-structure-aware) and the trade-offs each makes between context and precision. Use for: choosing and justifying a chunking strategy for a given corpus.
+- [Repo: pgvector, pgvector](https://github.com/pgvector/pgvector)
+  Official repo for the vector store this workspace standardizes on: index types (IVFFlat, HNSW), distance functions, and the operators that make a Postgres table a vector index. Use for: how to run and configure pgvector itself.
+- [Paper: "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks", Reimers and Gurevych, 2019](https://arxiv.org/abs/1908.10084)
+  The paper behind the bi-encoder embedding approach nearly every retrieval pipeline uses: why a shared embedding space lets similarity be computed by distance instead of by running the model on every pair. Use for: understanding what an embedding model is actually optimizing for.
+- [Paper: "Passage Re-ranking with BERT", Nogueira and Cho, 2019](https://arxiv.org/abs/1901.04085)
+  Introduces cross-encoder reranking: scoring a query-passage pair jointly rather than by embedding distance, at the cost of running the model once per candidate. Use for: why a reranking stage exists and what it buys over embedding similarity alone.
+- [Docs: "Reciprocal rank fusion (RRF)", Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html)
+  Explains the standard method for combining a keyword-search ranking and a vector-search ranking into one hybrid ranking, with the formula and its one tuning parameter. Use for: how hybrid search actually combines its two rankings.
+- [Docs: "Reranking", Cohere](https://docs.cohere.com/docs/reranking)
+  Practitioner-facing docs for a hosted cross-encoder reranker: how it's called, what it costs in latency, and where it sits in a retrieval pipeline. Use for: a concrete, runnable reranking stage to reason about alongside the Nogueira and Cho paper above.
+- [Article: "Evaluation Measures for Search and Recommender Systems", Pinecone](https://www.pinecone.io/learn/offline-evaluation/)
+  Walks through the standard retrieval metrics (Recall@k, MRR, nDCG) and how to compute each against a labeled or synthetic query set. Use for: measuring whether the right thing was retrieved, before handing that number to `llm/evals` for how to defend it.
 
 ## Gaps
 
-- {An area the mission needs and no good source covers yet}
+- No source yet on semantic chunking specifically for structured or code-heavy corpora (as opposed to prose), where fixed-size and paragraph-boundary heuristics both perform poorly; worth closing once lesson design reaches chunking strategy selection.

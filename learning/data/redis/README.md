@@ -19,7 +19,7 @@ Be able to spot where an existing system is quietly misusing Redis, such as a ca
 
 ## Constraints
 
-- None beyond what the mission states.
+- Assumes no prior Redis experience.
 
 ## Out of scope
 
@@ -27,11 +27,15 @@ Be able to spot where an existing system is quietly misusing Redis, such as a ca
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Five stages, eviction to spotting misuse on sight. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Memory and eviction | 0001 | Why Redis evicts keys at all, and the anti-pattern that follows from forgetting it | Can explain an eviction policy's effect on a given workload |
+| 2. Persistence | 0002 to 0003 | RDB and AOF, and how their durability compares to Postgres's WAL | Can say when reaching for Redis instead of a database is right versus an anti-pattern |
+| 3. Distributed locks | 0004 to 0005 | Naive locking mistakes, Redlock, Kleppmann's critique | Can design, or correctly reject, a Redis-based distributed lock |
+| 4. Cache-vs-store anti-patterns | 0006 to 0007 | Cache-aside, a cache treated as a durable store, an unbounded keyspace | Given an existing system, can identify the misuse and say what breaks |
+| 5. Clustering | 0008 | Redis Cluster and Sentinel, the compromises clustering introduces | Can reason about clustering trade-offs without needing to operate one |
 
 ## Lessons
 

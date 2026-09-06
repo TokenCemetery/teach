@@ -18,6 +18,7 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## Constraints
 
+- Assumes professional experience building a service with HTTP or RPC; no prior formal API-design study required.
 - Covers both REST/HTTP and gRPC, since the mission's guarantees apply across both.
 
 ## Out of scope
@@ -26,11 +27,16 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Six stages, the contract to a treated-as-contract auth model. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. The contract | 0001 | What a client can rely on is bigger than what's documented (Hyrum's Law) | Can name a contract's implicit surface beyond its documented one |
+| 2. Error models | 0002 to 0003 | HTTP status codes, RFC 9457 Problem Details, gRPC status codes | Can design an error model for a stated API |
+| 3. REST/HTTP design | 0004 to 0005 | Resource modeling, pagination and filtering, AIP-style guidance | Can design a REST contract for a stated use case |
+| 4. gRPC design | 0006 to 0007 | proto3, service design, streaming | Can design a gRPC contract for the same use case |
+| 5. Versioning and evolution | 0008 to 0009 | Additive changes, deprecation, migration strategy | Can evolve an existing API's contract without breaking its clients |
+| 6. Auth, authz and rate limiting as contract | 0010 | Treating these as part of what a client depends on, not an afterthought | Can design auth and rate limiting as contract, not bolted on separately |
 
 ## Lessons
 

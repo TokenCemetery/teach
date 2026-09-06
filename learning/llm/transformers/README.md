@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [9. Cross-Entropy Loss Over the Vocabulary](lessons/0009-cross-entropy-loss.md)
+**Latest lesson:** [10. The Backward Pass and Autograd](lessons/0010-backward-pass-and-autograd.md)
 
 ## Success looks like
 
@@ -52,6 +52,7 @@ Work through these in order.
 | [0007](lessons/0007-stacking-blocks.md) | Stacking Transformer Blocks | Why every block preserves the same shape, why depth isn't weight sharing, and why lesson 5's residual machinery matters most once many blocks are stacked |
 | [0008](lessons/0008-embedding-output-and-weight-tying.md) | Embedding and Output Layers, Weight Tying | How tokens enter and leave the transformer's vector space, and why the two layers that do it can share one matrix |
 | [0009](lessons/0009-cross-entropy-loss.md) | Cross-Entropy Loss Over the Vocabulary | How logits become one trainable number, and why the loss is the negative log probability of the actual next token |
+| [0010](lessons/0010-backward-pass-and-autograd.md) | The Backward Pass and Autograd | How the chain rule, automated over a recorded computation graph, turns one scalar loss into a gradient for every weight |
 
 ## Reference
 

@@ -25,4 +25,4 @@ type: resources
 
 ## Gaps
 
-- No source yet on positional encoding variants (learned, sinusoidal, rotary) beyond what the original paper covers; the mission needs a comparison once lesson design reaches how position is represented.
+- No source yet on rotary positional embeddings (RoPE), used by most current models in place of the original paper's sinusoidal or learned schemes; lesson 4 covers sinusoidal vs. learned from the original paper and stable, uncontested mechanics, but a RoPE comparison still needs a source once lesson design reaches it.

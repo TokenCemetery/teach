@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [3. Causal Masking](lessons/0003-causal-masking.md)
+**Latest lesson:** [4. Positional Encoding](lessons/0004-positional-encoding.md)
 
 ## Success looks like
 
@@ -46,6 +46,7 @@ Work through these in order.
 | [0001](lessons/0001-scaled-dot-product-attention.md) | Scaled Dot-Product Attention | The one equation the rest of the architecture is built around |
 | [0002](lessons/0002-multi-head-attention.md) | Multi-Head Attention | Why attention runs in several smaller subspaces at once rather than one at full dimension |
 | [0003](lessons/0003-causal-masking.md) | Causal Masking | Why a query position must not attend to future positions, and why the mask is applied before softmax, not after |
+| [0004](lessons/0004-positional-encoding.md) | Positional Encoding | Why attention is blind to order on its own, and how sinusoidal encoding gives every position a distinguishable signature |
 
 ## Reference
 

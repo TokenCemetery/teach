@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [4. ANN Indexes: HNSW and IVF](lessons/0004-ann-indexes.md)
+**Latest lesson:** [5. pgvector Specifics](lessons/0005-pgvector-specifics.md)
 
 ## Success looks like
 
@@ -52,6 +52,7 @@ Work through these in order.
 | [0002](lessons/0002-embedding-models-and-similarity.md) | Embedding Models and Similarity | What a bi-encoder embedding model does, and why the similarity metric has to match how it was trained |
 | [0003](lessons/0003-embedding-dimensionality.md) | Embedding Dimensionality Trade-offs | Why a bigger embedding vector isn't free, and when it's safe to truncate one instead of choosing a smaller model |
 | [0004](lessons/0004-ann-indexes.md) | ANN Indexes: HNSW and IVF | Why vector search trades exactness for speed, and how IVF and HNSW each expose that trade-off as a tunable knob |
+| [0005](lessons/0005-pgvector-specifics.md) | pgvector Specifics | Standing up vector search in Postgres, and mapping lesson 4's index concepts onto pgvector's actual operators and parameters |
 
 ## Reference
 

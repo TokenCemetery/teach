@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [3. Embedding Dimensionality Trade-offs](lessons/0003-embedding-dimensionality.md)
+**Latest lesson:** [4. ANN Indexes: HNSW and IVF](lessons/0004-ann-indexes.md)
 
 ## Success looks like
 
@@ -51,6 +51,7 @@ Work through these in order.
 | [0001](lessons/0001-chunking.md) | Chunking | The first pipeline choice, and the one every later stage inherits |
 | [0002](lessons/0002-embedding-models-and-similarity.md) | Embedding Models and Similarity | What a bi-encoder embedding model does, and why the similarity metric has to match how it was trained |
 | [0003](lessons/0003-embedding-dimensionality.md) | Embedding Dimensionality Trade-offs | Why a bigger embedding vector isn't free, and when it's safe to truncate one instead of choosing a smaller model |
+| [0004](lessons/0004-ann-indexes.md) | ANN Indexes: HNSW and IVF | Why vector search trades exactness for speed, and how IVF and HNSW each expose that trade-off as a tunable knob |
 
 ## Reference
 

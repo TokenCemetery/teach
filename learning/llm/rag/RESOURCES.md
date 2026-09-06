@@ -24,6 +24,8 @@ type: resources
   Walks through the standard retrieval metrics (Recall@k, MRR, nDCG) and how to compute each against a labeled or synthetic query set. Use for: measuring whether the right thing was retrieved, before handing that number to `llm/evals` for how to defend it.
 - [Paper: "Matryoshka Representation Learning", Kusupati et al., 2022](https://arxiv.org/abs/2205.13147)
   Introduces embeddings trained so that a truncated prefix of the full vector remains a meaningful, usable embedding on its own, letting dimensionality be traded against storage and latency after training rather than only by choosing a smaller model upfront. Use for: understanding when it's safe to truncate an embedding vector, and when it isn't.
+- [Paper: "Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs", Malkov and Yashunin, 2018](https://arxiv.org/abs/1603.09320)
+  The paper behind HNSW, the graph-based approximate nearest neighbor index pgvector and most vector databases use: its multi-layer structure and the recall/latency trade-off its search-depth parameter controls. Use for: understanding what an ANN index actually does instead of exact search, and why its tuning knob trades recall for speed.
 
 ## Gaps
 

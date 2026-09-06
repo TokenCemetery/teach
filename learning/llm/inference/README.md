@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [13. GGUF](lessons/0013-gguf.md)
+**Latest lesson:** [14. llama.cpp's Architecture](lessons/0014-llamacpp-architecture.md)
 
 ## Success looks like
 
@@ -57,6 +57,7 @@ Work through these in order.
 | [0011](lessons/0011-pagedattention.md) | PagedAttention | The block table mechanism behind vLLM, its block-size trade-off, and how it lets sequences share a common prefix's cache |
 | [0012](lessons/0012-vllm-tuning-knobs.md) | The vLLM Tuning Knobs That Matter | Two more flags, gpu-memory-utilization and tensor-parallel-size, plus a decision procedure for which knob a symptom actually points at |
 | [0013](lessons/0013-gguf.md) | GGUF | What llama.cpp's single-file model format bundles together, its quantization naming, and why it can be memory-mapped instead of loaded |
+| [0014](lessons/0014-llamacpp-architecture.md) | llama.cpp's Architecture | The ggml tensor library underneath llama.cpp, its backend abstraction, and how CPU threading differs from GPU batching |
 
 ## Reference
 

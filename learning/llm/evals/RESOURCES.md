@@ -20,7 +20,5 @@ type: resources
   Library of standard task-specific metrics (BLEU, ROUGE, exact match, F1, and more) with the definition and failure modes of each. Use for: the task-specific-metric side of the metric-vs-LLM-judge comparison.
 - [Paper: "Time Travel in LLMs: Tracing Data Contamination in Large Language Models", Golchin and Surdeanu, 2023](https://arxiv.org/abs/2308.08493)
   A concrete method for testing whether a benchmark's data leaked into a model's training set, with the guessing-the-rest-of-the-instance technique that catches it. Use for: defending a held-out set's honesty against the specific claim "the model just memorized this".
-
-## Gaps
-
-- No source yet on designing contamination resistance into a *custom* eval set from the start (as opposed to detecting contamination in an existing public benchmark after the fact); the mission needs this once lesson design reaches held-out set construction.
+- [Paper: "Beyond the Imitation Game: Quantifying and Extrapolating the Capabilities of Language Models" (BIG-bench), Srivastava et al., 2022](https://arxiv.org/abs/2206.04615)
+  Introduces the canary-string convention (a unique marker phrase embedded in benchmark data, asking crawlers to exclude it from training corpora) as a preventive contamination-resistance technique for a benchmark's own release. Use for: designing a custom eval set to resist contamination from the start, rather than detecting it after the fact.

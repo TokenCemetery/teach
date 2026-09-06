@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. The KV Cache](lessons/0001-the-kv-cache.md)
 
 ## Success looks like
 
@@ -38,7 +38,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-the-kv-cache.md) | The KV Cache | Why generation gets expensive, and what caching buys back |
 
 ## Reference
 

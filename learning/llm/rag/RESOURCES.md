@@ -28,6 +28,8 @@ type: resources
   The paper behind HNSW, the graph-based approximate nearest neighbor index pgvector and most vector databases use: its multi-layer structure and the recall/latency trade-off its search-depth parameter controls. Use for: understanding what an ANN index actually does instead of exact search, and why its tuning knob trades recall for speed.
 - [Paper: "The Probabilistic Relevance Framework: BM25 and Beyond", Robertson and Zaragoza, 2009](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf)
   The definitive reference for BM25, the lexical ranking function behind term-frequency, inverse-document-frequency, and length-normalization scoring, with the reasoning behind each of its parameters. Use for: understanding what lexical search actually scores, as the complement to vector search's semantic similarity.
+- [Paper: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
+  Shows that models use information placed at the beginning or end of a long context far more reliably than information buried in the middle, even when everything is technically within the context window. Use for: understanding why chunk placement in an assembled prompt matters as much as whether a chunk was retrieved at all.
 
 ## Gaps
 

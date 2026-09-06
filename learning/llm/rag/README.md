@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [11. Diagnosing the Pipeline](lessons/0011-diagnosing-the-pipeline.md)
+**Latest lesson:** [12. Prompt Construction and Context-Window Budget](lessons/0012-prompt-construction-and-context-budget.md)
 
 ## Success looks like
 
@@ -59,6 +59,7 @@ Work through these in order.
 | [0009](lessons/0009-when-reranking-earns-its-cost.md) | When Reranking Earns Its Cost | A decision framework for whether a reranking stage is worth its added latency for a given workload |
 | [0010](lessons/0010-recall-at-k-and-mrr.md) | Recall@k and MRR | The two standard retrieval metrics, what each one tells you that the other doesn't, and how to pick k for the workload |
 | [0011](lessons/0011-diagnosing-the-pipeline.md) | Diagnosing the Pipeline | A stage-by-stage procedure for finding which part of a retrieval pipeline is actually responsible for wrong retrieved context |
+| [0012](lessons/0012-prompt-construction-and-context-budget.md) | Prompt Construction and Context-Window Budget | Why retrieved chunks compete for a shared context-window budget, and why where a chunk sits in the prompt matters as much as whether it was retrieved |
 
 ## Reference
 

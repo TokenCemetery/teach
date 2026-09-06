@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [9. Picking and Defending a Quantization Scheme](lessons/0009-picking-a-quantization-scheme.md)
+**Latest lesson:** [10. Standing Up vLLM](lessons/0010-standing-up-vllm.md)
 
 ## Success looks like
 
@@ -53,6 +53,7 @@ Work through these in order.
 | [0007](lessons/0007-quantization-schemes.md) | Quantization Schemes at Serve Time | What int8, int4, GPTQ and AWQ actually do to a model's weights, and why the naive version of low-bit quantization needs a fix |
 | [0008](lessons/0008-accuracy-speed-memory-tradeoffs.md) | Accuracy, Speed, and Memory Trade-offs | Why memory, speed, and accuracy don't move together when a model is quantized, and how each is actually measured |
 | [0009](lessons/0009-picking-a-quantization-scheme.md) | Picking and Defending a Quantization Scheme | A decision framework for choosing a serving-time quantization scheme, and the three numbers that defend it |
+| [0010](lessons/0010-standing-up-vllm.md) | Standing Up vLLM | Installing vLLM, launching its server, and finding the flags that carry the concepts already taught |
 
 ## Reference
 

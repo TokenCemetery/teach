@@ -22,6 +22,10 @@ type: resources
   Official explanation of how PyTorch's autograd actually computes gradients through a computation graph. Use for: understanding what the backward pass is doing to the weights, not just calling `.backward()`.
 - [Repo: transformers, Hugging Face](https://github.com/huggingface/transformers)
   A real, production model library, useful once the from-scratch pieces exist. Use for: locating attention, multi-head projection, and the transformer block inside code written for production rather than for teaching.
+- [Paper: "Layer Normalization", Ba, Kiros, and Hinton, 2016](https://arxiv.org/abs/1607.06450)
+  Introduces layer normalization: normalizing each example's own activations across the feature dimension, independent of batch size, unlike batch normalization. Use for: understanding what layer norm actually computes and why it fits sequences of variable length and small batch sizes.
+- [Paper: "On Layer Normalization in the Transformer Architecture", Xiong et al., 2020](https://arxiv.org/abs/2002.04745)
+  Compares placing layer norm after the residual addition (the original paper's choice, post-norm) against placing it before each sublayer, inside the residual branch (pre-norm), and shows why pre-norm trains more stably at greater depth. Use for: understanding why most current large models use pre-norm despite the original transformer paper using post-norm.
 
 ## Gaps
 

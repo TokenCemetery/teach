@@ -24,3 +24,7 @@ type: resources
   Introduces the canary-string convention (a unique marker phrase embedded in benchmark data, asking crawlers to exclude it from training corpora) as a preventive contamination-resistance technique for a benchmark's own release. Use for: designing a custom eval set to resist contamination from the start, rather than detecting it after the fact.
 - [Paper: "Evaluating Large Language Models Trained on Code" (Codex), Chen et al., 2021](https://arxiv.org/abs/2107.03374)
   Introduces functional correctness (execute generated code against test cases rather than comparing text) and the unbiased pass@k estimator, with the combinatorial formula that avoids the high variance of directly re-sampling k completions. Use for: evaluating code generation, and for the general principle of checking behavior over text similarity wherever a task is executable.
+
+## Gaps
+
+- No dedicated source yet on statistical significance testing for eval score differences (standard error of a proportion, paired significance tests like McNemar's). The mission needs this for stage 5's "is this difference real or noise" question; lesson 9 teaches it from stable, standard statistical method rather than a single cited source, and this gap should close once a good practitioner-level source is found.

@@ -8,7 +8,7 @@ type: topic
 
 Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change (a fine-tune, a prompt change, a RAG change) that you can defend with a number instead of a feeling.
 
-**Latest lesson:** [8. Reproducible Runs](lessons/0008-reproducible-runs.md)
+**Latest lesson:** [9. Statistical Significance vs Noise](lessons/0009-statistical-significance-vs-noise.md)
 
 ## Success looks like
 
@@ -51,6 +51,7 @@ Work through these in order.
 | [0006](lessons/0006-judge-bias-and-human-agreement.md) | Judge Bias and Human Agreement | Position bias and verbosity bias in LLM-as-judge, and how to measure a judge's agreement with human raters |
 | [0007](lessons/0007-eval-frameworks-and-harness.md) | Eval Frameworks and Building a Harness | The four stages every eval harness has, and choosing between building custom eval-as-code and reusing a standardized benchmark harness |
 | [0008](lessons/0008-reproducible-runs.md) | Reproducible Runs | Why the same eval can produce different numbers on different runs, and what a trustworthy result has to log alongside the score |
+| [0009](lessons/0009-statistical-significance-vs-noise.md) | Statistical Significance vs Noise | Why a score difference has to be measured against the noise that could produce it by chance, and why paired comparison beats treating two scores as independent |
 
 ## Reference
 

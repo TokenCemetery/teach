@@ -22,6 +22,8 @@ type: resources
   Practitioner-facing docs for a hosted cross-encoder reranker: how it's called, what it costs in latency, and where it sits in a retrieval pipeline. Use for: a concrete, runnable reranking stage to reason about alongside the Nogueira and Cho paper above.
 - [Article: "Evaluation Measures for Search and Recommender Systems", Pinecone](https://www.pinecone.io/learn/offline-evaluation/)
   Walks through the standard retrieval metrics (Recall@k, MRR, nDCG) and how to compute each against a labeled or synthetic query set. Use for: measuring whether the right thing was retrieved, before handing that number to `llm/evals` for how to defend it.
+- [Paper: "Matryoshka Representation Learning", Kusupati et al., 2022](https://arxiv.org/abs/2205.13147)
+  Introduces embeddings trained so that a truncated prefix of the full vector remains a meaningful, usable embedding on its own, letting dimensionality be traded against storage and latency after training rather than only by choosing a smaller model upfront. Use for: understanding when it's safe to truncate an embedding vector, and when it isn't.
 
 ## Gaps
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [15. What Changes Off-GPU](lessons/0015-what-changes-off-gpu.md)
+**Latest lesson:** [16. p99 Latency Measurement Methodology](lessons/0016-p99-latency-methodology.md)
 
 ## Success looks like
 
@@ -59,6 +59,7 @@ Work through these in order.
 | [0013](lessons/0013-gguf.md) | GGUF | What llama.cpp's single-file model format bundles together, its quantization naming, and why it can be memory-mapped instead of loaded |
 | [0014](lessons/0014-llamacpp-architecture.md) | llama.cpp's Architecture | The ggml tensor library underneath llama.cpp, its backend abstraction, and how CPU threading differs from GPU batching |
 | [0015](lessons/0015-what-changes-off-gpu.md) | What Changes Off-GPU | Standing up llama.cpp's server, and how batching, cache management, and quantization each look different at CPU/edge scale |
+| [0016](lessons/0016-p99-latency-methodology.md) | p99 Latency Measurement Methodology | Why p99 beats an average, why TTFT and inter-token latency need separate numbers, and what makes a p99 measurement trustworthy |
 
 ## Reference
 

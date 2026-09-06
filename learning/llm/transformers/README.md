@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [5. Layer Norm and Residual Connections](lessons/0005-layer-norm-and-residuals.md)
+**Latest lesson:** [6. The Position-Wise Feed-Forward Block](lessons/0006-feed-forward-block.md)
 
 ## Success looks like
 
@@ -48,6 +48,7 @@ Work through these in order.
 | [0003](lessons/0003-causal-masking.md) | Causal Masking | Why a query position must not attend to future positions, and why the mask is applied before softmax, not after |
 | [0004](lessons/0004-positional-encoding.md) | Positional Encoding | Why attention is blind to order on its own, and how sinusoidal encoding gives every position a distinguishable signature |
 | [0005](lessons/0005-layer-norm-and-residuals.md) | Layer Norm and Residual Connections | Why stacking many transformer blocks needs a clean gradient path and stable activation ranges, and how residuals and layer norm each provide one |
+| [0006](lessons/0006-feed-forward-block.md) | The Position-Wise Feed-Forward Block | What the transformer block's second sublayer adds beyond attention, and why it never mixes information across positions |
 
 ## Reference
 

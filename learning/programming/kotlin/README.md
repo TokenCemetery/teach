@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app, able to ship idiomatic Kotlin instead of Kotlin that merely compiles because it was written with Java habits.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Null Safety](lessons/0001-null-safety.md)
 
 ## Success looks like
 
@@ -39,7 +39,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-null-safety.md) | Null Safety | Moving "could this be null" from a runtime surprise to a compile-time question, and how the Java habit undoes it |
 
 ## Reference
 

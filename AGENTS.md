@@ -53,7 +53,7 @@ gh issue create --title "..." --body "..." --label bug
 - Before you fix something, check that an issue for it exists — search the open and the closed ones. If none does, open it first, then fix it: the record of what was wrong is worth as much as the fix.
 - The exception is a defect that exists only in changes you have not committed yet. Correcting your own work in progress is part of the task at hand, not project history — fix it and file nothing.
 - Title states what is wrong or what should exist. Body gives the steps to reproduce, or what "done" looks like, plus the files involved. `gh issue create` skips the forms in `.github/ISSUE_TEMPLATE/`, so cover the same fields in the body yourself.
-- Use the labels that already exist: `bug`, `enhancement`, `documentation`, `accessibility`.
+- Use the labels that already exist: `bug`, `enhancement`, `documentation`.
 - Record progress on the issue as you go — comment on what you found and what you tried, so the next person does not repeat the investigation.
 - Reference the issue from the commit or pull request that fixes it (`Fixes #12`), so it closes together with the change.
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [5. pgvector Specifics](lessons/0005-pgvector-specifics.md)
+**Latest lesson:** [6. BM25 and Lexical Search](lessons/0006-bm25-and-lexical-search.md)
 
 ## Success looks like
 
@@ -53,6 +53,7 @@ Work through these in order.
 | [0003](lessons/0003-embedding-dimensionality.md) | Embedding Dimensionality Trade-offs | Why a bigger embedding vector isn't free, and when it's safe to truncate one instead of choosing a smaller model |
 | [0004](lessons/0004-ann-indexes.md) | ANN Indexes: HNSW and IVF | Why vector search trades exactness for speed, and how IVF and HNSW each expose that trade-off as a tunable knob |
 | [0005](lessons/0005-pgvector-specifics.md) | pgvector Specifics | Standing up vector search in Postgres, and mapping lesson 4's index concepts onto pgvector's actual operators and parameters |
+| [0006](lessons/0006-bm25-and-lexical-search.md) | BM25 and Lexical Search | What BM25 actually scores, and why exact-term matching still catches what semantic embeddings miss |
 
 ## Reference
 

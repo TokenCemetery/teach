@@ -17,6 +17,7 @@ Be able to stand up an inference server for a real model, on GPU and on CPU/edge
 
 ## Constraints
 
+- Assumes comfort running a Python ML environment and basic familiarity with what a language model is; no prior serving-infrastructure experience required.
 - Core stacks: vLLM (GPU) and llama.cpp (CPU/edge), covered in that order. Other stacks (TGI, TensorRT-LLM) are mentioned only where a concept transfers differently.
 
 ## Out of scope
@@ -26,11 +27,16 @@ Be able to stand up an inference server for a real model, on GPU and on CPU/edge
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Six stages, first request to a defended latency budget. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. The KV cache | 0001 to 0003 | Why autoregressive generation is expensive, what the cache trades memory for, how cache size grows with context and batch | Can compute a model's KV cache memory footprint for a given context length and batch size |
+| 2. Batching | 0004 to 0006 | Static vs continuous batching, request scheduling, the throughput/latency trade-off | Can defend a batching configuration for a stated workload |
+| 3. Quantization at serve time | 0007 to 0009 | int8/int4/AWQ/GPTQ at inference time, accuracy vs speed vs memory | Can pick a serving-time quantization scheme and defend the trade-off |
+| 4. vLLM in practice | 0010 to 0012 | Standing up vLLM, PagedAttention, the tuning knobs that matter | A vLLM stack is running and answering real requests |
+| 5. llama.cpp on CPU/edge | 0013 to 0015 | GGUF, llama.cpp's architecture, what changes off-GPU | A llama.cpp stack is running on CPU and answering real requests |
+| 6. The latency budget | 0016 to 0017 | p99 measurement methodology, tying the number back to cache, batching and quantization choices | Can quote and defend a p99 latency budget end to end |
 
 ## Lessons
 

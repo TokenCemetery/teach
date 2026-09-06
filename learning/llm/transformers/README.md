@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Scaled Dot-Product Attention](lessons/0001-scaled-dot-product-attention.md)
 
 ## Success looks like
 
@@ -38,7 +38,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-scaled-dot-product-attention.md) | Scaled Dot-Product Attention | The one equation the rest of the architecture is built around |
 
 ## Reference
 

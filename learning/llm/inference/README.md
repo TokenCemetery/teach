@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [5. Request Scheduling](lessons/0005-request-scheduling.md)
+**Latest lesson:** [6. The Throughput/Latency Trade-off](lessons/0006-throughput-latency-tradeoff.md)
 
 ## Success looks like
 
@@ -49,6 +49,7 @@ Work through these in order.
 | [0003](lessons/0003-growth-prefill-decode-precision.md) | Growth, Prefill, Decode, and Precision | How the cache grows across prefill and decode, and what lowering its precision buys back |
 | [0004](lessons/0004-static-vs-continuous-batching.md) | Static vs Continuous Batching | Why batching requests together helps throughput, and why continuous batching beats the static kind |
 | [0005](lessons/0005-request-scheduling.md) | Request Scheduling | How a continuous-batching scheduler picks the next request, and why a large prefill can stall everyone else |
+| [0006](lessons/0006-throughput-latency-tradeoff.md) | The Throughput/Latency Trade-off | How batch size trades throughput against per-token latency, and how to defend a batching configuration against a stated latency budget |
 
 ## Reference
 

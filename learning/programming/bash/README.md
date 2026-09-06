@@ -18,6 +18,7 @@ Be able to write and maintain shell scripts for CI pipelines, deployment and ope
 
 ## Constraints
 
+- Assumes no prior shell scripting experience.
 - Written for POSIX `sh` portability rather than bash-only idioms, even though bash is the topic's home; a bash-only feature is called out as such when used.
 - Touches `awk`/`sed` only where a script genuinely needs them, not as topics of their own.
 
@@ -27,11 +28,16 @@ Be able to write and maintain shell scripts for CI pipelines, deployment and ope
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Six stages, quoting to knowing when to stop. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Quoting | 0001 | The single habit that prevents the most common way shell scripts break in production | Can quote correctly and explain why an unquoted expansion breaks |
+| 2. Exit status and error handling | 0002 to 0003 | `$?`, the unofficial strict mode (`set -euo pipefail`), `trap` | Can write a script that handles exit status and failure correctly |
+| 3. Word splitting and globbing pitfalls | 0004 | The Bash Pitfalls list, the common footguns beyond quoting | Given a script, can name the specific edge case it would break on |
+| 4. Portability | 0005 | POSIX `sh` versus bash-only idioms, when each matters | Can write portable `sh` and call out a bash-only feature explicitly |
+| 5. `awk`/`sed` where needed | 0006 | Using each only where a script genuinely needs it | Can reach for `awk`/`sed` for a real need without over-using them |
+| 6. Knowing when to stop | 0007 | Recognising shell has outgrown its judgment-free zone | Can say why a given job now belongs in `programming/python` |
 
 ## Lessons
 

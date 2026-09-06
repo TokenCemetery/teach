@@ -6,9 +6,9 @@ type: topic
 
 # Learning: Evals
 
-Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change — a fine-tune, a prompt change, a RAG change — that you can defend with a number instead of a feeling.
+Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change (a fine-tune, a prompt change, a RAG change) that you can defend with a number instead of a feeling.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Held-out Data and Contamination](lessons/0001-held-out-and-contamination.md)
 
 ## Success looks like
 
@@ -39,7 +39,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-held-out-and-contamination.md) | Held-out Data and Contamination | Why an eval number is only as trustworthy as what the model never saw |
 
 ## Reference
 

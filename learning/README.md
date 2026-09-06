@@ -21,6 +21,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 27 |
 | llm | [Inference](llm/inference/) | Mission pending the interview | 0 |
 | llm | [Evals](llm/evals/) | Mission pending the interview | 0 |
+| llm | [RAG](llm/rag/) | Mission pending the interview | 0 |
 
 ## Starting a topic
 

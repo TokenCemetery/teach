@@ -22,6 +22,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | llm | [Inference](llm/inference/) | Mission pending the interview | 0 |
 | llm | [Evals](llm/evals/) | Mission pending the interview | 0 |
 | llm | [RAG](llm/rag/) | Mission pending the interview | 0 |
+| llm | [Transformers](llm/transformers/) | Mission pending the interview | 0 |
 
 ## Starting a topic
 

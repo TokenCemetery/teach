@@ -10,6 +10,8 @@ type: resources
 
 - [RFC 9110: "HTTP Semantics", IETF](https://www.rfc-editor.org/rfc/rfc9110)
   The authoritative specification of HTTP methods, status codes, and what each actually promises a client. Use for: settling exactly what an HTTP verb or status code means, rather than relying on convention or folklore.
+- [Site: "Hyrum's Law", hyrumslaw.com](https://www.hyrumslaw.com/)
+  States the principle that with enough users of an API, every observable behavior, documented or not, will end up depended on by somebody. Use for: understanding why the contract a client actually relies on is bigger than what you documented, and why "harmless, undocumented" changes still break clients.
 - [RFC 9457: "Problem Details for HTTP APIs", IETF](https://www.rfc-editor.org/rfc/rfc9457)
   A standard, machine-readable JSON format for reporting an HTTP API error, so a client can handle errors structurally instead of parsing prose. Use for: designing an error model that is actually part of the contract, not an afterthought.
 - [Docs: "Language Guide (proto3)", Protocol Buffers](https://protobuf.dev/programming-guides/proto3/)

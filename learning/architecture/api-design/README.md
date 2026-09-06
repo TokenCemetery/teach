@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. The Contract](lessons/0001-the-contract.md)
 
 ## Success looks like
 
@@ -38,7 +38,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-the-contract.md) | The Contract | What a client can rely on is bigger than what you documented, and design has to account for both |
 
 ## Reference
 

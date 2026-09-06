@@ -28,6 +28,8 @@ type: resources
   Compares placing layer norm after the residual addition (the original paper's choice, post-norm) against placing it before each sublayer, inside the residual branch (pre-norm), and shows why pre-norm trains more stably at greater depth. Use for: understanding why most current large models use pre-norm despite the original transformer paper using post-norm.
 - [Paper: "Using the Output Embedding to Improve Language Models", Press and Wolf, 2017](https://arxiv.org/abs/1608.05859)
   Argues for tying the input embedding and output projection weight matrices, since both relate a token to the same underlying representation, cutting a large fraction of a large-vocabulary model's parameters. Use for: understanding weight tying as a deliberate design choice, not just a parameter-saving trick.
+- [Docs: "torch.nn.functional.cross_entropy", PyTorch](https://pytorch.org/docs/stable/generated/torch.nn.functional.cross_entropy.html)
+  Official docs for the fused softmax-plus-negative-log-likelihood operation, taking raw logits directly for numerical stability rather than requiring a separate softmax step first. Use for: how cross-entropy loss is actually computed in practice, not just its formula.
 
 ## Gaps
 

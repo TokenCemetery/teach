@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** [9. What a Managed Service Shields You From](lessons/0009-what-managed-shields-you-from.md)
+**Latest lesson:** [10. Defending an Operating Choice](lessons/0010-defending-an-operating-choice.md)
 
 ## Success looks like
 
@@ -53,6 +53,7 @@ Work through these in order.
 | [0007](lessons/0007-index-maintenance-cost.md) | B-Tree, GiST, and GIN Maintenance Cost | Why every index makes writes more expensive, and how B-tree, GiST, and GIN each pay that cost differently |
 | [0008](lessons/0008-what-a-pgvector-index-costs.md) | What a pgvector Index Costs to Keep | The disk, build-time, and standing-memory cost a vector index adds beyond the raw vectors it indexes |
 | [0009](lessons/0009-what-managed-shields-you-from.md) | What a Managed Service Shields You From | What RDS-style automation actually removes, and why everything from earlier lessons still needs understanding underneath it |
+| [0010](lessons/0010-defending-an-operating-choice.md) | Defending an Operating Choice | A worked deployment design that cites a specific decision and cost from each stage, rather than assuming a default answer |
 
 ## Reference
 

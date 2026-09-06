@@ -23,7 +23,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | programming | [TypeScript](programming/typescript/) | Own a TypeScript codebase: make the compiler reject the states that should not exist | 49 |
 | llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 27 |
 | llm | [Inference](llm/inference/) | Serve a model: the KV cache, batching, quantization at serve time, and a latency budget you can defend | 17 |
-| llm | [Evals](llm/evals/) | Prove a model change helped: build the eval, hold out the data honestly, and defend the number against contamination | 0 |
+| llm | [Evals](llm/evals/) | Prove a model change helped: build the eval, hold out the data honestly, and defend the number against contamination | 10 |
 | llm | [RAG](llm/rag/) | Own retrieval: chunking, embeddings, hybrid search, reranking, and measuring whether the right thing was retrieved | 0 |
 | llm | [Transformers](llm/transformers/) | Build attention from scratch, so the architecture stops being a black box behind the training script | 0 |
 | data | [Postgres](data/postgres/) | Operate Postgres: the WAL, vacuum and bloat, replication, and what an index costs to keep | 0 |

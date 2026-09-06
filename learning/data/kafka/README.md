@@ -18,6 +18,7 @@ Be able to design a topic and partition layout for a real workload and to diagno
 
 ## Constraints
 
+- Assumes no prior Kafka or messaging-system experience.
 - Apache Kafka is the reference implementation; alternatives (Redpanda, managed services) are not covered.
 - Touches the surrounding ecosystem (Schema Registry, Kafka Connect basics) briefly, where the log's guarantees alone do not explain how a real pipeline is built.
 
@@ -28,11 +29,15 @@ Be able to design a topic and partition layout for a real workload and to diagno
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Five stages, the log to a designed layout. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Partitions and the log | 0001 | The unit everything else (ordering, parallelism, consumer groups) is built around | Can explain why a partition is the unit of ordering and parallelism |
+| 2. Consumer groups and rebalancing | 0002 to 0003 | Group coordination, cooperative rebalancing, consumer lag | Can diagnose a lagging or repeatedly rebalancing consumer |
+| 3. Delivery guarantees | 0004 to 0005 | At-most/at-least/exactly-once semantics, idempotent producers, transactions | Can defend a delivery-guarantee choice and state what exactly-once costs |
+| 4. Designing the layout | 0006 to 0007 | Key choice, partition-count trade-offs, ordering guarantees | Can design a topic and partition layout for a stated workload |
+| 5. The surrounding ecosystem | 0008 to 0009 | Schema Registry, Kafka Connect basics | Can explain how these fit around the log in a real pipeline |
 
 ## Lessons
 

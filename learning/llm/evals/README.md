@@ -27,11 +27,15 @@ Be able to build an eval that catches a regression a vibe check would miss, and 
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Five stages, a trustworthy eval to a defended go/no-go call. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Held-out data and contamination | 0001 to 0002 | Train/test split discipline, contamination detection and its sources | Can design a held-out set that resists contamination |
+| 2. Task-specific metrics | 0003 to 0004 | Exact match, F1, BLEU/ROUGE, code-execution metrics, choosing per task | Can pick and justify a metric for a stated task |
+| 3. LLM-as-judge | 0005 to 0006 | Judge-prompt design, calibration, position and verbosity bias, agreement with humans | Can build a judge prompt and name its failure modes |
+| 4. Building the harness | 0007 to 0008 | Eval frameworks, reproducible runs, turning a design into a number | Has a runnable eval harness that produces a trustworthy number |
+| 5. The go/no-go call | 0009 to 0010 | Statistical significance vs noise, regression thresholds, communicating the decision | Can defend a ship/no-ship call with a number and say why it's trustworthy |
 
 ## Lessons
 

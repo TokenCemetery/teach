@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [9. When Reranking Earns Its Cost](lessons/0009-when-reranking-earns-its-cost.md)
+**Latest lesson:** [10. Recall@k and MRR](lessons/0010-recall-at-k-and-mrr.md)
 
 ## Success looks like
 
@@ -57,6 +57,7 @@ Work through these in order.
 | [0007](lessons/0007-reciprocal-rank-fusion.md) | Reciprocal Rank Fusion | How to combine a lexical ranking and a vector ranking without comparing incomparable scores, and how to tune the blend against a measured metric |
 | [0008](lessons/0008-cross-encoder-rerankers.md) | Cross-Encoder Rerankers | What a cross-encoder scores that a bi-encoder can't, and why reranking is a second stage rather than a replacement for retrieval |
 | [0009](lessons/0009-when-reranking-earns-its-cost.md) | When Reranking Earns Its Cost | A decision framework for whether a reranking stage is worth its added latency for a given workload |
+| [0010](lessons/0010-recall-at-k-and-mrr.md) | Recall@k and MRR | The two standard retrieval metrics, what each one tells you that the other doesn't, and how to pick k for the workload |
 
 ## Reference
 

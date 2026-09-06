@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** [5. Failover Mechanics](lessons/0005-failover-mechanics.md)
+**Latest lesson:** [6. Diagnosing Replication Lag](lessons/0006-diagnosing-replication-lag.md)
 
 ## Success looks like
 
@@ -49,6 +49,7 @@ Work through these in order.
 | [0003](lessons/0003-bloat-diagnosis-and-autovacuum-tuning.md) | Bloat Diagnosis and Autovacuum Tuning | How to measure bloat, why autovacuum falls behind, and the diagnostic order that finds the actual cause instead of guessing |
 | [0004](lessons/0004-streaming-replication-and-slots.md) | Streaming Replication and Replication Slots | How a standby actually connects and catches up, and what a replication slot guarantees that plain streaming doesn't |
 | [0005](lessons/0005-failover-mechanics.md) | Failover Mechanics | What happens when a standby is promoted, why a former primary can't just rejoin, and the data-loss trade-off synchronous replication bounds |
+| [0006](lessons/0006-diagnosing-replication-lag.md) | Diagnosing Replication Lag | Why receive lag and apply lag are different measurements, and the diagnostic order that finds which one is actually happening |
 
 ## Reference
 

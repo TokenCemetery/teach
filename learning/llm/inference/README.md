@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [2. Capacity and Batch Size](lessons/0002-capacity-and-batch-size.md)
+**Latest lesson:** [3. Growth, Prefill, Decode, and Precision](lessons/0003-growth-prefill-decode-precision.md)
 
 ## Success looks like
 
@@ -46,6 +46,7 @@ Work through these in order.
 |---|---|---|
 | [0001](lessons/0001-the-kv-cache.md) | The KV Cache | Why generation gets expensive, and what caching buys back |
 | [0002](lessons/0002-capacity-and-batch-size.md) | Capacity and Batch Size | How head sharing (GQA/MQA) and batch size change the cache's real footprint |
+| [0003](lessons/0003-growth-prefill-decode-precision.md) | Growth, Prefill, Decode, and Precision | How the cache grows across prefill and decode, and what lowering its precision buys back |
 
 ## Reference
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to spot where an existing system is quietly misusing Redis, such as a cache treated as a store or a lock that is not one, and to design correct usage from scratch instead.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Memory and Eviction](lessons/0001-memory-and-eviction.md)
 
 ## Success looks like
 
@@ -39,7 +39,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-memory-and-eviction.md) | Memory and Eviction | Why Redis evicts keys at all, and the anti-pattern that follows from forgetting it |
 
 ## Reference
 

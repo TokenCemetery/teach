@@ -8,7 +8,7 @@ type: topic
 
 Be able to write and maintain shell scripts for CI pipelines, deployment and operational tooling that do not quietly break on a bad input or an unset variable, and to recognise when a script has outgrown shell and belongs in a real language instead.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Quoting](lessons/0001-quoting.md)
 
 ## Success looks like
 
@@ -39,7 +39,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-quoting.md) | Quoting | The single habit that prevents the most common way shell scripts break in production |
 
 ## Reference
 

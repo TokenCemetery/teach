@@ -1,28 +1,28 @@
 ---
-title: "{Topic}"
-description: "{One clause: the outcome this topic delivers}"
+title: Transformers
+description: "Build attention from scratch, so the architecture stops being a black box behind the training script"
 type: topic
 ---
 
-# Learning: {Topic}
+# Learning: Transformers
 
-> **Template, not a workspace.** Copy this directory to `learning/<domain>/<topic-slug>/`, then replace every `{placeholder}`.
-
-{1-3 sentences. The concrete real-world goal. What changes in your life or work when you have this skill? Not "to understand X" but the outcome underneath it.}
+Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
 **Latest lesson:** _none yet_
 
 ## Success looks like
 
-- {A specific, observable thing you will be able to do}
+- Implement scaled dot-product attention, multi-head attention, and a full transformer block from raw tensors, matching a reference implementation's output.
+- Write the training loop that fits around that block from scratch and explain what each piece (loss, backward pass, optimizer step) is doing to the weights.
+- Read a real model's code (a library like `transformers` or `llama.cpp`) and point to where each derived piece lives.
 
 ## Constraints
 
-- {Time, budget, prior commitments, learning preferences: anything that bounds the approach}
+- Implementation in PyTorch, using raw tensor operations rather than `nn.Transformer` or other pre-built attention modules; autograd and GPU support are kept, only the architecture itself is hand-built.
 
 ## Out of scope
 
-- {Adjacent topics you do not want to chase now}
+- Optimizer and scheduler variants beyond the basic loop needed to see the block train, distributed training, and the low-rank/adapter machinery built on top of it: `llm/finetuning` owns those, and this workspace derives what that workspace names in passing (tokenizers in its lesson 0003, the low-rank idea in its lesson 0008) rather than restating them.
 
 ## The arc
 

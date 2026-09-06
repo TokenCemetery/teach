@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [10. The Backward Pass and Autograd](lessons/0010-backward-pass-and-autograd.md)
+**Latest lesson:** [11. The AdamW Optimizer Step](lessons/0011-adamw-optimizer.md)
 
 ## Success looks like
 
@@ -53,6 +53,7 @@ Work through these in order.
 | [0008](lessons/0008-embedding-output-and-weight-tying.md) | Embedding and Output Layers, Weight Tying | How tokens enter and leave the transformer's vector space, and why the two layers that do it can share one matrix |
 | [0009](lessons/0009-cross-entropy-loss.md) | Cross-Entropy Loss Over the Vocabulary | How logits become one trainable number, and why the loss is the negative log probability of the actual next token |
 | [0010](lessons/0010-backward-pass-and-autograd.md) | The Backward Pass and Autograd | How the chain rule, automated over a recorded computation graph, turns one scalar loss into a gradient for every weight |
+| [0011](lessons/0011-adamw-optimizer.md) | The AdamW Optimizer Step | What Adam's momentum and adaptive scaling add over plain gradient descent, and why AdamW decouples weight decay from the gradient update |
 
 ## Reference
 

@@ -30,6 +30,10 @@ type: resources
   Argues for tying the input embedding and output projection weight matrices, since both relate a token to the same underlying representation, cutting a large fraction of a large-vocabulary model's parameters. Use for: understanding weight tying as a deliberate design choice, not just a parameter-saving trick.
 - [Docs: "torch.nn.functional.cross_entropy", PyTorch](https://pytorch.org/docs/stable/generated/torch.nn.functional.cross_entropy.html)
   Official docs for the fused softmax-plus-negative-log-likelihood operation, taking raw logits directly for numerical stability rather than requiring a separate softmax step first. Use for: how cross-entropy loss is actually computed in practice, not just its formula.
+- [Paper: "Adam: A Method for Stochastic Optimization", Kingma and Ba, 2015](https://arxiv.org/abs/1412.6980)
+  Introduces Adam's momentum (first moment) and adaptive per-parameter scaling (second moment) over plain gradient descent, with bias correction for both. Use for: understanding what Adam's update rule computes and why, before AdamW's weight-decay fix.
+- [Paper: "Decoupled Weight Decay Regularization", Loshchilov and Hutter, 2019](https://arxiv.org/abs/1711.05101)
+  Identifies why folding weight decay into the gradient in original Adam interacts badly with its adaptive scaling, and fixes it by applying decay directly to the weights instead. Use for: why AdamW, not plain Adam, is the standard optimizer for training transformers.
 
 ## Gaps
 

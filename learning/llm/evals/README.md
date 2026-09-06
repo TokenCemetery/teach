@@ -8,7 +8,7 @@ type: topic
 
 Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change (a fine-tune, a prompt change, a RAG change) that you can defend with a number instead of a feeling.
 
-**Latest lesson:** [7. Eval Frameworks and Building a Harness](lessons/0007-eval-frameworks-and-harness.md)
+**Latest lesson:** [8. Reproducible Runs](lessons/0008-reproducible-runs.md)
 
 ## Success looks like
 
@@ -50,6 +50,7 @@ Work through these in order.
 | [0005](lessons/0005-judge-prompt-design-and-calibration.md) | Judge-Prompt Design and Calibration | How to write a judge prompt that grades consistently, and what it means for a judge to be calibrated before trusting it |
 | [0006](lessons/0006-judge-bias-and-human-agreement.md) | Judge Bias and Human Agreement | Position bias and verbosity bias in LLM-as-judge, and how to measure a judge's agreement with human raters |
 | [0007](lessons/0007-eval-frameworks-and-harness.md) | Eval Frameworks and Building a Harness | The four stages every eval harness has, and choosing between building custom eval-as-code and reusing a standardized benchmark harness |
+| [0008](lessons/0008-reproducible-runs.md) | Reproducible Runs | Why the same eval can produce different numbers on different runs, and what a trustworthy result has to log alongside the score |
 
 ## Reference
 

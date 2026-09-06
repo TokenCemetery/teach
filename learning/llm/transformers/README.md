@@ -18,6 +18,7 @@ Be able to implement a transformer's forward pass and its training loop from raw
 
 ## Constraints
 
+- Assumes comfort with Python and basic PyTorch tensor operations, and matrix multiplication as the only mathematics taken for granted; no prior deep-learning background required.
 - Implementation in PyTorch, using raw tensor operations rather than `nn.Transformer` or other pre-built attention modules; autograd and GPU support are kept, only the architecture itself is hand-built.
 
 ## Out of scope
@@ -26,11 +27,15 @@ Be able to implement a transformer's forward pass and its training loop from raw
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Five stages, one equation to reading real model code. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Attention | 0001 to 0003 | Scaled dot-product attention, multi-head attention, causal masking | Multi-head attention is implemented from raw tensors, matching a reference implementation |
+| 2. The transformer block | 0004 to 0006 | Positional encoding, layer norm and residual connections, the feed-forward block | A full transformer block is implemented from raw tensors |
+| 3. The full model | 0007 to 0008 | Stacking blocks, embedding and output layers, weight tying | A full forward pass matches a reference implementation's output |
+| 4. The training loop | 0009 to 0011 | Cross-entropy loss over the vocabulary, the backward pass, the AdamW optimizer step | The model trains from scratch and the loss decreases as expected |
+| 5. Reading real model code | 0012 to 0013 | Mapping each derived piece to a real library (`transformers` or `llama.cpp`), tokenizers and low-rank adapters named in passing | Can point to where each derived piece lives in real model code |
 
 ## Lessons
 

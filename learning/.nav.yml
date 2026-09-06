@@ -1,6 +1,8 @@
 nav:
   - README.md
   - LLM: llm
+  - Data: data
+  - Architecture: architecture
   - Programming: programming
   - glob: "*"
     ignore_no_matches: true

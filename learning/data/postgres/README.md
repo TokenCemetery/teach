@@ -19,6 +19,7 @@ Be able to operate a running Postgres instance, self-hosted or managed, and to d
 
 ## Constraints
 
+- Assumes basic SQL familiarity (see `programming/sql` for the language itself); no prior database-administration experience required.
 - Covers both self-hosted operation and what changes under a managed service.
 
 ## Out of scope
@@ -27,11 +28,15 @@ Be able to operate a running Postgres instance, self-hosted or managed, and to d
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Five stages, durability to a defended deployment design. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. The write-ahead log | 0001 | The durability mechanism everything else in this workspace builds on | Can explain how the WAL makes a crash recoverable |
+| 2. Vacuum and bloat | 0002 to 0003 | Autovacuum internals, MVCC and dead tuples, bloat diagnosis and tuning | Can diagnose a bloated table from vacuum and WAL mechanics |
+| 3. Replication | 0004 to 0006 | Streaming replication, replication slots, failover, lag diagnosis | Can diagnose a lagging replica and design a replication topology |
+| 4. Indexes and their upkeep cost | 0007 to 0008 | B-tree/GiST/GIN maintenance cost, what a pgvector index costs to keep | Can design an index maintenance plan and account for pgvector's cost |
+| 5. Managed vs self-hosted | 0009 to 0010 | What an RDS-style managed service shields you from, and what it doesn't | Can explain the managed-service boundary and defend an operating choice |
 
 ## Lessons
 

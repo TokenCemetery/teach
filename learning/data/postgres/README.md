@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** [2. MVCC and Dead Tuples](lessons/0002-mvcc-and-dead-tuples.md)
+**Latest lesson:** [3. Bloat Diagnosis and Autovacuum Tuning](lessons/0003-bloat-diagnosis-and-autovacuum-tuning.md)
 
 ## Success looks like
 
@@ -46,6 +46,7 @@ Work through these in order.
 |---|---|---|
 | [0001](lessons/0001-the-write-ahead-log.md) | The Write-Ahead Log | The durability mechanism everything else in this workspace builds on |
 | [0002](lessons/0002-mvcc-and-dead-tuples.md) | MVCC and Dead Tuples | Why an UPDATE or DELETE never removes anything immediately, and why that leaves dead tuples for vacuum to clean up |
+| [0003](lessons/0003-bloat-diagnosis-and-autovacuum-tuning.md) | Bloat Diagnosis and Autovacuum Tuning | How to measure bloat, why autovacuum falls behind, and the diagnostic order that finds the actual cause instead of guessing |
 
 ## Reference
 

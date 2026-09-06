@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [7. Stacking Transformer Blocks](lessons/0007-stacking-blocks.md)
+**Latest lesson:** [8. Embedding and Output Layers, Weight Tying](lessons/0008-embedding-output-and-weight-tying.md)
 
 ## Success looks like
 
@@ -50,6 +50,7 @@ Work through these in order.
 | [0005](lessons/0005-layer-norm-and-residuals.md) | Layer Norm and Residual Connections | Why stacking many transformer blocks needs a clean gradient path and stable activation ranges, and how residuals and layer norm each provide one |
 | [0006](lessons/0006-feed-forward-block.md) | The Position-Wise Feed-Forward Block | What the transformer block's second sublayer adds beyond attention, and why it never mixes information across positions |
 | [0007](lessons/0007-stacking-blocks.md) | Stacking Transformer Blocks | Why every block preserves the same shape, why depth isn't weight sharing, and why lesson 5's residual machinery matters most once many blocks are stacked |
+| [0008](lessons/0008-embedding-output-and-weight-tying.md) | Embedding and Output Layers, Weight Tying | How tokens enter and leave the transformer's vector space, and why the two layers that do it can share one matrix |
 
 ## Reference
 

@@ -1,15 +1,19 @@
 ---
 title: Glossary
-description: "Canonical terms for {topic}"
+description: "Canonical terms for Postgres"
 type: glossary
 ---
 
-# {Topic} Glossary
+# Postgres Glossary
 
-{One or two sentences on what this glossary covers.}
+Canonical terms for operating a running Postgres instance: durability, background work, and replication.
 
 ## Terms
 
-**{Term}**:
-{What it is, in one or two sentences. Not how to do it.}
-_Avoid_: {aliases that should not be used in this workspace}
+**Checkpoint**:
+A periodic flush of all currently-dirty data pages to disk, paired with recording the WAL position at that moment, which bounds how far back crash recovery must replay from.
+_Avoid_: snapshot (ambiguous with a transaction snapshot)
+
+**Write-ahead log (WAL)**:
+A sequential, append-only log of every change, written and fsynced to disk before that change is considered committed, which crash recovery and replication both replay to reconstruct state.
+_Avoid_: transaction log, redo log (use only when quoting a source that uses those terms)

@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. The Write-Ahead Log](lessons/0001-the-write-ahead-log.md)
 
 ## Success looks like
 
@@ -39,7 +39,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-the-write-ahead-log.md) | The Write-Ahead Log | The durability mechanism everything else in this workspace builds on |
 
 ## Reference
 

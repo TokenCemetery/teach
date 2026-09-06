@@ -20,6 +20,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | programming | [TypeScript](programming/typescript/) | Own a TypeScript codebase: make the compiler reject the states that should not exist | 49 |
 | llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 27 |
 | llm | [Inference](llm/inference/) | Mission pending the interview | 0 |
+| llm | [Evals](llm/evals/) | Mission pending the interview | 0 |
 
 ## Starting a topic
 

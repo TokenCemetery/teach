@@ -19,6 +19,7 @@ Be able to design a retrieval pipeline for a real corpus and use case, and to di
 
 ## Constraints
 
+- Assumes basic Python and familiarity with what an embedding is; no prior retrieval-systems experience required.
 - Vector store: pgvector, so the concepts connect to `data/postgres`'s coverage of what a vector index costs the database.
 
 ## Out of scope
@@ -29,11 +30,17 @@ Be able to design a retrieval pipeline for a real corpus and use case, and to di
 
 ## The arc
 
-{N} stages, {start} to {end}. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Seven stages, first chunk to a diagnosed pipeline. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. {Name} | {What it covers} | {The capability that closes the stage} |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Chunking | 0001 | The first pipeline choice, and the one every later stage inherits | Can chunk a stated corpus and justify the choice |
+| 2. Embeddings | 0002 to 0003 | Embedding models, similarity metrics, dimensionality trade-offs | Can choose an embedding model and metric for a stated corpus |
+| 3. Vector search and indexing | 0004 to 0005 | ANN indexes (HNSW/IVF), pgvector specifics, the recall/latency trade-off | Can stand up vector search over pgvector for the chunked corpus |
+| 4. Hybrid search | 0006 to 0007 | BM25 plus vector search, reciprocal rank fusion, tuning the blend | Can tune hybrid search weights against a measured retrieval metric |
+| 5. Reranking | 0008 to 0009 | Cross-encoder rerankers, when reranking earns its latency cost | Can add a reranking stage and justify it against the cost |
+| 6. Retrieval evaluation and diagnosis | 0010 to 0011 | Recall@k, MRR, diagnosing which pipeline stage is at fault | Given wrong retrieved context, can name the at-fault stage |
+| 7. From retrieval to generation | 0012 to 0013 | Prompt construction over retrieved context, context-window budget, what generation still gets wrong | Can take retrieved context to a generated answer and name generation-stage failure modes |
 
 ## Lessons
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [1. Scaled Dot-Product Attention](lessons/0001-scaled-dot-product-attention.md)
+**Latest lesson:** [2. Multi-Head Attention](lessons/0002-multi-head-attention.md)
 
 ## Success looks like
 
@@ -44,6 +44,7 @@ Work through these in order.
 | # | Lesson | Teaches |
 |---|---|---|
 | [0001](lessons/0001-scaled-dot-product-attention.md) | Scaled Dot-Product Attention | The one equation the rest of the architecture is built around |
+| [0002](lessons/0002-multi-head-attention.md) | Multi-Head Attention | Why attention runs in several smaller subspaces at once rather than one at full dimension |
 
 ## Reference
 

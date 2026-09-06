@@ -12,8 +12,11 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 
 | Domain | Topic | Mission | Lessons |
 |---|---|---|---|
+| programming | [Bash](programming/bash/) | Write shell that survives production: quoting, exit status, the failure modes, and knowing when to stop and use a real language | 0 |
+| programming | [C#](programming/csharp/) | Own a C# service: the type system, async, and what the CLR does with what you wrote | 0 |
 | programming | [Go](programming/golang/) | Own Go on a team: design, ship and operate a production service | 37 |
 | programming | [Java](programming/java/) | Own a Java service: model it in modern Java, then operate what the JVM does with it | 49 |
+| programming | [Kotlin](programming/kotlin/) | Own Kotlin on the JVM: null safety, coroutines, and where the Java habit produces Kotlin that compiles and reads badly | 0 |
 | programming | [Python](programming/python/) | Own Python in production: ship it typed, tested, packaged and profiled | 44 |
 | programming | [Rust](programming/rust/) | Own Rust: design with ownership instead of fighting the borrow checker, then ship the crate | 63 |
 | programming | [SQL](programming/sql/) | Own the database: write the query, read the plan, design the schema, survive the concurrency | 48 |
@@ -23,6 +26,11 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | llm | [Evals](llm/evals/) | Prove a model change helped: build the eval, hold out the data honestly, and defend the number against contamination | 0 |
 | llm | [RAG](llm/rag/) | Own retrieval: chunking, embeddings, hybrid search, reranking, and measuring whether the right thing was retrieved | 0 |
 | llm | [Transformers](llm/transformers/) | Build attention from scratch, so the architecture stops being a black box behind the training script | 0 |
+| data | [Postgres](data/postgres/) | Operate Postgres: the WAL, vacuum and bloat, replication, and what an index costs to keep | 0 |
+| data | [Kafka](data/kafka/) | Own the log: partitions, consumer groups, delivery guarantees, and what "exactly once" actually costs | 0 |
+| data | [Redis](data/redis/) | Use Redis for what it is: the memory model, eviction, persistence, and the patterns that quietly misuse it | 0 |
+| architecture | [Distributed Systems](architecture/distributed-systems/) | Reason about partial failure: what a network can do to you, which consistency you are actually buying, and why consensus is expensive | 0 |
+| architecture | [API Design](architecture/api-design/) | Design an interface others depend on: the contract, its errors, and how it changes without breaking them | 0 |
 
 ## Starting a topic
 

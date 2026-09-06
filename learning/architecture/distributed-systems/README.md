@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [1. Partial Failure](lessons/0001-partial-failure.md)
 
 ## Success looks like
 
@@ -38,7 +38,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-partial-failure.md) | Partial Failure | The one problem every later topic in this workspace is a response to |
 
 ## Reference
 

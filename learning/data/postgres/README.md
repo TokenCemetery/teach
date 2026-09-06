@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** [4. Streaming Replication and Replication Slots](lessons/0004-streaming-replication-and-slots.md)
+**Latest lesson:** [5. Failover Mechanics](lessons/0005-failover-mechanics.md)
 
 ## Success looks like
 
@@ -48,6 +48,7 @@ Work through these in order.
 | [0002](lessons/0002-mvcc-and-dead-tuples.md) | MVCC and Dead Tuples | Why an UPDATE or DELETE never removes anything immediately, and why that leaves dead tuples for vacuum to clean up |
 | [0003](lessons/0003-bloat-diagnosis-and-autovacuum-tuning.md) | Bloat Diagnosis and Autovacuum Tuning | How to measure bloat, why autovacuum falls behind, and the diagnostic order that finds the actual cause instead of guessing |
 | [0004](lessons/0004-streaming-replication-and-slots.md) | Streaming Replication and Replication Slots | How a standby actually connects and catches up, and what a replication slot guarantees that plain streaming doesn't |
+| [0005](lessons/0005-failover-mechanics.md) | Failover Mechanics | What happens when a standby is promoted, why a former primary can't just rejoin, and the data-loss trade-off synchronous replication bounds |
 
 ## Reference
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [12. Reading Real Model Code](lessons/0012-reading-real-model-code.md)
+**Latest lesson:** [13. Tokenizers and Low-Rank Adapters](lessons/0013-tokenizers-and-low-rank-adapters.md)
 
 ## Success looks like
 
@@ -55,6 +55,7 @@ Work through these in order.
 | [0010](lessons/0010-backward-pass-and-autograd.md) | The Backward Pass and Autograd | How the chain rule, automated over a recorded computation graph, turns one scalar loss into a gradient for every weight |
 | [0011](lessons/0011-adamw-optimizer.md) | The AdamW Optimizer Step | What Adam's momentum and adaptive scaling add over plain gradient descent, and why AdamW decouples weight decay from the gradient update |
 | [0012](lessons/0012-reading-real-model-code.md) | Reading Real Model Code | Where each derived piece lives in a production model library, and the small, common deviations from the original paper worth recognizing rather than being confused by |
+| [0013](lessons/0013-tokenizers-and-low-rank-adapters.md) | Tokenizers and Low-Rank Adapters | Deriving byte-pair encoding, and where a low-rank adapter actually attaches to a weight matrix this workspace built from scratch |
 
 ## Reference
 

@@ -34,6 +34,8 @@ type: resources
   Introduces Adam's momentum (first moment) and adaptive per-parameter scaling (second moment) over plain gradient descent, with bias correction for both. Use for: understanding what Adam's update rule computes and why, before AdamW's weight-decay fix.
 - [Paper: "Decoupled Weight Decay Regularization", Loshchilov and Hutter, 2019](https://arxiv.org/abs/1711.05101)
   Identifies why folding weight decay into the gradient in original Adam interacts badly with its adaptive scaling, and fixes it by applying decay directly to the weights instead. Use for: why AdamW, not plain Adam, is the standard optimizer for training transformers.
+- [Paper: "Neural Machine Translation of Rare Words with Subword Units", Sennrich, Haddow, and Birch, 2016](https://arxiv.org/abs/1508.07909)
+  Introduces byte-pair encoding for subword tokenization: iteratively merging the most frequent adjacent symbol pair to build a vocabulary from raw bytes upward. Use for: deriving the tokenizer mechanism `llm/finetuning` names in passing rather than restating it.
 
 ## Gaps
 

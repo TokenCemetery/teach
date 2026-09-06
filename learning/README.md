@@ -24,7 +24,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 27 |
 | llm | [Inference](llm/inference/) | Serve a model: the KV cache, batching, quantization at serve time, and a latency budget you can defend | 17 |
 | llm | [Evals](llm/evals/) | Prove a model change helped: build the eval, hold out the data honestly, and defend the number against contamination | 10 |
-| llm | [RAG](llm/rag/) | Own retrieval: chunking, embeddings, hybrid search, reranking, and measuring whether the right thing was retrieved | 0 |
+| llm | [RAG](llm/rag/) | Own retrieval: chunking, embeddings, hybrid search, reranking, and measuring whether the right thing was retrieved | 13 |
 | llm | [Transformers](llm/transformers/) | Build attention from scratch, so the architecture stops being a black box behind the training script | 0 |
 | data | [Postgres](data/postgres/) | Operate Postgres: the WAL, vacuum and bloat, replication, and what an index costs to keep | 0 |
 | data | [Kafka](data/kafka/) | Own the log: partitions, consumer groups, delivery guarantees, and what "exactly once" actually costs | 0 |

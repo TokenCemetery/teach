@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [12. Prompt Construction and Context-Window Budget](lessons/0012-prompt-construction-and-context-budget.md)
+**Latest lesson:** [13. What Generation Still Gets Wrong](lessons/0013-what-generation-still-gets-wrong.md)
 
 ## Success looks like
 
@@ -60,6 +60,7 @@ Work through these in order.
 | [0010](lessons/0010-recall-at-k-and-mrr.md) | Recall@k and MRR | The two standard retrieval metrics, what each one tells you that the other doesn't, and how to pick k for the workload |
 | [0011](lessons/0011-diagnosing-the-pipeline.md) | Diagnosing the Pipeline | A stage-by-stage procedure for finding which part of a retrieval pipeline is actually responsible for wrong retrieved context |
 | [0012](lessons/0012-prompt-construction-and-context-budget.md) | Prompt Construction and Context-Window Budget | Why retrieved chunks compete for a shared context-window budget, and why where a chunk sits in the prompt matters as much as whether it was retrieved |
+| [0013](lessons/0013-what-generation-still-gets-wrong.md) | What Generation Still Gets Wrong | The failure modes that survive even correct, well-placed retrieved context, and how they differ from a retrieval failure |
 
 ## Reference
 

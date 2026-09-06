@@ -30,6 +30,8 @@ type: resources
   The definitive reference for BM25, the lexical ranking function behind term-frequency, inverse-document-frequency, and length-normalization scoring, with the reasoning behind each of its parameters. Use for: understanding what lexical search actually scores, as the complement to vector search's semantic similarity.
 - [Paper: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
   Shows that models use information placed at the beginning or end of a long context far more reliably than information buried in the middle, even when everything is technically within the context window. Use for: understanding why chunk placement in an assembled prompt matters as much as whether a chunk was retrieved at all.
+- [Paper: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
+  Defines faithfulness (whether a generated claim is actually supported by the retrieved context) as a metric distinct from retrieval quality, and how to check it without needing new human-labeled ground truth for every generated answer. Use for: evaluating whether the generation step stayed grounded in what was retrieved, once retrieval itself is confirmed correct.
 
 ## Gaps
 

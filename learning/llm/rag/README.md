@@ -1,28 +1,31 @@
 ---
-title: "{Topic}"
-description: "{One clause: the outcome this topic delivers}"
+title: RAG
+description: "Own retrieval: chunking, embeddings, hybrid search, reranking, and measuring whether the right thing was retrieved"
 type: topic
 ---
 
-# Learning: {Topic}
+# Learning: RAG
 
-> **Template, not a workspace.** Copy this directory to `learning/<domain>/<topic-slug>/`, then replace every `{placeholder}`.
-
-{1-3 sentences. The concrete real-world goal. What changes in your life or work when you have this skill? Not "to understand X" but the outcome underneath it.}
+Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
 **Latest lesson:** _none yet_
 
 ## Success looks like
 
-- {A specific, observable thing you will be able to do}
+- Design a retrieval pipeline (chunking, embeddings, hybrid search, reranking) for a stated corpus and use case, and justify each choice against it.
+- Given a RAG system returning wrong or irrelevant context, diagnose which stage of the pipeline is at fault rather than re-tuning at random.
+- Tune hybrid search weights against a measured retrieval metric rather than by feel.
+- Take retrieved context through to a generated answer and account for what the generation step itself can still get wrong.
 
 ## Constraints
 
-- {Time, budget, prior commitments, learning preferences: anything that bounds the approach}
+- Vector store: pgvector, so the concepts connect to `data/postgres`'s coverage of what a vector index costs the database.
 
 ## Out of scope
 
-- {Adjacent topics you do not want to chase now}
+- Prompt-engineering technique and generation quality in general: touched only for how retrieved context reaches the generation step, not restated as its own topic.
+- How the retrieval metric itself is built and defended: that is `llm/evals`, linked to rather than restated.
+- What a vector index costs the database operationally: that is `data/postgres`, linked to rather than restated.
 
 ## The arc
 

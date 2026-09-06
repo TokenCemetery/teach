@@ -8,7 +8,7 @@ type: topic
 
 Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change (a fine-tune, a prompt change, a RAG change) that you can defend with a number instead of a feeling.
 
-**Latest lesson:** [3. Task-Specific Metrics](lessons/0003-task-specific-metrics.md)
+**Latest lesson:** [4. Code-Execution Metrics and Choosing a Metric](lessons/0004-code-execution-metrics.md)
 
 ## Success looks like
 
@@ -46,6 +46,7 @@ Work through these in order.
 | [0001](lessons/0001-held-out-and-contamination.md) | Held-out Data and Contamination | Why an eval number is only as trustworthy as what the model never saw |
 | [0002](lessons/0002-designing-contamination-resistance.md) | Designing Contamination Resistance | Preventing contamination in a custom eval set from the start, instead of only detecting it after the fact |
 | [0003](lessons/0003-task-specific-metrics.md) | Task-Specific Metrics | Exact match, token-level F1, and BLEU/ROUGE, and the failure mode each one has |
+| [0004](lessons/0004-code-execution-metrics.md) | Code-Execution Metrics and Choosing a Metric | Functional correctness, the pass@k estimator, and a decision principle for picking a metric per task |
 
 ## Reference
 

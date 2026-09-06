@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [7. Reciprocal Rank Fusion](lessons/0007-reciprocal-rank-fusion.md)
+**Latest lesson:** [8. Cross-Encoder Rerankers](lessons/0008-cross-encoder-rerankers.md)
 
 ## Success looks like
 
@@ -55,6 +55,7 @@ Work through these in order.
 | [0005](lessons/0005-pgvector-specifics.md) | pgvector Specifics | Standing up vector search in Postgres, and mapping lesson 4's index concepts onto pgvector's actual operators and parameters |
 | [0006](lessons/0006-bm25-and-lexical-search.md) | BM25 and Lexical Search | What BM25 actually scores, and why exact-term matching still catches what semantic embeddings miss |
 | [0007](lessons/0007-reciprocal-rank-fusion.md) | Reciprocal Rank Fusion | How to combine a lexical ranking and a vector ranking without comparing incomparable scores, and how to tune the blend against a measured metric |
+| [0008](lessons/0008-cross-encoder-rerankers.md) | Cross-Encoder Rerankers | What a cross-encoder scores that a bi-encoder can't, and why reranking is a second stage rather than a replacement for retrieval |
 
 ## Reference
 

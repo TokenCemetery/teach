@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [8. Accuracy, Speed, and Memory Trade-offs](lessons/0008-accuracy-speed-memory-tradeoffs.md)
+**Latest lesson:** [9. Picking and Defending a Quantization Scheme](lessons/0009-picking-a-quantization-scheme.md)
 
 ## Success looks like
 
@@ -52,6 +52,7 @@ Work through these in order.
 | [0006](lessons/0006-throughput-latency-tradeoff.md) | The Throughput/Latency Trade-off | How batch size trades throughput against per-token latency, and how to defend a batching configuration against a stated latency budget |
 | [0007](lessons/0007-quantization-schemes.md) | Quantization Schemes at Serve Time | What int8, int4, GPTQ and AWQ actually do to a model's weights, and why the naive version of low-bit quantization needs a fix |
 | [0008](lessons/0008-accuracy-speed-memory-tradeoffs.md) | Accuracy, Speed, and Memory Trade-offs | Why memory, speed, and accuracy don't move together when a model is quantized, and how each is actually measured |
+| [0009](lessons/0009-picking-a-quantization-scheme.md) | Picking and Defending a Quantization Scheme | A decision framework for choosing a serving-time quantization scheme, and the three numbers that defend it |
 
 ## Reference
 

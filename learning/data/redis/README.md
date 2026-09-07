@@ -8,7 +8,7 @@ type: topic
 
 Be able to spot where an existing system is quietly misusing Redis, such as a cache treated as a store or a lock that is not one, and to design correct usage from scratch instead.
 
-**Latest lesson:** [3. AOF and the WAL Comparison](lessons/0003-aof-and-wal-comparison.md)
+**Latest lesson:** [4. Naive Locking Mistakes](lessons/0004-naive-locking-mistakes.md)
 
 ## Success looks like
 
@@ -46,6 +46,7 @@ Work through these in order.
 | [0001](lessons/0001-memory-and-eviction.md) | Memory and Eviction | Why Redis evicts keys at all, and the anti-pattern that follows from forgetting it |
 | [0002](lessons/0002-rdb-snapshotting.md) | RDB Snapshotting | What an RDB snapshot actually captures, and the data-loss window its save interval leaves open |
 | [0003](lessons/0003-aof-and-wal-comparison.md) | AOF and the WAL Comparison | How AOF's fsync policy sets its data-loss window, and why even Redis's strongest common setting trades more durability for speed than Postgres does by default |
+| [0004](lessons/0004-naive-locking-mistakes.md) | Naive Locking Mistakes | Why SET NX PX alone is not a distributed lock, and the two failure modes that break it under real conditions |
 
 ## Reference
 

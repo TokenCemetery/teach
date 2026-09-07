@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [27. Cancellation and Exception Handling](lessons/0027-cancellation-and-exception-handling.md)
+**Latest lesson:** [28. Test Frameworks](lessons/0028-test-frameworks.md)
 
 ## Success looks like
 
@@ -76,6 +76,7 @@ Work through these in order.
 | [0025](lessons/0025-coroutine-context-and-dispatchers.md) | Coroutine Context and Dispatchers | The context as a set of elements combined with plus, which dispatcher belongs to which kind of work, and the one context element that silently breaks structured concurrency |
 | [0026](lessons/0026-flows.md) | Flows | A flow as the asynchronous third option after a list and a sequence, what cold actually means for each collector, and the context rule a flow builder enforces at runtime |
 | [0027](lessons/0027-cancellation-and-exception-handling.md) | Cancellation and Exception Handling | Why cancellation is cooperative and what makes code ignore it, why a CancellationException is not a failure, and how the coroutine model compares with Java virtual threads |
+| [0028](lessons/0028-test-frameworks.md) | Test Frameworks | The layers a Kotlin test actually sits on, why runTest's virtual time stops at the dispatcher boundary, and what that forces on the design of the code under test |
 
 ## Reference
 

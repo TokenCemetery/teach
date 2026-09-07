@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a topic and partition layout for a real workload and to diagnose consumer lag, rebalancing storms or unexpected message loss instead of guessing at a fix.
 
-**Latest lesson:** [2. Consumer Group Coordination](lessons/0002-consumer-group-coordination.md)
+**Latest lesson:** [3. Cooperative Rebalancing and Diagnosing Consumer Lag](lessons/0003-cooperative-rebalancing-and-lag.md)
 
 ## Success looks like
 
@@ -47,6 +47,7 @@ Work through these in order.
 |---|---|---|
 | [0001](lessons/0001-partitions-and-the-log.md) | Partitions and the Log | The unit everything else in this workspace (ordering, parallelism, consumer groups) is built around |
 | [0002](lessons/0002-consumer-group-coordination.md) | Consumer Group Coordination | How a group coordinator and a group leader divide partitions among consumers, and how offsets track each group's progress |
+| [0003](lessons/0003-cooperative-rebalancing-and-lag.md) | Cooperative Rebalancing and Diagnosing Consumer Lag | Why the original rebalance protocol causes a rebalancing storm, how cooperative rebalancing narrows it, and a diagnostic order for consumer lag |
 
 ## Reference
 

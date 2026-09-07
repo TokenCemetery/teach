@@ -16,7 +16,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | programming | [C#](programming/csharp/) | Own a C# service: the type system, async, and what the CLR does with what you wrote | 0 |
 | programming | [Go](programming/golang/) | Own Go on a team: design, ship and operate a production service | 37 |
 | programming | [Java](programming/java/) | Own a Java service: model it in modern Java, then operate what the JVM does with it | 49 |
-| programming | [Kotlin](programming/kotlin/) | Own Kotlin on the JVM: null safety, coroutines, and where the Java habit produces Kotlin that compiles and reads badly | 0 |
+| programming | [Kotlin](programming/kotlin/) | Own Kotlin on the JVM: null safety, coroutines, and where the Java habit produces Kotlin that compiles and reads badly | 35 |
 | programming | [Python](programming/python/) | Own Python in production: ship it typed, tested, packaged and profiled | 44 |
 | programming | [Rust](programming/rust/) | Own Rust: design with ownership instead of fighting the borrow checker, then ship the crate | 63 |
 | programming | [SQL](programming/sql/) | Own the database: write the query, read the plan, design the schema, survive the concurrency | 48 |

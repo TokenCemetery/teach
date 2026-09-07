@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [34. Java Interop](lessons/0034-java-interop.md)
+**Latest lesson:** [35. Reviewing Kotlin](lessons/0035-reviewing-kotlin.md)
 
 ## Success looks like
 
@@ -83,6 +83,7 @@ Work through these in order.
 | [0032](lessons/0032-android-divergences.md) | Android Divergences | The scopes Android owns on your behalf, main-safety as a contract the callee keeps, and why composition lifetime is not lifecycle lifetime |
 | [0033](lessons/0033-generics-and-variance.md) | Generics and Variance | Declaration-site variance in place of wildcards, what out and in actually promise about a type parameter, and how to read a projected signature |
 | [0034](lessons/0034-java-interop.md) | Java Interop | Why the boundary is asymmetric, what a platform type costs you and how to pay it back, and which annotations you owe a Java caller |
+| [0035](lessons/0035-reviewing-kotlin.md) | Reviewing Kotlin | Turning the arc into a review instrument: the cost each habit hides, the shape of a comment that names it, and what not to review |
 
 ## Reference
 

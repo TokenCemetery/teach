@@ -10,6 +10,8 @@ type: resources
 
 - [Article: "Fallacies of distributed computing", Wikipedia](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing)
   The canonical list (originated by Peter Deutsch, extended by James Gosling) of assumptions that hold on one machine and quietly stop holding once a network sits between two of them. Use for: the vocabulary for what a network can do to you, before reasoning about any specific failure.
+- [Paper: "Time, Clocks, and the Ordering of Events in a Distributed System", Leslie Lamport, 1978](https://lamport.azurewebsites.net/pubs/time-clocks.pdf)
+  The original paper defining the happens-before relation and logical clocks: a way to order events across machines without relying on synchronized physical clocks. Use for: why wall-clock timestamps from different machines can't be trusted to order events, and what to use instead.
 - [Site: "Consistency Models", Jepsen](https://jepsen.io/consistency)
   An interactive, precisely-defined map of consistency models (linearizability, serializability, causal consistency, and more), with the guarantees and violations that distinguish each. Use for: pinning down exactly which consistency model a system is buying, rather than reasoning about "consistency" as one vague thing.
 - [Article: "CAP Twelve Years Later: How the 'Rules' Have Changed", Eric Brewer, InfoQ](https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/)

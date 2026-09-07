@@ -14,6 +14,8 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Interfaces", Kotlin](https://kotlinlang.org/docs/interfaces.html)
+  Official docs on interfaces with default method bodies, abstract versus implemented properties (and why interfaces can't hold backing-field state), and resolving a diamond conflict with `super<Type>.member()`. Use for: modelling shared behavior across unrelated types without inheritance.
 - [Docs: "Object declarations and expressions", Kotlin](https://kotlinlang.org/docs/object-declarations.html)
   Official docs on `object` declarations (thread-safe, lazily-initialized singletons), companion objects, and object expressions for anonymous, one-time instances. Use for: what replaces Java's static members and singleton-pattern boilerplate.
 - [Docs: "Enum classes", Kotlin](https://kotlinlang.org/docs/enum-classes.html)

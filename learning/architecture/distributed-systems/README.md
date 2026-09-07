@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [9. What Consensus Costs](lessons/0009-what-consensus-costs.md)
+**Latest lesson:** [10. Diagnosing a Production Incident](lessons/0010-diagnosing-a-production-incident.md)
 
 ## Success looks like
 
@@ -52,6 +52,7 @@ Work through these in order.
 | [0007](lessons/0007-what-consensus-is-for.md) | What Consensus Is For | The replicated-state-machine problem consensus protocols solve, and why it's the mechanism underneath a linearizable system's coordination |
 | [0008](lessons/0008-raft-leader-election-and-log-replication.md) | Raft, Leader Election and Log Replication | How Raft elects a single leader and replicates a log through it, the two mechanisms that turn the replicated-state-machine problem into something concrete |
 | [0009](lessons/0009-what-consensus-costs.md) | What Consensus Costs | Why every write pays a round trip to a majority, why a minority partition loses availability rather than consistency, and how to weigh that cost against what consensus buys |
+| [0010](lessons/0010-diagnosing-a-production-incident.md) | Diagnosing a Production Incident | Applying partial failure, failure detection, consistency models, and consensus to name the mechanism behind a real incident, instead of reasoning about "the network" or "consistency" in the abstract |
 
 ## Reference
 

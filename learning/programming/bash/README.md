@@ -8,7 +8,7 @@ type: topic
 
 Be able to write and maintain shell scripts for CI pipelines, deployment and operational tooling that do not quietly break on a bad input or an unset variable, and to recognise when a script has outgrown shell and belongs in a real language instead.
 
-**Latest lesson:** [2. Exit Status](lessons/0002-exit-status.md)
+**Latest lesson:** [3. Strict Mode and trap](lessons/0003-strict-mode-and-trap.md)
 
 ## Success looks like
 
@@ -47,6 +47,7 @@ Work through these in order.
 |---|---|---|
 | [0001](lessons/0001-quoting.md) | Quoting | The single habit that prevents the most common way shell scripts break in production |
 | [0002](lessons/0002-exit-status.md) | Exit Status | What $? actually reports, why bash keeps running after a failed command by default, and the second most common way a script breaks in production |
+| [0003](lessons/0003-strict-mode-and-trap.md) | Strict Mode and trap | What each flag in set -euo pipefail actually changes, its real gaps, and using trap to clean up reliably when a script fails |
 
 ## Reference
 

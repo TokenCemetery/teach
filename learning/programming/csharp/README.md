@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [24. The dotnet CLI and Packages](lessons/0024-the-dotnet-cli-and-packages.md)
+**Latest lesson:** [25. Routing and Middleware](lessons/0025-routing-and-middleware.md)
 
 ## Success looks like
 
@@ -72,6 +72,7 @@ Work through these in order.
 | [0022](lessons/0022-xunit-and-nunit.md) | xUnit and NUnit | The per-test instance rule that leaves xUnit no setup attribute to need, the word theory meaning two different things, and the parallelism a shared fixture quietly costs |
 | [0023](lessons/0023-mocking.md) | Mocking | The runtime proxy behind every substitution library, the C# default that decides what it is allowed to replace, and the mocked assertion that passes without the call ever happening |
 | [0024](lessons/0024-the-dotnet-cli-and-packages.md) | The dotnet CLI and Packages | The one command a fresh clone needs, why a package version is a floor rather than a pin, the SDK release that reordered the commands, and the stage 5 capstone |
+| [0025](lessons/0025-routing-and-middleware.md) | Routing and Middleware | Two systems sharing one Program.cs, one settled by the order you wrote and one by template precedence, and the two positions that decide what a middleware can know and whether it runs at all |
 
 ## Reference
 

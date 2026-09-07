@@ -12,7 +12,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 
 | Domain | Topic | Mission | Lessons |
 |---|---|---|---|
-| programming | [Bash](programming/bash/) | Write shell that survives production: quoting, exit status, the failure modes, and knowing when to stop and use a real language | 0 |
+| programming | [Bash](programming/bash/) | Write shell that survives production: quoting, exit status, the failure modes, and knowing when to stop and use a real language | 7 |
 | programming | [C#](programming/csharp/) | Own a C# service: the type system, async, and what the CLR does with what you wrote | 0 |
 | programming | [Go](programming/golang/) | Own Go on a team: design, ship and operate a production service | 37 |
 | programming | [Java](programming/java/) | Own a Java service: model it in modern Java, then operate what the JVM does with it | 49 |

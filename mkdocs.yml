@@ -16,9 +16,10 @@ site_dir: site
 theme:
   name: primer
 
-# Corrects mkdocs-section-index twice over: drops one false-positive warning
-# so `--strict` stays usable, and stops the plugin folding the first page of a
-# section that has no overview page to fold. See the docstrings in hooks.py.
+# Corrects mkdocs-section-index: drops one false-positive warning so
+# `--strict` stays usable, stops the plugin folding the first page of a
+# section that has no overview page to fold, and keeps a folded page's own
+# front-matter title. See the docstrings in hooks.py.
 hooks:
   - hooks.py
 

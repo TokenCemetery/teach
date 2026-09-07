@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [17. The Task Model](lessons/0017-the-task-model.md)
+**Latest lesson:** [18. async and await](lessons/0018-async-and-await.md)
 
 ## Success looks like
 
@@ -65,6 +65,7 @@ Work through these in order.
 | [0015](lessons/0015-nullable-reference-types.md) | Nullable Reference Types | Annotations rather than types, the null-state the compiler tracks through your control flow, and the one library that turns your annotation into runtime behaviour |
 | [0016](lessons/0016-expression-bodied-members.md) | Expression-Bodied Members | The second job of the arrow token, the statement-expression rule for void members, and the stage 3 capstone of rewriting translated Java |
 | [0017](lessons/0017-the-task-model.md) | The Task Model | A task as an asynchronous operation rather than a thread, the four ways one comes into existence, and the AggregateException that can terminate a process you thought had finished |
+| [0018](lessons/0018-async-and-await.md) | async and await | What await does to the enclosing method, the three places it is forbidden, and why async void breaks the only mechanism a caller has |
 
 ## Reference
 

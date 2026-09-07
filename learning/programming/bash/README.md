@@ -8,7 +8,7 @@ type: topic
 
 Be able to write and maintain shell scripts for CI pipelines, deployment and operational tooling that do not quietly break on a bad input or an unset variable, and to recognise when a script has outgrown shell and belongs in a real language instead.
 
-**Latest lesson:** [1. Quoting](lessons/0001-quoting.md)
+**Latest lesson:** [2. Exit Status](lessons/0002-exit-status.md)
 
 ## Success looks like
 
@@ -46,6 +46,7 @@ Work through these in order.
 | # | Lesson | Teaches |
 |---|---|---|
 | [0001](lessons/0001-quoting.md) | Quoting | The single habit that prevents the most common way shell scripts break in production |
+| [0002](lessons/0002-exit-status.md) | Exit Status | What $? actually reports, why bash keeps running after a failed command by default, and the second most common way a script breaks in production |
 
 ## Reference
 

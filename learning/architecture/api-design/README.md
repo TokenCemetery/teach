@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [7. gRPC Streaming and Designing the Same Use Case](lessons/0007-grpc-streaming.md)
+**Latest lesson:** [8. Additive Changes and Deprecation](lessons/0008-additive-changes-and-deprecation.md)
 
 ## Success looks like
 
@@ -51,6 +51,7 @@ Work through these in order.
 | [0005](lessons/0005-pagination-and-filtering.md) | Pagination, Filtering, and Designing a REST Contract | Why cursor-based pagination beats offsets at scale, how filtering stays a stable contract, and putting resource modeling together into a full REST design |
 | [0006](lessons/0006-proto3-and-grpc-service-design.md) | Proto3 and gRPC Service Design | How proto3's field numbers, not field names, are the real wire contract, and how a gRPC service is structured around RPC methods rather than resources |
 | [0007](lessons/0007-grpc-streaming.md) | gRPC Streaming and Designing the Same Use Case | The four kinds of gRPC RPC, when each fits, and designing one use case as both a REST and a gRPC contract |
+| [0008](lessons/0008-additive-changes-and-deprecation.md) | Additive Changes and Deprecation | Why adding is usually safe and removing or changing meaning is usually not, and how to deprecate a field or endpoint without breaking clients on the spot |
 
 ## Reference
 

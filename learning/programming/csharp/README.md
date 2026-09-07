@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [29. Structuring a Typed, Tested Backend](lessons/0029-structuring-a-typed-tested-backend.md)
+**Latest lesson:** [30. Two Comparisons with Java](lessons/0030-two-comparisons-with-java.md)
 
 ## Success looks like
 
@@ -77,6 +77,7 @@ Work through these in order.
 | [0027](lessons/0027-configuration.md) | Configuration | One flat dictionary of strings where the last provider wins, three options interfaces separated by lifetime rather than by taste, and validation that waits for the first request unless you ask it not to |
 | [0028](lessons/0028-entity-framework-core.md) | Entity Framework Core | A context that remembers what you queried so an assignment becomes an update, the single place a query is allowed to fall back to the client, and why stage 4's habit of overlapping work corrupts it |
 | [0029](lessons/0029-structuring-a-typed-tested-backend.md) | Structuring a Typed, Tested Backend | The container as the seam a test replaces registrations through, the documented rule for choosing between a unit test and an integration test, and the stage 6 capstone of four defects that all compile |
+| [0030](lessons/0030-two-comparisons-with-java.md) | Two Comparisons with Java | The same waiting problem solved at two different layers, why Java's answer removes the style C# requires rather than adopting it, and the expression tree that has no counterpart in a Stream |
 
 ## Reference
 

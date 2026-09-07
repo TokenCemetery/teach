@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [7. Classes and Properties](lessons/0007-classes-and-properties.md)
+**Latest lesson:** [8. Data Classes](lessons/0008-data-classes.md)
 
 ## Success looks like
 
@@ -56,6 +56,7 @@ Work through these in order.
 | [0005](lessons/0005-collections-basics.md) | Collections Basics | List, Set, and Map as read-only-by-interface collections, and why a mutable collection held by a val is still mutable |
 | [0006](lessons/0006-control-flow.md) | Control Flow | if and when as expressions that produce values, what a range actually is, and the stage 1 capstone of predicting nullability and mutability without running code |
 | [0007](lessons/0007-classes-and-properties.md) | Classes and Properties | Properties as the replacement for Java's getter/setter boilerplate, and why the Kotlin docs themselves say to reach for a class last |
+| [0008](lessons/0008-data-classes.md) | Data Classes | What data class actually generates, and the subtle rule that only primary-constructor properties participate in any of it |
 
 ## Reference
 

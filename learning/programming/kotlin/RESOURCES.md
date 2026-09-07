@@ -14,6 +14,8 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Data classes", Kotlin](https://kotlinlang.org/docs/data-classes.html)
+  Official docs on what `data class` generates automatically (`equals()`/`hashCode()`, `toString()`, `componentN()`, `copy()`), its requirements, and the subtle rule that only primary-constructor properties participate. Use for: what a data class actually buys over a hand-written class, precisely.
 - [Docs: "Classes", Kotlin](https://kotlinlang.org/docs/classes.html)
   Official docs on Kotlin classes: the primary constructor, properties declared directly in the class header, and when the docs themselves recommend a data class or an extension function instead of a plain class. Use for: what a class actually needs to encapsulate, before reaching for one reflexively.
 - [Docs: "Properties", Kotlin](https://kotlinlang.org/docs/properties.html)

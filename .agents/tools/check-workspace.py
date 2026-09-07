@@ -232,6 +232,11 @@ class Workspace:
         elif desc.endswith("."):
             self.bad(rel, "description ends with a full stop")
 
+        # Compare with escapes undone. A title ending in `#`, such as
+        # `31. Reviewing C#`, has to be written `# Lesson 31. Reviewing C\#`
+        # to survive the trailing-`#` rule further down, and the front matter
+        # carries no backslash. Comparing the raw line made those two rules
+        # impossible to satisfy at once.
         h1 = next((l for l in lines if l.startswith("# ")), None)
         if h1 is None:
             self.bad(rel, "has no H1")
@@ -412,6 +417,9 @@ class Workspace:
         # disagree and nothing in the source looks wrong. A backslash fixes it
         # in both: Python-Markdown carries `\#` through the heading parser and
         # unescapes it inline, and CommonMark consumes the backslash too.
+        # The backslash this demands is why the H1-against-title check above
+        # compares through `md_unescape`; asking for it here and rejecting it
+        # there left a title ending in `#` with no spelling that passed both.
         # Excluding a space before the run leaves a real closing sequence,
         # which means the same thing in both renderers, alone. Excluding a `#`
         # as well is what makes that work, since `.*` is greedy enough to eat

@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [19. Collection Operators](lessons/0019-collection-operators.md)
+**Latest lesson:** [20. Sequences and Laziness](lessons/0020-sequences-and-laziness.md)
 
 ## Success looks like
 
@@ -68,6 +68,7 @@ Work through these in order.
 | [0017](lessons/0017-delegation.md) | Delegation | Implementing an interface by forwarding to a held object with zero boilerplate, and reusable property behavior via by lazy and custom delegates |
 | [0018](lessons/0018-operator-overloading.md) | Operator Overloading | Operators as ordinary named functions with a fixed symbol mapping, and the actual discipline of implementing one only where it means what the symbol already means |
 | [0019](lessons/0019-collection-operators.md) | Collection Operators | The collection operators as extension functions that return a new collection eagerly, and the Java Stream habit that misprices a chain of them |
+| [0020](lessons/0020-sequences-and-laziness.md) | Sequences and Laziness | Why the same operator chain behaves differently on a Sequence, what a terminal operation is actually for, and when laziness costs more than it saves |
 
 ## Reference
 

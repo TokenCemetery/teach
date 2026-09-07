@@ -14,6 +14,8 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Sequences", Kotlin](https://kotlinlang.org/docs/sequences.html)
+  Official docs on `Sequence<T>`: lazy multistep processing, the intermediate/terminal operation split, the four ways to construct one, stateless versus stateful operations, and the explicit warning that laziness has an overhead of its own. Use for: deciding between a collection pipeline and a sequence, and for the element-by-element execution order that lets a bound like `take` cut the work short.
 - [Docs: "Collection operations overview", Kotlin](https://kotlinlang.org/docs/collection-operations.html)
   Official docs on how collection operations are declared: essential behaviour as member functions of the collection interfaces, everything else as extension functions, none of them touching the receiver. Use for: why `map` and `filter` are not members of `List`, and why an operation whose result nobody keeps still does all its work.
 - [Docs: "Collection transformation operations", Kotlin](https://kotlinlang.org/docs/collection-transformations.html)

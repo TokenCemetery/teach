@@ -218,12 +218,12 @@ The attribute is now looked up when the function runs. This is exactly why `unit
 
 3. ▢ For each command, say whether it works and why.
 
-   Layout: `project/shop/__init__.py`, `project/shop/orders.py`, where `orders.py` starts with `from . import storage`.
+    Layout: `project/shop/__init__.py`, `project/shop/orders.py`, where `orders.py` starts with `from . import storage`.
 
-   - a) `cd project && python shop/orders.py`
-   - b) `cd project && python -m shop.orders`
-   - c) `cd project/shop && python orders.py`
-   - d) `cd project/shop && python -m shop.orders`
+    - a) `cd project && python shop/orders.py`
+    - b) `cd project && python -m shop.orders`
+    - c) `cd project/shop && python orders.py`
+    - d) `cd project/shop && python -m shop.orders`
 
 <details markdown="1"><summary>Check</summary>
 

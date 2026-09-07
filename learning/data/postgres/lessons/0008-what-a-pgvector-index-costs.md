@@ -88,10 +88,10 @@ How gracefully pgvector's HNSW implementation handles updates and deletes has ge
 
 5. ▢ Which claim is true of what a pgvector HNSW index costs to keep?
 
-   - a) Its disk footprint is always smaller than the raw vectors it indexes, the same as a typical B-tree
-   - b) It costs disk space beyond the raw vectors (graph structure), a real build-time resource requirement, and a standing memory cost that competes with everything else the instance runs
-   - c) Once built, an HNSW index requires no further interaction with vacuum
-   - d) pgvector's update and delete handling for HNSW has been identical across every version of the extension
+    - a) Its disk footprint is always smaller than the raw vectors it indexes, the same as a typical B-tree
+    - b) It costs disk space beyond the raw vectors (graph structure), a real build-time resource requirement, and a standing memory cost that competes with everything else the instance runs
+    - c) Once built, an HNSW index requires no further interaction with vacuum
+    - d) pgvector's update and delete handling for HNSW has been identical across every version of the extension
 
 <details markdown="1"><summary>Check</summary>
 

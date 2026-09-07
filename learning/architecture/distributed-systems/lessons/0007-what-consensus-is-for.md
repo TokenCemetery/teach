@@ -88,10 +88,10 @@ Safety means the protocol never decides two different values for the same slot, 
 
 5. ▢ Which claim correctly describes what a consensus protocol is for?
 
-   - a) It eliminates the need for replicated state machines by removing the requirement to keep multiple servers in the same state
-   - b) It gets multiple servers to agree on the order of commands despite crashes and message loss, providing the internal coordination that a client-facing guarantee like linearizability is built on
-   - c) It guarantees the system always makes progress deciding new values, regardless of network conditions
-   - d) It only matters for systems that don't need linearizability
+    - a) It eliminates the need for replicated state machines by removing the requirement to keep multiple servers in the same state
+    - b) It gets multiple servers to agree on the order of commands despite crashes and message loss, providing the internal coordination that a client-facing guarantee like linearizability is built on
+    - c) It guarantees the system always makes progress deciding new values, regardless of network conditions
+    - d) It only matters for systems that don't need linearizability
 
 <details markdown="1"><summary>Check</summary>
 

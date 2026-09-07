@@ -88,10 +88,10 @@ Without `-r`, `read` interprets backslashes specially, mangling any line contain
 
 5. ▢ Which claim correctly describes a pitfall beyond a bare missing quote?
 
-   - a) `for f in $(ls *.txt)` is safe as long as no variable inside it is unquoted
-   - b) An unmatched glob like `*.txt` is passed through literally by default, and `for f in $(ls *.txt)` breaks on filenames with spaces regardless of quoting elsewhere, since the command substitution itself is the unquoted expansion
-   - c) `while read line` correctly handles every line in a file as long as the file itself is quoted in the redirection
-   - d) Double-quoting a command substitution's output automatically prevents word splitting in any later loop that processes it
+    - a) `for f in $(ls *.txt)` is safe as long as no variable inside it is unquoted
+    - b) An unmatched glob like `*.txt` is passed through literally by default, and `for f in $(ls *.txt)` breaks on filenames with spaces regardless of quoting elsewhere, since the command substitution itself is the unquoted expansion
+    - c) `while read line` correctly handles every line in a file as long as the file itself is quoted in the redirection
+    - d) Double-quoting a command substitution's output automatically prevents word splitting in any later loop that processes it
 
 <details markdown="1"><summary>Check</summary>
 

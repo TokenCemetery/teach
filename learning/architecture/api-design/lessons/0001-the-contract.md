@@ -65,10 +65,10 @@ Deliberately vary the unpromised behavior instead of leaving it accidentally sta
 
 4. ▢ Which of these is safest to change without breaking clients, all else being equal?
 
-   - a) The exact wording of an error message that was never documented as stable, changed at random for no functional reason
-   - b) The presence or absence of a documented, guaranteed response field
-   - c) A status code's meaning as specified by RFC 9110 (for example, making `404` mean something other than "not found")
-   - d) The order of fields in a JSON object, changed without ever having randomized or varied it before
+    - a) The exact wording of an error message that was never documented as stable, changed at random for no functional reason
+    - b) The presence or absence of a documented, guaranteed response field
+    - c) A status code's meaning as specified by RFC 9110 (for example, making `404` mean something other than "not found")
+    - d) The order of fields in a JSON object, changed without ever having randomized or varied it before
 
 <details markdown="1"><summary>Check</summary>
 

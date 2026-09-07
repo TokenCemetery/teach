@@ -143,10 +143,10 @@ Fine-tuning might reach 99% validity. Constrained decoding reaches 100% by const
 
 4. ▢ Which situation most favours fine-tuning?
 
-   - a) The model lacks knowledge of your internal documentation
-   - b) High request volume with a very long system prompt
-   - c) The model occasionally makes arithmetic errors in output
-   - d) The model needs information about events from this week
+    - a) The model lacks knowledge of your internal documentation
+    - b) High request volume with a very long system prompt
+    - c) The model occasionally makes arithmetic errors in output
+    - d) The model needs information about events from this week
 
 <details markdown="1"><summary>Check</summary>
 

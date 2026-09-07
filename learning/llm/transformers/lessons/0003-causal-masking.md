@@ -92,10 +92,10 @@ Positions 0, 1, and 2. Position 3, being later than position 2, is masked out.
 
 5. ▢ Which claim is true of how causal masking is implemented?
 
-   - a) It zeros out attention weights after softmax has already computed them
-   - b) It adds a large negative number to future positions' raw scores before softmax, so their exponentials become negligible and the remaining weights renormalize automatically
-   - c) It only applies to the first attention head, since later heads don't need the restriction
-   - d) Setting a future position's score to 0 is equivalent to masking it out
+    - a) It zeros out attention weights after softmax has already computed them
+    - b) It adds a large negative number to future positions' raw scores before softmax, so their exponentials become negligible and the remaining weights renormalize automatically
+    - c) It only applies to the first attention head, since later heads don't need the restriction
+    - d) Setting a future position's score to 0 is equivalent to masking it out
 
 <details markdown="1"><summary>Check</summary>
 

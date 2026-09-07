@@ -160,10 +160,10 @@ Both work because nothing ever converts a nil concrete pointer into the interfac
 
 3. ▢ When is an interface value equal to `nil`?
 
-   - a) When the value it holds is nil
-   - b) When the type it holds is nil
-   - c) When both type and value are nil
-   - d) When it was never assigned to
+    - a) When the value it holds is nil
+    - b) When the type it holds is nil
+    - c) When both type and value are nil
+    - d) When it was never assigned to
 
 <details markdown="1"><summary>Check</summary>
 

@@ -244,10 +244,10 @@ The body only iterates, so `Iterable` states the real requirement, accepts every
 
 3. ▢ Protocol or abstract base class?
 
-   - a) Typing a parameter that needs `read` and `close`, called with file objects and with objects from two libraries
-   - b) A family of payment providers, all written in this codebase, sharing retry logic
-   - c) Accepting "anything with a `to_json` method" from plugin code you do not control
-   - d) A base class that provides four concrete methods and requires one
+    - a) Typing a parameter that needs `read` and `close`, called with file objects and with objects from two libraries
+    - b) A family of payment providers, all written in this codebase, sharing retry logic
+    - c) Accepting "anything with a `to_json` method" from plugin code you do not control
+    - d) A base class that provides four concrete methods and requires one
 
 <details markdown="1"><summary>Check</summary>
 

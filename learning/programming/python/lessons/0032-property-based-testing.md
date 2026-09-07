@@ -183,10 +183,10 @@ The generator now only produces valid input. General rule: express the precondit
 
 3. ▢ Match each function to the property shape.
 
-   - a) `normalise_whitespace(s)`
-   - b) `compress(data)` and `decompress(data)`
-   - c) A new binary search replacing a linear scan
-   - d) `merge(a, b)` for two sorted lists
+    - a) `normalise_whitespace(s)`
+    - b) `compress(data)` and `decompress(data)`
+    - c) A new binary search replacing a linear scan
+    - d) `merge(a, b)` for two sorted lists
 
 <details markdown="1"><summary>Check</summary>
 

@@ -88,10 +88,10 @@ This is not additive: a request that used to succeed with the old, looser valida
 
 5. ▢ Which claim correctly describes versioning and migration strategy?
 
-   - a) Every change to an API, additive or not, should get its own new version for consistency
-   - b) A version is a commitment to a frozen contract snapshot; genuinely breaking changes (not additive ones) are the right occasion for a new version, ideally paired with per-client migration timing and a real translation path, not just an announcement
-   - c) A single global cutover date is always the correct way to introduce a breaking change, since it's simpler for the API provider
-   - d) A migration guide only needs to state that a change occurred, since integrating teams are responsible for figuring out the rest
+    - a) Every change to an API, additive or not, should get its own new version for consistency
+    - b) A version is a commitment to a frozen contract snapshot; genuinely breaking changes (not additive ones) are the right occasion for a new version, ideally paired with per-client migration timing and a real translation path, not just an announcement
+    - c) A single global cutover date is always the correct way to introduce a breaking change, since it's simpler for the API provider
+    - d) A migration guide only needs to state that a change occurred, since integrating teams are responsible for figuring out the rest
 
 <details markdown="1"><summary>Check</summary>
 

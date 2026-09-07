@@ -88,10 +88,10 @@ The honest conclusion is that there isn't yet enough information to say whether 
 
 5. ▢ Which claim is true of judging whether an eval score difference is real?
 
-   - a) Any positive gap between two scores counts as evidence of improvement, regardless of sample size
-   - b) A gap should be judged against the noise the sample size could produce by chance, and a paired comparison uses the data more efficiently than treating scores as independent
-   - c) Statistical significance only matters for task-specific metrics, not LLM-as-judge scores
-   - d) A larger eval set can never change whether a given gap looks significant
+    - a) Any positive gap between two scores counts as evidence of improvement, regardless of sample size
+    - b) A gap should be judged against the noise the sample size could produce by chance, and a paired comparison uses the data more efficiently than treating scores as independent
+    - c) Statistical significance only matters for task-specific metrics, not LLM-as-judge scores
+    - d) A larger eval set can never change whether a given gap looks significant
 
 <details markdown="1"><summary>Check</summary>
 

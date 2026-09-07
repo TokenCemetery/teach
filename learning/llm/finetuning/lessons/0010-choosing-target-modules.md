@@ -133,10 +133,10 @@ Restricting to attention at low rank is a deliberate capacity limit, which funct
 
 4. ▢ Which change is most likely to raise quality on a real task with a reasonable dataset?
 
-   - a) Raising the adapter rank from 16 to 64
-   - b) Extending targets to all linear layers
-   - c) Adding LoRA dropout at 0.05 to the run
-   - d) Training for one additional full epoch
+    - a) Raising the adapter rank from 16 to 64
+    - b) Extending targets to all linear layers
+    - c) Adding LoRA dropout at 0.05 to the run
+    - d) Training for one additional full epoch
 
 <details markdown="1"><summary>Check</summary>
 

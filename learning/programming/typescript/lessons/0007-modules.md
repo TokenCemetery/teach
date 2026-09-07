@@ -122,10 +122,10 @@ The import is a live binding to the exporting module's `count`, so both incremen
 
 2. ▢ Which of these is legal at the top of a module?
 
-   - a) `if (dev) { import { x } from "./a.js"; }`
-   - b) `const { x } = await import("./a.js");`
-   - c) `import { x } from dev ? "./a.js" : "./b.js";`
-   - d) `for (const m of mods) import(m);`
+    - a) `if (dev) { import { x } from "./a.js"; }`
+    - b) `const { x } = await import("./a.js");`
+    - c) `import { x } from dev ? "./a.js" : "./b.js";`
+    - d) `for (const m of mods) import(m);`
 
 <details markdown="1"><summary>Check</summary>
 

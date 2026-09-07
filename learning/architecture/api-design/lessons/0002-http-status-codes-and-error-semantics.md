@@ -88,10 +88,10 @@ The risk is a duplicate order: since `POST` isn't idempotent, the original reque
 
 5. ▢ Which claim correctly describes what a status code promises?
 
-   - a) All `4xx` codes mean the same thing: don't retry, the client is at fault
-   - b) A specific status code (like `429` vs. `400`) carries a distinct, spec-defined meaning about what happened and what the client should do next, which the broader `2xx`/`4xx`/`5xx` class alone doesn't convey
-   - c) A `201 Created` response guarantees the request that produced it is safe to retry
-   - d) `404` always means the resource genuinely doesn't exist
+    - a) All `4xx` codes mean the same thing: don't retry, the client is at fault
+    - b) A specific status code (like `429` vs. `400`) carries a distinct, spec-defined meaning about what happened and what the client should do next, which the broader `2xx`/`4xx`/`5xx` class alone doesn't convey
+    - c) A `201 Created` response guarantees the request that produced it is safe to retry
+    - d) `404` always means the resource genuinely doesn't exist
 
 <details markdown="1"><summary>Check</summary>
 

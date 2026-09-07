@@ -322,9 +322,9 @@ Does not compile: `E0382`, use of a moved value, since the first `if let` moved 
 
 5. ▢ This one is a judgement call, not a compile check. For each line, say whether this lesson's three exceptions justify the `unwrap` or `expect`, or whether it should return `Option` and let the caller decide instead.
 
-   - a) `let first = names.first().unwrap();`, immediately after `if names.is_empty() { return; }`
-   - b) `let port: u16 = std::env::var("PORT").ok().unwrap().parse().unwrap();`, in a web server's start-up code, with no check beforehand
-   - c) `let parsed: u32 = "42".parse().unwrap();`, inside a `#[test]` function
+    - a) `let first = names.first().unwrap();`, immediately after `if names.is_empty() { return; }`
+    - b) `let port: u16 = std::env::var("PORT").ok().unwrap().parse().unwrap();`, in a web server's start-up code, with no check beforehand
+    - c) `let parsed: u32 = "42".parse().unwrap();`, inside a `#[test]` function
 
 <details markdown="1"><summary>Check</summary>
 

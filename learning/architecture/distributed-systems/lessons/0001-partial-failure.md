@@ -71,10 +71,10 @@ A merely slow, but healthy, node can get falsely declared dead. If the system re
 
 4. ▢ Why can't a caller reliably distinguish a slow node from a dead one?
 
-   - a) Because most network protocols don't support health checks
-   - b) Because there is no upper bound on message delay over a network, so silence is consistent with both "still coming" and "never coming"
-   - c) Because dead nodes always return a specific error code that gets lost in transit
-   - d) Because this is solvable, but most client libraries haven't implemented it yet
+    - a) Because most network protocols don't support health checks
+    - b) Because there is no upper bound on message delay over a network, so silence is consistent with both "still coming" and "never coming"
+    - c) Because dead nodes always return a specific error code that gets lost in transit
+    - d) Because this is solvable, but most client libraries haven't implemented it yet
 
 <details markdown="1"><summary>Check</summary>
 

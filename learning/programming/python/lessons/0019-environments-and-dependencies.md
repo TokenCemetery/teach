@@ -162,10 +162,10 @@ Tools change. `pyproject.toml`, the specifier syntax, `requires-python`, editabl
 
 1. ▢ Which of these belongs in `[project.dependencies]`?
 
-   - a) `httpx`, used by the code that runs in production
-   - b) `pytest`, used by the tests
-   - c) `mypy`, run in CI
-   - d) `tomli`, needed only on Python 3.10 and older
+    - a) `httpx`, used by the code that runs in production
+    - b) `pytest`, used by the tests
+    - c) `mypy`, run in CI
+    - d) `tomli`, needed only on Python 3.10 and older
 
 <details markdown="1"><summary>Check</summary>
 
@@ -195,10 +195,10 @@ Think about a second library in the same environment.
 
 3. ▢ Match each to what it actually is.
 
-   - a) `pyproject.toml` `[project.dependencies]`
-   - b) `uv.lock` or `pylock.toml`
-   - c) output of `pip freeze`
-   - d) `.venv/`
+    - a) `pyproject.toml` `[project.dependencies]`
+    - b) `uv.lock` or `pylock.toml`
+    - c) output of `pip freeze`
+    - d) `.venv/`
 
 <details markdown="1"><summary>Check</summary>
 

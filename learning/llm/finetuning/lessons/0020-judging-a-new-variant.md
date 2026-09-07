@@ -114,10 +114,10 @@ The method may well beat that weak baseline and still lose to a properly configu
 
 3. ▢ Which paper property most undermines a claimed 1.5-point gain?
 
-   - a) The absence of any reported seed variance or intervals
-   - b) The use of a smaller model than you intend to use
-   - c) The absence of a released reference implementation
-   - d) The evaluation on only three separate downstream tasks
+    - a) The absence of any reported seed variance or intervals
+    - b) The use of a smaller model than you intend to use
+    - c) The absence of a released reference implementation
+    - d) The evaluation on only three separate downstream tasks
 
 <details markdown="1"><summary>Check</summary>
 

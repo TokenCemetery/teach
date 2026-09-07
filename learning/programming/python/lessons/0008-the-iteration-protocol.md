@@ -184,11 +184,11 @@ The fix is to decide inside the function: `lines = list(lines)` at the top, and 
 
 3. ▢ Which of these can be looped over twice with the same result? For each `no`, say what it is instead.
 
-   - a) `sorted(nums)`
-   - b) `reversed(nums)`
-   - c) `nums.keys()` for a dict `nums`
-   - d) `(n for n in nums)`
-   - e) `range(len(nums))`
+    - a) `sorted(nums)`
+    - b) `reversed(nums)`
+    - c) `nums.keys()` for a dict `nums`
+    - d) `(n for n in nums)`
+    - e) `range(len(nums))`
 
 <details markdown="1"><summary>Check</summary>
 

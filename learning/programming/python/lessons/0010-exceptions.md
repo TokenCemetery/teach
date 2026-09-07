@@ -209,10 +209,10 @@ else:
 
 3. ▢ Rank these four handlers from most to least defensible, and say what each hides.
 
-   - a) `except Exception: pass`
-   - b) `except Exception as exc: log.exception("item %s failed", item.id)`
-   - c) `except (KeyError, ValueError) as exc: raise ItemInvalid(item.id) from exc`
-   - d) `except: pass`
+    - a) `except Exception: pass`
+    - b) `except Exception as exc: log.exception("item %s failed", item.id)`
+    - c) `except (KeyError, ValueError) as exc: raise ItemInvalid(item.id) from exc`
+    - d) `except: pass`
 
 <details markdown="1"><summary>Check</summary>
 

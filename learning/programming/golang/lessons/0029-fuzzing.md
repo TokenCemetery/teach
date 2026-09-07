@@ -112,10 +112,10 @@ That turns each finding into a permanent regression test at zero cost, which is 
 
 3. ▢ Which is the strongest property to fuzz for a JSON encoder?
 
-   - a) That the output never contains a null byte
-   - b) That decoding the encoded value returns it
-   - c) That the output is shorter than the input
-   - d) That the function completes within one second
+    - a) That the output never contains a null byte
+    - b) That decoding the encoded value returns it
+    - c) That the output is shorter than the input
+    - d) That the function completes within one second
 
 <details markdown="1"><summary>Check</summary>
 

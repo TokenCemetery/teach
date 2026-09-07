@@ -88,10 +88,10 @@ It mirrors the reflexive-defensive-check pattern from lesson 1 (writing `if (x !
 
 5. ▢ Which claim correctly describes `val` and immutability in Kotlin?
 
-   - a) `val` guarantees both that the reference can't be reassigned and that the object it points to is immutable
-   - b) `val` guarantees only that the reference can't be reassigned; whether the object itself is mutable depends on the object's own type (a `MutableList` stays mutable even held by a `val`)
-   - c) `var` and `val` both allow reassignment, differing only in stylistic convention
-   - d) A `val` holding a `List` (not `MutableList`) can still have elements added to it directly
+    - a) `val` guarantees both that the reference can't be reassigned and that the object it points to is immutable
+    - b) `val` guarantees only that the reference can't be reassigned; whether the object itself is mutable depends on the object's own type (a `MutableList` stays mutable even held by a `val`)
+    - c) `var` and `val` both allow reassignment, differing only in stylistic convention
+    - d) A `val` holding a `List` (not `MutableList`) can still have elements added to it directly
 
 <details markdown="1"><summary>Check</summary>
 

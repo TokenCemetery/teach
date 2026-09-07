@@ -220,10 +220,10 @@ Minimal change: reverse them, `class ReadWrite(Writer, Reader)`, at which point 
 
 4. ▢ For each, choose inheritance, composition, `Protocol`, or `ABC`.
 
-   - a) `SqliteStorage` and `PostgresStorage`, both needing the same `save_all` loop
-   - b) `RetryingClient` that wraps any HTTP client and repeats failed calls
-   - c) A parameter that accepts anything with `read` and `close`, including third-party objects
-   - d) A `CaseInsensitiveDict` used everywhere a dict is expected
+    - a) `SqliteStorage` and `PostgresStorage`, both needing the same `save_all` loop
+    - b) `RetryingClient` that wraps any HTTP client and repeats failed calls
+    - c) A parameter that accepts anything with `read` and `close`, including third-party objects
+    - d) A `CaseInsensitiveDict` used everywhere a dict is expected
 
 <details markdown="1"><summary>Check</summary>
 

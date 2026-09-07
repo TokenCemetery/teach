@@ -88,10 +88,10 @@ HNSW typically achieves a better recall-for-a-given-latency point than IVF, but 
 
 5. ▢ Which claim is true of tuning an ANN index's search-time parameter (`nprobe` or `ef_search`)?
 
-   - a) There is one universally correct setting that works for any corpus and workload
-   - b) The right setting is a point on a recall/latency curve that has to be chosen against the workload's actual latency budget and tolerance for recall loss
-   - c) Setting the parameter as high as possible is always the right choice, since latency doesn't matter once an index exists
-   - d) The parameter only affects index build time, not query-time behavior
+    - a) There is one universally correct setting that works for any corpus and workload
+    - b) The right setting is a point on a recall/latency curve that has to be chosen against the workload's actual latency budget and tolerance for recall loss
+    - c) Setting the parameter as high as possible is always the right choice, since latency doesn't matter once an index exists
+    - d) The parameter only affects index build time, not query-time behavior
 
 <details markdown="1"><summary>Check</summary>
 

@@ -264,9 +264,9 @@ It hangs: `Mutex` is not reentrant, and the standard library documents the secon
 
 5. ▢ This one is a judgement call, not a compile check. For each `.lock().unwrap()` site, say whether it is defensible as written or should propagate the poisoning instead.
 
-   - a) A one-shot script that counts things behind a shared `Mutex`, prints the result and exits.
-   - b) A server's shared request counter, where one bad request should not stop other workers.
-   - c) A test that locks a shared fixture set up on another thread.
+    - a) A one-shot script that counts things behind a shared `Mutex`, prints the result and exits.
+    - b) A server's shared request counter, where one bad request should not stop other workers.
+    - c) A test that locks a shared fixture set up on another thread.
 
 <details markdown="1"><summary>Check</summary>
 

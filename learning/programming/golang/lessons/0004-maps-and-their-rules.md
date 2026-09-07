@@ -149,10 +149,10 @@ Fix one: `map[string]*Stat`, then `m["a"].N++` works because you are assigning t
 
 3. ▢ Two goroutines write to the same map with no synchronisation. Which is the most accurate description?
 
-   - a) A data race the detector may report when it is run
-   - b) A fatal runtime error that recover cannot intercept
-   - c) A panic the caller can recover from and retry
-   - d) Undefined behaviour that silently corrupts the table
+    - a) A data race the detector may report when it is run
+    - b) A fatal runtime error that recover cannot intercept
+    - c) A panic the caller can recover from and retry
+    - d) Undefined behaviour that silently corrupts the table
 
 <details markdown="1"><summary>Check</summary>
 

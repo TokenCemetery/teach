@@ -121,10 +121,10 @@ Run both with `-count=10` and let `benchstat` decide. It will report the change 
 
 3. ▢ Which metric is most stable across different machines?
 
-   - a) Nanoseconds per operation for the call
-   - b) Total iterations the benchmark completed
-   - c) Allocations per operation from `-benchmem`
-   - d) Wall-clock seconds the benchmark ran
+    - a) Nanoseconds per operation for the call
+    - b) Total iterations the benchmark completed
+    - c) Allocations per operation from `-benchmem`
+    - d) Wall-clock seconds the benchmark ran
 
 <details markdown="1"><summary>Check</summary>
 

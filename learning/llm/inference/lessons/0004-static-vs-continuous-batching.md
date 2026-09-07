@@ -72,10 +72,10 @@ Its slot is freed immediately, and a new waiting request is admitted into that s
 
 3. ▢ Which claim is true of continuous batching compared to static batching?
 
-   - a) It reduces the per-step compute cost of attention itself
-   - b) It removes the KV cache requirement for finished sequences before evicting them
-   - c) It keeps the batch full by admitting new requests as slots free up, instead of waiting for a fixed group to fully finish
-   - d) It only applies to CPU serving stacks like llama.cpp
+    - a) It reduces the per-step compute cost of attention itself
+    - b) It removes the KV cache requirement for finished sequences before evicting them
+    - c) It keeps the batch full by admitting new requests as slots free up, instead of waiting for a fixed group to fully finish
+    - d) It only applies to CPU serving stacks like llama.cpp
 
 <details markdown="1"><summary>Check</summary>
 

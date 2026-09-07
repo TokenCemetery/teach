@@ -88,10 +88,10 @@ A system relying on majority-based consensus doesn't merely choose to refuse req
 
 5. ▢ Which claim correctly weighs when consensus's cost is worth paying?
 
-   - a) Consensus should be used for every piece of data a system stores, since stronger guarantees are always better
-   - b) Consensus is worth its latency and availability cost specifically when a system needs a single agreed order that survives a minority of crashed servers; data that only needs eventual consistency doesn't need it
-   - c) Consensus has no latency cost as long as the cluster has no failures
-   - d) A minority partition's unavailability is a design flaw that better consensus protocols eventually eliminate
+    - a) Consensus should be used for every piece of data a system stores, since stronger guarantees are always better
+    - b) Consensus is worth its latency and availability cost specifically when a system needs a single agreed order that survives a minority of crashed servers; data that only needs eventual consistency doesn't need it
+    - c) Consensus has no latency cost as long as the cluster has no failures
+    - d) A minority partition's unavailability is a design flaw that better consensus protocols eventually eliminate
 
 <details markdown="1"><summary>Check</summary>
 

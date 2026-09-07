@@ -88,10 +88,10 @@ llama.cpp builds an explicit computation graph in `ggml` through function calls 
 
 5. ▢ Which claim is true of reading a real model's code after deriving the architecture from scratch?
 
-   - a) Real production models implement an entirely different architecture than what the original paper and this workspace derive
-   - b) The same pieces appear under different names, with a handful of small, standard deviations (position embedding scheme, activation function, norm placement) worth recognizing rather than treating as new
-   - c) Training code (loss, backward pass, optimizer) is always part of the model's own class definition
-   - d) llama.cpp computes fundamentally different mathematical operations than a PyTorch implementation, since it's written in C
+    - a) Real production models implement an entirely different architecture than what the original paper and this workspace derive
+    - b) The same pieces appear under different names, with a handful of small, standard deviations (position embedding scheme, activation function, norm placement) worth recognizing rather than treating as new
+    - c) Training code (loss, backward pass, optimizer) is always part of the model's own class definition
+    - d) llama.cpp computes fundamentally different mathematical operations than a PyTorch implementation, since it's written in C
 
 <details markdown="1"><summary>Check</summary>
 

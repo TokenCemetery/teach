@@ -92,10 +92,10 @@ It prevents pretraining absorption most directly, since that pathway depends on 
 
 5. ▢ Which claim is true of canary strings and n-gram overlap checks compared to lesson 1's guided-instruction test?
 
-   - a) Both are detection methods identical in mechanism to the guided-instruction test
-   - b) They are preventive or corpus-dependent techniques, usable when building a custom eval or when the training corpus is accessible, unlike the guided-instruction test which works on any model's behavior
-   - c) They only apply to code-execution evals, not text-based ones
-   - d) Canary strings guarantee a benchmark will never be trained on
+    - a) Both are detection methods identical in mechanism to the guided-instruction test
+    - b) They are preventive or corpus-dependent techniques, usable when building a custom eval or when the training corpus is accessible, unlike the guided-instruction test which works on any model's behavior
+    - c) They only apply to code-execution evals, not text-based ones
+    - d) Canary strings guarantee a benchmark will never be trained on
 
 <details markdown="1"><summary>Check</summary>
 

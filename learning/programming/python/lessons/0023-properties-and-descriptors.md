@@ -187,11 +187,11 @@ The cost of writing them now is real: three lines per field instead of zero, a `
 
 3. ▢ For each, say whether it is a data descriptor, a non-data descriptor, or neither.
 
-   - a) `def method(self): ...` in a class body
-   - b) `@property`
-   - c) `@cached_property`
-   - d) `size = 10` in a class body
-   - e) `@staticmethod`
+    - a) `def method(self): ...` in a class body
+    - b) `@property`
+    - c) `@cached_property`
+    - d) `size = 10` in a class body
+    - e) `@staticmethod`
 
 <details markdown="1"><summary>Check</summary>
 

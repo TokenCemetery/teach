@@ -113,10 +113,10 @@ Fix with an `atomic.Bool`, or better, with a channel closed to signal completion
 
 3. ▢ `go test -race ./...` passes. What have you established?
 
-   - a) The code under test contains no data races
-   - b) No race occurred in the paths that ran
-   - c) The detector found races but tolerated them
-   - d) The code is safe for concurrent use everywhere
+    - a) The code under test contains no data races
+    - b) No race occurred in the paths that ran
+    - c) The detector found races but tolerated them
+    - d) The code is safe for concurrent use everywhere
 
 <details markdown="1"><summary>Check</summary>
 

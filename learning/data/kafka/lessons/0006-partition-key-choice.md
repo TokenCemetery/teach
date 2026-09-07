@@ -90,10 +90,10 @@ A topic carrying independent, self-contained events with no ordering requirement
 
 5. ▢ Which claim is true of choosing a partition key?
 
-   - a) A key choice only affects ordering, with no consequence for parallelism
-   - b) The key choice determines both the ordering guarantee a topic provides and the granularity at which its traffic can be parallelized, since both follow from same-key-same-partition routing
-   - c) Adding more partitions always fixes a hot-key bottleneck, regardless of what the key is
-   - d) Choosing no key at all is always a worse choice than choosing some key, regardless of the topic's ordering requirements
+    - a) A key choice only affects ordering, with no consequence for parallelism
+    - b) The key choice determines both the ordering guarantee a topic provides and the granularity at which its traffic can be parallelized, since both follow from same-key-same-partition routing
+    - c) Adding more partitions always fixes a hot-key bottleneck, regardless of what the key is
+    - d) Choosing no key at all is always a worse choice than choosing some key, regardless of the topic's ordering requirements
 
 <details markdown="1"><summary>Check</summary>
 

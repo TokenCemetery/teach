@@ -88,10 +88,10 @@ Resource and collection: `/users/{id}/orders` as the nested collection expressin
 
 5. ▢ Which claim correctly distinguishes offset from cursor-based pagination?
 
-   - a) Offset pagination is always faster and should be preferred whenever performance matters
-   - b) Offset pagination can silently skip or duplicate items under concurrent inserts or deletes, since a numeric position shifts as the collection changes; cursor-based pagination avoids this by identifying a specific point in the sequence instead
-   - c) Cursor-based pagination requires the client to parse the cursor to know which page it's on
-   - d) Filtering and pagination are unrelated design decisions with no shared discipline
+    - a) Offset pagination is always faster and should be preferred whenever performance matters
+    - b) Offset pagination can silently skip or duplicate items under concurrent inserts or deletes, since a numeric position shifts as the collection changes; cursor-based pagination avoids this by identifying a specific point in the sequence instead
+    - c) Cursor-based pagination requires the client to parse the cursor to know which page it's on
+    - d) Filtering and pagination are unrelated design decisions with no shared discipline
 
 <details markdown="1"><summary>Check</summary>
 

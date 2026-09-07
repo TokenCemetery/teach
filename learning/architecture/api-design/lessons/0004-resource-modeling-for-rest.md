@@ -88,10 +88,10 @@ Hiding the action inside a generic-looking `PATCH` risks a client updating an un
 
 5. ▢ Which claim correctly describes REST resource modeling?
 
-   - a) A resource's URL should describe the action being taken on it, since that's clearer to read
-   - b) A resource identifies a thing, the HTTP method carries the action, and nesting a collection under a resource expresses a real relationship clients will build logic around
-   - c) Standard methods (List, Get, Create, Update, Delete) should be customized per resource type to fit each resource's specific needs
-   - d) Any action that doesn't fit CRUD should be forced into the closest-matching standard method, even if it has side effects the method name doesn't suggest
+    - a) A resource's URL should describe the action being taken on it, since that's clearer to read
+    - b) A resource identifies a thing, the HTTP method carries the action, and nesting a collection under a resource expresses a real relationship clients will build logic around
+    - c) Standard methods (List, Get, Create, Update, Delete) should be customized per resource type to fit each resource's specific needs
+    - d) Any action that doesn't fit CRUD should be forced into the closest-matching standard method, even if it has side effects the method name doesn't suggest
 
 <details markdown="1"><summary>Check</summary>
 

@@ -88,10 +88,10 @@ Both layers relate a token to fundamentally the same representation: the input e
 
 5. ▢ Which claim is true of the input embedding and output layers?
 
-   - a) They must always be learned as two entirely separate matrices, since they serve unrelated purposes
-   - b) Their shapes are transposes of each other, which is what makes weight tying, reusing one matrix for both, possible
-   - c) Weight tying only saves parameters and provides no other benefit
-   - d) The output layer's shape depends on `vocab_size` alone, with no relationship to `d_model`
+    - a) They must always be learned as two entirely separate matrices, since they serve unrelated purposes
+    - b) Their shapes are transposes of each other, which is what makes weight tying, reusing one matrix for both, possible
+    - c) Weight tying only saves parameters and provides no other benefit
+    - d) The output layer's shape depends on `vocab_size` alone, with no relationship to `d_model`
 
 <details markdown="1"><summary>Check</summary>
 

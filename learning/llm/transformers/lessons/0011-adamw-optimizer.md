@@ -98,10 +98,10 @@ Folding weight decay into the gradient means it gets divided by `sqrt(v_hat)` al
 
 5. ▢ Which claim is true of AdamW compared to plain gradient descent and original Adam?
 
-   - a) AdamW uses the same fixed step size for every parameter, the same as plain gradient descent
-   - b) AdamW adds momentum and per-parameter adaptive scaling like Adam, but applies weight decay directly to the weights rather than folding it into the gradient
-   - c) AdamW removes adaptive per-parameter scaling entirely, relying only on momentum
-   - d) Weight decay in AdamW is scaled by the same adaptive denominator as the gradient-based update
+    - a) AdamW uses the same fixed step size for every parameter, the same as plain gradient descent
+    - b) AdamW adds momentum and per-parameter adaptive scaling like Adam, but applies weight decay directly to the weights rather than folding it into the gradient
+    - c) AdamW removes adaptive per-parameter scaling entirely, relying only on momentum
+    - d) Weight decay in AdamW is scaled by the same adaptive denominator as the gradient-based update
 
 <details markdown="1"><summary>Check</summary>
 

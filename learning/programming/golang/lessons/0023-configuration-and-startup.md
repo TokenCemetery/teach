@@ -141,10 +141,10 @@ Flags land in the process command line, which is readable by other users through
 
 3. ▢ Which check belongs at startup rather than at first use?
 
-   - a) Whether the payment provider is currently reachable
-   - b) Whether the configured listen address parses correctly
-   - c) Whether today's partition table has been created
-   - d) Whether the user submitting this request is authorised
+    - a) Whether the payment provider is currently reachable
+    - b) Whether the configured listen address parses correctly
+    - c) Whether today's partition table has been created
+    - d) Whether the user submitting this request is authorised
 
 <details markdown="1"><summary>Check</summary>
 

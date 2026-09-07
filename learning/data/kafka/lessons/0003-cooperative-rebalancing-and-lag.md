@@ -92,10 +92,10 @@ Systemic under-provisioning. A rebalance storm would show up as repeated join/le
 
 5. ▢ Which claim is true of diagnosing consumer lag?
 
-   - a) Growing lag always means the consumers' processing logic is too slow
-   - b) Whether the group is stable (not stuck rebalancing) should be checked before assuming lag reflects a processing-speed problem
-   - c) Cooperative rebalancing eliminates the need to ever check for rebalance-related disruption
-   - d) Lag concentrated on a single partition and lag spread evenly across all partitions point at the same underlying cause
+    - a) Growing lag always means the consumers' processing logic is too slow
+    - b) Whether the group is stable (not stuck rebalancing) should be checked before assuming lag reflects a processing-speed problem
+    - c) Cooperative rebalancing eliminates the need to ever check for rebalance-related disruption
+    - d) Lag concentrated on a single partition and lag spread evenly across all partitions point at the same underlying cause
 
 <details markdown="1"><summary>Check</summary>
 

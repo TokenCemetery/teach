@@ -111,10 +111,10 @@ This asymmetry is why leaks are found with profiles rather than crashes: the pro
 
 3. ▢ Which command shows you goroutines blocked in your service right now?
 
-   - a) `go test -race ./... -count 1`
-   - b) `curl localhost:6060/debug/pprof/goroutine?debug=2`
-   - c) `go build -gcflags=-m ./... 2>&1`
-   - d) `GODEBUG=gctrace=1 ./svc 2>&1 | tail`
+    - a) `go test -race ./... -count 1`
+    - b) `curl localhost:6060/debug/pprof/goroutine?debug=2`
+    - c) `go build -gcflags=-m ./... 2>&1`
+    - d) `GODEBUG=gctrace=1 ./svc 2>&1 | tail`
 
 <details markdown="1"><summary>Check</summary>
 

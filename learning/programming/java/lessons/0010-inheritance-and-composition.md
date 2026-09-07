@@ -303,16 +303,16 @@ It prints `Repository.save(Object)`. `UserRepository.save(String)` has a differe
 
 3. ▢ Given `Vehicle.service()` below, which of these overrides in `Car` compile?
 
-   ```java
-   class Vehicle {
-       public Vehicle service() throws IOException { return this; }
-   }
-   ```
+    ```java
+    class Vehicle {
+        public Vehicle service() throws IOException { return this; }
+    }
+    ```
 
-   - a) `Vehicle service() throws IOException { return this; }`
-   - b) `public Car service() { return this; }`
-   - c) `public Vehicle service() throws IOException, SQLException { return this; }`
-   - d) `public Vehicle service() throws IOException { return this; }`
+    - a) `Vehicle service() throws IOException { return this; }`
+    - b) `public Car service() { return this; }`
+    - c) `public Vehicle service() throws IOException, SQLException { return this; }`
+    - d) `public Vehicle service() throws IOException { return this; }`
 
 <details markdown="1"><summary>Check</summary>
 

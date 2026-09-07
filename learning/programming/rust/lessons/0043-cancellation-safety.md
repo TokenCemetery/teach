@@ -203,9 +203,9 @@ Lesson 44 explains `Unpin` and why an async fn's future lacks it; for now, addin
 
 5. ▢ A judgement call, not a compile check: for each `select!` branch, say whether recreating it every lap is fine or needs the state moved above the loop.
 
-   - a) A branch that is a bare `mpsc::Receiver::recv()` call, nothing else.
-   - b) A hand-rolled branch that appends bytes to a `Vec<u8>` declared inside the loop, waiting for a full line, racing a per-line timeout.
-   - c) A branch that calls tokio's `Mutex::lock()` and increments a counter immediately after acquiring it, racing a shutdown signal.
+    - a) A branch that is a bare `mpsc::Receiver::recv()` call, nothing else.
+    - b) A hand-rolled branch that appends bytes to a `Vec<u8>` declared inside the loop, waiting for a full line, racing a per-line timeout.
+    - c) A branch that calls tokio's `Mutex::lock()` and increments a counter immediately after acquiring it, racing a shutdown signal.
 
 <details markdown="1"><summary>Check</summary>
 

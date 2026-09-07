@@ -106,10 +106,10 @@ Ask what the thread is doing during each of the two calls, not what the coroutin
 
 5. ▢ Which claim about `launch` is correct?
 
-   - a) `launch` returns a `Job` carrying the block's result, which `await` then unwraps
-   - b) `launch` returns a `Job` with no result, while `async` returns a `Deferred`
-   - c) `launch` returns a `Deferred`, so a fire-and-forget call must discard it explicitly
-   - d) `launch` returns nothing at all, so a launched coroutine cannot be cancelled
+    - a) `launch` returns a `Job` carrying the block's result, which `await` then unwraps
+    - b) `launch` returns a `Job` with no result, while `async` returns a `Deferred`
+    - c) `launch` returns a `Deferred`, so a fire-and-forget call must discard it explicitly
+    - d) `launch` returns nothing at all, so a launched coroutine cannot be cancelled
 
 <details markdown="1"><summary>Check</summary>
 

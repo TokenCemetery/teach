@@ -88,10 +88,10 @@ Automated failover still takes measurable time and can still lose committed-but-
 
 5. ▢ Which claim is true of what a managed Postgres service changes?
 
-   - a) It removes the need to understand vacuum, replication lag, and index maintenance cost, since the provider handles all of it
-   - b) It automates specific operational tasks (patching, backups, failover) and changes an operator's access and tooling, without changing whether the underlying mechanisms (bloat, lag, index cost) still exist
-   - c) Every managed Postgres service supports every extension a self-hosted instance could install
-   - d) Automated failover on a managed service is always synchronous and lossless by default
+    - a) It removes the need to understand vacuum, replication lag, and index maintenance cost, since the provider handles all of it
+    - b) It automates specific operational tasks (patching, backups, failover) and changes an operator's access and tooling, without changing whether the underlying mechanisms (bloat, lag, index cost) still exist
+    - c) Every managed Postgres service supports every extension a self-hosted instance could install
+    - d) Automated failover on a managed service is always synchronous and lossless by default
 
 <details markdown="1"><summary>Check</summary>
 

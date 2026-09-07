@@ -153,10 +153,10 @@ Fix by returning when `!ok`, or by setting `in = nil` so the case stops being se
 
 3. ▢ What does adding a `default` case change?
 
-   - a) The select prefers the default over ready cases
-   - b) The select never blocks and may take default
-   - c) The select retries each case until one succeeds
-   - d) The select blocks until every case is ready
+    - a) The select prefers the default over ready cases
+    - b) The select never blocks and may take default
+    - c) The select retries each case until one succeeds
+    - d) The select blocks until every case is ready
 
 <details markdown="1"><summary>Check</summary>
 

@@ -156,10 +156,10 @@ The fix is not automatic getters. It is exporting only what callers need to set,
 
 3. ▢ Which package name is worth objecting to in review?
 
-   - a) `package token`
-   - b) `package httpapi`
-   - c) `package models`
-   - d) `package store`
+    - a) `package token`
+    - b) `package httpapi`
+    - c) `package models`
+    - d) `package store`
 
 <details markdown="1"><summary>Check</summary>
 

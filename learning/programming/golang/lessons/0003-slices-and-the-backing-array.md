@@ -132,10 +132,10 @@ Same source, opposite outcome, decided entirely by the input length. That data d
 
 3. ▢ You are writing a function that returns the first two elements of a caller-supplied slice, and the caller will keep appending to your result. Which return expression is safe?
 
-   - a) `return s[:2]`
-   - b) `return s[0:2:2]`
-   - c) `return s[:2:cap(s)]`
-   - d) `return s[0:2]`
+    - a) `return s[:2]`
+    - b) `return s[0:2:2]`
+    - c) `return s[:2:cap(s)]`
+    - d) `return s[0:2]`
 
 <details markdown="1"><summary>Hint</summary>
 

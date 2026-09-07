@@ -88,10 +88,10 @@ Gradient descent updates the model's weights to minimize one quantity; the backw
 
 5. ▢ Which claim is true of teacher forcing during training?
 
-   - a) The model conditions each prediction on its own previously generated tokens, the same way it does during inference
-   - b) The model conditions each position's prediction on the true, ground-truth previous tokens from the training data, not on its own predictions
-   - c) Teacher forcing requires a separate forward pass for each position in the sequence
-   - d) Teacher forcing and causal masking address unrelated problems with no connection to each other
+    - a) The model conditions each prediction on its own previously generated tokens, the same way it does during inference
+    - b) The model conditions each position's prediction on the true, ground-truth previous tokens from the training data, not on its own predictions
+    - c) Teacher forcing requires a separate forward pass for each position in the sequence
+    - d) Teacher forcing and causal masking address unrelated problems with no connection to each other
 
 <details markdown="1"><summary>Check</summary>
 

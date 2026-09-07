@@ -88,10 +88,10 @@ Define one stable, transport-independent identifier for "insufficient funds" (a 
 
 5. ▢ Which claim correctly describes designing an error model across REST and gRPC?
 
-   - a) The wire formats must be made byte-for-byte identical across both transports for the error model to count as consistent
-   - b) A consistent error model means the same conceptual error types are identifiable across transports, using each transport's native mechanism (Problem Details `type` for HTTP, structured detail for gRPC), not identical wire formats
-   - c) gRPC status codes are simply renamed HTTP status codes with a one-to-one mapping
-   - d) A client should always branch on the human-readable `detail` field, since it contains the most specific information
+    - a) The wire formats must be made byte-for-byte identical across both transports for the error model to count as consistent
+    - b) A consistent error model means the same conceptual error types are identifiable across transports, using each transport's native mechanism (Problem Details `type` for HTTP, structured detail for gRPC), not identical wire formats
+    - c) gRPC status codes are simply renamed HTTP status codes with a one-to-one mapping
+    - d) A client should always branch on the human-readable `detail` field, since it contains the most specific information
 
 <details markdown="1"><summary>Check</summary>
 

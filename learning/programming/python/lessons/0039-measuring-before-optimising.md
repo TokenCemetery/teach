@@ -192,11 +192,11 @@ Note what is not the fix: threads, processes, a faster loop body, or rewriting i
 
 3. ▢ Which of these is worth doing for performance on a current interpreter?
 
-   - a) Hoisting `self.config.timeout` out of a loop that reads it 1,000 times
-   - b) Replacing a `for` loop that appends with a list comprehension
-   - c) Compiling a regex once at module level instead of per call
-   - d) Replacing `dict.get(k)` with a `try/except KeyError`
-   - e) Replacing 200,000 `list.pop(0)` calls with a `deque`
+    - a) Hoisting `self.config.timeout` out of a loop that reads it 1,000 times
+    - b) Replacing a `for` loop that appends with a list comprehension
+    - c) Compiling a regex once at module level instead of per call
+    - d) Replacing `dict.get(k)` with a `try/except KeyError`
+    - e) Replacing 200,000 `list.pop(0)` calls with a `deque`
 
 <details markdown="1"><summary>Check</summary>
 

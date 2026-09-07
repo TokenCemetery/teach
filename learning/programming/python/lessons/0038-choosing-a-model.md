@@ -115,11 +115,11 @@ A program that cannot stop cleanly loses in-flight work, and the loss shows up a
 
 1. ▢ Choose a model for each, and say why.
 
-   - a) A report joining data from six HTTP APIs
-   - b) Resampling 40,000 audio files
-   - c) A chat server with 30,000 open connections
-   - d) A nightly job parsing 200 GB of logs, CPU-bound in the parse
-   - e) A command-line tool that makes three API calls
+    - a) A report joining data from six HTTP APIs
+    - b) Resampling 40,000 audio files
+    - c) A chat server with 30,000 open connections
+    - d) A nightly job parsing 200 GB of logs, CPU-bound in the parse
+    - e) A command-line tool that makes three API calls
 
 <details markdown="1"><summary>Check</summary>
 
@@ -151,11 +151,11 @@ Only after those does the model matter, and at this scale a thread pool sized to
 
 3. ▢ A CPU-bound job takes 60 seconds. Rank these by expected improvement.
 
-   - a) Eight threads
-   - b) Eight processes
-   - c) Rewriting the inner loop with NumPy
-   - d) Replacing an O(n squared) scan with a dict lookup
-   - e) Converting the code to `asyncio`
+    - a) Eight threads
+    - b) Eight processes
+    - c) Rewriting the inner loop with NumPy
+    - d) Replacing an O(n squared) scan with a dict lookup
+    - e) Converting the code to `asyncio`
 
 <details markdown="1"><summary>Check</summary>
 

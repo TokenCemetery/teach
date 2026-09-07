@@ -230,10 +230,10 @@ Nine lines become two, and the restore is no longer something a future edit can 
 
 3. ▢ Choose the scope.
 
-   - a) A Docker container running a database for the whole suite
-   - b) An `Order` object each test mutates
-   - c) A parsed configuration file, read-only
-   - d) A temporary directory holding files one test writes
+    - a) A Docker container running a database for the whole suite
+    - b) An `Order` object each test mutates
+    - c) A parsed configuration file, read-only
+    - d) A temporary directory holding files one test writes
 
 <details markdown="1"><summary>Check</summary>
 

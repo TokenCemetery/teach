@@ -92,10 +92,10 @@ Mean: `(2+4+4+6)/4 = 4`. Deviations from the mean: `-2, 0, 0, 2`. Variance: `(4+
 
 5. ▢ Which claim is true of residual connections and layer normalization in a transformer block?
 
-   - a) Residual connections replace the need for layer normalization entirely
-   - b) Layer norm always normalizes across the batch dimension, the same way batch norm does
-   - c) Residual connections give gradients a direct path through a deep stack, and layer norm keeps each layer's activations in a stable, predictable range, independent of batch size
-   - d) Pre-norm and post-norm placement have no effect on training stability at any depth
+    - a) Residual connections replace the need for layer normalization entirely
+    - b) Layer norm always normalizes across the batch dimension, the same way batch norm does
+    - c) Residual connections give gradients a direct path through a deep stack, and layer norm keeps each layer's activations in a stable, predictable range, independent of batch size
+    - d) Pre-norm and post-norm placement have no effect on training stability at any depth
 
 <details markdown="1"><summary>Check</summary>
 

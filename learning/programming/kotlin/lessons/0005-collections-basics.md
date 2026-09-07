@@ -88,10 +88,10 @@ If the same underlying collection object is also reachable through a `MutableLis
 
 5. ▢ Which claim correctly describes Kotlin's collection mutability model?
 
-   - a) Assigning a mutable collection to a `val` makes its contents read-only, the same as declaring it a `List`
-   - b) `val` restricts reference reassignment; `List` versus `MutableList` restricts object mutation through a given reference; the two guarantees are independent and can be combined in any pairing
-   - c) A `List` reference guarantees the underlying data can never change from any part of the program
-   - d) `Set` and `Map` don't have a mutable counterpart, only `List` does
+    - a) Assigning a mutable collection to a `val` makes its contents read-only, the same as declaring it a `List`
+    - b) `val` restricts reference reassignment; `List` versus `MutableList` restricts object mutation through a given reference; the two guarantees are independent and can be combined in any pairing
+    - c) A `List` reference guarantees the underlying data can never change from any part of the program
+    - d) `Set` and `Map` don't have a mutable counterpart, only `List` does
 
 <details markdown="1"><summary>Check</summary>
 

@@ -232,11 +232,11 @@ Now a call with the wrong name raises `AttributeError` and a call with the wrong
 
 3. ▢ Fake, stub, or nothing at all?
 
-   - a) An HTTP client for a third-party address-lookup service
-   - b) A function computing VAT from a country code
-   - c) `datetime.now()`, in a function that decides whether an invoice is overdue
-   - d) A `Repository` class that talks to a real database, in a unit test of pricing logic
-   - e) A `dict` of feature flags
+    - a) An HTTP client for a third-party address-lookup service
+    - b) A function computing VAT from a country code
+    - c) `datetime.now()`, in a function that decides whether an invoice is overdue
+    - d) A `Repository` class that talks to a real database, in a unit test of pricing logic
+    - e) A `dict` of feature flags
 
 <details markdown="1"><summary>Check</summary>
 

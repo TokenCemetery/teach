@@ -122,10 +122,10 @@ To respond to it, the loop has to check `ctx.Err()`, or `ctx.Done()` in a `selec
 
 3. ▢ Which belongs in a `context.Value`?
 
-   - a) The database handle the request will query
-   - b) The trace id assigned to this request
-   - c) The retry count configured for this service
-   - d) The logger the handler should write to
+    - a) The database handle the request will query
+    - b) The trace id assigned to this request
+    - c) The retry count configured for this service
+    - d) The logger the handler should write to
 
 <details markdown="1"><summary>Check</summary>
 

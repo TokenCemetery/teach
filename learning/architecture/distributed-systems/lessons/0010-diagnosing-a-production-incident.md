@@ -88,10 +88,10 @@ The first question is whether partial failure and a timeout-based failure detect
 
 5. ▢ Which claim best describes the point of this lesson's diagnostic approach?
 
-   - a) Every incident should be attributed to "the network" without further investigation, since partial failure explains all distributed failures equally
-   - b) A real diagnosis names the specific mechanism (a timeout, a consistency model mismatch, a skipped consensus step) that failed, using the precise vocabulary this workspace built, rather than stopping at a description of the observed symptom
-   - c) Consensus protocols make diagnosing incidents unnecessary, since they eliminate all four checklist categories
-   - d) Incidents caused by consistency model mismatches can only be diagnosed by reading the Raft paper
+    - a) Every incident should be attributed to "the network" without further investigation, since partial failure explains all distributed failures equally
+    - b) A real diagnosis names the specific mechanism (a timeout, a consistency model mismatch, a skipped consensus step) that failed, using the precise vocabulary this workspace built, rather than stopping at a description of the observed symptom
+    - c) Consensus protocols make diagnosing incidents unnecessary, since they eliminate all four checklist categories
+    - d) Incidents caused by consistency model mismatches can only be diagnosed by reading the Raft paper
 
 <details markdown="1"><summary>Check</summary>
 

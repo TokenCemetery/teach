@@ -88,10 +88,10 @@ Very little, on its own. Without knowing the temperature, seed, model and framew
 
 5. ▢ Which claim is true of what makes a reported eval number defensible?
 
-   - a) A single run's score is sufficient on its own, as long as the harness ran without errors
-   - b) The score should be reported alongside what produced it (seed, temperature, versions, eval set version) and, when relevant, its spread across multiple runs
-   - c) Setting a random seed guarantees identical results across any hardware or library version
-   - d) Greedy decoding should always be used for evals, regardless of the deployed system's actual sampling temperature
+    - a) A single run's score is sufficient on its own, as long as the harness ran without errors
+    - b) The score should be reported alongside what produced it (seed, temperature, versions, eval set version) and, when relevant, its spread across multiple runs
+    - c) Setting a random seed guarantees identical results across any hardware or library version
+    - d) Greedy decoding should always be used for evals, regardless of the deployed system's actual sampling temperature
 
 <details markdown="1"><summary>Check</summary>
 

@@ -76,10 +76,10 @@ Building the graph once, separate from execution, is what lets the same graph be
 
 4. ▢ Which claim is true of ggml's architecture compared to vLLM's?
 
-   - a) Both require CUDA and cannot run on CPU-only hardware
-   - b) ggml separates the computation graph from the backend that executes it, letting one codebase target CPU, CUDA, Metal, and Vulkan
-   - c) ggml requires a full BLAS library and a Python runtime to operate
-   - d) Threading in llama.cpp serves the same purpose as batching in vLLM
+    - a) Both require CUDA and cannot run on CPU-only hardware
+    - b) ggml separates the computation graph from the backend that executes it, letting one codebase target CPU, CUDA, Metal, and Vulkan
+    - c) ggml requires a full BLAS library and a Python runtime to operate
+    - d) Threading in llama.cpp serves the same purpose as batching in vLLM
 
 <details markdown="1"><summary>Check</summary>
 

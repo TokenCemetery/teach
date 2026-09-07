@@ -96,10 +96,10 @@ Switching to `acks=all` (`-1`), so the producer only receives a successful ackno
 
 5. ▢ Which claim is true of at-most-once, at-least-once, and exactly-once delivery semantics?
 
-   - a) At-least-once guarantees no duplicates, only that no message is lost
-   - b) A delivery guarantee has to be stated across producer-to-broker, broker durability, and consumer-to-processing legs, since loss or duplication can occur independently at each one
-   - c) Exactly-once is achieved simply by committing the consumer offset after processing rather than before
-   - d) The acks setting has no effect on whether a message can be lost after the producer receives a successful acknowledgment
+    - a) At-least-once guarantees no duplicates, only that no message is lost
+    - b) A delivery guarantee has to be stated across producer-to-broker, broker durability, and consumer-to-processing legs, since loss or duplication can occur independently at each one
+    - c) Exactly-once is achieved simply by committing the consumer offset after processing rather than before
+    - d) The acks setting has no effect on whether a message can be lost after the producer receives a successful acknowledgment
 
 <details markdown="1"><summary>Check</summary>
 

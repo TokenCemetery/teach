@@ -157,10 +157,10 @@ Investigate: try an earlier checkpoint, a lower learning rate, mixing in general
 
 5. ▢ Which most completely eliminates the forgetting problem?
 
-   - a) Mixing general instruction data into the training set
-   - b) Serving the base model unmerged and routing by request
-   - c) Lowering the learning rate and training for fewer steps
-   - d) Reducing the adapter rank and the target module count
+    - a) Mixing general instruction data into the training set
+    - b) Serving the base model unmerged and routing by request
+    - c) Lowering the learning rate and training for fewer steps
+    - d) Reducing the adapter rank and the target module count
 
 <details markdown="1"><summary>Check</summary>
 

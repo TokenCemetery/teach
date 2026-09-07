@@ -146,10 +146,10 @@ The fix is an unexported helper that assumes the lock is held, conventionally na
 
 3. ▢ You need a request counter shared by many goroutines. Which is the best fit?
 
-   - a) A plain int guarded by a `sync.Mutex`
-   - b) An `atomic.Int64` incremented with Add
-   - c) A channel that a counting goroutine reads
-   - d) A `sync.Map` keyed by the counter name
+    - a) A plain int guarded by a `sync.Mutex`
+    - b) An `atomic.Int64` incremented with Add
+    - c) A channel that a counting goroutine reads
+    - d) A `sync.Map` keyed by the counter name
 
 <details markdown="1"><summary>Check</summary>
 

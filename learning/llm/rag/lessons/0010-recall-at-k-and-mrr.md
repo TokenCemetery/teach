@@ -96,10 +96,10 @@ No. Recall@100 measures whether the relevant document appears anywhere in the to
 
 5. ▢ Which claim is true of recall@k and MRR?
 
-   - a) They measure exactly the same thing, so reporting both is redundant
-   - b) Recall@k measures whether a relevant result falls within a budget of k; MRR measures how high-ranked the first relevant result is, rewarding rank 1 far more than a lower rank
-   - c) MRR should always be preferred over recall@k, regardless of the workload
-   - d) Recall@k is insensitive to the choice of k; any value gives the same result
+    - a) They measure exactly the same thing, so reporting both is redundant
+    - b) Recall@k measures whether a relevant result falls within a budget of k; MRR measures how high-ranked the first relevant result is, rewarding rank 1 far more than a lower rank
+    - c) MRR should always be preferred over recall@k, regardless of the workload
+    - d) Recall@k is insensitive to the choice of k; any value gives the same result
 
 <details markdown="1"><summary>Check</summary>
 

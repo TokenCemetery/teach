@@ -213,10 +213,10 @@ Use `if totals.get("FR"):`, or `if "FR" in totals:`. The general rule: a `defaul
 
 3. ▢ For each pair, say which is right and why.
 
-   - a) `random.choice(alphabet)` or `secrets.choice(alphabet)` for a password-reset token
-   - b) `float("19.99")` or `Decimal("19.99")` for a price
-   - c) `datetime.now()` or `datetime.now(timezone.utc)` for a record's creation time
-   - d) `list.pop(0)` or `deque.popleft()` for a work queue
+    - a) `random.choice(alphabet)` or `secrets.choice(alphabet)` for a password-reset token
+    - b) `float("19.99")` or `Decimal("19.99")` for a price
+    - c) `datetime.now()` or `datetime.now(timezone.utc)` for a record's creation time
+    - d) `list.pop(0)` or `deque.popleft()` for a work queue
 
 <details markdown="1"><summary>Check</summary>
 

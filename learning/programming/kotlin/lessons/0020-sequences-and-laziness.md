@@ -101,10 +101,10 @@ Any two of these. A small collection, or a chain whose per-element work is trivi
 
 5. ▢ Which claim correctly describes how a sequence chain executes?
 
-   - a) A sequence chain runs each step over every element before the next step
-   - b) A sequence chain runs every step for one element before the next element
-   - c) A sequence chain runs its steps as soon as each intermediate operation appears
-   - d) A sequence chain runs its steps eagerly but avoids building any intermediate lists
+    - a) A sequence chain runs each step over every element before the next step
+    - b) A sequence chain runs every step for one element before the next element
+    - c) A sequence chain runs its steps as soon as each intermediate operation appears
+    - d) A sequence chain runs its steps eagerly but avoids building any intermediate lists
 
 <details markdown="1"><summary>Check</summary>
 

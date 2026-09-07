@@ -86,10 +86,10 @@ Compare each claim in the generated answer against the retrieved context it's su
 
 5. ▢ Which claim is true of generation-stage failures in a RAG system?
 
-   - a) They can only occur when retrieval has already failed to find the right context
-   - b) They can occur even when retrieval and prompt construction both succeeded, since faithfulness to retrieved context is a separate property generation can still get wrong
-   - c) Misattributing a claim to the wrong source document is the same failure as fabricating an unsupported claim
-   - d) A model always prefers retrieved context over its own parametric knowledge, since that's the reason retrieval was added
+    - a) They can only occur when retrieval has already failed to find the right context
+    - b) They can occur even when retrieval and prompt construction both succeeded, since faithfulness to retrieved context is a separate property generation can still get wrong
+    - c) Misattributing a claim to the wrong source document is the same failure as fabricating an unsupported claim
+    - d) A model always prefers retrieved context over its own parametric knowledge, since that's the reason retrieval was added
 
 <details markdown="1"><summary>Check</summary>
 

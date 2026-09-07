@@ -160,10 +160,10 @@ One of these two unmodifiable lists knows about `source` after the fact, and one
 
 3. ▢ You return a collection from a method and must guarantee the caller cannot change your internal state, now or later. Which do you write?
 
-   - a) `return Collections.unmodifiableList(items);`
-   - b) `return List.copyOf(items);`
-   - c) `return Arrays.asList(items.toArray(new String[0]));`
-   - d) `return new ArrayList<>(items);`
+    - a) `return Collections.unmodifiableList(items);`
+    - b) `return List.copyOf(items);`
+    - c) `return Arrays.asList(items.toArray(new String[0]));`
+    - d) `return new ArrayList<>(items);`
 
 <details markdown="1"><summary>Check</summary>
 

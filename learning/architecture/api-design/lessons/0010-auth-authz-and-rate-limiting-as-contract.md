@@ -88,10 +88,10 @@ Without visible rate-limit state (remaining requests, the limit, the reset time)
 
 5. ▢ Which claim correctly describes treating auth, authz, and rate limiting as contract?
 
-   - a) These are security and infrastructure concerns that should be handled entirely separately from API design
-   - b) Scopes, the choice of auth scheme, and visible rate-limit state are all deliberate contract decisions that should be designed alongside resources, errors, and evolution strategy, not added afterward by default middleware
-   - c) An API key and OAuth 2.0 are functionally interchangeable, so the choice between them doesn't affect the contract
-   - d) Rate limiting only needs to be visible in the response that actually triggers a 429
+    - a) These are security and infrastructure concerns that should be handled entirely separately from API design
+    - b) Scopes, the choice of auth scheme, and visible rate-limit state are all deliberate contract decisions that should be designed alongside resources, errors, and evolution strategy, not added afterward by default middleware
+    - c) An API key and OAuth 2.0 are functionally interchangeable, so the choice between them doesn't affect the contract
+    - d) Rate limiting only needs to be visible in the response that actually triggers a 429
 
 <details markdown="1"><summary>Check</summary>
 

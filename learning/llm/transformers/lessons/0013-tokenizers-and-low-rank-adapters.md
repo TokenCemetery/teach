@@ -94,10 +94,10 @@ Both the frozen matrix and the low-rank correction are linear, additive terms in
 
 5. ▢ Which claim is true of how this workspace's derivations connect to `llm/finetuning`'s coverage of tokenizers and low-rank adapters?
 
-   - a) `llm/finetuning` and this workspace teach the exact same content, so one is redundant
-   - b) This workspace derives the mechanisms (BPE's merge algorithm, the exact matrix a low-rank update attaches to) that `llm/finetuning` names in passing without deriving
-   - c) A low-rank adapter can only attach to the output layer, never to an attention projection
-   - d) `vocab_size` is chosen independently of the tokenizer and has no effect on the embedding or output layers
+    - a) `llm/finetuning` and this workspace teach the exact same content, so one is redundant
+    - b) This workspace derives the mechanisms (BPE's merge algorithm, the exact matrix a low-rank update attaches to) that `llm/finetuning` names in passing without deriving
+    - c) A low-rank adapter can only attach to the output layer, never to an attention projection
+    - d) `vocab_size` is chosen independently of the tokenizer and has no effect on the embedding or output layers
 
 <details markdown="1"><summary>Check</summary>
 

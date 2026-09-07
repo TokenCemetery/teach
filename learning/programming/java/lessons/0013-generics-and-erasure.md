@@ -218,10 +218,10 @@ record Pair<A, B>(A first, B second) {}
 
 3. ▢ You are writing `static <T> void copy(List<? A> src, List<? B> dest)`, which reads every element out of `src` and writes it into `dest`. Which wildcards are `A` and `B`?
 
-   - a) both `extends T`
-   - b) `A` is `extends T`, `B` is `super T`
-   - c) `A` is `super T`, `B` is `extends T`
-   - d) both plain `T`, no wildcard
+    - a) both `extends T`
+    - b) `A` is `extends T`, `B` is `super T`
+    - c) `A` is `super T`, `B` is `extends T`
+    - d) both plain `T`, no wildcard
 
 <details markdown="1"><summary>Check</summary>
 

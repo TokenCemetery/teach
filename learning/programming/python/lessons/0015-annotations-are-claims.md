@@ -196,11 +196,11 @@ What type does the checker think `config` has, and what does it think `config["t
 
 3. ▢ Which of these annotations is wrong or misleading?
 
-   - a) `def send(self, msg: str) -> None:` on a method that returns nothing
-   - b) `def parse(raw: bytes) -> dict:`
-   - c) `def total(orders: list[Order]) -> float:` called with a generator
-   - d) `def find(id: int) -> Order:` on a function that returns `None` when absent
-   - e) `count: int = 0` as a local variable
+    - a) `def send(self, msg: str) -> None:` on a method that returns nothing
+    - b) `def parse(raw: bytes) -> dict:`
+    - c) `def total(orders: list[Order]) -> float:` called with a generator
+    - d) `def find(id: int) -> Order:` on a function that returns `None` when absent
+    - e) `count: int = 0` as a local variable
 
 <details markdown="1"><summary>Check</summary>
 

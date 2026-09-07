@@ -81,10 +81,10 @@ The chunked-prefill chunk size addresses it, since this is lesson 5's head-of-li
 
 4. ▢ Which claim is true of `--gpu-memory-utilization` and `--tensor-parallel-size`?
 
-   - a) Both reduce the model's own memory footprint, the way quantization does
-   - b) `--gpu-memory-utilization` sets how much of one GPU vLLM may use; `--tensor-parallel-size` spreads the model across multiple GPUs
-   - c) `--tensor-parallel-size` is only useful for CPU serving stacks like llama.cpp
-   - d) Raising `--gpu-memory-utilization` has no trade-off; it should always be set to 1.0
+    - a) Both reduce the model's own memory footprint, the way quantization does
+    - b) `--gpu-memory-utilization` sets how much of one GPU vLLM may use; `--tensor-parallel-size` spreads the model across multiple GPUs
+    - c) `--tensor-parallel-size` is only useful for CPU serving stacks like llama.cpp
+    - d) Raising `--gpu-memory-utilization` has no trade-off; it should always be set to 1.0
 
 <details markdown="1"><summary>Check</summary>
 

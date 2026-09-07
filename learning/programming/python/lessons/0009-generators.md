@@ -212,10 +212,10 @@ Note what changed for callers: they can no longer index the result, call `len` o
 
 3. ▢ Which of these is a generator function, and what do the others return?
 
-   - a) `def f(): return (n for n in range(3))`
-   - b) `def f(): yield from range(3)`
-   - c) `def f(): return [n for n in range(3)]`
-   - d) `def f(): print(1); yield`
+    - a) `def f(): return (n for n in range(3))`
+    - b) `def f(): yield from range(3)`
+    - c) `def f(): return [n for n in range(3)]`
+    - d) `def f(): print(1); yield`
 
 <details markdown="1"><summary>Check</summary>
 

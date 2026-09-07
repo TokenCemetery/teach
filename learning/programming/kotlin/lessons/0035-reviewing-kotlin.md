@@ -114,10 +114,10 @@ When to leave it alone: when `items` is small, when the predicate and the transf
 
 5. ▢ Which claim describes a review comment worth posting?
 
-   - a) A good review comment names the idiom the author should have used instead
-   - b) A good review comment names the mechanism, the consequence, and the cheaper alternative
-   - c) A good review comment cites the style guide, since taste is not arguable
-   - d) A good review comment flags every construct that could have been written shorter
+    - a) A good review comment names the idiom the author should have used instead
+    - b) A good review comment names the mechanism, the consequence, and the cheaper alternative
+    - c) A good review comment cites the style guide, since taste is not arguable
+    - d) A good review comment flags every construct that could have been written shorter
 
 <details markdown="1"><summary>Check</summary>
 

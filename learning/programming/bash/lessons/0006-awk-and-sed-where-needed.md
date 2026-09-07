@@ -88,10 +88,10 @@ The data here is a single value, not a stream of lines, so bash's own built-in p
 
 5. ▢ Which claim correctly describes choosing between `sed`, `awk`, and bash's own capabilities?
 
-   - a) `awk` should always be preferred over `sed`, since it's a more complete language
-   - b) Match the tool to the actual shape of the task: `sed` for line-based pattern substitution, `awk` for field-oriented extraction or computation, and bash's own string handling for a single value that doesn't need stream processing at all
-   - c) `sed` and `awk` should replace bash's control flow (loops, conditionals) wherever possible for consistency
-   - d) Using `sed` or `awk` at all indicates a script has outgrown shell and should be rewritten in Python
+    - a) `awk` should always be preferred over `sed`, since it's a more complete language
+    - b) Match the tool to the actual shape of the task: `sed` for line-based pattern substitution, `awk` for field-oriented extraction or computation, and bash's own string handling for a single value that doesn't need stream processing at all
+    - c) `sed` and `awk` should replace bash's control flow (loops, conditionals) wherever possible for consistency
+    - d) Using `sed` or `awk` at all indicates a script has outgrown shell and should be rewritten in Python
 
 <details markdown="1"><summary>Check</summary>
 

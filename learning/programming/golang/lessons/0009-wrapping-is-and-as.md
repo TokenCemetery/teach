@@ -141,10 +141,10 @@ It compares the top of the chain only. The day any layer between the source and 
 
 3. ▢ You want the `*ValidationError` out of a wrapped chain. Which call is right?
 
-   - a) `errors.As(err, &verr)` with `verr` declared as `*ValidationError`
-   - b) `errors.As(err, verr)` with `verr` declared as `*ValidationError`
-   - c) `errors.Is(err, &verr)` with `verr` declared as `*ValidationError`
-   - d) `errors.As(&err, verr)` with `verr` declared as `*ValidationError`
+    - a) `errors.As(err, &verr)` with `verr` declared as `*ValidationError`
+    - b) `errors.As(err, verr)` with `verr` declared as `*ValidationError`
+    - c) `errors.Is(err, &verr)` with `verr` declared as `*ValidationError`
+    - d) `errors.As(&err, verr)` with `verr` declared as `*ValidationError`
 
 <details markdown="1"><summary>Check</summary>
 

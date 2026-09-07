@@ -215,10 +215,10 @@ The reason is what the failure tells you. In the original, a broken `vat` and a 
 
 3. ▢ Which of these tests has logic in it, and why does that matter?
 
-   - a) `assert total([{"amount": 10}, {"amount": 2}]) == 12`
-   - b) `assert total(items) == sum(i["amount"] for i in items)`
-   - c) `for n in (0, 1, 5): assert double(n) == n * 2`
-   - d) `assert format_money(Decimal("1234.5")) == "1,234.50"`
+    - a) `assert total([{"amount": 10}, {"amount": 2}]) == 12`
+    - b) `assert total(items) == sum(i["amount"] for i in items)`
+    - c) `for n in (0, 1, 5): assert double(n) == n * 2`
+    - d) `assert format_money(Decimal("1234.5")) == "1,234.50"`
 
 <details markdown="1"><summary>Check</summary>
 

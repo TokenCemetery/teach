@@ -164,9 +164,9 @@ No measurable difference: both land within half a percent in this run, since a v
 
 5. ▢ A judgement call, not a benchmark: for each field below, say whether it should own its data, borrow it, or be a `Cow`, using lesson 27's outlives-who test and this lesson's ratios.
 
-   - a) A path read once while its source line is still in scope, then discarded.
-   - b) A path pushed into a `Vec` kept for the program's lifetime, long after the source line is gone.
-   - c) A path almost always clean, occasionally needing one character replaced first.
+    - a) A path read once while its source line is still in scope, then discarded.
+    - b) A path pushed into a `Vec` kept for the program's lifetime, long after the source line is gone.
+    - c) A path almost always clean, occasionally needing one character replaced first.
 
 <details markdown="1"><summary>Hint</summary>
 

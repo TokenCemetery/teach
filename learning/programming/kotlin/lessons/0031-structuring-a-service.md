@@ -103,10 +103,10 @@ All three are the same defect in different clothing: a dependency the function r
 
 5. ▢ Which claim about a pure Kotlin project's directory structure is correct?
 
-   - a) A pure Kotlin project mirrors the full package path, root package directories included
-   - b) A pure Kotlin project mirrors the package structure, omitting the common root package
-   - c) A pure Kotlin project puts every file under the source root, ignoring packages
-   - d) A pure Kotlin project must follow Java's layout, since the JVM requires it
+    - a) A pure Kotlin project mirrors the full package path, root package directories included
+    - b) A pure Kotlin project mirrors the package structure, omitting the common root package
+    - c) A pure Kotlin project puts every file under the source root, ignoring packages
+    - d) A pure Kotlin project must follow Java's layout, since the JVM requires it
 
 <details markdown="1"><summary>Check</summary>
 

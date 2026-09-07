@@ -94,10 +94,10 @@ The network would have no genuinely nonlinear way to reshape or refine what a si
 
 5. ▢ Which claim is true of the position-wise feed-forward block?
 
-   - a) It mixes information across positions, the same way attention does
-   - b) It applies the same two-layer network, with a nonlinearity, to each position's vector independently, with no cross-position mixing
-   - c) Its hidden dimension is always smaller than `d_model`, to reduce computation
-   - d) It replaces the need for attention entirely once stacked deep enough
+    - a) It mixes information across positions, the same way attention does
+    - b) It applies the same two-layer network, with a nonlinearity, to each position's vector independently, with no cross-position mixing
+    - c) Its hidden dimension is always smaller than `d_model`, to reduce computation
+    - d) It replaces the need for attention entirely once stacked deep enough
 
 <details markdown="1"><summary>Check</summary>
 

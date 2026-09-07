@@ -92,10 +92,10 @@ Applying a change that would remove data the running query still needs to see (s
 
 5. ▢ Which claim is true of diagnosing replication lag?
 
-   - a) A single lag number from pg_stat_replication is sufficient; receive and replay lag always move together
-   - b) Receive lag and replay lag measure different things and can diverge, so distinguishing them is part of the diagnosis, not just a detail
-   - c) A missing row in pg_stat_replication for a standby means it has extremely high lag
-   - d) hot_standby_feedback and max_standby_streaming_delay both always cancel a conflicting query, with no trade-off between them
+    - a) A single lag number from pg_stat_replication is sufficient; receive and replay lag always move together
+    - b) Receive lag and replay lag measure different things and can diverge, so distinguishing them is part of the diagnosis, not just a detail
+    - c) A missing row in pg_stat_replication for a standby means it has extremely high lag
+    - d) hot_standby_feedback and max_standby_streaming_delay both always cancel a conflicting query, with no trade-off between them
 
 <details markdown="1"><summary>Check</summary>
 

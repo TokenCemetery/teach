@@ -145,10 +145,10 @@ The original fails because `or` tests truthiness, and `0` is falsy, so `0 or 30`
 
 4. ▢ Which comparison is correct for detecting that an optional argument was omitted?
 
-   - a) `if value == None:`
-   - b) `if value is None:`
-   - c) `if not value:`
-   - d) `if value != True:`
+    - a) `if value == None:`
+    - b) `if value is None:`
+    - c) `if not value:`
+    - d) `if value != True:`
 
 <details markdown="1"><summary>Check</summary>
 

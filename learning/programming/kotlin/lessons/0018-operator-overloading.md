@@ -88,10 +88,10 @@ Just one: all four comparison operators resolve through a single `compareTo()` f
 
 5. ▢ Which claim correctly describes operator overloading in Kotlin?
 
-   - a) Any function named `plus`, `get`, or `compareTo` is automatically used for the corresponding operator syntax
-   - b) Each operator symbol maps to one specific, fixed function name; the `operator` modifier is what actually authorizes the compiler to use a given function for that symbol, and overloading is safe specifically where the symbol's conventional meaning still applies to the type
-   - c) `<`, `<=`, `>`, and `>=` each require their own separate operator function implementation
-   - d) The compiler enforces that an operator overload's behavior matches the symbol's conventional meaning, rejecting overloads that don't
+    - a) Any function named `plus`, `get`, or `compareTo` is automatically used for the corresponding operator syntax
+    - b) Each operator symbol maps to one specific, fixed function name; the `operator` modifier is what actually authorizes the compiler to use a given function for that symbol, and overloading is safe specifically where the symbol's conventional meaning still applies to the type
+    - c) `<`, `<=`, `>`, and `>=` each require their own separate operator function implementation
+    - d) The compiler enforces that an operator overload's behavior matches the symbol's conventional meaning, rejecting overloads that don't
 
 <details markdown="1"><summary>Check</summary>
 

@@ -148,10 +148,10 @@ The second discards a real failure. `data` will be whatever was read before the 
 
 3. ▢ A caller needs to know which field failed validation. Which design gives it that?
 
-   - a) A sentinel error value compared with `errors.Is`
-   - b) A custom error type inspected with `errors.As`
-   - c) A formatted message the caller parses out
-   - d) A boolean second result beside the error
+    - a) A sentinel error value compared with `errors.Is`
+    - b) A custom error type inspected with `errors.As`
+    - c) A formatted message the caller parses out
+    - d) A boolean second result beside the error
 
 <details markdown="1"><summary>Check</summary>
 

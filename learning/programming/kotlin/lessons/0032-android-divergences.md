@@ -101,10 +101,10 @@ It converts the `Flow` into a Compose `State` object and manages the lifecycle s
 
 5. ▢ Which claim about `viewModelScope` is correct?
 
-   - a) viewModelScope must be cancelled by hand in onCleared, exactly like any owned scope
-   - b) viewModelScope cancels its coroutines automatically when the ViewModel it belongs to is cleared
-   - c) viewModelScope survives the ViewModel, so long work can finish after the screen closes
-   - d) viewModelScope is tied to the Composition, so it ends when the composable exits
+    - a) viewModelScope must be cancelled by hand in onCleared, exactly like any owned scope
+    - b) viewModelScope cancels its coroutines automatically when the ViewModel it belongs to is cleared
+    - c) viewModelScope survives the ViewModel, so long work can finish after the screen closes
+    - d) viewModelScope is tied to the Composition, so it ends when the composable exits
 
 <details markdown="1"><summary>Check</summary>
 

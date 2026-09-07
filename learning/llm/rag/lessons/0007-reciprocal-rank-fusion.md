@@ -102,10 +102,10 @@ Measure retrieval quality (recall@k or MRR, stage 6's metrics) against a labeled
 
 5. ▢ Which claim is true of reciprocal rank fusion?
 
-   - a) It requires normalizing BM25 and cosine similarity scores onto the same scale before combining them
-   - b) It combines rankings using only rank position, which sidesteps the need to compare incomparable score scales
-   - c) A document that ranks 1st in one ranking and last in another will always outrank a document that ranks moderately in both
-   - d) The constant `k` has no effect on the fused ranking, only on the numeric score's magnitude
+    - a) It requires normalizing BM25 and cosine similarity scores onto the same scale before combining them
+    - b) It combines rankings using only rank position, which sidesteps the need to compare incomparable score scales
+    - c) A document that ranks 1st in one ranking and last in another will always outrank a document that ranks moderately in both
+    - d) The constant `k` has no effect on the fused ranking, only on the numeric score's magnitude
 
 <details markdown="1"><summary>Check</summary>
 

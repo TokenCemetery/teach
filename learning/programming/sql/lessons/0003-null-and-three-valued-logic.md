@@ -174,10 +174,10 @@ Rewrite with `NOT EXISTS`, which compares row by row and is unaffected. Note tha
 
 3. ▢ Which of these correctly finds rows where `country` is absent?
 
-   - a) `WHERE country = NULL`
-   - b) `WHERE country IS NULL`
-   - c) `WHERE country <> 'GB'`
-   - d) `WHERE coalesce(country, '') = ''`
+    - a) `WHERE country = NULL`
+    - b) `WHERE country IS NULL`
+    - c) `WHERE country <> 'GB'`
+    - d) `WHERE coalesce(country, '') = ''`
 
 <details markdown="1"><summary>Check</summary>
 

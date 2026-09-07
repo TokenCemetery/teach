@@ -84,10 +84,10 @@ Position bias, by rerunning the comparison with the responses' order swapped and
 
 5. ▢ Which claim is true of checking an LLM judge's pairwise verdicts for position bias?
 
-   - a) Position bias only affects judges grading code, not prose
-   - b) Rerunning a comparison with response order swapped and checking for a consistent verdict is a direct way to detect it
-   - c) A judge that explains its reasoning before choosing is automatically immune to position bias
-   - d) Position bias is eliminated by using a numeric 1-to-10 scale instead of a pairwise choice
+    - a) Position bias only affects judges grading code, not prose
+    - b) Rerunning a comparison with response order swapped and checking for a consistent verdict is a direct way to detect it
+    - c) A judge that explains its reasoning before choosing is automatically immune to position bias
+    - d) Position bias is eliminated by using a numeric 1-to-10 scale instead of a pairwise choice
 
 <details markdown="1"><summary>Check</summary>
 

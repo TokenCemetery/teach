@@ -104,10 +104,10 @@ If the audit matters, it needs an owner: a queue with a worker that has a contex
 
 3. ▢ Which is the strongest case for a goroutine?
 
-   - a) Five independent HTTP calls whose latency overlaps
-   - b) A hundred integer conversions inside one loop
-   - c) A single computation whose result is needed next
-   - d) An audit write that nobody waits on or checks
+    - a) Five independent HTTP calls whose latency overlaps
+    - b) A hundred integer conversions inside one loop
+    - c) A single computation whose result is needed next
+    - d) An audit write that nobody waits on or checks
 
 <details markdown="1"><summary>Check</summary>
 

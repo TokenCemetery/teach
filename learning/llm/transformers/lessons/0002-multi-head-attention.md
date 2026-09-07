@@ -101,10 +101,10 @@ The per-head dimension. Lesson 1's scaling exists to counteract the variance gro
 
 5. ▢ Which claim is true of multi-head attention compared to computing attention once at the full model dimension?
 
-   - a) Multi-head attention runs attention once, then artificially splits the single output into pieces afterward
-   - b) Each head has its own learned projections and computes attention independently in a smaller subspace, before all heads are concatenated and projected back
-   - c) All heads share the same query, key, and value projection matrices, differing only in which positions they attend to
-   - d) The final projection `W_O` is optional and can be skipped without changing what the model can represent
+    - a) Multi-head attention runs attention once, then artificially splits the single output into pieces afterward
+    - b) Each head has its own learned projections and computes attention independently in a smaller subspace, before all heads are concatenated and projected back
+    - c) All heads share the same query, key, and value projection matrices, differing only in which positions they attend to
+    - d) The final projection `W_O` is optional and can be skipped without changing what the model can represent
 
 <details markdown="1"><summary>Check</summary>
 

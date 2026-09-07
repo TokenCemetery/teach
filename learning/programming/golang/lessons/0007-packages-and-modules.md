@@ -113,10 +113,10 @@ Options: move the package out of `internal` and accept that it is now public API
 
 2. ▢ Which name is idiomatic for a package that decodes JWTs?
 
-   - a) `package jwtutils`
-   - b) `package JWTDecoder`
-   - c) `package jwt_decode`
-   - d) `package jwt`
+    - a) `package jwtutils`
+    - b) `package JWTDecoder`
+    - c) `package jwt_decode`
+    - d) `package jwt`
 
 <details markdown="1"><summary>Check</summary>
 

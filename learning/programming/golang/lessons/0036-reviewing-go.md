@@ -113,10 +113,10 @@ Human attention is the scarce resource in review. Spending it on what a tool dec
 
 3. ▢ Which finding should a *tool* catch rather than a reviewer?
 
-   - a) A value receiver copying an embedded mutex
-   - b) An interface declared beside its one implementation
-   - c) A goroutine with no path that stops it
-   - d) A repository leaking a driver-specific error
+    - a) A value receiver copying an embedded mutex
+    - b) An interface declared beside its one implementation
+    - c) A goroutine with no path that stops it
+    - d) A repository leaking a driver-specific error
 
 <details markdown="1"><summary>Check</summary>
 

@@ -95,10 +95,10 @@ Because binary floating point cannot represent most decimal fractions exactly, s
 
 3. ▢ Which is the better reason to write `varchar(50)` instead of `text` in PostgreSQL?
 
-   - a) It uses less storage
-   - b) It is faster to compare and index
-   - c) A business rule caps the value at 50
-   - d) It documents the intended size
+    - a) It uses less storage
+    - b) It is faster to compare and index
+    - c) A business rule caps the value at 50
+    - d) It documents the intended size
 
 <details markdown="1"><summary>Check</summary>
 

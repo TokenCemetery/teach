@@ -160,17 +160,17 @@ It reads without taking ownership, and it accepts the widest set of callers: a `
 
 3. ▢ Which calls compile?
 
-   ```rust
-   fn sum(v: &[i32]) -> i32 { v.iter().sum() }
+    ```rust
+    fn sum(v: &[i32]) -> i32 { v.iter().sum() }
 
-   let vec = vec![1, 2, 3];
-   let arr = [1, 2, 3];
-   ```
+    let vec = vec![1, 2, 3];
+    let arr = [1, 2, 3];
+    ```
 
-   - a) `sum(&vec)`
-   - b) `sum(&arr)`
-   - c) `sum(&vec[1..])`
-   - d) `sum(vec)`
+    - a) `sum(&vec)`
+    - b) `sum(&arr)`
+    - c) `sum(&vec[1..])`
+    - d) `sum(vec)`
 
 <details markdown="1"><summary>Check</summary>
 

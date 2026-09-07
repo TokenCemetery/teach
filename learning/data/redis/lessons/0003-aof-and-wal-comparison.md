@@ -90,10 +90,10 @@ The shopping cart is a defensible fit for Redis: losing up to a second of recent
 
 5. ▢ Which claim is true of comparing Redis's persistence to Postgres's WAL?
 
-   - a) AOF at any fsync setting provides the same per-transaction guarantee Postgres's default does
-   - b) Even Redis's strongest common durability setting is an operational choice layered onto a system designed to be fast-first, and the actual decision is whether a use case can tolerate a quantified loss window or needs Postgres's tighter default guarantee
-   - c) RDB and AOF have identical data-loss windows, since both eventually get rewritten or snapshotted
-   - d) Postgres's WAL and Redis's AOF share no structural similarity at all
+    - a) AOF at any fsync setting provides the same per-transaction guarantee Postgres's default does
+    - b) Even Redis's strongest common durability setting is an operational choice layered onto a system designed to be fast-first, and the actual decision is whether a use case can tolerate a quantified loss window or needs Postgres's tighter default guarantee
+    - c) RDB and AOF have identical data-loss windows, since both eventually get rewritten or snapshotted
+    - d) Postgres's WAL and Redis's AOF share no structural similarity at all
 
 <details markdown="1"><summary>Check</summary>
 

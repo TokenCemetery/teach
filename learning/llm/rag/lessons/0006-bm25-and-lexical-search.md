@@ -80,10 +80,10 @@ A longer document has more opportunities to contain any given query term simply 
 
 5. ▢ Which claim is true of BM25 compared to vector search?
 
-   - a) BM25 and vector search fail on the exact same kinds of queries, so combining them adds nothing
-   - b) BM25 excels at exact term matching but misses synonymous phrasing with no shared words, while vector search does the reverse
-   - c) BM25 requires an embedding model to compute term relevance
-   - d) Vector search always outperforms BM25 for any query, since it captures meaning rather than just words
+    - a) BM25 and vector search fail on the exact same kinds of queries, so combining them adds nothing
+    - b) BM25 excels at exact term matching but misses synonymous phrasing with no shared words, while vector search does the reverse
+    - c) BM25 requires an embedding model to compute term relevance
+    - d) Vector search always outperforms BM25 for any query, since it captures meaning rather than just words
 
 <details markdown="1"><summary>Check</summary>
 

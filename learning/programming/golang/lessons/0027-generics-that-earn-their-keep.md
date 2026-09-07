@@ -130,10 +130,10 @@ Without the tilde, the union matches the exact type only, so every domain type i
 
 3. ▢ Which is the strongest case for a type parameter?
 
-   - a) A cache whose logic is identical for every value type
-   - b) A function needing a method the type provides
-   - c) A function used with exactly one concrete type
-   - d) A function that inspects struct tags via reflection
+    - a) A cache whose logic is identical for every value type
+    - b) A function needing a method the type provides
+    - c) A function used with exactly one concrete type
+    - d) A function that inspects struct tags via reflection
 
 <details markdown="1"><summary>Check</summary>
 

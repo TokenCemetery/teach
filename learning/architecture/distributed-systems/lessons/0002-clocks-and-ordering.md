@@ -88,10 +88,10 @@ Nothing: a tie (or any comparison at all) between logical clock values for two e
 
 5. ▢ Which claim is true about ordering events in a distributed system?
 
-   - a) NTP-synchronized wall-clock timestamps are reliable enough to order events correctly as long as clocks sync every few seconds
-   - b) The happens-before relation, and logical clocks that respect it, order events based on actual causal relationships (program order or message passing), not physical time
-   - c) Two events with different logical clock values are always causally related
-   - d) Concurrent events (per happens-before) genuinely have no correct order, and no clock can recover one
+    - a) NTP-synchronized wall-clock timestamps are reliable enough to order events correctly as long as clocks sync every few seconds
+    - b) The happens-before relation, and logical clocks that respect it, order events based on actual causal relationships (program order or message passing), not physical time
+    - c) Two events with different logical clock values are always causally related
+    - d) Concurrent events (per happens-before) genuinely have no correct order, and no clock can recover one
 
 <details markdown="1"><summary>Check</summary>
 

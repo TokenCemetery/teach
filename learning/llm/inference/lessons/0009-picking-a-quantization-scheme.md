@@ -88,10 +88,10 @@ The other two numbers. Memory savings alone doesn't say whether the constraint t
 
 5. ▢ Which claim is true of choosing between int8 and int4 for a latency-constrained workload?
 
-   - a) int4 should always be preferred, since it frees more memory
-   - b) The choice should be based on which one's measured speedup, for the phase the budget covers, actually meets the target
-   - c) Bit width alone determines the speedup, so the memory ratio can be used directly
-   - d) Latency-constrained workloads should never quantize weights, only the KV cache
+    - a) int4 should always be preferred, since it frees more memory
+    - b) The choice should be based on which one's measured speedup, for the phase the budget covers, actually meets the target
+    - c) Bit width alone determines the speedup, so the memory ratio can be used directly
+    - d) Latency-constrained workloads should never quantize weights, only the KV cache
 
 <details markdown="1"><summary>Check</summary>
 

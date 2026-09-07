@@ -113,10 +113,10 @@ The habit that keeps this current is smaller than a curriculum: read What's New 
 
 1. ▢ For each, argue that the rule does not apply.
 
-   - a) A `try/except Exception` around each item in a nightly import of 200,000 rows
-   - b) A mutable class attribute on a `Plugin` base class
-   - c) A `float` rather than a `Decimal`
-   - d) No annotations on a 30-line script
+    - a) A `try/except Exception` around each item in a nightly import of 200,000 rows
+    - b) A mutable class attribute on a `Plugin` base class
+    - c) A `float` rather than a `Decimal`
+    - d) No annotations on a 30-line script
 
 <details markdown="1"><summary>Check</summary>
 
@@ -129,11 +129,11 @@ The habit that keeps this current is smaller than a curriculum: read What's New 
 
 2. ▢ Rank by how much deliberation each deserves.
 
-   - a) The name of a public function in a library with 400 dependants
-   - b) Whether an internal helper takes two arguments or a dataclass
-   - c) The exception type a published function raises
-   - d) Whether to use a comprehension or a loop
-   - e) The database column type for a money amount
+    - a) The name of a public function in a library with 400 dependants
+    - b) Whether an internal helper takes two arguments or a dataclass
+    - c) The exception type a published function raises
+    - d) Whether to use a comprehension or a loop
+    - e) The database column type for a money amount
 
 <details markdown="1"><summary>Hint</summary>
 

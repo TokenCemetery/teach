@@ -157,10 +157,10 @@ The arithmetic to produce it is more involved than LoRA's simple addition, but t
 
 6. ▢ Which statement describes DoRA correctly?
 
-   - a) It adds a second low-rank update to the magnitude term
-   - b) It trains magnitude directly and low-rank-updates direction
-   - c) It replaces the low-rank update with a full-rank scaling
-   - d) It normalises the gradients rather than the weight matrix
+    - a) It adds a second low-rank update to the magnitude term
+    - b) It trains magnitude directly and low-rank-updates direction
+    - c) It replaces the low-rank update with a full-rank scaling
+    - d) It normalises the gradients rather than the weight matrix
 
 <details markdown="1"><summary>Check</summary>
 

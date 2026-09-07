@@ -155,10 +155,10 @@ Use `Fatalf` when continuing is pointless or unsafe, as with an error where you 
 
 3. ▢ Which line stops being necessary in Go 1.22 and later?
 
-   - a) `t.Parallel()` at the top of the subtest
-   - b) `tt := tt` before the subtest closure
-   - c) `t.Helper()` inside a test helper
-   - d) `t.Cleanup(...)` for resource teardown
+    - a) `t.Parallel()` at the top of the subtest
+    - b) `tt := tt` before the subtest closure
+    - c) `t.Helper()` inside a test helper
+    - d) `t.Cleanup(...)` for resource teardown
 
 <details markdown="1"><summary>Check</summary>
 

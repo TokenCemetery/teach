@@ -136,10 +136,10 @@ It costs a little lookup time, because the map compares with `equals` within the
 
 3. ▢ Which of these is safe to use as a `HashMap` key?
 
-   - a) `record Id(long value) {}`
-   - b) `record Tags(List<String> names) {}`
-   - c) `class Counter { int n; }` with `equals` and `hashCode` on `n`
-   - d) `StringBuilder`
+    - a) `record Id(long value) {}`
+    - b) `record Tags(List<String> names) {}`
+    - c) `class Counter { int n; }` with `equals` and `hashCode` on `n`
+    - d) `StringBuilder`
 
 <details markdown="1"><summary>Hint</summary>
 

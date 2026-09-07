@@ -88,10 +88,10 @@ Because `Int` is a real class rather than a primitive, it can be used as a gener
 
 5. ▢ Which claim correctly describes Kotlin's basic types and string templates?
 
-   - a) `Int` and other basic types are primitives with no methods, exactly like Java, for runtime performance
-   - b) Kotlin's basic types are real classes with member functions, optimized to a primitive representation at runtime where possible; string templates (`$name`, `${expr}`) are the language's actual mechanism for building strings from parts, not sugar over concatenation
-   - c) String templates only work with the `${...}` braces; the bare `$name` form is deprecated
-   - d) `String`'s immutability depends on whether it's held by a `val` or a `var`
+    - a) `Int` and other basic types are primitives with no methods, exactly like Java, for runtime performance
+    - b) Kotlin's basic types are real classes with member functions, optimized to a primitive representation at runtime where possible; string templates (`$name`, `${expr}`) are the language's actual mechanism for building strings from parts, not sugar over concatenation
+    - c) String templates only work with the `${...}` braces; the bare `$name` form is deprecated
+    - d) `String`'s immutability depends on whether it's held by a `val` or a `var`
 
 <details markdown="1"><summary>Check</summary>
 

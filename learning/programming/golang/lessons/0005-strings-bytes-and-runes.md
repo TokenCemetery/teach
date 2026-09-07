@@ -122,10 +122,10 @@ To get the character, range the string, or decode with `utf8.DecodeRuneInString(
 
 3. ▢ Which loop safely visits each character of an arbitrary UTF-8 string?
 
-   - a) `for i := 0; i < len(s); i++`
-   - b) `for i, r := range s`
-   - c) `for i := range len(s)`
-   - d) `for _, b := range []byte(s)`
+    - a) `for i := 0; i < len(s); i++`
+    - b) `for i, r := range s`
+    - c) `for i := range len(s)`
+    - d) `for _, b := range []byte(s)`
 
 <details markdown="1"><summary>Check</summary>
 

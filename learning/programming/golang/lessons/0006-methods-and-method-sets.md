@@ -121,10 +121,10 @@ This is the same constraint as `m["a"].N++` in Lesson 4: the map refusing to han
 
 3. ▢ A type has `func (s Server) Name() string` and `func (s *Server) Start() error`. What does `var _ Runner = Server{}` do, where `Runner` requires both methods?
 
-   - a) Compiles, and `Start` operates on a copy
-   - b) Compiles, but panics when `Start` runs
-   - c) Fails to compile, because `Start` needs a pointer
-   - d) Fails to compile, because receivers are mixed
+    - a) Compiles, and `Start` operates on a copy
+    - b) Compiles, but panics when `Start` runs
+    - c) Fails to compile, because `Start` needs a pointer
+    - d) Fails to compile, because receivers are mixed
 
 <details markdown="1"><summary>Check</summary>
 

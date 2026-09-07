@@ -173,10 +173,10 @@ Guards exist (`if hasattr(self, "dsn"): return`), and they make a confusing clas
 
 3. ▢ Which of these need `__new__`?
 
-   - a) A `Celsius` class that rejects values below absolute zero
-   - b) A `Duration` subclass of `int` that stores seconds and clamps negatives to zero
-   - c) A `Colour` class returning a shared instance for each named colour
-   - d) A `Config` class assembled from three different file formats
+    - a) A `Celsius` class that rejects values below absolute zero
+    - b) A `Duration` subclass of `int` that stores seconds and clamps negatives to zero
+    - c) A `Colour` class returning a shared instance for each named colour
+    - d) A `Config` class assembled from three different file formats
 
 <details markdown="1"><summary>Check</summary>
 

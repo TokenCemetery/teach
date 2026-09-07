@@ -101,10 +101,10 @@ First, the fetch continues after nobody needs its result, spending network and C
 
 5. ▢ Which claim describes structured concurrency correctly?
 
-   - a) A parent finishes as soon as its own body ends, children continuing
-   - b) A parent finishes only once every child has reached a final state
-   - c) A parent cancels itself as soon as any child is cancelled early
-   - d) A parent and its children have independent lifecycles, linked by dispatchers
+    - a) A parent finishes as soon as its own body ends, children continuing
+    - b) A parent finishes only once every child has reached a final state
+    - c) A parent cancels itself as soon as any child is cancelled early
+    - d) A parent and its children have independent lifecycles, linked by dispatchers
 
 <details markdown="1"><summary>Check</summary>
 

@@ -75,10 +75,10 @@ Individual chunks may lose the surrounding context that makes them interpretable
 
 4. ▢ Why do consecutive chunks commonly overlap?
 
-   - a) To make the vector index larger and more thorough
-   - b) So a fact or sentence that straddles a chunk boundary isn't fragmented and unrecoverable from either chunk
-   - c) Because embedding models require a minimum input length
-   - d) To let the reranker compare adjacent chunks against each other
+    - a) To make the vector index larger and more thorough
+    - b) So a fact or sentence that straddles a chunk boundary isn't fragmented and unrecoverable from either chunk
+    - c) Because embedding models require a minimum input length
+    - d) To let the reranker compare adjacent chunks against each other
 
 <details markdown="1"><summary>Check</summary>
 

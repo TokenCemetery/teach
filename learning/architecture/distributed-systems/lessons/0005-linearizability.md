@@ -88,10 +88,10 @@ A distributed lock (as in `data/redis` lessons 4-5): if two clients could observ
 
 5. ▢ Which claim correctly describes linearizability?
 
-   - a) It only requires that all clients eventually agree on the same final value, regardless of order
-   - b) It guarantees a single, real-time-consistent order for all operations, so no client can ever observe a value older than one already confirmed to have completed elsewhere
-   - c) It has no cost during a partition, since it only affects how data is stored, not how it's read
-   - d) It's the same guarantee as CAP's "Consistency" property, just described with different words
+    - a) It only requires that all clients eventually agree on the same final value, regardless of order
+    - b) It guarantees a single, real-time-consistent order for all operations, so no client can ever observe a value older than one already confirmed to have completed elsewhere
+    - c) It has no cost during a partition, since it only affects how data is stored, not how it's read
+    - d) It's the same guarantee as CAP's "Consistency" property, just described with different words
 
 <details markdown="1"><summary>Check</summary>
 

@@ -91,10 +91,10 @@ Run the judge against a smaller set of examples a human has already rated, and m
 
 5. ▢ Which claim is true of a well-designed judge prompt?
 
-   - a) It should ask a single vague question ("which is better?") to avoid biasing the judge with specific criteria
-   - b) It should name explicit grading criteria, include a reference answer when available, and ask for reasoning before a score
-   - c) A judge never needs a reference answer, since it can always tell a correct answer from an incorrect one unaided
-   - d) Calibration is guaranteed as long as the judge model is capable enough
+    - a) It should ask a single vague question ("which is better?") to avoid biasing the judge with specific criteria
+    - b) It should name explicit grading criteria, include a reference answer when available, and ask for reasoning before a score
+    - c) A judge never needs a reference answer, since it can always tell a correct answer from an incorrect one unaided
+    - d) Calibration is guaranteed as long as the judge model is capable enough
 
 <details markdown="1"><summary>Check</summary>
 

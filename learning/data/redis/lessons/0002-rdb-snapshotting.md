@@ -88,10 +88,10 @@ A longer save interval is acceptable when the data Redis holds can tolerate losi
 
 5. ▢ Which claim is true of RDB snapshotting?
 
-   - a) RDB fsyncs every individual write to disk before acknowledging it, the same guarantee a WAL provides
-   - b) RDB captures the entire dataset at discrete points in time, leaving a data-loss window between the last snapshot and a crash sized by the save interval
-   - c) A shorter save interval has no cost beyond disk space
-   - d) Copy-on-write during a fork guarantees memory usage never increases during a snapshot
+    - a) RDB fsyncs every individual write to disk before acknowledging it, the same guarantee a WAL provides
+    - b) RDB captures the entire dataset at discrete points in time, leaving a data-loss window between the last snapshot and a crash sized by the save interval
+    - c) A shorter save interval has no cost beyond disk space
+    - d) Copy-on-write during a fork guarantees memory usage never increases during a snapshot
 
 <details markdown="1"><summary>Check</summary>
 

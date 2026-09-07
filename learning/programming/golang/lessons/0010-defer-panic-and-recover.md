@@ -189,10 +189,10 @@ A named helper is usually clearer than the inline closure. Either way, the point
 
 3. ▢ Which use of `panic` is defensible?
 
-   - a) A user submitted a form with an invalid email
-   - b) A database connection was refused during a request
-   - c) A template required at startup failed to parse
-   - d) An upstream service returned a 503 response
+    - a) A user submitted a form with an invalid email
+    - b) A database connection was refused during a request
+    - c) A template required at startup failed to parse
+    - d) An upstream service returned a 503 response
 
 <details markdown="1"><summary>Check</summary>
 

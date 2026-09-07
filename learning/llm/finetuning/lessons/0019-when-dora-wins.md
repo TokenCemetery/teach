@@ -135,10 +135,10 @@ Your decision is between DoRA at the rank you can afford and LoRA at the rank yo
 
 5. ▢ Which most reliably predicts a DoRA win?
 
-   - a) A large training dataset with many diverse examples
-   - b) A low rank that cannot be raised for other reasons
-   - c) A quantized base model in four-bit NF4 precision
-   - d) A target module set covering all the linear layers
+    - a) A large training dataset with many diverse examples
+    - b) A low rank that cannot be raised for other reasons
+    - c) A quantized base model in four-bit NF4 precision
+    - d) A target module set covering all the linear layers
 
 <details markdown="1"><summary>Check</summary>
 

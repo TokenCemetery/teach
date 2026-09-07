@@ -88,10 +88,10 @@ New entries are written to a small pending list first, batched together, rather 
 
 5. ▢ Which claim is true of B-tree, GiST, and GIN index maintenance?
 
-   - a) Adding an index only ever benefits a table, since reads get faster and writes are unaffected
-   - b) Each index type trades some write cost for its particular read benefit, and that cost takes a different shape for each type (page splits for B-tree, expensive per-operation comparisons for GiST, deferred bulk inserts for GIN)
-   - c) GIN's pending list eliminates the need for vacuum on GIN indexes entirely
-   - d) GiST indexes never require anything beyond ordinary vacuum to maintain search performance
+    - a) Adding an index only ever benefits a table, since reads get faster and writes are unaffected
+    - b) Each index type trades some write cost for its particular read benefit, and that cost takes a different shape for each type (page splits for B-tree, expensive per-operation comparisons for GiST, deferred bulk inserts for GIN)
+    - c) GIN's pending list eliminates the need for vacuum on GIN indexes entirely
+    - d) GiST indexes never require anything beyond ordinary vacuum to maintain search performance
 
 <details markdown="1"><summary>Check</summary>
 

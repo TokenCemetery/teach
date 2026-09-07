@@ -106,10 +106,10 @@ Note that `counts["a"]++` is a write, even though it looks like an increment of 
 
 3. ▢ Which one panics the first time it is used as intended?
 
-   - a) `var mu sync.Mutex`, then `mu.Lock()`
-   - b) `var b bytes.Buffer`, then `b.WriteString("x")`
-   - c) `var m map[string]int`, then `m["a"] = 1`
-   - d) `var s []int`, then `s = append(s, 1)`
+    - a) `var mu sync.Mutex`, then `mu.Lock()`
+    - b) `var b bytes.Buffer`, then `b.WriteString("x")`
+    - c) `var m map[string]int`, then `m["a"] = 1`
+    - d) `var s []int`, then `s = append(s, 1)`
 
 <details markdown="1"><summary>Check</summary>
 

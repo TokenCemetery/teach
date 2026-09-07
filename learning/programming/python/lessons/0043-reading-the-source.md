@@ -114,11 +114,11 @@ Three sources, four minutes, and the answer is not just yes but why, which is wh
 
 1. ▢ Which source answers each?
 
-   - a) Does `dict` preserve insertion order, and is that guaranteed?
-   - b) Why does `list` not have a `find` method?
-   - c) What exactly does `str.split()` with no argument do to leading whitespace?
-   - d) When did `except*` become available?
-   - e) Is a set comprehension faster than `set()` of a generator?
+    - a) Does `dict` preserve insertion order, and is that guaranteed?
+    - b) Why does `list` not have a `find` method?
+    - c) What exactly does `str.split()` with no argument do to leading whitespace?
+    - d) When did `except*` become available?
+    - e) Is a set comprehension faster than `set()` of a generator?
 
 <details markdown="1"><summary>Check</summary>
 

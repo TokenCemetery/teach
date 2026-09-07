@@ -88,10 +88,10 @@ The metric chosen and why it fits the task (stage 2). Why the held-out eval set 
 
 5. ▢ Which claim is true of a defensible regression threshold?
 
-   - a) It should be set after seeing the eval result, to reflect what actually happened
-   - b) It should be fixed before the eval runs and set no tighter than the noise floor the sample size can resolve
-   - c) A looser threshold is always more defensible than a stricter one, regardless of what the product needs
-   - d) An inconclusive result should default to whichever outcome (ship or block) is more convenient for the team
+    - a) It should be set after seeing the eval result, to reflect what actually happened
+    - b) It should be fixed before the eval runs and set no tighter than the noise floor the sample size can resolve
+    - c) A looser threshold is always more defensible than a stricter one, regardless of what the product needs
+    - d) An inconclusive result should default to whichever outcome (ship or block) is more convenient for the team
 
 <details markdown="1"><summary>Check</summary>
 

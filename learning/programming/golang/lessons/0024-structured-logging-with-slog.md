@@ -126,10 +126,10 @@ It also reports a key that is neither a string nor a `slog.Attr`. Both produce a
 
 3. ▢ You need debug logs from one running production instance, now.
 
-   - a) Deploy a build with the level set lower
-   - b) Change a `slog.LevelVar` through an endpoint
-   - c) Restart the process with a debug flag
-   - d) Attach a debugger to the running process
+    - a) Deploy a build with the level set lower
+    - b) Change a `slog.LevelVar` through an endpoint
+    - c) Restart the process with a debug flag
+    - d) Attach a debugger to the running process
 
 <details markdown="1"><summary>Check</summary>
 

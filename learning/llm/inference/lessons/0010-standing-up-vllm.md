@@ -97,10 +97,10 @@ The `"model"` field in the request body has to match the model name (or path) th
 
 4. ▢ Which claim is true of vLLM's default behavior when no batching or cache flags are given?
 
-   - a) It falls back to static batching until `--max-num-seqs` is set
-   - b) Continuous batching and chunked prefill run by default; the flags only tune them further
-   - c) It refuses to start until a KV cache dtype is explicitly chosen
-   - d) It serves at the lowest precision the hardware supports by default
+    - a) It falls back to static batching until `--max-num-seqs` is set
+    - b) Continuous batching and chunked prefill run by default; the flags only tune them further
+    - c) It refuses to start until a KV cache dtype is explicitly chosen
+    - d) It serves at the lowest precision the hardware supports by default
 
 <details markdown="1"><summary>Check</summary>
 

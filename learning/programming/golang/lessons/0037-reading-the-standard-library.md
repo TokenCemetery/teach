@@ -120,10 +120,10 @@ The general buffered loop only runs when neither interface is satisfied. This is
 
 3. ▢ Which standard library package is the best style model?
 
-   - a) `runtime`, where the scheduler is implemented
-   - b) `net/http`, where the server is implemented
-   - c) `reflect`, where type inspection is implemented
-   - d) `syscall`, where the kernel calls are declared
+    - a) `runtime`, where the scheduler is implemented
+    - b) `net/http`, where the server is implemented
+    - c) `reflect`, where type inspection is implemented
+    - d) `syscall`, where the kernel calls are declared
 
 <details markdown="1"><summary>Check</summary>
 

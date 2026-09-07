@@ -135,10 +135,10 @@ The clauses nest left to right, so `x` is the outer loop and `y` varies fastest.
 
 3. ▢ One of these is not a tuple. Which, and what is it?
 
-   - a) `tuple(n for n in "ab")`
-   - b) `(n for n in "ab")`
-   - c) `tuple([n for n in "ab"])`
-   - d) `(*(n for n in "ab"),)`
+    - a) `tuple(n for n in "ab")`
+    - b) `(n for n in "ab")`
+    - c) `tuple([n for n in "ab"])`
+    - d) `(*(n for n in "ab"),)`
 
 <details markdown="1"><summary>Check</summary>
 

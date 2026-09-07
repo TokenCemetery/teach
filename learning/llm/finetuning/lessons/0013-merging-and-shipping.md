@@ -181,10 +181,10 @@ Compare with greedy decoding, where any divergence is attributable to the weight
 
 5. ▢ Which is true of merging an unquantized LoRA?
 
-   - a) It is exact and costs nothing at inference time
-   - b) It loses a little quality but speeds up inference
-   - c) It is exact but requires more memory at inference
-   - d) It is lossy and should be avoided in production use
+    - a) It is exact and costs nothing at inference time
+    - b) It loses a little quality but speeds up inference
+    - c) It is exact but requires more memory at inference
+    - d) It is lossy and should be avoided in production use
 
 <details markdown="1"><summary>Check</summary>
 

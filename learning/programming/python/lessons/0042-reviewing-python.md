@@ -181,12 +181,12 @@ The comment worth writing states the trade: making these concurrent turns a sum 
 
 3. ▢ Which of these belong in a human review?
 
-   - a) A line is 130 characters
-   - b) A public function returns `Order | None` but is annotated `-> Order`
-   - c) Imports are not sorted
-   - d) A new public parameter is positional
-   - e) A variable is named `l`
-   - f) A `submit` result is discarded
+    - a) A line is 130 characters
+    - b) A public function returns `Order | None` but is annotated `-> Order`
+    - c) Imports are not sorted
+    - d) A new public parameter is positional
+    - e) A variable is named `l`
+    - f) A `submit` result is discarded
 
 <details markdown="1"><summary>Check</summary>
 

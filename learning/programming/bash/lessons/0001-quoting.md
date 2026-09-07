@@ -73,10 +73,10 @@ The quoting at the point of *use* (`echo`) controls this, not the quoting used w
 
 4. ▢ Which of these lines is safe against both word splitting and globbing for a variable that might contain spaces or glob characters?
 
-   - a) `cp $source $dest`
-   - b) `cp "$source" "$dest"`
-   - c) `cp '$source' '$dest'`
-   - d) `cp ${source} ${dest}`
+    - a) `cp $source $dest`
+    - b) `cp "$source" "$dest"`
+    - c) `cp '$source' '$dest'`
+    - d) `cp ${source} ${dest}`
 
 <details markdown="1"><summary>Check</summary>
 

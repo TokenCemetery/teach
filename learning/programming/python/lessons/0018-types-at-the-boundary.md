@@ -215,10 +215,10 @@ The point of the boundary is that this function is the only place `isinstance` a
 
 2. ▢ `TypedDict` or frozen dataclass?
 
-   - a) A row read from a database and passed to three functions
-   - b) A payload assembled and handed to a library that expects `dict`
-   - c) A parsed configuration file used everywhere in the program
-   - d) The `**kwargs` a wrapper forwards to a third-party function
+    - a) A row read from a database and passed to three functions
+    - b) A payload assembled and handed to a library that expects `dict`
+    - c) A parsed configuration file used everywhere in the program
+    - d) The `**kwargs` a wrapper forwards to a third-party function
 
 <details markdown="1"><summary>Check</summary>
 

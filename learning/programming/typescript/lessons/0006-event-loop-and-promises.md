@@ -167,10 +167,10 @@ In A the second call is not made until the first has resolved. In B both are sta
 
 4. ▢ Which one reports every failure without letting an unhandled rejection escape?
 
-   - a) `await Promise.all(tasks)`
-   - b) `await Promise.allSettled(tasks)`
-   - c) `await Promise.race(tasks)`
-   - d) `tasks.forEach(async (t) => await t)`
+    - a) `await Promise.all(tasks)`
+    - b) `await Promise.allSettled(tasks)`
+    - c) `await Promise.race(tasks)`
+    - d) `tasks.forEach(async (t) => await t)`
 
 <details markdown="1"><summary>Check</summary>
 

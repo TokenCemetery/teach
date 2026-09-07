@@ -88,10 +88,10 @@ The like count is a good fit for eventual consistency: a temporarily stale or in
 
 5. ▢ Which claim correctly ranks the three models by what they guarantee?
 
-   - a) Eventual consistency is strictly stronger than sequential consistency, since it always converges
-   - b) Linearizability implies sequential consistency (it's a strictly stronger guarantee), and sequential consistency is strictly stronger than eventual consistency
-   - c) All three models are equivalent once a system has no active partition
-   - d) Sequential consistency requires real-time ordering, making it as strong as linearizability
+    - a) Eventual consistency is strictly stronger than sequential consistency, since it always converges
+    - b) Linearizability implies sequential consistency (it's a strictly stronger guarantee), and sequential consistency is strictly stronger than eventual consistency
+    - c) All three models are equivalent once a system has no active partition
+    - d) Sequential consistency requires real-time ordering, making it as strong as linearizability
 
 <details markdown="1"><summary>Check</summary>
 

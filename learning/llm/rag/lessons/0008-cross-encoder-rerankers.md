@@ -84,10 +84,10 @@ It requires one full model forward pass per document in the entire corpus, for e
 
 5. ▢ Which claim is true of the relationship between bi-encoder retrieval and cross-encoder reranking?
 
-   - a) They solve the same problem, so using both together is redundant
-   - b) Bi-encoder retrieval cheaply narrows a large corpus to a candidate set, and a cross-encoder reranks only that smaller set with higher accuracy
-   - c) A cross-encoder scales to searching a full corpus just as well as a bi-encoder index does
-   - d) Reranking replaces the need for chunking, embeddings, or hybrid search entirely
+    - a) They solve the same problem, so using both together is redundant
+    - b) Bi-encoder retrieval cheaply narrows a large corpus to a candidate set, and a cross-encoder reranks only that smaller set with higher accuracy
+    - c) A cross-encoder scales to searching a full corpus just as well as a bi-encoder index does
+    - d) Reranking replaces the need for chunking, embeddings, or hybrid search entirely
 
 <details markdown="1"><summary>Check</summary>
 

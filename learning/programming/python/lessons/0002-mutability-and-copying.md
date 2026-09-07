@@ -165,14 +165,14 @@ The tuple controls its own slots and nothing beyond them. It refuses the rebindi
 
 4. ▢ Which one produces an object that is fully independent of `data`?
 
-   ```python
-   data = {"a": [1]}
-   ```
+    ```python
+    data = {"a": [1]}
+    ```
 
-   - a) `data.copy()`
-   - b) `dict(data)`
-   - c) `{**data}`
-   - d) `copy.deepcopy(data)`
+    - a) `data.copy()`
+    - b) `dict(data)`
+    - c) `{**data}`
+    - d) `copy.deepcopy(data)`
 
 <details markdown="1"><summary>Check</summary>
 

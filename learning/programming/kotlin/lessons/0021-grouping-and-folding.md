@@ -106,10 +106,10 @@ A `List` for every status code, holding every entry that had it. `groupBy` build
 
 5. ▢ Which claim correctly describes `groupingBy`?
 
-   - a) `groupingBy` builds a list of members per key, then reduces each list down
-   - b) `groupingBy` accumulates one value per key, without ever building the member lists
-   - c) `groupingBy` returns a map immediately, so a later fold reads that map twice
-   - d) `groupingBy` streams its input lazily, so its final result is also never materialised
+    - a) `groupingBy` builds a list of members per key, then reduces each list down
+    - b) `groupingBy` accumulates one value per key, without ever building the member lists
+    - c) `groupingBy` returns a map immediately, so a later fold reads that map twice
+    - d) `groupingBy` streams its input lazily, so its final result is also never materialised
 
 <details markdown="1"><summary>Check</summary>
 

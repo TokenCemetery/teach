@@ -88,10 +88,10 @@ If the goal is just storing data, a data class (lesson 8) already generates the 
 
 5. ▢ Which claim correctly describes Kotlin classes and properties?
 
-   - a) A property is purely syntactic sugar with no underlying accessor methods at all
-   - b) Properties replace Java's manual getter/setter boilerplate with uniform field-access syntax backed by (possibly customized) accessors, and Kotlin's own docs recommend a data class or extension function before a plain class, where either fits better
-   - c) A constructor parameter declared without `val` or `var` is still accessible as a property from outside the class
-   - d) Referring to the property name itself inside its own custom setter is the correct way to update its backing field
+    - a) A property is purely syntactic sugar with no underlying accessor methods at all
+    - b) Properties replace Java's manual getter/setter boilerplate with uniform field-access syntax backed by (possibly customized) accessors, and Kotlin's own docs recommend a data class or extension function before a plain class, where either fits better
+    - c) A constructor parameter declared without `val` or `var` is still accessible as a property from outside the class
+    - d) Referring to the property name itself inside its own custom setter is the correct way to update its backing field
 
 <details markdown="1"><summary>Check</summary>
 

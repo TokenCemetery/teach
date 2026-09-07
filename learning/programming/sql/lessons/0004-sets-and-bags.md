@@ -130,10 +130,10 @@ The habit worth forming: write `UNION ALL` by default and switch to `UNION` when
 
 3. ▢ Which is the safest way to list customers with no orders?
 
-   - a) `SELECT id FROM customers EXCEPT SELECT customer_id FROM orders`
-   - b) `SELECT id FROM customers WHERE id NOT IN (SELECT customer_id FROM orders)`
-   - c) `SELECT c.id FROM customers c WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id)`
-   - d) `SELECT c.id FROM customers c LEFT JOIN orders o ON o.customer_id = c.id`
+    - a) `SELECT id FROM customers EXCEPT SELECT customer_id FROM orders`
+    - b) `SELECT id FROM customers WHERE id NOT IN (SELECT customer_id FROM orders)`
+    - c) `SELECT c.id FROM customers c WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id)`
+    - d) `SELECT c.id FROM customers c LEFT JOIN orders o ON o.customer_id = c.id`
 
 <details markdown="1"><summary>Check</summary>
 

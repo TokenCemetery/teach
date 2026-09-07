@@ -125,10 +125,10 @@ Enable the block and mutex profiles, and take a goroutine profile. The answer is
 
 3. ▢ You suspect a memory leak. Which heap view do you open?
 
-   - a) `alloc_space`, every byte ever allocated
-   - b) `inuse_space`, the bytes currently held
-   - c) `alloc_objects`, every object ever created
-   - d) `inuse_objects`, the objects currently held
+    - a) `alloc_space`, every byte ever allocated
+    - b) `inuse_space`, the bytes currently held
+    - c) `alloc_objects`, every object ever created
+    - d) `inuse_objects`, the objects currently held
 
 <details markdown="1"><summary>Check</summary>
 

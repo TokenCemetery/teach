@@ -69,10 +69,10 @@ Give the model the first part of a benchmark instance (a question, or the start 
 
 4. ▢ Which of these best states what "held out" means for an eval set?
 
-   - a) The eval set is kept in a separate file from the training data
-   - b) The model being judged never saw those examples, or close paraphrases, during training
-   - c) The eval set was written by someone other than the model's developer
-   - d) The eval set uses a different format than the training data
+    - a) The eval set is kept in a separate file from the training data
+    - b) The model being judged never saw those examples, or close paraphrases, during training
+    - c) The eval set was written by someone other than the model's developer
+    - d) The eval set uses a different format than the training data
 
 <details markdown="1"><summary>Check</summary>
 

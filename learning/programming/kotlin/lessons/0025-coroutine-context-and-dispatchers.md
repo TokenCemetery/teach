@@ -111,10 +111,10 @@ Both workloads draw on the same parallelism budget, so a pile-up of slow Mongo c
 
 5. ▢ Which claim divides the responsibilities correctly?
 
-   - a) The dispatcher decides a coroutine's lifetime, and the scope decides its thread
-   - b) The scope decides a coroutine's lifetime, and the dispatcher decides its threads
-   - c) The context holds one element, the dispatcher, chosen when a builder runs
-   - d) The context is fixed per thread, so every coroutine there shares it
+    - a) The dispatcher decides a coroutine's lifetime, and the scope decides its thread
+    - b) The scope decides a coroutine's lifetime, and the dispatcher decides its threads
+    - c) The context holds one element, the dispatcher, chosen when a builder runs
+    - d) The context is fixed per thread, so every coroutine there shares it
 
 <details markdown="1"><summary>Check</summary>
 

@@ -72,10 +72,10 @@ The measured p99 figures themselves, from a sample large and realistically shape
 
 4. ▢ Which claim is true of diagnosing a missed p99 latency budget end to end?
 
-   - a) Any flag can be changed at random until the measured number improves
-   - b) The diagnostic order follows which phase is missing budget, then which lever that phase's mechanics point to, cheapest first
-   - c) A single benchmark run is sufficient evidence to defend a configuration change
-   - d) Quantization should always be the first thing tried, regardless of which phase is missing budget
+    - a) Any flag can be changed at random until the measured number improves
+    - b) The diagnostic order follows which phase is missing budget, then which lever that phase's mechanics point to, cheapest first
+    - c) A single benchmark run is sufficient evidence to defend a configuration change
+    - d) Quantization should always be the first thing tried, regardless of which phase is missing budget
 
 <details markdown="1"><summary>Check</summary>
 

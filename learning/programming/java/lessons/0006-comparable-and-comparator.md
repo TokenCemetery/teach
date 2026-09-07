@@ -155,10 +155,10 @@ It violates antisymmetry in sign and transitivity. Transitivity is the damaging 
 
 3. ▢ Which comparator is safe to hand to a `TreeSet<Person>` where `Person` is `record Person(String last, String first)`?
 
-   - a) `Comparator.comparing(Person::last)`
-   - b) `Comparator.comparing(Person::last).thenComparing(Person::first)`
-   - c) `(a, b) -> a.last().length() - b.last().length()`
-   - d) `Comparator.comparing(Person::last).reversed()`
+    - a) `Comparator.comparing(Person::last)`
+    - b) `Comparator.comparing(Person::last).thenComparing(Person::first)`
+    - c) `(a, b) -> a.last().length() - b.last().length()`
+    - d) `Comparator.comparing(Person::last).reversed()`
 
 <details markdown="1"><summary>Check</summary>
 

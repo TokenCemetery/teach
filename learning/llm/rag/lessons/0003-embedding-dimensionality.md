@@ -84,10 +84,10 @@ Measure retrieval quality, most directly something like recall@k against a label
 
 5. ▢ Which claim is true of embedding dimensionality?
 
-   - a) A larger embedding dimensionality always improves retrieval quality enough to justify its cost
-   - b) Truncating any embedding model's vectors is equally safe, regardless of how the model was trained
-   - c) Dimensionality is a cost (storage, index memory, per-candidate compute) that should be sized to the smallest value that meets a measured quality bar
-   - d) MRL-trained models cannot be truncated; they only offer a fixed, single output size
+    - a) A larger embedding dimensionality always improves retrieval quality enough to justify its cost
+    - b) Truncating any embedding model's vectors is equally safe, regardless of how the model was trained
+    - c) Dimensionality is a cost (storage, index memory, per-candidate compute) that should be sized to the smallest value that meets a measured quality bar
+    - d) MRL-trained models cannot be truncated; they only offer a fixed, single output size
 
 <details markdown="1"><summary>Check</summary>
 

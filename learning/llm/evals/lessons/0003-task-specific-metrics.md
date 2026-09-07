@@ -88,10 +88,10 @@ Exact match. The task has exactly one correct answer per question with no meanin
 
 5. ▢ Which claim is true of BLEU and ROUGE compared to exact match and F1?
 
-   - a) They require a single, unambiguous correct answer, the same as exact match
-   - b) They score overlap against reference text at the n-gram level, which correlates only loosely with quality on open-ended generation
-   - c) They are immune to the paraphrase problem that affects exact match
-   - d) They are best used as the final verdict for any generation task, replacing human or LLM judgment
+    - a) They require a single, unambiguous correct answer, the same as exact match
+    - b) They score overlap against reference text at the n-gram level, which correlates only loosely with quality on open-ended generation
+    - c) They are immune to the paraphrase problem that affects exact match
+    - d) They are best used as the final verdict for any generation task, replacing human or LLM judgment
 
 <details markdown="1"><summary>Check</summary>
 

@@ -95,10 +95,10 @@ Sinusoidal encoding is a formula, evaluable at any position value at all, includ
 
 5. ▢ Which claim is true of why positional encoding exists?
 
-   - a) Attention's dot products already account for relative position without any extra input
-   - b) Attention treats its input as an unordered set, so position has to be injected into the embeddings for the model to be sensitive to word order at all
-   - c) Positional encoding is only needed for very long sequences, not short ones
-   - d) A learned position embedding generalizes better to unseen sequence lengths than sinusoidal encoding does
+    - a) Attention's dot products already account for relative position without any extra input
+    - b) Attention treats its input as an unordered set, so position has to be injected into the embeddings for the model to be sensitive to word order at all
+    - c) Positional encoding is only needed for very long sequences, not short ones
+    - d) A learned position embedding generalizes better to unseen sequence lengths than sinusoidal encoding does
 
 <details markdown="1"><summary>Check</summary>
 

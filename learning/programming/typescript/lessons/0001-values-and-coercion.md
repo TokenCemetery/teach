@@ -127,10 +127,10 @@ Transitivity is violated: `a == b` and `a == c` hold while `b == c` does not. Wh
 
 3. ▢ Which expression correctly treats `0` as a supplied value?
 
-   - a) `timeout || 30`
-   - b) `timeout ?? 30`
-   - c) `timeout ? timeout : 30`
-   - d) `Boolean(timeout) ? timeout : 30`
+    - a) `timeout || 30`
+    - b) `timeout ?? 30`
+    - c) `timeout ? timeout : 30`
+    - d) `Boolean(timeout) ? timeout : 30`
 
 <details markdown="1"><summary>Check</summary>
 

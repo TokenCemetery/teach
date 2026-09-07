@@ -198,12 +198,12 @@ Both are why `@dataclass(frozen=True)` is the better default: it generates both 
 
 3. ▢ Which of these does a class with only `__iter__` already support?
 
-   - a) `for x in obj`
-   - b) `len(obj)`
-   - c) `5 in obj`
-   - d) `list(obj)`
-   - e) `obj[0]`
-   - f) `if obj:`
+    - a) `for x in obj`
+    - b) `len(obj)`
+    - c) `5 in obj`
+    - d) `list(obj)`
+    - e) `obj[0]`
+    - f) `if obj:`
 
 <details markdown="1"><summary>Check</summary>
 
@@ -217,10 +217,10 @@ Supported: **a**, **c**, **d**.
 
 4. ▢ Rank these by how defensible the operator is.
 
-   - a) `Money("10.00") + Money("2.50")`
-   - b) `Path("/etc") / "hosts"`
-   - c) `User + Permission`
-   - d) `Query & Filter` for combining query conditions
+    - a) `Money("10.00") + Money("2.50")`
+    - b) `Path("/etc") / "hosts"`
+    - c) `User + Permission`
+    - d) `Query & Filter` for combining query conditions
 
 <details markdown="1"><summary>Check</summary>
 

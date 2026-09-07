@@ -92,10 +92,10 @@ Ordinary generic type parameters are erased at runtime; the JVM has no record of
 
 5. ▢ Which claim correctly describes inline functions and reified generics?
 
-   - a) `inline` should be applied to every higher-order function by default, since it always improves performance
-   - b) `inline` removes lambda-allocation and virtual-call overhead by pasting the function's (and its lambda's) code at the call site, which is also what enables non-local returns and reified type parameters, since both depend on the erasure boundary inlining removes
-   - c) `reified` works on any generic function, inline or not, as long as the type parameter is used with `is` or `as`
-   - d) `crossinline` and `noinline` do the same thing, just with different names
+    - a) `inline` should be applied to every higher-order function by default, since it always improves performance
+    - b) `inline` removes lambda-allocation and virtual-call overhead by pasting the function's (and its lambda's) code at the call site, which is also what enables non-local returns and reified type parameters, since both depend on the erasure boundary inlining removes
+    - c) `reified` works on any generic function, inline or not, as long as the type parameter is used with `is` or `as`
+    - d) `crossinline` and `noinline` do the same thing, just with different names
 
 <details markdown="1"><summary>Check</summary>
 

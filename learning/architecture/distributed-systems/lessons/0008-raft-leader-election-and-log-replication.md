@@ -88,10 +88,10 @@ The term number. The new leader was elected in a higher term, and any message th
 
 5. ▢ Which claim correctly describes Raft's core mechanisms?
 
-   - a) Followers independently decide log order and reconcile differences after the fact
-   - b) A leader is elected by majority vote per term, and only the leader proposes log order, which followers replicate; a majority must store an entry before it's committed
-   - c) Raft requires unanimous agreement from every server before committing any log entry
-   - d) Term numbers are only used for debugging and have no role in preventing conflicting leaders
+    - a) Followers independently decide log order and reconcile differences after the fact
+    - b) A leader is elected by majority vote per term, and only the leader proposes log order, which followers replicate; a majority must store an entry before it's committed
+    - c) Raft requires unanimous agreement from every server before committing any log entry
+    - d) Term numbers are only used for debugging and have no role in preventing conflicting leaders
 
 <details markdown="1"><summary>Check</summary>
 

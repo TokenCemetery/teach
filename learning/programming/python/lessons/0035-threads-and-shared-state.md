@@ -237,11 +237,11 @@ That is the general move: **turn shared accumulation into returned values.** It 
 
 3. ▢ Match the primitive.
 
-   - a) At most five concurrent calls to a rate-limited API
-   - b) Tell four worker threads to shut down
-   - c) A method holding a lock that calls another method of the same object which also locks
-   - d) A consumer that should sleep until there is work
-   - e) A per-request correlation id available to every function in the call stack
+    - a) At most five concurrent calls to a rate-limited API
+    - b) Tell four worker threads to shut down
+    - c) A method holding a lock that calls another method of the same object which also locks
+    - d) A consumer that should sleep until there is work
+    - e) A per-request correlation id available to every function in the call stack
 
 <details markdown="1"><summary>Check</summary>
 

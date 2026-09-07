@@ -214,9 +214,9 @@ It compiles, runs, and prints `value = 84148994`, the little-endian reading of b
 
 5. ▢ A judgement call, not a compile check: for each of these, name which entry on this lesson's list it risks.
 
-   - a) A `Box<T>` is dropped, then a raw pointer copied from it beforehand is dereferenced.
-   - b) A `fn(i32) -> i32` is transmuted to `fn(i64) -> i64` and called.
-   - c) Two threads, one writing and one reading, touch the same `u32` through a raw pointer, no lock, no atomic.
+    - a) A `Box<T>` is dropped, then a raw pointer copied from it beforehand is dereferenced.
+    - b) A `fn(i32) -> i32` is transmuted to `fn(i64) -> i64` and called.
+    - c) Two threads, one writing and one reading, touch the same `u32` through a raw pointer, no lock, no atomic.
 
 <details markdown="1"><summary>Check</summary>
 

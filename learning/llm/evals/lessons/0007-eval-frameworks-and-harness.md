@@ -80,10 +80,10 @@ lm-evaluation-harness, since it runs a model against standardized, pre-built ben
 
 5. ▢ Which claim is true of the four-stage shape (load, generate, grade, aggregate) an eval harness has?
 
-   - a) Only the grading stage matters; load, generate, and aggregate are implementation details with no effect on trustworthiness
-   - b) Each stage can independently undermine the final number, so a trustworthy result requires all four to be sound, not just the grading logic
-   - c) The four stages only apply to LLM-as-judge evals, not task-specific-metric evals
-   - d) Aggregation is unnecessary if the grading stage produces a single score per example
+    - a) Only the grading stage matters; load, generate, and aggregate are implementation details with no effect on trustworthiness
+    - b) Each stage can independently undermine the final number, so a trustworthy result requires all four to be sound, not just the grading logic
+    - c) The four stages only apply to LLM-as-judge evals, not task-specific-metric evals
+    - d) Aggregation is unnecessary if the grading stage produces a single score per example
 
 <details markdown="1"><summary>Check</summary>
 

@@ -261,9 +261,9 @@ Does not compile: `error[E0277]`, "the type `str` cannot be indexed by `{integer
 
 5. ▢ This one is a judgement call rather than a compile check. For each, name the collection you would reach for first, and the question that makes it the right one.
 
-   - a) Counting how many times each status code appears while summarising a log.
-   - b) Printing the busiest paths in ascending order, every time, without sorting by hand at every print site.
-   - c) A job queue where new work is added at the back and taken from the front.
+    - a) Counting how many times each status code appears while summarising a log.
+    - b) Printing the busiest paths in ascending order, every time, without sorting by hand at every print site.
+    - c) A job queue where new work is added at the back and taken from the front.
 
 <details markdown="1"><summary>Check</summary>
 

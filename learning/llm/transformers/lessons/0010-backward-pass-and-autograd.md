@@ -98,10 +98,10 @@ It populates every trainable parameter's `.grad` attribute with the gradient of 
 
 5. ▢ Which claim is true of autograd's approach to computing gradients?
 
-   - a) It requires the user to derive and supply a closed-form gradient formula for each operation
-   - b) It approximates gradients using finite differences, perturbing each parameter slightly
-   - c) It records the forward pass's operations into a computation graph, then applies the chain rule automatically using each operation's already-implemented local backward rule
-   - d) It computes gradients only for the final output layer, not for earlier layers in a deep stack
+    - a) It requires the user to derive and supply a closed-form gradient formula for each operation
+    - b) It approximates gradients using finite differences, perturbing each parameter slightly
+    - c) It records the forward pass's operations into a computation graph, then applies the chain rule automatically using each operation's already-implemented local backward rule
+    - d) It computes gradients only for the final output layer, not for earlier layers in a deep stack
 
 <details markdown="1"><summary>Check</summary>
 

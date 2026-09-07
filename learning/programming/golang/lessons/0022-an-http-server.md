@@ -156,10 +156,10 @@ Registration order does not matter, which is the property that makes the Go 1.22
 
 3. ▢ Which timeout is safest to set aggressively?
 
-   - a) `ReadTimeout`, covering headers and the whole body
-   - b) `WriteTimeout`, covering the response being written
-   - c) `ReadHeaderTimeout`, covering only the request headers
-   - d) `IdleTimeout`, covering unused keep-alive connections
+    - a) `ReadTimeout`, covering headers and the whole body
+    - b) `WriteTimeout`, covering the response being written
+    - c) `ReadHeaderTimeout`, covering only the request headers
+    - d) `IdleTimeout`, covering unused keep-alive connections
 
 <details markdown="1"><summary>Check</summary>
 

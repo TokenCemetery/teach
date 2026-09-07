@@ -88,10 +88,10 @@ Lower the scale factor for that table, or set an absolute row-count threshold in
 
 5. ▢ Which claim is true of diagnosing table bloat?
 
-   - a) A high dead-tuple ratio always means autovacuum's thresholds are misconfigured
-   - b) A long-running transaction can prevent vacuum from reclaiming dead tuples even while autovacuum is running exactly on schedule
-   - c) Autovacuum's default scale factor works equally well regardless of table size
-   - d) The bloat ratio computed from pg_stat_user_tables is an exact measurement of disk space wasted
+    - a) A high dead-tuple ratio always means autovacuum's thresholds are misconfigured
+    - b) A long-running transaction can prevent vacuum from reclaiming dead tuples even while autovacuum is running exactly on schedule
+    - c) Autovacuum's default scale factor works equally well regardless of table size
+    - d) The bloat ratio computed from pg_stat_user_tables is an exact measurement of disk space wasted
 
 <details markdown="1"><summary>Check</summary>
 

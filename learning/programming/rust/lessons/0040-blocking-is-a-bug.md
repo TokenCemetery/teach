@@ -160,9 +160,9 @@ No: the loop never returns `Pending`, so the worker never polls `ticker` until t
 
 3. ▢ For each of the following, name which of the three kinds of blocking it is and the honest fix.
 
-   - a) An async handler calls a synchronous database driver with no async client available.
-   - b) An async handler calls `std::fs::read_to_string` to load a template file.
-   - c) An async handler hashes several megabytes of data with no I/O involved.
+    - a) An async handler calls a synchronous database driver with no async client available.
+    - b) An async handler calls `std::fs::read_to_string` to load a template file.
+    - c) An async handler hashes several megabytes of data with no I/O involved.
 
 <details markdown="1"><summary>Check</summary>
 

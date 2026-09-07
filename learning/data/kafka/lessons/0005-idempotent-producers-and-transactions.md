@@ -88,10 +88,10 @@ Idempotence is essentially free: it adds only small per-message metadata overhea
 
 5. ▢ Which claim is true of idempotent producers and transactions?
 
-   - a) Idempotence and transactions cost roughly the same in latency and throughput, so there's no reason to distinguish them
-   - b) Idempotence fixes producer-retry duplication at almost no cost, while transactions add real latency and throughput cost to achieve atomicity across multiple writes, including the offset commit
-   - c) Enabling idempotence alone is sufficient to make a consume-process-produce-commit cycle atomic
-   - d) A consumer set to read_committed sees every message written, regardless of the transaction it belongs to
+    - a) Idempotence and transactions cost roughly the same in latency and throughput, so there's no reason to distinguish them
+    - b) Idempotence fixes producer-retry duplication at almost no cost, while transactions add real latency and throughput cost to achieve atomicity across multiple writes, including the offset commit
+    - c) Enabling idempotence alone is sufficient to make a consume-process-produce-commit cycle atomic
+    - d) A consumer set to read_committed sees every message written, regardless of the transaction it belongs to
 
 <details markdown="1"><summary>Check</summary>
 

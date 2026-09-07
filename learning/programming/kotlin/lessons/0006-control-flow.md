@@ -88,10 +88,10 @@ As an expression, every possible input has to map to some value, since the resul
 
 5. ▢ Which claim correctly describes Kotlin's control flow constructs?
 
-   - a) `if` is only a statement in Kotlin; producing a conditional value still requires a separate ternary operator
-   - b) `if` and `when` are both usable as expressions that produce values, with `when`-as-expression requiring compiler-enforced exhaustiveness; a range like `1..10` is a real value, not special loop syntax
-   - c) `when` requires an `else` branch in every case, even when matching an enum or sealed class
-   - d) `for` loops have a different syntax for iterating a range versus iterating a collection
+    - a) `if` is only a statement in Kotlin; producing a conditional value still requires a separate ternary operator
+    - b) `if` and `when` are both usable as expressions that produce values, with `when`-as-expression requiring compiler-enforced exhaustiveness; a range like `1..10` is a real value, not special loop syntax
+    - c) `when` requires an `else` branch in every case, even when matching an enum or sealed class
+    - d) `for` loops have a different syntax for iterating a range versus iterating a collection
 
 <details markdown="1"><summary>Check</summary>
 

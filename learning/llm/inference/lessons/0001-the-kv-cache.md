@@ -78,10 +78,10 @@ It sits reserved and unusable by any other sequence until that sequence's cache 
 
 4. ▢ Which claim is true of PagedAttention's fix?
 
-   - a) It shrinks the KV cache's total size for a given model and context length
-   - b) It removes the KV cache and recomputes attention on demand instead
-   - c) It reduces wasted memory by storing the cache in fixed-size, non-contiguous blocks
-   - d) It only helps CPU serving stacks like llama.cpp
+    - a) It shrinks the KV cache's total size for a given model and context length
+    - b) It removes the KV cache and recomputes attention on demand instead
+    - c) It reduces wasted memory by storing the cache in fixed-size, non-contiguous blocks
+    - d) It only helps CPU serving stacks like llama.cpp
 
 <details markdown="1"><summary>Check</summary>
 

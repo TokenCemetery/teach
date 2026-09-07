@@ -161,10 +161,10 @@ Compare 26 GB for a bf16 base plus adapter, and 208 GB for full fine-tuning. Act
 
 4. ▢ Which QLoRA component saves the most memory?
 
-   - a) NF4 rather than plain uniform int4 quantisation
-   - b) Storing the frozen base at 4 bits rather than bf16
-   - c) Double quantisation of the first-level block scales
-   - d) Paged optimizers spilling state during memory spikes
+    - a) NF4 rather than plain uniform int4 quantisation
+    - b) Storing the frozen base at 4 bits rather than bf16
+    - c) Double quantisation of the first-level block scales
+    - d) Paged optimizers spilling state during memory spikes
 
 <details markdown="1"><summary>Check</summary>
 

@@ -88,10 +88,10 @@ Not necessarily: portability is worth its cost specifically when the deployment 
 
 5. ▢ Which claim correctly describes the portability discipline this lesson covers?
 
-   - a) A script should never use any bash-only feature under any circumstances
-   - b) POSIX `sh` is a specification multiple shells implement identically; the discipline is defaulting to portable syntax and explicitly declaring (via shebang and awareness) whenever a bash-only feature is deliberately used, reserving that trade-off for when the deployment target actually needs it
-   - c) `/bin/sh` is always bash, so there's no practical difference between targeting `/bin/sh` and targeting bash directly
-   - d) Portability is always worth its cost, regardless of how certain or controlled a script's deployment environment is
+    - a) A script should never use any bash-only feature under any circumstances
+    - b) POSIX `sh` is a specification multiple shells implement identically; the discipline is defaulting to portable syntax and explicitly declaring (via shebang and awareness) whenever a bash-only feature is deliberately used, reserving that trade-off for when the deployment target actually needs it
+    - c) `/bin/sh` is always bash, so there's no practical difference between targeting `/bin/sh` and targeting bash directly
+    - d) Portability is always worth its cost, regardless of how certain or controlled a script's deployment environment is
 
 <details markdown="1"><summary>Check</summary>
 

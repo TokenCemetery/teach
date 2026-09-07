@@ -72,10 +72,10 @@ Per-key ordering can silently break. Existing messages already written under the
 
 4. ▢ A topic has 4 partitions. What determines the maximum number of consumer instances in one consumer group that can be actively processing it in parallel?
 
-   - a) The number of brokers in the cluster
-   - b) The partition count: at most 4, one consumer per partition
-   - c) The number of unique keys ever produced to the topic
-   - d) The replication factor configured for the topic
+    - a) The number of brokers in the cluster
+    - b) The partition count: at most 4, one consumer per partition
+    - c) The number of unique keys ever produced to the topic
+    - d) The replication factor configured for the topic
 
 <details markdown="1"><summary>Check</summary>
 

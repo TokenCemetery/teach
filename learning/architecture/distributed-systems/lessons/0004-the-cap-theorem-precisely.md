@@ -88,10 +88,10 @@ Latency (the trade-off between consistency and response time that exists even wi
 
 5. ▢ Which claim correctly states what CAP proves?
 
-   - a) A distributed system must permanently sacrifice either consistency or availability at all times
-   - b) During an actual network partition, a system must choose between consistency and availability for the requests affected by that partition; outside a partition, no such forced choice exists
-   - c) Partition tolerance is one of three equally optional properties a system can choose to support
-   - d) CAP fully describes every trade-off a distributed system faces, including latency
+    - a) A distributed system must permanently sacrifice either consistency or availability at all times
+    - b) During an actual network partition, a system must choose between consistency and availability for the requests affected by that partition; outside a partition, no such forced choice exists
+    - c) Partition tolerance is one of three equally optional properties a system can choose to support
+    - d) CAP fully describes every trade-off a distributed system faces, including latency
 
 <details markdown="1"><summary>Check</summary>
 

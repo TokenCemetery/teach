@@ -148,10 +148,10 @@ Both lines get flagged. The first is worse than the second, because it works: a 
 
 3. ▢ Which of these is safe when `input` may be `null`?
 
-   - a) `input.equals("yes")`
-   - b) `"yes".equals(input)`
-   - c) `Objects.equals(input, "yes")`
-   - d) `input == "yes"`
+    - a) `input.equals("yes")`
+    - b) `"yes".equals(input)`
+    - c) `Objects.equals(input, "yes")`
+    - d) `input == "yes"`
 
 <details markdown="1"><summary>Check</summary>
 

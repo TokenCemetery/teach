@@ -90,10 +90,10 @@ A single failing query might fail for an unusual, one-off reason (an odd phrasin
 
 5. ▢ Which claim is true of diagnosing a RAG pipeline's wrong-retrieval symptom?
 
-   - a) Any pipeline stage can be tuned first, since they all affect the final result equally
-   - b) Checking stages in order, chunking first, then the embedding independent of the index, then the index, then hybrid weighting and reranking, isolates which stage is actually at fault
-   - c) A single failing query is always sufficient evidence to identify the at-fault stage
-   - d) If the ANN index doesn't return the correct chunk, the embedding model must be at fault
+    - a) Any pipeline stage can be tuned first, since they all affect the final result equally
+    - b) Checking stages in order, chunking first, then the embedding independent of the index, then the index, then hybrid weighting and reranking, isolates which stage is actually at fault
+    - c) A single failing query is always sufficient evidence to identify the at-fault stage
+    - d) If the ANN index doesn't return the correct chunk, the embedding model must be at fault
 
 <details markdown="1"><summary>Check</summary>
 

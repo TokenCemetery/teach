@@ -163,10 +163,10 @@ The other honest fix is to move the `println!` above the `push`, which ends the 
 
 3. ▢ Which code does each situation produce?
 
-   - a) A `for` loop over a `Vec` by value, then using the `Vec` afterwards
-   - b) Calling `push` on a binding declared without `mut`
-   - c) Two `&mut` to the same value alive at once
-   - d) Returning a reference to a local variable
+    - a) A `for` loop over a `Vec` by value, then using the `Vec` afterwards
+    - b) Calling `push` on a binding declared without `mut`
+    - c) Two `&mut` to the same value alive at once
+    - d) Returning a reference to a local variable
 
 <details markdown="1"><summary>Check</summary>
 

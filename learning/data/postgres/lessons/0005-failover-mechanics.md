@@ -90,10 +90,10 @@ T is gone: the client was told it succeeded, but it never made it to any standby
 
 5. ▢ Which claim is true of failover in Postgres?
 
-   - a) Postgres automatically detects a failed primary and promotes a standby with no external tooling required
-   - b) A former primary can always safely rejoin as a standby immediately after a failover, with no special handling
-   - c) Asynchronous replication can lose committed transactions on failover; synchronous replication bounds that loss at the cost of commit latency and availability
-   - d) Switchover and failover carry identical data-loss risk, since both result in a new primary
+    - a) Postgres automatically detects a failed primary and promotes a standby with no external tooling required
+    - b) A former primary can always safely rejoin as a standby immediately after a failover, with no special handling
+    - c) Asynchronous replication can lose committed transactions on failover; synchronous replication bounds that loss at the cost of commit latency and availability
+    - d) Switchover and failover carry identical data-loss risk, since both result in a new primary
 
 <details markdown="1"><summary>Check</summary>
 

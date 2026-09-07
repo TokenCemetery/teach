@@ -180,10 +180,10 @@ Tools change here faster than anywhere else in the arc. Ruff currently covers th
 
 1. ▢ For each finding, say whether a type checker would also have caught it.
 
-   - a) `F821 Undefined name 'undefined_name'`
-   - b) `B006 Do not use mutable data structures for argument defaults`
-   - c) `F401 'os' imported but unused`
-   - d) `arg-type: Argument 1 has incompatible type "str"; expected "int"`
+    - a) `F821 Undefined name 'undefined_name'`
+    - b) `B006 Do not use mutable data structures for argument defaults`
+    - c) `F401 'os' imported but unused`
+    - d) `arg-type: Argument 1 has incompatible type "str"; expected "int"`
 
 <details markdown="1"><summary>Check</summary>
 
@@ -214,10 +214,10 @@ The outcome is predictable: hundreds of findings, a wall of `ignore` entries add
 
 3. ▢ What is wrong with each?
 
-   - a) `x = eval(user_input)  # noqa`
-   - b) `except Exception:  # noqa: BLE001` in a per-item loop that logs the exception
-   - c) `# ruff: noqa` at the top of a file
-   - d) `ignore = ["E501"]` in the config
+    - a) `x = eval(user_input)  # noqa`
+    - b) `except Exception:  # noqa: BLE001` in a per-item loop that logs the exception
+    - c) `# ruff: noqa` at the top of a file
+    - d) `ignore = ["E501"]` in the config
 
 <details markdown="1"><summary>Check</summary>
 

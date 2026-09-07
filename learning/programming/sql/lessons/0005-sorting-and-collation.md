@@ -136,10 +136,10 @@ Being explicit also makes the query behave the same on an engine whose default i
 
 3. ▢ The same query returns a different order on a colleague's machine. Which explanation is most likely?
 
-   - a) One of the databases has corrupt data
-   - b) The two databases use different collations
-   - c) The query is missing a `WHERE` clause
-   - d) One machine has more memory available
+    - a) One of the databases has corrupt data
+    - b) The two databases use different collations
+    - c) The query is missing a `WHERE` clause
+    - d) One machine has more memory available
 
 <details markdown="1"><summary>Check</summary>
 

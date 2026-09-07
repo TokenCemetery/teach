@@ -137,10 +137,10 @@ Against 112 GB for full fine-tuning: a 7.8× reduction, and almost all of what r
 
 4. ▢ Which change reduces optimizer memory most for a fixed model?
 
-   - a) Switching the optimizer from AdamW to SGD
-   - b) Switching the compute precision to bf16
-   - c) Freezing the base and training an adapter
-   - d) Switching to completion-only loss masking
+    - a) Switching the optimizer from AdamW to SGD
+    - b) Switching the compute precision to bf16
+    - c) Freezing the base and training an adapter
+    - d) Switching to completion-only loss masking
 
 <details markdown="1"><summary>Check</summary>
 

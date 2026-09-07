@@ -151,10 +151,10 @@ Either get more held-out data or accept that this question is unanswerable with 
 
 5. ▢ Which split most often gets skipped, and what does skipping it cost?
 
-   - a) Splitting the data by time when it has temporal order
-   - b) Splitting the data randomly across all available examples
-   - c) Splitting the data by output length into balanced buckets
-   - d) Splitting the data by which annotator produced the label
+    - a) Splitting the data by time when it has temporal order
+    - b) Splitting the data randomly across all available examples
+    - c) Splitting the data by output length into balanced buckets
+    - d) Splitting the data by which annotator produced the label
 
 <details markdown="1"><summary>Check</summary>
 

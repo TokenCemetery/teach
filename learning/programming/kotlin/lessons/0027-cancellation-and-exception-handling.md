@@ -126,10 +126,10 @@ The `IOException` is not a `CancellationException`, the failing child was not cr
 
 5. ▢ Which claim about `CancellationException` is correct?
 
-   - a) A CancellationException from a child fails its parent, exactly like any other exception
-   - b) A CancellationException is how cancellation travels, and it does not fail the parent
-   - c) A CancellationException is thrown once, at the moment cancel is called on it
-   - d) A CancellationException can be caught and swallowed with no effect on the cancellation
+    - a) A CancellationException from a child fails its parent, exactly like any other exception
+    - b) A CancellationException is how cancellation travels, and it does not fail the parent
+    - c) A CancellationException is thrown once, at the moment cancel is called on it
+    - d) A CancellationException can be caught and swallowed with no effect on the cancellation
 
 <details markdown="1"><summary>Check</summary>
 

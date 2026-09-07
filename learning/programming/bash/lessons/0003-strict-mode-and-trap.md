@@ -88,10 +88,10 @@ Strict mode stops the script on an unchecked failure, but stopping isn't the sam
 
 5. ▢ Which claim correctly describes `set -euo pipefail` and `trap`?
 
-   - a) `set -e` makes every nonzero exit status fatal, with no exceptions, including inside `if` conditions
-   - b) `set -e` stops on an unchecked failure, `set -u` catches unset-variable typos, `set -o pipefail` makes a pipeline's status reflect any stage's failure, and `trap` provides guaranteed cleanup that strict mode alone doesn't
-   - c) `trap` is redundant once strict mode is enabled, since strict mode already handles cleanup
-   - d) A command deliberately ignored with `|| true` will still stop the script under `set -e`
+    - a) `set -e` makes every nonzero exit status fatal, with no exceptions, including inside `if` conditions
+    - b) `set -e` stops on an unchecked failure, `set -u` catches unset-variable typos, `set -o pipefail` makes a pipeline's status reflect any stage's failure, and `trap` provides guaranteed cleanup that strict mode alone doesn't
+    - c) `trap` is redundant once strict mode is enabled, since strict mode already handles cleanup
+    - d) A command deliberately ignored with `|| true` will still stop the script under `set -e`
 
 <details markdown="1"><summary>Check</summary>
 

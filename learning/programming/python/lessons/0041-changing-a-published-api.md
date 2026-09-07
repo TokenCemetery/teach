@@ -190,11 +190,11 @@ Now it is attributed to the caller's line, which is both visible and actionable.
 
 2. ▢ Breaking or not?
 
-   - a) `def parse(text: str)` becomes `def parse(text: str | bytes)`
-   - b) `def find(id) -> Order` becomes `-> Order | None`
-   - c) Adding `ItemMissing(StoreError)` and raising it where `StoreError` was raised
-   - d) `requires-python = ">=3.10"` becomes `">=3.12"`
-   - e) A returned list becomes sorted
+    - a) `def parse(text: str)` becomes `def parse(text: str | bytes)`
+    - b) `def find(id) -> Order` becomes `-> Order | None`
+    - c) Adding `ItemMissing(StoreError)` and raising it where `StoreError` was raised
+    - d) `requires-python = ">=3.10"` becomes `">=3.12"`
+    - e) A returned list becomes sorted
 
 <details markdown="1"><summary>Check</summary>
 

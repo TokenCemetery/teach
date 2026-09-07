@@ -88,10 +88,10 @@ The member function runs. When a class already has a member with the same receiv
 
 5. ▢ Which claim correctly describes extension functions?
 
-   - a) An extension function is added as a real member of the class it extends, callable virtually like an inherited method
-   - b) Extension functions add new callable syntax without modifying the extended class, and are resolved statically by the variable's declared type at compile time, not the object's actual runtime type
-   - c) An extension function with the same signature as an existing member function always overrides that member
-   - d) Extension functions can only be declared on classes you own; they don't work on final classes or classes from external libraries
+    - a) An extension function is added as a real member of the class it extends, callable virtually like an inherited method
+    - b) Extension functions add new callable syntax without modifying the extended class, and are resolved statically by the variable's declared type at compile time, not the object's actual runtime type
+    - c) An extension function with the same signature as an existing member function always overrides that member
+    - d) Extension functions can only be declared on classes you own; they don't work on final classes or classes from external libraries
 
 <details markdown="1"><summary>Check</summary>
 

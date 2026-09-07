@@ -141,10 +141,10 @@ Deduplicating after the split leaves cross-split pairs intact, which is exactly 
 
 4. ▢ Which dataset defect is most likely to produce a model that never says "I don't know"?
 
-   - a) A class imbalance favouring one category strongly
-   - b) Every single answer being confident and complete
-   - c) Near-duplicate examples appearing across the split
-   - d) A token-length distribution with a very long tail
+    - a) A class imbalance favouring one category strongly
+    - b) Every single answer being confident and complete
+    - c) Near-duplicate examples appearing across the split
+    - d) A token-length distribution with a very long tail
 
 <details markdown="1"><summary>Check</summary>
 

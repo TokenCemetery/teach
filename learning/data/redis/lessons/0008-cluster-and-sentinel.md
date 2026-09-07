@@ -92,10 +92,10 @@ Sentinel: their workload doesn't need Cluster's sharding, only the failover beha
 
 5. ▢ Which claim correctly describes what Cluster and Sentinel each provide?
 
-   - a) Both eliminate the asynchronous-replication data-loss window that lesson 4 described
-   - b) Cluster provides sharded capacity plus built-in failover; Sentinel provides failover alone for a non-sharded deployment; neither strengthens the underlying replication guarantee
-   - c) Sentinel is required in addition to Cluster for any highly-available deployment
-   - d) Cluster's hash-tag mechanism removes the need to think about which keys are accessed together
+    - a) Both eliminate the asynchronous-replication data-loss window that lesson 4 described
+    - b) Cluster provides sharded capacity plus built-in failover; Sentinel provides failover alone for a non-sharded deployment; neither strengthens the underlying replication guarantee
+    - c) Sentinel is required in addition to Cluster for any highly-available deployment
+    - d) Cluster's hash-tag mechanism removes the need to think about which keys are accessed together
 
 <details markdown="1"><summary>Check</summary>
 

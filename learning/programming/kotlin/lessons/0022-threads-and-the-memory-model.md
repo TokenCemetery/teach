@@ -107,10 +107,10 @@ Default (`SYNCHRONIZED`): once. A lock ensures a single thread initialises it, a
 
 5. ▢ Which claim about Kotlin and the JVM memory model is correct?
 
-   - a) Kotlin defines its own memory model, which is stricter than the JVM's one
-   - b) Kotlin compiles to the JVM's model, spelling three of its constructs as annotations
-   - c) Kotlin removes data races by making every val property immutable and deeply final
-   - d) Kotlin defers the question to coroutines, which replace threads and their visibility rules
+    - a) Kotlin defines its own memory model, which is stricter than the JVM's one
+    - b) Kotlin compiles to the JVM's model, spelling three of its constructs as annotations
+    - c) Kotlin removes data races by making every val property immutable and deeply final
+    - d) Kotlin defers the question to coroutines, which replace threads and their visibility rules
 
 <details markdown="1"><summary>Check</summary>
 

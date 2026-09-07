@@ -272,9 +272,9 @@ Five of five runs printed `0`: the task has had no time for even one iteration, 
 
 5. ▢ A judgement call, not a compile check: for each function, say whether it is already safe to cancel as written, or needs a guard restoring an invariant on drop.
 
-   - a) Increments a counter, awaits a network call, then decrements the counter to mark it finished.
-   - b) Reads a whole buffer with one non-blocking call and has no other `.await` in the function.
-   - c) Writes a "job started" record, awaits the job, writes "job finished" once it returns, and a report assumes every started job also finished.
+    - a) Increments a counter, awaits a network call, then decrements the counter to mark it finished.
+    - b) Reads a whole buffer with one non-blocking call and has no other `.await` in the function.
+    - c) Writes a "job started" record, awaits the job, writes "job finished" once it returns, and a report assumes every started job also finished.
 
 <details markdown="1"><summary>Check</summary>
 

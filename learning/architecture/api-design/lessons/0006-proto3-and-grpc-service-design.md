@@ -88,10 +88,10 @@ A client running the old definition, if it ever receives a message serialized un
 
 5. ▢ Which claim correctly describes proto3's wire contract?
 
-   - a) A proto3 field's name is the part of the contract that must never change, the same as a REST JSON field name
-   - b) A proto3 field's number, not its name, is encoded on the wire and is the part of the contract that must not be reused or changed once assigned
-   - c) Removing a field from a proto3 message has no risk as long as the field's name is never reused
-   - d) gRPC services must be structured as one RPC method per REST-style standard method (List, Get, Create, Update, Delete)
+    - a) A proto3 field's name is the part of the contract that must never change, the same as a REST JSON field name
+    - b) A proto3 field's number, not its name, is encoded on the wire and is the part of the contract that must not be reused or changed once assigned
+    - c) Removing a field from a proto3 message has no risk as long as the field's name is never reused
+    - d) gRPC services must be structured as one RPC method per REST-style standard method (List, Get, Create, Update, Delete)
 
 <details markdown="1"><summary>Check</summary>
 

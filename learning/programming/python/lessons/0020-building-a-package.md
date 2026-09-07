@@ -184,10 +184,10 @@ PEP 561 requires the marker; without it, a checker must ignore the annotations, 
 
 3. ▢ Which of these are permanent once published?
 
-   - a) The version number
-   - b) The readme shown on the project page
-   - c) The declared dependencies of that release
-   - d) The availability of the release to new installs
+    - a) The version number
+    - b) The readme shown on the project page
+    - c) The declared dependencies of that release
+    - d) The availability of the release to new installs
 
 <details markdown="1"><summary>Check</summary>
 

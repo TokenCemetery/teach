@@ -102,10 +102,10 @@ Gradle resolves `25.1-android`: it considers every requested version in the grap
 
 5. ▢ Which claim about a Gradle configuration is correct?
 
-   - a) A Gradle configuration is a Maven scope with a different name and syntax
-   - b) A Gradle configuration has one role: declarable, resolvable, or consumable, not several
-   - c) A Gradle configuration is resolved eagerly, so declaring one downloads its dependencies
-   - d) A Gradle configuration called api exists in any project applying the java plugin
+    - a) A Gradle configuration is a Maven scope with a different name and syntax
+    - b) A Gradle configuration has one role: declarable, resolvable, or consumable, not several
+    - c) A Gradle configuration is resolved eagerly, so declaring one downloads its dependencies
+    - d) A Gradle configuration called api exists in any project applying the java plugin
 
 <details markdown="1"><summary>Check</summary>
 

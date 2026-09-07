@@ -88,10 +88,10 @@ The crashed consumer stops sending heartbeats to the group coordinator. Once its
 
 5. ▢ Which claim is true of consumer group coordination?
 
-   - a) The group coordinator itself computes the partition assignment for every rebalance
-   - b) One broker (the coordinator) tracks membership and orchestrates rebalances, while an elected consumer (the leader) computes the actual assignment
-   - c) A consumer's committed offset is tied to that specific consumer instance and is lost if the partition is reassigned
-   - d) Heartbeats are only used at startup, not to detect a consumer that later crashes
+    - a) The group coordinator itself computes the partition assignment for every rebalance
+    - b) One broker (the coordinator) tracks membership and orchestrates rebalances, while an elected consumer (the leader) computes the actual assignment
+    - c) A consumer's committed offset is tied to that specific consumer instance and is lost if the partition is reassigned
+    - d) Heartbeats are only used at startup, not to detect a consumer that later crashes
 
 <details markdown="1"><summary>Check</summary>
 

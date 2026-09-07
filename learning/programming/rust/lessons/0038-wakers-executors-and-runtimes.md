@@ -220,9 +220,9 @@ A runtime behaviour rule, not a syntax or type rule: the thread driving the oute
 
 5. ▢ A judgement call: for each program, say whether current-thread or multi-thread is the more honest default flavour.
 
-   - a) A command-line tool that reads one file, with nothing else running while it does.
-   - b) A tool reading several independent sources at once, where one being slow must not stall the others.
-   - c) A test that wants a single, deterministic thread to reason about ordering.
+    - a) A command-line tool that reads one file, with nothing else running while it does.
+    - b) A tool reading several independent sources at once, where one being slow must not stall the others.
+    - c) A test that wants a single, deterministic thread to reason about ordering.
 
 <details markdown="1"><summary>Check</summary>
 

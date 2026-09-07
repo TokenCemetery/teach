@@ -90,10 +90,10 @@ The primary keeps retaining every WAL segment newer than the abandoned slot's la
 
 5. ▢ Which claim is true of replication slots?
 
-   - a) A slot guarantees a standby can catch up after any disconnect, with no downside
-   - b) A slot makes the primary retain WAL until the corresponding consumer confirms receiving it, which protects a temporarily disconnected standby but risks unbounded WAL growth if the slot is abandoned
-   - c) Logical replication and physical replication stream identical data, differing only in configuration
-   - d) A replication slot only affects WAL retention, never vacuum's ability to reclaim dead tuples
+    - a) A slot guarantees a standby can catch up after any disconnect, with no downside
+    - b) A slot makes the primary retain WAL until the corresponding consumer confirms receiving it, which protects a temporarily disconnected standby but risks unbounded WAL growth if the slot is abandoned
+    - c) Logical replication and physical replication stream identical data, differing only in configuration
+    - d) A replication slot only affects WAL retention, never vacuum's ability to reclaim dead tuples
 
 <details markdown="1"><summary>Check</summary>
 

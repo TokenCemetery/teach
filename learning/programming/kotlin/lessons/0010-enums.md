@@ -88,10 +88,10 @@ This signals that the variants aren't really the same *shape* of thing; they nee
 
 5. ▢ Which claim correctly describes choosing between an enum and a sealed class?
 
-   - a) Enums and sealed classes are interchangeable; the choice is purely stylistic
-   - b) An enum fits a fixed set of same-shape constants (each a singleton instance), while a sealed class fits variants needing genuinely different data shapes per case; awkward, sparsely-relevant fields on some enum constants signal a sealed class fits better
-   - c) An enum constant can never override behavior; only sealed class subclasses can do that
-   - d) `entries`, `valueOf()`, `name`, and `ordinal` need to be written by hand for each enum class
+    - a) Enums and sealed classes are interchangeable; the choice is purely stylistic
+    - b) An enum fits a fixed set of same-shape constants (each a singleton instance), while a sealed class fits variants needing genuinely different data shapes per case; awkward, sparsely-relevant fields on some enum constants signal a sealed class fits better
+    - c) An enum constant can never override behavior; only sealed class subclasses can do that
+    - d) `entries`, `valueOf()`, `name`, and `ordinal` need to be written by hand for each enum class
 
 <details markdown="1"><summary>Check</summary>
 

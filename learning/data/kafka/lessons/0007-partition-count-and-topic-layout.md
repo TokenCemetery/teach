@@ -84,10 +84,10 @@ The ordering guarantee the workload needs and the key choice that provides it wi
 
 5. ▢ Which claim is true of choosing a topic's partition count?
 
-   - a) Partition count only affects consumer parallelism, with no cost independent of how many consumers actually exist
-   - b) Partition count should be chosen from the workload's actual required parallelism plus reasonable headroom, since both an unnecessarily large count and a later increase carry real, different costs
-   - c) Increasing partition count later is always safe and never affects existing ordering guarantees
-   - d) A defended topic layout only needs to state its partition count; ordering and delivery guarantees are separate concerns
+    - a) Partition count only affects consumer parallelism, with no cost independent of how many consumers actually exist
+    - b) Partition count should be chosen from the workload's actual required parallelism plus reasonable headroom, since both an unnecessarily large count and a later increase carry real, different costs
+    - c) Increasing partition count later is always safe and never affects existing ordering guarantees
+    - d) A defended topic layout only needs to state its partition count; ordering and delivery guarantees are separate concerns
 
 <details markdown="1"><summary>Check</summary>
 

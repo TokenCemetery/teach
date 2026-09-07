@@ -72,10 +72,10 @@ What does `allkeys-lru` promise about which keys it's allowed to touch?
 
 4. ▢ Which best distinguishes the `volatile-*` eviction policy family from the `allkeys-*` family?
 
-   - a) `volatile-*` policies are faster because they scan fewer keys
-   - b) `volatile-*` policies only evict keys that have a TTL set; `allkeys-*` policies can evict any key
-   - c) `allkeys-*` policies only run when `noeviction` is also set
-   - d) `volatile-*` policies evict based on key size; `allkeys-*` policies evict based on recency
+    - a) `volatile-*` policies are faster because they scan fewer keys
+    - b) `volatile-*` policies only evict keys that have a TTL set; `allkeys-*` policies can evict any key
+    - c) `allkeys-*` policies only run when `noeviction` is also set
+    - d) `volatile-*` policies evict based on key size; `allkeys-*` policies evict based on recency
 
 <details markdown="1"><summary>Check</summary>
 

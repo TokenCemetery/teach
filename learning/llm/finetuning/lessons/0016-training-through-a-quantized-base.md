@@ -160,10 +160,10 @@ CUDA is still the most complete and fastest path, and coverage on other backends
 
 5. ▢ Which hyperparameter must you rethink when switching from LoRA to QLoRA?
 
-   - a) The learning rate, which must be lowered substantially
-   - b) The alpha value, which must be raised to compensate
-   - c) None of them, the base precision is a separate concern
-   - d) The batch size, which must be raised to stay stable
+    - a) The learning rate, which must be lowered substantially
+    - b) The alpha value, which must be raised to compensate
+    - c) None of them, the base precision is a separate concern
+    - d) The batch size, which must be raised to stay stable
 
 <details markdown="1"><summary>Check</summary>
 

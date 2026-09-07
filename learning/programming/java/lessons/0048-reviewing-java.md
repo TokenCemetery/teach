@@ -258,10 +258,10 @@ Apply lesson 15's test to `NotificationException` specifically, at the call site
 
 4. ▢ For each, say whether it is a genuine defect worth the comment this lesson builds, or a case where the construct is the right tool. Justify each in one sentence.
 
-   - a) A sealed interface with three permitted records, one method implemented identically in all three, pulled up into a shared abstract class the sealed hierarchy's author also owns.
-   - b) A public `parseInput(String)` throws a checked `MalformedInputException`, and its only two callers, a CLI entry point and a batch importer, both catch it to show the user which line was wrong.
-   - c) `orders.stream().filter(Order::isPaid).map(Order::total).reduce(0, Integer::sum)`, used once, on one line, with no further processing.
-   - d) A `Cache<K, V>` class extends `LinkedHashMap<K, V>` purely to reuse its `removeEldestEntry` hook for an LRU eviction policy, and never exposes `Cache` where a `Map` is expected.
+    - a) A sealed interface with three permitted records, one method implemented identically in all three, pulled up into a shared abstract class the sealed hierarchy's author also owns.
+    - b) A public `parseInput(String)` throws a checked `MalformedInputException`, and its only two callers, a CLI entry point and a batch importer, both catch it to show the user which line was wrong.
+    - c) `orders.stream().filter(Order::isPaid).map(Order::total).reduce(0, Integer::sum)`, used once, on one line, with no further processing.
+    - d) A `Cache<K, V>` class extends `LinkedHashMap<K, V>` purely to reuse its `removeEldestEntry` hook for an LRU eviction policy, and never exposes `Cache` where a `Map` is expected.
 
 <details markdown="1"><summary>Check</summary>
 

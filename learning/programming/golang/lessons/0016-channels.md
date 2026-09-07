@@ -125,10 +125,10 @@ Use a `sync.WaitGroup`: each sender calls `wg.Done` when finished, and one separ
 
 3. ▢ Which operation panics?
 
-   - a) Receiving from a channel that has been closed
-   - b) Sending a value to a channel already closed
-   - c) Receiving from a channel that is still nil
-   - d) Ranging over a channel that was never closed
+    - a) Receiving from a channel that has been closed
+    - b) Sending a value to a channel already closed
+    - c) Receiving from a channel that is still nil
+    - d) Ranging over a channel that was never closed
 
 <details markdown="1"><summary>Check</summary>
 

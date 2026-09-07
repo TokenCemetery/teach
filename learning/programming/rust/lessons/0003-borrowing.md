@@ -176,9 +176,9 @@ The alternative is to move the `println!` above the `push`, which ends the borro
 
 3. ▢ Which rule does each error correspond to?
 
-   - a) `E0499: cannot borrow as mutable more than once`
-   - b) `E0502: cannot borrow as mutable while also borrowed as immutable`
-   - c) `E0505: cannot move out because it is borrowed`
+    - a) `E0499: cannot borrow as mutable more than once`
+    - b) `E0502: cannot borrow as mutable while also borrowed as immutable`
+    - c) `E0505: cannot move out because it is borrowed`
 
 <details markdown="1"><summary>Check</summary>
 

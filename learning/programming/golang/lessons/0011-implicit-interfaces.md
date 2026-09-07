@@ -130,10 +130,10 @@ The `*os.File` version can only be tested by touching a real filesystem, which i
 
 3. ▢ Which is the strongest reason to declare an interface in Go?
 
-   - a) The type will probably gain a second implementation eventually
-   - b) A consumer needs only two of the type's fourteen methods
-   - c) Every service type in the codebase already has one
-   - d) The team standard says implementations should have interfaces
+    - a) The type will probably gain a second implementation eventually
+    - b) A consumer needs only two of the type's fourteen methods
+    - c) Every service type in the codebase already has one
+    - d) The team standard says implementations should have interfaces
 
 <details markdown="1"><summary>Check</summary>
 

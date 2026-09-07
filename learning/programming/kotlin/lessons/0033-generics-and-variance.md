@@ -108,10 +108,10 @@ Ask which of the two interfaces has a method that takes an element as a paramete
 
 5. ▢ Which claim about declaring `out` on a type parameter is correct?
 
-   - a) Declaring out on a type parameter lets the class produce and consume it
-   - b) Declaring out restricts the parameter to out-positions, and buys the subtyping in return
-   - c) Declaring out is Kotlin's spelling of a wildcard, written at each use site
-   - d) Declaring out has no effect on subtyping, and only documents the author's intent
+    - a) Declaring out on a type parameter lets the class produce and consume it
+    - b) Declaring out restricts the parameter to out-positions, and buys the subtyping in return
+    - c) Declaring out is Kotlin's spelling of a wildcard, written at each use site
+    - d) Declaring out has no effect on subtyping, and only documents the author's intent
 
 <details markdown="1"><summary>Check</summary>
 

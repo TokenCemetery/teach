@@ -90,10 +90,10 @@ A copy-on-write is triggered: that sample gets its own private copy of the block
 
 5. ▢ Which claim is true of vLLM's block size choice?
 
-   - a) Larger blocks always waste more memory than smaller ones, with no offsetting benefit
-   - b) Block size trades internal fragmentation against block-table bookkeeping overhead
-   - c) Block size only affects parallel sampling workloads, not single-request serving
-   - d) A smaller block size always increases total memory usage
+    - a) Larger blocks always waste more memory than smaller ones, with no offsetting benefit
+    - b) Block size trades internal fragmentation against block-table bookkeeping overhead
+    - c) Block size only affects parallel sampling workloads, not single-request serving
+    - d) A smaller block size always increases total memory usage
 
 <details markdown="1"><summary>Check</summary>
 

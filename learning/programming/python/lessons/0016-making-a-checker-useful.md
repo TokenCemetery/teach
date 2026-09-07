@@ -232,10 +232,10 @@ Early returns keep the body flat and give the checker two narrowings. If both br
 
 3. ▢ Rank these four ways of dealing with a `union-attr` error, best first.
 
-   - a) `assert order is not None`
-   - b) `if order is None: return None` and change the return type to `str | None`
-   - c) `order = cast(Order, find(order_id))`
-   - d) `return order.amount  # type: ignore`
+    - a) `assert order is not None`
+    - b) `if order is None: return None` and change the return type to `str | None`
+    - c) `order = cast(Order, find(order_id))`
+    - d) `return order.amount  # type: ignore`
 
 <details markdown="1"><summary>Check</summary>
 

@@ -88,10 +88,10 @@ A single running vector (the residual stream) is passed sequentially through eac
 
 5. ▢ Which claim is true of stacking transformer blocks?
 
-   - a) Each block must use different input and output dimensions so later blocks can specialize
-   - b) All blocks in the stack share the exact same weights, the way a recurrent network reuses one set of weights across steps
-   - c) Every block preserves the same input/output shape and has its own independently learned weights, letting blocks stack uniformly while still specializing at different depths
-   - d) Residual connections and layer norm matter equally regardless of how many blocks are stacked
+    - a) Each block must use different input and output dimensions so later blocks can specialize
+    - b) All blocks in the stack share the exact same weights, the way a recurrent network reuses one set of weights across steps
+    - c) Every block preserves the same input/output shape and has its own independently learned weights, letting blocks stack uniformly while still specializing at different depths
+    - d) Residual connections and layer norm matter equally regardless of how many blocks are stacked
 
 <details markdown="1"><summary>Check</summary>
 

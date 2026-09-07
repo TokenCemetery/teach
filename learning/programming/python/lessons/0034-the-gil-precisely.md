@@ -127,11 +127,11 @@ The next three lessons are the tools: threads for waiting, processes and subinte
 
 1. ▢ For each, say whether four threads will be roughly four times faster.
 
-   - a) Downloading 200 URLs
-   - b) Computing SHA-256 of 200 files with `hashlib`
-   - c) Parsing 200 JSON documents already in memory with `json.loads`
-   - d) Running 200 SQL queries against a database
-   - e) Resizing 200 images with Pillow
+    - a) Downloading 200 URLs
+    - b) Computing SHA-256 of 200 files with `hashlib`
+    - c) Parsing 200 JSON documents already in memory with `json.loads`
+    - d) Running 200 SQL queries against a database
+    - e) Resizing 200 images with Pillow
 
 <details markdown="1"><summary>Check</summary>
 

@@ -88,10 +88,10 @@ This is the store anti-pattern: Redis holds the only copy of the session data, s
 
 5. ▢ Which claim correctly distinguishes cache-aside from the store anti-pattern?
 
-   - a) Cache-aside means Redis stores the primary copy of the data; the anti-pattern means the database does
-   - b) In cache-aside, a miss costs a slower read from an always-present primary; in the anti-pattern, a miss means the data is actually gone
-   - c) The anti-pattern only occurs when `maxmemory` is misconfigured
-   - d) Cache-aside and the store anti-pattern are the same pattern, just described differently by different teams
+    - a) Cache-aside means Redis stores the primary copy of the data; the anti-pattern means the database does
+    - b) In cache-aside, a miss costs a slower read from an always-present primary; in the anti-pattern, a miss means the data is actually gone
+    - c) The anti-pattern only occurs when `maxmemory` is misconfigured
+    - d) Cache-aside and the store anti-pattern are the same pattern, just described differently by different teams
 
 <details markdown="1"><summary>Check</summary>
 

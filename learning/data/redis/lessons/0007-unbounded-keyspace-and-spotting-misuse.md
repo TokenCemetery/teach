@@ -88,10 +88,10 @@ The rate-limit counter passes both questions: it has a named owner (its TTL), an
 
 5. ▢ Which claim correctly distinguishes the store anti-pattern from the unbounded-keyspace anti-pattern?
 
-   - a) They are the same failure described two ways
-   - b) The store anti-pattern is about whether a durable primary copy exists on a miss; the unbounded-keyspace anti-pattern is about whether a key has any mechanism that eventually removes it
-   - c) Setting a TTL on every key automatically prevents the store anti-pattern
-   - d) The unbounded-keyspace anti-pattern only matters under `allkeys-lru`, never under `noeviction`
+    - a) They are the same failure described two ways
+    - b) The store anti-pattern is about whether a durable primary copy exists on a miss; the unbounded-keyspace anti-pattern is about whether a key has any mechanism that eventually removes it
+    - c) Setting a TTL on every key automatically prevents the store anti-pattern
+    - d) The unbounded-keyspace anti-pattern only matters under `allkeys-lru`, never under `noeviction`
 
 <details markdown="1"><summary>Check</summary>
 

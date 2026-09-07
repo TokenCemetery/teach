@@ -88,10 +88,10 @@ By default, a pipeline's exit status is only the *last* command's, here `wc -l`,
 
 5. ▢ Which claim correctly describes exit status?
 
-   - a) Only commands that explicitly opt into it report an exit status; most commands leave `$?` unchanged
-   - b) A nonzero exit status means failure, `$?` reflects only the most recently run command, and a script continues past a failed command unless something explicitly checks and reacts to it
-   - c) A pipeline's exit status always reflects whether every stage of the pipe succeeded
-   - d) `$?` is only relevant for scripts that use `if` statements
+    - a) Only commands that explicitly opt into it report an exit status; most commands leave `$?` unchanged
+    - b) A nonzero exit status means failure, `$?` reflects only the most recently run command, and a script continues past a failed command unless something explicitly checks and reacts to it
+    - c) A pipeline's exit status always reflects whether every stage of the pipe succeeded
+    - d) `$?` is only relevant for scripts that use `if` statements
 
 <details markdown="1"><summary>Check</summary>
 

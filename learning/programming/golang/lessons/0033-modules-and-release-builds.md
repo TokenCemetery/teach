@@ -132,10 +132,10 @@ Fix by setting `module github.com/you/lib/v2` in `go.mod` and updating internal 
 
 3. ▢ Which flag makes a build reproducible across machines?
 
-   - a) `-ldflags="-s -w"` to strip the symbol table
-   - b) `-trimpath` to remove local filesystem paths
-   - c) `CGO_ENABLED=0` to avoid the C toolchain
-   - d) `-race` to enable the data race detector
+    - a) `-ldflags="-s -w"` to strip the symbol table
+    - b) `-trimpath` to remove local filesystem paths
+    - c) `CGO_ENABLED=0` to avoid the C toolchain
+    - d) `-race` to enable the data race detector
 
 <details markdown="1"><summary>Check</summary>
 

@@ -166,10 +166,10 @@ Two fixes, and the right one depends on the function. If `takes` only reads, cha
 
 3. ▢ Which of these types are `Copy`?
 
-   - a) `[u8; 4]`
-   - b) `&mut i32`
-   - c) `(bool, char)`
-   - d) `Option<String>`
+    - a) `[u8; 4]`
+    - b) `&mut i32`
+    - c) `(bool, char)`
+    - d) `Option<String>`
 
 <details markdown="1"><summary>Check</summary>
 

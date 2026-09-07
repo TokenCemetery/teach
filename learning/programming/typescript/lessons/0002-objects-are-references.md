@@ -142,10 +142,10 @@ The first fails, silently in sloppy mode and with a `TypeError` in strict mode, 
 
 3. ▢ You need to compare two objects by contents. Which is acceptable?
 
-   - a) `a === b`
-   - b) `JSON.stringify(a) === JSON.stringify(b)`
-   - c) A hand-written comparison of the fields you care about
-   - d) `Object.keys(a).length === Object.keys(b).length`
+    - a) `a === b`
+    - b) `JSON.stringify(a) === JSON.stringify(b)`
+    - c) A hand-written comparison of the fields you care about
+    - d) `Object.keys(a).length === Object.keys(b).length`
 
 <details markdown="1"><summary>Check</summary>
 

@@ -138,10 +138,10 @@ Fail readiness, wait a few seconds, long enough for a poll or two, then stop acc
 
 3. ▢ Which check belongs in the liveness probe?
 
-   - a) That the database responds to a ping
-   - b) That the process can serve a response
-   - c) That the message queue has capacity
-   - d) That the cache has been warmed up
+    - a) That the database responds to a ping
+    - b) That the process can serve a response
+    - c) That the message queue has capacity
+    - d) That the cache has been warmed up
 
 <details markdown="1"><summary>Check</summary>
 

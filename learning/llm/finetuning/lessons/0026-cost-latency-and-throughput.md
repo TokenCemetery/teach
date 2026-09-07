@@ -143,10 +143,10 @@ This is frequently the whole economic case for fine-tuning, and it has nothing t
 
 3. ▢ Which fine-tuning benefit produces the largest cost reduction?
 
-   - a) The prompt becoming shorter by a thousand tokens
-   - b) A smaller model becoming sufficient for the task
-   - c) The output becoming shorter by fifty output tokens
-   - d) The retry rate falling from fifteen percent to one
+    - a) The prompt becoming shorter by a thousand tokens
+    - b) A smaller model becoming sufficient for the task
+    - c) The output becoming shorter by fifty output tokens
+    - d) The retry rate falling from fifteen percent to one
 
 <details markdown="1"><summary>Check</summary>
 

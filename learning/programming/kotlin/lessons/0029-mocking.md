@@ -107,10 +107,10 @@ A relaxed mock invents a simple value for every function it was not told about, 
 
 5. ▢ Which response to "this class is final and I need to double it" is the better default?
 
-   - a) A final class is a mocking problem, so mark it open in tests
-   - b) A final class with no seam is a design signal: introduce an interface
-   - c) A final class cannot be mocked at all, so test it through callers
-   - d) A final class needs mockkStatic, which is what that function was designed for
+    - a) A final class is a mocking problem, so mark it open in tests
+    - b) A final class with no seam is a design signal: introduce an interface
+    - c) A final class cannot be mocked at all, so test it through callers
+    - d) A final class needs mockkStatic, which is what that function was designed for
 
 <details markdown="1"><summary>Check</summary>
 

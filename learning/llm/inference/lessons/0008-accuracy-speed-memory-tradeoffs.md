@@ -82,10 +82,10 @@ Decode. It is memory-bandwidth bound, so reading a smaller weight footprint dire
 
 4. ▢ Which claim is true of the accuracy, speed, and memory trade-off when moving from int8 to int4?
 
-   - a) All three improve by the same factor, since both are 8-bit steps down from fp16
-   - b) Memory improves predictably, but the speed gain and the accuracy cost don't scale with it in the same ratio
-   - c) Speed and memory improve together, and accuracy is unaffected below 8 bits
-   - d) Accuracy loss is fixed regardless of bit width, so only memory and speed trade off
+    - a) All three improve by the same factor, since both are 8-bit steps down from fp16
+    - b) Memory improves predictably, but the speed gain and the accuracy cost don't scale with it in the same ratio
+    - c) Speed and memory improve together, and accuracy is unaffected below 8 bits
+    - d) Accuracy loss is fixed regardless of bit width, so only memory and speed trade off
 
 <details markdown="1"><summary>Check</summary>
 

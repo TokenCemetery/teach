@@ -124,14 +124,14 @@ For each call, find what is immediately to the left of the parentheses.
 
 2. ▢ Which of these logs `"api"`?
 
-   ```ts
-   const svc = new Service("api");
-   ```
+    ```ts
+    const svc = new Service("api");
+    ```
 
-   - a) `setTimeout(svc.describe, 0)`
-   - b) `setTimeout(() => svc.describe(), 0)`
-   - c) `setTimeout(svc.describe.bind(svc), 0)`
-   - d) `setTimeout(function () { svc.describe(); }, 0)`
+    - a) `setTimeout(svc.describe, 0)`
+    - b) `setTimeout(() => svc.describe(), 0)`
+    - c) `setTimeout(svc.describe.bind(svc), 0)`
+    - d) `setTimeout(function () { svc.describe(); }, 0)`
 
 <details markdown="1"><summary>Check</summary>
 

@@ -215,10 +215,10 @@ Fixes: `await httpx.AsyncClient().get(...)` if you can change the dependency, or
 
 3. ▢ `TaskGroup` or `gather`?
 
-   - a) Fetch three resources; if any fails, the request fails
-   - b) Notify twelve webhooks; failures are logged and ignored
-   - c) Two queries whose results are both required
-   - d) A background metrics flusher that runs for the process's life
+    - a) Fetch three resources; if any fails, the request fails
+    - b) Notify twelve webhooks; failures are logged and ignored
+    - c) Two queries whose results are both required
+    - d) A background metrics flusher that runs for the process's life
 
 <details markdown="1"><summary>Check</summary>
 

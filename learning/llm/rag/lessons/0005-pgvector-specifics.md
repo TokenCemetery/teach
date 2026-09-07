@@ -101,10 +101,10 @@ IVFFlat's clustering step needs a representative sample of the table's real vect
 
 5. ▢ Which claim is true of pgvector's operator classes (`vector_cosine_ops`, `vector_l2_ops`, `vector_ip_ops`)?
 
-   - a) Any operator class works with any query operator, since pgvector converts between distance functions automatically
-   - b) An index's operator class must match the query's distance operator, or the index won't be used for that query
-   - c) Operator class only affects HNSW indexes, not IVFFlat
-   - d) `vector_ip_ops` cannot be used with normalized embedding vectors
+    - a) Any operator class works with any query operator, since pgvector converts between distance functions automatically
+    - b) An index's operator class must match the query's distance operator, or the index won't be used for that query
+    - c) Operator class only affects HNSW indexes, not IVFFlat
+    - d) `vector_ip_ops` cannot be used with normalized embedding vectors
 
 <details markdown="1"><summary>Check</summary>
 

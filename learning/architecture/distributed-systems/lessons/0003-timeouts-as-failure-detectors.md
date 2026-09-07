@@ -88,10 +88,10 @@ A fixed timeout commits to one cutoff value regardless of actual network conditi
 
 5. ▢ Which claim correctly connects this lesson to stage 4 (consensus)?
 
-   - a) Consensus protocols require a failure detector with perfect accuracy to work correctly
-   - b) Consensus protocols are designed to make progress correctly despite relying on failure detectors that are only eventually, not immediately, accurate
-   - c) Adaptive failure detectors eliminate the need for consensus protocols entirely
-   - d) Completeness and accuracy are the same property described two different ways
+    - a) Consensus protocols require a failure detector with perfect accuracy to work correctly
+    - b) Consensus protocols are designed to make progress correctly despite relying on failure detectors that are only eventually, not immediately, accurate
+    - c) Adaptive failure detectors eliminate the need for consensus protocols entirely
+    - d) Completeness and accuracy are the same property described two different ways
 
 <details markdown="1"><summary>Check</summary>
 

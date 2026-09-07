@@ -371,10 +371,10 @@ The opposite of the usual expectation: debug reliably reads back the wrong value
 
 5. ▢ A judgement call, not a compile check: for each pointer below, say which of validity, alignment, non-nullness or aliasing it violates.
 
-   - a) A `*const Row` from a `Vec<Row>` since resized to hold three times as many rows.
-   - b) A `*mut u8` built by adding 3 to a pointer from `&x as *const u32 as *mut u8`.
-   - c) A `*mut Config` a failing C function returns, by convention, as unusable.
-   - d) Two `*mut Counter` from the same `&mut Counter`, each turned into a `&mut` and incremented in the same expression.
+    - a) A `*const Row` from a `Vec<Row>` since resized to hold three times as many rows.
+    - b) A `*mut u8` built by adding 3 to a pointer from `&x as *const u32 as *mut u8`.
+    - c) A `*mut Config` a failing C function returns, by convention, as unusable.
+    - d) Two `*mut Counter` from the same `&mut Counter`, each turned into a `&mut` and incremented in the same expression.
 
 <details markdown="1"><summary>Check</summary>
 

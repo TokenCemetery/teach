@@ -113,10 +113,10 @@ With the standard test dispatcher the launched coroutine is dispatched and does 
 
 5. ▢ Which claim about `runTest` and virtual time is correct?
 
-   - a) runTest skips every delay in the test, including delays inside other dispatchers
-   - b) runTest skips delays on its own scheduler, but not inside other dispatchers
-   - c) runTest skips no delays, and virtual time only reports what really elapsed
-   - d) runTest skips delays by running the test body on Dispatchers.Unconfined by default
+    - a) runTest skips every delay in the test, including delays inside other dispatchers
+    - b) runTest skips delays on its own scheduler, but not inside other dispatchers
+    - c) runTest skips no delays, and virtual time only reports what really elapsed
+    - d) runTest skips delays by running the test body on Dispatchers.Unconfined by default
 
 <details markdown="1"><summary>Check</summary>
 

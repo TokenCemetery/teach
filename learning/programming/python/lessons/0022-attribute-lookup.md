@@ -195,23 +195,23 @@ The reason it survives review is that the code reads `self.history`, which looks
 
 3. ▢ For each access, say which step of the lookup order answers it.
 
-   ```python
-   class Widget:
-       size = 10
-       @property
-       def area(self): return self.size ** 2
-       def draw(self): ...
-       def __getattr__(self, name): return None
+    ```python
+    class Widget:
+        size = 10
+        @property
+        def area(self): return self.size ** 2
+        def draw(self): ...
+        def __getattr__(self, name): return None
 
-   w = Widget()
-   w.__dict__["size"] = 20
-   w.__dict__["area"] = 999
-   ```
+    w = Widget()
+    w.__dict__["size"] = 20
+    w.__dict__["area"] = 999
+    ```
 
-   - a) `w.size`
-   - b) `w.area`
-   - c) `w.draw`
-   - d) `w.colour`
+    - a) `w.size`
+    - b) `w.area`
+    - c) `w.draw`
+    - d) `w.colour`
 
 <details markdown="1"><summary>Check</summary>
 
@@ -247,10 +247,10 @@ But the honest answer is not to write `__getattribute__` at all. For logging mis
 
 5. ▢ Which of these classes benefits from `__slots__`?
 
-   - a) A `Point` created a few million times while parsing a mesh
-   - b) A `Service` object created once at start-up
-   - c) A class that a plugin system adds attributes to at run time
-   - d) A base class whose subclasses are written by other teams
+    - a) A `Point` created a few million times while parsing a mesh
+    - b) A `Service` object created once at start-up
+    - c) A class that a plugin system adds attributes to at run time
+    - d) A base class whose subclasses are written by other teams
 
 <details markdown="1"><summary>Check</summary>
 

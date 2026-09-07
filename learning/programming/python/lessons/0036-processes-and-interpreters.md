@@ -191,11 +191,11 @@ A fourth, on POSIX: the work re-imports a heavy module in every child under `spa
 
 3. ▢ Threads, subinterpreters, or processes?
 
-   - a) Fetching 500 URLs
-   - b) Parsing 500 large JSON files, CPU-bound in `json.loads`
-   - c) Resizing images with Pillow
-   - d) Running an untrusted user-supplied script
-   - e) A CPU-bound task in a library that ships a C extension of unknown thread safety
+    - a) Fetching 500 URLs
+    - b) Parsing 500 large JSON files, CPU-bound in `json.loads`
+    - c) Resizing images with Pillow
+    - d) Running an untrusted user-supplied script
+    - e) A CPU-bound task in a library that ships a C extension of unknown thread safety
 
 <details markdown="1"><summary>Check</summary>
 

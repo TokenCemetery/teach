@@ -88,10 +88,10 @@ No. A sink connector's delivery and ordering guarantees still come from whatever
 
 5. ▢ Which claim is true of Kafka Connect?
 
-   - a) Connect invents its own delivery guarantees, independent of the idempotent-producer and transaction mechanisms this workspace already covered
-   - b) A connector's tasks are its own unit of parallelism, and distributed mode reassigns a dead worker's tasks the same way a consumer group rebalances a dead member's partitions
-   - c) Standalone mode is the production-appropriate choice, since it requires no coordination overhead
-   - d) A sink connector's tasks have no relationship to the topic's own partitions
+    - a) Connect invents its own delivery guarantees, independent of the idempotent-producer and transaction mechanisms this workspace already covered
+    - b) A connector's tasks are its own unit of parallelism, and distributed mode reassigns a dead worker's tasks the same way a consumer group rebalances a dead member's partitions
+    - c) Standalone mode is the production-appropriate choice, since it requires no coordination overhead
+    - d) A sink connector's tasks have no relationship to the topic's own partitions
 
 <details markdown="1"><summary>Check</summary>
 

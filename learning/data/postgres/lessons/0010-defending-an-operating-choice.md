@@ -84,10 +84,10 @@ Durability and replication (stages 1 and 3): the RPO target and the replication 
 
 5. ▢ Which claim is true of defending a Postgres deployment design?
 
-   - a) Choosing a popular, well-known configuration is sufficient defense on its own
-   - b) A defended design cites a specific decision and its measured or acknowledged cost from each relevant stage, not a default choice made without justification
-   - c) Managed services remove the need to make any of these decisions, since the provider decides for you
-   - d) RPO and replication mode are unrelated to index or vacuum strategy, so each can be decided independently with no shared context
+    - a) Choosing a popular, well-known configuration is sufficient defense on its own
+    - b) A defended design cites a specific decision and its measured or acknowledged cost from each relevant stage, not a default choice made without justification
+    - c) Managed services remove the need to make any of these decisions, since the provider decides for you
+    - d) RPO and replication mode are unrelated to index or vacuum strategy, so each can be decided independently with no shared context
 
 <details markdown="1"><summary>Check</summary>
 

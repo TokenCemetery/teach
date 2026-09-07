@@ -72,10 +72,10 @@ What does `!!` do at runtime if the value actually turns out to be `null`?
 
 4. ▢ Kotlin code calls an unannotated Java method that returns `String`. What type does Kotlin actually give that return value?
 
-   - a) `String`, since Java declared it non-generic and returning a reference type
-   - b) `String?`, to be maximally safe by default
-   - c) A platform type, which Kotlin lets you treat as either `String` or `String?`, trusting the caller to know which
-   - d) A compile error, since Kotlin requires all Java interop to be annotated first
+    - a) `String`, since Java declared it non-generic and returning a reference type
+    - b) `String?`, to be maximally safe by default
+    - c) A platform type, which Kotlin lets you treat as either `String` or `String?`, trusting the caller to know which
+    - d) A compile error, since Kotlin requires all Java interop to be annotated first
 
 <details markdown="1"><summary>Check</summary>
 

@@ -88,10 +88,10 @@ It guarantees exactly one `Logger` instance exists throughout the application, c
 
 5. ▢ Which claim correctly describes object declarations and companion objects?
 
-   - a) Kotlin has a `static` keyword, used the same way Java's is
-   - b) `object` declares a class and its single instance together, with thread-safe lazy initialization guaranteed by the language; a companion object is Kotlin's replacement for Java's static members, and unlike a static member, it's a real object that can implement interfaces or be passed as a value
-   - c) A companion object can only contain factory functions, no other kind of member
-   - d) Every class must have exactly one companion object
+    - a) Kotlin has a `static` keyword, used the same way Java's is
+    - b) `object` declares a class and its single instance together, with thread-safe lazy initialization guaranteed by the language; a companion object is Kotlin's replacement for Java's static members, and unlike a static member, it's a real object that can implement interfaces or be passed as a value
+    - c) A companion object can only contain factory functions, no other kind of member
+    - d) Every class must have exactly one companion object
 
 <details markdown="1"><summary>Check</summary>
 

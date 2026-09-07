@@ -88,10 +88,10 @@ A `val` property's delegate only needs a `getValue()` operator function (matchin
 
 5. ▢ Which claim correctly describes delegation in Kotlin?
 
-   - a) Class delegation via `by` behaves identically to inheritance: a method on the delegate calling another interface member always sees the derived class's overrides
-   - b) Class delegation forwards every interface member to a held object with compiler-generated code, but the delegate's own internal calls only see its own implementations, not the derived class's overrides; property delegation reuses accessor logic the same way, via `getValue()`/`setValue()`
-   - c) `by lazy { ... }` recomputes its value on every read, never caching the result
-   - d) A read-only (`val`) property delegate must implement both `getValue()` and `setValue()`
+    - a) Class delegation via `by` behaves identically to inheritance: a method on the delegate calling another interface member always sees the derived class's overrides
+    - b) Class delegation forwards every interface member to a held object with compiler-generated code, but the delegate's own internal calls only see its own implementations, not the derived class's overrides; property delegation reuses accessor logic the same way, via `getValue()`/`setValue()`
+    - c) `by lazy { ... }` recomputes its value on every read, never caching the result
+    - d) A read-only (`val`) property delegate must implement both `getValue()` and `setValue()`
 
 <details markdown="1"><summary>Check</summary>
 

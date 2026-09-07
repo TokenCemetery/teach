@@ -84,10 +84,10 @@ Lesson 4 and lesson 5 both showed that variance in request length is what create
 
 5. ▢ Which claim is true of a defensible p99 latency measurement?
 
-   - a) A single benchmark run of any size is sufficient, as long as it reports a p99 figure
-   - b) It should be measured with realistic concurrency and request-length variance, and reported separately for TTFT and inter-token latency
-   - c) The average and the p99 always move together, so measuring one is enough
-   - d) p99 only matters for CPU/edge serving, not GPU serving
+    - a) A single benchmark run of any size is sufficient, as long as it reports a p99 figure
+    - b) It should be measured with realistic concurrency and request-length variance, and reported separately for TTFT and inter-token latency
+    - c) The average and the p99 always move together, so measuring one is enough
+    - d) p99 only matters for CPU/edge serving, not GPU serving
 
 <details markdown="1"><summary>Check</summary>
 

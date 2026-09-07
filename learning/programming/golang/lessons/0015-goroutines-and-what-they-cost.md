@@ -124,10 +124,10 @@ Bounded alternatives: a worker pool of fixed size reading from a channel, or `er
 
 3. ▢ Which is the accurate statement about goroutine cost?
 
-   - a) Each one reserves a full operating-system thread stack
-   - b) Each one starts small and grows its stack on demand
-   - c) Each one is pooled and reused after the function returns
-   - d) Each one is free until it performs blocking input or output
+    - a) Each one reserves a full operating-system thread stack
+    - b) Each one starts small and grows its stack on demand
+    - c) Each one is pooled and reused after the function returns
+    - d) Each one is free until it performs blocking input or output
 
 <details markdown="1"><summary>Check</summary>
 

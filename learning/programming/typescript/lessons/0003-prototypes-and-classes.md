@@ -150,10 +150,10 @@ The compiler did not object because `as User` is an assertion: it stops checking
 
 4. ▢ Which is true of `x instanceof Service`?
 
-   - a) It compares the shape of `x` against the class
-   - b) It looks for `Service.prototype` in the chain
-   - c) It calls the constructor to compare results
-   - d) It checks the value of `x.constructor.name`
+    - a) It compares the shape of `x` against the class
+    - b) It looks for `Service.prototype` in the chain
+    - c) It calls the constructor to compare results
+    - d) It checks the value of `x.constructor.name`
 
 <details markdown="1"><summary>Check</summary>
 

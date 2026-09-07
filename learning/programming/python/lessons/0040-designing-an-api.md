@@ -159,11 +159,11 @@ Changes: keyword-only, so no call site can be misread or broken by reordering; `
 
 2. ▢ Which of these can you change in a patch release without breaking callers?
 
-   - a) The name of the first positional parameter
-   - b) Adding a keyword-only parameter with a default
-   - c) The exception type raised on invalid input
-   - d) The order of a returned list
-   - e) Adding a field to a returned frozen dataclass
+    - a) The name of the first positional parameter
+    - b) Adding a keyword-only parameter with a default
+    - c) The exception type raised on invalid input
+    - d) The order of a returned list
+    - e) Adding a field to a returned frozen dataclass
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -175,10 +175,10 @@ The fix is to iterate a snapshot: `for key in list(data):`. Python detects the m
 
 3. ▢ Which lookup would you write for each intention? Match the four.
 
-   - Reading a required setting from a parsed config file
-   - Reading an optional setting with a sensible fallback
-   - Building up a dictionary of lists while grouping records
-   - Deciding whether to log "created" or "updated"
+    - Reading a required setting from a parsed config file
+    - Reading an optional setting with a sensible fallback
+    - Building up a dictionary of lists while grouping records
+    - Deciding whether to log "created" or "updated"
 
 <details markdown="1"><summary>Check</summary>
 

@@ -88,10 +88,10 @@ Relying on every integrating team to have read and remembered a changelog entry 
 
 5. ▢ Which claim correctly describes evolving an API contract safely?
 
-   - a) Any change that adds new capability is automatically safe, regardless of what else it touches
-   - b) Additive changes (new optional fields, new endpoints) are safe because old clients ignore what they don't recognize; removals and meaning-changes require an announced transition and a real, enforced deprecation timeline
-   - c) A deprecation notice is primarily a documentation courtesy with no specific timeline attached
-   - d) Deprecation only needs to be mentioned in a changelog, since responsible clients will read it
+    - a) Any change that adds new capability is automatically safe, regardless of what else it touches
+    - b) Additive changes (new optional fields, new endpoints) are safe because old clients ignore what they don't recognize; removals and meaning-changes require an announced transition and a real, enforced deprecation timeline
+    - c) A deprecation notice is primarily a documentation courtesy with no specific timeline attached
+    - d) Deprecation only needs to be mentioned in a changelog, since responsible clients will read it
 
 <details markdown="1"><summary>Check</summary>
 

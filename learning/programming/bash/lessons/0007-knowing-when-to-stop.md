@@ -88,10 +88,10 @@ At least two concrete signals apply: non-trivial error handling (retry logic wit
 
 5. ▢ Which claim correctly describes knowing when to stop using shell?
 
-   - a) Any script that uses `sed` or `awk` has already outgrown shell and should be rewritten
-   - b) Concrete, checkable signals (real data structures, non-trivial error handling, structured data manipulation, a script exceeding roughly 100 lines) indicate shell's ceiling has been reached, and switching to a language like Python at that point is a deliberate design match, not an admission of failure
-   - c) A script should never be rewritten once started in shell, regardless of how complex it becomes, since rewriting wastes the original work
-   - d) Line count is the only signal that matters; a script's actual logic complexity is irrelevant as long as it stays short
+    - a) Any script that uses `sed` or `awk` has already outgrown shell and should be rewritten
+    - b) Concrete, checkable signals (real data structures, non-trivial error handling, structured data manipulation, a script exceeding roughly 100 lines) indicate shell's ceiling has been reached, and switching to a language like Python at that point is a deliberate design match, not an admission of failure
+    - c) A script should never be rewritten once started in shell, regardless of how complex it becomes, since rewriting wastes the original work
+    - d) Line count is the only signal that matters; a script's actual logic complexity is irrelevant as long as it stays short
 
 <details markdown="1"><summary>Check</summary>
 

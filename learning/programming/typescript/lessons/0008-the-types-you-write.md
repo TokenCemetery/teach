@@ -170,9 +170,9 @@ All three lines compile. `number[]` and `Array<number>` are the same type under 
 
 3. ▢ Given `type Item = { sku: string; note?: string };`, which of these compiles?
 
-   - a) `const i: Item = { sku: "a1" };`
-   - b) `const i: Item = { sku: "a1", note: undefined };`
-   - c) `const i: Item = { sku: "a1", note: "x" };`
+    - a) `const i: Item = { sku: "a1" };`
+    - b) `const i: Item = { sku: "a1", note: undefined };`
+    - c) `const i: Item = { sku: "a1", note: "x" };`
 
 <details markdown="1"><summary>Check</summary>
 

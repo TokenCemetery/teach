@@ -145,10 +145,10 @@ Measure the real distribution with the actual tokenizer. Lesson 7 turns that dis
 
 5. ▢ Which of these is safe to change between training and serving?
 
-   - a) The exact chat template string used
-   - b) The tokenizer shipped with the model
-   - c) The sampling temperature used at generation
-   - d) The special token marking a turn end
+    - a) The exact chat template string used
+    - b) The tokenizer shipped with the model
+    - c) The sampling temperature used at generation
+    - d) The special token marking a turn end
 
 <details markdown="1"><summary>Check</summary>
 

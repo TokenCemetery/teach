@@ -135,10 +135,10 @@ The fix is a regression suite covering abilities you are not training: general i
 
 4. ▢ Which observation most strongly indicates a broken pipeline rather than bad hyperparameters?
 
-   - a) The loss curve plateaus at a value far above zero
-   - b) The loss is exactly unchanged across all fifty steps
-   - c) The held-out loss rises while the training loss falls
-   - d) The loss spikes upward at one step and then recovers
+    - a) The loss curve plateaus at a value far above zero
+    - b) The loss is exactly unchanged across all fifty steps
+    - c) The held-out loss rises while the training loss falls
+    - d) The loss spikes upward at one step and then recovers
 
 <details markdown="1"><summary>Check</summary>
 

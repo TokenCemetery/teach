@@ -86,10 +86,10 @@ Whether the model was trained on something resembling this corpus's domain and t
 
 5. ▢ Which claim is true of choosing a similarity metric for an embedding model?
 
-   - a) Any of cosine similarity, dot product, or Euclidean distance works equally well regardless of how the model was trained
-   - b) The metric should match what the model's training objective actually optimized for, since a mismatch can degrade ranking quality
-   - c) Dot product is always strictly better than cosine similarity, regardless of vector normalization
-   - d) Euclidean distance and cosine similarity always produce identical rankings, normalized or not
+    - a) Any of cosine similarity, dot product, or Euclidean distance works equally well regardless of how the model was trained
+    - b) The metric should match what the model's training objective actually optimized for, since a mismatch can degrade ranking quality
+    - c) Dot product is always strictly better than cosine similarity, regardless of vector normalization
+    - d) Euclidean distance and cosine similarity always produce identical rankings, normalized or not
 
 <details markdown="1"><summary>Check</summary>
 

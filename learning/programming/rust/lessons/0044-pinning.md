@@ -259,9 +259,9 @@ It does not compile: `error[E0733]: recursion in an async fn requires boxing`, b
 
 5. ▢ This one is a judgement call, not a compile check. For each storage need below, say whether `std::pin::pin!` is enough or `Box::pin` is required.
 
-   - a) A single future created and awaited once, in the same function, with nothing else touching it in between.
-   - b) A `Vec` built once and awaited across the whole run, holding one future per input source, where sources come from more than one `async fn`.
-   - c) A future built in one function and returned to a caller that will store it and poll it later.
+    - a) A single future created and awaited once, in the same function, with nothing else touching it in between.
+    - b) A `Vec` built once and awaited across the whole run, holding one future per input source, where sources come from more than one `async fn`.
+    - c) A future built in one function and returned to a caller that will store it and poll it later.
 
 <details markdown="1"><summary>Check</summary>
 

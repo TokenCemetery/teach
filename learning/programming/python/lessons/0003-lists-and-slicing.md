@@ -172,10 +172,10 @@ One of these two operations gives the list a chance to change itself. The other 
 
 4. ▢ Which line makes a grid where the rows are independent?
 
-   - a) `grid = [[0] * 3] * 2`
-   - b) `grid = [[0] for _ in "ab"] * 2`
-   - c) `grid = [[0] * 3 for _ in "ab"]`
-   - d) `grid = list([[0] * 3] * 2)`
+    - a) `grid = [[0] * 3] * 2`
+    - b) `grid = [[0] for _ in "ab"] * 2`
+    - c) `grid = [[0] * 3 for _ in "ab"]`
+    - d) `grid = list([[0] * 3] * 2)`
 
 <details markdown="1"><summary>Check</summary>
 

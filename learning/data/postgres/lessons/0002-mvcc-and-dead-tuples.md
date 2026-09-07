@@ -88,10 +88,10 @@ Ordinary `VACUUM` marks dead tuples' space reusable within the table, but doesn'
 
 5. ▢ Which claim is true of why Postgres accumulates dead tuples?
 
-   - a) Dead tuples only appear when something goes wrong, such as a failed transaction
-   - b) MVCC keeps old row versions around so concurrent readers and writers don't block each other, and dead tuples are the ordinary, unavoidable byproduct once those versions are no longer needed
-   - c) Ordinary `VACUUM` returns reclaimed space to the operating system, shrinking the table on disk
-   - d) Autovacuum requires a human to manually trigger each run based on a schedule
+    - a) Dead tuples only appear when something goes wrong, such as a failed transaction
+    - b) MVCC keeps old row versions around so concurrent readers and writers don't block each other, and dead tuples are the ordinary, unavoidable byproduct once those versions are no longer needed
+    - c) Ordinary `VACUUM` returns reclaimed space to the operating system, shrinking the table on disk
+    - d) Autovacuum requires a human to manually trigger each run based on a schedule
 
 <details markdown="1"><summary>Check</summary>
 

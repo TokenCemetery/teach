@@ -142,10 +142,10 @@ Check for a `QueryContext` without a `defer rows.Close()`, and for early returns
 
 3. ▢ What does `rows.Err()` tell you that the loop does not?
 
-   - a) Whether any rows matched the query at all
-   - b) Whether iteration stopped early from an error
-   - c) Whether the connection returned to the pool
-   - d) Whether the scan destination types were wrong
+    - a) Whether any rows matched the query at all
+    - b) Whether iteration stopped early from an error
+    - c) Whether the connection returned to the pool
+    - d) Whether the scan destination types were wrong
 
 <details markdown="1"><summary>Check</summary>
 

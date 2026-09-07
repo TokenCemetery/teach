@@ -88,10 +88,10 @@ As unary gRPC: a `ListOrders(ListOrdersRequest) returns (ListOrdersResponse)` RP
 
 5. ▢ Which claim correctly describes choosing among gRPC's RPC kinds?
 
-   - a) Streaming RPCs should be preferred by default since they're more efficient than unary calls
-   - b) The right RPC kind matches the actual interaction shape (bounded single response, incremental results, chunked upload, real-time bidirectional exchange); unary remains the correct default for most of an API's surface
-   - c) Client streaming and server streaming are interchangeable, since both involve a stream on one side
-   - d) A use case that's really a paginated list should be redesigned as server streaming for consistency with gRPC's other capabilities
+    - a) Streaming RPCs should be preferred by default since they're more efficient than unary calls
+    - b) The right RPC kind matches the actual interaction shape (bounded single response, incremental results, chunked upload, real-time bidirectional exchange); unary remains the correct default for most of an API's surface
+    - c) Client streaming and server streaming are interchangeable, since both involve a stream on one side
+    - d) A use case that's really a paginated list should be redesigned as server streaming for consistency with gRPC's other capabilities
 
 <details markdown="1"><summary>Check</summary>
 

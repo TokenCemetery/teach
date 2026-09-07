@@ -136,10 +136,10 @@ Control for it: compare at matched lengths, instruct the judge explicitly to dis
 
 4. ▢ Which metric best evaluates a code-generation fine-tune?
 
-   - a) ROUGE against the reference implementation provided
-   - b) Execution against a test suite for each problem
-   - c) Held-out cross-entropy loss on the code tokens
-   - d) A model judge scoring readability and correctness
+    - a) ROUGE against the reference implementation provided
+    - b) Execution against a test suite for each problem
+    - c) Held-out cross-entropy loss on the code tokens
+    - d) A model judge scoring readability and correctness
 
 <details markdown="1"><summary>Check</summary>
 

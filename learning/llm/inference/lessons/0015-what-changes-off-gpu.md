@@ -86,10 +86,10 @@ For llama.cpp, it was made when a specific GGUF file (at a specific quant level,
 
 4. ▢ Which claim is true of why PagedAttention-style memory management is less commonly needed at CPU/edge scale?
 
-   - a) CPU hardware makes paging technically impossible
-   - b) The typical workload has few enough concurrent sequences that a simpler, contiguous per-sequence cache is adequate
-   - c) llama.cpp's GGUF format is incompatible with any form of paged memory
-   - d) KV caches don't exist at all in CPU serving
+    - a) CPU hardware makes paging technically impossible
+    - b) The typical workload has few enough concurrent sequences that a simpler, contiguous per-sequence cache is adequate
+    - c) llama.cpp's GGUF format is incompatible with any form of paged memory
+    - d) KV caches don't exist at all in CPU serving
 
 <details markdown="1"><summary>Check</summary>
 

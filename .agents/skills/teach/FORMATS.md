@@ -194,7 +194,7 @@ If the lesson itself is unclear rather than the material, that is a defect: [ope
 
 The closing block is fixed text: copy it verbatim. Lessons are read by people with no teaching session attached to them, so it points at the material and at the issue tracker rather than at a teacher.
 
-Indent a list of options by **four** spaces. Python-Markdown needs four to keep them inside the numbered item; at three it ends the ordered list and renders the options as a separate list underneath, which reads almost right and is not. The item then becomes a loose list item, so its prompt carries slightly more spacing than the prompts above it. That is expected, not a defect.
+Indent a list of options by **four** spaces, and any code fence or paragraph the same item carries with them. Python-Markdown needs four to keep them inside the numbered item; at three it ends the ordered list and renders the options as a separate list underneath, which reads almost right and is not. GitHub renders the four-space form the same way, so the two agree. The item then becomes a loose list item, so its prompt carries slightly more spacing than the prompts above it. That is expected, not a defect.
 
 See [Rendering](PUBLISHING.md#rendering) for the constraints the `<details>` blocks have to satisfy.
 

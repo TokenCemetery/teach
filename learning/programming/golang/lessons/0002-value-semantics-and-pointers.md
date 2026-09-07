@@ -138,10 +138,10 @@ The line that would *not* be visible is `m = make(map[string]int)` inside `add`:
 
 3. ▢ Which of these is the weakest reason to take a pointer receiver?
 
-   - a) The method has to mutate the receiver's fields
-   - b) The struct embeds a mutex that resists copying
-   - c) The struct is a hundred bytes of plain fields
-   - d) The method must record that no value exists
+    - a) The method has to mutate the receiver's fields
+    - b) The struct embeds a mutex that resists copying
+    - c) The struct is a hundred bytes of plain fields
+    - d) The method must record that no value exists
 
 <details markdown="1"><summary>Check</summary>
 

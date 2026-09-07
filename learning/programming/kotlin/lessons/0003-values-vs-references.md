@@ -88,10 +88,10 @@ Storing an instance in a `HashSet` or as a `HashMap` key, then later checking wh
 
 5. ▢ Which claim correctly describes equality in Kotlin?
 
-   - a) `==` and `===` are interchangeable in Kotlin, both checking object identity
-   - b) `==` checks structural equality (calls `equals()`), `===` checks referential equality (same object), and a plain class gets referential equality by default unless it overrides `equals()` or uses `data`/`value`
-   - c) Overriding `equals()` alone is sufficient; `hashCode()` is unrelated and can be left as the default
-   - d) `data class` and `value class` are the only way to get structural equality in Kotlin; a plain class can never override `equals()`
+    - a) `==` and `===` are interchangeable in Kotlin, both checking object identity
+    - b) `==` checks structural equality (calls `equals()`), `===` checks referential equality (same object), and a plain class gets referential equality by default unless it overrides `equals()` or uses `data`/`value`
+    - c) Overriding `equals()` alone is sufficient; `hashCode()` is unrelated and can be left as the default
+    - d) `data class` and `value class` are the only way to get structural equality in Kotlin; a plain class can never override `equals()`
 
 <details markdown="1"><summary>Check</summary>
 

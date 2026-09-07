@@ -194,10 +194,10 @@ One of these three lines stops the module from importing at all.
 
 3. ▢ Which of these can be a `set` member? For each `no`, give the one-word fix.
 
-   - a) `@dataclass class A: x: int`
-   - b) `@dataclass(frozen=True) class B: x: int`
-   - c) `@dataclass(frozen=True) class C: xs: list`
-   - d) `@dataclass(eq=False) class D: x: int`
+    - a) `@dataclass class A: x: int`
+    - b) `@dataclass(frozen=True) class B: x: int`
+    - c) `@dataclass(frozen=True) class C: xs: list`
+    - d) `@dataclass(eq=False) class D: x: int`
 
 <details markdown="1"><summary>Check</summary>
 

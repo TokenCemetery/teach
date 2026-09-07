@@ -78,10 +78,10 @@ Measure retrieval quality (recall@k, MRR, or precision at the position that matt
 
 5. ▢ Which claim is true of deciding whether to add a reranking stage?
 
-   - a) Reranking should always be added, since a cross-encoder is more accurate than a bi-encoder by construction
-   - b) Reranking should never be added, since it costs more latency than initial retrieval alone
-   - c) The decision depends on measuring both the quality gain and the added latency against the specific workload's budget and quality needs
-   - d) Reranking's cost is fixed and doesn't depend on how many candidates are reranked
+    - a) Reranking should always be added, since a cross-encoder is more accurate than a bi-encoder by construction
+    - b) Reranking should never be added, since it costs more latency than initial retrieval alone
+    - c) The decision depends on measuring both the quality gain and the added latency against the specific workload's budget and quality needs
+    - d) Reranking's cost is fixed and doesn't depend on how many candidates are reranked
 
 <details markdown="1"><summary>Check</summary>
 

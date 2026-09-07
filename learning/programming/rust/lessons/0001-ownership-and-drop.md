@@ -154,10 +154,10 @@ That difference is visible in the signatures alone, which is the point: `String`
 
 4. ▢ Which of these values needs an owner to be responsible for freeing something?
 
-   - a) `let x: u64 = 9;`
-   - b) `let v: Vec<u8> = vec![1, 2];`
-   - c) `let t: (i32, bool) = (1, true);`
-   - d) `let f: f64 = 1.5;`
+    - a) `let x: u64 = 9;`
+    - b) `let v: Vec<u8> = vec![1, 2];`
+    - c) `let t: (i32, bool) = (1, true);`
+    - d) `let f: f64 = 1.5;`
 
 <details markdown="1"><summary>Check</summary>
 

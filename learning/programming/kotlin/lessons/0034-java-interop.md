@@ -117,10 +117,10 @@ By default the Java caller sees only the full three-parameter signature, so the 
 
 5. ▢ Which claim about calling an unannotated Java method from Kotlin is correct?
 
-   - a) An unannotated Java method gives Kotlin a nullable type, checked as usual
-   - b) An unannotated Java method gives Kotlin a platform type, with checks relaxed
-   - c) An unannotated Java method gives Kotlin a non-null type, always safe
-   - d) An unannotated Java method cannot be called from Kotlin without a cast
+    - a) An unannotated Java method gives Kotlin a nullable type, checked as usual
+    - b) An unannotated Java method gives Kotlin a platform type, with checks relaxed
+    - c) An unannotated Java method gives Kotlin a non-null type, always safe
+    - d) An unannotated Java method cannot be called from Kotlin without a cast
 
 <details markdown="1"><summary>Check</summary>
 

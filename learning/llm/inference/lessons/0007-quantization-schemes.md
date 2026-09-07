@@ -86,10 +86,10 @@ GPTQ quantizes column by column and corrects the not-yet-quantized remainder of 
 
 5. ▢ Which claim is true of GPTQ and AWQ compared to naive round-to-nearest quantization at 4-bit?
 
-   - a) They avoid quantizing the model's weights at all, only its activations
-   - b) They use calibration or per-layer correction to preserve more accuracy at the same bit width
-   - c) They only work when paired with a lower-precision KV cache
-   - d) They reduce the model's memory footprint below what int4 alone achieves
+    - a) They avoid quantizing the model's weights at all, only its activations
+    - b) They use calibration or per-layer correction to preserve more accuracy at the same bit width
+    - c) They only work when paired with a lower-precision KV cache
+    - d) They reduce the model's memory footprint below what int4 alone achieves
 
 <details markdown="1"><summary>Check</summary>
 

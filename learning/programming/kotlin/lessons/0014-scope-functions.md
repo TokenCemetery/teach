@@ -88,10 +88,10 @@ Consider which functions fit "compute something new from this" versus "configure
 
 5. ▢ Which claim correctly describes choosing among the scope functions?
 
-   - a) All five scope functions are functionally identical; the choice is purely a stylistic preference with no technical difference
-   - b) The choice comes down to two independent axes, object reference (`it` vs `this`) and return value (lambda result vs original object), and matching those to the actual need (transform vs configure) rather than memorizing five arbitrary names
-   - c) `with` is an extension function like `let`, `run`, and `apply`, just with a different name
-   - d) `also` and `apply` both return the lambda's computed result
+    - a) All five scope functions are functionally identical; the choice is purely a stylistic preference with no technical difference
+    - b) The choice comes down to two independent axes, object reference (`it` vs `this`) and return value (lambda result vs original object), and matching those to the actual need (transform vs configure) rather than memorizing five arbitrary names
+    - c) `with` is an extension function like `let`, `run`, and `apply`, just with a different name
+    - d) `also` and `apply` both return the lambda's computed result
 
 <details markdown="1"><summary>Check</summary>
 

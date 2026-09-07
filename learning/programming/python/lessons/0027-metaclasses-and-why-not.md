@@ -177,10 +177,10 @@ Identical behaviour, fewer concepts, `type(Handler)` is still `type`, and the re
 
 2. ▢ Decorator or `__init_subclass__`?
 
-   - a) Validate that a class defines `__slots__`, applied to twelve specific classes
-   - b) Ensure every subclass of `Model` in the codebase, present and future, registers its table
-   - c) Add `__repr__` to a handful of legacy classes
-   - d) Require every subclass written by another team to implement `handle`
+    - a) Validate that a class defines `__slots__`, applied to twelve specific classes
+    - b) Ensure every subclass of `Model` in the codebase, present and future, registers its table
+    - c) Add `__repr__` to a handful of legacy classes
+    - d) Require every subclass written by another team to implement `handle`
 
 <details markdown="1"><summary>Check</summary>
 
@@ -214,10 +214,10 @@ This is the concrete cost of a metaclass in a published library, and it is why f
 
 4. ▢ Which of these genuinely needs a metaclass?
 
-   - a) A singleton, so `Connection()` always returns the same object
-   - b) A class body that must record the order in which fields were declared
-   - c) Changing what `isinstance(x, Shape)` answers for classes that merely have the right methods
-   - d) Generating `__init__` from annotations
+    - a) A singleton, so `Connection()` always returns the same object
+    - b) A class body that must record the order in which fields were declared
+    - c) Changing what `isinstance(x, Shape)` answers for classes that merely have the right methods
+    - d) Generating `__init__` from annotations
 
 <details markdown="1"><summary>Check</summary>
 

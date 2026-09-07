@@ -156,10 +156,10 @@ Raise rank, or extend the target modules to cover more of the model. Adding targ
 
 4. ▢ Which pairing gives the strongest update scale?
 
-   - a) `r = 8` with `alpha = 8`
-   - b) `r = 8` with `alpha = 32`
-   - c) `r = 32` with `alpha = 32`
-   - d) `r = 64` with `alpha = 64`
+    - a) `r = 8` with `alpha = 8`
+    - b) `r = 8` with `alpha = 32`
+    - c) `r = 32` with `alpha = 32`
+    - d) `r = 64` with `alpha = 64`
 
 <details markdown="1"><summary>Check</summary>
 

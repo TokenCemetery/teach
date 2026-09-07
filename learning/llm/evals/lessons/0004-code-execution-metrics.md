@@ -92,10 +92,10 @@ Generating exactly k samples and checking them directly is a single noisy draw, 
 
 5. ▢ Which claim is true of functional correctness compared to text-comparison metrics for code?
 
-   - a) It requires generated code to match a reference solution's exact text
-   - b) It checks whether the code's actual behavior, run against test cases, is correct, regardless of how it's written
-   - c) It cannot be combined with sampling multiple completions per problem
-   - d) It is a variant of BLEU adapted for programming languages
+    - a) It requires generated code to match a reference solution's exact text
+    - b) It checks whether the code's actual behavior, run against test cases, is correct, regardless of how it's written
+    - c) It cannot be combined with sampling multiple completions per problem
+    - d) It is a variant of BLEU adapted for programming languages
 
 <details markdown="1"><summary>Check</summary>
 

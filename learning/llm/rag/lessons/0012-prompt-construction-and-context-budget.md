@@ -84,10 +84,10 @@ Stage 6's diagnostic procedure checks whether the correct chunk was retrieved an
 
 5. ▢ Which claim is true of context-window budget and chunk placement in a RAG prompt?
 
-   - a) Retrieving more chunks is always better, since more context can only help the model
-   - b) A chunk technically inside the context window is guaranteed to be used the same way regardless of where it sits
-   - c) Retrieved chunks compete for a shared budget with the rest of the request, and where a chunk is placed in the assembled prompt affects whether the model actually uses it
-   - d) Lost-in-the-middle only affects very long documents, not a prompt assembled from several separate retrieved chunks
+    - a) Retrieving more chunks is always better, since more context can only help the model
+    - b) A chunk technically inside the context window is guaranteed to be used the same way regardless of where it sits
+    - c) Retrieved chunks compete for a shared budget with the rest of the request, and where a chunk is placed in the assembled prompt affects whether the model actually uses it
+    - d) Lost-in-the-middle only affects very long documents, not a prompt assembled from several separate retrieved chunks
 
 <details markdown="1"><summary>Check</summary>
 

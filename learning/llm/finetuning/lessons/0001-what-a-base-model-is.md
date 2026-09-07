@@ -81,10 +81,10 @@ Instruction following is a trained behaviour. Expecting it from a base model is 
 
 4. ▢ Which of these does fine-tuning change?
 
-   - a) The sampling temperature used at serving time
-   - b) The numeric values stored inside the model weights
-   - c) The tokens present in the model context window
-   - d) The vocabulary size the model was first built with
+    - a) The sampling temperature used at serving time
+    - b) The numeric values stored inside the model weights
+    - c) The tokens present in the model context window
+    - d) The vocabulary size the model was first built with
 
 <details markdown="1"><summary>Check</summary>
 

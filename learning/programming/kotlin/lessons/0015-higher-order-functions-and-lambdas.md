@@ -88,10 +88,10 @@ Consider which parameter of `fold` the lambda is filling, and its position among
 
 5. ▢ Which claim correctly describes higher-order functions and lambdas?
 
-   - a) A higher-order function is any function with more than one parameter
-   - b) Function types are real types describing a function's parameter and return shape; a receiver-style function type (`T.() -> R`) exposes the receiver as `this`, while an ordinary function type (`(T) -> R`) passes it as an explicit parameter, which is exactly what distinguishes scope functions like `run` from `let`
-   - c) Trailing-lambda syntax only works when a lambda is the sole argument to a function
-   - d) A lambda's return value must always be specified with an explicit `return` statement
+    - a) A higher-order function is any function with more than one parameter
+    - b) Function types are real types describing a function's parameter and return shape; a receiver-style function type (`T.() -> R`) exposes the receiver as `this`, while an ordinary function type (`(T) -> R`) passes it as an explicit parameter, which is exactly what distinguishes scope functions like `run` from `let`
+    - c) Trailing-lambda syntax only works when a lambda is the sole argument to a function
+    - d) A lambda's return value must always be specified with an explicit `return` statement
 
 <details markdown="1"><summary>Check</summary>
 

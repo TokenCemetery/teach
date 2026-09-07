@@ -88,10 +88,10 @@ Sealing's entire purpose is guaranteeing that no subclasses exist outside the on
 
 5. ▢ Which claim correctly describes sealed classes and exhaustive `when`?
 
-   - a) Sealing a class prevents it from having any subclasses at all
-   - b) A sealed hierarchy has a complete, compiler-known set of subclasses, letting a `when` over it be exhaustive without an `else`, and the compiler re-checks this exhaustiveness whenever the hierarchy changes
-   - c) Sealed classes and enums serve the same purpose and are interchangeable
-   - d) A sealed interface can be implemented by any class in any module, as long as it's within the same package as some subclass
+    - a) Sealing a class prevents it from having any subclasses at all
+    - b) A sealed hierarchy has a complete, compiler-known set of subclasses, letting a `when` over it be exhaustive without an `else`, and the compiler re-checks this exhaustiveness whenever the hierarchy changes
+    - c) Sealed classes and enums serve the same purpose and are interchangeable
+    - d) A sealed interface can be implemented by any class in any module, as long as it's within the same package as some subclass
 
 <details markdown="1"><summary>Check</summary>
 

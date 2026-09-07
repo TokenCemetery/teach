@@ -104,10 +104,10 @@ With the cold flow, each of the three collectors starts its own execution, so yo
 
 5. ▢ Which claim describes a cold flow correctly?
 
-   - a) A cold flow runs once, and every collector after that receives replayed values
-   - b) A cold flow does nothing until collected, and each collector starts an execution
-   - c) A cold flow emits continuously, so a collector joins the stream in progress
-   - d) A cold flow runs on collection, and all collectors then share one execution
+    - a) A cold flow runs once, and every collector after that receives replayed values
+    - b) A cold flow does nothing until collected, and each collector starts an execution
+    - c) A cold flow emits continuously, so a collector joins the stream in progress
+    - d) A cold flow runs on collection, and all collectors then share one execution
 
 <details markdown="1"><summary>Check</summary>
 

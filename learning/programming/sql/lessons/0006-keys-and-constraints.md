@@ -125,10 +125,10 @@ Adding `NOT NULL` is what makes the constraint mean what the application assumes
 
 2. ▢ Which of these should be the primary key of a `customers` table?
 
-   - a) `email`
-   - b) A generated `bigint`, with `UNIQUE` on `email`
-   - c) `(email, country)`
-   - d) A random UUID, with `UNIQUE` on `email`
+    - a) `email`
+    - b) A generated `bigint`, with `UNIQUE` on `email`
+    - c) `(email, country)`
+    - d) A random UUID, with `UNIQUE` on `email`
 
 <details markdown="1"><summary>Check</summary>
 

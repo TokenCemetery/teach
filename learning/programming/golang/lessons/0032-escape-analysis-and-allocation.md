@@ -110,10 +110,10 @@ This is worth knowing for two reasons: debug prints distort the benchmark you ar
 
 3. ▢ Which change most reliably removes allocations?
 
-   - a) Passing large structs by pointer instead of value
-   - b) Preallocating a slice with the known final capacity
-   - c) Replacing concrete parameter types with interfaces
-   - d) Adding a `sync.Pool` in front of every allocation
+    - a) Passing large structs by pointer instead of value
+    - b) Preallocating a slice with the known final capacity
+    - c) Replacing concrete parameter types with interfaces
+    - d) Adding a `sync.Pool` in front of every allocation
 
 <details markdown="1"><summary>Check</summary>
 

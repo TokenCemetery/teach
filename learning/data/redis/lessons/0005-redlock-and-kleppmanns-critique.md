@@ -88,10 +88,10 @@ Not on its own. Since the protected resource can't reject a stale, paused client
 
 5. ▢ Which claim best summarizes Kleppmann's critique of Redlock?
 
-   - a) Redlock's majority-quorum algorithm is implemented incorrectly and doesn't actually tolerate instance failure
-   - b) Redlock fixes the single-instance failure mode, but without a fencing token enforced at the protected resource, a paused client can still act after its lock has expired
-   - c) Distributed locks built on Redis should never be used under any circumstances
-   - d) Kleppmann's critique only applies to Redis and has no equivalent in other distributed lock designs
+    - a) Redlock's majority-quorum algorithm is implemented incorrectly and doesn't actually tolerate instance failure
+    - b) Redlock fixes the single-instance failure mode, but without a fencing token enforced at the protected resource, a paused client can still act after its lock has expired
+    - c) Distributed locks built on Redis should never be used under any circumstances
+    - d) Kleppmann's critique only applies to Redis and has no equivalent in other distributed lock designs
 
 <details markdown="1"><summary>Check</summary>
 

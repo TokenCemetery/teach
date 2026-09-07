@@ -70,10 +70,10 @@ Instead of running the new request's entire prompt in one step, the scheduler sp
 
 3. ▢ Which claim is true of chunked prefill?
 
-   - a) It removes prefill entirely, treating every token as a decode step
-   - b) It bounds a step's added latency by splitting a large prefill into pieces
-   - c) It is a technique specific to CPU serving stacks like llama.cpp
-   - d) It reduces how much KV cache a long prompt needs once fully processed
+    - a) It removes prefill entirely, treating every token as a decode step
+    - b) It bounds a step's added latency by splitting a large prefill into pieces
+    - c) It is a technique specific to CPU serving stacks like llama.cpp
+    - d) It reduces how much KV cache a long prompt needs once fully processed
 
 <details markdown="1"><summary>Check</summary>
 

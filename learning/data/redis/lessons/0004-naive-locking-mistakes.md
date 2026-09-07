@@ -88,10 +88,10 @@ Failure mode 1 violates the assumption that the critical section always finishes
 
 5. ▢ Which claim is true of the naive single-instance Redis lock?
 
-   - a) It is safe as long as the TTL is set high enough
-   - b) It is correct on a single instance with no crashes and no pauses exceeding the TTL, but neither condition is guaranteed in practice
-   - c) Adding an asynchronous replica makes it safe against primary failure
-   - d) The check-then-delete release script is unnecessary if the TTL is short
+    - a) It is safe as long as the TTL is set high enough
+    - b) It is correct on a single instance with no crashes and no pauses exceeding the TTL, but neither condition is guaranteed in practice
+    - c) Adding an asynchronous replica makes it safe against primary failure
+    - d) The check-then-delete release script is unnecessary if the TTL is short
 
 <details markdown="1"><summary>Check</summary>
 

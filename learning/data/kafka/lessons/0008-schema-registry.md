@@ -84,10 +84,10 @@ Full compatibility requires both backward and forward compatibility simultaneous
 
 5. ▢ Which claim is true of what Schema Registry actually changes?
 
-   - a) It removes the need for producers and consumers to agree on a message format at all
-   - b) It moves an incompatible schema change from a silent, downstream consume-time break to a rejected registration at produce time, checked against a configured compatibility mode
-   - c) Backward and forward compatibility both guarantee the exact same upgrade order is safe
-   - d) Full compatibility has no cost compared to backward or forward compatibility alone
+    - a) It removes the need for producers and consumers to agree on a message format at all
+    - b) It moves an incompatible schema change from a silent, downstream consume-time break to a rejected registration at produce time, checked against a configured compatibility mode
+    - c) Backward and forward compatibility both guarantee the exact same upgrade order is safe
+    - d) Full compatibility has no cost compared to backward or forward compatibility alone
 
 <details markdown="1"><summary>Check</summary>
 

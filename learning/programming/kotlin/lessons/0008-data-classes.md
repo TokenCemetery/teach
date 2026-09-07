@@ -88,10 +88,10 @@ All-`val` properties make instances genuinely immutable, no property can be reas
 
 5. ▢ Which claim correctly describes what a data class generates and requires?
 
-   - a) A data class generates `equals()`, `hashCode()`, `toString()`, `componentN()`, and `copy()` based on every property declared anywhere in the class, including the class body
-   - b) A data class generates its four members based only on primary-constructor properties, requires at least one such property (all marked `val`/`var`), and disallows custom `componentN()`/`copy()` implementations while still allowing custom `equals()`/`hashCode()`/`toString()`
-   - c) A data class can be `abstract` or `sealed` as long as it still has a primary constructor with at least one property
-   - d) `copy()` mutates the original instance's properties in place and returns a reference to it
+    - a) A data class generates `equals()`, `hashCode()`, `toString()`, `componentN()`, and `copy()` based on every property declared anywhere in the class, including the class body
+    - b) A data class generates its four members based only on primary-constructor properties, requires at least one such property (all marked `val`/`var`), and disallows custom `componentN()`/`copy()` implementations while still allowing custom `equals()`/`hashCode()`/`toString()`
+    - c) A data class can be `abstract` or `sealed` as long as it still has a primary constructor with at least one property
+    - d) `copy()` mutates the original instance's properties in place and returns a reference to it
 
 <details markdown="1"><summary>Check</summary>
 

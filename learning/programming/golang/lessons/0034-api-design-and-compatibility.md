@@ -135,10 +135,10 @@ You cannot prevent it after the fact, but an unexported `_ struct{}` field makes
 
 3. ▢ Which change is safe for existing callers?
 
-   - a) Adding a method to an exported interface type
-   - b) Adding a method to an exported struct type
-   - c) Adding a parameter to an exported function
-   - d) Changing an exported field's declared type
+    - a) Adding a method to an exported interface type
+    - b) Adding a method to an exported struct type
+    - c) Adding a parameter to an exported function
+    - d) Changing an exported field's declared type
 
 <details markdown="1"><summary>Check</summary>
 

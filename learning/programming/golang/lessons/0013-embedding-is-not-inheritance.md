@@ -142,10 +142,10 @@ Nothing about your locking discipline holds any more, because a caller can take 
 
 3. ▢ `type C struct { A; B }`, where both `A` and `B` have a `Do()` method. When does this fail?
 
-   - a) At the struct declaration, as an ambiguous embed
-   - b) At the call site `c.Do()`, as an ambiguous selector
-   - c) At the call site `c.A.Do()`, which needs qualifying
-   - d) At link time, when both methods are present
+    - a) At the struct declaration, as an ambiguous embed
+    - b) At the call site `c.Do()`, as an ambiguous selector
+    - c) At the call site `c.A.Do()`, which needs qualifying
+    - d) At link time, when both methods are present
 
 <details markdown="1"><summary>Check</summary>
 

@@ -106,10 +106,10 @@ One filtering function in the standard library exists precisely to keep what the
 
 5. ▢ Which claim correctly describes Kotlin's collection operators?
 
-   - a) They are member functions, so a chain of them shares one backing array
-   - b) They are extension functions, so each step of a chain allocates a list
-   - c) They are lazy operations, so a chain of them fuses into one traversal
-   - d) They are mutating operations, so a chain of them rewrites the receiver
+    - a) They are member functions, so a chain of them shares one backing array
+    - b) They are extension functions, so each step of a chain allocates a list
+    - c) They are lazy operations, so a chain of them fuses into one traversal
+    - d) They are mutating operations, so a chain of them rewrites the receiver
 
 <details markdown="1"><summary>Check</summary>
 

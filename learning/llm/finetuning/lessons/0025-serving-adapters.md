@@ -149,10 +149,10 @@ Worse, it introduces a second changed variable, so the next comparison is uninte
 
 5. ▢ Which advantage of unmerged serving matters most operationally?
 
-   - a) The reduced memory footprint when serving many tasks
-   - b) The ability to roll back by changing a routing rule
-   - c) The absence of any per-request computational overhead
-   - d) The compatibility with every existing inference server
+    - a) The reduced memory footprint when serving many tasks
+    - b) The ability to roll back by changing a routing rule
+    - c) The absence of any per-request computational overhead
+    - d) The compatibility with every existing inference server
 
 <details markdown="1"><summary>Check</summary>
 

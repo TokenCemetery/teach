@@ -81,10 +81,10 @@ Without scaling, the variance of the dot-product scores grows with `d_k`. At `d_
 
 4. ▢ Which best describes the output of scaled dot-product attention for one query?
 
-   - a) The single value vector paired with the highest-scoring key
-   - b) A weighted sum of all value vectors, weighted by softmax over the query-key scores
-   - c) The average of the query and key vectors, scaled by the value vectors
-   - d) The value vector with the largest magnitude, unweighted
+    - a) The single value vector paired with the highest-scoring key
+    - b) A weighted sum of all value vectors, weighted by softmax over the query-key scores
+    - c) The average of the query and key vectors, scaled by the value vectors
+    - d) The value vector with the largest magnitude, unweighted
 
 <details markdown="1"><summary>Check</summary>
 

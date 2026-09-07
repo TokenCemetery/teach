@@ -88,10 +88,10 @@ The three classes aren't otherwise related by identity or shared state, just by 
 
 5. ▢ Which claim correctly describes Kotlin interfaces with default methods?
 
-   - a) An interface can hold a `var` property with a real backing field, the same as a class
-   - b) An interface can implement method bodies and provide computed property accessors, but can never hold backing-field state; a diamond conflict between two default implementations must be resolved explicitly via `super<Type>.method()`
-   - c) When two interfaces provide conflicting default implementations, Kotlin automatically prefers the first one listed in the supertype list
-   - d) Interfaces can't extend other interfaces; only classes can extend interfaces
+    - a) An interface can hold a `var` property with a real backing field, the same as a class
+    - b) An interface can implement method bodies and provide computed property accessors, but can never hold backing-field state; a diamond conflict between two default implementations must be resolved explicitly via `super<Type>.method()`
+    - c) When two interfaces provide conflicting default implementations, Kotlin automatically prefers the first one listed in the supertype list
+    - d) Interfaces can't extend other interfaces; only classes can extend interfaces
 
 <details markdown="1"><summary>Check</summary>
 

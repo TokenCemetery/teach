@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a topic and partition layout for a real workload and to diagnose consumer lag, rebalancing storms or unexpected message loss instead of guessing at a fix.
 
-**Latest lesson:** [1. Partitions and the Log](lessons/0001-partitions-and-the-log.md)
+**Latest lesson:** [2. Consumer Group Coordination](lessons/0002-consumer-group-coordination.md)
 
 ## Success looks like
 
@@ -46,6 +46,7 @@ Work through these in order.
 | # | Lesson | Teaches |
 |---|---|---|
 | [0001](lessons/0001-partitions-and-the-log.md) | Partitions and the Log | The unit everything else in this workspace (ordering, parallelism, consumer groups) is built around |
+| [0002](lessons/0002-consumer-group-coordination.md) | Consumer Group Coordination | How a group coordinator and a group leader divide partitions among consumers, and how offsets track each group's progress |
 
 ## Reference
 

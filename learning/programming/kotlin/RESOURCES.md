@@ -10,6 +10,8 @@ type: resources
 
 - [Docs: "Null safety", Kotlin](https://kotlinlang.org/docs/null-safety.html)
   Official docs for Kotlin's nullable/non-nullable type distinction, the safe-call and Elvis operators, and the platform types a Java interop boundary introduces. Use for: the primary mechanism behind writing null safety into the type system instead of into defensive checks.
+- [Docs: "Basic syntax overview", Kotlin](https://kotlinlang.org/docs/basic-syntax.html)
+  Official overview of Kotlin's core syntax elements, including `val`/`var`, basic types, and control flow, each linked to its own detailed page. Use for: the language's basic building blocks, before idiom (stage 3) asks for more than syntax.
 - [Docs: "Coroutines guide", Kotlin](https://kotlinlang.org/docs/coroutines-guide.html)
   Official guide to coroutines: suspending functions, structured concurrency, and dispatchers. Use for: how Kotlin's concurrency model actually works, before comparing it to anything else.
 - [JEP 444: "Virtual Threads", OpenJDK](https://openjdk.org/jeps/444)

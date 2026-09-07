@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [1. Null Safety](lessons/0001-null-safety.md)
+**Latest lesson:** [2. val/var and Immutability](lessons/0002-val-var-and-immutability.md)
 
 ## Success looks like
 
@@ -50,6 +50,7 @@ Work through these in order.
 | # | Lesson | Teaches |
 |---|---|---|
 | [0001](lessons/0001-null-safety.md) | Null Safety | Moving "could this be null" from a runtime surprise to a compile-time question, and how the Java habit undoes it |
+| [0002](lessons/0002-val-var-and-immutability.md) | val/var and Immutability | Why val is the default worth defending, what it actually guarantees (and doesn't), and the Java habit of reaching for var out of reflex |
 
 ## Reference
 

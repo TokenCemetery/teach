@@ -14,6 +14,10 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Delegation", Kotlin](https://kotlinlang.org/docs/delegation.html)
+  Official docs on class delegation via `by`: implementing an interface by forwarding to a held object, with zero boilerplate, and the subtlety that overrides in the derived class aren't seen by the delegate's own internal calls. Use for: the delegation pattern as a language feature instead of hand-written forwarding methods.
+- [Docs: "Delegated properties", Kotlin](https://kotlinlang.org/docs/delegated-properties.html)
+  Official docs on property delegation (`by lazy { ... }` and custom delegates via `getValue()`/`setValue()`). Use for: reusable property behavior (lazy initialization, change observation) without repeating the same accessor logic on every property that needs it.
 - [Docs: "Inline functions", Kotlin](https://kotlinlang.org/docs/inline-functions.html)
   Official docs on the `inline` modifier's actual cost/benefit trade-off, non-local returns, `noinline`/`crossinline`, and reified type parameters, which only work because inlining erases the usual generics-erasure boundary. Use for: why `inline` and `reified` are paired, not two unrelated features.
 - [Docs: "Higher-order functions and lambdas", Kotlin](https://kotlinlang.org/docs/lambdas.html)

@@ -147,10 +147,10 @@ Two things make this confusing in the wild. Before EF Core 3.0 client evaluation
 
 5. ▢ Which statement is correct?
 
-   - a) EF Core evaluates untranslatable expressions on the client wherever they appear, so a query may be slow but will not fail to translate
-   - b) EF Core allows client evaluation only in the top-level projection and throws a runtime exception for an untranslatable expression anywhere else
-   - c) `AsNoTracking` affects performance only, returning the same instances a tracking query would
-   - d) A scoped `DbContext` is safe to use from several parallel operations, because each request already has its own instance
+    - a) EF Core evaluates untranslatable expressions on the client wherever they appear, so a query may be slow but will not fail to translate
+    - b) EF Core allows client evaluation only in the top-level projection and throws a runtime exception for an untranslatable expression anywhere else
+    - c) `AsNoTracking` affects performance only, returning the same instances a tracking query would
+    - d) A scoped `DbContext` is safe to use from several parallel operations, because each request already has its own instance
 
 <details markdown="1"><summary>Check</summary>
 

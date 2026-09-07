@@ -117,10 +117,10 @@ On the JVM the type argument is erased, so the same method has to be handed the 
 
 5. ▢ Which claim about a covariant `out` type parameter is correct?
 
-   - a) A covariant out parameter may appear in both input and output positions freely
-   - b) A covariant out parameter may appear only in output positions like return types
-   - c) A covariant out parameter makes the generic type usable with any unrelated argument
-   - d) A covariant out parameter is a runtime cast, checked when the conversion happens
+    - a) A covariant out parameter may appear in both input and output positions freely
+    - b) A covariant out parameter may appear only in output positions like return types
+    - c) A covariant out parameter makes the generic type usable with any unrelated argument
+    - d) A covariant out parameter is a runtime cast, checked when the conversion happens
 
 <details markdown="1"><summary>Check</summary>
 
@@ -130,11 +130,11 @@ On the JVM the type argument is erased, so the same method has to be handed the 
 
 6. ▢ **Stage capstone.** For each requirement, choose the type declaration and defend it in one sentence from what stage 2 taught.
 
-   - a) A monetary amount with a currency, compared by its contents, passed around constantly
-   - b) A customer with a database identity, mutated over a request's lifetime
-   - c) An event carrying three read-only fields, which downstream code pattern matches on
-   - d) A contract several unrelated types implement, where you will later need to add a method
-   - e) A cache that works for any key and value type, requiring keys that are never null
+    - a) A monetary amount with a currency, compared by its contents, passed around constantly
+    - b) A customer with a database identity, mutated over a request's lifetime
+    - c) An event carrying three read-only fields, which downstream code pattern matches on
+    - d) A contract several unrelated types implement, where you will later need to add a method
+    - e) A cache that works for any key and value type, requiring keys that are never null
 
 <details markdown="1"><summary>Check</summary>
 

@@ -112,10 +112,10 @@ The boundary that remains: a default implementation can use the interface's own 
 
 5. ▢ Which claim about fields in an interface is correct?
 
-   - a) An interface may declare instance fields as long as they stay private
-   - b) An interface may declare static fields but never instance fields or auto-properties
-   - c) An interface may declare no fields at all, whether static or instance
-   - d) An interface may declare instance auto-properties, which the compiler backs with fields
+    - a) An interface may declare instance fields as long as they stay private
+    - b) An interface may declare static fields but never instance fields or auto-properties
+    - c) An interface may declare no fields at all, whether static or instance
+    - d) An interface may declare instance auto-properties, which the compiler backs with fields
 
 <details markdown="1"><summary>Check</summary>
 

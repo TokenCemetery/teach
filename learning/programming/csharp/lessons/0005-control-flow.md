@@ -106,10 +106,10 @@ C# has no labelled `break`, so the two options are a `goto` to a label after the
 
 5. ▢ Which claim about a C# switch section is correct?
 
-   - a) A switch section may fall through to the next one, just like Java
-   - b) A switch section must end with break, goto or return, or compilation fails
-   - c) A switch section may share a body with another only by duplicating it
-   - d) A switch section needs no terminator, since C# inserts an implicit break
+    - a) A switch section may fall through to the next one, just like Java
+    - b) A switch section must end with break, goto or return, or compilation fails
+    - c) A switch section may share a body with another only by duplicating it
+    - d) A switch section needs no terminator, since C# inserts an implicit break
 
 <details markdown="1"><summary>Check</summary>
 

@@ -121,10 +121,10 @@ Worth noticing what this does not change: the model is still cooperative. The ca
 
 5. ▢ Which claim about cancellation in .NET is correct?
 
-   - a) Cancellation aborts the operation immediately, so cleanup code might not run
-   - b) Cancellation is a request; the listener must notice it and stop cooperatively
-   - c) Cancellation is reversible, so a token can be reset and reused later
-   - d) Cancellation is issued by any holder of the token, including the listeners
+    - a) Cancellation aborts the operation immediately, so cleanup code might not run
+    - b) Cancellation is a request; the listener must notice it and stop cooperatively
+    - c) Cancellation is reversible, so a token can be reset and reused later
+    - d) Cancellation is issued by any holder of the token, including the listeners
 
 <details markdown="1"><summary>Check</summary>
 

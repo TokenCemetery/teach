@@ -112,10 +112,10 @@ The useful generalisation: value equality is a claim that two instances with the
 
 5. ▢ Which claim about record equality is correct?
 
-   - a) Two records of different derived types with equal values still compare equal
-   - b) Two records compare equal only when their runtime types and values match
-   - c) Two records compare equal when the declared variable types and values match
-   - d) Two records compare equal only if they reference the same underlying object
+    - a) Two records of different derived types with equal values still compare equal
+    - b) Two records compare equal only when their runtime types and values match
+    - c) Two records compare equal when the declared variable types and values match
+    - d) Two records compare equal only if they reference the same underlying object
 
 <details markdown="1"><summary>Check</summary>
 

@@ -119,10 +119,10 @@ Where the same reviewer should say yes: the member that really is one expression
 
 5. ▢ Which claim about a `void` expression-bodied member is correct?
 
-   - a) A void expression-bodied member may have any expression, including a bare literal
-   - b) A void expression-bodied member needs a statement expression, whose result is discarded
-   - c) A void expression-bodied member is not allowed, since there is nothing returned
-   - d) A void expression-bodied member must end with a return statement to compile
+    - a) A void expression-bodied member may have any expression, including a bare literal
+    - b) A void expression-bodied member needs a statement expression, whose result is discarded
+    - c) A void expression-bodied member is not allowed, since there is nothing returned
+    - d) A void expression-bodied member must end with a return statement to compile
 
 <details markdown="1"><summary>Check</summary>
 
@@ -132,11 +132,11 @@ Where the same reviewer should say yes: the member that really is one expression
 
 6. ▢ **Stage capstone.** Review this class and rewrite it, naming which stage 3 lesson each change comes from.
 
-   - a) A `static class OrderHelpers` with `public static decimal TotalOf(Order o)`, called as `OrderHelpers.TotalOf(order)`
-   - b) A method that declares `var results = new List<string>();`, loops over orders with a `foreach`, tests each with an `if`, and adds a projection to the list
-   - c) An `interface IOrderFilter { bool Matches(Order o); }` with one implementation, used to parameterise that loop
-   - d) A method beginning `if (customer == null) { throw new ArgumentNullException(); }`, where every parameter is a plain reference type and the file has no annotations
-   - e) `public string Describe() { return $"{Id}: {Total}"; }`
+    - a) A `static class OrderHelpers` with `public static decimal TotalOf(Order o)`, called as `OrderHelpers.TotalOf(order)`
+    - b) A method that declares `var results = new List<string>();`, loops over orders with a `foreach`, tests each with an `if`, and adds a projection to the list
+    - c) An `interface IOrderFilter { bool Matches(Order o); }` with one implementation, used to parameterise that loop
+    - d) A method beginning `if (customer == null) { throw new ArgumentNullException(); }`, where every parameter is a plain reference type and the file has no annotations
+    - e) `public string Describe() { return $"{Id}: {Total}"; }`
 
 <details markdown="1"><summary>Check</summary>
 

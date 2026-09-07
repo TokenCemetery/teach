@@ -101,10 +101,10 @@ It prints the underlying type, `System.Int32`, not `System.Nullable`. Assigning 
 
 5. ▢ Which claim about a nullable value type is correct?
 
-   - a) A nullable value type is a reference type, exactly like Java's Integer wrapper
-   - b) A nullable value type is a value type whose null is a flag
-   - c) A nullable value type cannot be boxed, since null has no object representation
-   - d) A nullable value type throws when compared with null, as Java's wrapper does
+    - a) A nullable value type is a reference type, exactly like Java's Integer wrapper
+    - b) A nullable value type is a value type whose null is a flag
+    - c) A nullable value type cannot be boxed, since null has no object representation
+    - d) A nullable value type throws when compared with null, as Java's wrapper does
 
 <details markdown="1"><summary>Check</summary>
 

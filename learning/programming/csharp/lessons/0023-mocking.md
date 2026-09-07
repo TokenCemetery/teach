@@ -128,10 +128,10 @@ Two caveats keep this from being trivia. The same page states that the terms are
 
 5. ▢ Which statement is correct?
 
-   - a) Substitution libraries rewrite the type, so any member of any class can be replaced
-   - b) A substitute is a proxy created at run time, so it can replace interface members, and virtual or abstract members of a class that is not sealed
-   - c) Configuring a non-virtual member fails to compile, so the compiler protects you from this mistake
-   - d) C# members are overridable unless marked `sealed`, so most classes can be substituted as written
+    - a) Substitution libraries rewrite the type, so any member of any class can be replaced
+    - b) A substitute is a proxy created at run time, so it can replace interface members, and virtual or abstract members of a class that is not sealed
+    - c) Configuring a non-virtual member fails to compile, so the compiler protects you from this mistake
+    - d) C# members are overridable unless marked `sealed`, so most classes can be substituted as written
 
 <details markdown="1"><summary>Check</summary>
 

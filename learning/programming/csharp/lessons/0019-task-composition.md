@@ -133,10 +133,10 @@ What the `await` gives you is a single exception, because awaiting rethrows rath
 
 5. ▢ Which claim about composing two independent asynchronous calls is correct?
 
-   - a) Awaiting two calls in sequence runs them concurrently, since both return tasks
-   - b) Awaiting each call in turn serialises them; start both first to overlap
-   - c) Task.WhenAll starts the tasks, so they do not begin before it runs
-   - d) Awaiting in a loop is always a bug that WhenAll should replace
+    - a) Awaiting two calls in sequence runs them concurrently, since both return tasks
+    - b) Awaiting each call in turn serialises them; start both first to overlap
+    - c) Task.WhenAll starts the tasks, so they do not begin before it runs
+    - d) Awaiting in a loop is always a bug that WhenAll should replace
 
 <details markdown="1"><summary>Check</summary>
 

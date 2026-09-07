@@ -121,10 +121,10 @@ Two ways forward: declare it positionally, `public record Money(decimal Amount, 
 
 5. ▢ Which claim about a non-exhaustive switch expression is correct?
 
-   - a) A switch expression that misses an input returns the type's default value silently
-   - b) A switch expression that misses an input throws at run time, usually warned
-   - c) A switch expression is always checked exhaustively, so a discard arm is unnecessary
-   - d) A switch expression falls through to the next arm when a pattern fails
+    - a) A switch expression that misses an input returns the type's default value silently
+    - b) A switch expression that misses an input throws at run time, usually warned
+    - c) A switch expression is always checked exhaustively, so a discard arm is unnecessary
+    - d) A switch expression falls through to the next arm when a pattern fails
 
 <details markdown="1"><summary>Check</summary>
 

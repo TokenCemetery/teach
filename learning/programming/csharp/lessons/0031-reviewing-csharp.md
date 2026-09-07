@@ -111,9 +111,9 @@ That three-way split is the practical form of this lesson. Automate the mechanic
 
 3. ▢ A file is full of `var`. Which of these declarations does the guidance allow, and why does it matter to a reviewer rather than to the compiler?
 
-   - `var message = "This is clearly a string.";`
-   - `var count = ExampleClass.ResultSoFar();`
-   - `var order = new Order();`
+    - `var message = "This is clearly a string.";`
+    - `var count = ExampleClass.ResultSoFar();`
+    - `var order = new Order();`
 
 <details markdown="1"><summary>Check</summary>
 
@@ -125,10 +125,10 @@ Why it matters to a reviewer is the part worth keeping. Every finding in this le
 
 4. ▢ Which statement is correct?
 
-   - a) A good review finds every deviation from the team's conventions, since consistency is what conventions are for
-   - b) The findings worth a reviewer's attention are the ones no other mechanism reports, because most of them fail silently
-   - c) Naming the cost is enough; proposing the rewrite is the author's job
-   - d) A construct that compiles and passes its tests has been reviewed by better tools than a person
+    - a) A good review finds every deviation from the team's conventions, since consistency is what conventions are for
+    - b) The findings worth a reviewer's attention are the ones no other mechanism reports, because most of them fail silently
+    - c) Naming the cost is enough; proposing the rewrite is the author's job
+    - d) A construct that compiles and passes its tests has been reviewed by better tools than a person
 
 <details markdown="1"><summary>Check</summary>
 

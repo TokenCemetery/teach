@@ -118,10 +118,10 @@ The load may never happen. An interpolated string is processed by an interpolate
 
 5. ▢ Which claim about `int` and `System.Int32` is correct?
 
-   - a) The int keyword is a distinct primitive, and System.Int32 is its wrapper class
-   - b) The int keyword is an alias for System.Int32, and the two are interchangeable
-   - c) The int keyword is compiled away, so System.Int32 appears only in metadata
-   - d) The int keyword names a value type, while System.Int32 names a reference type
+    - a) The int keyword is a distinct primitive, and System.Int32 is its wrapper class
+    - b) The int keyword is an alias for System.Int32, and the two are interchangeable
+    - c) The int keyword is compiled away, so System.Int32 appears only in metadata
+    - d) The int keyword names a value type, while System.Int32 names a reference type
 
 <details markdown="1"><summary>Check</summary>
 

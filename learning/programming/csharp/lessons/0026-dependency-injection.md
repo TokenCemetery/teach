@@ -139,10 +139,10 @@ So `AddScoped` is not a property of the service. It is an instruction about what
 
 5. ▢ Which statement is correct?
 
-   - a) The container disposes singletons only, so transient and scoped instances must be disposed by whoever resolved them
-   - b) A singleton taking a scoped dependency holds one instance of it for the application's lifetime, and the development-time scope check reports that as an error
-   - c) Resolving services from the container is thread-safe, so the singleton instances it returns are thread-safe as well
-   - d) Injecting a scoped service into a middleware constructor is the documented way to use scoped services in middleware
+    - a) The container disposes singletons only, so transient and scoped instances must be disposed by whoever resolved them
+    - b) A singleton taking a scoped dependency holds one instance of it for the application's lifetime, and the development-time scope check reports that as an error
+    - c) Resolving services from the container is thread-safe, so the singleton instances it returns are thread-safe as well
+    - d) Injecting a scoped service into a middleware constructor is the documented way to use scoped services in middleware
 
 <details markdown="1"><summary>Check</summary>
 

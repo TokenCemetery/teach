@@ -136,10 +136,10 @@ The review habit: `async void` on anything that is not an event handler is worth
 
 5. ▢ Which claim about `await` is correct?
 
-   - a) An await blocks the current thread until the awaited operation finishes running
-   - b) An await suspends the enclosing method and returns control to its caller
-   - c) An await always suspends, even when the awaited operation has already completed
-   - d) An await starts the awaited operation, which does not begin until awaited
+    - a) An await blocks the current thread until the awaited operation finishes running
+    - b) An await suspends the enclosing method and returns control to its caller
+    - c) An await always suspends, even when the awaited operation has already completed
+    - d) An await starts the awaited operation, which does not begin until awaited
 
 <details markdown="1"><summary>Check</summary>
 

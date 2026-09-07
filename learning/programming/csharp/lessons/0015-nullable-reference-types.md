@@ -127,10 +127,10 @@ The general lesson is worth extracting: the claim "annotations have no runtime e
 
 5. ▢ Which claim about a nullable reference type is correct?
 
-   - a) A nullable reference type is a distinct runtime type wrapping the reference
-   - b) A nullable reference type is an annotation, and string? is still System.String
-   - c) A nullable reference type adds a runtime check that throws on dereference
-   - d) A nullable reference type is enforced at run time, making warnings redundant
+    - a) A nullable reference type is a distinct runtime type wrapping the reference
+    - b) A nullable reference type is an annotation, and string? is still System.String
+    - c) A nullable reference type adds a runtime check that throws on dereference
+    - d) A nullable reference type is enforced at run time, making warnings redundant
 
 <details markdown="1"><summary>Check</summary>
 

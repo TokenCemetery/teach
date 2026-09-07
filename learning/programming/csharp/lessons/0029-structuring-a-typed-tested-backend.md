@@ -160,10 +160,10 @@ So the honest summary is that an integration suite is evidence about behaviour o
 
 5. ▢ **Stage 6 capstone.** A service has these four things in it. All of them compile and the app starts. Name each defect, say what it does, and say which mechanism would have caught it.
 
-   - a) `OrderCache` is registered with `AddSingleton` and takes `ApplicationDbContext` in its constructor
-   - b) An authorization middleware that reads `HttpContext.GetEndpoint()` is registered above an explicit `app.UseRouting()` call
-   - c) `PricingOptions` is bound with `Configure<PricingOptions>(section)`, has a required property, and is read through `IOptions<PricingOptions>` by a class that operators expect to reconfigure without a redeploy
-   - d) A handler starts two repository calls on the injected context and then awaits both with `Task.WhenAll`
+    - a) `OrderCache` is registered with `AddSingleton` and takes `ApplicationDbContext` in its constructor
+    - b) An authorization middleware that reads `HttpContext.GetEndpoint()` is registered above an explicit `app.UseRouting()` call
+    - c) `PricingOptions` is bound with `Configure<PricingOptions>(section)`, has a required property, and is read through `IOptions<PricingOptions>` by a class that operators expect to reconfigure without a redeploy
+    - d) A handler starts two repository calls on the injected context and then awaits both with `Task.WhenAll`
 
 <details markdown="1"><summary>Check</summary>
 

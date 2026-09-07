@@ -164,10 +164,10 @@ So read the `using` first. This is a small instance of a habit the arc keeps ret
 
 5. ▢ Which statement is correct?
 
-   - a) Both frameworks construct the test class once per class, which is why both provide a setup attribute
-   - b) xUnit constructs a new instance for every test, so its constructor is the setup, while NUnit shares one instance per fixture by default and therefore needs `[SetUp]`
-   - c) By default, xUnit runs the tests inside a single test class in parallel against each other
-   - d) Marking several classes with `[Collection]` shares a fixture between them and leaves their parallelism unchanged
+    - a) Both frameworks construct the test class once per class, which is why both provide a setup attribute
+    - b) xUnit constructs a new instance for every test, so its constructor is the setup, while NUnit shares one instance per fixture by default and therefore needs `[SetUp]`
+    - c) By default, xUnit runs the tests inside a single test class in parallel against each other
+    - d) Marking several classes with `[Collection]` shares a fixture between them and leaves their parallelism unchanged
 
 <details markdown="1"><summary>Check</summary>
 

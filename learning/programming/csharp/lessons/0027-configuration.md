@@ -146,10 +146,10 @@ Worth noticing that validation also runs again each time options are reloaded, s
 
 5. ▢ Which statement is correct?
 
-   - a) Configuration values keep the types they had in the source, so a JSON number arrives as a number and a JSON null binds to a null property
-   - b) Configuration values are strings, keys are case-insensitive, and where two providers set the same key the value from the last provider added is used
-   - c) `IOptions<T>` re-reads configuration when the underlying file changes, which is why it is registered as a singleton
-   - d) `IOptionsSnapshot<T>` is a singleton, making it the right choice for reading options inside another singleton
+    - a) Configuration values keep the types they had in the source, so a JSON number arrives as a number and a JSON null binds to a null property
+    - b) Configuration values are strings, keys are case-insensitive, and where two providers set the same key the value from the last provider added is used
+    - c) `IOptions<T>` re-reads configuration when the underlying file changes, which is why it is registered as a singleton
+    - d) `IOptionsSnapshot<T>` is a singleton, making it the right choice for reading options inside another singleton
 
 <details markdown="1"><summary>Check</summary>
 

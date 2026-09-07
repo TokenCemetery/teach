@@ -154,10 +154,10 @@ The habit worth forming: a command line found on the internet carries an unstate
 
 5. ▢ **Stage 5 capstone.** A repository has `src/Ordering` (a class library), `src/Ordering.Api` (which references it), and `tests/Ordering.Tests` (an xUnit project). A new engineer clones it, runs `dotnet test`, and gets: the type or namespace name `Ordering` could not be found. Answer all four.
 
-   - a) What is missing, and what would you type to add it?
-   - b) Once it is fixed, what does `dotnet test` do, and what does the engineer not need to run first?
-   - c) The test class builds an `HttpClient` in its constructor, and the suite has been getting slower as classes were added. What is happening, and what would sharing it cost?
-   - d) One test substitutes `IPaymentGateway` and asserts it was charged. Another substitutes the concrete `PricingService`, whose `Calculate` is not `virtual`, and asserts it was called. Both are green. Which result is evidence?
+    - a) What is missing, and what would you type to add it?
+    - b) Once it is fixed, what does `dotnet test` do, and what does the engineer not need to run first?
+    - c) The test class builds an `HttpClient` in its constructor, and the suite has been getting slower as classes were added. What is happening, and what would sharing it cost?
+    - d) One test substitutes `IPaymentGateway` and asserts it was charged. Another substitutes the concrete `PricingService`, whose `Calculate` is not `virtual`, and asserts it was called. Both are green. Which result is evidence?
 
 <details markdown="1"><summary>Check</summary>
 

@@ -130,10 +130,10 @@ public async Task ProcessAsync(IEnumerable<int> ids, CancellationToken ct)
 }
 ```
 
-   - a) Which loop is needlessly serial, and which one is fine?
-   - b) What is wrong with the argument to `WhenAll`?
-   - c) A caller awaits `ProcessAsync` and wants to catch cancellation. What must its `catch` name, and how would that differ had it called `.Wait()`?
-   - d) How would an async stream change the method's shape?
+    - a) Which loop is needlessly serial, and which one is fine?
+    - b) What is wrong with the argument to `WhenAll`?
+    - c) A caller awaits `ProcessAsync` and wants to catch cancellation. What must its `catch` name, and how would that differ had it called `.Wait()`?
+    - d) How would an async stream change the method's shape?
 
 <details markdown="1"><summary>Check</summary>
 
@@ -151,10 +151,10 @@ The thread through all four: `await` decides where a method suspends, the call d
 
 4. ▢ Which claim about async streams is correct?
 
-   - a) An async iterator returns the whole sequence once its last element arrives
-   - b) An async iterator yields elements as they arrive, consumed with await foreach
-   - c) await foreach requires the source to implement IAsyncEnumerable and nothing else works
-   - d) A cancellation token parameter on an async iterator needs no special attribute
+    - a) An async iterator returns the whole sequence once its last element arrives
+    - b) An async iterator yields elements as they arrive, consumed with await foreach
+    - c) await foreach requires the source to implement IAsyncEnumerable and nothing else works
+    - d) A cancellation token parameter on an async iterator needs no special attribute
 
 <details markdown="1"><summary>Check</summary>
 

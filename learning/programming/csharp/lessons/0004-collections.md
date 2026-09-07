@@ -114,10 +114,10 @@ What it buys is twofold. The method stops caring how the caller stored the data,
 
 5. ▢ Which claim about reading a missing key from a `Dictionary` is correct?
 
-   - a) A dictionary indexer returns the default value for a missing key, like Java
-   - b) A dictionary indexer throws KeyNotFoundException for a missing key, so prefer TryGetValue instead
-   - c) A dictionary indexer returns null for a missing key, which nullable types handle
-   - d) A dictionary indexer adds the missing key on read and returns its default
+    - a) A dictionary indexer returns the default value for a missing key, like Java
+    - b) A dictionary indexer throws KeyNotFoundException for a missing key, so prefer TryGetValue instead
+    - c) A dictionary indexer returns null for a missing key, which nullable types handle
+    - d) A dictionary indexer adds the missing key on read and returns its default
 
 <details markdown="1"><summary>Check</summary>
 

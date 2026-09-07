@@ -115,10 +115,10 @@ What it does not change is dispatch. A static helper cannot be overridden and ne
 
 5. ▢ Which claim about extension member binding is correct?
 
-   - a) An extension member overrides a same-signature instance member, since it is more specific
-   - b) An extension member is never called when the type has a matching member
-   - c) An extension member is chosen by best match across the type and extensions
-   - d) An extension member requires the extended type to be partial or otherwise open
+    - a) An extension member overrides a same-signature instance member, since it is more specific
+    - b) An extension member is never called when the type has a matching member
+    - c) An extension member is chosen by best match across the type and extensions
+    - d) An extension member requires the extended type to be partial or otherwise open
 
 <details markdown="1"><summary>Check</summary>
 

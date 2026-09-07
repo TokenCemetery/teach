@@ -116,10 +116,10 @@ The guard becomes part of the assignment rather than three lines in front of it,
 
 5. ▢ Which claim about an exception filter is correct?
 
-   - a) An exception filter runs after the stack unwinds, losing the original trace
-   - b) An exception filter runs before the stack unwinds, so the trace survives
-   - c) An exception filter is sugar for an if inside the catch block
-   - d) An exception filter may only appear on the last catch clause present
+    - a) An exception filter runs after the stack unwinds, losing the original trace
+    - b) An exception filter runs before the stack unwinds, so the trace survives
+    - c) An exception filter is sugar for an if inside the catch block
+    - d) An exception filter may only appear on the last catch clause present
 
 <details markdown="1"><summary>Check</summary>
 
@@ -129,11 +129,11 @@ The guard becomes part of the assignment rather than three lines in front of it,
 
 6. ▢ **Stage capstone.** Predict all five without running anything, then state the single question that decides the first three.
 
-   - a) `var p2 = p1;` then `p2.X = 5;`, where `Point` is a struct. Has `p1.X` changed?
-   - b) The same two lines, where `Point` is a class. Has `p1.X` changed?
-   - c) `int? a = 10;` What is `a >= null`, and what is `a < null`?
-   - d) `var n = counts["absent"];` on a `Dictionary<string, int>`. What happens?
-   - e) `foreach (IFormattable f in objects)` over an `object[]` whose third element is a plain `object`. What happens, and when?
+    - a) `var p2 = p1;` then `p2.X = 5;`, where `Point` is a struct. Has `p1.X` changed?
+    - b) The same two lines, where `Point` is a class. Has `p1.X` changed?
+    - c) `int? a = 10;` What is `a >= null`, and what is `a < null`?
+    - d) `var n = counts["absent"];` on a `Dictionary<string, int>`. What happens?
+    - e) `foreach (IFormattable f in objects)` over an `object[]` whose third element is a plain `object`. What happens, and when?
 
 <details markdown="1"><summary>Check</summary>
 

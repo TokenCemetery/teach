@@ -123,10 +123,10 @@ The second means the publisher pays for its subscribers. Handlers run synchronou
 
 5. ▢ Which claim about a multicast delegate is correct?
 
-   - a) A multicast delegate calls every handler, and later exceptions are collected together
-   - b) A multicast delegate stops at the first handler that throws an exception
-   - c) A multicast delegate returns the combined results of every handler it invoked
-   - d) A multicast delegate invokes its handlers in an unspecified and nondeterministic order
+    - a) A multicast delegate calls every handler, and later exceptions are collected together
+    - b) A multicast delegate stops at the first handler that throws an exception
+    - c) A multicast delegate returns the combined results of every handler it invoked
+    - d) A multicast delegate invokes its handlers in an unspecified and nondeterministic order
 
 <details markdown="1"><summary>Check</summary>
 

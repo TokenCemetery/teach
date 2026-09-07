@@ -142,10 +142,10 @@ The documented example is exactly this shape, an `app.Use` inside the branch tha
 
 5. ▢ Which statement is correct?
 
-   - a) Endpoints match in registration order, so declaring `MapGet("/products/{id}")` before `MapGet("/products/list")` shadows the second
-   - b) Endpoint selection uses route template precedence, where a literal segment is more specific than a parameter segment, so registration order does not decide the match
-   - c) A middleware registered after `UseEndpoints` runs on every request, once the endpoint's delegate has produced its response
-   - d) `Map` and `UseWhen` both return to the main pipeline once their branch has finished
+    - a) Endpoints match in registration order, so declaring `MapGet("/products/{id}")` before `MapGet("/products/list")` shadows the second
+    - b) Endpoint selection uses route template precedence, where a literal segment is more specific than a parameter segment, so registration order does not decide the match
+    - c) A middleware registered after `UseEndpoints` runs on every request, once the endpoint's delegate has produced its response
+    - d) `Map` and `UseWhen` both return to the main pipeline once their branch has finished
 
 <details markdown="1"><summary>Check</summary>
 

@@ -127,10 +127,10 @@ Naming which one you are doing is worth the effort, because the four differ in w
 
 5. ▢ Which claim about a `Task` is correct?
 
-   - a) A task is a thread, scheduled directly by the operating system scheduler
-   - b) A task represents an asynchronous operation, and need not be running code
-   - c) A task always occupies a thread-pool thread from creation until it completes
-   - d) A task cannot exist without a delegate supplying the code it runs
+    - a) A task is a thread, scheduled directly by the operating system scheduler
+    - b) A task represents an asynchronous operation, and need not be running code
+    - c) A task always occupies a thread-pool thread from creation until it completes
+    - d) A task cannot exist without a delegate supplying the code it runs
 
 <details markdown="1"><summary>Check</summary>
 

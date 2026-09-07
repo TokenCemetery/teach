@@ -136,10 +136,10 @@ Two things follow. First, EF Core's client-versus-server evaluation rule is not 
 
 5. ▢ Which statement is correct?
 
-   - a) Virtual threads run code faster than platform threads, which is what makes blocking them cheap
-   - b) Virtual threads exist for scale rather than speed, and the documented guidance is to write straightforward synchronous blocking code rather than asynchronous code
-   - c) A Java stream pipeline can be traversed repeatedly once built, in the way a LINQ query variable can be enumerated repeatedly
-   - d) `async`/`await` and virtual threads both work by having the compiler rewrite a method into a state machine
+    - a) Virtual threads run code faster than platform threads, which is what makes blocking them cheap
+    - b) Virtual threads exist for scale rather than speed, and the documented guidance is to write straightforward synchronous blocking code rather than asynchronous code
+    - c) A Java stream pipeline can be traversed repeatedly once built, in the way a LINQ query variable can be enumerated repeatedly
+    - d) `async`/`await` and virtual threads both work by having the compiler rewrite a method into a state machine
 
 <details markdown="1"><summary>Check</summary>
 

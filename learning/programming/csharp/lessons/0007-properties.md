@@ -128,10 +128,10 @@ What it gains is not brevity. It gains a **property**, which is a single member 
 
 5. ▢ Which claim about `required` is correct?
 
-   - a) A required property cannot be null, because required implies a non-nullable type
-   - b) A required property must be set at construction, and may be set null
-   - c) A required property is only checked when the type has no constructor
-   - d) A required property cannot be combined with init, as both restrict writing
+    - a) A required property cannot be null, because required implies a non-nullable type
+    - b) A required property must be set at construction, and may be set null
+    - c) A required property is only checked when the type has no constructor
+    - d) A required property cannot be combined with init, as both restrict writing
 
 <details markdown="1"><summary>Check</summary>
 

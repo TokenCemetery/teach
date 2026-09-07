@@ -69,10 +69,10 @@ Accessing `myRectangles[0]` and then `.Size` can each produce a copy of the stru
 
 4. ▢ Which of these is the best candidate for a `struct` rather than a `class`, per the guidance in this lesson?
 
-   - a) A `Customer` type representing a specific customer record with a database identity, potentially large, mutated throughout a request's lifetime
-   - b) A `Money` type holding a currency code and a decimal amount, small, logically immutable, compared by value
-   - c) A `Connection` type wrapping a network socket, with a lifecycle that must be explicitly closed
-   - d) A `ShoppingCart` type holding a mutable, potentially large list of items, shared across several parts of a request
+    - a) A `Customer` type representing a specific customer record with a database identity, potentially large, mutated throughout a request's lifetime
+    - b) A `Money` type holding a currency code and a decimal amount, small, logically immutable, compared by value
+    - c) A `Connection` type wrapping a network socket, with a lifecycle that must be explicitly closed
+    - d) A `ShoppingCart` type holding a mutable, potentially large list of items, shared across several parts of a request
 
 <details markdown="1"><summary>Check</summary>
 

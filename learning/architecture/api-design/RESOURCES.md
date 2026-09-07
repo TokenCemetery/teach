@@ -14,6 +14,8 @@ type: resources
   States the principle that with enough users of an API, every observable behavior, documented or not, will end up depended on by somebody. Use for: understanding why the contract a client actually relies on is bigger than what you documented, and why "harmless, undocumented" changes still break clients.
 - [RFC 9457: "Problem Details for HTTP APIs", IETF](https://www.rfc-editor.org/rfc/rfc9457)
   A standard, machine-readable JSON format for reporting an HTTP API error, so a client can handle errors structurally instead of parsing prose. Use for: designing an error model that is actually part of the contract, not an afterthought.
+- [Docs: "Status Codes", gRPC](https://grpc.io/docs/guides/status-codes/)
+  Official reference for gRPC's status codes, what each means, and which are reserved for library-generated errors versus application use. Use for: designing a gRPC error model with the same precision RFC 9110 brings to HTTP status codes.
 - [Docs: "Language Guide (proto3)", Protocol Buffers](https://protobuf.dev/programming-guides/proto3/)
   Official guide including the specific field-numbering and type rules that determine whether a Protobuf message change is backward- or forward-compatible. Use for: evolving a gRPC contract without breaking existing clients.
 - [Site: "API Improvement Proposals", Google](https://google.aip.dev/)

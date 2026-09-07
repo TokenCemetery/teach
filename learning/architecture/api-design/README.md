@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [1. The Contract](lessons/0001-the-contract.md)
+**Latest lesson:** [2. HTTP Status Codes and Error Semantics](lessons/0002-http-status-codes-and-error-semantics.md)
 
 ## Success looks like
 
@@ -45,6 +45,7 @@ Work through these in order.
 | # | Lesson | Teaches |
 |---|---|---|
 | [0001](lessons/0001-the-contract.md) | The Contract | What a client can rely on is bigger than what you documented, and design has to account for both |
+| [0002](lessons/0002-http-status-codes-and-error-semantics.md) | HTTP Status Codes and Error Semantics | What a status code actually promises a client about safety, idempotency, and what to do next, beyond the vague 2xx/4xx/5xx grouping |
 
 ## Reference
 

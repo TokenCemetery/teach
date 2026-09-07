@@ -14,6 +14,12 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Collection operations overview", Kotlin](https://kotlinlang.org/docs/collection-operations.html)
+  Official docs on how collection operations are declared: essential behaviour as member functions of the collection interfaces, everything else as extension functions, none of them touching the receiver. Use for: why `map` and `filter` are not members of `List`, and why an operation whose result nobody keeps still does all its work.
+- [Docs: "Collection transformation operations", Kotlin](https://kotlinlang.org/docs/collection-transformations.html)
+  Official docs on `map`, `mapNotNull`, `zip`, `associate`, `flatten`/`flatMap` and `joinToString`, each building a new collection from an existing one. Use for: the transformation half of a collection pipeline, and the fact that every step in a chain materialises a collection of its own.
+- [Docs: "Filtering collections", Kotlin](https://kotlinlang.org/docs/collection-filtering.html)
+  Official docs on `filter` and its variants, `partition`, and the `any`/`none`/`all` predicate tests, including `all()` returning `true` on an empty collection by vacuous truth. Use for: narrowing a collection, and the empty-input edge case a validation guard written with `all` gets wrong.
 - [Docs: "Operator overloading", Kotlin](https://kotlinlang.org/docs/operator-overloading.html)
   Official docs on the fixed set of operator symbols (`+`, `*`, `[]`, comparisons, and more) and the exact function name and `operator` modifier each maps to. Use for: implementing an operator only where it means what the symbol already means to a reader, not as a way to write terse but surprising code.
 - [Docs: "Delegation", Kotlin](https://kotlinlang.org/docs/delegation.html)

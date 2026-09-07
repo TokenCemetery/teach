@@ -14,6 +14,8 @@ type: resources
   States the principle that with enough users of an API, every observable behavior, documented or not, will end up depended on by somebody. Use for: understanding why the contract a client actually relies on is bigger than what you documented, and why "harmless, undocumented" changes still break clients.
 - [RFC 9457: "Problem Details for HTTP APIs", IETF](https://www.rfc-editor.org/rfc/rfc9457)
   A standard, machine-readable JSON format for reporting an HTTP API error, so a client can handle errors structurally instead of parsing prose. Use for: designing an error model that is actually part of the contract, not an afterthought.
+- [Docs: "Core concepts, architecture and lifecycle", gRPC](https://grpc.io/docs/what-is-grpc/core-concepts/)
+  Official overview of gRPC's service definitions and its four RPC kinds (unary, server streaming, client streaming, bidirectional streaming), with the specific ordering and completion guarantees each provides. Use for: choosing the right RPC kind for a given use case, not defaulting to unary out of familiarity.
 - [Docs: "Status Codes", gRPC](https://grpc.io/docs/guides/status-codes/)
   Official reference for gRPC's status codes, what each means, and which are reserved for library-generated errors versus application use. Use for: designing a gRPC error model with the same precision RFC 9110 brings to HTTP status codes.
 - [Docs: "Language Guide (proto3)", Protocol Buffers](https://protobuf.dev/programming-guides/proto3/)

@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a topic and partition layout for a real workload and to diagnose consumer lag, rebalancing storms or unexpected message loss instead of guessing at a fix.
 
-**Latest lesson:** [5. Idempotent Producers and Transactions](lessons/0005-idempotent-producers-and-transactions.md)
+**Latest lesson:** [6. Partition Key Choice and Ordering Guarantees](lessons/0006-partition-key-choice.md)
 
 ## Success looks like
 
@@ -50,6 +50,7 @@ Work through these in order.
 | [0003](lessons/0003-cooperative-rebalancing-and-lag.md) | Cooperative Rebalancing and Diagnosing Consumer Lag | Why the original rebalance protocol causes a rebalancing storm, how cooperative rebalancing narrows it, and a diagnostic order for consumer lag |
 | [0004](lessons/0004-delivery-semantics.md) | At-Most-Once, At-Least-Once, and Exactly-Once | Where each delivery guarantee is actually won or lost across the produce, broker, and consume legs of the path |
 | [0005](lessons/0005-idempotent-producers-and-transactions.md) | Idempotent Producers and Transactions | Why idempotence is nearly free but transactions carry the real cost of exactly-once |
+| [0006](lessons/0006-partition-key-choice.md) | Partition Key Choice and Ordering Guarantees | Choosing a partition key means choosing both what ordering you get and what parallelism you give up, in the same decision |
 
 ## Reference
 

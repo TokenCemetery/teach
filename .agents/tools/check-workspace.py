@@ -152,6 +152,18 @@ def strip_code(text):
     return "\n".join(out)
 
 
+def md_unescape(text):
+    """Drop the backslash from a markdown escape.
+
+    A heading sometimes has to escape a character to render at all: the
+    trailing-`#` rule below requires `\\#`, so a lesson titled `Reviewing C#`
+    has an H1 reading `# Lesson 31. Reviewing C\\#`. Both renderers treat a
+    backslash before ASCII punctuation as an escape and drop it, so undo the
+    same set here before comparing a heading against a front-matter title.
+    """
+    return re.sub(r"\\([!-/:-@\[-`{-~])", r"\1", text)
+
+
 def code_free_lines(text):
     """Yield (lineno, line) for lines outside fenced blocks."""
     in_fence = False
@@ -223,7 +235,7 @@ class Workspace:
         h1 = next((l for l in lines if l.startswith("# ")), None)
         if h1 is None:
             self.bad(rel, "has no H1")
-        elif headline is not None and h1 != f"# Lesson {num}. {headline}":
+        elif headline is not None and md_unescape(h1) != f"# Lesson {num}. {headline}":
             self.bad(rel, f"H1 {h1!r} does not match front-matter title {title!r}")
 
         # The three bold lines, on three consecutive lines.

@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [8. Additive Changes and Deprecation](lessons/0008-additive-changes-and-deprecation.md)
+**Latest lesson:** [9. Versioning and Migration Strategy](lessons/0009-versioning-and-migration-strategy.md)
 
 ## Success looks like
 
@@ -52,6 +52,7 @@ Work through these in order.
 | [0006](lessons/0006-proto3-and-grpc-service-design.md) | Proto3 and gRPC Service Design | How proto3's field numbers, not field names, are the real wire contract, and how a gRPC service is structured around RPC methods rather than resources |
 | [0007](lessons/0007-grpc-streaming.md) | gRPC Streaming and Designing the Same Use Case | The four kinds of gRPC RPC, when each fits, and designing one use case as both a REST and a gRPC contract |
 | [0008](lessons/0008-additive-changes-and-deprecation.md) | Additive Changes and Deprecation | Why adding is usually safe and removing or changing meaning is usually not, and how to deprecate a field or endpoint without breaking clients on the spot |
+| [0009](lessons/0009-versioning-and-migration-strategy.md) | Versioning and Migration Strategy | How to ship a genuine breaking change without breaking every existing integration at once, using Stripe's versioning strategy as a worked example |
 
 ## Reference
 

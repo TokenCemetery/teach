@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [2. Nullable Value Types](lessons/0002-nullable-value-types.md)
+**Latest lesson:** [3. Basic Types and String Interpolation](lessons/0003-basic-types-and-string-interpolation.md)
 
 ## Success looks like
 
@@ -50,6 +50,7 @@ Work through these in order.
 |---|---|---|
 | [0001](lessons/0001-structs-and-classes.md) | Structs and Classes | The type-system choice Java never gave you, and what the CLR actually does with each |
 | [0002](lessons/0002-nullable-value-types.md) | Nullable Value Types | Why int? is still a value type, the comparison rule that makes both directions false, and what boxing does to the wrapper |
+| [0003](lessons/0003-basic-types-and-string-interpolation.md) | Basic Types and String Interpolation | Keywords as aliases for .NET types, why decimal is built in rather than a class, and the interpolation hole's width, format and side-effect rules |
 
 ## Reference
 

@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [15. Higher-Order Functions and Lambdas](lessons/0015-higher-order-functions-and-lambdas.md)
+**Latest lesson:** [16. Inline Functions and Reified Generics](lessons/0016-inline-functions-and-reified-generics.md)
 
 ## Success looks like
 
@@ -64,6 +64,7 @@ Work through these in order.
 | [0013](lessons/0013-extension-functions.md) | Extension Functions | Adding behavior to a type without inheritance, and the static-dispatch gotcha that trips people up the first time they hit it |
 | [0014](lessons/0014-scope-functions.md) | Scope Functions | Choosing among let, run, with, apply, and also by what each one returns and how it exposes the object, not by habit |
 | [0015](lessons/0015-higher-order-functions-and-lambdas.md) | Higher-Order Functions and Lambdas | Function types as real types, trailing-lambda syntax, and the receiver mechanism scope functions are actually built on |
+| [0016](lessons/0016-inline-functions-and-reified-generics.md) | Inline Functions and Reified Generics | Why inline exists to remove a real cost, why it enables non-local returns, and why reified type parameters only work because of inlining |
 
 ## Reference
 

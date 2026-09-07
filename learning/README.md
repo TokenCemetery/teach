@@ -28,7 +28,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | llm | [Transformers](llm/transformers/) | Build attention from scratch, so the architecture stops being a black box behind the training script | 13 |
 | data | [Postgres](data/postgres/) | Operate Postgres: the WAL, vacuum and bloat, replication, and what an index costs to keep | 10 |
 | data | [Kafka](data/kafka/) | Own the log: partitions, consumer groups, delivery guarantees, and what "exactly once" actually costs | 9 |
-| data | [Redis](data/redis/) | Use Redis for what it is: the memory model, eviction, persistence, and the patterns that quietly misuse it | 0 |
+| data | [Redis](data/redis/) | Use Redis for what it is: the memory model, eviction, persistence, and the patterns that quietly misuse it | 8 |
 | architecture | [Distributed Systems](architecture/distributed-systems/) | Reason about partial failure: what a network can do to you, which consistency you are actually buying, and why consensus is expensive | 0 |
 | architecture | [API Design](architecture/api-design/) | Design an interface others depend on: the contract, its errors, and how it changes without breaking them | 0 |
 

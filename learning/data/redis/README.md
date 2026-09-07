@@ -8,7 +8,7 @@ type: topic
 
 Be able to spot where an existing system is quietly misusing Redis, such as a cache treated as a store or a lock that is not one, and to design correct usage from scratch instead.
 
-**Latest lesson:** [7. The Unbounded-Keyspace Anti-Pattern and Spotting Misuse](lessons/0007-unbounded-keyspace-and-spotting-misuse.md)
+**Latest lesson:** [8. Redis Cluster and Sentinel](lessons/0008-cluster-and-sentinel.md)
 
 ## Success looks like
 
@@ -50,6 +50,7 @@ Work through these in order.
 | [0005](lessons/0005-redlock-and-kleppmanns-critique.md) | Redlock and Kleppmann's Critique | What Redlock actually fixes about the naive lock, what Kleppmann's critique shows it still doesn't, and how to decide whether a Redis lock is the right tool at all |
 | [0006](lessons/0006-cache-aside-and-the-store-anti-pattern.md) | Cache-Aside and the Store Anti-Pattern | What correct cache-aside usage looks like, and the specific way a cache quietly becomes the system of record when that pattern is skipped |
 | [0007](lessons/0007-unbounded-keyspace-and-spotting-misuse.md) | The Unbounded-Keyspace Anti-Pattern and Spotting Misuse | How a keyspace grows without bound when nobody sets it a TTL or an eviction policy, and a checklist for spotting this and the store anti-pattern in an existing system |
+| [0008](lessons/0008-cluster-and-sentinel.md) | Redis Cluster and Sentinel | The compromises Redis Cluster's sharding and Sentinel's automatic failover each introduce, reasoned about without needing to operate either |
 
 ## Reference
 

@@ -14,6 +14,10 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Conditions and loops", Kotlin](https://kotlinlang.org/docs/control-flow.html)
+  Official docs on `if` as an expression, `when` and its exhaustiveness, and Kotlin's `for` loop over ranges and collections. Use for: control flow as expressions producing values, not just statements.
+- [Docs: "Ranges and progressions", Kotlin](https://kotlinlang.org/docs/ranges.html)
+  Official docs on Kotlin's range operators (`..`, `..<`) and the progressions a `for` loop actually iterates over. Use for: what a range literally is, before treating `for (i in 1..10)` as unexplained syntax.
 - [Docs: "Collections overview", Kotlin](https://kotlinlang.org/docs/collections-overview.html)
   Official docs on `List`/`Set`/`Map`, and the read-only/mutable interface pair behind each, including why a mutable collection held by a `val` is still mutable. Use for: the collection-level counterpart to lesson 2's reference-vs-object mutability distinction.
 - [Docs: "Equality", Kotlin](https://kotlinlang.org/docs/equality.html)

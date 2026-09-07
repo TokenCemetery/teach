@@ -14,6 +14,10 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Classes", Kotlin](https://kotlinlang.org/docs/classes.html)
+  Official docs on Kotlin classes: the primary constructor, properties declared directly in the class header, and when the docs themselves recommend a data class or an extension function instead of a plain class. Use for: what a class actually needs to encapsulate, before reaching for one reflexively.
+- [Docs: "Properties", Kotlin](https://kotlinlang.org/docs/properties.html)
+  Official docs on Kotlin properties: backing fields, custom getters and setters, and why properties replace the getter/setter boilerplate a Java class needs by hand. Use for: what a property actually compiles to, and where a custom accessor is worth writing.
 - [Docs: "Conditions and loops", Kotlin](https://kotlinlang.org/docs/control-flow.html)
   Official docs on `if` as an expression, `when` and its exhaustiveness, and Kotlin's `for` loop over ranges and collections. Use for: control flow as expressions producing values, not just statements.
 - [Docs: "Ranges and progressions", Kotlin](https://kotlinlang.org/docs/ranges.html)

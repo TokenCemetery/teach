@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [4. The CAP Theorem, Precisely](lessons/0004-the-cap-theorem-precisely.md)
+**Latest lesson:** [5. Linearizability](lessons/0005-linearizability.md)
 
 ## Success looks like
 
@@ -47,6 +47,7 @@ Work through these in order.
 | [0002](lessons/0002-clocks-and-ordering.md) | Clocks and Ordering | Why wall-clock timestamps from different machines can't be trusted to order events, and how a logical clock orders them without needing synchronized time |
 | [0003](lessons/0003-timeouts-as-failure-detectors.md) | Timeouts as Failure Detectors | Why every practical failure detector is built on a timeout, and the formal vocabulary for the accuracy-versus-speed trade-off that follows from it |
 | [0004](lessons/0004-the-cap-theorem-precisely.md) | The CAP Theorem, Precisely | What CAP actually proves, why partition tolerance was never optional, and the specific misreadings that make "pick two" the wrong way to state it |
+| [0005](lessons/0005-linearizability.md) | Linearizability | What linearizability actually guarantees, why it's the strongest common consistency model, and what it costs to provide during a partition |
 
 ## Reference
 

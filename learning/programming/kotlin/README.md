@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [20. Sequences and Laziness](lessons/0020-sequences-and-laziness.md)
+**Latest lesson:** [21. Grouping and Folding](lessons/0021-grouping-and-folding.md)
 
 ## Success looks like
 
@@ -69,6 +69,7 @@ Work through these in order.
 | [0018](lessons/0018-operator-overloading.md) | Operator Overloading | Operators as ordinary named functions with a fixed symbol mapping, and the actual discipline of implementing one only where it means what the symbol already means |
 | [0019](lessons/0019-collection-operators.md) | Collection Operators | The collection operators as extension functions that return a new collection eagerly, and the Java Stream habit that misprices a chain of them |
 | [0020](lessons/0020-sequences-and-laziness.md) | Sequences and Laziness | Why the same operator chain behaves differently on a Sequence, what a terminal operation is actually for, and when laziness costs more than it saves |
+| [0021](lessons/0021-grouping-and-folding.md) | Grouping and Folding | Aggregating with fold and reduce, grouping without building the groups, and the stage 4 capstone of defending what a pipeline costs |
 
 ## Reference
 

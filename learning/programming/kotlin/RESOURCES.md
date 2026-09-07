@@ -14,6 +14,10 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Aggregate operations", Kotlin](https://kotlinlang.org/docs/collection-aggregate.html)
+  Official docs on the operations that reduce a collection to a single value: `count`, `sum`, `average`, the min and max family with its `OrNull` and `By` variants, and `fold`/`reduce` with the initial-value difference between them spelled out on a worked example. Use for: choosing between a named aggregate and a hand-written fold, and for why the same lambda gives different answers to `fold` and `reduce`.
+- [Docs: "Grouping", Kotlin](https://kotlinlang.org/docs/collection-grouping.html)
+  Official docs on `groupBy()`, which materialises a `Map` of key to member list, and `groupingBy()`, which returns a `Grouping` that operations such as `eachCount()` consume without building those lists. Use for: the difference that decides whether a per-group aggregation allocates in proportion to the input.
 - [Docs: "Sequences", Kotlin](https://kotlinlang.org/docs/sequences.html)
   Official docs on `Sequence<T>`: lazy multistep processing, the intermediate/terminal operation split, the four ways to construct one, stateless versus stateful operations, and the explicit warning that laziness has an overhead of its own. Use for: deciding between a collection pipeline and a sequence, and for the element-by-element execution order that lets a bound like `take` cut the work short.
 - [Docs: "Collection operations overview", Kotlin](https://kotlinlang.org/docs/collection-operations.html)

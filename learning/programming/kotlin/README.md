@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [25. Coroutine Context and Dispatchers](lessons/0025-coroutine-context-and-dispatchers.md)
+**Latest lesson:** [26. Flows](lessons/0026-flows.md)
 
 ## Success looks like
 
@@ -74,6 +74,7 @@ Work through these in order.
 | [0023](lessons/0023-suspend-functions-and-coroutine-builders.md) | Suspend Functions and Coroutine Builders | What suspend actually changes about a function, the three builders and what each one returns, and why suspending code still reads top to bottom |
 | [0024](lessons/0024-structured-concurrency.md) | Structured Concurrency | The parent and child tree that makes cancellation predictable, why a scope you own is a scope you must cancel, and what GlobalScope actually costs |
 | [0025](lessons/0025-coroutine-context-and-dispatchers.md) | Coroutine Context and Dispatchers | The context as a set of elements combined with plus, which dispatcher belongs to which kind of work, and the one context element that silently breaks structured concurrency |
+| [0026](lessons/0026-flows.md) | Flows | A flow as the asynchronous third option after a list and a sequence, what cold actually means for each collector, and the context rule a flow builder enforces at runtime |
 
 ## Reference
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [7. What Consensus Is For](lessons/0007-what-consensus-is-for.md)
+**Latest lesson:** [8. Raft, Leader Election and Log Replication](lessons/0008-raft-leader-election-and-log-replication.md)
 
 ## Success looks like
 
@@ -50,6 +50,7 @@ Work through these in order.
 | [0005](lessons/0005-linearizability.md) | Linearizability | What linearizability actually guarantees, why it's the strongest common consistency model, and what it costs to provide during a partition |
 | [0006](lessons/0006-sequential-and-eventual-consistency.md) | Sequential and Eventual Consistency | Two models weaker than linearizability, what each still guarantees, and how to choose among all three for a stated design |
 | [0007](lessons/0007-what-consensus-is-for.md) | What Consensus Is For | The replicated-state-machine problem consensus protocols solve, and why it's the mechanism underneath a linearizable system's coordination |
+| [0008](lessons/0008-raft-leader-election-and-log-replication.md) | Raft, Leader Election and Log Replication | How Raft elects a single leader and replicates a log through it, the two mechanisms that turn the replicated-state-machine problem into something concrete |
 
 ## Reference
 

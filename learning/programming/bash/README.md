@@ -8,7 +8,7 @@ type: topic
 
 Be able to write and maintain shell scripts for CI pipelines, deployment and operational tooling that do not quietly break on a bad input or an unset variable, and to recognise when a script has outgrown shell and belongs in a real language instead.
 
-**Latest lesson:** [5. Portability](lessons/0005-portability.md)
+**Latest lesson:** [6. awk and sed Where Needed](lessons/0006-awk-and-sed-where-needed.md)
 
 ## Success looks like
 
@@ -50,6 +50,7 @@ Work through these in order.
 | [0003](lessons/0003-strict-mode-and-trap.md) | Strict Mode and trap | What each flag in set -euo pipefail actually changes, its real gaps, and using trap to clean up reliably when a script fails |
 | [0004](lessons/0004-word-splitting-and-globbing-pitfalls.md) | Word Splitting and Globbing Pitfalls | Common footguns beyond a bare missing quote, where quoting alone isn't the whole fix |
 | [0005](lessons/0005-portability.md) | Portability | What POSIX sh actually guarantees, which common bash features aren't part of it, and when the difference actually matters |
+| [0006](lessons/0006-awk-and-sed-where-needed.md) | awk and sed Where Needed | Recognizing the shape of task sed and awk each fit, and reaching for one only when a script genuinely needs it, not as a habit |
 
 ## Reference
 

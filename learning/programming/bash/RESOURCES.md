@@ -18,7 +18,5 @@ type: resources
   A static analyzer that catches quoting mistakes, unset-variable use, and other common shell bugs before the script ever runs, with an explanation for each warning. Use for: checking a script for the failure modes this mission covers, rather than relying on memory alone.
 - [Site: "Shell Style Guide", Google](https://google.github.io/styleguide/shellguide.html)
   A practical style guide that also states explicitly when a script has grown complex enough that it should be rewritten in a real scripting language instead. Use for: the "knowing when to stop" half of the mission, stated as a concrete, opinionated rule rather than a vague feeling.
-
-## Gaps
-
-- No source yet specifically on `awk`/`sed` usage patterns within a larger shell script (as opposed to `awk`/`sed` as topics of their own, which are explicitly out of scope); worth closing once lesson design reaches a script that needs one of them incidentally.
+- [Docs: "A Sed and Awk Micro-Primer", Advanced Bash-Scripting Guide, TLDP](https://tldp.org/LDP/abs/html/sedawk.html)
+  A brief introduction to `sed` and `awk` specifically in the context of shell scripts that call them, not as standalone languages of their own. Use for: recognizing the shape of task each tool actually fits, without treating either as a topic to learn in full.

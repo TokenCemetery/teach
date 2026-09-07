@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [10. Interfaces](lessons/0010-interfaces.md)
+**Latest lesson:** [11. Generics](lessons/0011-generics.md)
 
 ## Success looks like
 
@@ -58,6 +58,7 @@ Work through these in order.
 | [0008](lessons/0008-record-types.md) | Record Types | What the record modifier actually generates, why equality depends on the runtime type, and the shallow immutability a with expression does not fix |
 | [0009](lessons/0009-pattern-matching.md) | Pattern Matching | The pattern vocabulary, the switch expression's exhaustiveness and its one silent gap, and why arm order is a compile-time question |
 | [0010](lessons/0010-interfaces.md) | Interfaces | What an interface may hold now that it can carry implementations, the auto-property that is not one, and the member you can only call through the interface |
+| [0011](lessons/0011-generics.md) | Generics | Constraints as the vocabulary for what a type parameter must be, variance as a rule about positions, and the stage 2 capstone of choosing the right type |
 
 ## Reference
 

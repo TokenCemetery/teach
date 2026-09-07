@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [19. Task Composition](lessons/0019-task-composition.md)
+**Latest lesson:** [20. Cancellation Tokens](lessons/0020-cancellation-tokens.md)
 
 ## Success looks like
 
@@ -67,6 +67,7 @@ Work through these in order.
 | [0017](lessons/0017-the-task-model.md) | The Task Model | A task as an asynchronous operation rather than a thread, the four ways one comes into existence, and the AggregateException that can terminate a process you thought had finished |
 | [0018](lessons/0018-async-and-await.md) | async and await | What await does to the enclosing method, the three places it is forbidden, and why async void breaks the only mechanism a caller has |
 | [0019](lessons/0019-task-composition.md) | Task Composition | Starting work before awaiting it, the ToArray that makes a LINQ-built task list actually run, and the double await that WhenAny requires |
+| [0020](lessons/0020-cancellation-tokens.md) | Cancellation Tokens | Cooperative cancellation with one requester and many listeners, why returning early reports success, and the token comparison that decides whether a task says it was canceled |
 
 ## Reference
 

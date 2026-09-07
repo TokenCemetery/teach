@@ -10,6 +10,8 @@ type: resources
 
 - [Docs: "Null safety", Kotlin](https://kotlinlang.org/docs/null-safety.html)
   Official docs for Kotlin's nullable/non-nullable type distinction, the safe-call and Elvis operators, and the platform types a Java interop boundary introduces. Use for: the primary mechanism behind writing null safety into the type system instead of into defensive checks.
+- [Docs: "Equality", Kotlin](https://kotlinlang.org/docs/equality.html)
+  Official docs distinguishing structural equality (`==`, calls `equals()`) from referential equality (`===`, same object identity), and which Kotlin types override `equals()` by default. Use for: exactly what `==` means in Kotlin, since it is not Java's `==`.
 - [Docs: "Basic syntax overview", Kotlin](https://kotlinlang.org/docs/basic-syntax.html)
   Official overview of Kotlin's core syntax elements, including `val`/`var`, basic types, and control flow, each linked to its own detailed page. Use for: the language's basic building blocks, before idiom (stage 3) asks for more than syntax.
 - [Docs: "Coroutines guide", Kotlin](https://kotlinlang.org/docs/coroutines-guide.html)

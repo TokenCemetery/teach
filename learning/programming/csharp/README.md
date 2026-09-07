@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [22. xUnit and NUnit](lessons/0022-xunit-and-nunit.md)
+**Latest lesson:** [23. Mocking](lessons/0023-mocking.md)
 
 ## Success looks like
 
@@ -70,6 +70,7 @@ Work through these in order.
 | [0020](lessons/0020-cancellation-tokens.md) | Cancellation Tokens | Cooperative cancellation with one requester and many listeners, why returning early reports success, and the token comparison that decides whether a task says it was canceled |
 | [0021](lessons/0021-async-streams.md) | Async Streams | The three interfaces behind await foreach, the attribute that lets a consumer's token reach an async iterator's body, and the stage 4 capstone of predicting an async program |
 | [0022](lessons/0022-xunit-and-nunit.md) | xUnit and NUnit | The per-test instance rule that leaves xUnit no setup attribute to need, the word theory meaning two different things, and the parallelism a shared fixture quietly costs |
+| [0023](lessons/0023-mocking.md) | Mocking | The runtime proxy behind every substitution library, the C# default that decides what it is allowed to replace, and the mocked assertion that passes without the call ever happening |
 
 ## Reference
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [5. Pagination, Filtering, and Designing a REST Contract](lessons/0005-pagination-and-filtering.md)
+**Latest lesson:** [6. Proto3 and gRPC Service Design](lessons/0006-proto3-and-grpc-service-design.md)
 
 ## Success looks like
 
@@ -49,6 +49,7 @@ Work through these in order.
 | [0003](lessons/0003-problem-details-and-grpc-status-codes.md) | RFC 9457 Problem Details and gRPC Status Codes | A structured, machine-readable error format for HTTP, gRPC's parallel status-code vocabulary, and designing one error model that works across both |
 | [0004](lessons/0004-resource-modeling-for-rest.md) | Resource Modeling for REST | Why REST models an API around nouns and state, not verbs, and how a resource hierarchy shapes what a URL means |
 | [0005](lessons/0005-pagination-and-filtering.md) | Pagination, Filtering, and Designing a REST Contract | Why cursor-based pagination beats offsets at scale, how filtering stays a stable contract, and putting resource modeling together into a full REST design |
+| [0006](lessons/0006-proto3-and-grpc-service-design.md) | Proto3 and gRPC Service Design | How proto3's field numbers, not field names, are the real wire contract, and how a gRPC service is structured around RPC methods rather than resources |
 
 ## Reference
 

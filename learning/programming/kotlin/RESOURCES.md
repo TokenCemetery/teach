@@ -14,6 +14,8 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Backend development with Kotlin", Kotlin](https://kotlinlang.org/docs/server-overview.html)
+  Official orientation page for server-side Kotlin: that it keeps full compatibility with existing Java-based technology stacks, and that a large Java codebase can be migrated gradually rather than at once. Use for: context before choosing a framework, and for the interoperability argument when a team is deciding whether to start.
 - [Docs: "Gradle Kotlin DSL Primer", Gradle](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
   Official primer for `build.gradle.kts`: which type-safe model accessors exist in which kind of script, what to do when they are not available (`configure<T>()` and `the<T>()`), and `./gradlew kotlinDslAccessorsReport` for discovering what an applied plugin actually contributes. Use for: writing a Kotlin build script without guessing, and for the fallback when an accessor is missing.
 - [Docs: "Version Catalogs", Gradle](https://docs.gradle.org/current/userguide/version_catalogs.html)

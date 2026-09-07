@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [30. Gradle and Dependency Management](lessons/0030-gradle-and-dependency-management.md)
+**Latest lesson:** [31. Structuring a Service](lessons/0031-structuring-a-service.md)
 
 ## Success looks like
 
@@ -79,6 +79,7 @@ Work through these in order.
 | [0028](lessons/0028-test-frameworks.md) | Test Frameworks | The layers a Kotlin test actually sits on, why runTest's virtual time stops at the dispatcher boundary, and what that forces on the design of the code under test |
 | [0029](lessons/0029-mocking.md) | Mocking | Why final-by-default changes what mocking means in Kotlin, what MockK does for the constructs that are not methods on an object, and when finality is telling you a seam is missing |
 | [0030](lessons/0030-gradle-and-dependency-management.md) | Gradle and Dependency Management | The Kotlin DSL's type-safe accessors and where they run out, why a Gradle configuration is not a Maven scope, and the resolution rule that decides which version reaches the classpath |
+| [0031](lessons/0031-structuring-a-service.md) | Structuring a Service | Where Kotlin files actually go and what goes inside a class, and the four decisions from earlier stages that decide whether a service is testable |
 
 ## Reference
 

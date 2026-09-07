@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [9. Sealed Classes and Exhaustive when](lessons/0009-sealed-classes-and-exhaustive-when.md)
+**Latest lesson:** [10. Enums](lessons/0010-enums.md)
 
 ## Success looks like
 
@@ -58,6 +58,7 @@ Work through these in order.
 | [0007](lessons/0007-classes-and-properties.md) | Classes and Properties | Properties as the replacement for Java's getter/setter boilerplate, and why the Kotlin docs themselves say to reach for a class last |
 | [0008](lessons/0008-data-classes.md) | Data Classes | What data class actually generates, and the subtle rule that only primary-constructor properties participate in any of it |
 | [0009](lessons/0009-sealed-classes-and-exhaustive-when.md) | Sealed Classes and Exhaustive when | How sealing a hierarchy turns a when's exhaustiveness from a manual promise into a compiler-checked guarantee |
+| [0010](lessons/0010-enums.md) | Enums | Each enum constant as a real object with its own state and behavior, and precisely where an enum fits over a sealed class |
 
 ## Reference
 

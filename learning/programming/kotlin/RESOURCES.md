@@ -14,6 +14,8 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Enum classes", Kotlin](https://kotlinlang.org/docs/enum-classes.html)
+  Official docs on enum classes: each constant as a real object, optional per-constant anonymous class bodies, and the `entries`/`valueOf()`/`name`/`ordinal` machinery every enum gets for free. Use for: what an enum actually is beyond a list of names, and how it differs from a sealed class covering the same kind of fixed set.
 - [Docs: "Sealed classes and interfaces", Kotlin](https://kotlinlang.org/docs/sealed-classes.html)
   Official docs on sealed hierarchies: every direct subclass known at compile time, and the compiler-enforced exhaustiveness this gives a `when` expression over one, with no `else` branch needed. Use for: type-safe state modelling where an exception or a runtime check would otherwise stand in for the type system.
 - [Docs: "Data classes", Kotlin](https://kotlinlang.org/docs/data-classes.html)

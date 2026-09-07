@@ -14,6 +14,8 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Operator overloading", Kotlin](https://kotlinlang.org/docs/operator-overloading.html)
+  Official docs on the fixed set of operator symbols (`+`, `*`, `[]`, comparisons, and more) and the exact function name and `operator` modifier each maps to. Use for: implementing an operator only where it means what the symbol already means to a reader, not as a way to write terse but surprising code.
 - [Docs: "Delegation", Kotlin](https://kotlinlang.org/docs/delegation.html)
   Official docs on class delegation via `by`: implementing an interface by forwarding to a held object, with zero boilerplate, and the subtlety that overrides in the derived class aren't seen by the delegate's own internal calls. Use for: the delegation pattern as a language feature instead of hand-written forwarding methods.
 - [Docs: "Delegated properties", Kotlin](https://kotlinlang.org/docs/delegated-properties.html)

@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [26. Dependency Injection](lessons/0026-dependency-injection.md)
+**Latest lesson:** [27. Configuration](lessons/0027-configuration.md)
 
 ## Success looks like
 
@@ -74,6 +74,7 @@ Work through these in order.
 | [0024](lessons/0024-the-dotnet-cli-and-packages.md) | The dotnet CLI and Packages | The one command a fresh clone needs, why a package version is a floor rather than a pin, the SDK release that reordered the commands, and the stage 5 capstone |
 | [0025](lessons/0025-routing-and-middleware.md) | Routing and Middleware | Two systems sharing one Program.cs, one settled by the order you wrote and one by template precedence, and the two positions that decide what a middleware can know and whether it runs at all |
 | [0026](lessons/0026-dependency-injection.md) | Dependency Injection | Three lifetimes as claims the container enforces only where it can see them, the long-lived service that silently promotes a short-lived one, and why nobody disposes what the container made |
+| [0027](lessons/0027-configuration.md) | Configuration | One flat dictionary of strings where the last provider wins, three options interfaces separated by lifetime rather than by taste, and validation that waits for the first request unless you ask it not to |
 
 ## Reference
 

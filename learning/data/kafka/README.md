@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a topic and partition layout for a real workload and to diagnose consumer lag, rebalancing storms or unexpected message loss instead of guessing at a fix.
 
-**Latest lesson:** [7. Partition-Count Trade-offs and Designing a Topic Layout](lessons/0007-partition-count-and-topic-layout.md)
+**Latest lesson:** [8. Schema Registry](lessons/0008-schema-registry.md)
 
 ## Success looks like
 
@@ -52,6 +52,7 @@ Work through these in order.
 | [0005](lessons/0005-idempotent-producers-and-transactions.md) | Idempotent Producers and Transactions | Why idempotence is nearly free but transactions carry the real cost of exactly-once |
 | [0006](lessons/0006-partition-key-choice.md) | Partition Key Choice and Ordering Guarantees | Choosing a partition key means choosing both what ordering you get and what parallelism you give up, in the same decision |
 | [0007](lessons/0007-partition-count-and-topic-layout.md) | Partition-Count Trade-offs and Designing a Topic Layout | Why more partitions isn't free, and what a fully defended topic layout has to name from every earlier stage |
+| [0008](lessons/0008-schema-registry.md) | Schema Registry | How catching an incompatible schema change at produce time replaces a silent, downstream consume-time break |
 
 ## Reference
 

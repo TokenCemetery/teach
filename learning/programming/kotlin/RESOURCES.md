@@ -10,6 +10,10 @@ type: resources
 
 - [Docs: "Null safety", Kotlin](https://kotlinlang.org/docs/null-safety.html)
   Official docs for Kotlin's nullable/non-nullable type distinction, the safe-call and Elvis operators, and the platform types a Java interop boundary introduces. Use for: the primary mechanism behind writing null safety into the type system instead of into defensive checks.
+- [Docs: "Types overview", Kotlin](https://kotlinlang.org/docs/types-overview.html)
+  Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
+- [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
+  Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
 - [Docs: "Equality", Kotlin](https://kotlinlang.org/docs/equality.html)
   Official docs distinguishing structural equality (`==`, calls `equals()`) from referential equality (`===`, same object identity), and which Kotlin types override `equals()` by default. Use for: exactly what `==` means in Kotlin, since it is not Java's `==`.
 - [Docs: "Basic syntax overview", Kotlin](https://kotlinlang.org/docs/basic-syntax.html)

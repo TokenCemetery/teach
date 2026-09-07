@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [32. Android Divergences](lessons/0032-android-divergences.md)
+**Latest lesson:** [33. Generics and Variance](lessons/0033-generics-and-variance.md)
 
 ## Success looks like
 
@@ -81,6 +81,7 @@ Work through these in order.
 | [0030](lessons/0030-gradle-and-dependency-management.md) | Gradle and Dependency Management | The Kotlin DSL's type-safe accessors and where they run out, why a Gradle configuration is not a Maven scope, and the resolution rule that decides which version reaches the classpath |
 | [0031](lessons/0031-structuring-a-service.md) | Structuring a Service | Where Kotlin files actually go and what goes inside a class, and the four decisions from earlier stages that decide whether a service is testable |
 | [0032](lessons/0032-android-divergences.md) | Android Divergences | The scopes Android owns on your behalf, main-safety as a contract the callee keeps, and why composition lifetime is not lifecycle lifetime |
+| [0033](lessons/0033-generics-and-variance.md) | Generics and Variance | Declaration-site variance in place of wildcards, what out and in actually promise about a type parameter, and how to read a projected signature |
 
 ## Reference
 

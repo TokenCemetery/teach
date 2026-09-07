@@ -161,6 +161,19 @@ That is the whole format: a single paragraph is a complete record. Add **Evidenc
 
 </details>
 
+2. ▢ {A prompt with options, where naming what each wrong answer gets wrong is most of the value}
+
+    - a) {Distractor}
+    - b) {The correct statement}
+    - c) {Distractor}
+    - d) {Distractor}
+
+<details markdown="1"><summary>Check</summary>
+
+{The letter, then what each distractor gets wrong.}
+
+</details>
+
 ## Real-world reps
 
 - [ ] {Something to do today, away from the screen}
@@ -180,6 +193,8 @@ If the lesson itself is unclear rather than the material, that is a defect: [ope
 ```
 
 The closing block is fixed text: copy it verbatim. Lessons are read by people with no teaching session attached to them, so it points at the material and at the issue tracker rather than at a teacher.
+
+Indent a list of options by **four** spaces. Python-Markdown needs four to keep them inside the numbered item; at three it ends the ordered list and renders the options as a separate list underneath, which reads almost right and is not. The item then becomes a loose list item, so its prompt carries slightly more spacing than the prompts above it. That is expected, not a defect.
 
 See [Rendering](PUBLISHING.md#rendering) for the constraints the `<details>` blocks have to satisfy.
 

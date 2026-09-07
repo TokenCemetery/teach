@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [4. Basic Types and String Templates](lessons/0004-basic-types-and-string-templates.md)
+**Latest lesson:** [5. Collections Basics](lessons/0005-collections-basics.md)
 
 ## Success looks like
 
@@ -53,6 +53,7 @@ Work through these in order.
 | [0002](lessons/0002-val-var-and-immutability.md) | val/var and Immutability | Why val is the default worth defending, what it actually guarantees (and doesn't), and the Java habit of reaching for var out of reflex |
 | [0003](lessons/0003-values-vs-references.md) | Values vs References | Why == means something different in Kotlin than in Java, and the specific bug the Java habit of writing == produces |
 | [0004](lessons/0004-basic-types-and-string-templates.md) | Basic Types and String Templates | Why Kotlin has no primitives at the language level, and string templates as a language feature rather than concatenation with extra syntax |
+| [0005](lessons/0005-collections-basics.md) | Collections Basics | List, Set, and Map as read-only-by-interface collections, and why a mutable collection held by a val is still mutable |
 
 ## Reference
 

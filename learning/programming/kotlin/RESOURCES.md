@@ -14,6 +14,8 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Collections overview", Kotlin](https://kotlinlang.org/docs/collections-overview.html)
+  Official docs on `List`/`Set`/`Map`, and the read-only/mutable interface pair behind each, including why a mutable collection held by a `val` is still mutable. Use for: the collection-level counterpart to lesson 2's reference-vs-object mutability distinction.
 - [Docs: "Equality", Kotlin](https://kotlinlang.org/docs/equality.html)
   Official docs distinguishing structural equality (`==`, calls `equals()`) from referential equality (`===`, same object identity), and which Kotlin types override `equals()` by default. Use for: exactly what `==` means in Kotlin, since it is not Java's `==`.
 - [Docs: "Basic syntax overview", Kotlin](https://kotlinlang.org/docs/basic-syntax.html)

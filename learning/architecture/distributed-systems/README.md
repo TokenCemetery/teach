@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [2. Clocks and Ordering](lessons/0002-clocks-and-ordering.md)
+**Latest lesson:** [3. Timeouts as Failure Detectors](lessons/0003-timeouts-as-failure-detectors.md)
 
 ## Success looks like
 
@@ -45,6 +45,7 @@ Work through these in order.
 |---|---|---|
 | [0001](lessons/0001-partial-failure.md) | Partial Failure | The one problem every later topic in this workspace is a response to |
 | [0002](lessons/0002-clocks-and-ordering.md) | Clocks and Ordering | Why wall-clock timestamps from different machines can't be trusted to order events, and how a logical clock orders them without needing synchronized time |
+| [0003](lessons/0003-timeouts-as-failure-detectors.md) | Timeouts as Failure Detectors | Why every practical failure detector is built on a timeout, and the formal vocabulary for the accuracy-versus-speed trade-off that follows from it |
 
 ## Reference
 

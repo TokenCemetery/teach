@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [15. Nullable Reference Types](lessons/0015-nullable-reference-types.md)
+**Latest lesson:** [16. Expression-Bodied Members](lessons/0016-expression-bodied-members.md)
 
 ## Success looks like
 
@@ -63,6 +63,7 @@ Work through these in order.
 | [0013](lessons/0013-linq.md) | LINQ | One query language with two syntaxes and no semantic difference, why nothing runs until you iterate, and the expression tree that lets the same query reach a database |
 | [0014](lessons/0014-delegates-and-events.md) | Delegates and Events | A delegate as a type whose signature includes its return type, the invocation list where one throwing handler stops the rest, and what the event keyword takes away from callers |
 | [0015](lessons/0015-nullable-reference-types.md) | Nullable Reference Types | Annotations rather than types, the null-state the compiler tracks through your control flow, and the one library that turns your annotation into runtime behaviour |
+| [0016](lessons/0016-expression-bodied-members.md) | Expression-Bodied Members | The second job of the arrow token, the statement-expression rule for void members, and the stage 3 capstone of rewriting translated Java |
 
 ## Reference
 

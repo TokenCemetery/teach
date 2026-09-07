@@ -26,7 +26,5 @@ type: resources
   A real, widely-studied production API's versioning and deprecation strategy: how it ships breaking changes without breaking every existing integration at once. Use for: a worked example of an evolution strategy, not just the theory of one.
 - [Draft: "RateLimit header fields for HTTP", IETF](https://www.ietf.org/archive/id/draft-ietf-httpapi-ratelimit-headers-08.html)
   A standardization effort for communicating rate-limit state to a client via response headers. Use for: treating rate limiting as a visible, documented part of the contract rather than an undocumented 429 a client discovers by accident.
-
-## Gaps
-
-- No source yet specifically on authentication and authorization scheme design (API keys vs. OAuth2 vs. mTLS) as a contract-design decision, as opposed to a security-implementation detail; worth closing once lesson design reaches that success criterion.
+- [RFC 6749: "The OAuth 2.0 Authorization Framework", IETF](https://www.rfc-editor.org/rfc/rfc6749)
+  The authoritative spec for OAuth 2.0's roles, grant types, and scopes, the mechanism by which an API expresses exactly what a token grants. Use for: treating authorization scope as a deliberate, documented part of the contract rather than an implementation detail bolted on after the fact.

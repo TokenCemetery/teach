@@ -30,7 +30,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | data | [Kafka](data/kafka/) | Own the log: partitions, consumer groups, delivery guarantees, and what "exactly once" actually costs | 9 |
 | data | [Redis](data/redis/) | Use Redis for what it is: the memory model, eviction, persistence, and the patterns that quietly misuse it | 8 |
 | architecture | [Distributed Systems](architecture/distributed-systems/) | Reason about partial failure: what a network can do to you, which consistency you are actually buying, and why consensus is expensive | 10 |
-| architecture | [API Design](architecture/api-design/) | Design an interface others depend on: the contract, its errors, and how it changes without breaking them | 0 |
+| architecture | [API Design](architecture/api-design/) | Design an interface others depend on: the contract, its errors, and how it changes without breaking them | 10 |
 
 ## Starting a topic
 

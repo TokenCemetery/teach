@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [9. Versioning and Migration Strategy](lessons/0009-versioning-and-migration-strategy.md)
+**Latest lesson:** [10. Auth, Authz, and Rate Limiting as Contract](lessons/0010-auth-authz-and-rate-limiting-as-contract.md)
 
 ## Success looks like
 
@@ -53,6 +53,7 @@ Work through these in order.
 | [0007](lessons/0007-grpc-streaming.md) | gRPC Streaming and Designing the Same Use Case | The four kinds of gRPC RPC, when each fits, and designing one use case as both a REST and a gRPC contract |
 | [0008](lessons/0008-additive-changes-and-deprecation.md) | Additive Changes and Deprecation | Why adding is usually safe and removing or changing meaning is usually not, and how to deprecate a field or endpoint without breaking clients on the spot |
 | [0009](lessons/0009-versioning-and-migration-strategy.md) | Versioning and Migration Strategy | How to ship a genuine breaking change without breaking every existing integration at once, using Stripe's versioning strategy as a worked example |
+| [0010](lessons/0010-auth-authz-and-rate-limiting-as-contract.md) | Auth, Authz, and Rate Limiting as Contract | Why scopes, not just tokens, and visible rate-limit state, not just a 429, are what make access control and quotas part of the deliberate contract |
 
 ## Reference
 

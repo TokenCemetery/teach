@@ -14,6 +14,8 @@ type: resources
   Official docs explaining that Kotlin's basic types (numbers, characters, booleans) behave like regular classes despite an optimized primitive representation at runtime. Use for: exactly why `Int`, `Boolean`, and similar types have member functions, unlike Java's primitives.
 - [Docs: "Strings", Kotlin](https://kotlinlang.org/docs/strings.html)
   Official docs on Kotlin's immutable `String` type and string templates (`$variable`, `${expression}`). Use for: string interpolation as a language feature, not string concatenation with extra syntax.
+- [Docs: "Scope functions", Kotlin](https://kotlinlang.org/docs/scope-functions.html)
+  Official docs on `let`, `run`, `with`, `apply`, and `also`: the object reference each provides (`it` vs `this`), what each returns (the lambda's result vs the context object), and the function-selection table distinguishing them. Use for: choosing the right scope function by what it actually returns, not by habit or resemblance to another one.
 - [Docs: "Extensions", Kotlin](https://kotlinlang.org/docs/extensions.html)
   Official docs on extension functions and properties: called as if they were members, but resolved statically and never actually modifying the extended class or interface. Use for: adding behavior to a type you don't own (including one from a library) without inheritance or a wrapper class.
 - [Docs: "Interfaces", Kotlin](https://kotlinlang.org/docs/interfaces.html)

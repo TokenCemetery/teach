@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [23. Suspend Functions and Coroutine Builders](lessons/0023-suspend-functions-and-coroutine-builders.md)
+**Latest lesson:** [24. Structured Concurrency](lessons/0024-structured-concurrency.md)
 
 ## Success looks like
 
@@ -72,6 +72,7 @@ Work through these in order.
 | [0021](lessons/0021-grouping-and-folding.md) | Grouping and Folding | Aggregating with fold and reduce, grouping without building the groups, and the stage 4 capstone of defending what a pipeline costs |
 | [0022](lessons/0022-threads-and-the-memory-model.md) | Threads and the Memory Model | Why Kotlin has no memory model of its own on the JVM, the three constructs it spells as annotations instead of keywords, and the two guarantees a val does not give you |
 | [0023](lessons/0023-suspend-functions-and-coroutine-builders.md) | Suspend Functions and Coroutine Builders | What suspend actually changes about a function, the three builders and what each one returns, and why suspending code still reads top to bottom |
+| [0024](lessons/0024-structured-concurrency.md) | Structured Concurrency | The parent and child tree that makes cancellation predictable, why a scope you own is a scope you must cancel, and what GlobalScope actually costs |
 
 ## Reference
 

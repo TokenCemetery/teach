@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [12. Extension Methods](lessons/0012-extension-methods.md)
+**Latest lesson:** [13. LINQ](lessons/0013-linq.md)
 
 ## Success looks like
 
@@ -60,6 +60,7 @@ Work through these in order.
 | [0010](lessons/0010-interfaces.md) | Interfaces | What an interface may hold now that it can carry implementations, the auto-property that is not one, and the member you can only call through the interface |
 | [0011](lessons/0011-generics.md) | Generics | Constraints as the vocabulary for what a type parameter must be, variance as a rule about positions, and the stage 2 capstone of choosing the right type |
 | [0012](lessons/0012-extension-methods.md) | Extension Methods | Two syntaxes compiling to the same IL, the binding rule that stops an extension overriding anything, and what that costs at a call site |
+| [0013](lessons/0013-linq.md) | LINQ | One query language with two syntaxes and no semantic difference, why nothing runs until you iterate, and the expression tree that lets the same query reach a database |
 
 ## Reference
 

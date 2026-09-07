@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [6. Exceptions](lessons/0006-exceptions.md)
+**Latest lesson:** [7. Properties](lessons/0007-properties.md)
 
 ## Success looks like
 
@@ -54,6 +54,7 @@ Work through these in order.
 | [0004](lessons/0004-collections.md) | Collections | IEnumerable as the abstraction the rest of the arc leans on, and the dictionary lookup that throws where Java's map returns null |
 | [0005](lessons/0005-control-flow.md) | Control Flow | The three places control flow does not transfer from Java: foreach's duck-typed enumerator, switch without fall-through, and goto as a legal jump |
 | [0006](lessons/0006-exceptions.md) | Exceptions | Exception filters and the stack trace that catch-and-rethrow destroys, using for deterministic cleanup, and the stage 1 capstone |
+| [0007](lessons/0007-properties.md) | Properties | Accessors as a language feature, the three orthogonal promises of required, init and a non-nullable type, and computed properties with no backing field |
 
 ## Reference
 

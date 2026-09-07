@@ -393,6 +393,22 @@ class Workspace:
             if unicodedata.category(ch) == "Cc" and ch != "\n":
                 self.bad(rel, f"control character {ch!r} outside a code block")
 
+        # Python-Markdown strips a run of `#` off the end of an ATX heading
+        # without requiring a space in front of it, so `# Learning: C#` shipped
+        # as "Learning: C". CommonMark, which GitHub uses, needs that space and
+        # keeps the character, so the two renderers of these same files
+        # disagree and nothing in the source looks wrong. A backslash fixes it
+        # in both: Python-Markdown carries `\#` through the heading parser and
+        # unescapes it inline, and CommonMark consumes the backslash too.
+        # Excluding a space before the run leaves a real closing sequence,
+        # which means the same thing in both renderers, alone. Excluding a `#`
+        # as well is what makes that work, since `.*` is greedy enough to eat
+        # into the run itself and hand back a `#` as the preceding character.
+        for i, line in code_free_lines(text):
+            if re.match(r"#{1,6} .*[^\\\s#]#+$", line):
+                self.bad(rel, f"line {i}: a trailing '#' on a heading is stripped by "
+                              "Python-Markdown but kept by GitHub; escape it as \\#")
+
         for i, line in enumerate(text.split("\n"), 1):
             if line != line.rstrip():
                 self.bad(rel, f"line {i}: trailing whitespace")

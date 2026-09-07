@@ -4,7 +4,7 @@ description: "Own a C# service: the type system, async, and what the CLR does wi
 type: topic
 ---
 
-# Learning: C#
+# Learning: C\#
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 

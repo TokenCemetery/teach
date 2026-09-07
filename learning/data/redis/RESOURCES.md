@@ -18,6 +18,8 @@ type: resources
   Official docs describing the Redlock algorithm for a distributed lock built on Redis. Use for: what a "real" distributed lock attempt looks like, before reading the critique below.
 - [Article: "How to do distributed locking", Martin Kleppmann](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
   A widely-cited critique of Redlock's safety guarantees under process pauses and clock drift, from the author of *Designing Data-Intensive Applications*. Use for: the specific failure modes behind "a lock that is not one", and why a naive Redis-based lock is a correctness risk, not just a performance one.
+- [Docs: "Redis cache-aside", Redis](https://redis.io/docs/latest/develop/use-cases/cache-aside/)
+  Official docs on the cache-aside pattern: checking Redis first, falling back to the primary database on a miss, writing the result back with a TTL, and invalidating (not rewriting) the cache key on a write. Use for: what correct cache-aside usage looks like, the baseline the cache-treated-as-a-store anti-pattern deviates from.
 - [Docs: "Scaling with Redis Cluster", Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/)
   Official docs on how Redis Cluster shards keys and what a client and an operator each have to account for as a result. Use for: reasoning about Cluster's compromises without needing to operate one.
 - [Docs: "High availability with Redis Sentinel", Redis](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/)

@@ -8,7 +8,7 @@ type: topic
 
 Be able to spot where an existing system is quietly misusing Redis, such as a cache treated as a store or a lock that is not one, and to design correct usage from scratch instead.
 
-**Latest lesson:** [5. Redlock and Kleppmann's Critique](lessons/0005-redlock-and-kleppmanns-critique.md)
+**Latest lesson:** [6. Cache-Aside and the Store Anti-Pattern](lessons/0006-cache-aside-and-the-store-anti-pattern.md)
 
 ## Success looks like
 
@@ -48,6 +48,7 @@ Work through these in order.
 | [0003](lessons/0003-aof-and-wal-comparison.md) | AOF and the WAL Comparison | How AOF's fsync policy sets its data-loss window, and why even Redis's strongest common setting trades more durability for speed than Postgres does by default |
 | [0004](lessons/0004-naive-locking-mistakes.md) | Naive Locking Mistakes | Why SET NX PX alone is not a distributed lock, and the two failure modes that break it under real conditions |
 | [0005](lessons/0005-redlock-and-kleppmanns-critique.md) | Redlock and Kleppmann's Critique | What Redlock actually fixes about the naive lock, what Kleppmann's critique shows it still doesn't, and how to decide whether a Redis lock is the right tool at all |
+| [0006](lessons/0006-cache-aside-and-the-store-anti-pattern.md) | Cache-Aside and the Store Anti-Pattern | What correct cache-aside usage looks like, and the specific way a cache quietly becomes the system of record when that pattern is skipped |
 
 ## Reference
 

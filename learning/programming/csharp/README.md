@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [30. Two Comparisons with Java](lessons/0030-two-comparisons-with-java.md)
+**Latest lesson:** [31. Reviewing a C# Codebase](lessons/0031-reviewing-csharp.md)
 
 ## Success looks like
 
@@ -78,6 +78,7 @@ Work through these in order.
 | [0028](lessons/0028-entity-framework-core.md) | Entity Framework Core | A context that remembers what you queried so an assignment becomes an update, the single place a query is allowed to fall back to the client, and why stage 4's habit of overlapping work corrupts it |
 | [0029](lessons/0029-structuring-a-typed-tested-backend.md) | Structuring a Typed, Tested Backend | The container as the seam a test replaces registrations through, the documented rule for choosing between a unit test and an integration test, and the stage 6 capstone of four defects that all compile |
 | [0030](lessons/0030-two-comparisons-with-java.md) | Two Comparisons with Java | The same waiting problem solved at two different layers, why Java's answer removes the style C# requires rather than adopting it, and the expression tree that has no counterpart in a Stream |
+| [0031](lessons/0031-reviewing-csharp.md) | Reviewing a C# Codebase | The difference between a style opinion and a cost you can name, a review pass ordered by what the compiler will never tell you, and the habits this arc has been collecting since lesson 1 |
 
 ## Reference
 

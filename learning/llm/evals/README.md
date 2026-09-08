@@ -58,6 +58,7 @@ Work through these in order.
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
+- [Held-Out Data and Contamination](reference/held-out-data-and-contamination.md): the two contamination pathways, the guided-instruction test, and the prevention toolkit for a custom eval set
 
 ## How this works
 

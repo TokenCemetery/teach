@@ -11,7 +11,9 @@ type: resources
 - [Docs: "Reliability and the Write-Ahead Log", PostgreSQL](https://www.postgresql.org/docs/current/wal.html)
   Official chapter on why the WAL exists, how it makes crash recovery and durability possible, and the settings that trade durability against throughput. Use for: the primary mechanism everything else in this workspace (replication, crash recovery) builds on.
 - [Docs: "Routine Vacuuming", PostgreSQL](https://www.postgresql.org/docs/current/routine-vacuuming.html)
-  Official chapter on why dead rows accumulate under MVCC, how autovacuum reclaims them, and the settings that control when it runs and how aggressively. Use for: diagnosing and preventing table and index bloat.
+  Official chapter on why dead rows accumulate under MVCC, how autovacuum reclaims them, and the settings that control when it runs and how aggressively. Use for: diagnosing and preventing table and index bloat, and for the exact views and columns that reveal what is holding the horizon back: `pg_stat_activity`, `pg_prepared_xacts` and `pg_replication_slots`.
+- [Docs: "Automatic Vacuuming" configuration, PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html)
+  Every autovacuum parameter with its current default. Use for: the numbers behind the trigger formulas rather than remembered ones, including `autovacuum_vacuum_max_threshold`, a ceiling on the scale-factor calculation that is newer than most tuning advice on the subject.
 - [Wiki: "Show database bloat", PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Show_database_bloat)
   A runnable query for estimating actual bloat in tables and indexes, with notes on why the estimate is approximate. Use for: measuring bloat on a real instance rather than reasoning about it in the abstract.
 - [Docs: "High Availability, Load Balancing, and Replication", PostgreSQL](https://www.postgresql.org/docs/current/high-availability.html)

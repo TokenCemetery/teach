@@ -59,6 +59,7 @@ Work through these in order.
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
+- [Vacuum and Bloat](reference/vacuum-and-bloat.md): what triggers autovacuum and with which numbers, what holds back the space it can reclaim, and the views to check in which order
 
 ## How this works
 

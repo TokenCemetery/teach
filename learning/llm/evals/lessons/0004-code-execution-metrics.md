@@ -50,6 +50,17 @@ pass@k = 1 − C(n−c, k) / C(n, k)
 
 The choice runs in order of what "correct" actually means for the task. When correctness is behavioral and checkable by running something, execute it: functional correctness and pass@k, this lesson's subject. When correctness is one of a small, well-defined set of answers, exact match or F1 fit (lesson 3). When correctness is open-ended text where surface overlap with a reference only loosely tracks quality, BLEU or ROUGE (lesson 3) serve as a coarse, cheap first-pass filter, not a final verdict, since neither can be checked structurally or executed. Where a task is open-ended and nothing here can check it, the mission's next stage, LLM-as-judge, is what's left.
 
+```mermaid
+flowchart TD
+    Q["what does 'correct' mean for this task?"] --> A{"checkable by<br>running it?"}
+    A -- yes --> B["functional correctness,<br>pass@k"]
+    A -- no --> C{"small, well-defined<br>set of answers?"}
+    C -- yes --> D["exact match, F1"]
+    C -- no --> E{"surface overlap tracks<br>quality, loosely?"}
+    E -- yes --> F["BLEU, ROUGE<br>(coarse filter only)"]
+    E -- no --> G["LLM-as-judge<br>(stage 3)"]
+```
+
 ## Practice
 
 1. ▢ Why would using exact match or BLEU to score generated code penalize a correct solution more often than it would for prose?

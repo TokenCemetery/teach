@@ -50,6 +50,16 @@ When the pretraining corpus behind a model is known or accessible (an open corpu
 
 Pretraining absorption happens because benchmarks get published, then scraped. An eval set that is never posted publicly, kept internal to the team using it, cannot be scraped into anyone's future pretraining corpus. This is the strongest prevention available and the reason a held-out set worth trusting for a long time is often one nobody outside the team has ever seen, at the cost of losing the reproducibility and external scrutiny a published benchmark offers.
 
+```mermaid
+flowchart TD
+    S["building a custom eval set"] --> P["source data that postdates<br>the training cutoff"]
+    S --> K["embed a canary string<br>(a request, not a guarantee)"]
+    S --> V["keep the set unpublished"]
+    S --> Q{"pretraining corpus known<br>and accessible?"}
+    Q -- yes --> N["n-gram overlap check<br>against the corpus"]
+    Q -- no --> G["guided-instruction test<br>(lesson 1)"]
+```
+
 ## Practice
 
 1. ▢ A team wants to build an eval resistant to pretraining absorption. They consider sourcing questions from articles published after the model's stated training cutoff. Why does this work, and what do they need to verify first?

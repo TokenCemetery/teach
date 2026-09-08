@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180" width="560" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">F1 as a bag-of-tokens overlap</title>
+  <desc id="desc">Reference "the cat sat on the mat" and prediction "a cat sat on the mat" laid out as token boxes. cat, sat, on, mat and one instance of the are shared between them, shown in the accent color. The reference's second the and the prediction's a are each unmatched, shown in gray. Five of six tokens match on each side, so precision is 5/6, recall is 5/6, and F1 is 5/6.</desc>
+
+  <!-- Bag-of-tokens matching has no fixed position, so which "the" instance is
+       "the" match is arbitrary; either could be picked without changing the count. -->
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">
+    <text x="20" y="30">reference: "the cat sat on the mat"</text>
+    <text x="20" y="86">prediction: "a cat sat on the mat"</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" text-anchor="middle">
+    <rect x="20" y="36" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="61" y="52" fill="#bf7d1a">the</text>
+
+    <rect x="108" y="36" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="149" y="52" fill="#bf7d1a">cat</text>
+
+    <rect x="196" y="36" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="237" y="52" fill="#bf7d1a">sat</text>
+
+    <rect x="284" y="36" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="325" y="52" fill="#bf7d1a">on</text>
+
+    <rect x="372" y="36" width="82" height="24" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.4" stroke-width="1.2"/>
+    <text x="413" y="52" fill="#7a828c">the</text>
+
+    <rect x="460" y="36" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="501" y="52" fill="#bf7d1a">mat</text>
+
+    <rect x="20" y="92" width="82" height="24" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.4" stroke-width="1.2"/>
+    <text x="61" y="108" fill="#7a828c">a</text>
+
+    <rect x="108" y="92" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="149" y="108" fill="#bf7d1a">cat</text>
+
+    <rect x="196" y="92" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="237" y="108" fill="#bf7d1a">sat</text>
+
+    <rect x="284" y="92" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="325" y="108" fill="#bf7d1a">on</text>
+
+    <rect x="372" y="92" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="413" y="108" fill="#bf7d1a">the</text>
+
+    <rect x="460" y="92" width="82" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="501" y="108" fill="#bf7d1a">mat</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <text x="20" y="140" fill="#bf7d1a">5 of 6 tokens match on each side</text>
+    <text x="20" y="156" fill="#7a828c">precision 5/6, recall 5/6, F1 5/6 &#8776; 0.83</text>
+  </g>
+</svg>

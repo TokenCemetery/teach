@@ -27,6 +27,15 @@ This is the same discipline as a held-out test set in any machine learning workf
 
 Both produce the same symptom: a number that looks good and does not predict real-world behavior. They need different fixes. The first is addressed by choosing or building eval data unlikely to appear in a pretraining corpus (or by testing for its presence). The second is addressed by refreshing the eval set, or holding back a further slice of it, so it cannot be optimized against indefinitely.
 
+```mermaid
+flowchart TD
+    A["benchmark scraped into<br>web-crawl pretraining data"] --> C["number looks good,<br>doesn't predict real behavior"]
+    B["same eval set run<br>repeatedly while tuning"] --> C
+    C --> D{"which pathway?"}
+    D -- "pretraining absorption" --> E["build from data unlikely<br>to appear in pretraining"]
+    D -- "iterative overfitting" --> F["refresh the set, or hold<br>back an untouched slice"]
+```
+
 ### Testing for pretraining contamination
 
 You can often detect the first failure mode directly. Golchin and Surdeanu's guided-instruction method gives a model the first part of a benchmark instance and asks it to complete the rest verbatim. A model that reproduces a benchmark item's exact continuation, beyond what a plausible guess would produce, is strong evidence that instance was in its training data. The same idea generalizes: if a model can reconstruct specifics of your eval set that a description alone would not give away (an unusual phrasing, an exact number, a rare proper noun), suspect contamination.

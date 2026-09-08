@@ -49,6 +49,15 @@ A judge is **calibrated** when its scores track actual quality consistently: an 
 
 Calibration is not something to assume; it's something to check, the same way lesson 1 insisted a held-out set's honesty be checked rather than assumed. The check: run the judge against a small set of examples a human has already rated, and measure agreement, whether by simple agreement rate or a correlation statistic, before trusting the judge on the larger, unlabeled set the eval actually needs it for.
 
+```mermaid
+flowchart TD
+    A["human-rate a small sample"] --> B["run the same sample<br>through the judge prompt"]
+    B --> C["measure agreement<br>(rate or correlation)"]
+    C --> D{"scores track quality,<br>and spread out?"}
+    D -- yes --> E["trust the judge on the<br>larger, unlabeled set"]
+    D -- no --> F["score compression toward<br>the ceiling: fix the prompt first"]
+```
+
 ## Practice
 
 1. ▢ Why does giving a judge model a reference answer, when one is available, tend to improve its grading accuracy compared to judging with no reference at all?

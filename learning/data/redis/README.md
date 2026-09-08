@@ -57,6 +57,7 @@ Work through these in order.
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
 - [Persistence](reference/persistence.md): what RDB and AOF each promise, the exact loss window every fsync policy leaves, and what Redis's own documentation says about matching a database's durability
+- [Distributed Locks](reference/distributed-locks.md): the naive lock and its two holes, Redlock's algorithm with the validity arithmetic, and the one question that decides whether either is the right tool
 
 ## How this works
 

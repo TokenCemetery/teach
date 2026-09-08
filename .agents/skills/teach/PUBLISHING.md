@@ -36,6 +36,7 @@ Nothing in the front matter moves a page in the navigation. Order comes from `le
   - Two blocks in a row work too, and the numbering resumes after either shape.
 - A single newline is a line break, as it is on GitHub. Lesson header blocks, glossary definitions and worked calculations rely on it. This holds only because no prose here is hard-wrapped, so keep it that way and write a paragraph on one line.
 - `mkdocs.yml` owns the extensions these rules depend on: `md_in_html`, `sane_lists`, `nl2br`, `pymdownx.highlight`, `pymdownx.superfences`. Removing one breaks every lesson at once.
+- A fenced ```mermaid``` block, see [`FORMATS.md`](FORMATS.md#lessons), needs the `mermaid2` plugin and its custom `pymdownx.superfences` fence, both in `mkdocs.yml`. GitHub renders the same fence natively, so only the site build depends on this pairing.
 
 Not everything in a workspace is published. `mkdocs.yml` excludes `NOTES.md` and `learning-records/`: they hold the learner's state (preferences, disclosed background, corrected misconceptions) and stay out of the site whether or not the repository is public.
 

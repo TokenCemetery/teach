@@ -198,10 +198,17 @@ Indent a list of options by **four** spaces, and any code fence or paragraph the
 
 See [Rendering](PUBLISHING.md#rendering) for the constraints the `<details>` blocks have to satisfy.
 
+Illustrate a layout, a sequence, or a branching decision rather than leaving the reader to assemble it from prose. Two shapes, chosen by what is being drawn:
+
+- **A fenced ```mermaid``` block** for anything flowchart- or graph-shaped: a decision tree, a state machine, a sequence of calls. Nothing to draw or check in; both renderers draw it from the same fence.
+- **An SVG under a sibling `images/` directory** for everything else: a custom layout, an annotated comparison, a memory or object diagram. Reference it with a relative path, `![{what it shows}](images/<slug>.svg)`. Write the alt text as the diagram's content in words, since that is what a screen reader and a raw markdown diff get instead of the drawing, not a caption like "diagram of X".
+
+Not every lesson needs one. Add a diagram only where a picture would land in one look what the prose is spending a paragraph describing.
+
 ## `reference/`
 
 `reference/<slug>.md`. The compressed essence of what lessons taught, built for quick lookup: syntax tables, algorithms, flowcharts, pose sequences, routines, checklists.
 
-Lessons are rarely revisited; these are. Optimise for scanning (tables and short lists over prose) and keep them printable.
+Lessons are rarely revisited; these are. Optimise for scanning (tables and short lists over prose) and keep them printable. The same illustration rule as `lessons/` applies, and a `reference/images/` sibling directory holds its SVGs: a decision sequence spelled out as nested bullets is usually a `mermaid` block that scans faster.
 
 A **drill bank** is one of these sheets: retrieval questions covering a stage, answers collapsed the same way Practice collapses them, written to be dipped into repeatedly rather than worked through once. It is the exception to scanning, and the one sheet a session may open before teaching, to pull warm-up items from without rereading every lesson.

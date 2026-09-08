@@ -137,6 +137,7 @@ Difficulty cuts both ways, so place it deliberately:
 - **Spacing and interleaving.** Open with two or three recall items from earlier lessons, and mix related skills into practice sets rather than drilling one in isolation.
 - **Predict, then run.** Where the material has a runnable or observable form, show it, ask what will happen before the user finds out, then make finding out a real-world rep. The gap between the prediction and the result is what teaches; a demonstration the user watched teaches much less.
 - **Linked.** Link the `reference/` sheets, glossary terms, and prior lessons a reader would want next.
+- **Illustrated where prose is drawing a shape.** When the text is describing a layout, a sequence, or a decision with branches, add a diagram instead of asking the reader to hold it in their head. See [`FORMATS.md`](FORMATS.md#lessons) for where it goes and when to reach for a fenced `mermaid` block instead of an SVG.
 - **One primary source.** Name the single best source found for the user to read or watch.
 - **Readable.** These get revisited: clean headings, short paragraphs, no walls of text.
 

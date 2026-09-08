@@ -38,6 +38,13 @@ Every design decision from stages 1 to 3, which data is held out, which metric o
 
 Regardless of which framework builds it, an eval harness breaks into the same four stages: **load** the held-out eval set (stage 1's discipline about what's in it and why it's trustworthy); **generate**, running the model under test against each example to produce its outputs; **grade**, applying the chosen metric or judge (stages 2 and 3) to each output; and **aggregate**, turning per-example scores into one summary number, a mean, a pass rate, whatever the mission calls for. Naming these stages explicitly matters because each one can undermine the final number independently: a contaminated load stage produces a number that means nothing regardless of how careful the grading is, a broken generation stage (the wrong model, a truncated response) produces garbage no metric can rescue, a miscalibrated grading stage (lesson 5's score compression, lesson 6's biases) corrupts otherwise-good outputs, and an aggregation stage that hides variance behind a single mean can make an unreliable result look solid.
 
+```mermaid
+flowchart LR
+    A["load<br>held-out set, stage 1"] --> B["generate<br>run the model under test"]
+    B --> C["grade<br>metric or judge, stages 2-3"]
+    C --> D["aggregate<br>one summary number"]
+```
+
 ### Two established frameworks, two different jobs
 
 **openai/evals** is built for defining a custom eval as code: a completion function wraps whatever model is under test, an eval spec names the dataset and the grading logic, and a registry of existing evals shows the shape a working one takes. It fits a mission-specific task nobody has built an eval for yet. **lm-evaluation-harness** (EleutherAI) instead runs a model against a large library of pre-built, standardized benchmarks through declarative task configs, without writing a completion function or grading logic from scratch. It fits reusing an existing benchmark, especially when comparability with published numbers on that same benchmark matters more than tailoring the eval to a specific mission.

@@ -42,6 +42,8 @@ For a pass/fail-style score over *N* examples, with a true pass rate *p*, the st
 
 Treating the two scores as independent proportions, the way the estimate above did, throws away information that's actually available: when the same eval examples are run through both the baseline and the new variant, you know not just how many each got right, but which specific examples each got right or wrong. A **paired comparison** looks at the examples where the two models disagree (one got it right and the other didn't) rather than at the two raw pass rates separately. This cancels out example-level difficulty that affects both models equally, a question every model tends to get right or every model tends to get wrong contributes nothing to whether one model is actually better than the other, and it makes a real difference easier to detect from the same amount of data than comparing two independent proportions would.
 
+![A two by two grid crossing whether the baseline got an example right or wrong against whether the variant got it right or wrong. Both right and both wrong are agreement cells, shown in gray: they cancel out. Baseline right and variant wrong, and baseline wrong and variant right, are the disagreement cells, shown in the accent color: a paired comparison counts only these.](images/paired-comparison-grid.svg)
+
 ### What "not yet significant" means for a go/no-go call
 
 A gap that isn't clearly larger than the noise isn't evidence of no difference; it's evidence of not enough information yet to tell. The honest response is either running more examples (shrinking the standard error) or running a proper paired significance test on the disagreements, not treating a numerically larger score as proof of improvement on its own.

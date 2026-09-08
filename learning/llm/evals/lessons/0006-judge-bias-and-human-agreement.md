@@ -34,6 +34,14 @@ Without a reference, a fluent but wrong answer can read as convincing, especiall
 
 When a judge compares two responses side by side (pairwise grading), it can systematically favor whichever one appears first, or in some models, second, in the prompt, independent of actual quality. This is **position bias**, and it means a single pairwise call can't be trusted at face value: the verdict might reflect where a response was placed rather than what it said. The check is direct: run the same comparison twice, with the two responses' order swapped, and see whether the verdict is consistent. If the judge picks whichever response comes first regardless of which one that is, the verdict is unreliable and should be treated as a tie or discarded rather than trusted.
 
+```mermaid
+flowchart TD
+    A["compare A vs B,<br>judge picks one"] --> B["rerun with the<br>order swapped"]
+    B --> C{"same response<br>wins either way?"}
+    C -- yes --> D["verdict tracks quality,<br>trust it"]
+    C -- no --> E["verdict tracks position,<br>treat as a tie or discard"]
+```
+
 ### Verbosity bias: favoring length over correctness
 
 A separate, equally common failure is **verbosity bias**: a judge tends to prefer a longer response even when the extra length adds nothing, over a shorter response that is equally, or more, correct and complete. This rewards padding and penalizes concision, which is exactly backwards for most real tasks. Mitigating it means either instructing the judge explicitly not to reward length on its own, designing criteria that name completeness and correctness rather than length as what to grade, or checking, after the fact, whether the judge's preferences correlate suspiciously well with response length across many comparisons.

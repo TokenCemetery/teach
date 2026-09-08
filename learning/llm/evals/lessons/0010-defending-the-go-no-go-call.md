@@ -46,6 +46,15 @@ When an observed difference falls inside the noise (lesson 9), the honest conclu
 
 A go/no-go call is defended, not merely reported, when it names: the metric and why it fits the task (lessons 3 and 4); why the held-out set is honest against contamination (lessons 1 and 2); if an LLM judge was used, its prompt design and its measured calibration and bias checks (lessons 5 and 6); the harness that produced the number and what was logged to make it reproducible (lessons 7 and 8); and the statistical case that the observed difference clears a threshold set in advance and is clearly larger than the noise the sample size could produce (lesson 9 and this lesson). A call that only states a headline number, with none of this, is a vibe with decimal places; that is precisely the outcome the mission set out to prevent.
 
+```mermaid
+flowchart LR
+    S1["held-out data,<br>lessons 1-2"] --> D["go/no-go<br>defense"]
+    S2["metric choice,<br>lessons 3-4"] --> D
+    S3["judge design & bias,<br>lessons 5-6"] --> D
+    S4["harness & reproducibility,<br>lessons 7-8"] --> D
+    S5["threshold & significance,<br>lesson 9 and this one"] --> D
+```
+
 ## Practice
 
 1. ▢ A team sets its regression threshold ("no more than 1 point of regression allowed") only after seeing that their new model scored exactly 1.2 points below baseline. What's wrong with this threshold, regardless of whether 1.2 points is a real regression?

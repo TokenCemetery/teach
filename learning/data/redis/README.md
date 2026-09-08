@@ -56,6 +56,7 @@ Work through these in order.
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
+- [Persistence](reference/persistence.md): what RDB and AOF each promise, the exact loss window every fsync policy leaves, and what Redis's own documentation says about matching a database's durability
 
 ## How this works
 

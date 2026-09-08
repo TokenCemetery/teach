@@ -61,6 +61,7 @@ Work through these in order.
 - [Time and Order](reference/time-and-order.md): what happens-before can and cannot decide, what a Lamport clock refuses to tell you, and the failure-detector vocabulary a timeout is one instance of
 - [Consistency Models](reference/consistency-models.md): CAP stated as it was proved, the models side by side with what each guarantees, and which of them can answer at all during a partition
 - [Consensus](reference/consensus.md): the replicated-state-machine problem, Raft's five safety properties and the rules that produce them, and what a majority costs on writes and on reads
+- [Diagnosing Incidents](reference/diagnosing-incidents.md): four questions in order, the named anomaly vocabulary for describing a symptom precisely, and a symptom-to-mechanism table indexed to the sheets above
 
 ## How this works
 

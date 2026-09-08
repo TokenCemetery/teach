@@ -32,6 +32,8 @@ type: resources
   The Raft paper, written explicitly to make a consensus protocol's mechanism and cost understandable without requiring a from-scratch proof of correctness. Use for: the primary source on what a consensus protocol actually does and what it costs to run.
 - [Site: "The Raft Consensus Algorithm", raft.github.io](https://raft.github.io/)
   Interactive visualization of Raft's leader election and log replication, letting you watch the protocol handle a simulated node failure or partition. Use for: building intuition for Raft's mechanics before or alongside reading the paper.
+- [Site: "Phenomena", Jepsen](https://jepsen.io/consistency/phenomena)
+  The named anomaly vocabulary: Adya's dependency-based phenomena (`G0` through `G2`), the SQL ones (dirty read, lost update, write skew), the temporal ones (stale read, real-time, process) and long fork. Each page says which models permit the phenomenon and which forbid it. Use for: describing an incident symptom precisely enough to ask whether it was a bug, since whether a phenomenon is legal depends on the model the system claimed. Prefer the Adya family for distributed systems; the SQL phenomena are defined by event order rather than dataflow.
 - [Site: "Analyses", Jepsen](https://jepsen.io/analyses)
   Real distributed databases and coordination systems tested under actual network partitions and process pauses, with the specific consistency violations each analysis found. Use for: concrete, real-system evidence of what partial failure actually does to a system that assumed the network was reliable.
 
@@ -40,4 +42,4 @@ type: resources
 
 ## Gaps
 
-- No source yet on how a real incident is diagnosed end to end, as opposed to the mechanisms individually; the Jepsen analyses come closest and are written per system rather than as a method. Worth closing when stage 5 gets its reference sheet.
+- No source yet on how a real incident is diagnosed end to end, as opposed to the mechanisms individually. Rechecked while writing the stage 5 reference sheet: the Phenomena pages supply the vocabulary for naming a symptom, and the Analyses supply worked examples, but each analysis is written about one system rather than as a method, so the four-question sequence in the sheet is the workspace's own synthesis and rests on no single source. Still open.

@@ -10,6 +10,8 @@ type: resources
 
 - [RFC 9110: "HTTP Semantics", IETF](https://www.rfc-editor.org/rfc/rfc9110)
   The authoritative specification of HTTP methods, status codes, and what each actually promises a client. Use for: settling exactly what an HTTP verb or status code means, rather than relying on convention or folklore.
+- [RFC 6585: "Additional HTTP Status Codes", IETF](https://www.rfc-editor.org/rfc/rfc6585)
+  Defines `429 Too Many Requests`, which RFC 9110 does not, along with the rule that a `429` response must not be stored by a cache. Use for: settling what a rate-limit response actually promises, and citing the right document when RFC 9110 turns out not to contain the code.
 - [Site: "Hyrum's Law", hyrumslaw.com](https://www.hyrumslaw.com/)
   States the principle that with enough users of an API, every observable behavior, documented or not, will end up depended on by somebody. Use for: understanding why the contract a client actually relies on is bigger than what you documented, and why "harmless, undocumented" changes still break clients.
 - [RFC 9457: "Problem Details for HTTP APIs", IETF](https://www.rfc-editor.org/rfc/rfc9457)
@@ -18,6 +20,8 @@ type: resources
   Official overview of gRPC's service definitions and its four RPC kinds (unary, server streaming, client streaming, bidirectional streaming), with the specific ordering and completion guarantees each provides. Use for: choosing the right RPC kind for a given use case, not defaulting to unary out of familiarity.
 - [Docs: "Status Codes", gRPC](https://grpc.io/docs/guides/status-codes/)
   Official reference for gRPC's status codes, what each means, and which are reserved for library-generated errors versus application use. Use for: designing a gRPC error model with the same precision RFC 9110 brings to HTTP status codes.
+- [Proto: `google.rpc.Code`, googleapis](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto)
+  The canonical status-code enumeration behind gRPC, whose comments carry the official HTTP status each code maps to. Use for: mapping a gRPC code to an HTTP one without inventing the correspondence, and for seeing where the mapping is lossy because several codes share one status.
 - [Docs: "Language Guide (proto3)", Protocol Buffers](https://protobuf.dev/programming-guides/proto3/)
   Official guide including the specific field-numbering and type rules that determine whether a Protobuf message change is backward- or forward-compatible. Use for: evolving a gRPC contract without breaking existing clients.
 - [Site: "API Improvement Proposals", Google](https://google.aip.dev/)

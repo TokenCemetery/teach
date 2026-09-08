@@ -27,9 +27,9 @@ type: resources
 - [Docs: "Schema Evolution and Compatibility", Confluent](https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html)
   The compatibility types in full, with per-format tables of which changes each one allows, and the section that matters operationally: which clients have to be upgraded first under each type. Use for: choosing a compatibility mode from the upgrade order you can actually execute, and for the distinction between `BACKWARD` and `BACKWARD_TRANSITIVE`, which decides whether replay from the start of a topic is covered.
 - [Docs: "Kafka Connect", Apache Kafka](https://kafka.apache.org/documentation/#connect)
+  Official chapter on the connector framework for moving data in and out of Kafka without hand-writing a producer or consumer for every integration. Use for: the surrounding-ecosystem piece this mission touches briefly.
 - [Docs: "Connect Configs", Apache Kafka](https://kafka.apache.org/documentation/#connectconfigs)
   The worker configuration reference. Use for: the three internal topics distributed mode needs, the converters that are configured independently of any connector, and `exactly.once.source.support`, which is `disabled` by default and takes a two-step rollout to enable on a running cluster.
-  Official chapter on the connector framework for moving data in and out of Kafka without hand-writing a producer or consumer for every integration. Use for: the surrounding-ecosystem piece this mission touches briefly.
 - [Docs: "Schema Registry", Confluent](https://docs.confluent.io/platform/current/schema-registry/index.html)
   Official docs for managing and evolving message schemas across producers and consumers without breaking compatibility. Use for: the other surrounding-ecosystem piece, schema management, this mission touches briefly.
 

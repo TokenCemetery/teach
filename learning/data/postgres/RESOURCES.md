@@ -18,6 +18,10 @@ type: resources
   A runnable query for estimating actual bloat in tables and indexes, with notes on why the estimate is approximate. Use for: measuring bloat on a real instance rather than reasoning about it in the abstract.
 - [Docs: "High Availability, Load Balancing, and Replication", PostgreSQL](https://www.postgresql.org/docs/current/high-availability.html)
   Official chapter covering streaming replication, synchronous vs. asynchronous replication, and failover, including what each replication mode costs in latency and durability. Use for: designing a replication topology and explaining what it trades away.
+- [Docs: "Replication" configuration, PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-replication.html)
+  Every replication parameter with its default. Use for: `max_slot_wal_keep_size`, which defaults to unlimited and is therefore the setting that decides whether an abandoned slot can fill the primary's disk; and `hot_standby_feedback`, whose own documentation warns it can cause bloat on the primary.
+- [Docs: "Write Ahead Log" configuration, PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-wal.html)
+  The WAL and commit parameters. Use for: the five `synchronous_commit` levels and exactly what each waits for, including the rule that three of them collapse to the same local guarantee when `synchronous_standby_names` is empty.
 - [Docs: "Indexes", PostgreSQL](https://www.postgresql.org/docs/current/indexes.html)
   Official chapter on index types and, critically, on the maintenance cost an index imposes on every write to its table. Use for: defending an index maintenance strategy rather than adding indexes without accounting for their upkeep cost.
 - [Repo: pgvector, pgvector](https://github.com/pgvector/pgvector)

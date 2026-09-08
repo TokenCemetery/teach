@@ -62,6 +62,7 @@ Work through these in order.
 - [Consumer Groups and Rebalancing](reference/consumer-groups-and-rebalancing.md): the two rebalance protocols, the two independent liveness timeouts, and a diagnostic order for consumer lag with the config that governs each step
 - [Delivery Guarantees](reference/delivery-guarantees.md): which config decides each leg of the path, why idempotence can be silently off, and what a read_committed consumer actually waits for
 - [Topic and Partition Design](reference/topic-and-partition-design.md): how a record actually reaches a partition, what ordering that does and does not buy, and the two directions partition count is expensive to change
+- [Ecosystem](reference/ecosystem.md): the seven compatibility types with who has to upgrade first under each, and what Kafka Connect adds around the log, including the guarantee that is off by default
 
 ## How this works
 

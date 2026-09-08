@@ -198,9 +198,9 @@ If the lesson itself is unclear rather than the material, that is a defect: [ope
 
 The closing block is fixed text: copy it verbatim. Lessons are read by people with no teaching session attached to them, so it points at the material and at the issue tracker rather than at a teacher.
 
-Indent a list of options by **four** spaces, and any code fence or paragraph the same item carries with them. Python-Markdown needs four to keep them inside the numbered item; at three it ends the ordered list and renders the options as a separate list underneath, which reads almost right and is not. GitHub renders the four-space form the same way, so the two agree. The item then becomes a loose list item, so its prompt carries slightly more spacing than the prompts above it. That is expected, not a defect.
+Indent everything a numbered item carries by **four** spaces: a list of options, a paragraph, a code fence and the lines inside it. Python-Markdown needs four to keep any of it inside the item; at three it ends the ordered list and renders the content as a separate block underneath, which reads almost right and is not. GitHub renders the four-space form the same way, so the two agree. Mixing the two indents inside one item is worse than either, since four-space content after three-space content is read as an indented code block: add an option list to an item whose fence sits at three, and the options render as literal text. The item then becomes a loose list item, so its prompt carries slightly more spacing than the prompts above it. That is expected, not a defect.
 
-See [Rendering](PUBLISHING.md#rendering) for the constraints the `<details>` blocks have to satisfy.
+The collapsed answers are the exception. A `<details>` block stays at column zero even though it answers the item above it; see [Rendering](PUBLISHING.md#rendering) for that constraint and the others those blocks have to satisfy.
 
 Illustrate a layout, a sequence, or a branching decision rather than leaving the reader to assemble it from prose. Two shapes, chosen by what is being drawn:
 

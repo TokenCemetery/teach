@@ -60,6 +60,7 @@ Work through these in order.
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
 - [Consumer Groups and Rebalancing](reference/consumer-groups-and-rebalancing.md): the two rebalance protocols, the two independent liveness timeouts, and a diagnostic order for consumer lag with the config that governs each step
+- [Delivery Guarantees](reference/delivery-guarantees.md): which config decides each leg of the path, why idempotence can be silently off, and what a read_committed consumer actually waits for
 
 ## How this works
 

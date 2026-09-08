@@ -14,6 +14,10 @@ type: resources
   Official explanation of at-most-once, at-least-once and exactly-once delivery, and precisely where in the produce/consume path each guarantee is won or lost. Use for: the delivery-guarantee vocabulary and its precise definitions.
 - [Article: "Exactly-once Semantics is Possible: Here's How Kafka Does it", Gustafson and Mehta, Confluent](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/)
   Written by the engineers who built it: the idempotent producer and transactions mechanisms that make exactly-once possible, and what each costs in throughput and complexity. Use for: defending or challenging an "exactly once" claim with the actual mechanism behind it.
+- [Docs: "Producer Configs", Apache Kafka](https://kafka.apache.org/documentation/#producerconfigs)
+  The generated producer reference. Use for: the exact conditions `enable.idempotence` requires, and the rule that decides whether a conflicting setting disables idempotence silently or throws at startup; also the transaction settings, including that `transaction.timeout.ms` is measured from the first partition added rather than from the call that opened the transaction.
+- [Docs: "Topic Configs", Apache Kafka](https://kafka.apache.org/documentation/#topicconfigs)
+  The per-topic reference. Use for: `min.insync.replicas`, and the rule that decides visibility rather than acknowledgement: regardless of `acks`, a message is not visible to consumers until it is replicated to all in-sync replicas and the minimum is met.
 - [Docs: "Consumer Configs", Apache Kafka](https://kafka.apache.org/documentation/#consumerconfigs)
   The generated reference for every consumer configuration, with each option's type, default and the conditions under which it applies at all. Use for: settling what a timeout actually measures and what its current default is, and for spotting which options are silently unsupported once `group.protocol` is set to `consumer`. Defaults move between releases, so read it for the version you run.
 - [Docs: "Broker Configs", Apache Kafka](https://kafka.apache.org/documentation/#brokerconfigs)

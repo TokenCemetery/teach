@@ -59,6 +59,7 @@ Work through these in order.
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
+- [Consumer Groups and Rebalancing](reference/consumer-groups-and-rebalancing.md): the two rebalance protocols, the two independent liveness timeouts, and a diagnostic order for consumer lag with the config that governs each step
 
 ## How this works
 

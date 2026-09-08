@@ -91,9 +91,9 @@ Lessons number from `0001` within each workspace.
 
 1. Copy the template:
 
-   ```bash
-   cp -r templates/learning-workspace learning/<domain>/<topic-slug>
-   ```
+    ```bash
+    cp -r templates/learning-workspace learning/<domain>/<topic-slug>
+    ```
 
 2. Interview the user, then write the mission into the new `README.md`. A vague mission misdirects every lesson that follows.
 3. Add a row for the topic to the table in `learning/README.md`.

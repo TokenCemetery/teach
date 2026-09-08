@@ -12,6 +12,10 @@ type: resources
   The canonical list (originated by Peter Deutsch, extended by James Gosling) of assumptions that hold on one machine and quietly stop holding once a network sits between two of them. Use for: the vocabulary for what a network can do to you, before reasoning about any specific failure.
 - [Paper: "Time, Clocks, and the Ordering of Events in a Distributed System", Leslie Lamport, 1978](https://lamport.azurewebsites.net/pubs/time-clocks.pdf)
   The original paper defining the happens-before relation and logical clocks: a way to order events across machines without relying on synchronized physical clocks. Use for: why wall-clock timestamps from different machines can't be trusted to order events, and what to use instead.
+- [Paper: "Virtual Time and Global States of Distributed Systems", Friedemann Mattern, 1988](https://www.vs.inf.ethz.ch/publ/papers/VirtTimeGlobStates.pdf)
+  One of the standard references for vector clocks, the mechanism that supplies the direction Lamport's clock condition deliberately does not: with a vector, `a` happens-before `b` **if and only if** the vectors compare, so concurrency becomes detectable. Use for: deciding whether a system needs to recognise concurrent events, and what that costs in message size.
+- [Paper: "Impossibility of Distributed Consensus with One Faulty Process", Fischer, Lynch and Paterson, 1985](https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf)
+  The FLP result: no deterministic algorithm in an asynchronous system can guarantee consensus with even one faulty process. Use for: why failure detectors exist at all, since they are the standard way of adding just enough assumption to escape this result without pretending the network is synchronous.
 - [Paper: "Unreliable Failure Detectors for Reliable Distributed Systems", Chandra and Toueg, 1996](https://www.cs.utexas.edu/~lorenzo/corsi/cs380d/papers/p225-chandra.pdf)
   The paper formalizing failure detectors by their completeness and accuracy properties, and showing consensus is solvable even with a failure detector that makes infinitely many mistakes. Use for: the formal vocabulary behind why a practical failure detector (a timeout) trades accuracy for speed, and the bridge into what consensus protocols (stage 4) actually need from failure detection.
 - [Site: "Consistency Models", Jepsen](https://jepsen.io/consistency)
@@ -25,6 +29,9 @@ type: resources
 - [Site: "Analyses", Jepsen](https://jepsen.io/analyses)
   Real distributed databases and coordination systems tested under actual network partitions and process pauses, with the specific consistency violations each analysis found. Use for: concrete, real-system evidence of what partial failure actually does to a system that assumed the network was reliable.
 
+- [Paper: "The Accrual Failure Detector", Hayashibara, Defago, Yared and Katayama, 2004](https://dspace.jaist.ac.jp/dspace/bitstream/10119/4784/1/IS-RR-2004-010.pdf)
+  Introduces accrual failure detection, where the detector reports a suspicion level on a continuous scale instead of a boolean trust-or-suspect, so each application picks its own threshold against a scale the detector adapts to observed network conditions. The `phi` detector is the implementation, measured over an intercontinental link. Use for: the detection and timeout mechanics behind telling a slow node from a dead one, and for why a fixed timeout is a bet on a distribution.
+
 ## Gaps
 
-- No source yet specifically distinguishing a slow node from a dead one in a real incident (the detection and timeout mechanics behind that specific failure mode), as opposed to the general partial-failure vocabulary in the sources above; worth closing once lesson design reaches failure detection.
+- No source yet on how a real incident is diagnosed end to end, as opposed to the mechanisms individually; the Jepsen analyses come closest and are written per system rather than as a method. Worth closing when stage 5 gets its reference sheet.

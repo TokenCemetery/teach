@@ -59,6 +59,7 @@ Work through these in order.
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
 - [Time and Order](reference/time-and-order.md): what happens-before can and cannot decide, what a Lamport clock refuses to tell you, and the failure-detector vocabulary a timeout is one instance of
+- [Consistency Models](reference/consistency-models.md): CAP stated as it was proved, the models side by side with what each guarantees, and which of them can answer at all during a partition
 
 ## How this works
 

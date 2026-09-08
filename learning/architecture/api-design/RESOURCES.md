@@ -30,6 +30,12 @@ type: resources
   Google's own practical design guide for REST and gRPC APIs: resource naming, standard methods, versioning, pagination, and more, each with its rationale. Use for: a concrete, opinionated reference when designing a contract from scratch.
 - [Docs: "API versioning", Stripe](https://docs.stripe.com/api/versioning)
   A real, widely-studied production API's versioning and deprecation strategy: how it ships breaking changes without breaking every existing integration at once. Use for: a worked example of an evolution strategy, not just the theory of one.
+- [Docs: "API upgrades", Stripe](https://docs.stripe.com/upgrades)
+  The companion to the versioning page: the named-release scheme, how a version is set and overridden, and Stripe's own enumerated list of what it counts as a backward-compatible change. Use for: a production API's written definition of "not breaking", including the two entries most teams would not think to declare, property order and the format of an opaque ID.
+- [RFC 9745: "The Deprecation HTTP Response Header Field", IETF](https://www.rfc-editor.org/rfc/rfc9745)
+  Standardizes the `Deprecation` response header as a date, plus the `deprecation` link relation for pointing at a policy. Use for: making a deprecation visible to a client's tooling rather than only to a human reading a changelog, and for the correct syntax, which is not the `Deprecation: true` of the earlier draft.
+- [RFC 8594: "The Sunset HTTP Header Field", IETF](https://www.rfc-editor.org/rfc/rfc8594)
+  Defines the `Sunset` header, which says when a resource is expected to stop responding. Use for: pairing a deprecation date with the removal date it implies, remembering that the two headers deliberately use different date formats.
 - [Draft: "RateLimit header fields for HTTP", IETF](https://www.ietf.org/archive/id/draft-ietf-httpapi-ratelimit-headers-08.html)
   A standardization effort for communicating rate-limit state to a client via response headers. Use for: treating rate limiting as a visible, documented part of the contract rather than an undocumented 429 a client discovers by accident.
 - [RFC 6749: "The OAuth 2.0 Authorization Framework", IETF](https://www.rfc-editor.org/rfc/rfc6749)

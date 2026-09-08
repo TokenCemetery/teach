@@ -24,6 +24,8 @@ type: resources
   The canonical status-code enumeration behind gRPC, whose comments carry the official HTTP status each code maps to. Use for: mapping a gRPC code to an HTTP one without inventing the correspondence, and for seeing where the mapping is lossy because several codes share one status.
 - [Docs: "Language Guide (proto3)", Protocol Buffers](https://protobuf.dev/programming-guides/proto3/)
   Official guide including the specific field-numbering and type rules that determine whether a Protobuf message change is backward- or forward-compatible. Use for: evolving a gRPC contract without breaking existing clients.
+- [Docs: "ProtoJSON Format", Protocol Buffers](https://protobuf.dev/programming-guides/json/)
+  The JSON representation of a Protobuf message, and the schema-evolution guarantees it does **not** share with the binary wire format: names are carried in the payload, unknown fields are unsupported, and removing a field is a parse error. Use for: deciding whether a rename or a deletion is safe, once a service exposes JSON as well as gRPC.
 - [Site: "API Improvement Proposals", Google](https://google.aip.dev/)
   Google's own practical design guide for REST and gRPC APIs: resource naming, standard methods, versioning, pagination, and more, each with its rationale. Use for: a concrete, opinionated reference when designing a contract from scratch.
 - [Docs: "API versioning", Stripe](https://docs.stripe.com/api/versioning)

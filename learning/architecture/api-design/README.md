@@ -61,6 +61,7 @@ Work through these in order.
 - [Resources](RESOURCES.md): trusted sources
 - [Error Models](reference/error-models.md): HTTP status codes, Problem Details members and gRPC status codes side by side, for when you are designing an error model rather than learning why it is contract
 - [REST Resource Design](reference/rest-resource-design.md): resource names, the standard and custom methods, pagination and filtering, with the AIP rule each decision has to satisfy
+- [gRPC Design](reference/grpc-design.md): proto3 field numbers, which schema changes are safe on the binary wire and which break JSON, the four RPC kinds, and the call semantics a gRPC contract inherits
 
 ## How this works
 

@@ -61,6 +61,7 @@ Work through these in order.
 - [Resources](RESOURCES.md): trusted sources
 - [Vacuum and Bloat](reference/vacuum-and-bloat.md): what triggers autovacuum and with which numbers, what holds back the space it can reclaim, and the views to check in which order
 - [Replication](reference/replication.md): what a slot guarantees and what it risks, the five synchronous levels and when three of them do nothing, and the two lags with the columns that separate them
+- [Index Maintenance](reference/index-maintenance.md): what each index type charges per write and what degrades it, and the parameters and memory cliff a pgvector index brings with it
 
 ## How this works
 

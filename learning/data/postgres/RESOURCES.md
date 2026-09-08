@@ -24,6 +24,8 @@ type: resources
   The WAL and commit parameters. Use for: the five `synchronous_commit` levels and exactly what each waits for, including the rule that three of them collapse to the same local guarantee when `synchronous_standby_names` is empty.
 - [Docs: "Indexes", PostgreSQL](https://www.postgresql.org/docs/current/indexes.html)
   Official chapter on index types and, critically, on the maintenance cost an index imposes on every write to its table. Use for: defending an index maintenance strategy rather than adding indexes without accounting for their upkeep cost.
+- [Docs: "CREATE INDEX", PostgreSQL](https://www.postgresql.org/docs/current/sql-createindex.html)
+  The per-index storage parameters and their defaults. Use for: `fillfactor` and the range worth choosing for a write-heavy B-tree, and `fastupdate`, including the note that turning it off does not flush the pending list that already exists.
 - [Repo: pgvector, pgvector](https://github.com/pgvector/pgvector)
   Official repo for the vector-index extension `llm/rag` standardizes on: index types (IVFFlat, HNSW), their build and maintenance cost, and how they interact with autovacuum. Use for: what a vector index specifically costs the database to keep, connecting to `llm/rag`'s choice of pgvector as its store.
 - [Docs: "PostgreSQL on Amazon RDS", AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html)

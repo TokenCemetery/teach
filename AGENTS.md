@@ -43,18 +43,21 @@ The build checks front matter and navigation. It does not check that a collapsed
 
 ## Track work in GitHub Issues
 
-When you find a bug, notice a problem worth fixing later, or plan a new feature, open a GitHub issue for it. Do not leave it in chat or in a local notes file — the issue is what keeps the history of the problem and the progress on it.
+When you find a bug, notice a problem worth fixing later, or plan a new feature, open a GitHub issue for it. Do not leave it in chat or in a local notes file: the issue is what keeps the history of the problem and the progress on it.
 
 ```console
 gh issue list --state all --search "keyword"   # look for an existing issue first
-gh issue create --title "..." --body "..." --label bug
+gh issue create --title "..." --body-file body.md --label "bug,P2"
 ```
 
-- Before you fix something, check that an issue for it exists — search the open and the closed ones. If none does, open it first, then fix it: the record of what was wrong is worth as much as the fix.
-- The exception is a defect that exists only in changes you have not committed yet. Correcting your own work in progress is part of the task at hand, not project history — fix it and file nothing.
-- Title states what is wrong or what should exist. Body gives the steps to reproduce, or what "done" looks like, plus the files involved. `gh issue create` skips the forms in `.github/ISSUE_TEMPLATE/`, so cover the same fields in the body yourself.
-- Use the labels that already exist: `bug`, `enhancement`, `documentation`.
-- Record progress on the issue as you go — comment on what you found and what you tried, so the next person does not repeat the investigation.
+- Before you fix something, check that an issue for it exists, in the open ones and the closed ones alike. If none does, open it first, then fix it: the record of what was wrong is worth as much as the fix.
+- The exception is a defect that exists only in changes you have not committed yet. Correcting your own work in progress is part of the task at hand, not project history, so fix it and file nothing.
+- Title states what is wrong or what should exist. Body gives the steps to reproduce, or what "done" looks like, plus the files involved.
+- Write the body to a file and pass `--body-file`. Inline in double quotes, the shell runs every backtick in it as a command, which silently deletes the path or the identifier you were quoting.
+- Label from what `.github/workflows/labels.yml` declares. That workflow is the source of truth, since it creates and updates every label this repository is meant to have, so a label it does not declare is not one to reach for.
+- Give every issue one type and one priority. Type is `bug`, `feature`, `refactor`, `chore`, `docs` or `security`. Priority runs `P0` for critical through `P3` for low, and an issue without one is an issue nobody can order against the rest. Add any of `needs-triage`, `needs-repro`, `blocked`, `declined`, `stale` and `help-wanted` that apply.
+- `enhancement` and `documentation` are GitHub's own defaults and predate that workflow, so most of the existing issues carry them. Leave those alone, and use `feature` and `docs` for anything new.
+- Record progress on the issue as you go, commenting on what you found and what you tried, so the next person does not repeat the investigation.
 - Reference the issue from the commit or pull request that fixes it (`Fixes #12`), so it closes together with the change.
 
 ## Quality bar for anything you write

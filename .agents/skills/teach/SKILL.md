@@ -100,6 +100,26 @@ Lessons number from `0001` within each workspace.
 
 Never teach into `templates/learning-workspace/`. It is only a copy source, it keeps its `{placeholder}` markers, and it never appears in an index.
 
+## The Arc
+
+A workspace teaches one topic all the way. The arc begins assuming no prior knowledge of it and ends at senior judgment, meaning the point where the user is trusted to make a call in this topic and to defend it to someone else.
+
+The final stage is what marks that end, and it is a stage about judgment rather than about more material. It covers:
+
+- Reviewing someone else's work in the topic and naming what a choice costs, rather than saying it feels wrong.
+- Carrying a change through something other people depend on, without breaking them.
+- Saying when the topic's usual answer is the wrong one.
+- Settling a disputed question from the primary source instead of from memory.
+
+A topic with nothing others depend on has no second item. Every topic has the first and the third.
+
+Two rules keep an arc honest:
+
+- **Every bullet under `Success looks like` leads to at least one lesson.** A mission that claims a capability no lesson teaches is the most common way an arc looks finished and is not.
+- **A short arc is usually a small mission, not a shallow topic.** If the whole thing closes in eight lessons, suspect the mission first. Rewrite it to reach senior judgment, then extend the arc to it.
+
+So an arc is not finished because its stages closed. It is finished when the last stage is judgment and every success bullet has a lesson behind it. See the [`README.md` rules](FORMATS.md#readmemd) for the table that records this, and check it with `.agents/tools/check-workspace.py`.
+
 ## Linking Across Workspaces
 
 Workspaces may link to each other. A link is a pointer, not an inclusion: it does not move another topic's material into this mission, does not become a prerequisite the reader must finish first, and does not quietly empty the `## Out of scope` list.

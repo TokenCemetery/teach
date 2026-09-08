@@ -29,11 +29,12 @@ The landing page a visitor opens, on GitHub and on the site. Carries the mission
 
 ## The arc
 
-{N} stages. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+{N} stages, from no prior knowledge to senior judgment. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
-|Stage|Covers|Done when|
-|---|---|---|
-|1. {Name}|{What it covers}|{The capability that closes the stage}|
+|Stage|Lessons|Covers|Done when|
+|---|---|---|---|
+|1. {Name}|{0001 to 0004}|{What it covers}|{The capability that closes the stage}|
+|{N}. Judgment|{NNNN to NNNN}|{Review, changing what others depend on, when the usual answer is wrong, settling it from the source}|Trusted to make the call and to explain it to someone else|
 
 ## Lessons
 
@@ -59,6 +60,9 @@ Rules:
 - Concrete beats abstract: "Run a half marathon by October" over "get fitter"; "Ship a Rust CLI to my team" over "learn Rust".
 - Keep the mission itself under a screen. Past that it has stopped being a compass. The arc may sit between it and the lesson table: stages answer "how far along am I", which the flat index cannot.
 - The arc is the shape of the course, so it is public. It is not a plan of what to teach next; that is a working note.
+- The arc runs from no prior knowledge to senior judgment, and its last stage is the judgment one. See [The Arc](SKILL.md#the-arc) for what that stage covers and why a short arc is usually a small mission.
+- **Every bullet under `Success looks like` leads to at least one lesson.** Write the bullet and the lessons that deliver it in the same change, or the mission quietly claims a capability the course never teaches.
+- The `Lessons` column names each stage's range, and every lesson falls inside exactly one stage. This is what makes the two rules above checkable rather than a matter of opinion, so a lesson added without touching the arc is a defect in the same change.
 - Keep each table row to number, title, and one clause. This is an index, not a summary. A table that has drifted from `lessons/` is worse than no table.
 - Do not link `NOTES.md` or `learning-records/` from here. Working notes and a record of the user's corrected misconceptions stay unadvertised, whether or not the repository is public.
 

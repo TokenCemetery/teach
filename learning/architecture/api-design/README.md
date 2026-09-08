@@ -60,6 +60,7 @@ Work through these in order.
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
 - [Error Models](reference/error-models.md): HTTP status codes, Problem Details members and gRPC status codes side by side, for when you are designing an error model rather than learning why it is contract
+- [REST Resource Design](reference/rest-resource-design.md): resource names, the standard and custom methods, pagination and filtering, with the AIP rule each decision has to satisfy
 
 ## How this works
 

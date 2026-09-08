@@ -143,15 +143,15 @@ Three shapes reject `?` with the same diagnostic, each for a different reason. A
 
 1. ▢ Predict whether this compiles, and if not, predict the diagnostic's code.
 
-   ```rust
-   #[derive(Debug)]
-   struct LoadError;
+    ```rust
+    #[derive(Debug)]
+    struct LoadError;
 
-   fn load_count(s: &str) -> Result<u32, LoadError> {
-       let n = s.parse::<u32>()?;
-       Ok(n)
-   }
-   ```
+    fn load_count(s: &str) -> Result<u32, LoadError> {
+        let n = s.parse::<u32>()?;
+        Ok(n)
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -185,12 +185,12 @@ This gives `Ok(12)` and `Err(LoadError("invalid digit found in string"))`. Nothi
 
 3. ▢ Predict what this prints for `"teach"` and for `""`, then compile and run it.
 
-   ```rust
-   fn last_char(s: &str) -> Option<char> {
-       let c = s.chars().last()?;
-       Some(c)
-   }
-   ```
+    ```rust
+    fn last_char(s: &str) -> Option<char> {
+        let c = s.chars().last()?;
+        Some(c)
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -200,13 +200,13 @@ This gives `Ok(12)` and `Err(LoadError("invalid digit found in string"))`. Nothi
 
 4. ▢ This test has no return type, so it is `()` by default. Predict the diagnostic, then fix it so the test compiles and passes.
 
-   ```rust
-   #[test]
-   fn parses_bytes() {
-       let n = "1200".parse::<u64>()?;
-       assert_eq!(n, 1200);
-   }
-   ```
+    ```rust
+    #[test]
+    fn parses_bytes() {
+        let n = "1200".parse::<u64>()?;
+        assert_eq!(n, 1200);
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

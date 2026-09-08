@@ -187,11 +187,11 @@ Two things push `infer` from useful into a liability, and both are worth naming 
 
 1. ▢ Predict the exact diagnostic, with its `TS` number.
 
-   ```ts
-   type Elem<T> = T extends (infer E)[] ? E : never;
-   type Item = Elem<string[]>;
-   const check: Item = 42;
-   ```
+    ```ts
+    type Elem<T> = T extends (infer E)[] ? E : never;
+    type Item = Elem<string[]>;
+    const check: Item = 42;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -209,14 +209,14 @@ Two things push `infer` from useful into a liability, and both are worth naming 
 
 3. ▢ Predict whether each of these compiles, and name the diagnostic for whichever does not.
 
-   ```ts
-   type FirstNum<T> = T extends [infer A extends number, ...unknown[]] ? A : never;
-   type A1 = FirstNum<[1, "y"]>;
-   const checkA1: A1 = "wrong";
+    ```ts
+    type FirstNum<T> = T extends [infer A extends number, ...unknown[]] ? A : never;
+    type A1 = FirstNum<[1, "y"]>;
+    const checkA1: A1 = "wrong";
 
-   type A2 = FirstNum<["y", 1]>;
-   const checkA2: A2 = 0;
-   ```
+    type A2 = FirstNum<["y", 1]>;
+    const checkA2: A2 = 0;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -240,20 +240,20 @@ Both lines fail to compile, but for different reasons. `[1, "y"]`'s first elemen
 
 5. ▢ This wrapper takes a function and a separate return-type parameter rather than using `infer`.
 
-   ```ts
-   function withLogging<F extends (...args: never[]) => unknown, R>(
-     fn: F
-   ): (...args: Parameters<F>) => R {
-     return (...args: Parameters<F>): R => fn(...args) as R;
-   }
-   function double(n: number): number {
-     return n * 2;
-   }
-   const loggedDouble = withLogging<typeof double, boolean>(double);
-   const result: boolean = loggedDouble(4);
-   ```
+    ```ts
+    function withLogging<F extends (...args: never[]) => unknown, R>(
+      fn: F
+    ): (...args: Parameters<F>) => R {
+      return (...args: Parameters<F>): R => fn(...args) as R;
+    }
+    function double(n: number): number {
+      return n * 2;
+    }
+    const loggedDouble = withLogging<typeof double, boolean>(double);
+    const result: boolean = loggedDouble(4);
+    ```
 
-   Predict whether this compiles, and say what fact about the two type parameters explains your answer.
+    Predict whether this compiles, and say what fact about the two type parameters explains your answer.
 
 <details markdown="1"><summary>Check</summary>
 

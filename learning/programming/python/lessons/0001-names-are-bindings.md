@@ -76,14 +76,14 @@ print(b)        # [1, 2], the list is very much alive
 
 1. ▢ Predict both outputs.
 
-   ```python
-   x = ["a"]
-   y = x
-   y.append("b")
-   print(x)
-   y = ["c"]
-   print(x)
-   ```
+    ```python
+    x = ["a"]
+    y = x
+    y.append("b")
+    print(x)
+    y = ["c"]
+    print(x)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -95,12 +95,12 @@ The `append` mutated the one list both names referred to, so `x` sees it. The la
 
 2. ▢ Which of these four lines can change what another name sees? Answer for each.
 
-   ```python
-   items.append(1)
-   items = items + [1]
-   items += [1]
-   items = [1]
-   ```
+    ```python
+    items.append(1)
+    items = items + [1]
+    items += [1]
+    items = [1]
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -121,12 +121,12 @@ If you got the third one wrong, you are in the majority. It is the single most c
 
 3. ▢ Both comparisons below print something. Predict them, and say which comparison you should be writing in real code.
 
-   ```python
-   a = "hello world"
-   b = "hello world"
-   print(a == b)
-   print(a is b)
-   ```
+    ```python
+    a = "hello world"
+    b = "hello world"
+    print(a == b)
+    print(a is b)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -138,11 +138,11 @@ That is the point: the second comparison asks a question you almost never mean. 
 
 4. ▢ How many list objects exist after these three lines, and how many names refer to each?
 
-   ```python
-   a = [0]
-   b = a
-   c = [0]
-   ```
+    ```python
+    a = [0]
+    b = a
+    c = [0]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

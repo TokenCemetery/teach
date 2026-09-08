@@ -146,12 +146,12 @@ Not everything should be immutable. A **builder** is deliberately mutable while 
 
 1. ▢ Predict what each line prints, and explain the second one.
 
-   ```java
-   List<String> once = List.copyOf(List.of("a", "b", "c"));
-   List<String> twice = List.copyOf(once);
-   System.out.println(once.equals(twice));
-   System.out.println(once == twice);
-   ```
+    ```java
+    List<String> once = List.copyOf(List.of("a", "b", "c"));
+    List<String> twice = List.copyOf(once);
+    System.out.println(once.equals(twice));
+    System.out.println(once == twice);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -169,22 +169,22 @@ The lists are equal because they hold the same elements, which is unsurprising. 
 
 2. ▢ Find the bug. `Booking` is meant to be immutable.
 
-   ```java
-   record Booking(String guest, List<String> requests) {
-       Booking(String guest, List<String> requests) {
-           this.guest = guest;
-           this.requests = new ArrayList<>(requests);
-       }
-   }
-   ```
+    ```java
+    record Booking(String guest, List<String> requests) {
+        Booking(String guest, List<String> requests) {
+            this.guest = guest;
+            this.requests = new ArrayList<>(requests);
+        }
+    }
+    ```
 
-   ```java
-   List<String> req = new ArrayList<>(List.of("late checkout"));
-   Booking b = new Booking("Priya", req);
-   req.add("extra towels");
-   b.requests().add("airport shuttle");
-   System.out.println(b.requests());
-   ```
+    ```java
+    List<String> req = new ArrayList<>(List.of("late checkout"));
+    Booking b = new Booking("Priya", req);
+    req.add("extra towels");
+    b.requests().add("airport shuttle");
+    System.out.println(b.requests());
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -196,12 +196,12 @@ The compact constructor's copy stops `req.add("extra towels")` from reaching the
 
 3. ▢ Predict both lines.
 
-   ```java
-   LocalDate booked = LocalDate.of(2026, 12, 24);
-   LocalDate rebooked = booked.plusDays(7);
-   System.out.println(booked);
-   System.out.println(booked == rebooked);
-   ```
+    ```java
+    LocalDate booked = LocalDate.of(2026, 12, 24);
+    LocalDate rebooked = booked.plusDays(7);
+    System.out.println(booked);
+    System.out.println(booked == rebooked);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

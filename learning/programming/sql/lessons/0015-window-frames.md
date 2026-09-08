@@ -285,10 +285,10 @@ Both give `20.00`. Adding `PARTITION BY` restricts the peers to customer 4's own
 
 3. ▢ Predict the exact SQLSTATE the query below produces, and name the rule it breaks.
 
-   ```sql
-   SELECT sum(amount) OVER (PARTITION BY customer_id GROUPS BETWEEN 1 PRECEDING AND CURRENT ROW)
-   FROM orders;
-   ```
+    ```sql
+    SELECT sum(amount) OVER (PARTITION BY customer_id GROUPS BETWEEN 1 PRECEDING AND CURRENT ROW)
+    FROM orders;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

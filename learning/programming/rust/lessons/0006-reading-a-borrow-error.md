@@ -122,11 +122,11 @@ Predicting the error is the skill. The compiler is a very fast way to check the 
 
 1. ▢ Name the error code and the honest fix.
 
-   ```rust
-   let s = String::from("hi");
-   let t = s;
-   println!("{s}");
-   ```
+    ```rust
+    let s = String::from("hi");
+    let t = s;
+    println!("{s}");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -138,12 +138,12 @@ The honest fix depends on the intent. If both names should refer to one value, b
 
 2. ▢ Name the code, then fix it without cloning and without changing what the program prints.
 
-   ```rust
-   let mut v = vec![1, 2, 3];
-   let last = &v[v.len() - 1];
-   v.push(4);
-   println!("{last}");
-   ```
+    ```rust
+    let mut v = vec![1, 2, 3];
+    let last = &v[v.len() - 1];
+    v.push(4);
+    println!("{last}");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -176,17 +176,17 @@ a is `E0382`: `for x in v` takes ownership of `v`, and `for x in &v` is almost a
 
 4. ▢ Why does the first method compile and the second not?
 
-   ```rust
-   fn a(&mut self) {
-       let name = &self.config.name;
-       self.cache.insert(name);
-   }
+    ```rust
+    fn a(&mut self) {
+        let name = &self.config.name;
+        self.cache.insert(name);
+    }
 
-   fn b(&mut self) {
-       let name = self.name();     // fn name(&self) -> &str
-       self.cache.insert(name);
-   }
-   ```
+    fn b(&mut self) {
+        let name = self.name();     // fn name(&self) -> &str
+        self.cache.insert(name);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -157,12 +157,12 @@ Every example above passes a test worth naming: can you say what the type does i
 
 1. ▢ Predict the diagnostic, including its `TS` number.
 
-   ```ts
-   type Point = { x: number; y: number };
-   type Coord = keyof Point;
-   type XType = Point["x"];
-   const bad: XType = "nope";
-   ```
+    ```ts
+    type Point = { x: number; y: number };
+    type Coord = keyof Point;
+    type XType = Point["x"];
+    const bad: XType = "nope";
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -172,14 +172,14 @@ Every example above passes a test worth naming: can you say what the type does i
 
 2. ▢ Predict whether each of these compiles.
 
-   ```ts
-   type User = { id: number; name: string };
-   type Opt<T> = { [K in keyof T]?: T[K] };
-   type OptUser = Opt<User>;
+    ```ts
+    type User = { id: number; name: string };
+    type Opt<T> = { [K in keyof T]?: T[K] };
+    type OptUser = Opt<User>;
 
-   const u1: OptUser = {};
-   const u2: User = {};
-   ```
+    const u1: OptUser = {};
+    const u2: User = {};
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -189,14 +189,14 @@ Every example above passes a test worth naming: can you say what the type does i
 
 3. ▢ Predict whether this compiles, then say what changes if `-readonly` is removed from `Mut` but `-?` stays.
 
-   ```ts
-   type Flags = { readonly enabled?: boolean };
-   type Mut<T> = { -readonly [K in keyof T]-?: T[K] };
-   type MutFlags = Mut<Flags>;
+    ```ts
+    type Flags = { readonly enabled?: boolean };
+    type Mut<T> = { -readonly [K in keyof T]-?: T[K] };
+    type MutFlags = Mut<Flags>;
 
-   const f: MutFlags = { enabled: true };
-   f.enabled = false;
-   ```
+    const f: MutFlags = { enabled: true };
+    f.enabled = false;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -206,15 +206,15 @@ It compiles with no diagnostic: `-readonly` and `-?` each removed one modifier, 
 
 4. ▢ Predict the type of `g.getWidth()` and whether the last line compiles.
 
-   ```ts
-   type Shape = { width: number; height: number };
-   type Getters<T> = { [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K] };
-   type ShapeGetters = Getters<Shape>;
+    ```ts
+    type Shape = { width: number; height: number };
+    type Getters<T> = { [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K] };
+    type ShapeGetters = Getters<Shape>;
 
-   declare const g: ShapeGetters;
-   const w: number = g.getWidth();
-   const wrong: string = g.getHeight();
-   ```
+    declare const g: ShapeGetters;
+    const w: number = g.getWidth();
+    const wrong: string = g.getHeight();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -224,13 +224,13 @@ It compiles with no diagnostic: `-readonly` and `-?` each removed one modifier, 
 
 5. ▢ Predict the diagnostic, including its `TS` number, and say why the property named in it is missing rather than merely optional.
 
-   ```ts
-   type OnlyStrings<T> = { [K in keyof T as T[K] extends string ? K : never]: T[K] };
+    ```ts
+    type OnlyStrings<T> = { [K in keyof T as T[K] extends string ? K : never]: T[K] };
 
-   function useOnlyStrings<S>(o: OnlyStrings<S>) {
-     const y = o.count;
-   }
-   ```
+    function useOnlyStrings<S>(o: OnlyStrings<S>) {
+      const y = o.count;
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

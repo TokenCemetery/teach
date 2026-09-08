@@ -250,21 +250,21 @@ Reaching for `fold` to avoid writing that loop needs a tuple threaded through ev
 
 1. ▢ Predict which of these two blocks compile.
 
-   ```rust
-   // A
-   let mut v = vec![1, 2, 3];
-   for x in v.iter_mut() {
-       *x *= 2;
-   }
-   println!("{v:?}");
+    ```rust
+    // A
+    let mut v = vec![1, 2, 3];
+    for x in v.iter_mut() {
+        *x *= 2;
+    }
+    println!("{v:?}");
 
-   // B
-   let v = vec![1, 2, 3];
-   for x in v.into_iter() {
-       print!("{x} ");
-   }
-   println!("{v:?}");
-   ```
+    // B
+    let v = vec![1, 2, 3];
+    for x in v.into_iter() {
+        print!("{x} ");
+    }
+    println!("{v:?}");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -274,18 +274,18 @@ A compiles, printing `[2, 4, 6]`: `iter_mut` only borrows. B does not: `E0382`, 
 
 2. ▢ Predict what `visited` and `first_two` hold once this runs, then compile it.
 
-   ```rust
-   let mut visited = Vec::new();
-   let v = vec![1, 2, 3, 4, 5];
-   let first_two: Vec<i32> = v
-       .iter()
-       .map(|x| {
-           visited.push(*x);
-           x * 10
-       })
-       .take(2)
-       .collect();
-   ```
+    ```rust
+    let mut visited = Vec::new();
+    let v = vec![1, 2, 3, 4, 5];
+    let first_two: Vec<i32> = v
+        .iter()
+        .map(|x| {
+            visited.push(*x);
+            x * 10
+        })
+        .take(2)
+        .collect();
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -301,13 +301,13 @@ A compiles, printing `[2, 4, 6]`: `iter_mut` only borrows. B does not: `E0382`, 
 
 3. ▢ These collect the same mapping over `["10", "20", "oops", "40"]` two ways. Predict both outputs, then compile and run it.
 
-   ```rust
-   let entries = ["10", "20", "oops", "40"];
-   let as_result: Result<Vec<i32>, _> =
-       entries.iter().map(|s| s.parse::<i32>()).collect();
-   let as_vec_of_results: Vec<Result<i32, _>> =
-       entries.iter().map(|s| s.parse::<i32>()).collect();
-   ```
+    ```rust
+    let entries = ["10", "20", "oops", "40"];
+    let as_result: Result<Vec<i32>, _> =
+        entries.iter().map(|s| s.parse::<i32>()).collect();
+    let as_vec_of_results: Vec<Result<i32, _>> =
+        entries.iter().map(|s| s.parse::<i32>()).collect();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -317,12 +317,12 @@ A compiles, printing `[2, 4, 6]`: `iter_mut` only borrows. B does not: `E0382`, 
 
 4. ▢ Predict whether this compiles, naming the error code if not, then compile it.
 
-   ```rust
-   let s = String::from("owned");
-   let consume = move || s;
-   println!("{}", consume());
-   println!("{}", consume());
-   ```
+    ```rust
+    let s = String::from("owned");
+    let consume = move || s;
+    println!("{}", consume());
+    println!("{}", consume());
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -338,26 +338,26 @@ Does not compile: `E0382`, use of a moved value. `consume` moves `s` out on its 
 
 5. ▢ Judgement call, not a compile check. `first_over_fold` computes the same answer as the `first_over` loop above. Say which version you would rather maintain, and why.
 
-   ```rust
-   fn first_over_fold(bytes: &[u64], budget: u64) -> Option<(usize, u64)> {
-       let (_, _, found) = bytes.iter().enumerate().fold(
-           (0u64, false, None),
-           |(total, done, found), (i, &b)| {
-               if done {
-                   (total, done, found)
-               } else {
-                   let total = total + b;
-                   if total > budget {
-                       (total, true, Some((i, total)))
-                   } else {
-                       (total, false, found)
-                   }
-               }
-           },
-       );
-       found
-   }
-   ```
+    ```rust
+    fn first_over_fold(bytes: &[u64], budget: u64) -> Option<(usize, u64)> {
+        let (_, _, found) = bytes.iter().enumerate().fold(
+            (0u64, false, None),
+            |(total, done, found), (i, &b)| {
+                if done {
+                    (total, done, found)
+                } else {
+                    let total = total + b;
+                    if total > budget {
+                        (total, true, Some((i, total)))
+                    } else {
+                        (total, false, found)
+                    }
+                }
+            },
+        );
+        found
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

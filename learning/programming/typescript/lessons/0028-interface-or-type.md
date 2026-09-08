@@ -144,10 +144,10 @@ Lesson 22 narrowed a discriminated union so each branch sees only its own member
 
 1. ▢ Predict the exact diagnostic, with its `TS` number.
 
-   ```ts
-   interface A { a: number }
-   interface B extends A { a: string }
-   ```
+    ```ts
+    interface A { a: number }
+    interface B extends A { a: string }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -157,11 +157,11 @@ Lesson 22 narrowed a discriminated union so each branch sees only its own member
 
 2. ▢ Predict whether the declaration below produces an error, and if it does not, predict the exact diagnostic on the line after it.
 
-   ```ts
-   type A = { a: number };
-   type B = A & { a: string };
-   const b: B = { a: 1 };
-   ```
+    ```ts
+    type A = { a: number };
+    type B = A & { a: string };
+    const b: B = { a: 1 };
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -177,11 +177,11 @@ No error on the declaration. `B`'s `a` is `number & string`, and nothing is both
 
 3. ▢ Predict whether this compiles, and what happens if both declarations used `type Shape = ...` instead.
 
-   ```ts
-   interface Shape { area: number }
-   interface Shape { color: string }
-   const s: Shape = { area: 4, color: "red" };
-   ```
+    ```ts
+    interface Shape { area: number }
+    interface Shape { color: string }
+    const s: Shape = { area: 4, color: "red" };
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -191,14 +191,14 @@ Compiles as written: the two `interface Shape` declarations merge, needing both 
 
 4. ▢ Predict whether `extra.ts` compiles, given `export interface Config { host: string }` in `base.ts`.
 
-   ```ts
-   // extra.ts
-   declare module "./base.js" {
-     interface Config { port: number }
-   }
-   import { Config } from "./base.js";
-   const c: Config = { host: "a", port: 1 };
-   ```
+    ```ts
+    // extra.ts
+    declare module "./base.js" {
+      interface Config { port: number }
+    }
+    import { Config } from "./base.js";
+    const c: Config = { host: "a", port: 1 };
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -14,10 +14,10 @@ type: lesson
 
 1. ▢ Lesson 16 named the error code that marks where checking silently stopped. Which one, and what triggers it here?
 
-   ```python
-   def load(raw: str) -> dict[str, int]:
-       return json.loads(raw)
-   ```
+    ```python
+    def load(raw: str) -> dict[str, int]:
+        return json.loads(raw)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -183,10 +183,10 @@ DEBUG = os.environ.get("DEBUG", "") == "1"      # a decision, written down
 
 1. ▢ Fix the annotation, and then fix the function.
 
-   ```python
-   def load_settings(path: Path) -> dict[str, int]:
-       return json.loads(path.read_text(encoding="utf-8"))
-   ```
+    ```python
+    def load_settings(path: Path) -> dict[str, int]:
+        return json.loads(path.read_text(encoding="utf-8"))
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -231,10 +231,10 @@ The point of the boundary is that this function is the only place `isinstance` a
 
 3. ▢ What does each of these catch that a plain `int` does not?
 
-   ```python
-   UserId = NewType("UserId", int)
-   Port = Literal[80, 443]
-   ```
+    ```python
+    UserId = NewType("UserId", int)
+    Port = Literal[80, 443]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -248,10 +248,10 @@ Neither costs anything at run time. `UserId(n)` is `n`, and `Literal` is erased 
 
 4. ▢ Why does the checker reject this, and what is the fix?
 
-   ```python
-   def all_ints(v: list[object]) -> TypeIs[list[int]]:
-       return all(isinstance(x, int) for x in v)
-   ```
+    ```python
+    def all_ints(v: list[object]) -> TypeIs[list[int]]:
+        return all(isinstance(x, int) for x in v)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -268,10 +268,10 @@ Fix: use the covariant read-only type, `def all_ints(v: Sequence[object]) -> Typ
 
 5. ▢ Find the bug, and say why no checker reports it.
 
-   ```python
-   MAX_RETRIES = int(os.environ.get("MAX_RETRIES", 3))
-   VERBOSE = bool(os.environ.get("VERBOSE", False))
-   ```
+    ```python
+    MAX_RETRIES = int(os.environ.get("MAX_RETRIES", 3))
+    VERBOSE = bool(os.environ.get("VERBOSE", False))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

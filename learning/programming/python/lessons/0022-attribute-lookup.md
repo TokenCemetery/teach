@@ -133,16 +133,16 @@ vars(obj)                        # obj.__dict__
 
 1. ▢ Predict all four lines.
 
-   ```python
-   class Order:
-       currency = "GBP"
+    ```python
+    class Order:
+        currency = "GBP"
 
-   a, b = Order(), Order()
-   a.currency = "EUR"
-   print(a.currency, b.currency)
-   Order.currency = "USD"
-   print(a.currency, b.currency)
-   ```
+    a, b = Order(), Order()
+    a.currency = "EUR"
+    print(a.currency, b.currency)
+    Order.currency = "USD"
+    print(a.currency, b.currency)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -157,13 +157,13 @@ EUR USD
 
 2. ▢ Find the bug and give two fixes.
 
-   ```python
-   class Session:
-       history = []
+    ```python
+    class Session:
+        history = []
 
-       def record(self, event):
-           self.history.append(event)
-   ```
+        def record(self, event):
+            self.history.append(event)
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -224,12 +224,12 @@ The reason it survives review is that the code reads `self.history`, which looks
 
 4. ▢ Why does this recurse forever, and what should it have been?
 
-   ```python
-   class Logged:
-       def __getattribute__(self, name):
-           print(f"reading {name}")
-           return self.__dict__[name]
-   ```
+    ```python
+    class Logged:
+        def __getattribute__(self, name):
+            print(f"reading {name}")
+            return self.__dict__[name]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

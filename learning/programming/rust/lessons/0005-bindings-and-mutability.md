@@ -109,23 +109,23 @@ It is mentioned here because it is the one place where "it worked in testing" ha
 
 1. ▢ Which of these compile?
 
-   ```rust
-   // A
-   let x = 5;
-   let x = x + 1;
+    ```rust
+    // A
+    let x = 5;
+    let x = x + 1;
 
-   // B
-   let x = 5;
-   x = x + 1;
+    // B
+    let x = 5;
+    x = x + 1;
 
-   // C
-   let mut x = 5;
-   x = x + 1;
+    // C
+    let mut x = 5;
+    x = x + 1;
 
-   // D
-   let mut x = 5;
-   x = "five";
-   ```
+    // D
+    let mut x = 5;
+    x = "five";
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -137,14 +137,14 @@ A and C produce the same value by different means, which is the distinction the 
 
 2. ▢ Predict the two prints.
 
-   ```rust
-   let value = 10;
-   {
-       let value = value * 2;
-       println!("{value}");
-   }
-   println!("{value}");
-   ```
+    ```rust
+    let value = 10;
+    {
+        let value = value * 2;
+        println!("{value}");
+    }
+    println!("{value}");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -162,15 +162,15 @@ The inner binding shadows the outer one for the rest of that block. When the blo
 
 3. ▢ Which is better for this task, and why?
 
-   ```rust
-   // A
-   let mut input = read_line();
-   input = input.trim().to_string();
+    ```rust
+    // A
+    let mut input = read_line();
+    input = input.trim().to_string();
 
-   // B
-   let input = read_line();
-   let input = input.trim();
-   ```
+    // B
+    let input = read_line();
+    let input = input.trim();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -182,13 +182,13 @@ The inner binding shadows the outer one for the rest of that block. When the blo
 
 4. ▢ Where does `mut` belong here, and what does each `mut` permit?
 
-   ```rust
-   fn fill(buffer: ??? Vec<u8>, count: usize) {
-       for i in 0..count {
-           buffer.push(i as u8);
-       }
-   }
-   ```
+    ```rust
+    fn fill(buffer: ??? Vec<u8>, count: usize) {
+        for i in 0..count {
+            buffer.push(i as u8);
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

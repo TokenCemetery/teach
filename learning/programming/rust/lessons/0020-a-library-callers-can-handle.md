@@ -137,13 +137,13 @@ Lesson 14 gave `?` the job of converting an error through `From` on its way out 
 
 1. ▢ Predict whether this compiles, given that `LineError` implements `std::error::Error` and no `From<LineError>` is written anywhere. Then compile it.
 
-   ```rust
-   fn run(line: &str) -> anyhow::Result<()> {
-       let record = callers_can_handle::parse_line(line)?;
-       println!("{record:?}");
-       Ok(())
-   }
-   ```
+    ```rust
+    fn run(line: &str) -> anyhow::Result<()> {
+        let record = callers_can_handle::parse_line(line)?;
+        println!("{record:?}");
+        Ok(())
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

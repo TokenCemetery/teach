@@ -268,20 +268,20 @@ This compiles, and every run printed all three mappings correctly, `/index -> pa
 
 1. ▢ Predict the three numbers this prints.
 
-   ```rust
-   use std::rc::Rc;
+    ```rust
+    use std::rc::Rc;
 
-   fn main() {
-       let value = Rc::new(String::from("shared"));
-       let a = Rc::clone(&value);
-       let b = Rc::clone(&value);
-       println!("after two clones: {}", Rc::strong_count(&value));
-       drop(a);
-       println!("after dropping one: {}", Rc::strong_count(&value));
-       drop(b);
-       println!("after dropping both: {}", Rc::strong_count(&value));
-   }
-   ```
+    fn main() {
+        let value = Rc::new(String::from("shared"));
+        let a = Rc::clone(&value);
+        let b = Rc::clone(&value);
+        println!("after two clones: {}", Rc::strong_count(&value));
+        drop(a);
+        println!("after dropping one: {}", Rc::strong_count(&value));
+        drop(b);
+        println!("after dropping both: {}", Rc::strong_count(&value));
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

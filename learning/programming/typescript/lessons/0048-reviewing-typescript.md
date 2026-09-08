@@ -106,12 +106,12 @@ Receiving a review well is the other half. The author's job is to make the cost 
 
 2. ▢ A pull request adds this, with no comment on the `!`. Predict whether it compiles, what happens when it runs, and write the one-sentence review comment this earns.
 
-   ```ts
-   function lastPrice(prices: number[]): number {
-     return prices[prices.length - 1]!;
-   }
-   console.log(lastPrice([]).toFixed(2));
-   ```
+    ```ts
+    function lastPrice(prices: number[]): number {
+      return prices[prices.length - 1]!;
+    }
+    console.log(lastPrice([]).toFixed(2));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

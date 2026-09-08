@@ -134,13 +134,13 @@ Membership in a set is fast and does not depend on size, which is the reason to 
 
 1. ▢ Predict each of the four lines, and say whether `config` changed.
 
-   ```python
-   config = {"retries": 3}
-   print(config.get("timeout"))
-   print(config.get("timeout", 10))
-   print(config.setdefault("timeout", 10))
-   print(config)
-   ```
+    ```python
+    config = {"retries": 3}
+    print(config.get("timeout"))
+    print(config.get("timeout", 10))
+    print(config.setdefault("timeout", 10))
+    print(config)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -152,12 +152,12 @@ Both `get` calls left the dictionary alone. `setdefault` returned the same value
 
 2. ▢ This loop is meant to drop empty values. Predict what happens.
 
-   ```python
-   data = {"a": 1, "b": None, "c": None}
-   for key in data:
-       if data[key] is None:
-           del data[key]
-   ```
+    ```python
+    data = {"a": 1, "b": None, "c": None}
+    for key in data:
+        if data[key] is None:
+            del data[key]
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -191,17 +191,17 @@ The fix is to iterate a snapshot: `for key in list(data):`. Python detects the m
 
 4. ▢ Both of these count words. One has a bug that only appears with certain input. Which, and what input?
 
-   ```python
-   # A
-   counts = defaultdict(int)
-   for w in words:
-       counts[w] += 1
+    ```python
+    # A
+    counts = defaultdict(int)
+    for w in words:
+        counts[w] += 1
 
-   # B
-   counts = {}
-   for w in words:
-       counts[w] = counts[w] + 1
-   ```
+    # B
+    counts = {}
+    for w in words:
+        counts[w] = counts[w] + 1
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

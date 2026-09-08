@@ -223,12 +223,12 @@ Three of three runs printed `is_panic: true` and, in this run, a `Display` readi
 
 1. ▢ Predict the order of these three lines, then run it.
 
-   ```rust
-   let handle = tokio::spawn(async { println!("A"); });
-   println!("B");
-   handle.await.unwrap();
-   println!("C");
-   ```
+    ```rust
+    let handle = tokio::spawn(async { println!("A"); });
+    println!("B");
+    handle.await.unwrap();
+    println!("C");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -252,13 +252,13 @@ Only the spawn version can: sequential awaits and `join!` both run inside the on
 
 3. ▢ Predict whether this compiles, and if not, what the diagnostic blames, then try it.
 
-   ```rust
-   tokio::spawn(async {
-       let cell = std::rc::Rc::new(1);
-       sleep(Duration::from_millis(1)).await;
-       println!("{cell}");
-   });
-   ```
+    ```rust
+    tokio::spawn(async {
+        let cell = std::rc::Rc::new(1);
+        sleep(Duration::from_millis(1)).await;
+        println!("{cell}");
+    });
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

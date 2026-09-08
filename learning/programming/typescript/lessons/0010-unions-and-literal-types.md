@@ -172,10 +172,10 @@ The first line compiles. The second reports `error TS2322: Type '"sat"' is not a
 
 3. ▢ Predict the result of each line.
 
-   ```ts
-   let x = 10;
-   const y: 10 = x;
-   ```
+    ```ts
+    let x = 10;
+    const y: 10 = x;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -191,10 +191,10 @@ Ask whether `x` can be reassigned, and what that means for the type the compiler
 
 4. ▢ Predict whether this compiles, and if not, name the fix that requires the smallest change.
 
-   ```ts
-   const settings = { mode: "dark" };
-   const m: "dark" = settings.mode;
-   ```
+    ```ts
+    const settings = { mode: "dark" };
+    const m: "dark" = settings.mode;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -204,12 +204,12 @@ It does not compile: `error TS2322: Type 'string' is not assignable to type '"da
 
 5. ▢ Predict both diagnostics, with their `TS` numbers.
 
-   ```ts
-   function show(v: string | null | undefined) {
-     console.log(v.length);
-   }
-   let s: string = undefined;
-   ```
+    ```ts
+    function show(v: string | null | undefined) {
+      console.log(v.length);
+    }
+    let s: string = undefined;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

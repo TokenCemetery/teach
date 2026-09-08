@@ -187,27 +187,27 @@ Nothing outside the interface can call the `private` method: not an implementing
 
 2. ▢ Predict the output, and explain it.
 
-   ```java
-   interface Logger {
-       default String tag() {
-           return "[LOG]";
-       }
-   }
+    ```java
+    interface Logger {
+        default String tag() {
+            return "[LOG]";
+        }
+    }
 
-   interface Auditor {
-       default String tag() {
-           return "[AUDIT]";
-       }
-   }
+    interface Auditor {
+        default String tag() {
+            return "[AUDIT]";
+        }
+    }
 
-   class Recorder implements Logger, Auditor {
-       public String tag() {
-           return Auditor.super.tag() + Logger.super.tag();
-       }
-   }
+    class Recorder implements Logger, Auditor {
+        public String tag() {
+            return Auditor.super.tag() + Logger.super.tag();
+        }
+    }
 
-   System.out.println(new Recorder().tag());
-   ```
+    System.out.println(new Recorder().tag());
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -219,11 +219,11 @@ Nothing outside the interface can call the `private` method: not an implementing
 
 3. ▢ This interface fails to compile. Name the line, and quote the compiler's error.
 
-   ```java
-   interface Retry {
-       int ATTEMPTS;
-   }
-   ```
+    ```java
+    interface Retry {
+        int ATTEMPTS;
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -233,19 +233,19 @@ Line 2, `= expected`. `ATTEMPTS` is implicitly `public static final`, and a `fin
 
 4. ▢ Find the bug.
 
-   ```java
-   interface Cache {
-       List<String> KEYS = new ArrayList<>();
-   }
+    ```java
+    interface Cache {
+        List<String> KEYS = new ArrayList<>();
+    }
 
-   class Left implements Cache {
-       void store(String key) { KEYS.add(key); }
-   }
+    class Left implements Cache {
+        void store(String key) { KEYS.add(key); }
+    }
 
-   class Right implements Cache {
-       void purge() { KEYS.clear(); }
-   }
-   ```
+    class Right implements Cache {
+        void purge() { KEYS.clear(); }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

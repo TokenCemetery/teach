@@ -95,9 +95,9 @@ The practical move is to turn one flag on, run the compiler, and read the result
 
 1. ▢ Predict the diagnostic, with its `TS` number, for this configuration attempt.
 
-   ```json
-   { "compilerOptions": { "strict": false, "exactOptionalPropertyTypes": true } }
-   ```
+    ```json
+    { "compilerOptions": { "strict": false, "exactOptionalPropertyTypes": true } }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

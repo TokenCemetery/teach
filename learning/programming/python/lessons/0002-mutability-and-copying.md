@@ -108,13 +108,13 @@ Reach for `deepcopy` when you genuinely need an independent tree, and know that 
 
 1. ▢ Predict the output.
 
-   ```python
-   config = {"tags": ["a"], "name": "svc"}
-   backup = dict(config)
-   config["tags"].append("b")
-   config["name"] = "other"
-   print(backup)
-   ```
+    ```python
+    config = {"tags": ["a"], "name": "svc"}
+    backup = dict(config)
+    config["tags"].append("b")
+    config["name"] = "other"
+    print(backup)
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -134,10 +134,10 @@ This exact shape, a "backup" that was never independent, is one of the most comm
 
 2. ▢ Is this tuple hashable? Answer for each of the two.
 
-   ```python
-   a = (1, "x", (2, 3))
-   b = (1, "x", {2: 3})
-   ```
+    ```python
+    a = (1, "x", (2, 3))
+    b = (1, "x", {2: 3})
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -149,11 +149,11 @@ A tuple's hash is computed from the hashes of its contents, so one unhashable it
 
 3. ▢ Which line raises, and what does it tell you about the object?
 
-   ```python
-   point = (1, [2])
-   point[1].append(3)
-   point[1] = [4]
-   ```
+    ```python
+    point = (1, [2])
+    point[1].append(3)
+    point[1] = [4]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

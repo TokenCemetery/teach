@@ -169,16 +169,16 @@ If nothing survives, then no type stands guard on its own once the program runs,
 
 1. ▢ Predict the compiled JavaScript, then predict what running it prints.
 
-   ```ts
-   interface Shape {
-     radius: number;
-   }
-   function area<T extends Shape>(s: T): number {
-     return Math.PI * s.radius ** 2;
-   }
-   const s = { radius: 2 } satisfies Shape;
-   console.log(area<Shape>(s)!);
-   ```
+    ```ts
+    interface Shape {
+      radius: number;
+    }
+    function area<T extends Shape>(s: T): number {
+      return Math.PI * s.radius ** 2;
+    }
+    const s = { radius: 2 } satisfies Shape;
+    console.log(area<Shape>(s)!);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -188,11 +188,11 @@ If nothing survives, then no type stands guard on its own once the program runs,
 
 2. ▢ Predict the output.
 
-   ```ts
-   type Meters = number;
-   const distance: Meters = 5;
-   console.log(typeof distance);
-   ```
+    ```ts
+    type Meters = number;
+    const distance: Meters = 5;
+    console.log(typeof distance);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -202,15 +202,15 @@ If nothing survives, then no type stands guard on its own once the program runs,
 
 3. ▢ Predict both lines of output.
 
-   ```ts
-   type UserId = string & { readonly __brand: "UserId" };
-   function makeUserId(raw: string): UserId {
-     return raw as UserId;
-   }
-   const id = makeUserId("u-123");
-   console.log(Object.hasOwn(id as unknown as object, "__brand"));
-   console.log(JSON.stringify({ id }));
-   ```
+    ```ts
+    type UserId = string & { readonly __brand: "UserId" };
+    function makeUserId(raw: string): UserId {
+      return raw as UserId;
+    }
+    const id = makeUserId("u-123");
+    console.log(Object.hasOwn(id as unknown as object, "__brand"));
+    console.log(JSON.stringify({ id }));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -220,10 +220,10 @@ If nothing survives, then no type stands guard on its own once the program runs,
 
 4. ▢ Predict whether this compiles, and if it does, predict exactly what happens when it runs.
 
-   ```ts
-   declare const mystery: string;
-   console.log(mystery.toUpperCase());
-   ```
+    ```ts
+    declare const mystery: string;
+    console.log(mystery.toUpperCase());
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -233,14 +233,14 @@ Compiles with no diagnostic: `declare` only tells the checker that a `string` ca
 
 5. ▢ A reviewer, looking at this class, writes: "the constructor parameter is typed `UserId`, and `instanceof Order` passes in our tests, so by the time we're inside a method this instance is already known-good." What is right about that claim and what is wrong?
 
-   ```ts
-   class Order {
-     constructor(public id: UserId, public total: number) {}
-   }
-   const raw: unknown = "u-1";
-   const o = new Order(raw as UserId, 10);
-   console.log(o instanceof Order);
-   ```
+    ```ts
+    class Order {
+      constructor(public id: UserId, public total: number) {}
+    }
+    const raw: unknown = "u-1";
+    const o = new Order(raw as UserId, 10);
+    console.log(o instanceof Order);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

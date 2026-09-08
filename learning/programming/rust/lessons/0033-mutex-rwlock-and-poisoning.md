@@ -188,25 +188,25 @@ That `unwrap` asserts something specific: not that this call is fine, but that n
 
 1. ▢ Predict what this prints, then compile and run it.
 
-   ```rust
-   use std::sync::{Arc, Mutex};
-   use std::thread;
+    ```rust
+    use std::sync::{Arc, Mutex};
+    use std::thread;
 
-   fn main() {
-       let total = Arc::new(Mutex::new(0i32));
-       thread::scope(|s| {
-           for _ in 0..2 {
-               let total = Arc::clone(&total);
-               s.spawn(move || {
-                   for _ in 0..500 {
-                       *total.lock().unwrap() += 1;
-                   }
-               });
-           }
-       });
-       println!("{}", *total.lock().unwrap());
-   }
-   ```
+    fn main() {
+        let total = Arc::new(Mutex::new(0i32));
+        thread::scope(|s| {
+            for _ in 0..2 {
+                let total = Arc::clone(&total);
+                s.spawn(move || {
+                    for _ in 0..500 {
+                        *total.lock().unwrap() += 1;
+                    }
+                });
+            }
+        });
+        println!("{}", *total.lock().unwrap());
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -230,17 +230,17 @@ No, not in the held-too-long version: A keeps its guard through the sleep, so B'
 
 3. ▢ Predict whether this panics immediately, returns an `Err`, or hangs, then run it under a timeout you set yourself.
 
-   ```rust
-   use std::sync::Mutex;
+    ```rust
+    use std::sync::Mutex;
 
-   fn main() {
-       let m = Mutex::new(0);
-       let _first = m.lock().unwrap();
-       println!("locked once");
-       let _second = m.lock().unwrap();
-       println!("locked twice");
-   }
-   ```
+    fn main() {
+        let m = Mutex::new(0);
+        let _first = m.lock().unwrap();
+        println!("locked once");
+        let _second = m.lock().unwrap();
+        println!("locked twice");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

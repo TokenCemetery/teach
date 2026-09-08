@@ -176,15 +176,15 @@ Also: `mock.assert_called_once()` exists, and misspelling it as `assert_called_o
 
 1. ▢ The patch has no effect. Why, and give both fixes.
 
-   ```python
-   # shop/billing.py
-   from shop.clock import today
-   def is_overdue(order): return today() > order.due_date
+    ```python
+    # shop/billing.py
+    from shop.clock import today
+    def is_overdue(order): return today() > order.due_date
 
-   # tests
-   with patch("shop.clock.today", return_value=date(2026, 1, 31)):
-       assert is_overdue(order)
-   ```
+    # tests
+    with patch("shop.clock.today", return_value=date(2026, 1, 31)):
+        assert is_overdue(order)
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -204,12 +204,12 @@ Fix two, in the code: `from shop import clock` and call `clock.today()`, so ther
 
 2. ▢ This test passes after `charge` is renamed to `capture`. Explain, and fix it.
 
-   ```python
-   def test_charges_the_card():
-       gateway = Mock()
-       checkout(order, gateway)
-       gateway.charge.assert_called_once_with(Decimal("90"), "GBP")
-   ```
+    ```python
+    def test_charges_the_card():
+        gateway = Mock()
+        checkout(order, gateway)
+        gateway.charge.assert_called_once_with(Decimal("90"), "GBP")
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

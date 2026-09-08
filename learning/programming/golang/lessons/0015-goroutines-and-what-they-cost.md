@@ -98,11 +98,11 @@ Since [Go 1.22](https://go.dev/doc/go1.22#language) each iteration creates a new
 
 1. ▢ Why does this usually print nothing?
 
-   ```go
-   func main() {
-       go fmt.Println("hello")
-   }
-   ```
+    ```go
+    func main() {
+        go fmt.Println("hello")
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

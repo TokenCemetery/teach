@@ -86,14 +86,14 @@ function connect(timeout?: number) {
 
 1. ▢ Predict all six.
 
-   ```ts
-   console.log(typeof null);
-   console.log(typeof []);
-   console.log(0.1 + 0.2 === 0.3);
-   console.log(NaN === NaN);
-   console.log("" == 0);
-   console.log("" === 0);
-   ```
+    ```ts
+    console.log(typeof null);
+    console.log(typeof []);
+    console.log(0.1 + 0.2 === 0.3);
+    console.log(NaN === NaN);
+    console.log("" == 0);
+    console.log("" === 0);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -105,11 +105,11 @@ The first two are why `typeof` is a poor tool for distinguishing shapes, and why
 
 2. ▢ These three lines cannot all be consistent. Predict them and say what property is violated.
 
-   ```ts
-   console.log(0 == "");
-   console.log(0 == "0");
-   console.log("" == "0");
-   ```
+    ```ts
+    console.log(0 == "");
+    console.log(0 == "0");
+    console.log("" == "0");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

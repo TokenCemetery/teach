@@ -113,11 +113,11 @@ Log only where the error stops, which in a service is the HTTP middleware or `ma
 
 1. ▢ Rewrite this so the caller can still detect a not-found condition.
 
-   ```go
-   if err != nil {
-       return fmt.Errorf("get user: %v", err)
-   }
-   ```
+    ```go
+    if err != nil {
+        return fmt.Errorf("get user: %v", err)
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

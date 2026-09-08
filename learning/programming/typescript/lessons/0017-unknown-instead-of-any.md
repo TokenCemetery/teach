@@ -130,13 +130,13 @@ None of this makes `any` a mistake in every appearance. It is a reasonable, deli
 
 1. ▢ Predict the diagnostic, with its `TS` number.
 
-   ```ts
-   function parse(raw: string): unknown {
-     return JSON.parse(raw);
-   }
-   const value = parse("42");
-   console.log(value.toFixed(2));
-   ```
+    ```ts
+    function parse(raw: string): unknown {
+      return JSON.parse(raw);
+    }
+    const value = parse("42");
+    console.log(value.toFixed(2));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -146,13 +146,13 @@ None of this makes `any` a mistake in every appearance. It is a reasonable, deli
 
 2. ▢ Predict the diagnostic, with its `TS` number.
 
-   ```ts
-   function parse(raw: string): unknown {
-     return JSON.parse(raw);
-   }
-   const value = parse("42");
-   const n: number = value;
-   ```
+    ```ts
+    function parse(raw: string): unknown {
+      return JSON.parse(raw);
+    }
+    const value = parse("42");
+    const n: number = value;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -162,15 +162,15 @@ None of this makes `any` a mistake in every appearance. It is a reasonable, deli
 
 3. ▢ Does this compile?
 
-   ```ts
-   function parse(raw: string): unknown {
-     return JSON.parse(raw);
-   }
-   const value = parse('"hello"');
-   if (typeof value === "string") {
-     console.log(value.toUpperCase());
-   }
-   ```
+    ```ts
+    function parse(raw: string): unknown {
+      return JSON.parse(raw);
+    }
+    const value = parse('"hello"');
+    if (typeof value === "string") {
+      console.log(value.toUpperCase());
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -186,14 +186,14 @@ Yes. Inside the `if`, `value` is narrowed to `string`, exactly as `typeof` narro
 
 4. ▢ Compare this with practice item 1. Predict whether either line reports anything.
 
-   ```ts
-   function parseAny(raw: string): any {
-     return JSON.parse(raw);
-   }
-   const value = parseAny("42");
-   console.log(value.toFixed(2));
-   value();
-   ```
+    ```ts
+    function parseAny(raw: string): any {
+      return JSON.parse(raw);
+    }
+    const value = parseAny("42");
+    console.log(value.toFixed(2));
+    value();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -203,14 +203,14 @@ Neither line reports anything. `value` is `any`, so `.toFixed(2)` compiles regar
 
 5. ▢ Predict the diagnostic, with its `TS` number, and say which flag is responsible for `e`'s type before the annotation was added.
 
-   ```ts
-   function risky(): void {}
-   try {
-     risky();
-   } catch (e: string) {
-     console.log(e);
-   }
-   ```
+    ```ts
+    function risky(): void {}
+    try {
+      risky();
+    } catch (e: string) {
+      console.log(e);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

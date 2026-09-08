@@ -133,12 +133,12 @@ let count: number = "five";
 
 1. ▢ Predict what each line reports, with no configuration file present.
 
-   ```ts
-   function id(x) {
-     return x;
-   }
-   let n: number = undefined;
-   ```
+    ```ts
+    function id(x) {
+      return x;
+    }
+    let n: number = undefined;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -150,11 +150,11 @@ Both fire with no flags set, because `noImplicitAny` and `strictNullChecks` are 
 
 2. ▢ Which of these compiles?
 
-   ```ts
-   let p: Array<number> = [1, 2, 3];
-   let q: number[] = p;
-   let r: Array<number> = q;
-   ```
+    ```ts
+    let p: Array<number> = [1, 2, 3];
+    let q: number[] = p;
+    let r: Array<number> = q;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -182,11 +182,11 @@ All three compile. `note?: string` permits the key to be absent (a), present wit
 
 4. ▢ Predict the diagnostic, including its `TS` number.
 
-   ```ts
-   type Config = { host: string; port: number };
-   function connect(c: Config) {}
-   connect({ host: "localhost" });
-   ```
+    ```ts
+    type Config = { host: string; port: number };
+    function connect(c: Config) {}
+    connect({ host: "localhost" });
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -198,12 +198,12 @@ The parameter's annotation is a demand on the caller, and this caller did not me
 
 5. ▢ Why does this compile with no error at all, and what should you do instead?
 
-   ```ts
-   function total(items: any) {
-     return items.length + items.price;
-   }
-   total("not a list of items");
-   ```
+    ```ts
+    function total(items: any) {
+      return items.length + items.price;
+    }
+    total("not a list of items");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

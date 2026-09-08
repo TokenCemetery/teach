@@ -316,20 +316,20 @@ prints `true` then `false`; it takes a pattern, an optional guard, and gives bac
 
 1. ▢ Predict whether this compiles, and if not, which variant the compiler names.
 
-   ```rust
-   enum Shape {
-       Circle(f64),
-       Square(f64),
-       Triangle(f64, f64, f64),
-   }
+    ```rust
+    enum Shape {
+        Circle(f64),
+        Square(f64),
+        Triangle(f64, f64, f64),
+    }
 
-   fn area(s: &Shape) -> f64 {
-       match s {
-           Shape::Circle(r) => std::f64::consts::PI * r * r,
-           Shape::Square(side) => side * side,
-       }
-   }
-   ```
+    fn area(s: &Shape) -> f64 {
+        match s {
+            Shape::Circle(r) => std::f64::consts::PI * r * r,
+            Shape::Square(side) => side * side,
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -339,16 +339,16 @@ It does not compile: `error[E0004]: non-exhaustive patterns: `&Shape::Triangle(_
 
 2. ▢ Predict what each line prints, then compile and check.
 
-   ```rust
-   let point = (5, -3);
-   match point {
-       (0, 0) => println!("origin"),
-       (x, 0) => println!("on the x axis at {x}"),
-       (0, y) => println!("on the y axis at {y}"),
-       (x, y) if x == y => println!("on the diagonal"),
-       (x, y) => println!("elsewhere: {x}, {y}"),
-   }
-   ```
+    ```rust
+    let point = (5, -3);
+    match point {
+        (0, 0) => println!("origin"),
+        (x, 0) => println!("on the x axis at {x}"),
+        (0, y) => println!("on the y axis at {y}"),
+        (x, y) if x == y => println!("on the diagonal"),
+        (x, y) => println!("elsewhere: {x}, {y}"),
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -358,18 +358,18 @@ It does not compile: `error[E0004]: non-exhaustive patterns: `&Shape::Triangle(_
 
 3. ▢ This binds a `String` payload while matching by value, then tries to use the enum again. Predict the error code, then compile it.
 
-   ```rust
-   enum Job { Queued(String), Done }
+    ```rust
+    enum Job { Queued(String), Done }
 
-   fn main() {
-       let job = Job::Queued(String::from("build"));
-       match job {
-           Job::Queued(name) => println!("{name}"),
-           Job::Done => {}
-       }
-       println!("{job:?}");
-   }
-   ```
+    fn main() {
+        let job = Job::Queued(String::from("build"));
+        match job {
+            Job::Queued(name) => println!("{name}"),
+            Job::Done => {}
+        }
+        println!("{job:?}");
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -385,13 +385,13 @@ It does not compile: `error[E0004]: non-exhaustive patterns: `&Shape::Triangle(_
 
 4. ▢ Predict whether this compiles on edition 2024, then on edition 2021, and why they differ.
 
-   ```rust
-   let items: Vec<i32> = vec![1, 2, 3];
-   let first = items.first();
-   if let Some(&n) = first && n > 0 {
-       println!("{n}");
-   }
-   ```
+    ```rust
+    let items: Vec<i32> = vec![1, 2, 3];
+    let first = items.first();
+    if let Some(&n) = first && n > 0 {
+        println!("{n}");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -401,13 +401,13 @@ It compiles on edition 2024, printing `1`, and fails on edition 2021 with `error
 
 5. ▢ Write `matches!` in place of this `match`, predict that both give the same answer, then compile both.
 
-   ```rust
-   let code = 404;
-   let is_client_error = match code {
-       400..=499 => true,
-       _ => false,
-   };
-   ```
+    ```rust
+    let code = 404;
+    let is_client_error = match code {
+        400..=499 => true,
+        _ => false,
+    };
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -126,15 +126,15 @@ It fails to compile, reporting that `StructuredTaskScope` is a preview API disab
 
 2. ▢ Find the bug, and say which checklist row would have caught it in review.
 
-   ```java
-   ExecutorService pool = Executors.newFixedThreadPool(4);
-   pool.submit(() -> {
-       if (!validate(request)) {
-           throw new IllegalArgumentException("bad request");
-       }
-       process(request);
-   });
-   ```
+    ```java
+    ExecutorService pool = Executors.newFixedThreadPool(4);
+    pool.submit(() -> {
+        if (!validate(request)) {
+            throw new IllegalArgumentException("bad request");
+        }
+        process(request);
+    });
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

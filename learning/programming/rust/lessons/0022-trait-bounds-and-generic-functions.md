@@ -199,25 +199,25 @@ impl<T: PartialOrd> Pair<T> {
 
 1. ▢ Predict the error code before compiling this, and say what is missing from the signature that the diagnostic will suggest adding.
 
-   ```rust
-   trait Weight {
-       fn kg(&self) -> f64;
-   }
+    ```rust
+    trait Weight {
+        fn kg(&self) -> f64;
+    }
 
-   struct Box2 {
-       kg: f64,
-   }
+    struct Box2 {
+        kg: f64,
+    }
 
-   impl Weight for Box2 {
-       fn kg(&self) -> f64 {
-           self.kg
-       }
-   }
+    impl Weight for Box2 {
+        fn kg(&self) -> f64 {
+            self.kg
+        }
+    }
 
-   fn heaviest<T>(items: &[T]) -> f64 {
-       items.iter().map(|i| i.kg()).fold(0.0, f64::max)
-   }
-   ```
+    fn heaviest<T>(items: &[T]) -> f64 {
+        items.iter().map(|i| i.kg()).fold(0.0, f64::max)
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -241,16 +241,16 @@ It returns `7.5`. Bounding `T` by `Weight` is what makes `.kg()` legal inside `f
 
 3. ▢ Predict which trait the diagnostic names as unsatisfied when this compiles, and which line it blames.
 
-   ```rust
-   fn heaviest<T: Weight>(items: &[T]) -> f64 {
-       items.iter().map(|i| i.kg()).fold(0.0, f64::max)
-   }
+    ```rust
+    fn heaviest<T: Weight>(items: &[T]) -> f64 {
+        items.iter().map(|i| i.kg()).fold(0.0, f64::max)
+    }
 
-   fn main() {
-       let words = [String::from("a"), String::from("bb")];
-       println!("{}", heaviest(&words));
-   }
-   ```
+    fn main() {
+        let words = [String::from("a"), String::from("bb")];
+        println!("{}", heaviest(&words));
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -260,11 +260,11 @@ It is `E0277`, naming `String: Weight` as the trait bound that is not satisfied 
 
 4. ▢ Rewrite this as a `where` clause instead, predict whether the swap changes what callers can pass, then compile both to confirm.
 
-   ```rust
-   fn report<T: Weight + std::fmt::Debug>(item: &T) -> String {
-       format!("{item:?} weighs {}", item.kg())
-   }
-   ```
+    ```rust
+    fn report<T: Weight + std::fmt::Debug>(item: &T) -> String {
+        format!("{item:?} weighs {}", item.kg())
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -280,16 +280,16 @@ Nothing changes for callers: `fn report<T>(item: &T) -> String where T: Weight +
 
 5. ▢ This turbofishes a call against a function taking `impl Weight`. Predict the error code before compiling, then say what the equivalent generic signature would need to change to make the same call succeed.
 
-   ```rust
-   fn heaviest_impl(items: &[impl Weight]) -> f64 {
-       items.iter().map(|i| i.kg()).fold(0.0, f64::max)
-   }
+    ```rust
+    fn heaviest_impl(items: &[impl Weight]) -> f64 {
+        items.iter().map(|i| i.kg()).fold(0.0, f64::max)
+    }
 
-   fn main() {
-       let boxes = [Box2 { kg: 4.0 }, Box2 { kg: 7.5 }];
-       println!("{}", heaviest_impl::<Box2>(&boxes));
-   }
-   ```
+    fn main() {
+        let boxes = [Box2 { kg: 4.0 }, Box2 { kg: 7.5 }];
+        println!("{}", heaviest_impl::<Box2>(&boxes));
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

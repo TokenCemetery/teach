@@ -278,20 +278,20 @@ A class that exposes `getBalance()`, `setBalance(int)`, `getOwner()` and `setOwn
 
 1. ▢ Predict the output, and explain it.
 
-   ```java
-   class Counter {
-       static int created = 0;
-       int id = ++created;
+    ```java
+    class Counter {
+        static int created = 0;
+        int id = ++created;
 
-       Counter() {
-           System.out.println("created #" + id);
-       }
-   }
+        Counter() {
+            System.out.println("created #" + id);
+        }
+    }
 
-   new Counter();
-   new Counter();
-   System.out.println(Counter.created);
-   ```
+    new Counter();
+    new Counter();
+    System.out.println(Counter.created);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -307,17 +307,17 @@ created #2
 
 2. ▢ Find the bug. `p.x` and `p.y` both print `0` no matter what is passed in.
 
-   ```java
-   class Point {
-       int x;
-       int y;
+    ```java
+    class Point {
+        int x;
+        int y;
 
-       Point(int x, int y) {
-           x = x;
-           y = y;
-       }
-   }
-   ```
+        Point(int x, int y) {
+            x = x;
+            y = y;
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -333,12 +333,12 @@ The parameters shadow the fields inside the constructor body, so `x = x` assigns
 
 3. ▢ Why does this fail to compile, and what does it have to do with initialisation order?
 
-   ```java
-   class Session {
-       String log = "created " + id;
-       String id = "abc123";
-   }
-   ```
+    ```java
+    class Session {
+        String log = "created " + id;
+        String id = "abc123";
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -129,11 +129,11 @@ Building a `Path`, resolving it, or normalising it never touches the disk, so a 
 
 1. ▢ Predict the output, and explain it.
 
-   ```java
-   Path base = Path.of("/var/app/data");
-   Path input = Path.of("/etc/shadow");
-   System.out.println(base.resolve(input));
-   ```
+    ```java
+    Path base = Path.of("/var/app/data");
+    Path input = Path.of("/etc/shadow");
+    System.out.println(base.resolve(input));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -143,10 +143,10 @@ Building a `Path`, resolving it, or normalising it never touches the disk, so a 
 
 2. ▢ Find the bug.
 
-   ```java
-   List<String> lines = new ArrayList<>();
-   Files.lines(path).forEach(lines::add);
-   ```
+    ```java
+    List<String> lines = new ArrayList<>();
+    Files.lines(path).forEach(lines::add);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -170,9 +170,9 @@ Ask what each option holds in memory at once before the first line is even check
 
 4. ▢ Predict what happens.
 
-   ```java
-   Files.createDirectory(Path.of("a/b"));   // "a" does not exist yet
-   ```
+    ```java
+    Files.createDirectory(Path.of("a/b"));   // "a" does not exist yet
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

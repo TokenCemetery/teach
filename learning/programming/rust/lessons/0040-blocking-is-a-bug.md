@@ -129,14 +129,14 @@ The reflex to watch for is reaching for `spawn_blocking` on anything that merely
 
 1. ▢ Predict what this prints and in what order, then run it.
 
-   ```rust
-   #[tokio::main(flavor = "current_thread")]
-   async fn main() {
-       let a = async { std::thread::sleep(std::time::Duration::from_millis(50)); println!("a done"); };
-       let b = async { tokio::time::sleep(std::time::Duration::from_millis(10)).await; println!("b done"); };
-       tokio::join!(a, b);
-   }
-   ```
+    ```rust
+    #[tokio::main(flavor = "current_thread")]
+    async fn main() {
+        let a = async { std::thread::sleep(std::time::Duration::from_millis(50)); println!("a done"); };
+        let b = async { tokio::time::sleep(std::time::Duration::from_millis(10)).await; println!("b done"); };
+        tokio::join!(a, b);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

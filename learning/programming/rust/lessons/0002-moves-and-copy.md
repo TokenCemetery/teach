@@ -113,22 +113,22 @@ When the compiler says a value was moved, one of these is the fix, and they are 
 
 1. ▢ Which of these compile?
 
-   ```rust
-   // A
-   let a = String::from("x");
-   let b = a;
-   println!("{b}");
+    ```rust
+    // A
+    let a = String::from("x");
+    let b = a;
+    println!("{b}");
 
-   // B
-   let a = String::from("x");
-   let b = a;
-   println!("{a}");
+    // B
+    let a = String::from("x");
+    let b = a;
+    println!("{a}");
 
-   // C
-   let a = 5;
-   let b = a;
-   println!("{a} {b}");
-   ```
+    // C
+    let a = 5;
+    let b = a;
+    println!("{a} {b}");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -140,15 +140,15 @@ C works because `i32` is `Copy`, so the assignment duplicated the value instead 
 
 2. ▢ Predict whether this compiles, and why.
 
-   ```rust
-   fn takes(s: String) {}
+    ```rust
+    fn takes(s: String) {}
 
-   fn main() {
-       let s = String::from("hi");
-       takes(s);
-       takes(s);
-   }
-   ```
+    fn main() {
+        let s = String::from("hi");
+        takes(s);
+        takes(s);
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -181,9 +181,9 @@ An array of `Copy` elements is `Copy`, and so is a tuple of them. `&mut i32` is 
 
 4. ▢ What exactly does this error mean, and what is the most likely correct fix?
 
-   ```text
-   error[E0382]: borrow of moved value: `config`
-   ```
+    ```text
+    error[E0382]: borrow of moved value: `config`
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

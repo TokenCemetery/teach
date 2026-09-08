@@ -205,13 +205,13 @@ The choice between an associated type and a generic parameter has a plain rule: 
 
 1. ▢ Predict which error code this fails with, then compile it.
 
-   ```rust
-   fn double_all<I: Iterator<i64>>(_it: I) {}
+    ```rust
+    fn double_all<I: Iterator<i64>>(_it: I) {}
 
-   fn main() {
-       double_all(vec![1i64, 2, 3].into_iter());
-   }
-   ```
+    fn main() {
+        double_all(vec![1i64, 2, 3].into_iter());
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -221,11 +221,11 @@ It fails with `E0107`, the lesson's opening mistake again: `i64` needs to be wri
 
 2. ▢ Predict whether this compiles, and which error code it gives if not.
 
-   ```rust
-   struct Boxed {
-       it: Box<dyn Iterator>,
-   }
-   ```
+    ```rust
+    struct Boxed {
+        it: Box<dyn Iterator>,
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -249,15 +249,15 @@ It produces `[3, 2, 1]`: each call returns `Some` of the value still held, then 
 
 4. ▢ Predict what happens when `head` is compiled as written, then fix it so the returned item is `Iterator`'s, not `Tagged`'s.
 
-   ```rust
-   trait Tagged {
-       type Item;
-   }
+    ```rust
+    trait Tagged {
+        type Item;
+    }
 
-   fn head<I: Iterator + Tagged>(mut it: I) -> Option<I::Item> {
-       it.next()
-   }
-   ```
+    fn head<I: Iterator + Tagged>(mut it: I) -> Option<I::Item> {
+        it.next()
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -165,12 +165,12 @@ That is also the point at which to ask whether a plain loop would be clearer. A 
 
 1. ▢ Predict what each line prints or throws.
 
-   ```java
-   List<String> names = List.of("Ann", "Ben", "Amy");
-   Map<Character, String> byInitial = names.stream()
-       .collect(Collectors.toMap(n -> n.charAt(0), n -> n));
-   System.out.println(byInitial);
-   ```
+    ```java
+    List<String> names = List.of("Ann", "Ben", "Amy");
+    Map<Character, String> byInitial = names.stream()
+        .collect(Collectors.toMap(n -> n.charAt(0), n -> n));
+    System.out.println(byInitial);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -180,15 +180,15 @@ It throws `IllegalStateException: Duplicate key A (attempted merging values Ann 
 
 2. ▢ This code compiles and runs. Find the bug.
 
-   ```java
-   List<Order> pending = new ArrayList<>();
-   List<Order> snapshot = orders.stream()
-       .filter(Order::isPending)
-       .toList();
-   pending.addAll(snapshot);
-   pending.add(new Order());   // meant to append a manual entry to `pending`, not `snapshot`
-   snapshot.add(new Order());  // then later, someone does this by mistake
-   ```
+    ```java
+    List<Order> pending = new ArrayList<>();
+    List<Order> snapshot = orders.stream()
+        .filter(Order::isPending)
+        .toList();
+    pending.addAll(snapshot);
+    pending.add(new Order());   // meant to append a manual entry to `pending`, not `snapshot`
+    snapshot.add(new Order());  // then later, someone does this by mistake
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -225,15 +225,15 @@ The three-argument overload's merge function runs exactly when a key repeats, an
 
 5. ▢ A teammate writes this and asks whether it is idiomatic:
 
-   ```java
-   Map<Boolean, List<Order>> result = orders.stream()
-       .collect(Collectors.groupingBy(Order::isPending,
-           Collectors.mapping(Order::id,
-               Collectors.filtering(id -> !id.isBlank(),
-                   Collectors.toList()))));
-   ```
+    ```java
+    Map<Boolean, List<Order>> result = orders.stream()
+        .collect(Collectors.groupingBy(Order::isPending,
+            Collectors.mapping(Order::id,
+                Collectors.filtering(id -> !id.isBlank(),
+                    Collectors.toList()))));
+    ```
 
-   What would you say, and what would you write instead?
+    What would you say, and what would you write instead?
 
 <details markdown="1"><summary>Check</summary>
 

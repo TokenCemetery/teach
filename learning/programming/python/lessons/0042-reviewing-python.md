@@ -129,17 +129,17 @@ The same list, with one addition: read the diff as a stranger before sending it.
 
 1. ▢ Review this. Name each finding and label it defect, risk, or preference.
 
-   ```python
-   class Report:
-       rows = []
+    ```python
+    class Report:
+        rows = []
 
-       def add(self, row):
-           self.rows.append(row)
+        def add(self, row):
+            self.rows.append(row)
 
-       def totals(self, rows=None):
-           rows = rows or self.rows
-           return sum(r.amount for r in rows)
-   ```
+        def totals(self, rows=None):
+            rows = rows or self.rows
+            return sum(r.amount for r in rows)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -153,14 +153,14 @@ The same list, with one addition: read the diff as a stranger before sending it.
 
 2. ▢ Review this async handler.
 
-   ```python
-   async def handle(order_ids):
-       results = []
-       for order_id in order_ids:
-           order = await db.fetch(order_id)
-           results.append(await enrich(order))
-       return results
-   ```
+    ```python
+    async def handle(order_ids):
+        results = []
+        for order_id in order_ids:
+            order = await db.fetch(order_id)
+            results.append(await enrich(order))
+        return results
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

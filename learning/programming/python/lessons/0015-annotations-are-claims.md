@@ -22,12 +22,12 @@ It uses it to decide that `amount` is a field, and then ignores what it says. `O
 
 2. ▢ What do you expect this to do?
 
-   ```python
-   def double(n: int) -> int:
-       return n * 2
+    ```python
+    def double(n: int) -> int:
+        return n * 2
 
-   print(double("ab"))
-   ```
+    print(double("ab"))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -152,12 +152,12 @@ class Session:
 
 1. ▢ Rewrite with current spellings.
 
-   ```python
-   from typing import Dict, List, Optional, Union
+    ```python
+    from typing import Dict, List, Optional, Union
 
-   def group(rows: List[Dict[str, str]], key: Optional[str] = None) -> Dict[str, List[Union[int, str]]]:
-       ...
-   ```
+    def group(rows: List[Dict[str, str]], key: Optional[str] = None) -> Dict[str, List[Union[int, str]]]:
+        ...
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -172,13 +172,13 @@ The `typing` import disappears entirely, which is the usual outcome.
 
 2. ▢ This passes a strict checker. Explain why that is worthless.
 
-   ```python
-   def load_config(path: str) -> Any:
-       return json.loads(Path(path).read_text(encoding="utf-8"))
+    ```python
+    def load_config(path: str) -> Any:
+        return json.loads(Path(path).read_text(encoding="utf-8"))
 
-   config = load_config("app.json")
-   timeout = config["timout"]["seconds"] * "3"
-   ```
+    config = load_config("app.json")
+    timeout = config["timout"]["seconds"] * "3"
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -214,11 +214,11 @@ What type does the checker think `config` has, and what does it think `config["t
 
 4. ▢ Why does this fail before Python 3.14, and give the two fixes that work on any version.
 
-   ```python
-   class Tree:
-       def leftmost(self) -> Tree:
-           ...
-   ```
+    ```python
+    class Tree:
+        def leftmost(self) -> Tree:
+            ...
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -242,11 +242,11 @@ This is what the strictness flags in lesson 16 are for, and it is also why annot
 
 6. ▢ What bug does `ClassVar` prevent here?
 
-   ```python
-   @dataclass
-   class Session:
-       registry: dict[str, "Session"] = field(default_factory=dict)
-   ```
+    ```python
+    @dataclass
+    class Session:
+        registry: dict[str, "Session"] = field(default_factory=dict)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

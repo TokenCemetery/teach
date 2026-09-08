@@ -290,18 +290,18 @@ The `help` that follows suggests cloning `value`, trimmed here because it is a w
 
 1. ▢ Predict the error code before compiling this.
 
-   ```rust
-   struct Pair<'a> {
-       left: &'a str,
-       right: &'a str,
-   }
+    ```rust
+    struct Pair<'a> {
+        left: &'a str,
+        right: &'a str,
+    }
 
-   impl Pair {
-       fn left(&self) -> &str {
-           self.left
-       }
-   }
-   ```
+    impl Pair {
+        fn left(&self) -> &str {
+            self.left
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -333,18 +333,18 @@ It is `E0621`, with a `help` adding `&'a str` to `s`'s type. `s`'s elided lifeti
 
 4. ▢ Predict whether this compiles, and if not, which error code names the missing bound.
 
-   ```rust
-   struct Tagged<'a, T> {
-       tag: &'a str,
-       inner: T,
-   }
+    ```rust
+    struct Tagged<'a, T> {
+        tag: &'a str,
+        inner: T,
+    }
 
-   impl<'a, T: Clone> Tagged<'a, T> {
-       fn boxed_clone(&self) -> Box<dyn std::any::Any + 'a> {
-           Box::new(self.inner.clone())
-       }
-   }
-   ```
+    impl<'a, T: Clone> Tagged<'a, T> {
+        fn boxed_clone(&self) -> Box<dyn std::any::Any + 'a> {
+            Box::new(self.inner.clone())
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -360,19 +360,19 @@ It does not compile: `E0309`, since boxing `self.inner.clone()` into a `dyn Any 
 
 5. ▢ Name the error code before compiling this, where one field borrows from another field of the same struct.
 
-   ```rust
-   struct Node<'a> {
-       label: String,
-       view: &'a str,
-   }
+    ```rust
+    struct Node<'a> {
+        label: String,
+        view: &'a str,
+    }
 
-   fn main() {
-       let label = String::from("root");
-       let view = &label;
-       let node = Node { label, view };
-       println!("{}", node.view);
-   }
-   ```
+    fn main() {
+        let label = String::from("root");
+        let view = &label;
+        let node = Node { label, view };
+        println!("{}", node.view);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

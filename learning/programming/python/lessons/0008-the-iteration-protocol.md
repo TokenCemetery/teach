@@ -22,11 +22,11 @@ type: lesson
 
 2. ▢ Lesson 7 called `(n * n for n in range(3))` a generator expression rather than a tuple. Guess what the second `sum` prints.
 
-   ```python
-   g = (n * n for n in range(3))
-   print(sum(g))
-   print(sum(g))
-   ```
+    ```python
+    g = (n * n for n in range(3))
+    print(sum(g))
+    print(sum(g))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -145,11 +145,11 @@ Three honest options, in order of preference:
 
 1. ▢ Predict both lines.
 
-   ```python
-   nums = map(int, ["1", "2", "3"])
-   print(max(nums))
-   print(sum(nums))
-   ```
+    ```python
+    nums = map(int, ["1", "2", "3"])
+    print(max(nums))
+    print(sum(nums))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -161,12 +161,12 @@ Three honest options, in order of preference:
 
 2. ▢ This function is called twice: once with a list of lines, once with an open file. Describe both outcomes.
 
-   ```python
-   def summarise(lines):
-       total = sum(len(line) for line in lines)
-       longest = max((line for line in lines), key=len)
-       return total, longest
-   ```
+    ```python
+    def summarise(lines):
+        total = sum(len(line) for line in lines)
+        longest = max((line for line in lines), key=len)
+        return total, longest
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -219,13 +219,13 @@ The generator expression is lazy, so `next` pulls exactly as many items as it ta
 
 5. ▢ Why does the second loop print nothing, and what are the two ways to fix it?
 
-   ```python
-   evens = filter(lambda n: n % 2 == 0, range(10))
-   for n in evens:
-       print(n)
-   for n in evens:
-       print("again", n)
-   ```
+    ```python
+    evens = filter(lambda n: n % 2 == 0, range(10))
+    for n in evens:
+        print(n)
+    for n in evens:
+        print("again", n)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

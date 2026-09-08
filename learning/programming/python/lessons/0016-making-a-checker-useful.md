@@ -202,11 +202,11 @@ Defect 2, inside `untyped`. Without annotations, the body is not checked and cal
 
 2. ▢ Fix this without `assert`, `cast`, or an ignore comment.
 
-   ```python
-   def label(order_id: int) -> str:
-       order = find(order_id)
-       return order.country.upper()
-   ```
+    ```python
+    def label(order_id: int) -> str:
+        order = find(order_id)
+        return order.country.upper()
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -260,10 +260,10 @@ Two details matter. Relax **flags**, not `strict`, since `strict = false` per mo
 
 5. ▢ Why is this worse than it looks, and what is the narrower fix?
 
-   ```toml
-   [tool.mypy]
-   ignore_missing_imports = true
-   ```
+    ```toml
+    [tool.mypy]
+    ignore_missing_imports = true
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

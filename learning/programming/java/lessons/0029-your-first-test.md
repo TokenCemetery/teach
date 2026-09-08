@@ -253,18 +253,18 @@ The second test does not see the first test's handle. `@BeforeEach` runs before 
 
 3. ▢ This test class fails to build. Say what the error will name, without running it.
 
-   ```java
-   class ReportTest {
-       @BeforeAll
-       void setUp() {
-           System.out.println("setUp ran");
-       }
+    ```java
+    class ReportTest {
+        @BeforeAll
+        void setUp() {
+            System.out.println("setUp ran");
+        }
 
-       @Test
-       void aTest() {
-       }
-   }
-   ```
+        @Test
+        void aTest() {
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -274,11 +274,11 @@ The error names `setUp`, and says it must be `static` unless the class is annota
 
 4. ▢ Predict the exact failure message.
 
-   ```java
-   String expected = "gold";
-   String actual = "silver";
-   assertEquals(actual, expected);
-   ```
+    ```java
+    String expected = "gold";
+    String actual = "silver";
+    assertEquals(actual, expected);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

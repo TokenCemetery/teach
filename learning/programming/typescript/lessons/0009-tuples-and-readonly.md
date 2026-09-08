@@ -160,11 +160,11 @@ Both diagnostics are the ones already explained; `as const` introduces no new ru
 
 1. ▢ Predict the result of each line.
 
-   ```ts
-   const t: [number, string, boolean] = [1, "a", true];
-   const n: 3 = t.length;
-   const x = t[3];
-   ```
+    ```ts
+    const t: [number, string, boolean] = [1, "a", true];
+    const n: 3 = t.length;
+    const x = t[3];
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -178,11 +178,11 @@ error TS2493: Tuple type '[number, string, boolean]' of length '3' has no elemen
 
 2. ▢ Predict what happens, including what `t` looks like afterwards.
 
-   ```ts
-   const t: [number, string] = [1, "a"];
-   t.push(99);
-   console.log(t);
-   ```
+    ```ts
+    const t: [number, string] = [1, "a"];
+    t.push(99);
+    console.log(t);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -192,12 +192,12 @@ It compiles with no diagnostic, and prints `[ 1, 'a', 99 ]`. `push` belongs to t
 
 3. ▢ Which line fails, and with what diagnostic?
 
-   ```ts
-   function sumAll(nums: readonly number[]): number {
-     nums.sort();
-     return nums.reduce((total, n) => total + n, 0);
-   }
-   ```
+    ```ts
+    function sumAll(nums: readonly number[]): number {
+      nums.sort();
+      return nums.reduce((total, n) => total + n, 0);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -213,17 +213,17 @@ error TS2339: Property 'sort' does not exist on type 'readonly number[]'.
 
 4. ▢ Predict whether this compiles, and what it prints.
 
-   ```ts
-   type Point = { readonly x: number; readonly y: number };
+    ```ts
+    type Point = { readonly x: number; readonly y: number };
 
-   function shiftRight(p: { x: number; y: number }) {
-     p.x += 10;
-   }
+    function shiftRight(p: { x: number; y: number }) {
+      p.x += 10;
+    }
 
-   const origin: Point = { x: 0, y: 0 };
-   shiftRight(origin);
-   console.log(origin.x);
-   ```
+    const origin: Point = { x: 0, y: 0 };
+    shiftRight(origin);
+    console.log(origin.x);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -239,11 +239,11 @@ It compiles with no diagnostic, and prints `10`. `readonly` is not part of objec
 
 5. ▢ Predict which lines compile.
 
-   ```ts
-   const rgb = [255, 0, 128] as const;
-   const [r, g, b] = rgb;
-   rgb.push(1);
-   ```
+    ```ts
+    const rgb = [255, 0, 128] as const;
+    const [r, g, b] = rgb;
+    rgb.push(1);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

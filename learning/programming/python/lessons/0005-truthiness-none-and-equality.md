@@ -91,9 +91,9 @@ Ordering comparisons between unrelated types raise `TypeError`, which is deliber
 
 1. ▢ Which of these are falsy?
 
-   ```python
-   0, "0", [], [[]], "", " ", {}, {0: 0}, None, False, 0.0, "False"
-   ```
+    ```python
+    0, "0", [], [[]], "", " ", {}, {0: 0}, None, False, 0.0, "False"
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -107,13 +107,13 @@ The pair to internalise is `""` against `" "`, and `[]` against `[[]]`: emptines
 
 2. ▢ Predict what this prints for each call: `apply()`, `apply(0)`, `apply(5)`.
 
-   ```python
-   def apply(retries=None):
-       if retries:
-           print("using", retries)
-       else:
-           print("using default")
-   ```
+    ```python
+    def apply(retries=None):
+        if retries:
+            print("using", retries)
+        else:
+            print("using default")
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -131,9 +131,9 @@ The middle one is the bug: the caller explicitly asked for zero retries and was 
 
 3. ▢ Fix this line so that a caller can ask for no timeout at all, and say why the original fails.
 
-   ```python
-   timeout = timeout or 30
-   ```
+    ```python
+    timeout = timeout or 30
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -160,12 +160,12 @@ Option a asks the object for its opinion via `__eq__`, which a class can answer 
 
 5. ▢ Both lines below are common in real code. For each, say what input makes it wrong.
 
-   ```python
-   if len(items) > 0:
-       ...
-   if items != []:
-       ...
-   ```
+    ```python
+    if len(items) > 0:
+        ...
+    if items != []:
+        ...
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

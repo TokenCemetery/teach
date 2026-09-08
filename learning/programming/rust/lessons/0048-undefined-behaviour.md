@@ -189,16 +189,16 @@ No: debug loses data in most attempts, nine of ten in one run, while release sta
 
 4. ▢ Ordinary access is always aligned; a raw pointer skips that check. Predict whether reading a `u32` through a pointer offset one byte into an eight-byte buffer compiles and runs cleanly on stable, then run it, then under Miri.
 
-   ```rust
-   let buf: [u8; 8] = [1, 2, 3, 4, 5, 6, 7, 8];
-   let base = buf.as_ptr();
-   unsafe {
-       let misaligned = base.add(1) as *const u32;
-       // SAFETY: not sound -- misaligned has alignment 1, but u32 needs 4.
-       let value = misaligned.read();
-       println!("value = {value}");
-   }
-   ```
+    ```rust
+    let buf: [u8; 8] = [1, 2, 3, 4, 5, 6, 7, 8];
+    let base = buf.as_ptr();
+    unsafe {
+        let misaligned = base.add(1) as *const u32;
+        // SAFETY: not sound -- misaligned has alignment 1, but u32 needs 4.
+        let value = misaligned.read();
+        println!("value = {value}");
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

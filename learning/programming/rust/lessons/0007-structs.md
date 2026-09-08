@@ -212,19 +212,19 @@ What the type does not promise is that fields sit in memory in declaration order
 
 1. ▢ Which of these compile?
 
-   ```rust
-   // A
-   struct Point(f64, f64);
-   let p = Point(1.0, 2.0);
-   println!("{} {}", p.0, p.1);
+    ```rust
+    // A
+    struct Point(f64, f64);
+    let p = Point(1.0, 2.0);
+    println!("{} {}", p.0, p.1);
 
-   // B
-   struct Marker;
-   let _m = Marker;
+    // B
+    struct Marker;
+    let _m = Marker;
 
-   // C
-   struct Pair { left: &str, right: &str }
-   ```
+    // C
+    struct Pair { left: &str, right: &str }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -234,15 +234,15 @@ A and B compile: a tuple struct read back by position, and a unit struct with no
 
 2. ▢ Predict whether this compiles, then say which line the error points at.
 
-   ```rust
-   struct Request { path: String, status: u16 }
+    ```rust
+    struct Request { path: String, status: u16 }
 
-   impl Request {
-       fn mark_seen(&self) {
-           self.status = 0;
-       }
-   }
-   ```
+    impl Request {
+        fn mark_seen(&self) {
+            self.status = 0;
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -258,17 +258,17 @@ It does not compile. `error[E0594]`, pointing at `self.status = 0`, because `&se
 
 3. ▢ Predict what happens, and name the error code.
 
-   ```rust
-   struct Request { path: String }
+    ```rust
+    struct Request { path: String }
 
-   impl Request {
-       fn into_path(self) -> String { self.path }
-   }
+    impl Request {
+        fn into_path(self) -> String { self.path }
+    }
 
-   let r = Request { path: String::from("/index") };
-   let a = r.into_path();
-   let b = r.into_path();
-   ```
+    let r = Request { path: String::from("/index") };
+    let a = r.into_path();
+    let b = r.into_path();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -278,12 +278,12 @@ It does not compile. The first call to `into_path` moves `r` away, since the met
 
 4. ▢ Predict the error, then predict the printed output once it is fixed.
 
-   ```rust
-   struct Request { path: String, status: u16 }
+    ```rust
+    struct Request { path: String, status: u16 }
 
-   let r = Request { path: String::from("/index"), status: 200 };
-   println!("{r:?}");
-   ```
+    let r = Request { path: String::from("/index"), status: 200 };
+    println!("{r:?}");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -293,15 +293,15 @@ It does not compile. The first call to `into_path` moves `r` away, since the met
 
 5. ▢ Predict whether both `println!` calls succeed, and if not, which one fails and why.
 
-   ```rust
-   #[derive(Debug)]
-   struct Summary { path: String, requests: u32 }
+    ```rust
+    #[derive(Debug)]
+    struct Summary { path: String, requests: u32 }
 
-   let old = Summary { path: String::from("/index"), requests: 2 };
-   let new = Summary { requests: 4, ..old };
-   println!("{new:?}");
-   println!("{old:?}");
-   ```
+    let old = Summary { path: String::from("/index"), requests: 2 };
+    let new = Summary { requests: 4, ..old };
+    println!("{new:?}");
+    println!("{old:?}");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -167,12 +167,12 @@ stop.set(); t.join(timeout=10)
 
 1. ▢ Find the defect.
 
-   ```python
-   with ThreadPoolExecutor(8) as pool:
-       for order in orders:
-           pool.submit(charge, order)
-   log.info("charged %d orders", len(orders))
-   ```
+    ```python
+    with ThreadPoolExecutor(8) as pool:
+        for order in orders:
+            pool.submit(charge, order)
+    log.info("charged %d orders", len(orders))
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -204,15 +204,15 @@ The dict mapping future to input is the standard trick for knowing **which** ite
 
 2. ▢ Rewrite without a lock.
 
-   ```python
-   totals = {}
-   lock = threading.Lock()
+    ```python
+    totals = {}
+    lock = threading.Lock()
 
-   def process(chunk):
-       for row in chunk:
-           with lock:
-               totals[row.country] = totals.get(row.country, 0) + row.amount
-   ```
+    def process(chunk):
+        for row in chunk:
+            with lock:
+                totals[row.country] = totals.get(row.country, 0) + row.amount
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -255,11 +255,11 @@ That is the general move: **turn shared accumulation into returned values.** It 
 
 4. ▢ Why is this dangerous, and what does the fix cost?
 
-   ```python
-   with lock:
-       response = http.get(url)          # network call, inside the lock
-       cache[url] = response.json()
-   ```
+    ```python
+    with lock:
+        response = http.get(url)          # network call, inside the lock
+        cache[url] = response.json()
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

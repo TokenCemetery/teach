@@ -244,12 +244,12 @@ When a type is not `Send`, the missing trait is reporting a design question, not
 
 1. ▢ Predict whether this compiles, then check it with `assert_send::<Session>()`.
 
-   ```rust
-   struct Session {
-       id: u32,
-       cache: std::rc::Rc<Vec<String>>,
-   }
-   ```
+    ```rust
+    struct Session {
+        id: u32,
+        cache: std::rc::Rc<Vec<String>>,
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -259,13 +259,13 @@ It does not: `Rc<Vec<String>>` cannot be sent between threads safely, with a not
 
 2. ▢ Predict whether this compiles.
 
-   ```rust
-   let cell = std::cell::RefCell::new(0);
-   let handle = std::thread::spawn(move || {
-       *cell.borrow_mut() += 1;
-   });
-   handle.join().unwrap();
-   ```
+    ```rust
+    let cell = std::cell::RefCell::new(0);
+    let handle = std::thread::spawn(move || {
+        *cell.borrow_mut() += 1;
+    });
+    handle.join().unwrap();
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -281,14 +281,14 @@ It compiles. Moving `cell` gives the new thread sole ownership, and `thread::spa
 
 3. ▢ Predict the error and which trait it names, for this program under `thread::scope`.
 
-   ```rust
-   let shared = std::rc::Rc::new(vec![1, 2, 3]);
-   std::thread::scope(|s| {
-       s.spawn(move || {
-           println!("{:?}", shared);
-       });
-   });
-   ```
+    ```rust
+    let shared = std::rc::Rc::new(vec![1, 2, 3]);
+    std::thread::scope(|s| {
+        s.spawn(move || {
+            println!("{:?}", shared);
+        });
+    });
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -304,14 +304,14 @@ It is `E0277` naming `Send`: `Rc<Vec<i32>>` cannot be sent between threads safel
 
 4. ▢ Predict whether this compiles, and if not, which trait its `help` names.
 
-   ```rust
-   let m = std::sync::Mutex::new(0i32);
-   let guard = m.lock().unwrap();
-   let handle = std::thread::spawn(move || {
-       println!("{}", *guard);
-   });
-   handle.join().unwrap();
-   ```
+    ```rust
+    let m = std::sync::Mutex::new(0i32);
+    let guard = m.lock().unwrap();
+    let handle = std::thread::spawn(move || {
+        println!("{}", *guard);
+    });
+    handle.join().unwrap();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

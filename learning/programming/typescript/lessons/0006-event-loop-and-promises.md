@@ -103,13 +103,13 @@ For error handling, `try`/`catch` around `await` behaves as you would expect, wi
 
 1. ▢ Predict the exact output order.
 
-   ```ts
-   console.log("1");
-   setTimeout(() => console.log("2"), 0);
-   Promise.resolve().then(() => console.log("3"));
-   queueMicrotask(() => console.log("4"));
-   console.log("5");
-   ```
+    ```ts
+    console.log("1");
+    setTimeout(() => console.log("2"), 0);
+    Promise.resolve().then(() => console.log("3"));
+    queueMicrotask(() => console.log("4"));
+    console.log("5");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -127,16 +127,16 @@ Sort the five into three groups first: synchronous, microtask, task.
 
 2. ▢ Predict the output.
 
-   ```ts
-   async function f() {
-     console.log("a");
-     await null;
-     console.log("b");
-   }
-   console.log("start");
-   f();
-   console.log("end");
-   ```
+    ```ts
+    async function f() {
+      console.log("a");
+      await null;
+      console.log("b");
+    }
+    console.log("start");
+    f();
+    console.log("end");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -148,14 +148,14 @@ The call runs synchronously to the `await`, so `a` prints before `end`. `await n
 
 3. ▢ Each request takes 100 milliseconds. How long does each version take?
 
-   ```ts
-   // A
-   const x = await getA();
-   const y = await getB();
+    ```ts
+    // A
+    const x = await getA();
+    const y = await getB();
 
-   // B
-   const [x2, y2] = await Promise.all([getA(), getB()]);
-   ```
+    // B
+    const [x2, y2] = await Promise.all([getA(), getB()]);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -182,12 +182,12 @@ Option a rejects on the first failure and leaves the rest running, so a later re
 
 5. ▢ This loop is meant to process items one at a time and stop on the first error. It does neither. Explain and fix it.
 
-   ```ts
-   items.forEach(async (item) => {
-     await process(item);
-   });
-   console.log("done");
-   ```
+    ```ts
+    items.forEach(async (item) => {
+      await process(item);
+    });
+    console.log("done");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

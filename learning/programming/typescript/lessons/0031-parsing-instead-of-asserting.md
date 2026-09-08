@@ -149,12 +149,12 @@ A schema checks shape and whatever constraints you wrote into it, `min(0)`, a pa
 
 1. ▢ Predict what this prints.
 
-   ```ts
-   const User = z.object({ id: z.string(), age: z.number().int().min(0) });
-   const raw: unknown = { id: "u1", age: -5 };
-   const result = User.safeParse(raw);
-   console.log(result.success);
-   ```
+    ```ts
+    const User = z.object({ id: z.string(), age: z.number().int().min(0) });
+    const raw: unknown = { id: "u1", age: -5 };
+    const result = User.safeParse(raw);
+    console.log(result.success);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -164,12 +164,12 @@ A schema checks shape and whatever constraints you wrote into it, `min(0)`, a pa
 
 2. ▢ Predict the exact diagnostic, with its `TS` number.
 
-   ```ts
-   const Point = z.object({ x: z.number(), y: z.number() });
-   type Point = z.infer<typeof Point>;
-   const p = Point.parse({ x: 1, y: 2 });
-   console.log(p.z);
-   ```
+    ```ts
+    const Point = z.object({ x: z.number(), y: z.number() });
+    type Point = z.infer<typeof Point>;
+    const p = Point.parse({ x: 1, y: 2 });
+    console.log(p.z);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -179,13 +179,13 @@ A schema checks shape and whatever constraints you wrote into it, `min(0)`, a pa
 
 3. ▢ Predict whether both lines compile, and say which one is legal only because of the `.default()` on `c`.
 
-   ```ts
-   const S = z.object({ a: z.string(), c: z.array(z.string()).default([]) });
-   type SOut = z.infer<typeof S>;
-   type SIn = z.input<typeof S>;
-   const x: SOut = { a: "hi", c: [] };
-   const y: SIn = { a: "hi" };
-   ```
+    ```ts
+    const S = z.object({ a: z.string(), c: z.array(z.string()).default([]) });
+    type SOut = z.infer<typeof S>;
+    type SIn = z.input<typeof S>;
+    const x: SOut = { a: "hi", c: [] };
+    const y: SIn = { a: "hi" };
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -201,22 +201,22 @@ Both compile. `x` supplies `c` explicitly, which either type accepts. `y` omits 
 
 4. ▢ Predict whether this compiles, and if it does, predict what happens when it runs.
 
-   ```ts
-   type Account = { id: string; balance: number; currency: string };
+    ```ts
+    type Account = { id: string; balance: number; currency: string };
 
-   function checkAccount(x: unknown): boolean {
-     if (typeof x !== "object" || x === null) return false;
-     const o = x as Record<string, unknown>;
-     return typeof o.id === "string" && typeof o.balance === "number";
-   }
+    function checkAccount(x: unknown): boolean {
+      if (typeof x !== "object" || x === null) return false;
+      const o = x as Record<string, unknown>;
+      return typeof o.id === "string" && typeof o.balance === "number";
+    }
 
-   const raw: unknown = { id: "a1", balance: 100 };
+    const raw: unknown = { id: "a1", balance: 100 };
 
-   if (checkAccount(raw)) {
-     const acc = raw as Account;
-     console.log(acc.currency.toUpperCase());
-   }
-   ```
+    if (checkAccount(raw)) {
+      const acc = raw as Account;
+      console.log(acc.currency.toUpperCase());
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -226,18 +226,18 @@ Compiles with no diagnostic. Fails at run time with `TypeError: Cannot read prop
 
 5. ▢ A function receives a payload on its way to being validated against the schema below. Predict the diagnostic, with its `TS` number, produced by the call beneath it.
 
-   ```ts
-   const Config = z.object({
-     name: z.string(),
-     retries: z.number().default(3),
-   });
-   type ConfigOut = z.infer<typeof Config>;
+    ```ts
+    const Config = z.object({
+      name: z.string(),
+      retries: z.number().default(3),
+    });
+    type ConfigOut = z.infer<typeof Config>;
 
-   function submit(payload: ConfigOut) {
-     Config.parse(payload);
-   }
-   submit({ name: "job" });
-   ```
+    function submit(payload: ConfigOut) {
+      Config.parse(payload);
+    }
+    submit({ name: "job" });
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

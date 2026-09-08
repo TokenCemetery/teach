@@ -109,19 +109,19 @@ This compiles; `!s.isSquare` narrows just as well as the positive check would. A
 
 1. ▢ Predict the output of both calls.
 
-   ```ts
-   type A = { kind: "a"; a: number };
-   type B = { kind: "b"; b: string };
+    ```ts
+    type A = { kind: "a"; a: number };
+    type B = { kind: "b"; b: string };
 
-   function describe(x: A | B): string {
-     if (x.kind === "a") {
-       return `a: ${x.a}`;
-     }
-     return `b: ${x.b}`;
-   }
-   console.log(describe({ kind: "a", a: 5 }));
-   console.log(describe({ kind: "b", b: "hi" }));
-   ```
+    function describe(x: A | B): string {
+      if (x.kind === "a") {
+        return `a: ${x.a}`;
+      }
+      return `b: ${x.b}`;
+    }
+    console.log(describe({ kind: "a", a: 5 }));
+    console.log(describe({ kind: "b", b: "hi" }));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -131,17 +131,17 @@ This compiles; `!s.isSquare` narrows just as well as the positive check would. A
 
 2. ▢ Predict the diagnostic, with its `TS` number.
 
-   ```ts
-   type A = { kind: "a"; a: number };
-   type B = { kind: "b"; b: string };
+    ```ts
+    type A = { kind: "a"; a: number };
+    type B = { kind: "b"; b: string };
 
-   function f(x: A | B) {
-     if (x.kind === "a") {
-       console.log(x.a);
-     }
-     console.log(x.b);
-   }
-   ```
+    function f(x: A | B) {
+      if (x.kind === "a") {
+        console.log(x.a);
+      }
+      console.log(x.b);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -151,13 +151,13 @@ This compiles; `!s.isSquare` narrows just as well as the positive check would. A
 
 3. ▢ Predict whether this compiles.
 
-   ```ts
-   type Success = { kind: "success"; value: number };
-   type Failure = { kind: "failure"; message: string };
-   type Result = Success | Failure;
+    ```ts
+    type Success = { kind: "success"; value: number };
+    type Failure = { kind: "failure"; message: string };
+    type Result = Success | Failure;
 
-   const r: Result = { kind: "success", value: 1, message: "oops" };
-   ```
+    const r: Result = { kind: "success", value: 1, message: "oops" };
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -167,18 +167,18 @@ It does not. `error TS2353: Object literal may only specify known properties, an
 
 4. ▢ Predict the diagnostic, with its `TS` number.
 
-   ```ts
-   type Red = { color: "red" };
-   type Green = { color: "green" };
-   type Light = Red | Green;
+    ```ts
+    type Red = { color: "red" };
+    type Green = { color: "green" };
+    type Light = Red | Green;
 
-   function makeLight() {
-     return { color: "green" };
-   }
+    function makeLight() {
+      return { color: "green" };
+    }
 
-   function show(l: Light) {}
-   show(makeLight());
-   ```
+    function show(l: Light) {}
+    show(makeLight());
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -194,18 +194,18 @@ Ask what `makeLight`'s return type is inferred as, with no annotation and no `as
 
 5. ▢ Does this compile?
 
-   ```ts
-   type Circle = { isSquare: false; radius: number };
-   type Square = { isSquare: true; side: number };
-   type Shape = Circle | Square;
+    ```ts
+    type Circle = { isSquare: false; radius: number };
+    type Square = { isSquare: true; side: number };
+    type Shape = Circle | Square;
 
-   function area(s: Shape) {
-     if (!s.isSquare) {
-       return Math.PI * s.radius * s.radius;
-     }
-     return s.side * s.side;
-   }
-   ```
+    function area(s: Shape) {
+      if (!s.isSquare) {
+        return Math.PI * s.radius * s.radius;
+      }
+      return s.side * s.side;
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

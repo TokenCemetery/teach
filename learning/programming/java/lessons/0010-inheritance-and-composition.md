@@ -244,23 +244,23 @@ cp.equals(p);   // false
 
 1. ▢ Predict the output, and explain it.
 
-   ```java
-   class Logger {
-       Logger() {
-           System.out.println("starting: " + status());
-       }
-       String status() { return "base"; }
-   }
+    ```java
+    class Logger {
+        Logger() {
+            System.out.println("starting: " + status());
+        }
+        String status() { return "base"; }
+    }
 
-   class FileLogger extends Logger {
-       private String prefix = "FILE";
+    class FileLogger extends Logger {
+        private String prefix = "FILE";
 
-       @Override
-       String status() { return prefix; }
-   }
+        @Override
+        String status() { return prefix; }
+    }
 
-   new FileLogger();
-   ```
+    new FileLogger();
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -276,18 +276,18 @@ By the time `Logger`'s constructor body runs, has `FileLogger`'s field initialis
 
 2. ▢ This compiles cleanly and the author believes `save` is overridden. Find the bug.
 
-   ```java
-   class Repository {
-       void save(Object record) { System.out.println("Repository.save(Object)"); }
-   }
+    ```java
+    class Repository {
+        void save(Object record) { System.out.println("Repository.save(Object)"); }
+    }
 
-   class UserRepository extends Repository {
-       void save(String record) { System.out.println("UserRepository.save(String)"); }
-   }
+    class UserRepository extends Repository {
+        void save(String record) { System.out.println("UserRepository.save(String)"); }
+    }
 
-   Repository r = new UserRepository();
-   r.save("alice");
-   ```
+    Repository r = new UserRepository();
+    r.save("alice");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

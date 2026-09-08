@@ -201,16 +201,16 @@ Three shapes push back on a record. **Mutable state**: a record has no setters a
 
 1. ▢ Predict the three outputs, and explain the last line against the first two.
 
-   ```java
-   record Point(double x, double y) {}
-   Point a = new Point(Double.NaN, 1.0);
-   Point b = new Point(Double.NaN, 1.0);
-   Point c = new Point(-0.0, 1.0);
-   Point d = new Point(0.0, 1.0);
-   System.out.println(a.equals(b));
-   System.out.println(c.equals(d));
-   System.out.println(-0.0 == 0.0);
-   ```
+    ```java
+    record Point(double x, double y) {}
+    Point a = new Point(Double.NaN, 1.0);
+    Point b = new Point(Double.NaN, 1.0);
+    Point c = new Point(-0.0, 1.0);
+    Point d = new Point(0.0, 1.0);
+    System.out.println(a.equals(b));
+    System.out.println(c.equals(d));
+    System.out.println(-0.0 == 0.0);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -222,13 +222,13 @@ Generated `equals` on a `double` component follows `Double`'s boxed semantics, n
 
 2. ▢ Find the bug, quote the message it produces, and give the one-line fix.
 
-   ```java
-   record Team(String name, List<String> members) {
-       Team {
-           this.members = List.copyOf(members);
-       }
-   }
-   ```
+    ```java
+    record Team(String name, List<String> members) {
+        Team {
+            this.members = List.copyOf(members);
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -244,13 +244,13 @@ Inside a compact constructor, what is `members` before the compiler's own implic
 
 3. ▢ Predict what these two lines print.
 
-   ```java
-   record Holder(int[] data) {}
-   Holder h1 = new Holder(new int[]{1, 2, 3});
-   Holder h2 = new Holder(new int[]{1, 2, 3});
-   System.out.println(h1.equals(h2));
-   System.out.println(h1);
-   ```
+    ```java
+    record Holder(int[] data) {}
+    Holder h1 = new Holder(new int[]{1, 2, 3});
+    Holder h2 = new Holder(new int[]{1, 2, 3});
+    System.out.println(h1.equals(h2));
+    System.out.println(h1);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -268,11 +268,11 @@ Array `equals` is identity, so two separately allocated arrays with the same con
 
 4. ▢ `LeakyTeam` below copies its `members` list in the compact constructor, yet a caller can still mutate the stored list after construction. Name the one-line fix, and say why it has to touch the accessor rather than the constructor.
 
-   ```java
-   record LeakyTeam(String name, List<String> members) {
-       LeakyTeam { members = new ArrayList<>(members); }
-   }
-   ```
+    ```java
+    record LeakyTeam(String name, List<String> members) {
+        LeakyTeam { members = new ArrayList<>(members); }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

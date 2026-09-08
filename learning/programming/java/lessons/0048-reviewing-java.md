@@ -205,20 +205,20 @@ The author's job here is symmetrical: make the cost visible, or accept it explic
 
 2. ▢ This compiles and every existing test passes.
 
-   ```java
-   interface Notifier {
-       void send(String message) throws NotificationException;
-   }
+    ```java
+    interface Notifier {
+        void send(String message) throws NotificationException;
+    }
 
-   // every one of the four call sites in the codebase:
-   try {
-       notifier.send(message);
-   } catch (NotificationException e) {
-       throw new RuntimeException(e);
-   }
-   ```
+    // every one of the four call sites in the codebase:
+    try {
+        notifier.send(message);
+    } catch (NotificationException e) {
+        throw new RuntimeException(e);
+    }
+    ```
 
-   Write the review comment.
+    Write the review comment.
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -234,15 +234,15 @@ Apply lesson 15's test to `NotificationException` specifically, at the call site
 
 3. ▢ Predict what this prints, then write the review comment.
 
-   ```java
-   List<String> orders = List.of("A1", "A2", "B1", "A3", "B2");
-   int[] seen = {0};
-   List<String> firstTwo = orders.stream()
-           .map(o -> { seen[0]++; return o; })
-           .limit(2)
-           .toList();
-   System.out.println("firstTwo=" + firstTwo + " seen=" + seen[0]);
-   ```
+    ```java
+    List<String> orders = List.of("A1", "A2", "B1", "A3", "B2");
+    int[] seen = {0};
+    List<String> firstTwo = orders.stream()
+            .map(o -> { seen[0]++; return o; })
+            .limit(2)
+            .toList();
+    System.out.println("firstTwo=" + firstTwo + " seen=" + seen[0]);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

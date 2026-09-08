@@ -162,17 +162,17 @@ String.valueOf(null);            // NullPointerException
 
 1. ▢ Predict what each of these two text blocks prints, then explain the difference from the closing delimiter alone.
 
-   ```java
-   String x = """
-       first
-       second
-   """;
+    ```java
+    String x = """
+        first
+        second
+    """;
 
-   String y = """
-       first
-       second
-       """;
-   ```
+    String y = """
+        first
+        second
+        """;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -190,11 +190,11 @@ String.valueOf(null);            // NullPointerException
 
 3. ▢ Find the bug. This method is meant to be a locale-independent, case-insensitive equality check, and it is not:
 
-   ```java
-   static boolean sameKey(String a, String b) {
-       return a.toLowerCase().equals(b.toLowerCase());
-   }
-   ```
+    ```java
+    static boolean sameKey(String a, String b) {
+        return a.toLowerCase().equals(b.toLowerCase());
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

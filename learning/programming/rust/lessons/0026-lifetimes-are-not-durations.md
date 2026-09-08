@@ -205,11 +205,11 @@ Adding it to a function returning a reference to a local cannot make that local 
 
 1. ▢ Predict the error code, and what the `help` line will say the ambiguity is between, before compiling.
 
-   ```rust
-   fn pick(a: &str, b: &str, c: &str) -> &str {
-       if a.len() > b.len() { a } else { c }
-   }
-   ```
+    ```rust
+    fn pick(a: &str, b: &str, c: &str) -> &str {
+        if a.len() > b.len() { a } else { c }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -219,14 +219,14 @@ Adding it to a function returning a reference to a local cannot make that local 
 
 2. ▢ Predict which of these two methods on the same struct compiles, then compile both.
 
-   ```rust
-   struct Cache { note: String }
+    ```rust
+    struct Cache { note: String }
 
-   impl Cache {
-       fn a(&self, fallback: &str) -> &str { &self.note }
-       fn b(&self, fallback: &str) -> &str { fallback }
-   }
-   ```
+    impl Cache {
+        fn a(&self, fallback: &str) -> &str { &self.note }
+        fn b(&self, fallback: &str) -> &str { fallback }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -250,13 +250,13 @@ It compiles. The annotation never changed; what changed is that `x` and its only
 
 4. ▢ Given `pub fn as_str(&self) -> &'a str` on `Chars<'a>`, predict whether this compiles before running it.
 
-   ```rust
-   fn keep_going() -> &'static str {
-       let mut chars = "abc".chars();
-       chars.next();
-       chars.as_str()
-   }
-   ```
+    ```rust
+    fn keep_going() -> &'static str {
+        let mut chars = "abc".chars();
+        chars.next();
+        chars.as_str()
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

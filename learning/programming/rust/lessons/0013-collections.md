@@ -177,13 +177,13 @@ Lesson 7 gave a struct a way to say what it owns, field by field. Lesson 8 gave 
 
 1. ▢ Predict what each line prints or does, in order, then compile it.
 
-   ```rust
-   fn main() {
-       let v = vec![10, 20, 30];
-       println!("{:?}", v.get(5));
-       println!("{}", v[5]);
-   }
-   ```
+    ```rust
+    fn main() {
+        let v = vec![10, 20, 30];
+        println!("{:?}", v.get(5));
+        println!("{}", v[5]);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -193,12 +193,12 @@ The first line prints `None`, since `5` is out of range and `get` says so as a v
 
 2. ▢ Predict whether this compiles, and if not, name the error code, then compile it.
 
-   ```rust
-   fn main() {
-       let s = String::from("rust");
-       println!("{}", s[0]);
-   }
-   ```
+    ```rust
+    fn main() {
+        let s = String::from("rust");
+        println!("{}", s[0]);
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -214,16 +214,16 @@ Does not compile: `error[E0277]`, "the type `str` cannot be indexed by `{integer
 
 3. ▢ Predict what this prints, then compile and run it.
 
-   ```rust
-   use std::collections::HashMap;
+    ```rust
+    use std::collections::HashMap;
 
-   fn main() {
-       let mut m: HashMap<&str, i32> = HashMap::new();
-       m.insert("x", 5);
-       *m.entry("x").or_insert(0) += 1;
-       println!("{:?}", m.get("x"));
-   }
-   ```
+    fn main() {
+        let mut m: HashMap<&str, i32> = HashMap::new();
+        m.insert("x", 5);
+        *m.entry("x").or_insert(0) += 1;
+        println!("{:?}", m.get("x"));
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -239,13 +239,13 @@ Does not compile: `error[E0277]`, "the type `str` cannot be indexed by `{integer
 
 4. ▢ Predict this `Vec`'s contents after `dedup`, then compile and check.
 
-   ```rust
-   fn main() {
-       let mut v = vec![1, 2, 1, 1, 3, 3, 2];
-       v.dedup();
-       println!("{v:?}");
-   }
-   ```
+    ```rust
+    fn main() {
+        let mut v = vec![1, 2, 1, 1, 3, 3, 2];
+        v.dedup();
+        println!("{v:?}");
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -22,10 +22,10 @@ The element type. Every item read out of it is `Any`, so nothing about the conte
 
 2. ▢ What should this return?
 
-   ```python
-   def first(xs: list) -> ?:
-       return xs[0]
-   ```
+    ```python
+    def first(xs: list) -> ?:
+        return xs[0]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -183,16 +183,16 @@ A generic with one call site is indirection. A protocol with one implementer tha
 
 1. ▢ Make this generic, so the checker knows the element type of the result.
 
-   ```python
-   def dedupe(items: list) -> list:
-       seen = set()
-       out = []
-       for item in items:
-           if item not in seen:
-               seen.add(item)
-               out.append(item)
-       return out
-   ```
+    ```python
+    def dedupe(items: list) -> list:
+        seen = set()
+        out = []
+        for item in items:
+            if item not in seen:
+                seen.add(item)
+                out.append(item)
+        return out
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -215,14 +215,14 @@ Strictly, `T` should be bounded to hashable types, and in practice the checker's
 
 2. ▢ Why is the second call an error, and which one line fixes both the error and the design?
 
-   ```python
-   def log_all(items: list[object]) -> None:
-       for item in items:
-           print(item)
+    ```python
+    def log_all(items: list[object]) -> None:
+        for item in items:
+            print(item)
 
-   log_all(["a", "b"])
-   log_all([1, 2])
-   ```
+    log_all(["a", "b"])
+    log_all([1, 2])
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -260,16 +260,16 @@ The body only iterates, so `Iterable` states the real requirement, accepts every
 
 4. ▢ What does this `isinstance` guarantee, and what does the code below it still assume?
 
-   ```python
-   @runtime_checkable
-   class Serialisable(Protocol):
-       def to_json(self) -> str: ...
+    ```python
+    @runtime_checkable
+    class Serialisable(Protocol):
+        def to_json(self) -> str: ...
 
-   def dump(obj: object) -> str:
-       if isinstance(obj, Serialisable):
-           return obj.to_json()
-       return json.dumps(obj)
-   ```
+    def dump(obj: object) -> str:
+        if isinstance(obj, Serialisable):
+            return obj.to_json()
+        return json.dumps(obj)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -281,17 +281,17 @@ So the code assumes the signature. A class whose `to_json(self, indent)` require
 
 5. ▢ Fix the chaining.
 
-   ```python
-   class Query:
-       def where(self, clause: str) -> "Query":
-           return self
+    ```python
+    class Query:
+        def where(self, clause: str) -> "Query":
+            return self
 
-   class AuditedQuery(Query):
-       def by(self, user: str) -> "AuditedQuery":
-           return self
+    class AuditedQuery(Query):
+        def by(self, user: str) -> "AuditedQuery":
+            return self
 
-   AuditedQuery().where("x").by("bob")
-   ```
+    AuditedQuery().where("x").by("bob")
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -254,16 +254,16 @@ warning: [finally] finally clause cannot complete normally
 
 1. ▢ Predict the output, and explain it.
 
-   ```java
-   static String tag() {
-       try {
-           return "try";
-       } finally {
-           return "finally";
-       }
-   }
-   System.out.println(tag());
-   ```
+    ```java
+    static String tag() {
+        try {
+            return "try";
+        } finally {
+            return "finally";
+        }
+    }
+    System.out.println(tag());
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -279,14 +279,14 @@ Both blocks try to return. Only one value can leave the method: which block's co
 
 2. ▢ Find the bug. This cleanup code compiles, and the author believes it is equivalent to try-with-resources.
 
-   ```java
-   Connection c = new Connection();
-   try {
-       runQuery(c);
-   } finally {
-       c.close();
-   }
-   ```
+    ```java
+    Connection c = new Connection();
+    try {
+        runQuery(c);
+    } finally {
+        c.close();
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -302,13 +302,13 @@ When both `runQuery` and `close` throw, only `close`'s exception reaches the cal
 
 3. ▢ Predict the close order, and explain it.
 
-   ```java
-   try (Connection a = new Connection("A");
-        Connection b = new Connection("B");
-        Connection c = new Connection("C")) {
-       System.out.println("using all three");
-   }
-   ```
+    ```java
+    try (Connection a = new Connection("A");
+         Connection b = new Connection("B");
+         Connection c = new Connection("C")) {
+        System.out.println("using all three");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

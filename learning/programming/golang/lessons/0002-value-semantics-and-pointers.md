@@ -104,15 +104,15 @@ Otherwise prefer values. They cannot be nil, they cannot be aliased by accident,
 
 1. ▢ Predict the output.
 
-   ```go
-   type Config struct{ Retries int }
+    ```go
+    type Config struct{ Retries int }
 
-   func bump(c Config) { c.Retries++ }
+    func bump(c Config) { c.Retries++ }
 
-   c := Config{Retries: 1}
-   bump(c)
-   fmt.Println(c.Retries)
-   ```
+    c := Config{Retries: 1}
+    bump(c)
+    fmt.Println(c.Retries)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -124,9 +124,9 @@ To make it stick, the parameter must be `*Config` and the call `bump(&c)`. The w
 
 2. ▢ This function does modify the caller's map. Explain why, given that `m` is a copy.
 
-   ```go
-   func add(m map[string]int) { m["k"] = 1 }
-   ```
+    ```go
+    func add(m map[string]int) { m["k"] = 1 }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

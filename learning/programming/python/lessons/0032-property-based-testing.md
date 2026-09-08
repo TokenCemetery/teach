@@ -135,10 +135,10 @@ The honest workflow is example tests for the behaviour you are building, plus on
 
 1. ▢ Name the property, and write it.
 
-   ```python
-   def to_query_string(params: dict[str, str]) -> str: ...
-   def from_query_string(qs: str) -> dict[str, str]: ...
-   ```
+    ```python
+    def to_query_string(params: dict[str, str]) -> str: ...
+    def from_query_string(qs: str) -> dict[str, str]: ...
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -156,12 +156,12 @@ Expect this to fail on the first run, and to be right to fail: keys containing `
 
 2. ▢ Why is the strategy better than the `assume`?
 
-   ```python
-   @given(st.lists(st.integers()))
-   def test_first_is_smallest(xs):
-       assume(len(xs) > 0)
-       assert sorted(xs)[0] == min(xs)
-   ```
+    ```python
+    @given(st.lists(st.integers()))
+    def test_first_is_smallest(xs):
+        assume(len(xs) > 0)
+        assert sorted(xs)[0] == min(xs)
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

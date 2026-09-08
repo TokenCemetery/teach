@@ -180,11 +180,11 @@ The `ids=` callable keeps the output readable, and the named fields stop a reade
 
 1. ▢ Convert, and say what improves in the output.
 
-   ```python
-   def test_falsy_values():
-       for value in (0, "", None, [], {}):
-           assert not value
-   ```
+    ```python
+    def test_falsy_values():
+        for value in (0, "", None, [], {}):
+            assert not value
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -202,19 +202,19 @@ Two of the ids will be `value3` and `value4`, because `[]` and `{}` have no read
 
 2. ▢ Why is this worse than two separate tests?
 
-   ```python
-   @pytest.mark.parametrize("raw, expected, error", [
-       ("10", Decimal("10"), None),
-       ("abc", None, "not a number"),
-       ("", None, "empty"),
-   ])
-   def test_parse(raw, expected, error):
-       if error:
-           with pytest.raises(ValueError, match=error):
-               parse(raw)
-       else:
-           assert parse(raw) == expected
-   ```
+    ```python
+    @pytest.mark.parametrize("raw, expected, error", [
+        ("10", Decimal("10"), None),
+        ("abc", None, "not a number"),
+        ("", None, "empty"),
+    ])
+    def test_parse(raw, expected, error):
+        if error:
+            with pytest.raises(ValueError, match=error):
+                parse(raw)
+        else:
+            assert parse(raw) == expected
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -241,12 +241,12 @@ def test_rejects_invalid_numbers(raw, message):
 
 3. ▢ How many tests does this collect, and is that a good idea?
 
-   ```python
-   @pytest.mark.parametrize("backend", ["sqlite", "postgres", "mysql"])
-   @pytest.mark.parametrize("payload", [P1, P2, P3, P4])
-   @pytest.mark.parametrize("mode", ["sync", "async"])
-   def test_roundtrip(backend, payload, mode): ...
-   ```
+    ```python
+    @pytest.mark.parametrize("backend", ["sqlite", "postgres", "mysql"])
+    @pytest.mark.parametrize("payload", [P1, P2, P3, P4])
+    @pytest.mark.parametrize("mode", ["sync", "async"])
+    def test_roundtrip(backend, payload, mode): ...
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -148,9 +148,9 @@ It loses at least one value every run, most often `[1, 2, 5]` and occasionally `
 
 2. ▢ Predict whether `unsafe_consumer` still loses data if the deadline slows from thirty milliseconds to two hundred, same producer, then run it to check.
 
-   ```rust
-   _ = sleep(Duration::from_millis(200)) => { /* unchanged otherwise */ }
-   ```
+    ```rust
+    _ = sleep(Duration::from_millis(200)) => { /* unchanged otherwise */ }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -174,13 +174,13 @@ It prints `sent 1..=5, consumer kept [1, 2, 3, 4, 5]` every time: losing a lap t
 
 4. ▢ Predict whether this compiles, then try it.
 
-   ```rust
-   let mut fut = slow_task();
-   tokio::select! {
-       v = &mut fut => { println!("{v}"); }
-       _ = sleep(Duration::from_millis(5)) => { println!("tick"); }
-   }
-   ```
+    ```rust
+    let mut fut = slow_task();
+    tokio::select! {
+        v = &mut fut => { println!("{v}"); }
+        _ = sleep(Duration::from_millis(5)) => { println!("tick"); }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

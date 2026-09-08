@@ -83,11 +83,11 @@ You can also drop early on purpose with `drop(value)`, which is an ordinary func
 
 1. ▢ How many heap allocations do these three lines make, and what does each variable own?
 
-   ```rust
-   let a = 5i32;
-   let b = String::from("five");
-   let c = "five";
-   ```
+    ```rust
+    let a = 5i32;
+    let b = String::from("five");
+    let c = "five";
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -101,20 +101,20 @@ The third case is worth noticing early. Lesson 4 is entirely about the differenc
 
 2. ▢ Predict the output.
 
-   ```rust
-   struct Noisy(&'static str);
-   impl Drop for Noisy {
-       fn drop(&mut self) { println!("{}", self.0); }
-   }
+    ```rust
+    struct Noisy(&'static str);
+    impl Drop for Noisy {
+        fn drop(&mut self) { println!("{}", self.0); }
+    }
 
-   fn main() {
-       let _first = Noisy("first");
-       {
-           let _inner = Noisy("inner");
-       }
-       let _last = Noisy("last");
-   }
-   ```
+    fn main() {
+        let _first = Noisy("first");
+        {
+            let _inner = Noisy("inner");
+        }
+        let _last = Noisy("last");
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -132,17 +132,17 @@ The inner scope ends first, so `_inner` drops there. At the end of `main`, the r
 
 3. ▢ Where is the `String` dropped in each case?
 
-   ```rust
-   fn a(s: String) { println!("{s}"); }
-   fn b(s: &String) { println!("{s}"); }
+    ```rust
+    fn a(s: String) { println!("{s}"); }
+    fn b(s: &String) { println!("{s}"); }
 
-   fn main() {
-       let s1 = String::from("x");
-       a(s1);
-       let s2 = String::from("y");
-       b(&s2);
-   }
-   ```
+    fn main() {
+        let s1 = String::from("x");
+        a(s1);
+        let s2 = String::from("y");
+        b(&s2);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

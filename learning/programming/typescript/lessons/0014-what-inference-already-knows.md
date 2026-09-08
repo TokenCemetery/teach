@@ -115,9 +115,9 @@ Inference is only as sound as the checks that are on, and `strict` is only the s
 
 1. ▢ Predict whether this compiles, and what type `a` is inferred as.
 
-   ```ts
-   const a = [1, 2, "x", true];
-   ```
+    ```ts
+    const a = [1, 2, "x", true];
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -127,11 +127,11 @@ Compiles, as `(string | number | boolean)[]`, the union of every element's type.
 
 2. ▢ Predict the diagnostic, including its `TS` number.
 
-   ```ts
-   const rows: any[] = [1, 2, 3];
-   rows.push("oops");
-   const total: number = rows.reduce((a, b) => a + b, 0);
-   ```
+    ```ts
+    const rows: any[] = [1, 2, 3];
+    rows.push("oops");
+    const total: number = rows.reduce((a, b) => a + b, 0);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -155,13 +155,13 @@ Only if `cb` is contextually typed, meaning this arrow is being passed somewhere
 
 4. ▢ Which of these two versions would you annotate, and why?
 
-   ```ts
-   // a
-   function double(n: number) { return n * 2; }
+    ```ts
+    // a
+    function double(n: number) { return n * 2; }
 
-   // b
-   export function fetchUser(id: string) { /* ... */ }
-   ```
+    // b
+    export function fetchUser(id: string) { /* ... */ }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -171,11 +171,11 @@ Only if `cb` is contextually typed, meaning this arrow is being passed somewhere
 
 5. ▢ Predict the outcome of each line.
 
-   ```ts
-   const items: string[] = ["a", "b"];
-   const first: string = items[0];
-   const tenth: string = items[9];
-   ```
+    ```ts
+    const items: string[] = ["a", "b"];
+    const first: string = items[0];
+    const tenth: string = items[9];
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -147,13 +147,13 @@ The pattern: ask what the thread is doing while it is slow. Waiting scales; inte
 
 2. ▢ This runs on a standard build and produces the right answer every time. Is it correct?
 
-   ```python
-   total = 0
-   def add_all(items):
-       global total
-       for item in items:
-           total += item
-   ```
+    ```python
+    total = 0
+    def add_all(items):
+        global total
+        for item in items:
+            total += item
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -173,14 +173,14 @@ Correct versions: a lock around the update, or each thread returning its own sub
 
 3. ▢ Fix the cache, and explain what the lock protects.
 
-   ```python
-   cache: dict[str, Connection] = {}
+    ```python
+    cache: dict[str, Connection] = {}
 
-   def get(key):
-       if key not in cache:
-           cache[key] = connect(key)       # connect() does I/O
-       return cache[key]
-   ```
+    def get(key):
+        if key not in cache:
+            cache[key] = connect(key)       # connect() does I/O
+        return cache[key]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

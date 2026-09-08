@@ -112,9 +112,9 @@ One more tool belongs here without belonging to this lesson: `satisfies` checks 
 
 1. ▢ Predict the exact diagnostic, with its `TS` number, and then say what change to the code would make it compile without going through `unknown`.
 
-   ```ts
-   const flag = true as string;
-   ```
+    ```ts
+    const flag = true as string;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -124,11 +124,11 @@ One more tool belongs here without belonging to this lesson: `satisfies` checks 
 
 2. ▢ Predict whether this compiles, and if it does not raise a compile error, say exactly when it fails instead and what fails.
 
-   ```ts
-   function last(arr: number[]): number {
-     return arr[arr.length - 1]!;
-   }
-   ```
+    ```ts
+    function last(arr: number[]): number {
+      return arr[arr.length - 1]!;
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -144,11 +144,11 @@ Compiles, no diagnostic. It fails at run time whenever `arr` is empty: `arr.leng
 
 3. ▢ Predict whether this compiles, and say specifically which check from an earlier lesson it is switching off.
 
-   ```ts
-   type Options = { retries: number };
-   function run(o: Options) {}
-   run({ retries: 3, timeout: 500 } as Options);
-   ```
+    ```ts
+    type Options = { retries: number };
+    function run(o: Options) {}
+    run({ retries: 3, timeout: 500 } as Options);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -158,15 +158,15 @@ Compiles, no diagnostic. Passing `{ retries: 3, timeout: 500 }` directly to `run
 
 4. ▢ A file has this line, and the assignment above it is later corrected so the type error is gone. Predict what happens on the next build for each version, and name the diagnostic where one appears.
 
-   ```ts
-   // @ts-ignore
-   const value: number = 5;
-   ```
+    ```ts
+    // @ts-ignore
+    const value: number = 5;
+    ```
 
-   ```ts
-   // @ts-expect-error
-   const value: number = 5;
-   ```
+    ```ts
+    // @ts-expect-error
+    const value: number = 5;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

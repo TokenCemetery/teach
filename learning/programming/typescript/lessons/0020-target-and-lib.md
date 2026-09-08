@@ -128,10 +128,10 @@ Pick `target` from what actually has to run the compiled output: a runtime with 
 
 1. ▢ Predict whether this compiles at `--target es2020`, and what changes if the target is raised to `es2022`.
 
-   ```ts
-   const a = [1, 2, 3];
-   console.log(a.at(0));
-   ```
+    ```ts
+    const a = [1, 2, 3];
+    console.log(a.at(0));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -141,9 +141,9 @@ Fails at `es2020` with `error TS2550: Property 'at' does not exist on type 'numb
 
 2. ▢ Predict the diagnostic for this file, compiled with `--target es2022 --lib es2015`.
 
-   ```ts
-   console.log("hi");
-   ```
+    ```ts
+    console.log("hi");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -153,9 +153,9 @@ Fails at `es2020` with `error TS2550: Property 'at' does not exist on type 'numb
 
 3. ▢ Compiled with `--lib es2022` and no `dom`, predict what happens to this line, and whether the diagnostic offers the same kind of hint the two items above got.
 
-   ```ts
-   fetch("https://example.com");
-   ```
+    ```ts
+    fetch("https://example.com");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -179,11 +179,11 @@ Fails at `es2020` with `error TS2550: Property 'at' does not exist on type 'numb
 
 5. ▢ Predict the emitted JavaScript for this function at `--target es2019`, given that it compiles with no error at either target.
 
-   ```ts
-   function greet(name: string | undefined) {
-     return name ?? "stranger";
-   }
-   ```
+    ```ts
+    function greet(name: string | undefined) {
+      return name ?? "stranger";
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

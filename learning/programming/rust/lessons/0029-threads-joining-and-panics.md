@@ -254,15 +254,15 @@ This printed `available_parallelism returned Ok: true`. What it returns on the i
 
 1. ▢ Predict the error code, then compile this.
 
-   ```rust
-   use std::thread;
+    ```rust
+    use std::thread;
 
-   fn main() {
-       let counts = vec![1u8, 2, 3];
-       let handle = thread::spawn(|| counts.iter().sum::<u8>());
-       println!("{:?}", handle.join());
-   }
-   ```
+    fn main() {
+        let counts = vec![1u8, 2, 3];
+        let handle = thread::spawn(|| counts.iter().sum::<u8>());
+        println!("{:?}", handle.join());
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -286,22 +286,22 @@ It is `E0382`, use of a moved value: the first `move` closure already took `coun
 
 3. ▢ Predict whether this compiles, given that each closure only touches one field of `data`.
 
-   ```rust
-   use std::thread;
+    ```rust
+    use std::thread;
 
-   struct Data {
-       first: Vec<i32>,
-       second: Vec<i32>,
-   }
+    struct Data {
+        first: Vec<i32>,
+        second: Vec<i32>,
+    }
 
-   fn main() {
-       let data = Data { first: vec![1, 2, 3], second: vec![4, 5, 6] };
-       let first_handle = thread::spawn(move || data.first.len());
-       let second_handle = thread::spawn(move || data.second.len());
-       println!("{:?}", first_handle.join());
-       println!("{:?}", second_handle.join());
-   }
-   ```
+    fn main() {
+        let data = Data { first: vec![1, 2, 3], second: vec![4, 5, 6] };
+        let first_handle = thread::spawn(move || data.first.len());
+        let second_handle = thread::spawn(move || data.second.len());
+        println!("{:?}", first_handle.join());
+        println!("{:?}", second_handle.join());
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -317,24 +317,24 @@ It compiles and prints `Ok(3)` twice: disjoint capture lets the first closure mo
 
 4. ▢ This closure panics with a formatted message rather than a string literal. Predict which type `downcast_ref` needs before compiling and running.
 
-   ```rust
-   use std::thread;
+    ```rust
+    use std::thread;
 
-   fn main() {
-       let handle = thread::spawn(|| {
-           let bad_count = -1i32;
-           panic!("byte count cannot be negative: {bad_count}");
-       });
+    fn main() {
+        let handle = thread::spawn(|| {
+            let bad_count = -1i32;
+            panic!("byte count cannot be negative: {bad_count}");
+        });
 
-       match handle.join() {
-           Ok(()) => println!("no panic"),
-           Err(payload) => match payload.downcast_ref::<&str>() {
-               Some(message) => println!("recovered: {message}"),
-               None => println!("payload was not a &str"),
-           },
-       }
-   }
-   ```
+        match handle.join() {
+            Ok(()) => println!("no panic"),
+            Err(payload) => match payload.downcast_ref::<&str>() {
+                Some(message) => println!("recovered: {message}"),
+                None => println!("payload was not a &str"),
+            },
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

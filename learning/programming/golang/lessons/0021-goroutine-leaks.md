@@ -83,13 +83,13 @@ The question to ask in review is the one in the title of the primary source: **h
 
 1. ▢ Find the leak.
 
-   ```go
-   ch := make(chan string)
-   for _, q := range queries {
-       go func() { ch <- lookup(q) }()
-   }
-   return <-ch
-   ```
+    ```go
+    ch := make(chan string)
+    for _, q := range queries {
+        go func() { ch <- lookup(q) }()
+    }
+    return <-ch
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

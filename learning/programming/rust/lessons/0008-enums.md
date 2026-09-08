@@ -245,27 +245,27 @@ Both are sixteen, not eight. `&str` is a fat pointer, a data pointer plus a leng
 
 2. ▢ Predict whether this compiles, then compile it and read the message.
 
-   ```rust
-   #[derive(Debug)]
-   enum Shape {
-       Blank,
-       Note(String),
-   }
+    ```rust
+    #[derive(Debug)]
+    enum Shape {
+        Blank,
+        Note(String),
+    }
 
-   fn describe(s: Shape) -> String {
-       match s {
-           Shape::Note(text) => text,
-           Shape::Blank => String::new(),
-       }
-   }
+    fn describe(s: Shape) -> String {
+        match s {
+            Shape::Note(text) => text,
+            Shape::Blank => String::new(),
+        }
+    }
 
-   fn main() {
-       let s = Shape::Note(String::from("hi"));
-       let text = describe(s);
-       println!("{text}");
-       println!("{s:?}");
-   }
-   ```
+    fn main() {
+        let s = Shape::Note(String::from("hi"));
+        let text = describe(s);
+        println!("{text}");
+        println!("{s:?}");
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

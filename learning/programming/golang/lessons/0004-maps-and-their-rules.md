@@ -115,10 +115,10 @@ An interface key compiles and can still panic at runtime, if the dynamic value i
 
 1. ▢ `m := map[string]int{"a": 0}`. Distinguish the two cases below in code.
 
-   ```go
-   // key "a" exists with value 0
-   // key "b" does not exist
-   ```
+    ```go
+    // key "a" exists with value 0
+    // key "b" does not exist
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -133,11 +133,11 @@ The one-value form returns `0` for both, which is the ambiguity comma-ok exists 
 
 2. ▢ Why does this fail to compile, and give both fixes.
 
-   ```go
-   type Stat struct{ N int }
-   m := map[string]Stat{"a": {}}
-   m["a"].N++
-   ```
+    ```go
+    type Stat struct{ N int }
+    m := map[string]Stat{"a": {}}
+    m["a"].N++
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

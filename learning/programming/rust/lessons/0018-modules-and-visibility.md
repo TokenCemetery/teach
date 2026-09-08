@@ -429,19 +429,19 @@ That is a checklist for "the public API": every `pub` item, every field of a `pu
 
 1. ▢ Predict whether this compiles, and if not, which error code names the problem, then compile it.
 
-   ```rust
-   mod inner {
-       fn secret() -> i32 {
-           9
-       }
-   }
+    ```rust
+    mod inner {
+        fn secret() -> i32 {
+            9
+        }
+    }
 
-   use inner::secret;
+    use inner::secret;
 
-   fn main() {
-       println!("{}", secret());
-   }
-   ```
+    fn main() {
+        println!("{}", secret());
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -451,25 +451,25 @@ It fails with `E0603`, `secret` is private: `use` brings nothing into scope the 
 
 2. ▢ `helper` below is `pub(super)`, and `try_it` calls it from a module nested two levels inside `helper`'s own module, not from its direct parent. Predict whether this compiles.
 
-   ```rust
-   mod parent {
-       pub(crate) mod child {
-           pub(super) fn helper() -> i32 {
-               1
-           }
+    ```rust
+    mod parent {
+        pub(crate) mod child {
+            pub(super) fn helper() -> i32 {
+                1
+            }
 
-           pub mod grandchild {
-               pub fn try_it() -> i32 {
-                   super::helper()
-               }
-           }
-       }
-   }
+            pub mod grandchild {
+                pub fn try_it() -> i32 {
+                    super::helper()
+                }
+            }
+        }
+    }
 
-   fn main() {
-       println!("{}", parent::child::grandchild::try_it());
-   }
-   ```
+    fn main() {
+        println!("{}", parent::child::grandchild::try_it());
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -485,17 +485,17 @@ It compiles and prints `1`. `grandchild::try_it` reaches `helper` through `super
 
 3. ▢ Predict the error code, then compile.
 
-   ```rust
-   mod config {
-       pub struct Settings {
-           api_key: String,
-       }
-   }
+    ```rust
+    mod config {
+        pub struct Settings {
+            api_key: String,
+        }
+    }
 
-   fn main() {
-       let _s = config::Settings { api_key: String::from("x") };
-   }
-   ```
+    fn main() {
+        let _s = config::Settings { api_key: String::from("x") };
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -505,17 +505,17 @@ It compiles and prints `1`. `grandchild::try_it` reaches `helper` through `super
 
 4. ▢ This defines `leak` exactly as in this lesson, but never calls it. Predict whether `cargo build` reports an error, a warning, or neither, then build it.
 
-   ```rust
-   mod outer {
-       struct Private;
+    ```rust
+    mod outer {
+        struct Private;
 
-       pub fn leak() -> Private {
-           Private
-       }
-   }
+        pub fn leak() -> Private {
+            Private
+        }
+    }
 
-   fn main() {}
-   ```
+    fn main() {}
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

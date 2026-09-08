@@ -112,15 +112,15 @@ The same question applies to every embed. Ask what you are exporting, not just w
 
 1. ▢ Predict the output, and say what a Java developer would expect.
 
-   ```go
-   type Base struct{}
-   func (b Base) Name() string  { return "base" }
-   func (b Base) Greet() string { return "hello, " + b.Name() }
-   type Child struct{ Base }
-   func (c Child) Name() string { return "child" }
+    ```go
+    type Base struct{}
+    func (b Base) Name() string  { return "base" }
+    func (b Base) Greet() string { return "hello, " + b.Name() }
+    type Child struct{ Base }
+    func (c Child) Name() string { return "child" }
 
-   fmt.Println(Child{}.Greet())
-   ```
+    fmt.Println(Child{}.Greet())
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

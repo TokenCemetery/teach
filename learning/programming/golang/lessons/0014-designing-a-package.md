@@ -126,10 +126,10 @@ A struct keeps call sites readable, lets the zero value mean "defaults", and add
 
 1. ▢ Rewrite this doc comment.
 
-   ```go
-   // This function will parse the token and give back the claims inside it.
-   func ParseToken(s string) (*Claims, error)
-   ```
+    ```go
+    // This function will parse the token and give back the claims inside it.
+    func ParseToken(s string) (*Claims, error)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

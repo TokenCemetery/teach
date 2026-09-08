@@ -196,29 +196,29 @@ None of this is fixed by writing more careful code at the one line that gets can
 
 1. ▢ Predict what this prints, then compile and run it.
 
-   ```rust
-   use tokio::time::{sleep, timeout, Duration};
+    ```rust
+    use tokio::time::{sleep, timeout, Duration};
 
-   struct Noisy;
-   impl Drop for Noisy {
-       fn drop(&mut self) {
-           println!("dropped");
-       }
-   }
+    struct Noisy;
+    impl Drop for Noisy {
+        fn drop(&mut self) {
+            println!("dropped");
+        }
+    }
 
-   async fn work() {
-       println!("before the await");
-       sleep(Duration::from_millis(200)).await;
-       let _guard = Noisy;
-       println!("after the await, never reached");
-   }
+    async fn work() {
+        println!("before the await");
+        sleep(Duration::from_millis(200)).await;
+        let _guard = Noisy;
+        println!("after the await, never reached");
+    }
 
-   #[tokio::main]
-   async fn main() {
-       let outcome = timeout(Duration::from_millis(30), work()).await;
-       println!("{outcome:?}");
-   }
-   ```
+    #[tokio::main]
+    async fn main() {
+        let outcome = timeout(Duration::from_millis(30), work()).await;
+        println!("{outcome:?}");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -228,25 +228,25 @@ Five of five runs printed `before the await`, then `Err(Elapsed(()))`, with no `
 
 2. ▢ Predict what this prints, then compile and run it.
 
-   ```rust
-   use tokio::time::{sleep, timeout, Duration};
+    ```rust
+    use tokio::time::{sleep, timeout, Duration};
 
-   async fn steps() {
-       println!("step 0");
-       sleep(Duration::from_millis(20)).await;
-       println!("step 1");
-       sleep(Duration::from_millis(20)).await;
-       println!("step 2");
-       sleep(Duration::from_millis(20)).await;
-       println!("step 3, never reached");
-   }
+    async fn steps() {
+        println!("step 0");
+        sleep(Duration::from_millis(20)).await;
+        println!("step 1");
+        sleep(Duration::from_millis(20)).await;
+        println!("step 2");
+        sleep(Duration::from_millis(20)).await;
+        println!("step 3, never reached");
+    }
 
-   #[tokio::main]
-   async fn main() {
-       let outcome = timeout(Duration::from_millis(45), steps()).await;
-       println!("{outcome:?}");
-   }
-   ```
+    #[tokio::main]
+    async fn main() {
+        let outcome = timeout(Duration::from_millis(45), steps()).await;
+        println!("{outcome:?}");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

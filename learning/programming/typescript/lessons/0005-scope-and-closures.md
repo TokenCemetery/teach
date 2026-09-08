@@ -106,10 +106,10 @@ One cost worth knowing: a closure keeps its whole enclosing scope reachable, so 
 
 1. ▢ Predict both loops.
 
-   ```ts
-   for (var i = 0; i < 3; i++) setTimeout(() => console.log(i), 0);
-   for (let j = 0; j < 3; j++) setTimeout(() => console.log(j), 0);
-   ```
+    ```ts
+    for (var i = 0; i < 3; i++) setTimeout(() => console.log(i), 0);
+    for (let j = 0; j < 3; j++) setTimeout(() => console.log(j), 0);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -121,16 +121,16 @@ The first prints `3 3 3`. The second prints `0 1 2`.
 
 2. ▢ Predict the output.
 
-   ```ts
-   function make() {
-     let n = 0;
-     return { inc: () => ++n, get: () => n };
-   }
-   const a = make();
-   const b = make();
-   a.inc(); a.inc(); b.inc();
-   console.log(a.get(), b.get());
-   ```
+    ```ts
+    function make() {
+      let n = 0;
+      return { inc: () => ++n, get: () => n };
+    }
+    const a = make();
+    const b = make();
+    a.inc(); a.inc(); b.inc();
+    console.log(a.get(), b.get());
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -142,12 +142,12 @@ Each call to `make` created its own `n`. Within one object, `inc` and `get` clos
 
 3. ▢ What does this print, and what is the name of the rule?
 
-   ```ts
-   console.log(a);
-   console.log(b);
-   var a = 1;
-   let b = 2;
-   ```
+    ```ts
+    console.log(a);
+    console.log(b);
+    var a = 1;
+    let b = 2;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -165,12 +165,12 @@ Both declarations are hoisted. Only one of them is initialised before its line i
 
 4. ▢ Fix this so each button logs its own index, using two different approaches.
 
-   ```ts
-   var handlers = [];
-   for (var i = 0; i < 3; i++) {
-     handlers.push(() => console.log(i));
-   }
-   ```
+    ```ts
+    var handlers = [];
+    for (var i = 0; i < 3; i++) {
+      handlers.push(() => console.log(i));
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -195,12 +195,12 @@ The second version makes the mechanism visible: passing `i` as an argument copie
 
 5. ▢ This handler keeps a large object alive for the life of the program. Explain how, and fix it.
 
-   ```ts
-   function register(response: HugeResponse) {
-     const id = response.user.id;
-     onEvent(() => track(response.user.id));
-   }
-   ```
+    ```ts
+    function register(response: HugeResponse) {
+      const id = response.user.id;
+      onEvent(() => track(response.user.id));
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

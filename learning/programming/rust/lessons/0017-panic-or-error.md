@@ -157,12 +157,12 @@ Five cases, three errors and two panics, from a log summariser and the standard 
 
 1. ▢ Predict what this prints and its exit status, then run it.
 
-   ```rust
-   fn main() {
-       let v: Vec<i32> = Vec::new();
-       println!("{}", v[0]);
-   }
-   ```
+    ```rust
+    fn main() {
+        let v: Vec<i32> = Vec::new();
+        println!("{}", v[0]);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -172,11 +172,11 @@ It panics with `index out of bounds: the len is 0 but the index is 0` and exits 
 
 2. ▢ `split(9, 0)` calls this function. Predict whether it panics, then decide with this lesson's procedure whether `split` should panic or return `Result` if `parts` can come from a configuration file a user edits by hand.
 
-   ```rust
-   fn split(total: u32, parts: u32) -> u32 {
-       total / parts
-   }
-   ```
+    ```rust
+    fn split(total: u32, parts: u32) -> u32 {
+        total / parts
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -192,13 +192,13 @@ It panics: `attempt to divide by zero`. Since `parts` would come from a file a u
 
 3. ▢ Predict whether this compiles, and if it does not, predict the shape of the diagnostic, then compile it.
 
-   ```rust
-   fn main() {
-       let count: u8 = 250;
-       let extra: u8 = 10;
-       println!("{}", count + extra);
-   }
-   ```
+    ```rust
+    fn main() {
+        let count: u8 = 250;
+        let extra: u8 = 10;
+        println!("{}", count + extra);
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -214,12 +214,12 @@ It does not compile, in either profile: `error: this arithmetic operation will o
 
 4. ▢ Predict what this prints in a normal build and in one built with `--release`, then run both.
 
-   ```rust
-   fn main() {
-       debug_assert!(1 + 1 == 3, "arithmomancy failed");
-       println!("still running");
-   }
-   ```
+    ```rust
+    fn main() {
+        debug_assert!(1 + 1 == 3, "arithmomancy failed");
+        println!("still running");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

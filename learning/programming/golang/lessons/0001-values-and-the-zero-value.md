@@ -88,11 +88,11 @@ The wrong instinct, imported from a language with `null`, is to write `if tags !
 
 2. ▢ Predict the output, then explain the difference between the two lines.
 
-   ```go
-   var counts map[string]int
-   fmt.Println(counts["a"])
-   counts["a"]++
-   ```
+    ```go
+    var counts map[string]int
+    fmt.Println(counts["a"])
+    counts["a"]++
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -131,12 +131,12 @@ The habit worth breaking is writing `NewThing()` reflexively. If it only sets fi
 
 5. ▢ Is this type usable without a constructor, and what would you still warn a reviewer about?
 
-   ```go
-   type Counter struct {
-       mu sync.Mutex
-       n  int
-   }
-   ```
+    ```go
+    type Counter struct {
+        mu sync.Mutex
+        n  int
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

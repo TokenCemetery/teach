@@ -123,13 +123,13 @@ Release resources with a context manager from lesson 11. `__del__` is acceptable
 
 1. ▢ Why does this print `abc` rather than `ABC`?
 
-   ```python
-   class Upper(str):
-       def __init__(self, value):
-           self = value.upper()
+    ```python
+    class Upper(str):
+        def __init__(self, value):
+            self = value.upper()
 
-   print(Upper("abc"))
-   ```
+    print(Upper("abc"))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -143,19 +143,19 @@ The fix is `__new__`, because creation is the only moment an immutable value can
 
 2. ▢ Find the bug.
 
-   ```python
-   class Connection:
-       _instance = None
+    ```python
+    class Connection:
+        _instance = None
 
-       def __new__(cls, dsn):
-           if cls._instance is None:
-               cls._instance = super().__new__(cls)
-           return cls._instance
+        def __new__(cls, dsn):
+            if cls._instance is None:
+                cls._instance = super().__new__(cls)
+            return cls._instance
 
-       def __init__(self, dsn):
-           self.dsn = dsn
-           self.pool = []
-   ```
+        def __init__(self, dsn):
+            self.dsn = dsn
+            self.pool = []
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -189,16 +189,16 @@ Guards exist (`if hasattr(self, "dsn"): return`), and they make a confusing clas
 
 4. ▢ Replace this with named constructors, and say what improves.
 
-   ```python
-   class Order:
-       def __init__(self, row=None, payload=None, id=None, amount=None):
-           if row is not None:
-               self.id, self.amount = row["id"], Decimal(row["amount"])
-           elif payload is not None:
-               self.id, self.amount = payload["id"], Decimal(str(payload["amount"]))
-           else:
-               self.id, self.amount = id, amount
-   ```
+    ```python
+    class Order:
+        def __init__(self, row=None, payload=None, id=None, amount=None):
+            if row is not None:
+                self.id, self.amount = row["id"], Decimal(row["amount"])
+            elif payload is not None:
+                self.id, self.amount = payload["id"], Decimal(str(payload["amount"]))
+            else:
+                self.id, self.amount = id, amount
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -223,7 +223,7 @@ What improves: every parameter is now required and typed, so a checker can verif
 
 5. ▢ What replaces a metaclass here, and why is it better?
 
-   Requirement: every subclass of `Handler` must define a `route` attribute, and must register itself in a lookup table.
+    Requirement: every subclass of `Handler` must define a `route` attribute, and must register itself in a lookup table.
 
 <details markdown="1"><summary>Check</summary>
 

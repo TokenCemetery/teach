@@ -162,19 +162,19 @@ The line above the message, an absolute path inside tokio's own source in the cr
 
 1. ▢ Take the parking `block_on_parking` above and swap only its waker, from `Waker::from(Arc::new(ThreadWaker(thread::current())))` to `Waker::noop()`, keeping `thread::park()` in the `Pending` arm. Predict what happens against `DelayedReady`, then run it under a watchdog.
 
-   ```rust
-   fn block_on_parking_noop<F: Future>(future: F) -> F::Output {
-       let mut future = pin!(future);
-       let waker = Waker::noop();
-       let mut cx = Context::from_waker(waker);
-       loop {
-           match future.as_mut().poll(&mut cx) {
-               Poll::Ready(value) => return value,
-               Poll::Pending => thread::park(),
-           }
-       }
-   }
-   ```
+    ```rust
+    fn block_on_parking_noop<F: Future>(future: F) -> F::Output {
+        let mut future = pin!(future);
+        let waker = Waker::noop();
+        let mut cx = Context::from_waker(waker);
+        loop {
+            match future.as_mut().poll(&mut cx) {
+                Poll::Ready(value) => return value,
+                Poll::Pending => thread::park(),
+            }
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -115,11 +115,11 @@ This is legitimate and occasionally useful: methods on nil receivers are how a n
 
 1. ▢ Predict both printed values, then explain the difference in one sentence.
 
-   ```go
-   var p *MyError
-   var err error = p
-   fmt.Println(p == nil, err == nil)
-   ```
+    ```go
+    var p *MyError
+    var err error = p
+    fmt.Println(p == nil, err == nil)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -131,15 +131,15 @@ This is legitimate and occasionally useful: methods on nil receivers are how a n
 
 2. ▢ Fix this function, and say why your fix works.
 
-   ```go
-   func validate(s string) error {
-       var e *ValidationError
-       if s == "" {
-           e = &ValidationError{Field: "name"}
-       }
-       return e
-   }
-   ```
+    ```go
+    func validate(s string) error {
+        var e *ValidationError
+        if s == "" {
+            e = &ValidationError{Field: "name"}
+        }
+        return e
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

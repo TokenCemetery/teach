@@ -234,18 +234,18 @@ Both blocks compiled, which is what makes this the sharpest demonstration of the
 
 1. ▢ Predict whether wrapping a `HashMap<String, u32>` in a local tuple struct and implementing `Display` on the wrapper compiles, and predict the error code if `Display` is implemented directly on `HashMap<String, u32>` instead. Then compile both.
 
-   ```rust
-   use std::collections::HashMap;
-   use std::fmt;
+    ```rust
+    use std::collections::HashMap;
+    use std::fmt;
 
-   struct Registry(HashMap<String, u32>);
+    struct Registry(HashMap<String, u32>);
 
-   impl fmt::Display for Registry {
-       fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-           write!(f, "{} entries", self.0.len())
-       }
-   }
-   ```
+    impl fmt::Display for Registry {
+        fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+            write!(f, "{} entries", self.0.len())
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -255,12 +255,12 @@ The wrapped version compiles, since `Registry` is local even though `HashMap` is
 
 2. ▢ Using the `Registry` from the item above, predict what happens when the code below is added, and which error code names the problem.
 
-   ```rust
-   fn main() {
-       let r = Registry(HashMap::new());
-       r.get("x");
-   }
-   ```
+    ```rust
+    fn main() {
+        let r = Registry(HashMap::new());
+        r.get("x");
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -276,24 +276,24 @@ It fails with `E0599`, no method named `get` found for struct `Registry` in the 
 
 3. ▢ Predict whether this compiles as written, and then predict what happens if `main` calls `values.average()` from outside the `stats` module without an extra line. Compile both.
 
-   ```rust
-   mod stats {
-       pub trait Average {
-           fn average(&self) -> f64;
-       }
+    ```rust
+    mod stats {
+        pub trait Average {
+            fn average(&self) -> f64;
+        }
 
-       impl Average for [i32] {
-           fn average(&self) -> f64 {
-               self.iter().sum::<i32>() as f64 / self.len() as f64
-           }
-       }
-   }
+        impl Average for [i32] {
+            fn average(&self) -> f64 {
+                self.iter().sum::<i32>() as f64 / self.len() as f64
+            }
+        }
+    }
 
-   fn main() {
-       let values = [2, 4, 6];
-       println!("{}", values.average());
-   }
-   ```
+    fn main() {
+        let values = [2, 4, 6];
+        println!("{}", values.average());
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -303,27 +303,27 @@ The trait and its implementation compile on their own, since `Average` is local 
 
 4. ▢ Predict whether this pair compiles, then predict what happens once `Widget` gains `#[derive(Debug)]`.
 
-   ```rust
-   use std::fmt;
+    ```rust
+    use std::fmt;
 
-   trait Show {
-       fn show(&self) -> String;
-   }
+    trait Show {
+        fn show(&self) -> String;
+    }
 
-   impl<T: fmt::Debug> Show for T {
-       fn show(&self) -> String {
-           format!("{self:?}")
-       }
-   }
+    impl<T: fmt::Debug> Show for T {
+        fn show(&self) -> String {
+            format!("{self:?}")
+        }
+    }
 
-   struct Widget;
+    struct Widget;
 
-   impl Show for Widget {
-       fn show(&self) -> String {
-           "widget".to_string()
-       }
-   }
-   ```
+    impl Show for Widget {
+        fn show(&self) -> String {
+            "widget".to_string()
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -339,30 +339,30 @@ It compiles as written, because `Widget` has no `Debug` and so the blanket imple
 
 5. ▢ Predict what `ids.len()` prints, given both a `Deref` to `Vec<u32>` and an inherent method of the same name.
 
-   ```rust
-   use std::ops::Deref;
+    ```rust
+    use std::ops::Deref;
 
-   struct Ids(Vec<u32>);
+    struct Ids(Vec<u32>);
 
-   impl Deref for Ids {
-       type Target = Vec<u32>;
+    impl Deref for Ids {
+        type Target = Vec<u32>;
 
-       fn deref(&self) -> &Vec<u32> {
-           &self.0
-       }
-   }
+        fn deref(&self) -> &Vec<u32> {
+            &self.0
+        }
+    }
 
-   impl Ids {
-       fn len(&self) -> usize {
-           999
-       }
-   }
+    impl Ids {
+        fn len(&self) -> usize {
+            999
+        }
+    }
 
-   fn main() {
-       let ids = Ids(vec![1, 2, 3]);
-       println!("{}", ids.len());
-   }
-   ```
+    fn main() {
+        let ids = Ids(vec![1, 2, 3]);
+        println!("{}", ids.len());
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

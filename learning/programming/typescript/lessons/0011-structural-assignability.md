@@ -89,11 +89,11 @@ One related tool earns a pointer, not a lesson, here: `satisfies` checks a liter
 
 1. ▢ Predict whether this compiles, and if it does, explain why `Point` is allowed even though it never mentions `Coord`.
 
-   ```ts
-   class Point { constructor(public x: number, public y: number) {} }
-   interface Coord { x: number; y: number }
-   const c: Coord = new Point(1, 2);
-   ```
+    ```ts
+    class Point { constructor(public x: number, public y: number) {} }
+    interface Coord { x: number; y: number }
+    const c: Coord = new Point(1, 2);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -103,10 +103,10 @@ Compiles. Assignability only compares shapes, and `Point` instances have an `x` 
 
 2. ▢ Predict the exact diagnostic, with its `TS` number.
 
-   ```ts
-   type P = { a: number };
-   const p: P = { a: 1, b: 2 };
-   ```
+    ```ts
+    type P = { a: number };
+    const p: P = { a: 1, b: 2 };
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -118,11 +118,11 @@ Compiles. Assignability only compares shapes, and `Point` instances have an `x` 
 
 3. ▢ Now predict this one, and say precisely what is different from item 2.
 
-   ```ts
-   type P = { a: number };
-   const src = { a: 1, b: 2 };
-   const p: P = src;
-   ```
+    ```ts
+    type P = { a: number };
+    const src = { a: 1, b: 2 };
+    const p: P = src;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -138,11 +138,11 @@ Compiles. `src` is a variable, not a fresh literal, so ordinary structural assig
 
 4. ▢ Predict this call.
 
-   ```ts
-   type P = { a: number };
-   function take(p: P) {}
-   take({ a: 1, b: 2 });
-   ```
+    ```ts
+    type P = { a: number };
+    function take(p: P) {}
+    take({ a: 1, b: 2 });
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -107,10 +107,10 @@ The wrong instinct is to expect `len` to match what you see. It matches what is 
 
 2. ▢ Why does this print the wrong thing, and what does it actually print?
 
-   ```go
-   s := "héllo"
-   fmt.Println(string(s[1]))
-   ```
+    ```go
+    s := "héllo"
+    fmt.Println(string(s[1]))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

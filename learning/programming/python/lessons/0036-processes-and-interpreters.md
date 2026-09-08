@@ -145,11 +145,11 @@ The order of things to try, in this order:
 
 1. ▢ Why does this fail, and what is the minimal fix?
 
-   ```python
-   def process_all(rows, scale):
-       with ProcessPoolExecutor(4) as pool:
-           return list(pool.map(lambda r: r.amount * scale, rows))
-   ```
+    ```python
+    def process_all(rows, scale):
+        with ProcessPoolExecutor(4) as pool:
+            return list(pool.map(lambda r: r.amount * scale, rows))
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -221,11 +221,11 @@ The last one is a decision with a cost, which is exactly why the default moved: 
 
 5. ▢ Rewrite so the boundary carries as little as possible.
 
-   ```python
-   rows = read_all_rows(path)                    # 4 million rows in memory
-   with ProcessPoolExecutor(8) as pool:
-       totals = list(pool.map(sum_amounts, chunk(rows, 500_000)))
-   ```
+    ```python
+    rows = read_all_rows(path)                    # 4 million rows in memory
+    with ProcessPoolExecutor(8) as pool:
+        totals = list(pool.map(sum_amounts, chunk(rows, 500_000)))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

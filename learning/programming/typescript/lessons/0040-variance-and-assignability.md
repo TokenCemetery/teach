@@ -118,12 +118,12 @@ Reasoning about variance earns its keep at one moment: when an assignability err
 
 1. ▢ Predict whether this compiles, and name the direction involved.
 
-   ```ts
-   interface Shape { area(): number }
-   interface Circle extends Shape { radius: number }
-   type MakeShape = () => Shape;
-   const makeCircle: MakeShape = () => ({ area: () => 1, radius: 1 });
-   ```
+    ```ts
+    interface Shape { area(): number }
+    interface Circle extends Shape { radius: number }
+    type MakeShape = () => Shape;
+    const makeCircle: MakeShape = () => ({ area: () => 1, radius: 1 });
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -133,14 +133,14 @@ Compiles. `MakeShape` promises callers a `Shape` back, and a `Circle` is a `Shap
 
 2. ▢ Predict the diagnostic, with its `TS` number, and name the direction violated.
 
-   ```ts
-   interface Shape { area(): number }
-   interface Circle extends Shape { radius: number }
-   type Sink = (x: Circle) => void;
-   declare function needsWideSink(s: (x: Shape) => void): void;
-   const onlyCircle: Sink = (c) => {};
-   needsWideSink(onlyCircle);
-   ```
+    ```ts
+    interface Shape { area(): number }
+    interface Circle extends Shape { radius: number }
+    type Sink = (x: Circle) => void;
+    declare function needsWideSink(s: (x: Shape) => void): void;
+    const onlyCircle: Sink = (c) => {};
+    needsWideSink(onlyCircle);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -156,11 +156,11 @@ Ask what `needsWideSink` promises callers it can handle, and whether `onlyCircle
 
 3. ▢ The array example used a mutable target type. Predict this variant, which uses a `readonly` one instead.
 
-   ```ts
-   const strs: string[] = ["a", "b"];
-   const safe: readonly (string | number)[] = strs;
-   safe.push(42);
-   ```
+    ```ts
+    const strs: string[] = ["a", "b"];
+    const safe: readonly (string | number)[] = strs;
+    safe.push(42);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -170,13 +170,13 @@ Ask what `needsWideSink` promises callers it can handle, and whether `onlyCircle
 
 4. ▢ Predict whether this compiles, and if not, which part of the diagnostic names the mistake.
 
-   ```ts
-   interface WrongConsumer<in T> {
-     get(): T;
-   }
-   declare const w: WrongConsumer<string | number>;
-   const w2: WrongConsumer<string> = w;
-   ```
+    ```ts
+    interface WrongConsumer<in T> {
+      get(): T;
+    }
+    declare const w: WrongConsumer<string | number>;
+    const w2: WrongConsumer<string> = w;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

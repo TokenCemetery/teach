@@ -161,14 +161,14 @@ A list of arguments needs no quoting and cannot be injected into. `shell=True` w
 
 1. ▢ Rewrite with `pathlib`.
 
-   ```python
-   import os
-   base = os.path.dirname(os.path.abspath(__file__))
-   target = os.path.join(base, "data", "out.json")
-   os.makedirs(os.path.dirname(target), exist_ok=True)
-   with open(target, "w") as f:
-       f.write(payload)
-   ```
+    ```python
+    import os
+    base = os.path.dirname(os.path.abspath(__file__))
+    target = os.path.join(base, "data", "out.json")
+    os.makedirs(os.path.dirname(target), exist_ok=True)
+    with open(target, "w") as f:
+        f.write(payload)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -185,17 +185,17 @@ The `encoding` is not a detail added for tidiness: the original inherits the pla
 
 2. ▢ Find the bug.
 
-   ```python
-   from collections import defaultdict
+    ```python
+    from collections import defaultdict
 
-   totals = defaultdict(int)
-   for order in orders:
-       totals[order.country] += order.amount
+    totals = defaultdict(int)
+    for order in orders:
+        totals[order.country] += order.amount
 
-   if totals["FR"]:
-       print("France:", totals["FR"])
-   print(len(totals), "countries")
-   ```
+    if totals["FR"]:
+        print("France:", totals["FR"])
+    print(len(totals), "countries")
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -229,14 +229,14 @@ Use `if totals.get("FR"):`, or `if "FR" in totals:`. The general rule: a `defaul
 
 4. ▢ Replace the string constants, and say what the new version catches.
 
-   ```python
-   STATUS_PENDING = "pending"
-   STATUS_SHIPPED = "shipped"
+    ```python
+    STATUS_PENDING = "pending"
+    STATUS_SHIPPED = "shipped"
 
-   def advance(order):
-       if order.status == STATUS_PENDING:
-           order.status = STATUS_SHIPPED
-   ```
+    def advance(order):
+        if order.status == STATUS_PENDING:
+            order.status = STATUS_SHIPPED
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -260,9 +260,9 @@ What it catches: a misspelled member is an `AttributeError` at the point of the 
 
 5. ▢ Why is this logging call worse than it looks, and what does it do inside an `except` block?
 
-   ```python
-   log.error("failed to import {} orders: {}".format(count, exc))
-   ```
+    ```python
+    log.error("failed to import {} orders: {}".format(count, exc))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

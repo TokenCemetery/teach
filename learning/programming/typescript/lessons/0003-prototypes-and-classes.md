@@ -87,16 +87,16 @@ The arrow field is created once per instance and captures `this` at construction
 
 1. ▢ Predict all four.
 
-   ```ts
-   const base = { kind: "base" };
-   const child = Object.create(base);
-   console.log(child.kind);
-   child.kind = "child";
-   console.log(child.kind, base.kind);
-   console.log(Object.hasOwn(child, "kind"));
-   delete child.kind;
-   console.log(child.kind);
-   ```
+    ```ts
+    const base = { kind: "base" };
+    const child = Object.create(base);
+    console.log(child.kind);
+    child.kind = "child";
+    console.log(child.kind, base.kind);
+    console.log(Object.hasOwn(child, "kind"));
+    delete child.kind;
+    console.log(child.kind);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -108,13 +108,13 @@ The read walked the chain. The write created an own property that shadows it, le
 
 2. ▢ Where does each of these live, and how many function objects exist for ten instances?
 
-   ```ts
-   class Counter {
-     n = 0;
-     inc() { this.n++; }
-     dec = () => { this.n--; };
-   }
-   ```
+    ```ts
+    class Counter {
+      n = 0;
+      inc() { this.n++; }
+      dec = () => { this.n--; };
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -132,11 +132,11 @@ That is the cost of the arrow-field style, and lesson 4 is about what it buys.
 
 3. ▢ An object arrives from `JSON.parse` and the code calls a method on it. Predict what happens and say why the compiler did not object.
 
-   ```ts
-   class User { constructor(public name: string) {} greet() { return "hi " + this.name; } }
-   const raw = JSON.parse('{"name":"ada"}') as User;
-   console.log(raw.greet());
-   ```
+    ```ts
+    class User { constructor(public name: string) {} greet() { return "hi " + this.name; } }
+    const raw = JSON.parse('{"name":"ada"}') as User;
+    console.log(raw.greet());
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

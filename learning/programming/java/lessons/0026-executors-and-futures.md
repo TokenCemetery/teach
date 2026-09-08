@@ -255,12 +255,12 @@ RejectedExecutionException on submit: Task ...@... rejected from java.util.concu
 
 1. ▢ Predict what the following prints, in order, and explain why the exception's message never appears in it.
 
-   ```java
-   ExecutorService pool = Executors.newSingleThreadExecutor();
-   Future<?> f = pool.submit(() -> { throw new RuntimeException("gone"); });
-   System.out.println("submitted");
-   pool.shutdown();
-   ```
+    ```java
+    ExecutorService pool = Executors.newSingleThreadExecutor();
+    Future<?> f = pool.submit(() -> { throw new RuntimeException("gone"); });
+    System.out.println("submitted");
+    pool.shutdown();
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -276,13 +276,13 @@ Only `submitted` prints. `submit` stores the thrown `RuntimeException` inside th
 
 2. ▢ Find the bug. This method is meant to report every failure from a batch of uploads, and it misses some.
 
-   ```java
-   void uploadAll(List<Path> files, ExecutorService pool) {
-       for (Path f : files) {
-           pool.execute(() -> upload(f));
-       }
-   }
-   ```
+    ```java
+    void uploadAll(List<Path> files, ExecutorService pool) {
+        for (Path f : files) {
+            pool.execute(() -> upload(f));
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

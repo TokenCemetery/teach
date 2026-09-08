@@ -252,11 +252,11 @@ Each one compiles. None answers what the compiler actually asked, how long the v
 
 1. ▢ Predict the error code and the `help`, then compile it.
 
-   ```rust
-   fn pick(a: &str, b: &str, first: bool) -> &str {
-       if first { a } else { b }
-   }
-   ```
+    ```rust
+    fn pick(a: &str, b: &str, first: bool) -> &str {
+        if first { a } else { b }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -266,17 +266,17 @@ The error is `E0106`. The `help` says the return type is borrowed but not whethe
 
 2. ▢ This struct means to borrow the lines it is told to keep. Predict the code, then fix it without cloning.
 
-   ```rust
-   struct Recent<'a> {
-       lines: Vec<&'a str>,
-   }
+    ```rust
+    struct Recent<'a> {
+        lines: Vec<&'a str>,
+    }
 
-   impl<'a> Recent<'a> {
-       fn note(&mut self, line: &str) {
-           self.lines.push(line);
-       }
-   }
-   ```
+    impl<'a> Recent<'a> {
+        fn note(&mut self, line: &str) {
+            self.lines.push(line);
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -292,12 +292,12 @@ The error is `E0621`, the same reason as `Holder::keep`. Change `line: &str` to 
 
 3. ▢ Compile this as written, then add `<'a>` to the signature and compile again. Predict the code both times.
 
-   ```rust
-   fn wrap() -> &str {
-       let owned = String::from("wrapped");
-       &owned
-   }
-   ```
+    ```rust
+    fn wrap() -> &str {
+        let owned = String::from("wrapped");
+        &owned
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -313,13 +313,13 @@ As written, the error is `E0106`, since the return type borrows nothing the comp
 
 4. ▢ Predict which line the compiler blames, and why it is not the `push`.
 
-   ```rust
-   fn main() {
-       let mut tags: Vec<&'static str> = Vec::new();
-       let label = String::from("draft");
-       tags.push(&label);
-   }
-   ```
+    ```rust
+    fn main() {
+        let mut tags: Vec<&'static str> = Vec::new();
+        let label = String::from("draft");
+        tags.push(&label);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -329,15 +329,15 @@ The error is `` E0597, `label` does not live long enough ``, and the accusation 
 
 5. ▢ Why does removing the explicit `&'static str` from this closure's parameter make it compile?
 
-   ```rust
-   fn call_it<F: Fn(&str) -> usize>(f: F) -> usize {
-       f("hi")
-   }
+    ```rust
+    fn call_it<F: Fn(&str) -> usize>(f: F) -> usize {
+        f("hi")
+    }
 
-   fn main() {
-       println!("{}", call_it(|s: &'static str| s.len()));
-   }
-   ```
+    fn main() {
+        println!("{}", call_it(|s: &'static str| s.len()));
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

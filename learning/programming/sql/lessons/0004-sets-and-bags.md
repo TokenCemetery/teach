@@ -100,11 +100,11 @@ The first deduplicates its output and compares whole rows, which is fine when yo
 
 1. ▢ Predict the row counts, given `customers` has 3 rows with countries `'GB'`, `'GB'`, `NULL`.
 
-   ```sql
-   SELECT country FROM customers;
-   SELECT DISTINCT country FROM customers;
-   SELECT DISTINCT country, id FROM customers;
-   ```
+    ```sql
+    SELECT country FROM customers;
+    SELECT DISTINCT country FROM customers;
+    SELECT DISTINCT country, id FROM customers;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -145,9 +145,9 @@ Option a works here and deduplicates its output, which becomes wrong the moment 
 
 4. ▢ A developer relies on this and it works in testing. Say what is wrong with it.
 
-   ```sql
-   SELECT * FROM (SELECT id FROM orders ORDER BY shipped_at DESC) t LIMIT 10;
-   ```
+    ```sql
+    SELECT * FROM (SELECT id FROM orders ORDER BY shipped_at DESC) t LIMIT 10;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

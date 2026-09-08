@@ -218,10 +218,10 @@ No. `count(DISTINCT tags)` counts distinct whole strings, four, one per product,
 
 3. ▢ In `order_items`, predict the exact error and SQLSTATE of inserting a second row for `(1, 'A1')` with a different `qty`.
 
-   ```sql
-   INSERT INTO design.order_items (order_id, sku, sku_description, qty)
-   VALUES (1, 'A1', 'Red widget', 9);
-   ```
+    ```sql
+    INSERT INTO design.order_items (order_id, sku, sku_description, qty)
+    VALUES (1, 'A1', 'Red widget', 9);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

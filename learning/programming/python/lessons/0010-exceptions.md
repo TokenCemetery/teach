@@ -155,15 +155,15 @@ Where this actually shows up is concurrency, and stage 6 uses it. Know now that 
 
 1. ▢ Predict the output.
 
-   ```python
-   def f():
-       try:
-           return "try"
-       finally:
-           print("finally")
+    ```python
+    def f():
+        try:
+            return "try"
+        finally:
+            print("finally")
 
-   print(f())
-   ```
+    print(f())
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -178,13 +178,13 @@ The return value is computed, then `finally` runs, then the function actually re
 
 2. ▢ What is wrong with this, given that `cache.store` can raise `KeyError`?
 
-   ```python
-   try:
-       data = fetch(url)
-       cache.store(data)
-   except KeyError:
-       data = {}
-   ```
+    ```python
+    try:
+        data = fetch(url)
+        cache.store(data)
+    except KeyError:
+        data = {}
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -227,12 +227,12 @@ else:
 
 4. ▢ Rewrite as EAFP, and say what the original version's real defect is.
 
-   ```python
-   if os.path.exists(path):
-       with open(path) as f:
-           return f.read()
-   return None
-   ```
+    ```python
+    if os.path.exists(path):
+        with open(path) as f:
+            return f.read()
+    return None
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -250,10 +250,10 @@ The defect is the race: the file can be removed between the check and the open, 
 
 5. ▢ This library raises `KeyError` from its public API. Why is that a design problem, and what should it raise?
 
-   ```python
-   def get_user(user_id):
-       return _users[user_id]
-   ```
+    ```python
+    def get_user(user_id):
+        return _users[user_id]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

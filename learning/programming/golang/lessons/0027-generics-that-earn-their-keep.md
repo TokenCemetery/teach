@@ -106,9 +106,9 @@ On performance: do not assume generics are faster than an interface, or slower. 
 
 1. ▢ Would you make this generic?
 
-   ```go
-   func SumInts(s []int) int
-   ```
+    ```go
+    func SumInts(s []int) int
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

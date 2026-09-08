@@ -133,13 +133,13 @@ Recovery belongs at boundaries where one unit of work should not take the proces
 
 1. ▢ Predict the output.
 
-   ```go
-   func f() {
-       for i := range 3 {
-           defer fmt.Print(i, " ")
-       }
-   }
-   ```
+    ```go
+    func f() {
+        for i := range 3 {
+            defer fmt.Print(i, " ")
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -151,16 +151,16 @@ Note that this is correct in Go 1.22 and later for a different reason than peopl
 
 2. ▢ What is wrong with this, and what is the smallest fix?
 
-   ```go
-   for _, name := range names {
-       f, err := os.Open(name)
-       if err != nil {
-           return err
-       }
-       defer f.Close()
-       process(f)
-   }
-   ```
+    ```go
+    for _, name := range names {
+        f, err := os.Open(name)
+        if err != nil {
+            return err
+        }
+        defer f.Close()
+        process(f)
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

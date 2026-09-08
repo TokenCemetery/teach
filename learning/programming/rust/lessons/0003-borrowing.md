@@ -115,25 +115,25 @@ Knowing the mechanism matters when it does not fire, for example when storing a 
 
 1. ▢ Which of these compile?
 
-   ```rust
-   // A
-   let mut v = vec![1, 2];
-   let a = &v;
-   let b = &v;
-   println!("{a:?} {b:?}");
+    ```rust
+    // A
+    let mut v = vec![1, 2];
+    let a = &v;
+    let b = &v;
+    println!("{a:?} {b:?}");
 
-   // B
-   let mut v = vec![1, 2];
-   let a = &mut v;
-   let b = &mut v;
-   println!("{a:?} {b:?}");
+    // B
+    let mut v = vec![1, 2];
+    let a = &mut v;
+    let b = &mut v;
+    println!("{a:?} {b:?}");
 
-   // C
-   let mut v = vec![1, 2];
-   let a = &mut v;
-   a.push(3);
-   println!("{v:?}");
-   ```
+    // C
+    let mut v = vec![1, 2];
+    let a = &mut v;
+    a.push(3);
+    println!("{v:?}");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -145,12 +145,12 @@ C is the interesting one. The mutable borrow `a` is last used on the `push` line
 
 2. ▢ Explain the error, then fix it without changing what the program does.
 
-   ```rust
-   let mut v = vec![1, 2, 3];
-   let first = &v[0];
-   v.push(4);
-   println!("{first}");
-   ```
+    ```rust
+    let mut v = vec![1, 2, 3];
+    let first = &v[0];
+    v.push(4);
+    println!("{first}");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -192,12 +192,12 @@ Being able to map an error code back to the rule is the skill; lesson 6 makes it
 
 4. ▢ Predict whether this compiles, and explain your reasoning in terms of where borrows end.
 
-   ```rust
-   let mut s = String::from("a");
-   let r = &s;
-   s.push('b');
-   println!("{r}");
-   ```
+    ```rust
+    let mut s = String::from("a");
+    let r = &s;
+    s.push('b');
+    println!("{r}");
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -193,15 +193,15 @@ Every `From` implementation added to a public error type is a promise that the f
 
 1. ▢ Predict whether this compiles, and if not, which trait the diagnostic says is missing. Then compile it.
 
-   ```rust
-   #[derive(Debug)]
-   struct ConfigError(String);
+    ```rust
+    #[derive(Debug)]
+    struct ConfigError(String);
 
-   fn read_port(s: &str) -> Result<u32, ConfigError> {
-       let port = s.parse::<u32>()?;
-       Ok(port)
-   }
-   ```
+    fn read_port(s: &str) -> Result<u32, ConfigError> {
+        let port = s.parse::<u32>()?;
+        Ok(port)
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -225,13 +225,13 @@ Not overriding `source` in an `Error` implementation leaves the default, and the
 
 3. ▢ Predict what happens when you try this, where neither type is yours, and name the error code before compiling.
 
-   ```rust
-   impl From<std::num::ParseIntError> for std::fmt::Error {
-       fn from(_e: std::num::ParseIntError) -> Self {
-           std::fmt::Error
-       }
-   }
-   ```
+    ```rust
+    impl From<std::num::ParseIntError> for std::fmt::Error {
+        fn from(_e: std::num::ParseIntError) -> Self {
+            std::fmt::Error
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -241,19 +241,19 @@ It is `E0117`, the orphan rule: both `ParseIntError` and `fmt::Error` are foreig
 
 4. ▢ This boxes a `ParseIntError` behind `Box<dyn std::error::Error>` and then guesses twice. Predict each guess's result before running it.
 
-   ```rust
-   fn run() -> Result<(), Box<dyn std::error::Error>> {
-       "x".parse::<i32>()?;
-       Ok(())
-   }
+    ```rust
+    fn run() -> Result<(), Box<dyn std::error::Error>> {
+        "x".parse::<i32>()?;
+        Ok(())
+    }
 
-   fn main() {
-       let boxed = run().unwrap_err();
-       println!("{:?}", boxed.downcast_ref::<std::num::ParseIntError>());
-   }
-   ```
+    fn main() {
+        let boxed = run().unwrap_err();
+        println!("{:?}", boxed.downcast_ref::<std::num::ParseIntError>());
+    }
+    ```
 
-   Now change the type argument to a type that was never boxed here, and predict how the second run differs.
+    Now change the type argument to a type that was never boxed here, and predict how the second run differs.
 
 <details markdown="1"><summary>Check</summary>
 
@@ -263,17 +263,17 @@ The first guess is correct and prints `Some(ParseIntError { kind: InvalidDigit }
 
 5. ▢ Predict whether `thiserror` accepts `#[from]` on this field, given that the variant also carries `field`, and what the message says if not.
 
-   ```rust
-   #[derive(Debug, Error)]
-   enum BadDerive {
-       #[error("field {field} is not a number")]
-       Bytes {
-           field: &'static str,
-           #[from]
-           source: std::num::ParseIntError,
-       },
-   }
-   ```
+    ```rust
+    #[derive(Debug, Error)]
+    enum BadDerive {
+        #[error("field {field} is not a number")]
+        Bytes {
+            field: &'static str,
+            #[from]
+            source: std::num::ParseIntError,
+        },
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

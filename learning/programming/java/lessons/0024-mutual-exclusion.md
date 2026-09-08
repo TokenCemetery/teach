@@ -218,19 +218,19 @@ Three runs put the ratio at roughly eight times, and it is the ratio that is the
 
 1. ▢ Predict the final value, and explain it.
 
-   ```java
-   // balance starts at 60, ten threads, each tries to withdraw 20
-   boolean ok;
-   synchronized (lock) {
-       ok = balance >= 20;
-   }
-   if (ok) {
-       Thread.sleep(5);              // widens the window between check and act
-       synchronized (lock) {
-           balance -= 20;
-       }
-   }
-   ```
+    ```java
+    // balance starts at 60, ten threads, each tries to withdraw 20
+    boolean ok;
+    synchronized (lock) {
+        ok = balance >= 20;
+    }
+    if (ok) {
+        Thread.sleep(5);              // widens the window between check and act
+        synchronized (lock) {
+            balance -= 20;
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -240,20 +240,20 @@ Three runs put the ratio at roughly eight times, and it is the ratio that is the
 
 2. ▢ Find the bug, and name the fix.
 
-   ```java
-   class Accounts {
-       void transferAtoB(Account a, Account b, int amount) {
-           synchronized (a) {
-               synchronized (b) {
-                   a.debit(amount);
-                   b.credit(amount);
-               }
-           }
-       }
-   }
-   ```
+    ```java
+    class Accounts {
+        void transferAtoB(Account a, Account b, int amount) {
+            synchronized (a) {
+                synchronized (b) {
+                    a.debit(amount);
+                    b.credit(amount);
+                }
+            }
+        }
+    }
+    ```
 
-   Two threads call `transferAtoB(x, y, 10)` and `transferAtoB(y, x, 5)` at the same time.
+    Two threads call `transferAtoB(x, y, 10)` and `transferAtoB(y, x, 5)` at the same time.
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -269,14 +269,14 @@ The first call locks `x` then `y`; the second locks `y` then `x`, the reversed-o
 
 3. ▢ Find the bug in this consumer, using the two-consumer queue from this lesson as the reference case.
 
-   ```java
-   synchronized String take() throws InterruptedException {
-       if (queue.isEmpty()) {
-           wait();
-       }
-       return queue.removeFirst();
-   }
-   ```
+    ```java
+    synchronized String take() throws InterruptedException {
+        if (queue.isEmpty()) {
+            wait();
+        }
+        return queue.removeFirst();
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -294,12 +294,12 @@ The condition is checked once, before waiting, and never re-checked after waking
 
 5. ▢ A code review turns up this method. What rule does it break, and what should change?
 
-   ```java
-   synchronized void publish(Event event) {
-       subscribers.add(event.subscriber());
-       httpClient.post(webhookUrl, event.toJson());   // network call
-   }
-   ```
+    ```java
+    synchronized void publish(Event event) {
+        subscribers.add(event.subscriber());
+        httpClient.post(webhookUrl, event.toJson());   // network call
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

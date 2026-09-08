@@ -22,14 +22,14 @@ Each `for` over a list calls `iter` and gets a fresh iterator with its own posit
 
 2. ▢ How many times does `print` run here, and when?
 
-   ```python
-   def numbers():
-       print("starting")
-       yield 1
-       yield 2
+    ```python
+    def numbers():
+        print("starting")
+        yield 1
+        yield 2
 
-   n = numbers()
-   ```
+    n = numbers()
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -151,19 +151,19 @@ A generator can receive values (`value = yield`), which made generator-based cor
 
 1. ▢ Predict the exact output, including the order.
 
-   ```python
-   def gen():
-       print("a")
-       yield 1
-       print("b")
-       yield 2
-       print("c")
+    ```python
+    def gen():
+        print("a")
+        yield 1
+        print("b")
+        yield 2
+        print("c")
 
-   g = gen()
-   print("created")
-   for x in g:
-       print(x)
-   ```
+    g = gen()
+    print("created")
+    for x in g:
+        print(x)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -182,14 +182,14 @@ c
 
 2. ▢ Rewrite this so it uses constant memory and lets the caller stop early.
 
-   ```python
-   def parse_all(path):
-       result = []
-       with open(path) as f:
-           for line in f:
-               result.append(parse(line))
-       return result
-   ```
+    ```python
+    def parse_all(path):
+        result = []
+        with open(path) as f:
+            for line in f:
+                result.append(parse(line))
+        return result
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -229,15 +229,15 @@ Generator functions: **b** and **d**, because their bodies contain `yield`.
 
 4. ▢ Find the bug.
 
-   ```python
-   def first_words(lines):
-       for line in lines:
-           yield line.split()[0]
+    ```python
+    def first_words(lines):
+        for line in lines:
+            yield line.split()[0]
 
-   words = first_words(open("notes.txt"))
-   print(sum(1 for _ in words), "words")
-   print(next(words, "none left"))
-   ```
+    words = first_words(open("notes.txt"))
+    print(sum(1 for _ in words), "words")
+    print(next(words, "none left"))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -251,12 +251,12 @@ The other is `line.split()[0]` on a blank line, which raises `IndexError` from i
 
 5. ▢ Rewrite the eager version as a pipeline of generator expressions, and say what changes about when the file is read.
 
-   ```python
-   lines = open(path).readlines()
-   stripped = [line.strip() for line in lines]
-   nonblank = [line for line in stripped if line]
-   count = len(nonblank)
-   ```
+    ```python
+    lines = open(path).readlines()
+    stripped = [line.strip() for line in lines]
+    nonblank = [line for line in stripped if line]
+    count = len(nonblank)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

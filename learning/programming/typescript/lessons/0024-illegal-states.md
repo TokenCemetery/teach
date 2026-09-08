@@ -153,13 +153,13 @@ Four states, discount present or absent times gift code present or absent. Compi
 
 2. ▢ Predict the exact diagnostic, with its `TS` number.
 
-   ```ts
-   type Contact =
-     | { kind: "email"; email: string }
-     | { kind: "phone"; phone: string };
+    ```ts
+    type Contact =
+      | { kind: "email"; email: string }
+      | { kind: "phone"; phone: string };
 
-   const bad: Contact = { kind: "email" };
-   ```
+    const bad: Contact = { kind: "email" };
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -183,15 +183,15 @@ Uploading, succeeded with a result, or failed with a message, three domain state
 
 4. ▢ Predict whether this compiles, and say in one sentence what is doing the work a type should be doing instead.
 
-   ```ts
-   type Discount = {
-     kind: "percentage" | "fixed";
-     // amount is 0 to 100 when kind is "percentage", a currency amount in cents when kind is "fixed"
-     amount: number;
-   };
+    ```ts
+    type Discount = {
+      kind: "percentage" | "fixed";
+      // amount is 0 to 100 when kind is "percentage", a currency amount in cents when kind is "fixed"
+      amount: number;
+    };
 
-   const weird: Discount = { kind: "percentage", amount: 5000 };
-   ```
+    const weird: Discount = { kind: "percentage", amount: 5000 };
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

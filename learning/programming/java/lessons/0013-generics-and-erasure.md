@@ -178,16 +178,16 @@ record Pair<A, B>(A first, B second) {}
 
 1. ▢ Predict what this throws, and name the line the stack trace points at.
 
-   ```java
-   static void poison(List list) {
-       list.add(42);
-   }
+    ```java
+    static void poison(List list) {
+        list.add(42);
+    }
 
-   List<String> strings = new ArrayList<>();
-   poison(strings);
-   String first = strings.get(0);
-   System.out.println(first);
-   ```
+    List<String> strings = new ArrayList<>();
+    poison(strings);
+    String first = strings.get(0);
+    System.out.println(first);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -203,12 +203,12 @@ record Pair<A, B>(A first, B second) {}
 
 2. ▢ Find the bug in this class, name the compiler error it produces, and fix it without losing either behaviour.
 
-   ```java
-   class Reporter {
-       static void process(List<String> names) { System.out.println("names: " + names); }
-       static void process(List<Integer> ids) { System.out.println("ids: " + ids); }
-   }
-   ```
+    ```java
+    class Reporter {
+        static void process(List<String> names) { System.out.println("names: " + names); }
+        static void process(List<Integer> ids) { System.out.println("ids: " + ids); }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

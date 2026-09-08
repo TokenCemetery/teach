@@ -108,13 +108,13 @@ If a subclass adds state and inherits `equals`, a parent instance can equal a ch
 
 1. ▢ A class overrides `equals` and not `hashCode`. Predict the two prints, and say what is thrown.
 
-   ```java
-   Set<Point> set = new HashSet<>();
-   set.add(new Point(1, 1));
-   set.add(new Point(1, 1));
-   System.out.println(set.size());
-   System.out.println(set.contains(new Point(1, 1)));
-   ```
+    ```java
+    Set<Point> set = new HashSet<>();
+    set.add(new Point(1, 1));
+    set.add(new Point(1, 1));
+    System.out.println(set.size());
+    System.out.println(set.contains(new Point(1, 1)));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -157,17 +157,17 @@ Option b holds a mutable list, and the generated `hashCode` reads it, so a calle
 
 4. ▢ This `equals` compiles and passes its unit test. Name two defects.
 
-   ```java
-   class User {
-       String email;
-       int loginCount;
-       @Override public boolean equals(Object o) {
-           if (!(o instanceof User)) return false;
-           return ((User) o).email.equals(email);
-       }
-       @Override public int hashCode() { return email.hashCode(); }
-   }
-   ```
+    ```java
+    class User {
+        String email;
+        int loginCount;
+        @Override public boolean equals(Object o) {
+            if (!(o instanceof User)) return false;
+            return ((User) o).email.equals(email);
+        }
+        @Override public int hashCode() { return email.hashCode(); }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

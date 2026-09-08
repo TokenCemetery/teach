@@ -180,13 +180,13 @@ Everything here stayed a plain function signature. A type parameter can also des
 
 1. ▢ Predict the diagnostic, including its `TS` number.
 
-   ```ts
-   function last<T>(xs: T[]): T {
-     return xs[xs.length - 1];
-   }
-   const value = last(["a", "b", "c"]);
-   const n: number = value;
-   ```
+    ```ts
+    function last<T>(xs: T[]): T {
+      return xs[xs.length - 1];
+    }
+    const value = last(["a", "b", "c"]);
+    const n: number = value;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -196,11 +196,11 @@ Everything here stayed a plain function signature. A type parameter can also des
 
 2. ▢ Predict the diagnostic.
 
-   ```ts
-   function double<T>(x: T) {
-     return x + x;
-   }
-   ```
+    ```ts
+    function double<T>(x: T) {
+      return x + x;
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -210,13 +210,13 @@ Everything here stayed a plain function signature. A type parameter can also des
 
 3. ▢ Predict whether each call compiles.
 
-   ```ts
-   function loud<T extends { toUpperCase(): string }>(x: T): string {
-     return x.toUpperCase();
-   }
-   loud("hi");
-   loud(42);
-   ```
+    ```ts
+    function loud<T extends { toUpperCase(): string }>(x: T): string {
+      return x.toUpperCase();
+    }
+    loud("hi");
+    loud(42);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -226,11 +226,11 @@ Everything here stayed a plain function signature. A type parameter can also des
 
 4. ▢ This compiles with no error at all. Say what is wrong with it anyway, and give the simpler signature that replaces it.
 
-   ```ts
-   function idish<T>(x: T): boolean {
-     return x !== null;
-   }
-   ```
+    ```ts
+    function idish<T>(x: T): boolean {
+      return x !== null;
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -246,14 +246,14 @@ Nothing. `T` appears once, in the parameter, and the return type is `boolean` re
 
 5. ▢ Predict whether each `push` compiles, and say why.
 
-   ```ts
-   function wrap<T>(): T[] {
-     return [];
-   }
-   const w = wrap();
-   w.push(4);
-   w.push("no");
-   ```
+    ```ts
+    function wrap<T>(): T[] {
+      return [];
+    }
+    const w = wrap();
+    w.push(4);
+    w.push("no");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

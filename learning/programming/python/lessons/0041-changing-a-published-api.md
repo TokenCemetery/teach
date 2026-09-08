@@ -159,12 +159,12 @@ Every failure is a call you will have to change eventually, discovered now rathe
 
 1. ▢ Why does a user of this library never see the warning?
 
-   ```python
-   # shopkit/orders.py
-   def get_total(order):
-       warnings.warn("get_total is deprecated", DeprecationWarning)
-       return order.total_amount
-   ```
+    ```python
+    # shopkit/orders.py
+    def get_total(order):
+        warnings.warn("get_total is deprecated", DeprecationWarning)
+        return order.total_amount
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

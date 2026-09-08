@@ -121,13 +121,13 @@ Close to 500 ms, the time for one sleep, since `synchronized` no longer pins a v
 
 2. ▢ Find the bug in this migration from a fixed thread pool to a virtual thread per task.
 
-   ```java
-   static final ThreadLocal<Connection> CONN =
-       ThreadLocal.withInitial(Database::openExpensiveConnection);
+    ```java
+    static final ThreadLocal<Connection> CONN =
+        ThreadLocal.withInitial(Database::openExpensiveConnection);
 
-   ExecutorService pool = Executors.newVirtualThreadPerTaskExecutor();
-   pool.submit(() -> handle(request, CONN.get()));
-   ```
+    ExecutorService pool = Executors.newVirtualThreadPerTaskExecutor();
+    pool.submit(() -> handle(request, CONN.get()));
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

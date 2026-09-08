@@ -132,11 +132,11 @@ The types are in the annotations, so the docstring carries what annotations cann
 
 1. ▢ Rewrite this signature, and name each change.
 
-   ```python
-   def export(data, True, "csv", None, 100):
-       ...
-   # def export(data, headers, format, path, chunk):
-   ```
+    ```python
+    def export(data, True, "csv", None, 100):
+        ...
+    # def export(data, headers, format, path, chunk):
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -183,12 +183,12 @@ For each, imagine the call site or the assertion that breaks.
 
 3. ▢ Why is a module-level client worse than a constructor?
 
-   ```python
-   # shop/api.py
-   client = HttpClient(base_url=os.environ["API_URL"], timeout=5)
+    ```python
+    # shop/api.py
+    client = HttpClient(base_url=os.environ["API_URL"], timeout=5)
 
-   def fetch(order_id): return client.get(f"/orders/{order_id}")
-   ```
+    def fetch(order_id): return client.get(f"/orders/{order_id}")
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

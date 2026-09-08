@@ -167,11 +167,11 @@ Annotate when you want the value to become the wider, written type, right at a p
 
 1. ▢ Predict whether this compiles, and if it does, what `t`'s value is checked against.
 
-   ```ts
-   type Limits = Record<string, number | boolean>;
-   const limits = { timeout: 5000, retry: true } satisfies Limits;
-   const t: number = limits.timeout;
-   ```
+    ```ts
+    type Limits = Record<string, number | boolean>;
+    const limits = { timeout: 5000, retry: true } satisfies Limits;
+    const t: number = limits.timeout;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -181,10 +181,10 @@ Compiles. `limits` was checked against `Limits`, and `satisfies` kept the litera
 
 2. ▢ Predict the exact diagnostic, with its `TS` number.
 
-   ```ts
-   type Limits = Record<string, number | boolean>;
-   const limits = { timeout: "5s", retry: true } satisfies Limits;
-   ```
+    ```ts
+    type Limits = Record<string, number | boolean>;
+    const limits = { timeout: "5s", retry: true } satisfies Limits;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -208,13 +208,13 @@ Ask what `keyof` sees when the declared type has an index signature, versus when
 
 4. ▢ Predict whether this compiles, and if it does not, name the diagnostic.
 
-   ```ts
-   interface Ticket {
-     status: "open" | "closed" | "pending";
-     owner: string;
-   }
-   function assign(t satisfies Ticket, owner: string) {}
-   ```
+    ```ts
+    interface Ticket {
+      status: "open" | "closed" | "pending";
+      owner: string;
+    }
+    function assign(t satisfies Ticket, owner: string) {}
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

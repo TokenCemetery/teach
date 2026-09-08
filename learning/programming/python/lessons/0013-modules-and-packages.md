@@ -148,19 +148,19 @@ Module-level state is process-wide state. A `_cache = {}` at module level is a s
 
 1. ▢ Predict the output.
 
-   ```python
-   # tools.py
-   print("loading tools")
-   VALUE = 1
-   ```
+    ```python
+    # tools.py
+    print("loading tools")
+    VALUE = 1
+    ```
 
-   ```python
-   # main.py
-   import tools
-   import tools
-   from tools import VALUE
-   print(VALUE)
-   ```
+    ```python
+    # main.py
+    import tools
+    import tools
+    from tools import VALUE
+    print(VALUE)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -175,24 +175,24 @@ The module executes once. The second `import` and the `from` both find it in `sy
 
 2. ▢ Why does the assertion fail?
 
-   ```python
-   # settings.py
-   TIMEOUT = 10
-   ```
+    ```python
+    # settings.py
+    TIMEOUT = 10
+    ```
 
-   ```python
-   # client.py
-   from settings import TIMEOUT
-   def get_timeout():
-       return TIMEOUT
-   ```
+    ```python
+    # client.py
+    from settings import TIMEOUT
+    def get_timeout():
+        return TIMEOUT
+    ```
 
-   ```python
-   # test
-   import settings, client
-   settings.TIMEOUT = 30
-   assert client.get_timeout() == 30
-   ```
+    ```python
+    # test
+    import settings, client
+    settings.TIMEOUT = 30
+    assert client.get_timeout() == 30
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -238,19 +238,19 @@ The rule: run `-m` from the directory that **contains** the package.
 
 4. ▢ Break this cycle without moving any import inside a function.
 
-   ```python
-   # models.py
-   from validation import check
-   class User:
-       def save(self):
-           check(self)
+    ```python
+    # models.py
+    from validation import check
+    class User:
+        def save(self):
+            check(self)
 
-   # validation.py
-   from models import User
-   def check(obj):
-       if not isinstance(obj, User):
-           raise TypeError
-   ```
+    # validation.py
+    from models import User
+    def check(obj):
+        if not isinstance(obj, User):
+            raise TypeError
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

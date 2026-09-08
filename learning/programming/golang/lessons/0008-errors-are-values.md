@@ -133,10 +133,10 @@ Error last, and `context.Context` first, which is the convention you will meet p
 
 2. ▢ What is wrong with each line?
 
-   ```go
-   return nil, errors.New("Failed to connect to database.")
-   data, _ := io.ReadAll(r)
-   ```
+    ```go
+    return nil, errors.New("Failed to connect to database.")
+    data, _ := io.ReadAll(r)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

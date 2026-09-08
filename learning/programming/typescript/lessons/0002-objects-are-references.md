@@ -101,13 +101,13 @@ So there are two separate questions to keep apart, and each has its own tool:
 
 1. ▢ Predict the output.
 
-   ```ts
-   const original = { name: "svc", tags: ["a"] };
-   const copy = { ...original };
-   copy.name = "other";
-   copy.tags.push("b");
-   console.log(original);
-   ```
+    ```ts
+    const original = { name: "svc", tags: ["a"] };
+    const copy = { ...original };
+    copy.name = "other";
+    copy.tags.push("b");
+    console.log(original);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -125,12 +125,12 @@ Ask separately for each of the two properties whether the spread copied the valu
 
 2. ▢ Which of these mutations succeed?
 
-   ```ts
-   const c = Object.freeze({ n: 1, inner: { m: 2 }, list: [1] });
-   c.n = 9;
-   c.inner.m = 9;
-   c.list.push(2);
-   ```
+    ```ts
+    const c = Object.freeze({ n: 1, inner: { m: 2 }, list: [1] });
+    c.n = 9;
+    c.inner.m = 9;
+    c.list.push(2);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -159,13 +159,13 @@ A library that implements deep equality is the other reasonable answer. The poin
 
 4. ▢ This function is meant to leave the caller's data alone. Name the defect and fix it.
 
-   ```ts
-   function withDefault(config: { tags: string[] }) {
-     const next = { ...config };
-     next.tags.push("default");
-     return next;
-   }
-   ```
+    ```ts
+    function withDefault(config: { tags: string[] }) {
+      const next = { ...config };
+      next.tags.push("default");
+      return next;
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

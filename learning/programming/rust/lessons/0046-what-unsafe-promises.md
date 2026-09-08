@@ -181,10 +181,10 @@ The first dereferences a raw pointer. The second implements an unsafe trait. The
 
 3. ▢ Predict what happens when `#[no_mangle]` appears with no wrapper on edition 2024, then try it.
 
-   ```rust
-   #[no_mangle]
-   pub fn example() {}
-   ```
+    ```rust
+    #[no_mangle]
+    pub fn example() {}
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

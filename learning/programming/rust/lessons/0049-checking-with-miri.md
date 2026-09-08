@@ -198,9 +198,9 @@ Still accepted, printing the same value: this program has nothing for either mod
 
 5. ▢ A judgement call, not a compile check: for each claim, say whether a clean `cargo +nightly miri test` run licenses it.
 
-   a) A crate with no `unsafe` runs clean, so the team concludes its dependencies must be sound too.
-   b) A function with one `unsafe` block runs clean on its tests, so the team concludes it is sound for every input it could receive.
-   c) The same function runs clean across a range of seeds under `-Zmiri-many-seeds`, and the team notes only that those schedules turned up nothing.
+    a) A crate with no `unsafe` runs clean, so the team concludes its dependencies must be sound too.
+    b) A function with one `unsafe` block runs clean on its tests, so the team concludes it is sound for every input it could receive.
+    c) The same function runs clean across a range of seeds under `-Zmiri-many-seeds`, and the team notes only that those schedules turned up nothing.
 
 <details markdown="1"><summary>Check</summary>
 

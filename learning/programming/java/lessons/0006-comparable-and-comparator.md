@@ -112,14 +112,14 @@ Two ordering properties worth knowing while you are here: sorting a `List` or an
 
 1. ▢ Predict the size, and explain it.
 
-   ```java
-   record Task(String name, int priority) {}
-   Set<Task> set = new TreeSet<>(Comparator.comparingInt(Task::priority));
-   set.add(new Task("a", 1));
-   set.add(new Task("b", 1));
-   set.add(new Task("c", 2));
-   System.out.println(set.size());
-   ```
+    ```java
+    record Task(String name, int priority) {}
+    Set<Task> set = new TreeSet<>(Comparator.comparingInt(Task::priority));
+    set.add(new Task("a", 1));
+    set.add(new Task("b", 1));
+    set.add(new Task("c", 2));
+    System.out.println(set.size());
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -133,9 +133,9 @@ Add `.thenComparing(Task::name)` and the size is 3.
 
 2. ▢ This comparator passes its tests. Name the input that breaks it and the property it violates.
 
-   ```java
-   Comparator<Item> byId = (a, b) -> a.id() - b.id();
-   ```
+    ```java
+    Comparator<Item> byId = (a, b) -> a.id() - b.id();
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

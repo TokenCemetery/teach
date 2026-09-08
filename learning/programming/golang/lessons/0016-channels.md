@@ -97,13 +97,13 @@ This is a fatal error, not a panic: `recover` cannot catch it, exactly like the 
 
 1. ▢ Why does this deadlock?
 
-   ```go
-   func main() {
-       ch := make(chan int)
-       ch <- 1
-       fmt.Println(<-ch)
-   }
-   ```
+    ```go
+    func main() {
+        ch := make(chan int)
+        ch <- 1
+        fmt.Println(<-ch)
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

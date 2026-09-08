@@ -133,13 +133,13 @@ A brand earns its ceremony where two values of the same primitive type are inter
 
 1. ▢ Predict the exact diagnostic, with its `TS` number.
 
-   ```ts
-   type Meters = number & { readonly __brand: "Meters" };
-   type Seconds = number & { readonly __brand: "Seconds" };
-   function wait(duration: Seconds) {}
-   declare const distance: Meters;
-   wait(distance);
-   ```
+    ```ts
+    type Meters = number & { readonly __brand: "Meters" };
+    type Seconds = number & { readonly __brand: "Seconds" };
+    function wait(duration: Seconds) {}
+    declare const distance: Meters;
+    wait(distance);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -149,14 +149,14 @@ A brand earns its ceremony where two values of the same primitive type are inter
 
 2. ▢ Predict whether this compiles.
 
-   ```ts
-   type Meters = number & { readonly __brand: "Meters" };
-   function toMeters(n: number): Meters {
-     return n as Meters;
-   }
-   const m = toMeters(10);
-   const total: number = m + 5;
-   ```
+    ```ts
+    type Meters = number & { readonly __brand: "Meters" };
+    function toMeters(n: number): Meters {
+      return n as Meters;
+    }
+    const m = toMeters(10);
+    const total: number = m + 5;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -166,10 +166,10 @@ Compiles. `+` only needs its operands to behave as `number`, which `m` still doe
 
 3. ▢ Predict this one, and say why the `TS` number differs from item 1 even though the underlying mistake is the same shape mismatch.
 
-   ```ts
-   type Meters = number & { readonly __brand: "Meters" };
-   const m: Meters = 10;
-   ```
+    ```ts
+    type Meters = number & { readonly __brand: "Meters" };
+    const m: Meters = 10;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -193,12 +193,12 @@ Each `as UserId` is an unchecked claim, exactly what lesson 18 says an assertion
 
 5. ▢ Someone, worried that assertions are unchecked, writes this guard and calls it before trusting a value as a `UserId`. Predict what `isUserId("anything")` returns, and say what that reveals about brands at run time.
 
-   ```ts
-   type UserId = string & { readonly __brand: "UserId" };
-   function isUserId(x: unknown): x is UserId {
-     return typeof x === "string" && (x as { __brand?: string }).__brand === "UserId";
-   }
-   ```
+    ```ts
+    type UserId = string & { readonly __brand: "UserId" };
+    function isUserId(x: unknown): x is UserId {
+      return typeof x === "string" && (x as { __brand?: string }).__brand === "UserId";
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

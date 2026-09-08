@@ -101,11 +101,11 @@ A table has no inherent order, so a `LIMIT` with no `ORDER BY` is a request for 
 
 1. ▢ Why does this fail, and give two ways to fix it?
 
-   ```sql
-   SELECT amount * 0.2 AS tax
-   FROM orders
-   WHERE tax > 100;
-   ```
+    ```sql
+    SELECT amount * 0.2 AS tax
+    FROM orders
+    WHERE tax > 100;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -117,15 +117,15 @@ Fix one: repeat the expression, `WHERE amount * 0.2 > 100`. Fix two: compute it 
 
 2. ▢ Both queries return the same rows. Which does less work, and why?
 
-   ```sql
-   -- A
-   SELECT customer_id, count(*) FROM orders
-   WHERE amount > 0 GROUP BY customer_id;
+    ```sql
+    -- A
+    SELECT customer_id, count(*) FROM orders
+    WHERE amount > 0 GROUP BY customer_id;
 
-   -- B
-   SELECT customer_id, count(*) FROM orders
-   GROUP BY customer_id HAVING min(amount) > 0;
-   ```
+    -- B
+    SELECT customer_id, count(*) FROM orders
+    GROUP BY customer_id HAVING min(amount) > 0;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

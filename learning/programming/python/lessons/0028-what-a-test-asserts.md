@@ -159,12 +159,12 @@ The regression test is the highest-value test there is, and it has an unfair adv
 
 1. ▢ This test passes. Explain why it is nearly worthless.
 
-   ```python
-   def test_apply_discount():
-       order = Order(id=1, amount=Decimal("100"))
-       with pytest.raises(Exception):
-           order.apply_discount(Decimal("-5"))
-   ```
+    ```python
+    def test_apply_discount():
+        order = Order(id=1, amount=Decimal("100"))
+        with pytest.raises(Exception):
+            order.apply_discount(Decimal("-5"))
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -187,16 +187,16 @@ Name the type, and pin the message with `match`. The name also should say what t
 
 2. ▢ Split this into the right number of tests, and name them.
 
-   ```python
-   def test_order():
-       order = Order(id=1, amount=Decimal("100"), country="GB")
-       assert order.amount == Decimal("100")
-       order.apply_discount(Decimal("10"))
-       assert order.amount == Decimal("90")
-       assert order.vat() == Decimal("18")
-       with pytest.raises(ValueError):
-           order.apply_discount(Decimal("-1"))
-   ```
+    ```python
+    def test_order():
+        order = Order(id=1, amount=Decimal("100"), country="GB")
+        assert order.amount == Decimal("100")
+        order.apply_discount(Decimal("10"))
+        assert order.amount == Decimal("90")
+        assert order.vat() == Decimal("18")
+        with pytest.raises(ValueError):
+            order.apply_discount(Decimal("-1"))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

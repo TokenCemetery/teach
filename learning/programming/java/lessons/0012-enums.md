@@ -186,12 +186,12 @@ Both close a set of alternatives against the addition of an uncovered one, but a
 
 1. ▢ Predict what this prints, then explain why the second `Suit.values()` call is unaffected by the mutation.
 
-   ```java
-   Suit[] a = Suit.values();
-   a[0] = Suit.SPADES;
-   System.out.println(a[0]);
-   System.out.println(Suit.values()[0]);
-   ```
+    ```java
+    Suit[] a = Suit.values();
+    a[0] = Suit.SPADES;
+    System.out.println(a[0]);
+    System.out.println(Suit.values()[0]);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

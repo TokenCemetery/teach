@@ -197,16 +197,16 @@ class Box {
 
 1. ▢ Predict the output of both calls.
 
-   ```ts
-   function count(n: number | null): string {
-     if (n) {
-       return `count: ${n}`;
-     }
-     return "no count";
-   }
-   console.log(count(0));
-   console.log(count(null));
-   ```
+    ```ts
+    function count(n: number | null): string {
+      if (n) {
+        return `count: ${n}`;
+      }
+      return "no count";
+    }
+    console.log(count(0));
+    console.log(count(null));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -216,13 +216,13 @@ Both print `no count`. `0` is a legitimate count, but truthiness treats it like 
 
 2. ▢ Predict the diagnostic, with its `TS` number.
 
-   ```ts
-   function f(x: string | null, y: string | null) {
-     if (x === null) return;
-     x = y;
-     const s: string = x;
-   }
-   ```
+    ```ts
+    function f(x: string | null, y: string | null) {
+      if (x === null) return;
+      x = y;
+      const s: string = x;
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -238,24 +238,24 @@ Ask whether `x` is reassigned anywhere after the narrowing check, not whether it
 
 3. ▢ Compare these two functions. One compiles, one does not. Which, and why?
 
-   ```ts
-   function a(x: string | null) {
-     if (x === null) return;
-     const c = () => {
-       const s: string = x;
-     };
-     c();
-   }
+    ```ts
+    function a(x: string | null) {
+      if (x === null) return;
+      const c = () => {
+        const s: string = x;
+      };
+      c();
+    }
 
-   function b(x: string | null, y: string | null) {
-     if (x === null) return;
-     const c = () => {
-       const s: string = x;
-     };
-     x = y;
-     c();
-   }
-   ```
+    function b(x: string | null, y: string | null) {
+      if (x === null) return;
+      const c = () => {
+        const s: string = x;
+      };
+      x = y;
+      c();
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -265,17 +265,17 @@ Ask whether `x` is reassigned anywhere after the narrowing check, not whether it
 
 4. ▢ Does this compile?
 
-   ```ts
-   function unrelated() {}
-   class Box {
-     value: string | null = null;
-     f() {
-       if (this.value === null) return;
-       unrelated();
-       this.value.toUpperCase();
-     }
-   }
-   ```
+    ```ts
+    function unrelated() {}
+    class Box {
+      value: string | null = null;
+      f() {
+        if (this.value === null) return;
+        unrelated();
+        this.value.toUpperCase();
+      }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -291,18 +291,18 @@ Yes, it compiles. Calling `unrelated()` between the check and the use does not i
 
 5. ▢ This fails. Predict the diagnostic, then fix it by copying `this.value` into a local before the closure.
 
-   ```ts
-   class Box {
-     value: string | null = null;
-     f() {
-       if (this.value === null) return;
-       const c = () => {
-         const s: string = this.value;
-       };
-       c();
-     }
-   }
-   ```
+    ```ts
+    class Box {
+      value: string | null = null;
+      f() {
+        if (this.value === null) return;
+        const c = () => {
+          const s: string = this.value;
+        };
+        c();
+      }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -259,15 +259,15 @@ A stream pipeline is at its best when it is one line of transformation feeding o
 
 1. ▢ Predict the printed order and the final result, then explain why the last two elements never appear in either.
 
-   ```java
-   List<Integer> nums = List.of(1, 2, 3, 4);
-   List<Integer> result = nums.stream()
-           .filter(n -> { System.out.println("filter " + n); return n % 2 == 0; })
-           .map(n -> { System.out.println("map " + n); return n * n; })
-           .limit(1)
-           .toList();
-   System.out.println(result);
-   ```
+    ```java
+    List<Integer> nums = List.of(1, 2, 3, 4);
+    List<Integer> result = nums.stream()
+            .filter(n -> { System.out.println("filter " + n); return n % 2 == 0; })
+            .map(n -> { System.out.println("map " + n); return n * n; })
+            .limit(1)
+            .toList();
+    System.out.println(result);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -284,13 +284,13 @@ map 2
 
 2. ▢ This code is meant to report whether any number in the list is negative, and separately count how many numbers were even along the way. Find the bug.
 
-   ```java
-   List<Integer> nums = List.of(2, 4, 6, 7, 8, 10);
-   int[] evenCount = {0};
-   boolean hasNegative = nums.stream()
-           .peek(n -> { if (n % 2 == 0) evenCount[0]++; })
-           .anyMatch(n -> n < 0);
-   ```
+    ```java
+    List<Integer> nums = List.of(2, 4, 6, 7, 8, 10);
+    int[] evenCount = {0};
+    boolean hasNegative = nums.stream()
+            .peek(n -> { if (n % 2 == 0) evenCount[0]++; })
+            .anyMatch(n -> n < 0);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -306,11 +306,11 @@ There is no negative number in the list, so `anyMatch` cannot short-circuit earl
 
 3. ▢ Predict what the second line does, and quote the exception.
 
-   ```java
-   Stream<Integer> s = Stream.of(1, 2, 3);
-   System.out.println(s.count());
-   s.count();
-   ```
+    ```java
+    Stream<Integer> s = Stream.of(1, 2, 3);
+    System.out.println(s.count());
+    s.count();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

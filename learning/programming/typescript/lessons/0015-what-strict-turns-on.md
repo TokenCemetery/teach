@@ -83,11 +83,11 @@ Per section 5.1, every one of these seven ships true. You do not enable them; yo
 
 1. ▢ Predict the diagnostic, with its `TS` number, and name the flag responsible.
 
-   ```ts
-   function double(x) {
-     return x * 2;
-   }
-   ```
+    ```ts
+    function double(x) {
+      return x * 2;
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -97,13 +97,13 @@ Per section 5.1, every one of these seven ships true. You do not enable them; yo
 
 2. ▢ Does this class compile under plain `strict`? If not, which field is the problem and which flag catches it?
 
-   ```ts
-   class Order {
-     id: string;
-     total: number;
-     constructor(id: string) { this.id = id; }
-   }
-   ```
+    ```ts
+    class Order {
+      id: string;
+      total: number;
+      constructor(id: string) { this.id = id; }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -119,10 +119,10 @@ It does not compile. `total` is declared but never assigned anywhere in the cons
 
 3. ▢ Predict whether this compiles, and name the flag that decides it.
 
-   ```ts
-   type Sink = (x: string | number) => void;
-   const numbersOnly: Sink = (x: number) => {};
-   ```
+    ```ts
+    type Sink = (x: string | number) => void;
+    const numbersOnly: Sink = (x: number) => {};
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -132,17 +132,17 @@ It fails: `error TS2322: Type '(x: number) => void' is not assignable to type 'S
 
 4. ▢ Predict the diagnostic and name the flag, then say which of lesson 4's four `this` rules is in play.
 
-   ```ts
-   class Timer {
-     seconds = 0;
-     start() {
-       function tick() {
-         this.seconds++;
-       }
-       tick();
-     }
-   }
-   ```
+    ```ts
+    class Timer {
+      seconds = 0;
+      start() {
+        function tick() {
+          this.seconds++;
+        }
+        tick();
+      }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

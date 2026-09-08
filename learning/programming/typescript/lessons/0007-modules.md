@@ -100,17 +100,17 @@ Cycles are legal in both and behave badly in both. In ES modules the imported bi
 
 1. ▢ Predict the output.
 
-   ```ts
-   // counter.ts
-   export let count = 0;
-   export function bump() { count++; }
+    ```ts
+    // counter.ts
+    export let count = 0;
+    export function bump() { count++; }
 
-   // main.ts
-   import { count, bump } from "./counter.js";
-   bump();
-   bump();
-   console.log(count);
-   ```
+    // main.ts
+    import { count, bump } from "./counter.js";
+    bump();
+    bump();
+    console.log(count);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -155,10 +155,10 @@ The fix is `export {}` at the top of the file, which makes it a module with no e
 
 4. ▢ What is the difference between these two lines, and when does it matter?
 
-   ```ts
-   import { Config } from "./config.js";
-   import type { Config } from "./config.js";
-   ```
+    ```ts
+    import { Config } from "./config.js";
+    import type { Config } from "./config.js";
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

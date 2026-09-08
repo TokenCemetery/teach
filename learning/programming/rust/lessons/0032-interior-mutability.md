@@ -255,15 +255,15 @@ The diagnostic continues with a `note` pointing at the standard library's own so
 
 1. ▢ Predict the error code before compiling this.
 
-   ```rust
-   use std::cell::Cell;
+    ```rust
+    use std::cell::Cell;
 
-   fn main() {
-       let cell: Cell<String> = Cell::new(String::from("hi"));
-       let v = cell.get();
-       println!("{v}");
-   }
-   ```
+    fn main() {
+        let cell: Cell<String> = Cell::new(String::from("hi"));
+        let v = cell.get();
+        println!("{v}");
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -279,16 +279,16 @@ It is `E0599`: `get` exists for `Cell<String>` but `String: Copy` does not hold.
 
 2. ▢ Predict what happens when this runs; the order of the two borrows is reversed from the double `borrow_mut` example above.
 
-   ```rust
-   use std::cell::RefCell;
+    ```rust
+    use std::cell::RefCell;
 
-   fn main() {
-       let cell = RefCell::new(5);
-       let r = cell.borrow();
-       let m = cell.borrow_mut();
-       println!("{r} {m}");
-   }
-   ```
+    fn main() {
+        let cell = RefCell::new(5);
+        let r = cell.borrow();
+        let m = cell.borrow_mut();
+        println!("{r} {m}");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -298,18 +298,18 @@ It panics with `RefCell already borrowed`, the same message two `borrow_mut` cal
 
 3. ▢ Predict what this prints.
 
-   ```rust
-   use std::cell::RefCell;
+    ```rust
+    use std::cell::RefCell;
 
-   fn main() {
-       let cell = RefCell::new(5);
-       let _m = cell.borrow_mut();
-       match cell.try_borrow() {
-           Ok(v) => println!("got {v}"),
-           Err(e) => println!("{e}"),
-       }
-   }
-   ```
+    fn main() {
+        let cell = RefCell::new(5);
+        let _m = cell.borrow_mut();
+        match cell.try_borrow() {
+            Ok(v) => println!("got {v}"),
+            Err(e) => println!("{e}"),
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -319,25 +319,25 @@ It prints `RefCell already mutably borrowed`. `try_borrow` runs the same check `
 
 4. ▢ Predict whether this panics, and if so, with which message.
 
-   ```rust
-   struct Nested {
-       depth: std::cell::RefCell<u32>,
-   }
+    ```rust
+    struct Nested {
+        depth: std::cell::RefCell<u32>,
+    }
 
-   impl Nested {
-       fn go(&self) {
-           let mut d = self.depth.borrow_mut();
-           *d += 1;
-           if *d < 2 {
-               self.go();
-           }
-       }
-   }
+    impl Nested {
+        fn go(&self) {
+            let mut d = self.depth.borrow_mut();
+            *d += 1;
+            if *d < 2 {
+                self.go();
+            }
+        }
+    }
 
-   fn main() {
-       Nested { depth: std::cell::RefCell::new(0) }.go();
-   }
-   ```
+    fn main() {
+        Nested { depth: std::cell::RefCell::new(0) }.go();
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -353,19 +353,19 @@ It panics with `RefCell already borrowed`. The recursive call to `self.go()` hap
 
 5. ▢ Predict whether this compiles, given that the wrapper is `Rc` rather than the `Arc` this lesson used.
 
-   ```rust
-   use std::cell::RefCell;
-   use std::rc::Rc;
-   use std::thread;
+    ```rust
+    use std::cell::RefCell;
+    use std::rc::Rc;
+    use std::thread;
 
-   fn main() {
-       let shared = Rc::new(RefCell::new(0));
-       let handle = thread::spawn(move || {
-           *shared.borrow_mut() += 1;
-       });
-       handle.join().unwrap();
-   }
-   ```
+    fn main() {
+        let shared = Rc::new(RefCell::new(0));
+        let handle = thread::spawn(move || {
+            *shared.borrow_mut() += 1;
+        });
+        handle.join().unwrap();
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -77,12 +77,12 @@ That asymmetry is worth remembering: the compiler protects locals and cannot pro
 
 1. ▢ Predict the output.
 
-   ```java
-   int[] first = {1, 2, 3};
-   int[] second = first;
-   second[0] = 99;
-   System.out.println(first[0]);
-   ```
+    ```java
+    int[] first = {1, 2, 3};
+    int[] second = first;
+    second[0] = 99;
+    System.out.println(first[0]);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -94,15 +94,15 @@ An array is an object, so `second` holds a copy of the reference and both variab
 
 2. ▢ What does this print, and why do the two calls differ?
 
-   ```java
-   static void mutate(StringBuilder sb) { sb.append("!"); }
-   static void reassign(StringBuilder sb) { sb = new StringBuilder("new"); }
+    ```java
+    static void mutate(StringBuilder sb) { sb.append("!"); }
+    static void reassign(StringBuilder sb) { sb = new StringBuilder("new"); }
 
-   StringBuilder text = new StringBuilder("hi");
-   mutate(text);
-   reassign(text);
-   System.out.println(text);
-   ```
+    StringBuilder text = new StringBuilder("hi");
+    mutate(text);
+    reassign(text);
+    System.out.println(text);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -130,16 +130,16 @@ The caller either swaps in place, or the method returns both values in something
 
 4. ▢ Which of these compiles?
 
-   ```java
-   class Config {
-       int retries;                    // a
-       String name;                    // b
-       void run() {
-           int local;                  // c
-           System.out.println(local);  // d
-       }
-   }
-   ```
+    ```java
+    class Config {
+        int retries;                    // a
+        String name;                    // b
+        void run() {
+            int local;                  // c
+            System.out.println(local);  // d
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

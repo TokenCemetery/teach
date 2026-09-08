@@ -97,10 +97,10 @@ Writing a callback member yourself, declare it with the property arrow form, `on
 
 1. ▢ Predict whether this compiles, and say why `push`'s return value is not a problem.
 
-   ```ts
-   const list: number[] = [];
-   [1, 2, 3].forEach(x => list.push(x));
-   ```
+    ```ts
+    const list: number[] = [];
+    [1, 2, 3].forEach(x => list.push(x));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -110,10 +110,10 @@ It compiles. `forEach`'s callback parameter is typed to return `void`, and a `vo
 
 2. ▢ Predict the diagnostic, including its `TS` number.
 
-   ```ts
-   type Handler = (x: string | number) => void;
-   const onValue: Handler = (x: string) => {};
-   ```
+    ```ts
+    type Handler = (x: string | number) => void;
+    const onValue: Handler = (x: string) => {};
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -129,14 +129,14 @@ Ask what a caller who believes `Handler`'s promise is allowed to pass, and wheth
 
 3. ▢ Same mistake, different declaration. Does this compile?
 
-   ```ts
-   interface Emitter {
-     on(x: string | number): void;
-   }
-   const e: Emitter = {
-     on(x: string) {},
-   };
-   ```
+    ```ts
+    interface Emitter {
+      on(x: string | number): void;
+    }
+    const e: Emitter = {
+      on(x: string) {},
+    };
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -146,12 +146,12 @@ Yes, with no error at all. `on` is written as a method, checked more permissivel
 
 4. ▢ Predict the diagnostic, and say what supplied the type that made it possible.
 
-   ```ts
-   declare function withEach(xs: number[], cb: (n: number) => void): void;
-   withEach([1, 2], n => {
-     const s: string = n;
-   });
-   ```
+    ```ts
+    declare function withEach(xs: number[], cb: (n: number) => void): void;
+    withEach([1, 2], n => {
+      const s: string = n;
+    });
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

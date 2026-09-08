@@ -187,17 +187,17 @@ This prints `28`. A `ScopedJoinHandle` also earns its keep when a thread panics:
 
 1. ▢ Predict whether this compiles, given that neither thread mutates anything.
 
-   ```rust
-   use std::thread;
+    ```rust
+    use std::thread;
 
-   fn main() {
-       let banner = String::from("logsum");
-       thread::scope(|s| {
-           s.spawn(|| println!("{banner} worker one"));
-           s.spawn(|| println!("{banner} worker two"));
-       });
-   }
-   ```
+    fn main() {
+        let banner = String::from("logsum");
+        thread::scope(|s| {
+            s.spawn(|| println!("{banner} worker one"));
+            s.spawn(|| println!("{banner} worker two"));
+        });
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -221,13 +221,13 @@ Each closure produces its own `E0373`, one for the local slot it writes and one 
 
 3. ▢ In the return-value example above, replace the last line of the closure with the one below, adding the two `.join()` calls directly instead of unwrapping first. Predict the error code.
 
-   ```rust
-   let total = thread::scope(|s| {
-       let a = s.spawn(|| lines[0].len());
-       let b = s.spawn(|| lines[1].len());
-       a.join() + b.join()
-   });
-   ```
+    ```rust
+    let total = thread::scope(|s| {
+        let a = s.spawn(|| lines[0].len());
+        let b = s.spawn(|| lines[1].len());
+        a.join() + b.join()
+    });
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

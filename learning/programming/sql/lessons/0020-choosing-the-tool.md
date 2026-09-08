@@ -125,11 +125,11 @@ Order 108, the one with no `shipped_at` at all. `DESC` defaults to `NULLS FIRST`
 
 3. ▢ Predict the exact error and SQLSTATE of dropping `customer_id` from the `ORDER BY` below, leaving `DISTINCT ON (customer_id)` in place.
 
-   ```sql
-   SELECT DISTINCT ON (customer_id) customer_id, id
-   FROM orders
-   ORDER BY shipped_at DESC NULLS LAST, id DESC;
-   ```
+    ```sql
+    SELECT DISTINCT ON (customer_id) customer_id, id
+    FROM orders
+    ORDER BY shipped_at DESC NULLS LAST, id DESC;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -139,12 +139,12 @@ Order 108, the one with no `shipped_at` at all. `DESC` defaults to `NULLS FIRST`
 
 4. ▢ Predict what a plain `OFFSET 1` does to this lesson's `DISTINCT ON` query, and say why it does not return each customer's second-newest order.
 
-   ```sql
-   SELECT DISTINCT ON (customer_id) customer_id, id
-   FROM orders
-   ORDER BY customer_id, shipped_at DESC NULLS LAST, id DESC
-   OFFSET 1;
-   ```
+    ```sql
+    SELECT DISTINCT ON (customer_id) customer_id, id
+    FROM orders
+    ORDER BY customer_id, shipped_at DESC NULLS LAST, id DESC
+    OFFSET 1;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

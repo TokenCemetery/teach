@@ -99,12 +99,12 @@ func addOne(s []int) { s = append(s, 1) } // caller never sees the new element
 
 1. ▢ Predict the printed value of `a`.
 
-   ```go
-   a := []int{1, 2, 3, 4, 5}
-   b := a[:2]
-   b = append(b, 30)
-   fmt.Println(a)
-   ```
+    ```go
+    a := []int{1, 2, 3, 4, 5}
+    b := a[:2]
+    b = append(b, 30)
+    fmt.Println(a)
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -161,11 +161,11 @@ Read down the profile for the function with high `tottime`, which is where the w
 
 2. ▢ Fix the actual problem.
 
-   ```python
-   def annotate(orders, flagged_ids):        # flagged_ids is a list of 50,000
-       for order in orders:                  # orders is 200,000
-           order.flagged = order.id in flagged_ids
-   ```
+    ```python
+    def annotate(orders, flagged_ids):        # flagged_ids is a list of 50,000
+        for order in orders:                  # orders is 200,000
+            order.flagged = order.id in flagged_ids
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

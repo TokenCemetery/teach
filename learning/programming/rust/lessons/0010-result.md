@@ -193,15 +193,15 @@ for s in inputs {
 
 1. ▢ Predict whether this compiles cleanly, and if not, predict the warning it produces. Then compile it.
 
-   ```rust
-   fn status_of(line: &str) -> Result<u16, std::num::ParseIntError> {
-       line.parse()
-   }
+    ```rust
+    fn status_of(line: &str) -> Result<u16, std::num::ParseIntError> {
+        line.parse()
+    }
 
-   fn main() {
-       status_of("200");
-   }
-   ```
+    fn main() {
+        status_of("200");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -211,14 +211,14 @@ It compiles, but with a warning that an unused `Result` must be used, the same `
 
 2. ▢ Rewrite this function using `?` instead of `match`, then compile both versions and compare their length.
 
-   ```rust
-   fn to_bytes(s: &str) -> Result<u64, std::num::ParseIntError> {
-       match s.parse::<u64>() {
-           Ok(n) => Ok(n),
-           Err(e) => Err(e),
-       }
-   }
-   ```
+    ```rust
+    fn to_bytes(s: &str) -> Result<u64, std::num::ParseIntError> {
+        match s.parse::<u64>() {
+            Ok(n) => Ok(n),
+            Err(e) => Err(e),
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -240,14 +240,14 @@ Both compile and both give identical results for every input. The `match` versio
 
 3. ▢ This defines its own error type and tries to use `?` on a `u16::from_str` failure. Predict the error code before compiling.
 
-   ```rust
-   struct StatusError;
+    ```rust
+    struct StatusError;
 
-   fn parse_status(s: &str) -> Result<u16, StatusError> {
-       let n = s.parse::<u16>()?;
-       Ok(n)
-   }
-   ```
+    fn parse_status(s: &str) -> Result<u16, StatusError> {
+        let n = s.parse::<u16>()?;
+        Ok(n)
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -257,13 +257,13 @@ Both compile and both give identical results for every input. The `match` versio
 
 4. ▢ Predict what this prints and what its exit status is, then run it.
 
-   ```rust
-   fn main() -> Result<(), std::num::ParseIntError> {
-       let count: u32 = "many".parse()?;
-       println!("count is {count}");
-       Ok(())
-   }
-   ```
+    ```rust
+    fn main() -> Result<(), std::num::ParseIntError> {
+        let count: u32 = "many".parse()?;
+        println!("count is {count}");
+        Ok(())
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -279,15 +279,15 @@ It prints `Error: ParseIntError { kind: InvalidDigit }` to standard error and ex
 
 5. ▢ Two log lines below came from the same faulty program, one from a bare `panic!` and one from an `unwrap()` on a `Result`. Which is which, and how do you know without seeing the source?
 
-   ```text
-   thread 'main' (9001) panicked at src/main.rs:14:9:
-   called `Result::unwrap()` on an `Err` value: StatusError
-   ```
+    ```text
+    thread 'main' (9001) panicked at src/main.rs:14:9:
+    called `Result::unwrap()` on an `Err` value: StatusError
+    ```
 
-   ```text
-   thread 'main' (9001) panicked at src/main.rs:22:5:
-   status must be a valid HTTP code
-   ```
+    ```text
+    thread 'main' (9001) panicked at src/main.rs:22:5:
+    status must be a valid HTTP code
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

@@ -178,11 +178,11 @@ Three customers, customer 6 among them at 0: the join decision in step one is th
 
 1. ▢ Predict the row count of the query below, and say in one sentence why it is larger than the plain `UNION` of the same two queries.
 
-   ```sql
-   SELECT id FROM orders WHERE amount > 100
-   UNION ALL
-   SELECT id FROM orders WHERE shipped_at IS NULL;
-   ```
+    ```sql
+    SELECT id FROM orders WHERE amount > 100
+    UNION ALL
+    SELECT id FROM orders WHERE shipped_at IS NULL;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -192,11 +192,11 @@ Nine rows: order 110 satisfies both conditions, so `UNION` keeps its one appeara
 
 2. ▢ Predict the exact error message and SQLSTATE of the query below.
 
-   ```sql
-   SELECT id, amount FROM orders WHERE id = 101
-   INTERSECT
-   SELECT id FROM orders WHERE id = 104;
-   ```
+    ```sql
+    SELECT id, amount FROM orders WHERE id = 101
+    INTERSECT
+    SELECT id FROM orders WHERE id = 104;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -212,12 +212,12 @@ The rule this breaks is shared by all four operators; only the word naming the o
 
 3. ▢ Predict the SQLSTATE of moving `ORDER BY id` from the end of the query below onto its first branch instead, before `UNION` rather than after it.
 
-   ```sql
-   SELECT id FROM orders WHERE amount > 100
-   UNION
-   SELECT id FROM orders WHERE shipped_at IS NULL
-   ORDER BY id;
-   ```
+    ```sql
+    SELECT id FROM orders WHERE amount > 100
+    UNION
+    SELECT id FROM orders WHERE shipped_at IS NULL
+    ORDER BY id;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -227,11 +227,11 @@ The rule this breaks is shared by all four operators; only the word naming the o
 
 4. ▢ The query below swaps which branch is written first, compared with this lesson's example. Predict the output's column header.
 
-   ```sql
-   SELECT customer_id AS cust, amount FROM orders WHERE id = 104
-   UNION
-   SELECT id AS order_id, amount FROM orders WHERE id = 101;
-   ```
+    ```sql
+    SELECT customer_id AS cust, amount FROM orders WHERE id = 104
+    UNION
+    SELECT id AS order_id, amount FROM orders WHERE id = 101;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -247,11 +247,11 @@ The header follows the syntax, not what either column means.
 
 5. ▢ Predict the row count and values returned by the query below, and say how it differs from the same pair joined with `EXCEPT` alone.
 
-   ```sql
-   SELECT amount FROM orders WHERE customer_id = 4
-   EXCEPT ALL
-   SELECT amount FROM orders WHERE customer_id = 999;
-   ```
+    ```sql
+    SELECT amount FROM orders WHERE customer_id = 4
+    EXCEPT ALL
+    SELECT amount FROM orders WHERE customer_id = 999;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

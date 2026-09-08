@@ -303,10 +303,10 @@ No error. `c.id` is the primary key, so it determines `c.email` exactly, while `
 
 5. ▢ Fix the previous query by aggregating `orders` in a derived table before any join touches it. Predict the corrected total.
 
-   ```sql
-   SELECT sum(pre.total) AS grand_total
-   FROM (SELECT customer_id, sum(amount) AS total FROM orders GROUP BY customer_id) pre;
-   ```
+    ```sql
+    SELECT sum(pre.total) AS grand_total
+    FROM (SELECT customer_id, sum(amount) AS total FROM orders GROUP BY customer_id) pre;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

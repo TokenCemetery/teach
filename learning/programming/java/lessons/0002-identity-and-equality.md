@@ -101,17 +101,17 @@ For primitives, `==` is correct and the only option. For `double`, be aware that
 
 1. ▢ Predict all four.
 
-   ```java
-   String a = "config";
-   String b = "config";
-   String c = new String("config");
-   String d = "con" + "fig";
+    ```java
+    String a = "config";
+    String b = "config";
+    String c = new String("config");
+    String d = "con" + "fig";
 
-   System.out.println(a == b);
-   System.out.println(a == c);
-   System.out.println(a == d);
-   System.out.println(a.equals(c));
-   ```
+    System.out.println(a == b);
+    System.out.println(a == c);
+    System.out.println(a == d);
+    System.out.println(a.equals(c));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -125,12 +125,12 @@ The lesson is not the four answers. It is that three of them depend on how the s
 
 2. ▢ Predict both, then say which line you would flag in review.
 
-   ```java
-   Integer x = 127, y = 127;
-   Integer p = 128, q = 128;
-   System.out.println(x == y);
-   System.out.println(p == q);
-   ```
+    ```java
+    Integer x = 127, y = 127;
+    Integer p = 128, q = 128;
+    System.out.println(x == y);
+    System.out.println(p == q);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

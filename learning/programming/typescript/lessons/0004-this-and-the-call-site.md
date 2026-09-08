@@ -95,18 +95,18 @@ An arrow in an object literal captures whatever `this` was outside the literal, 
 
 1. ▢ Predict each of the four.
 
-   ```ts
-   class Counter {
-     n = 0;
-     inc() { this.n++; return this.n; }
-   }
-   const c = new Counter();
-   console.log(c.inc());
-   const f = c.inc;
-   console.log(f());
-   console.log(f.call(c));
-   console.log([0].map(c.inc));
-   ```
+    ```ts
+    class Counter {
+      n = 0;
+      inc() { this.n++; return this.n; }
+    }
+    const c = new Counter();
+    console.log(c.inc());
+    const f = c.inc;
+    console.log(f());
+    console.log(f.call(c));
+    console.log([0].map(c.inc));
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -145,13 +145,13 @@ Note that d works despite being an ordinary function: what matters is not how th
 
 3. ▢ Why does this listener never get removed?
 
-   ```ts
-   class Widget {
-     handle() { }
-     attach(el: HTMLElement) { el.addEventListener("click", this.handle.bind(this)); }
-     detach(el: HTMLElement) { el.removeEventListener("click", this.handle.bind(this)); }
-   }
-   ```
+    ```ts
+    class Widget {
+      handle() { }
+      attach(el: HTMLElement) { el.addEventListener("click", this.handle.bind(this)); }
+      detach(el: HTMLElement) { el.removeEventListener("click", this.handle.bind(this)); }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -174,13 +174,13 @@ An arrow class field, `handle = () => {}`, has the same effect: one stable funct
 
 4. ▢ One of these two is wrong. Which, and why?
 
-   ```ts
-   const timer = {
-     seconds: 0,
-     startA() { setInterval(() => this.seconds++, 1000); },
-     startB() { setInterval(function () { this.seconds++; }, 1000); },
-   };
-   ```
+    ```ts
+    const timer = {
+      seconds: 0,
+      startA() { setInterval(() => this.seconds++, 1000); },
+      startB() { setInterval(function () { this.seconds++; }, 1000); },
+    };
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

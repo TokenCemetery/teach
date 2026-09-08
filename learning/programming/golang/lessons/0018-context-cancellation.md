@@ -97,10 +97,10 @@ This is where the Java instinct misleads. `Thread.interrupt` sets a flag the run
 
 1. ▢ What is wrong with this?
 
-   ```go
-   ctx, _ := context.WithTimeout(context.Background(), time.Second)
-   rows, err := db.QueryContext(ctx, q)
-   ```
+    ```go
+    ctx, _ := context.WithTimeout(context.Background(), time.Second)
+    rows, err := db.QueryContext(ctx, q)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

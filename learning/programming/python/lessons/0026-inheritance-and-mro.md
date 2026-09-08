@@ -144,13 +144,13 @@ Composition costs one attribute and a few forwarding methods, and buys the abili
 
 1. ▢ Give the MRO.
 
-   ```python
-   class A: pass
-   class B(A): pass
-   class C(A): pass
-   class D(B): pass
-   class E(D, C): pass
-   ```
+    ```python
+    class A: pass
+    class B(A): pass
+    class C(A): pass
+    class D(B): pass
+    class E(D, C): pass
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -162,21 +162,21 @@ Composition costs one attribute and a few forwarding methods, and buys the abili
 
 2. ▢ Predict the output, then say which class is missing from it and why.
 
-   ```python
-   class Base:
-       def setup(self): print("Base")
+    ```python
+    class Base:
+        def setup(self): print("Base")
 
-   class Logging(Base):
-       def setup(self): print("Logging"); super().setup()
+    class Logging(Base):
+        def setup(self): print("Logging"); super().setup()
 
-   class Caching(Base):
-       def setup(self): print("Caching")
+    class Caching(Base):
+        def setup(self): print("Caching")
 
-   class Service(Logging, Caching, Base):
-       def setup(self): print("Service"); super().setup()
+    class Service(Logging, Caching, Base):
+        def setup(self): print("Service"); super().setup()
 
-   Service().setup()
-   ```
+    Service().setup()
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -200,11 +200,11 @@ This is the defect to recognise: the missing call is in `Caching`, and the sympt
 
 3. ▢ Why does this fail, and what is the minimal change?
 
-   ```python
-   class Reader: pass
-   class Writer(Reader): pass
-   class ReadWrite(Reader, Writer): pass
-   ```
+    ```python
+    class Reader: pass
+    class Writer(Reader): pass
+    class ReadWrite(Reader, Writer): pass
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

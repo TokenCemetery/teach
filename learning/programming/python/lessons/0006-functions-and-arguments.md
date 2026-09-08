@@ -121,15 +121,15 @@ The two facts in this lesson combine here: the trap of default-evaluation-at-def
 
 1. ▢ Predict all three lines of output.
 
-   ```python
-   def collect(x, into=[]):
-       into.append(x)
-       return into
+    ```python
+    def collect(x, into=[]):
+        into.append(x)
+        return into
 
-   print(collect(1))
-   print(collect(2))
-   print(collect(3, into=[]))
-   ```
+    print(collect(1))
+    print(collect(2))
+    print(collect(3, into=[]))
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -147,12 +147,12 @@ Two lists exist. The default was created once when `def` ran, and the first two 
 
 2. ▢ Which of these functions can change what the caller sees? Answer for each.
 
-   ```python
-   def a(items): items.append(1)
-   def b(items): items = items + [1]
-   def c(items): items += [1]
-   def d(items): items = list(items); items.append(1)
-   ```
+    ```python
+    def a(items): items.append(1)
+    def b(items): items = items + [1]
+    def c(items): items += [1]
+    def d(items): items = list(items); items.append(1)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -164,10 +164,10 @@ Two lists exist. The default was created once when `def` ran, and the first two 
 
 3. ▢ Rewrite this signature so that the two optional arguments cannot be passed positionally, and say what that buys.
 
-   ```python
-   def fetch(url, retries=3, timeout=10):
-       ...
-   ```
+    ```python
+    def fetch(url, retries=3, timeout=10):
+        ...
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -182,13 +182,13 @@ It buys two things. Call sites become self-describing, since `fetch(url, retries
 
 4. ▢ What does this print, and what is the minimal change that makes it print `0 1 2`?
 
-   ```python
-   handlers = []
-   for i in range(3):
-       handlers.append(lambda: print(i, end=" "))
-   for h in handlers:
-       h()
-   ```
+    ```python
+    handlers = []
+    for i in range(3):
+        handlers.append(lambda: print(i, end=" "))
+    for h in handlers:
+        h()
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -202,12 +202,12 @@ All three lambdas close over the same `i`, which is `2` once the loop has finish
 
 5. ▢ You are reviewing this function. Name two defects and the input that exposes each.
 
-   ```python
-   def register(name, tags=[], config={}):
-       tags.append(name)
-       config.setdefault("names", []).append(name)
-       return tags, config
-   ```
+    ```python
+    def register(name, tags=[], config={}):
+        tags.append(name)
+        config.setdefault("names", []).append(name)
+        return tags, config
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

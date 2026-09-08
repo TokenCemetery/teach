@@ -284,25 +284,25 @@ This prints `1` then `"two"`. Nothing here is quantified over `T` at the bound; 
 
 1. ▢ `Picker`'s field above is `Box<dyn for<'a> Fn(&'a str, &'a str) -> &'a str>`. Predict whether the same `picker` value can answer both calls below, whose borrowed strings come from two later, non-overlapping scopes.
 
-   ```rust
-   fn main() {
-       let picker = Picker {
-           pick: Box::new(|a: &str, b: &str| if a.len() >= b.len() { a } else { b }),
-       };
-       {
-           let one = String::from("short");
-           let two = String::from("much longer string");
-           println!("{}", (picker.pick)(&one, &two));
-       }
-       {
-           let three = String::from("a");
-           let four = String::from("bb");
-           println!("{}", (picker.pick)(&three, &four));
-       }
-   }
-   ```
+    ```rust
+    fn main() {
+        let picker = Picker {
+            pick: Box::new(|a: &str, b: &str| if a.len() >= b.len() { a } else { b }),
+        };
+        {
+            let one = String::from("short");
+            let two = String::from("much longer string");
+            println!("{}", (picker.pick)(&one, &two));
+        }
+        {
+            let three = String::from("a");
+            let four = String::from("bb");
+            println!("{}", (picker.pick)(&three, &four));
+        }
+    }
+    ```
 
-   Then change `Picker`'s field to `Box<dyn Fn(&'a str, &'a str) -> &'a str>` on a `Picker<'a>` and predict again before compiling both.
+    Then change `Picker`'s field to `Box<dyn Fn(&'a str, &'a str) -> &'a str>` on a `Picker<'a>` and predict again before compiling both.
 
 <details markdown="1"><summary>Check</summary>
 
@@ -312,16 +312,16 @@ With `for<'a>` on the field, both calls succeed, since the bound is satisfied af
 
 2. ▢ Predict whether this compiles, then compile it.
 
-   ```rust
-   fn identity(x: &str) -> &str {
-       x
-   }
+    ```rust
+    fn identity(x: &str) -> &str {
+        x
+    }
 
-   fn main() {
-       let f: for<'a> fn(&'a str) -> &'a str = identity;
-       let g: fn(&'static str) -> &'static str = f;
-   }
-   ```
+    fn main() {
+        let f: for<'a> fn(&'a str) -> &'a str = identity;
+        let g: fn(&'static str) -> &'static str = f;
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -331,15 +331,15 @@ It compiles. A function general enough for every lifetime is also general enough
 
 3. ▢ Take `count_interesting` from this lesson and replace its bound as shown, keeping `LineCheck` unchanged. Predict the error code before compiling.
 
-   ```rust
-   fn count_interesting<'a, T>(checker: &T) -> usize
-   where
-       T: LineCheck<'a>,
-   {
-       let local = String::from("hi");
-       if checker.interesting(&local) { 1 } else { 0 }
-   }
-   ```
+    ```rust
+    fn count_interesting<'a, T>(checker: &T) -> usize
+    where
+        T: LineCheck<'a>,
+    {
+        let local = String::from("hi");
+        if checker.interesting(&local) { 1 } else { 0 }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -349,22 +349,22 @@ The error is `E0597`, `` `local` does not live long enough ``, the identical sha
 
 4. ▢ `Apply<T>` above failed behind `for<T> Apply<T>`. Predict whether the same trait compiles behind this bound instead, which quantifies a lifetime rather than the type parameter itself.
 
-   ```rust
-   struct Echo;
-   impl<'a> Apply<&'a str> for Echo {
-       fn apply(&self, x: &'a str) -> &'a str {
-           x
-       }
-   }
+    ```rust
+    struct Echo;
+    impl<'a> Apply<&'a str> for Echo {
+        fn apply(&self, x: &'a str) -> &'a str {
+            x
+        }
+    }
 
-   fn call_generic<F>(f: F)
-   where
-       F: for<'a> Apply<&'a str>,
-   {
-       let local = String::from("hi");
-       println!("{}", f.apply(&local));
-   }
-   ```
+    fn call_generic<F>(f: F)
+    where
+        F: for<'a> Apply<&'a str>,
+    {
+        let local = String::from("hi");
+        println!("{}", f.apply(&local));
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -380,22 +380,22 @@ It compiles and prints `hi`. `T` is fixed to the concrete type `&'a str` before 
 
 5. ▢ A summariser function takes raw lines and a callback, trims each line into a fresh owned `String`, and returns the first one the callback accepts.
 
-   ```rust
-   fn first_interesting<F>(raw_lines: &[&str], is_interesting: F) -> Option<String>
-   where
-       F: for<'b> Fn(&'b str) -> Option<&'b str>,
-   {
-       for &line in raw_lines {
-           let owned = line.trim().to_string();
-           if let Some(snippet) = is_interesting(&owned) {
-               return Some(snippet.to_string());
-           }
-       }
-       None
-   }
-   ```
+    ```rust
+    fn first_interesting<F>(raw_lines: &[&str], is_interesting: F) -> Option<String>
+    where
+        F: for<'b> Fn(&'b str) -> Option<&'b str>,
+    {
+        for &line in raw_lines {
+            let owned = line.trim().to_string();
+            if let Some(snippet) = is_interesting(&owned) {
+                return Some(snippet.to_string());
+            }
+        }
+        None
+    }
+    ```
 
-   Predict what changes if the bound is rewritten as `F: Fn(&'a str) -> Option<&'a str>` on `first_interesting<'a, F>` instead.
+    Predict what changes if the bound is rewritten as `F: Fn(&'a str) -> Option<&'a str>` on `first_interesting<'a, F>` instead.
 
 <details markdown="1"><summary>Hint</summary>
 

@@ -233,11 +233,11 @@ Code that calls `new Thread(...).start()` directly inside a service, rather than
 
 1. ▢ Predict the output, and explain it.
 
-   ```java
-   Thread t = new Thread(() -> System.out.println(Thread.currentThread().getName()), "worker");
-   t.run();
-   t.start();
-   ```
+    ```java
+    Thread t = new Thread(() -> System.out.println(Thread.currentThread().getName()), "worker");
+    t.run();
+    t.start();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -247,15 +247,15 @@ Code that calls `new Thread(...).start()` directly inside a service, rather than
 
 2. ▢ Find the bug. This loop is meant to stop as soon as the thread is interrupted.
 
-   ```java
-   while (true) {
-       try {
-           Thread.sleep(1000);
-           doWork();
-       } catch (InterruptedException e) {
-       }
-   }
-   ```
+    ```java
+    while (true) {
+        try {
+            Thread.sleep(1000);
+            doWork();
+        } catch (InterruptedException e) {
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

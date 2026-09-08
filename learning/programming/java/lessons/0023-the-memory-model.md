@@ -104,18 +104,18 @@ Shared mutable state needs a stated policy: which lock protects it, or that it i
 
 1. ▢ Predict what this program does, and say which happens-before edge is missing.
 
-   ```java
-   static boolean ready = false;
-   static int payload = 0;
+    ```java
+    static boolean ready = false;
+    static int payload = 0;
 
-   // thread A
-   payload = 42;
-   ready = true;
+    // thread A
+    payload = 42;
+    ready = true;
 
-   // thread B
-   while (!ready) { }
-   System.out.println(payload);
-   ```
+    // thread B
+    while (!ready) { }
+    System.out.println(payload);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -125,12 +125,12 @@ There is no guarantee thread B ever stops looping, for the same reason the non-v
 
 2. ▢ Find the bug, given what this lesson measured about `volatile`.
 
-   ```java
-   static volatile int inventory = 0;
+    ```java
+    static volatile int inventory = 0;
 
-   void restock(int n) { inventory += n; }
-   void sell(int n)    { inventory -= n; }
-   ```
+    void restock(int n) { inventory += n; }
+    void sell(int n)    { inventory -= n; }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -154,18 +154,18 @@ There is no guarantee thread B ever stops looping, for the same reason the non-v
 
 4. ▢ A colleague publishes a configuration object like this, from a background loading thread to the request-handling threads that read it:
 
-   ```java
-   static Config config; // plain field, no volatile, no lock
+    ```java
+    static Config config; // plain field, no volatile, no lock
 
-   class Config {
-       final Map<String, String> settings;
-       Config(Map<String, String> settings) {
-           this.settings = Map.copyOf(settings);
-       }
-   }
-   ```
+    class Config {
+        final Map<String, String> settings;
+        Config(Map<String, String> settings) {
+            this.settings = Map.copyOf(settings);
+        }
+    }
+    ```
 
-   Is the publication of `config` itself safe? Is a request thread that does see a non-null `config` guaranteed to see `settings` fully populated?
+    Is the publication of `config` itself safe? Is a request thread that does see a non-null `config` guaranteed to see `settings` fully populated?
 
 <details markdown="1"><summary>Check</summary>
 

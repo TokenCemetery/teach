@@ -99,11 +99,11 @@ Two related tools worth knowing before reaching for either: `sum`, `any`, `all`,
 
 1. ▢ Predict both outputs, and describe the difference in one sentence each.
 
-   ```python
-   nums = [-2, 0, 3]
-   print([n for n in nums if n > 0])
-   print([n if n > 0 else 0 for n in nums])
-   ```
+    ```python
+    nums = [-2, 0, 3]
+    print([n for n in nums if n > 0])
+    print([n if n > 0 else 0 for n in nums])
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -115,9 +115,9 @@ The first filters, so the output is shorter than the input. The second transform
 
 2. ▢ What does this produce?
 
-   ```python
-   result = [(x, y) for x in (1, 2) for y in "ab"]
-   ```
+    ```python
+    result = [(x, y) for x in (1, 2) for y in "ab"]
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -150,9 +150,9 @@ There is no tuple comprehension syntax. The other three all produce `('a', 'b')`
 
 4. ▢ This is real code from a review. Rewrite it so a reader understands it on the first pass.
 
-   ```python
-   result = [transform(v) for k, v in data.items() if k not in skip and v is not None]
-   ```
+    ```python
+    result = [transform(v) for k, v in data.items() if k not in skip and v is not None]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -179,10 +179,10 @@ The original is not wrong, and it is at the length where a reader has to parse r
 
 5. ▢ Replace each of these with a shorter, clearer expression.
 
-   ```python
-   total = sum([order.amount for order in orders])
-   found = len([u for u in users if u.active]) > 0
-   ```
+    ```python
+    total = sum([order.amount for order in orders])
+    found = len([u for u in users if u.active]) > 0
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

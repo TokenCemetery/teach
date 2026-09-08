@@ -117,11 +117,11 @@ The same applies to maps: remove through `entrySet().iterator()`, or use `values
 
 1. ▢ Which line fails, at compile time or at run time?
 
-   ```java
-   Object[] objects = new String[1];
-   objects[0] = 42;
-   List<Object> list = new ArrayList<String>();
-   ```
+    ```java
+    Object[] objects = new String[1];
+    objects[0] = 42;
+    List<Object> list = new ArrayList<String>();
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -133,16 +133,16 @@ Arrays are covariant, so the compiler accepts the assignment on line 1 and the c
 
 2. ▢ Predict each of the four.
 
-   ```java
-   List<String> source = new ArrayList<>(List.of("a"));
-   List<String> view = Collections.unmodifiableList(source);
-   List<String> copy = List.copyOf(source);
-   source.add("b");
-   System.out.println(view);
-   System.out.println(copy);
-   view.add("c");
-   copy.add("d");
-   ```
+    ```java
+    List<String> source = new ArrayList<>(List.of("a"));
+    List<String> view = Collections.unmodifiableList(source);
+    List<String> copy = List.copyOf(source);
+    source.add("b");
+    System.out.println(view);
+    System.out.println(copy);
+    view.add("c");
+    copy.add("d");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -175,10 +175,10 @@ Option a stops the caller writing and lets them observe your later changes, whic
 
 4. ▢ On a `List<Integer>` holding `[10, 20, 30]`, predict both lines.
 
-   ```java
-   list.remove(1);
-   list.remove(Integer.valueOf(30));
-   ```
+    ```java
+    list.remove(1);
+    list.remove(Integer.valueOf(30));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -190,11 +190,11 @@ The first removes index 1, leaving `[10, 30]`. The second removes the value `30`
 
 5. ▢ Rewrite this loop correctly, and say why the original throws on the iteration after the removal rather than at the removal itself.
 
-   ```java
-   for (Order o : orders) {
-       if (o.isCancelled()) orders.remove(o);
-   }
-   ```
+    ```java
+    for (Order o : orders) {
+        if (o.isCancelled()) orders.remove(o);
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

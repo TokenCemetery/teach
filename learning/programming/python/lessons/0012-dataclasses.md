@@ -148,16 +148,16 @@ Two libraries live past the edge of this table and are worth naming: `attrs`, wh
 
 1. ▢ Predict what happens at each line.
 
-   ```python
-   @dataclass
-   class Point:
-       x: int
-       y: int
+    ```python
+    @dataclass
+    class Point:
+        x: int
+        y: int
 
-   p = Point(1, 2)
-   print(p == Point(1, 2))
-   {p: "origin-ish"}
-   ```
+    p = Point(1, 2)
+    print(p == Point(1, 2))
+    {p: "origin-ish"}
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -169,13 +169,13 @@ The generated `__eq__` sets `__hash__ = None`, because a mutable object whose eq
 
 2. ▢ This is in review. Name every problem.
 
-   ```python
-   @dataclass
-   class Session:
-       user: str
-       tags: list = []
-       token: str = "unset"
-   ```
+    ```python
+    @dataclass
+    class Session:
+        user: str
+        tags: list = []
+        token: str = "unset"
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -210,21 +210,21 @@ One of these three lines stops the module from importing at all.
 
 4. ▢ Rewrite this class as a dataclass, keeping the behaviour identical.
 
-   ```python
-   class Invoice:
-       def __init__(self, number, total, paid=False):
-           self.number = number
-           self.total = total
-           self.paid = paid
+    ```python
+    class Invoice:
+        def __init__(self, number, total, paid=False):
+            self.number = number
+            self.total = total
+            self.paid = paid
 
-       def __repr__(self):
-           return f"Invoice({self.number!r}, {self.total!r}, {self.paid!r})"
+        def __repr__(self):
+            return f"Invoice({self.number!r}, {self.total!r}, {self.paid!r})"
 
-       def __eq__(self, other):
-           if not isinstance(other, Invoice):
-               return NotImplemented
-           return (self.number, self.total, self.paid) == (other.number, other.total, other.paid)
-   ```
+        def __eq__(self, other):
+            if not isinstance(other, Invoice):
+                return NotImplemented
+            return (self.number, self.total, self.paid) == (other.number, other.total, other.paid)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -252,15 +252,15 @@ The dict is right when the keys are genuinely data: a mapping of feature names t
 
 6. ▢ Why does the second call fail, and which flag fixes it?
 
-   ```python
-   @dataclass
-   class Base:
-       created: str = "now"
+    ```python
+    @dataclass
+    class Base:
+        created: str = "now"
 
-   @dataclass
-   class Event(Base):
-       name: str
-   ```
+    @dataclass
+    class Event(Base):
+        name: str
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

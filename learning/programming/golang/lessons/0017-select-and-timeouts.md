@@ -129,19 +129,19 @@ For real priority, check the high-priority channel first in a `select` with `def
 
 2. ▢ This loop pins a CPU at 100%. Why?
 
-   ```go
-   for {
-       select {
-       case v, ok := <-in:
-           if !ok {
-               continue
-           }
-           process(v)
-       case <-ctx.Done():
-           return
-       }
-   }
-   ```
+    ```go
+    for {
+        select {
+        case v, ok := <-in:
+            if !ok {
+                continue
+            }
+            process(v)
+        case <-ctx.Done():
+            return
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

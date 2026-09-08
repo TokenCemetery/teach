@@ -119,11 +119,11 @@ Because the length travels with the pointer, indexing is bounds-checked: `values
 
 1. ▢ Which signature would you write, and why?
 
-   ```rust
-   fn count_words(text: String) -> usize
-   fn count_words(text: &String) -> usize
-   fn count_words(text: &str) -> usize
-   ```
+    ```rust
+    fn count_words(text: String) -> usize
+    fn count_words(text: &String) -> usize
+    fn count_words(text: &str) -> usize
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -135,12 +135,12 @@ It reads without taking ownership, and it accepts the widest set of callers: a `
 
 2. ▢ Predict each line.
 
-   ```rust
-   let s = String::from("héllo");
-   println!("{}", s.len());
-   println!("{}", s.chars().count());
-   println!("{}", &s[0..2]);
-   ```
+    ```rust
+    let s = String::from("héllo");
+    println!("{}", s.len());
+    println!("{}", s.chars().count());
+    println!("{}", &s[0..2]);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -182,11 +182,11 @@ a and b work by deref coercion, c is an ordinary sub-slice. The lesson is how mu
 
 4. ▢ This function takes ownership unnecessarily. Rewrite it and say what changes for its callers.
 
-   ```rust
-   fn is_admin(email: String) -> bool {
-       email.ends_with("@admin.example.com")
-   }
-   ```
+    ```rust
+    fn is_admin(email: String) -> bool {
+        email.ends_with("@admin.example.com")
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

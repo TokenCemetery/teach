@@ -165,13 +165,13 @@ Choose it when the concurrency is large and the work is waiting. For eight reque
 
 1. ▢ Why does this take 1.6 seconds rather than 0.2?
 
-   ```python
-   async def main():
-       results = []
-       for url in urls:                 # eight urls
-           results.append(await fetch(url))
-       return results
-   ```
+    ```python
+    async def main():
+        results = []
+        for url in urls:                 # eight urls
+            results.append(await fetch(url))
+        return results
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -190,12 +190,12 @@ Now eight are in flight and the total is the slowest one. The tell in review: an
 
 2. ▢ Find the stall.
 
-   ```python
-   async def handle(request):
-       user = await db.fetch_user(request.user_id)
-       avatar = requests.get(user.avatar_url).content     # 300 ms
-       return render(user, avatar)
-   ```
+    ```python
+    async def handle(request):
+        user = await db.fetch_user(request.user_id)
+        avatar = requests.get(user.avatar_url).content     # 300 ms
+        return render(user, avatar)
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -231,14 +231,14 @@ Fixes: `await httpx.AsyncClient().get(...)` if you can change the dependency, or
 
 4. ▢ What is wrong with this cleanup?
 
-   ```python
-   async def worker():
-       try:
-           await do_work()
-       except asyncio.CancelledError:
-           log.info("cancelled")
-           return
-   ```
+    ```python
+    async def worker():
+        try:
+            await do_work()
+        except asyncio.CancelledError:
+            log.info("cancelled")
+            return
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -256,12 +256,12 @@ Catch it to clean up, then re-raise, always. If the cleanup itself must `await` 
 
 5. ▢ Does this race, in a single-threaded event loop?
 
-   ```python
-   async def get_or_create(key):
-       if key not in cache:
-           cache[key] = await build(key)
-       return cache[key]
-   ```
+    ```python
+    async def get_or_create(key):
+        if key not in cache:
+            cache[key] = await build(key)
+        return cache[key]
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

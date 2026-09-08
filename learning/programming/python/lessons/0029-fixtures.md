@@ -172,18 +172,18 @@ The fixture earns its place when there is cleanup, when the scope should be wide
 
 1. ▢ Why does the second test fail, and what is the fix?
 
-   ```python
-   @pytest.fixture(scope="session")
-   def order():
-       return Order(id=1, amount=Decimal("100"))
+    ```python
+    @pytest.fixture(scope="session")
+    def order():
+        return Order(id=1, amount=Decimal("100"))
 
-   def test_discount(order):
-       order.apply_discount(Decimal("10"))
-       assert order.amount == Decimal("90")
+    def test_discount(order):
+        order.apply_discount(Decimal("10"))
+        assert order.amount == Decimal("90")
 
-   def test_amount_unchanged(order):
-       assert order.amount == Decimal("100")
-   ```
+    def test_amount_unchanged(order):
+        assert order.amount == Decimal("100")
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -203,18 +203,18 @@ Fix: drop the scope, so it defaults to `function`. Session scope is for expensiv
 
 2. ▢ Rewrite with `monkeypatch` and say what improves.
 
-   ```python
-   def test_reads_mode():
-       original = os.environ.get("MODE")
-       os.environ["MODE"] = "test"
-       try:
-           assert config.mode() == "test"
-       finally:
-           if original is None:
-               del os.environ["MODE"]
-           else:
-               os.environ["MODE"] = original
-   ```
+    ```python
+    def test_reads_mode():
+        original = os.environ.get("MODE")
+        os.environ["MODE"] = "test"
+        try:
+            assert config.mode() == "test"
+        finally:
+            if original is None:
+                del os.environ["MODE"]
+            else:
+                os.environ["MODE"] = original
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -256,19 +256,19 @@ Fixes, in order: move single-use fixtures into the test file that uses them; mov
 
 5. ▢ Convert to a factory fixture, then say what a new required `currency` field costs in each version.
 
-   ```python
-   @pytest.fixture
-   def gb_order():
-       return Order(id=1, amount=Decimal("100"), country="GB")
+    ```python
+    @pytest.fixture
+    def gb_order():
+        return Order(id=1, amount=Decimal("100"), country="GB")
 
-   @pytest.fixture
-   def de_order():
-       return Order(id=2, amount=Decimal("100"), country="DE")
+    @pytest.fixture
+    def de_order():
+        return Order(id=2, amount=Decimal("100"), country="DE")
 
-   @pytest.fixture
-   def large_gb_order():
-       return Order(id=3, amount=Decimal("10000"), country="GB")
-   ```
+    @pytest.fixture
+    def large_gb_order():
+        return Order(id=3, amount=Decimal("10000"), country="GB")
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

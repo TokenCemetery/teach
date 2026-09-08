@@ -207,13 +207,13 @@ A method whose success case is `List<Order>` should return an empty `List<Order>
 
 1. ▢ Predict the output, and explain it.
 
-   ```java
-   Optional<String> o = Optional.of("hi");
-   String r = o.map(String::toUpperCase)
-                .filter(s -> s.length() > 5)
-                .orElse("nope");
-   System.out.println(r);
-   ```
+    ```java
+    Optional<String> o = Optional.of("hi");
+    String r = o.map(String::toUpperCase)
+                 .filter(s -> s.length() > 5)
+                 .orElse("nope");
+    System.out.println(r);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -225,16 +225,16 @@ A method whose success case is `List<Order>` should return an empty `List<Order>
 
 2. ▢ Find the bug in this method, quote the exception it produces for the call shown, and give the one-line design fix rather than a null check.
 
-   ```java
-   static void greet(Optional<String> name) {
-       if (name.isPresent()) {
-           System.out.println("Hello, " + name.get());
-       } else {
-           System.out.println("Hello, stranger");
-       }
-   }
-   // called as: greet(null);
-   ```
+    ```java
+    static void greet(Optional<String> name) {
+        if (name.isPresent()) {
+            System.out.println("Hello, " + name.get());
+        } else {
+            System.out.println("Hello, stranger");
+        }
+    }
+    // called as: greet(null);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -262,15 +262,15 @@ No. `Optional<User>` earns its place because `User` cannot represent "none" on i
 
 4. ▢ Rewrite this without `isPresent` or `get`.
 
-   ```java
-   Optional<String> nickname = person.nickname();
-   String label;
-   if (nickname.isPresent()) {
-       label = nickname.get().toUpperCase();
-   } else {
-       label = "N/A";
-   }
-   ```
+    ```java
+    Optional<String> nickname = person.nickname();
+    String label;
+    if (nickname.isPresent()) {
+        label = nickname.get().toUpperCase();
+    } else {
+        label = "N/A";
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

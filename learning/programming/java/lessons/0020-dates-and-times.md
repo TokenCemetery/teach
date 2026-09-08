@@ -174,12 +174,12 @@ Store an instant, in UTC, as the fact of when something happened; `Instant`, or 
 
 1. ▢ Predict what each line prints, and explain why they differ.
 
-   ```java
-   ZoneId ny = ZoneId.of("America/New_York");
-   ZonedDateTime start = ZonedDateTime.of(LocalDateTime.of(2026, 3, 8, 0, 30), ny);
-   System.out.println(start.plus(Duration.ofDays(1)));
-   System.out.println(start.plusDays(1));
-   ```
+    ```java
+    ZoneId ny = ZoneId.of("America/New_York");
+    ZonedDateTime start = ZonedDateTime.of(LocalDateTime.of(2026, 3, 8, 0, 30), ny);
+    System.out.println(start.plus(Duration.ofDays(1)));
+    System.out.println(start.plusDays(1));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -191,12 +191,12 @@ Clocks in that zone spring forward one hour on the night of 8 March 2026. `plus(
 
 2. ▢ Find the bug.
 
-   ```java
-   LocalDateTime placedAt = LocalDateTime.now();
-   order.setPlacedAt(placedAt);
-   // later, on a different server, possibly in a different zone
-   if (order.getPlacedAt().isBefore(cutoff)) { ... }
-   ```
+    ```java
+    LocalDateTime placedAt = LocalDateTime.now();
+    order.setPlacedAt(placedAt);
+    // later, on a different server, possibly in a different zone
+    if (order.getPlacedAt().isBefore(cutoff)) { ... }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -212,11 +212,11 @@ Ask what `LocalDateTime.now()` actually knows about, and what it does not.
 
 3. ▢ Predict both lines.
 
-   ```java
-   LocalDate d = LocalDate.of(2025, 1, 31);
-   System.out.println(d.plusMonths(1));
-   System.out.println(d.plusMonths(1).plusMonths(1));
-   ```
+    ```java
+    LocalDate d = LocalDate.of(2025, 1, 31);
+    System.out.println(d.plusMonths(1));
+    System.out.println(d.plusMonths(1).plusMonths(1));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

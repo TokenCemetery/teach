@@ -143,14 +143,14 @@ The same test applies to the whole list: implement a protocol when your type **i
 
 1. ▢ Predict both, and explain the second.
 
-   ```python
-   class Bag:
-       def __init__(self, items): self.items = list(items)
-       def __len__(self): return len(self.items)
+    ```python
+    class Bag:
+        def __init__(self, items): self.items = list(items)
+        def __len__(self): return len(self.items)
 
-   print(bool(Bag([1, 2])))
-   print(bool(Bag([])))
-   ```
+    print(bool(Bag([1, 2])))
+    print(bool(Bag([])))
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -162,14 +162,14 @@ The same test applies to the whole list: implement a protocol when your type **i
 
 2. ▢ Find the two defects.
 
-   ```python
-   class Point:
-       def __init__(self, x, y):
-           self.x, self.y = x, y
+    ```python
+    class Point:
+        def __init__(self, x, y):
+            self.x, self.y = x, y
 
-       def __eq__(self, other):
-           return self.x == other.x and self.y == other.y
-   ```
+        def __eq__(self, other):
+            return self.x == other.x and self.y == other.y
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

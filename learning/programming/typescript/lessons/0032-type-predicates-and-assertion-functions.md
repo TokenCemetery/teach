@@ -133,17 +133,17 @@ Nothing else will check it, so treat the body as the one thing standing between 
 
 1. ▢ Predict whether this compiles, and if `x` is actually `42` at the call site, predict what happens when the branch runs.
 
-   ```ts
-   function isString(x: unknown): x is string {
-     return true;
-   }
-   function shout(x: unknown) {
-     if (isString(x)) {
-       console.log(x.toUpperCase());
-     }
-   }
-   shout(42);
-   ```
+    ```ts
+    function isString(x: unknown): x is string {
+      return true;
+    }
+    function shout(x: unknown) {
+      if (isString(x)) {
+        console.log(x.toUpperCase());
+      }
+    }
+    shout(42);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -153,17 +153,17 @@ Compiles, no diagnostic: the signature's claim is all the compiler checks. At ru
 
 2. ▢ Predict whether this compiles, and if `x` is the string `"9"` at the call site, predict what happens when the branch runs.
 
-   ```ts
-   function isNumber(x: unknown): x is number {
-     return typeof x === "string";
-   }
-   function double(x: unknown) {
-     if (isNumber(x)) {
-       console.log(x.toFixed(2));
-     }
-   }
-   double("9");
-   ```
+    ```ts
+    function isNumber(x: unknown): x is number {
+      return typeof x === "string";
+    }
+    function double(x: unknown) {
+      if (isNumber(x)) {
+        console.log(x.toFixed(2));
+      }
+    }
+    double("9");
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

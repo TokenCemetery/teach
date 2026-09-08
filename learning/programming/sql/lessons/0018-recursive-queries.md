@@ -288,14 +288,14 @@ SQLite has no `CYCLE` clause, so a graph that might loop needs the hand-written 
 
 1. ▢ Predict the rows returned by the query below.
 
-   ```sql
-   WITH RECURSIVE up(n) AS (
-       SELECT 1
-       UNION ALL
-       SELECT n + 1 FROM up WHERE n < 4
-   )
-   SELECT n FROM up;
-   ```
+    ```sql
+    WITH RECURSIVE up(n) AS (
+        SELECT 1
+        UNION ALL
+        SELECT n + 1 FROM up WHERE n < 4
+    )
+    SELECT n FROM up;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -319,16 +319,16 @@ The recursive term never stops itself here; something else is doing the stopping
 
 3. ▢ Using the `parts` table from Know this, predict the rows returned by descending from the root with `WHERE d.depth < 2` added to the recursive term's join condition, everything else unchanged from the depth-tracking query.
 
-   ```sql
-   WITH RECURSIVE descend(id, name, depth) AS (
-       SELECT id, name, 1 FROM parts WHERE parent IS NULL
-       UNION ALL
-       SELECT p.id, p.name, d.depth + 1
-       FROM parts p JOIN descend d ON p.parent = d.id
-       WHERE d.depth < 2
-   )
-   SELECT id, name, depth FROM descend ORDER BY depth, id;
-   ```
+    ```sql
+    WITH RECURSIVE descend(id, name, depth) AS (
+        SELECT id, name, 1 FROM parts WHERE parent IS NULL
+        UNION ALL
+        SELECT p.id, p.name, d.depth + 1
+        FROM parts p JOIN descend d ON p.parent = d.id
+        WHERE d.depth < 2
+    )
+    SELECT id, name, depth FROM descend ORDER BY depth, id;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

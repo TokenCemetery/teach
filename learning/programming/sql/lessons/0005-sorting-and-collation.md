@@ -98,9 +98,9 @@ A sort that fits in the engine's working memory is fast, and one that does not s
 
 1. ▢ This list occasionally shows the same order twice across two pages. Explain and fix.
 
-   ```sql
-   SELECT id, customer_id FROM orders ORDER BY customer_id LIMIT 20 OFFSET 20;
-   ```
+    ```sql
+    SELECT id, customer_id FROM orders ORDER BY customer_id LIMIT 20 OFFSET 20;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -118,9 +118,9 @@ Fix by making the sort key unique: `ORDER BY customer_id, id`. That is necessary
 
 2. ▢ Predict where the unshipped orders appear, and write the version a "most recent first" report actually wants.
 
-   ```sql
-   SELECT id, shipped_at FROM orders ORDER BY shipped_at DESC;
-   ```
+    ```sql
+    SELECT id, shipped_at FROM orders ORDER BY shipped_at DESC;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

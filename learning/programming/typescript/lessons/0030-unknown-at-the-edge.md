@@ -129,11 +129,11 @@ List your program's edges once, on paper: every `JSON.parse`, response body, fil
 
 1. ▢ Predict whether this compiles, and if it does not, quote the diagnostic with its `TS` number.
 
-   ```ts
-   const raw = '{"name":"Ada"}';
-   const settings = JSON.parse(raw);
-   console.log(settings.theme.length);
-   ```
+    ```ts
+    const raw = '{"name":"Ada"}';
+    const settings = JSON.parse(raw);
+    console.log(settings.theme.length);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -143,15 +143,15 @@ It compiles, exit code `0`, no diagnostic. `JSON.parse` returns `any`, so `setti
 
 2. ▢ Predict whether this compiles.
 
-   ```ts
-   function parseConfig(raw: string): unknown {
-     return JSON.parse(raw);
-   }
-   const config = parseConfig('{"port":3000}');
-   if (typeof config === "object" && config !== null && "port" in config) {
-     console.log(config.port.toFixed(0));
-   }
-   ```
+    ```ts
+    function parseConfig(raw: string): unknown {
+      return JSON.parse(raw);
+    }
+    const config = parseConfig('{"port":3000}');
+    if (typeof config === "object" && config !== null && "port" in config) {
+      console.log(config.port.toFixed(0));
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -167,9 +167,9 @@ No. `error TS18046: 'config.port' is of type 'unknown'.` `in` narrows `config` t
 
 3. ▢ Predict the diagnostic, with its `TS` number, for this line in a project with the standard Node type declarations installed.
 
-   ```ts
-   const port: string = process.env.PORT;
-   ```
+    ```ts
+    const port: string = process.env.PORT;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -179,10 +179,10 @@ No. `error TS18046: 'config.port' is of type 'unknown'.` `in` narrows `config` t
 
 4. ▢ Predict whether this compiles, and if it does, predict what running it prints when only two arguments were passed on the command line.
 
-   ```ts
-   const third: string = process.argv[5];
-   console.log(third.toUpperCase());
-   ```
+    ```ts
+    const third: string = process.argv[5];
+    console.log(third.toUpperCase());
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -192,13 +192,13 @@ It compiles, exit code `0`. `process.argv` is declared `string[]`, and a fixed i
 
 5. ▢ Predict whether this compiles.
 
-   ```ts
-   async function loadTheme(url: string) {
-     const res = await fetch(url);
-     const body = await res.json();
-     return body.toUpperCase();
-   }
-   ```
+    ```ts
+    async function loadTheme(url: string) {
+      const res = await fetch(url);
+      const body = await res.json();
+      return body.toUpperCase();
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

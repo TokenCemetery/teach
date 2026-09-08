@@ -145,18 +145,18 @@ Write a metaclass when you are building a framework whose users must not have to
 
 1. ▢ Rewrite without a metaclass.
 
-   ```python
-   class RegistryMeta(type):
-       registry = {}
-       def __new__(mcls, name, bases, ns, **kw):
-           cls = super().__new__(mcls, name, bases, ns)
-           if bases:
-               RegistryMeta.registry[name.lower()] = cls
-           return cls
+    ```python
+    class RegistryMeta(type):
+        registry = {}
+        def __new__(mcls, name, bases, ns, **kw):
+            cls = super().__new__(mcls, name, bases, ns)
+            if bases:
+                RegistryMeta.registry[name.lower()] = cls
+            return cls
 
-   class Handler(metaclass=RegistryMeta): ...
-   class CsvHandler(Handler): ...
-   ```
+    class Handler(metaclass=RegistryMeta): ...
+    class CsvHandler(Handler): ...
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

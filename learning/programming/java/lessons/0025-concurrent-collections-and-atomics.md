@@ -114,20 +114,20 @@ Every collection in this lesson is [thread-safe](../GLOSSARY.md) on its own term
 
 1. ▢ Predict the output.
 
-   ```java
-   List<Integer> list = new CopyOnWriteArrayList<>();
-   for (int i = 0; i < 5; i++) list.add(i);
-   int seen = 0;
-   for (Integer v : list) {
-       seen++;
-       if (v == 2) {
-           list.add(100);
-           list.remove(0);
-       }
-   }
-   System.out.println(seen);
-   System.out.println(list);
-   ```
+    ```java
+    List<Integer> list = new CopyOnWriteArrayList<>();
+    for (int i = 0; i < 5; i++) list.add(i);
+    int seen = 0;
+    for (Integer v : list) {
+        seen++;
+        if (v == 2) {
+            list.add(100);
+            list.remove(0);
+        }
+    }
+    System.out.println(seen);
+    System.out.println(list);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -137,18 +137,18 @@ Every collection in this lesson is [thread-safe](../GLOSSARY.md) on its own term
 
 2. ▢ This class compiles, runs, and is built on `ConcurrentHashMap`, yet a load test shows the cache occasionally builds the same expensive `Connection` twice for one key. Find the bug.
 
-   ```java
-   private final ConcurrentHashMap<String, Connection> cache = new ConcurrentHashMap<>();
+    ```java
+    private final ConcurrentHashMap<String, Connection> cache = new ConcurrentHashMap<>();
 
-   Connection get(String key) {
-       Connection c = cache.get(key);
-       if (c == null) {
-           c = openConnection(key);   // expensive
-           cache.put(key, c);
-       }
-       return c;
-   }
-   ```
+    Connection get(String key) {
+        Connection c = cache.get(key);
+        if (c == null) {
+            c = openConnection(key);   // expensive
+            cache.put(key, c);
+        }
+        return c;
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -164,10 +164,10 @@ Nothing stops two threads from both calling `get` and both seeing `null` before 
 
 3. ▢ Predict what this throws, and name the exact exception.
 
-   ```java
-   ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
-   map.computeIfAbsent(1, k -> map.computeIfAbsent(1, j -> j * 2));
-   ```
+    ```java
+    ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
+    map.computeIfAbsent(1, k -> map.computeIfAbsent(1, j -> j * 2));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

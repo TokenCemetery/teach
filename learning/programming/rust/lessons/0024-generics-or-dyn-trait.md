@@ -238,11 +238,11 @@ A generic is the wrong tool when nothing about the call site needs a specialised
 
 1. ▢ This trait has a method that returns `Self` with no `self` parameter. Predict the error code before compiling `fn use_it(_c: &dyn Cache) {}` against it.
 
-   ```rust
-   trait Cache {
-       fn empty() -> Self;
-   }
-   ```
+    ```rust
+    trait Cache {
+        fn empty() -> Self;
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

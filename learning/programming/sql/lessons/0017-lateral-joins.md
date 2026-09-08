@@ -164,17 +164,17 @@ One portability note closes the comparison: `LATERAL` is not a keyword in SQLite
 
 1. ▢ Predict the row count of the query below, changing only the `LIMIT` from the archetypal example.
 
-   ```sql
-   SELECT c.id, top.id, top.amount
-   FROM customers c
-   JOIN LATERAL (
-     SELECT o.id, o.amount
-     FROM orders o
-     WHERE o.customer_id = c.id
-     ORDER BY o.amount DESC
-     LIMIT 3
-   ) AS top ON true;
-   ```
+    ```sql
+    SELECT c.id, top.id, top.amount
+    FROM customers c
+    JOIN LATERAL (
+      SELECT o.id, o.amount
+      FROM orders o
+      WHERE o.customer_id = c.id
+      ORDER BY o.amount DESC
+      LIMIT 3
+    ) AS top ON true;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -198,17 +198,17 @@ Still 7 rows, one per customer with an order. Customer 4's two smallest orders, 
 
 3. ▢ Predict the exact error, its `HINT`, and its `SQLSTATE` for the query below, which asks for the same largest-order-per-customer answer but keeps every customer.
 
-   ```sql
-   SELECT c.id, top.id, top.amount
-   FROM customers c
-   LEFT JOIN (
-     SELECT o.id, o.amount
-     FROM orders o
-     WHERE o.customer_id = c.id
-     ORDER BY o.amount DESC
-     LIMIT 1
-   ) AS top ON true;
-   ```
+    ```sql
+    SELECT c.id, top.id, top.amount
+    FROM customers c
+    LEFT JOIN (
+      SELECT o.id, o.amount
+      FROM orders o
+      WHERE o.customer_id = c.id
+      ORDER BY o.amount DESC
+      LIMIT 1
+    ) AS top ON true;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -218,22 +218,22 @@ The identical failure as the plain `JOIN` version: `ERROR: invalid reference to 
 
 4. ▢ Two lateral subqueries can chain, the second one reading a column from the first. Predict what happens if their order is swapped, so the second subquery below, which produces `top`, is written after the first, which already tries to use `top.amount`.
 
-   ```sql
-   SELECT c.id
-   FROM customers c
-   JOIN LATERAL (
-     SELECT count(*) AS n
-     FROM orders o2
-     WHERE o2.customer_id = c.id AND o2.amount < top.amount
-   ) AS cheaper ON true
-   JOIN LATERAL (
-     SELECT o.amount
-     FROM orders o
-     WHERE o.customer_id = c.id
-     ORDER BY o.amount DESC
-     LIMIT 1
-   ) AS top ON true;
-   ```
+    ```sql
+    SELECT c.id
+    FROM customers c
+    JOIN LATERAL (
+      SELECT count(*) AS n
+      FROM orders o2
+      WHERE o2.customer_id = c.id AND o2.amount < top.amount
+    ) AS cheaper ON true
+    JOIN LATERAL (
+      SELECT o.amount
+      FROM orders o
+      WHERE o.customer_id = c.id
+      ORDER BY o.amount DESC
+      LIMIT 1
+    ) AS top ON true;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

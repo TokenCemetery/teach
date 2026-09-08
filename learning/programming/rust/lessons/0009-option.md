@@ -232,12 +232,12 @@ On a line with a fourth field this gives `Some` of it, and on one without it giv
 
 1. ▢ Predict whether this compiles, and if not, which error code you expect, then compile it.
 
-   ```rust
-   fn main() {
-       let n: i32 = Some(5);
-       println!("{n}");
-   }
-   ```
+    ```rust
+    fn main() {
+        let n: i32 = Some(5);
+        println!("{n}");
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -247,19 +247,19 @@ Does not compile: `E0308`, "expected `i32`, found `Option<{integer}>`". `Some(5)
 
 2. ▢ Predict what each of these two calls prints, then compile and run it.
 
-   ```rust
-   fn stock_message(stock: Option<u32>) -> String {
-       let Some(n) = stock else {
-           return String::from("out of stock");
-       };
-       format!("{n} left")
-   }
+    ```rust
+    fn stock_message(stock: Option<u32>) -> String {
+        let Some(n) = stock else {
+            return String::from("out of stock");
+        };
+        format!("{n} left")
+    }
 
-   fn main() {
-       println!("{}", stock_message(Some(3)));
-       println!("{}", stock_message(None));
-   }
-   ```
+    fn main() {
+        println!("{}", stock_message(Some(3)));
+        println!("{}", stock_message(None));
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -269,14 +269,14 @@ Does not compile: `E0308`, "expected `i32`, found `Option<{integer}>`". `Some(5)
 
 3. ▢ Predict what this prints for `vec![]` and for `vec![9]`, then compile and run it.
 
-   ```rust
-   fn main() {
-       let empty: Vec<i32> = vec![];
-       let one = vec![9];
-       println!("{}", empty.first().map(|x| x + 1).unwrap_or(0));
-       println!("{}", one.first().map(|x| x + 1).unwrap_or(0));
-   }
-   ```
+    ```rust
+    fn main() {
+        let empty: Vec<i32> = vec![];
+        let one = vec![9];
+        println!("{}", empty.first().map(|x| x + 1).unwrap_or(0));
+        println!("{}", one.first().map(|x| x + 1).unwrap_or(0));
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -292,21 +292,21 @@ Does not compile: `E0308`, "expected `i32`, found `Option<{integer}>`". `Some(5)
 
 4. ▢ Predict whether this compiles; if not, name the error code, then fix it with `as_ref` without changing the struct.
 
-   ```rust
-   struct Record {
-       path: Option<String>,
-   }
+    ```rust
+    struct Record {
+        path: Option<String>,
+    }
 
-   fn main() {
-       let rec = Record { path: Some(String::from("/index")) };
-       if let Some(p) = rec.path {
-           println!("{p}");
-       }
-       if let Some(p) = rec.path {
-           println!("{p}");
-       }
-   }
-   ```
+    fn main() {
+        let rec = Record { path: Some(String::from("/index")) };
+        if let Some(p) = rec.path {
+            println!("{p}");
+        }
+        if let Some(p) = rec.path {
+            println!("{p}");
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

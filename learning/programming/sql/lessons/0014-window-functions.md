@@ -211,12 +211,12 @@ Window functions are not a PostgreSQL extra. SQLite 3.51 accepts the same rankin
 
 1. ▢ Predict the row count and the value in the `total` column for every row of the query below.
 
-   ```sql
-   SELECT o.id, sum(o.amount) OVER () AS total
-   FROM orders o
-   WHERE o.customer_id = 4
-   ORDER BY o.id;
-   ```
+    ```sql
+    SELECT o.id, sum(o.amount) OVER () AS total
+    FROM orders o
+    WHERE o.customer_id = 4
+    ORDER BY o.id;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -232,11 +232,11 @@ Three rows, ids 106, 107 and 108, each showing `1019.99`. `WHERE` runs before th
 
 2. ▢ Predict the row count of the query below.
 
-   ```sql
-   SELECT o.customer_id, count(*) OVER (PARTITION BY o.customer_id) AS n
-   FROM orders o
-   WHERE o.customer_id = 6;
-   ```
+    ```sql
+    SELECT o.customer_id, count(*) OVER (PARTITION BY o.customer_id) AS n
+    FROM orders o
+    WHERE o.customer_id = 6;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -268,13 +268,13 @@ Zero rows. Customer 6 has no orders at all, so `WHERE o.customer_id = 6` leaves 
 
 5. ▢ Predict the row count of the query below, and which customers appear.
 
-   ```sql
-   SELECT customer_id, count(*), count(*) OVER () AS n_groups
-   FROM orders
-   GROUP BY customer_id
-   HAVING count(*) > 1
-   ORDER BY customer_id;
-   ```
+    ```sql
+    SELECT customer_id, count(*), count(*) OVER () AS n_groups
+    FROM orders
+    GROUP BY customer_id
+    HAVING count(*) > 1
+    ORDER BY customer_id;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

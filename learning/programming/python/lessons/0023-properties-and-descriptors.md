@@ -154,12 +154,12 @@ Before writing one, check the alternatives: a dataclass with `__post_init__` val
 
 1. ▢ What breaks, and why?
 
-   ```python
-   class Order:
-       @property
-       def amount(self):
-           return self.amount
-   ```
+    ```python
+    class Order:
+        @property
+        def amount(self):
+            return self.amount
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -205,12 +205,12 @@ The cost of writing them now is real: three lines per field instead of zero, a `
 
 4. ▢ Why does this cache never expire, and what would you do about a stale value?
 
-   ```python
-   class Report:
-       @cached_property
-       def rows(self):
-           return query_database()
-   ```
+    ```python
+    class Report:
+        @cached_property
+        def rows(self):
+            return query_database()
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -222,16 +222,16 @@ The available answers: `del report.rows` removes the instance-dict entry so the 
 
 5. ▢ Rewrite these three properties as one descriptor, and then argue whether you should.
 
-   ```python
-   class Config:
-       @property
-       def retries(self): return self._retries
-       @retries.setter
-       def retries(self, v):
-           if not 0 <= v <= 10: raise ValueError("retries out of range")
-           self._retries = v
-       # ... the same twelve lines for timeout and workers
-   ```
+    ```python
+    class Config:
+        @property
+        def retries(self): return self._retries
+        @retries.setter
+        def retries(self, v):
+            if not 0 <= v <= 10: raise ValueError("retries out of range")
+            self._retries = v
+        # ... the same twelve lines for timeout and workers
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

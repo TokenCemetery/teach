@@ -137,11 +137,11 @@ ORDER BY shipped_at DESC NULLS LAST
 
 1. ▢ The table has two rows, one with `country = 'GB'` and one with `country IS NULL`. Predict all three counts.
 
-   ```sql
-   SELECT count(*) FROM customers WHERE country = 'GB';
-   SELECT count(*) FROM customers WHERE country <> 'GB';
-   SELECT count(*) FROM customers WHERE country IS NULL;
-   ```
+    ```sql
+    SELECT count(*) FROM customers WHERE country = 'GB';
+    SELECT count(*) FROM customers WHERE country <> 'GB';
+    SELECT count(*) FROM customers WHERE country IS NULL;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -153,10 +153,10 @@ The `NULL` row makes both comparisons unknown, and `WHERE` keeps only true. The 
 
 2. ▢ This query is supposed to list customers with no large orders. It returns nothing at all. Why?
 
-   ```sql
-   SELECT * FROM customers
-   WHERE id NOT IN (SELECT customer_id FROM orders WHERE amount > 100);
-   ```
+    ```sql
+    SELECT * FROM customers
+    WHERE id NOT IN (SELECT customer_id FROM orders WHERE amount > 100);
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -189,10 +189,10 @@ Option a is unknown for every row and returns nothing. Option c misses the NULL 
 
 4. ▢ Predict both, and say what each is useful for.
 
-   ```sql
-   SELECT count(*), count(country) FROM customers;
-   SELECT sum(amount) FROM orders WHERE customer_id = 999;
-   ```
+    ```sql
+    SELECT count(*), count(country) FROM customers;
+    SELECT sum(amount) FROM orders WHERE customer_id = 999;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

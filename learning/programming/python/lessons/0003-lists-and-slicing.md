@@ -114,12 +114,12 @@ grid = [[0] * 3 for _ in range(2)]
 
 1. ▢ Predict the output.
 
-   ```python
-   names = ["a", "b", "c"]
-   first_two = names[:2]
-   first_two[0] = "z"
-   print(names, first_two)
-   ```
+    ```python
+    names = ["a", "b", "c"]
+    first_two = names[:2]
+    first_two[0] = "z"
+    print(names, first_two)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -131,14 +131,14 @@ The slice built a new list. Assigning into `first_two` rebinds one of its slots,
 
 2. ▢ Predict both prints. They are not the same.
 
-   ```python
-   a = [1]
-   b = a
-   a += [2]
-   print(b)
-   a = a + [3]
-   print(b)
-   ```
+    ```python
+    a = [1]
+    b = a
+    a += [2]
+    print(b)
+    a = a + [3]
+    print(b)
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -156,11 +156,11 @@ One of these two operations gives the list a chance to change itself. The other 
 
 3. ▢ What does this print, and what did the author intend to write?
 
-   ```python
-   scores = [5, 2, 9]
-   scores = scores.sort()
-   print(scores)
-   ```
+    ```python
+    scores = [5, 2, 9]
+    scores = scores.sort()
+    print(scores)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

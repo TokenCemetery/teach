@@ -209,11 +209,11 @@ Everything above pins and moves a future as one unit; nothing here reaches insid
 
 1. ▢ `line` is one `async fn`. Predict whether `vec![line(1), line(2), line(3)]` compiles as a plain `Vec`, then run it.
 
-   ```rust
-   async fn line(n: u32) -> u32 {
-       n * 2
-   }
-   ```
+    ```rust
+    async fn line(n: u32) -> u32 {
+        n * 2
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

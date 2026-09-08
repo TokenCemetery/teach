@@ -203,10 +203,10 @@ Events 1, 2 and 4, every event whose `items` is an array at all, not only event 
 
 4. ▢ Predict the row count of the query below, which mistypes `order_id` as `oder_id`.
 
-   ```sql
-   SELECT e.id, o.id
-   FROM events e JOIN orders o ON (e.payload ->> 'oder_id')::bigint = o.id;
-   ```
+    ```sql
+    SELECT e.id, o.id
+    FROM events e JOIN orders o ON (e.payload ->> 'oder_id')::bigint = o.id;
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -216,14 +216,14 @@ Zero rows. The mistyped key is absent from every payload, so `payload ->> 'oder_
 
 5. ▢ Predict the exact error message and SQLSTATE of summing the `qty` column below, given that it is declared `text` rather than `int`.
 
-   ```sql
-   SELECT sum(jt.qty)
-   FROM events e,
-        JSON_TABLE(e.payload, '$.items[*]' COLUMNS (
-            sku text PATH '$.sku',
-            qty  text PATH '$.qty'
-        )) AS jt;
-   ```
+    ```sql
+    SELECT sum(jt.qty)
+    FROM events e,
+         JSON_TABLE(e.payload, '$.items[*]' COLUMNS (
+             sku text PATH '$.sku',
+             qty  text PATH '$.qty'
+         )) AS jt;
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 

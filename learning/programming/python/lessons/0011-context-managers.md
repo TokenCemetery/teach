@@ -174,13 +174,13 @@ Async has its own pair, `__aenter__` and `__aexit__`, used through `async with`.
 
 1. ▢ What is wrong with this manager, and when does it show up?
 
-   ```python
-   @contextmanager
-   def locked(lock):
-       lock.acquire()
-       yield
-       lock.release()
-   ```
+    ```python
+    @contextmanager
+    def locked(lock):
+        lock.acquire()
+        yield
+        lock.release()
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -202,19 +202,19 @@ def locked(lock):
 
 2. ▢ Predict the output.
 
-   ```python
-   class Quiet:
-       def __enter__(self):
-           return self
-       def __exit__(self, exc_type, exc, tb):
-           return True
+    ```python
+    class Quiet:
+        def __enter__(self):
+            return self
+        def __exit__(self, exc_type, exc, tb):
+            return True
 
-   with Quiet():
-       print("before")
-       raise ValueError("boom")
-       print("after")
-   print("done")
-   ```
+    with Quiet():
+        print("before")
+        raise ValueError("boom")
+        print("after")
+    print("done")
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -237,10 +237,10 @@ This is `except Exception: pass` wearing a class, with the same objection from l
 
 3. ▢ What does `x` hold?
 
-   ```python
-   with open("notes.txt") as f, threading.Lock() as x:
-       ...
-   ```
+    ```python
+    with open("notes.txt") as f, threading.Lock() as x:
+        ...
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -250,17 +250,17 @@ This is `except Exception: pass` wearing a class, with the same objection from l
 
 4. ▢ Rewrite without `try/finally`.
 
-   ```python
-   original = os.environ.get("TZ")
-   os.environ["TZ"] = "UTC"
-   try:
-       run_report()
-   finally:
-       if original is None:
-           del os.environ["TZ"]
-       else:
-           os.environ["TZ"] = original
-   ```
+    ```python
+    original = os.environ.get("TZ")
+    os.environ["TZ"] = "UTC"
+    try:
+        run_report()
+    finally:
+        if original is None:
+            del os.environ["TZ"]
+        else:
+            os.environ["TZ"] = original
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -289,14 +289,14 @@ The `try/finally` did not disappear, it moved once. The win is at the call sites
 
 5. ▢ This opens a variable number of files. Why does the naive version leak, and what fixes it?
 
-   ```python
-   files = [open(p) for p in paths]
-   try:
-       merge(files)
-   finally:
-       for f in files:
-           f.close()
-   ```
+    ```python
+    files = [open(p) for p in paths]
+    try:
+        merge(files)
+    finally:
+        for f in files:
+            f.close()
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

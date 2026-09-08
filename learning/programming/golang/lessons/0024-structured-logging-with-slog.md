@@ -100,9 +100,9 @@ A `LevelVar` behind an admin endpoint lets you turn on debug logging for five mi
 
 1. ▢ Rewrite this as a structured record.
 
-   ```go
-   log.Printf("user %s uploaded %d bytes in %v", id, n, d)
-   ```
+    ```go
+    log.Printf("user %s uploaded %d bytes in %v", id, n, d)
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

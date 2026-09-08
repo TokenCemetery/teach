@@ -252,32 +252,32 @@ counting down from the trait
 
 1. ▢ Predict what `Nightingale.call()` and `Crow.call()` each print, given a trait with a default and one type that overrides it.
 
-   ```rust
-   trait Bird {
-       fn sound(&self) -> &'static str;
-       fn call(&self) -> String {
-           format!("a bird says {}", self.sound())
-       }
-   }
+    ```rust
+    trait Bird {
+        fn sound(&self) -> &'static str;
+        fn call(&self) -> String {
+            format!("a bird says {}", self.sound())
+        }
+    }
 
-   struct Nightingale;
-   struct Crow;
+    struct Nightingale;
+    struct Crow;
 
-   impl Bird for Nightingale {
-       fn sound(&self) -> &'static str {
-           "a song"
-       }
-   }
+    impl Bird for Nightingale {
+        fn sound(&self) -> &'static str {
+            "a song"
+        }
+    }
 
-   impl Bird for Crow {
-       fn sound(&self) -> &'static str {
-           "a caw"
-       }
-       fn call(&self) -> String {
-           format!("a crow just went {}", self.sound())
-       }
-   }
-   ```
+    impl Bird for Crow {
+        fn sound(&self) -> &'static str {
+            "a caw"
+        }
+        fn call(&self) -> String {
+            format!("a crow just went {}", self.sound())
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -287,29 +287,29 @@ counting down from the trait
 
 2. ▢ A trait `Loud` and a struct `Drum` implementing it live in a module `instruments`; a second module `player` imports `Drum` and calls `d.shout()`. Name the error code before compiling, then add the one import that fixes it.
 
-   ```rust
-   mod instruments {
-       pub trait Loud {
-           fn shout(&self) -> String;
-       }
+    ```rust
+    mod instruments {
+        pub trait Loud {
+            fn shout(&self) -> String;
+        }
 
-       pub struct Drum;
+        pub struct Drum;
 
-       impl Loud for Drum {
-           fn shout(&self) -> String {
-               String::from("BOOM")
-           }
-       }
-   }
+        impl Loud for Drum {
+            fn shout(&self) -> String {
+                String::from("BOOM")
+            }
+        }
+    }
 
-   mod player {
-       use crate::instruments::Drum;
+    mod player {
+        use crate::instruments::Drum;
 
-       pub fn play(d: Drum) {
-           println!("{}", d.shout());
-       }
-   }
-   ```
+        pub fn play(d: Drum) {
+            println!("{}", d.shout());
+        }
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -333,18 +333,18 @@ It does not compile: error: cannot find derive macro `Display` in this scope, wi
 
 4. ▢ `Sensor` below derives `Debug` only. Predict what happens for each of the two lines, and whether they fail with the same error.
 
-   ```rust
-   #[derive(Debug)]
-   struct Sensor {
-       id: u32,
-   }
+    ```rust
+    #[derive(Debug)]
+    struct Sensor {
+        id: u32,
+    }
 
-   fn main() {
-       let s = Sensor { id: 7 };
-       println!("{}", s);
-       println!("{}", s.to_string());
-   }
-   ```
+    fn main() {
+        let s = Sensor { id: 7 };
+        println!("{}", s);
+        println!("{}", s.to_string());
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -360,23 +360,23 @@ Both fail, but differently. `println!("{}", s)` gives `E0277`, `Sensor` doesn't 
 
 5. ▢ `Cup` has an inherent `fill` and also implements a trait `Container` with a default `fill`. Predict what `Cup.fill()` prints, and what would need to change to reach the trait's version instead.
 
-   ```rust
-   trait Container {
-       fn fill(&self) -> &'static str {
-           "filled by the trait"
-       }
-   }
+    ```rust
+    trait Container {
+        fn fill(&self) -> &'static str {
+            "filled by the trait"
+        }
+    }
 
-   struct Cup;
+    struct Cup;
 
-   impl Cup {
-       fn fill(&self) -> &'static str {
-           "filled by the inherent method"
-       }
-   }
+    impl Cup {
+        fn fill(&self) -> &'static str {
+            "filled by the inherent method"
+        }
+    }
 
-   impl Container for Cup {}
-   ```
+    impl Container for Cup {}
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

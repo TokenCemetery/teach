@@ -135,23 +135,23 @@ Both close a set. A `sealed` hierarchy is for alternatives that carry different 
 
 1. ▢ Predict what each call prints, and explain why the order of the first two cases matters.
 
-   ```java
-   sealed interface Event permits Login, Logout {}
-   record Login(String user, int attempt) implements Event {}
-   record Logout(String user) implements Event {}
+    ```java
+    sealed interface Event permits Login, Logout {}
+    record Login(String user, int attempt) implements Event {}
+    record Logout(String user) implements Event {}
 
-   static String describe(Event e) {
-       return switch (e) {
-           case Login(var user, var attempt) when attempt > 3 -> user + " locked out";
-           case Login(var user, var attempt) -> user + " logged in, attempt " + attempt;
-           case Logout(var user) -> user + " logged out";
-       };
-   }
+    static String describe(Event e) {
+        return switch (e) {
+            case Login(var user, var attempt) when attempt > 3 -> user + " locked out";
+            case Login(var user, var attempt) -> user + " logged in, attempt " + attempt;
+            case Logout(var user) -> user + " logged out";
+        };
+    }
 
-   describe(new Login("ana", 5));
-   describe(new Login("bo", 1));
-   describe(new Logout("cy"));
-   ```
+    describe(new Login("ana", 5));
+    describe(new Login("bo", 1));
+    describe(new Logout("cy"));
+    ```
 
 <details markdown="1"><summary>Check</summary>
 
@@ -167,13 +167,13 @@ cy logged out
 
 2. ▢ Find the bug.
 
-   ```java
-   sealed interface Payment permits CardPayment, CashPayment {}
-   record CardPayment(String cardNumber, double amount) implements Payment {}
-   class CashPayment implements Payment {
-       double amount;
-   }
-   ```
+    ```java
+    sealed interface Payment permits CardPayment, CashPayment {}
+    record CardPayment(String cardNumber, double amount) implements Payment {}
+    class CashPayment implements Payment {
+        double amount;
+    }
+    ```
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -189,20 +189,20 @@ Every type named in `permits` has to declare what it is willing to let happen be
 
 3. ▢ Predict what happens, and explain the rule.
 
-   ```java
-   sealed interface Shape permits Circle, Square {}
-   record Circle(double radius) implements Shape {}
-   record Square(double side) implements Shape {}
+    ```java
+    sealed interface Shape permits Circle, Square {}
+    record Circle(double radius) implements Shape {}
+    record Square(double side) implements Shape {}
 
-   static String describe(Shape s) {
-       return switch (s) {
-           case Circle c -> "circle";
-           case Square sq -> "square";
-       };
-   }
+    static String describe(Shape s) {
+        return switch (s) {
+            case Circle c -> "circle";
+            case Square sq -> "square";
+        };
+    }
 
-   describe(null);
-   ```
+    describe(null);
+    ```
 
 <details markdown="1"><summary>Check</summary>
 

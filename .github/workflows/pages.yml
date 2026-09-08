@@ -3,6 +3,11 @@ name: Deploy Pages
 on:
   push:
     branches: [main]
+    paths:
+      - "learning/**"
+      - "mkdocs.yml"
+      - "hooks.py"
+      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:

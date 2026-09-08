@@ -30,6 +30,10 @@ type: resources
   Official repo for the vector-index extension `llm/rag` standardizes on: index types (IVFFlat, HNSW), their build and maintenance cost, and how they interact with autovacuum. Use for: what a vector index specifically costs the database to keep, connecting to `llm/rag`'s choice of pgvector as its store.
 - [Docs: "PostgreSQL on Amazon RDS", AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html)
   Official docs for a managed Postgres service: what RDS handles for you (patching, failover automation, backups) and what it restricts (superuser access, some extensions, direct filesystem access). Use for: naming concretely what a managed service does and does not shield an operator from.
+- [Docs: "Multi-AZ DB instance deployments", AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html)
+  The synchronous single-standby shape, with two statements teams get wrong: the standby **cannot** serve read traffic, and write and commit latency is increased against a single-AZ deployment because the replication is synchronous. Use for: separating an availability decision from a read-capacity one, and for seeing the synchronous trade-off appear in a managed product.
+- [Docs: "Multi-AZ DB cluster deployments", AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html)
+  The semisynchronous shape, with two readable replicas across three Availability Zones and lower write latency than the single-standby deployment. Use for: the third option, when the requirement is availability and read capacity together.
 
 ## Gaps
 

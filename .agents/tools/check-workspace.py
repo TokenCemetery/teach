@@ -8,7 +8,8 @@ reviewer reliably misses: front matter, the H1 against the front-matter title,
 the three consecutive bold lines, section presence and order, collapsible-block
 shape and nesting, the closing block byte for byte, dashes, forbidden tokens,
 machine-specific strings, control characters outside code blocks, trailing
-whitespace, relative links, contiguous lesson numbering, README rows against
+whitespace, the indent a numbered item's continuations carry, relative links,
+contiguous lesson numbering, README rows against
 lesson front matter, the arc table against the lessons that exist, and glossary
 alphabetical order.
 
@@ -447,6 +448,31 @@ class Workspace:
             if re.match(r"#{1,6} .*[^\\\s#]#+$", line):
                 self.bad(rel, f"line {i}: a trailing '#' on a heading is stripped by "
                               "Python-Markdown but kept by GitHub; escape it as \\#")
+
+        # Python-Markdown keeps a continuation inside its numbered item only at
+        # four spaces. At three the ordered list ends, and the continuation
+        # renders as a top-level block that happens to sit underneath, which
+        # reads almost right. Mixing the two in one item is the damaging case:
+        # four-space content following three-space content becomes an indented
+        # code block, so an option list added under a three-space fence renders
+        # as literal text. Six items were in that state before #51 repaired
+        # them.
+        #
+        # Flagging any three-space line is the wider rule, and it is the one
+        # worth having. It catches every mixed item, since a mixed item has a
+        # three-space line by definition, and it catches the merely misplaced
+        # continuation too, which FORMATS.md also forbids. It is one comparison
+        # rather than a per-item indent census, and it fails closed. #53
+        # converted the whole corpus to four, so the rule starts from silence.
+        #
+        # Contents of an indented fence are scanned rather than skipped, since
+        # FENCE only recognises a fence at column zero. That is harmless here:
+        # an indented fence opens at four, so nothing inside one sits at
+        # exactly three unless the author has already broken the block.
+        for i, line in code_free_lines(text):
+            if re.match(r"^ {3}\S", line):
+                self.bad(rel, f"line {i}: continuation indented three spaces, which falls "
+                              "out of its numbered item; use four, per FORMATS.md")
 
         for i, line in enumerate(text.split("\n"), 1):
             if line != line.rstrip():

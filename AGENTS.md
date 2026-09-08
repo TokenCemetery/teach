@@ -56,7 +56,7 @@ gh issue create --title "..." --body-file body.md --label "bug,P2"
 - Write the body to a file and pass `--body-file`. Inline in double quotes, the shell runs every backtick in it as a command, which silently deletes the path or the identifier you were quoting.
 - Label from what `.github/workflows/labels.yml` declares. That workflow is the source of truth, since it creates and updates every label this repository is meant to have, so a label it does not declare is not one to reach for.
 - Give every issue one type and one priority. Type is `bug`, `feature`, `refactor`, `chore`, `docs` or `security`. Priority runs `P0` for critical through `P3` for low, and an issue without one is an issue nobody can order against the rest. Add any of `needs-triage`, `needs-repro`, `blocked`, `declined`, `stale` and `help-wanted` that apply.
-- `enhancement` and `documentation` are GitHub's own defaults and predate that workflow, so most of the existing issues carry them. Leave those alone, and use `feature` and `docs` for anything new.
+- Every issue in the tracker carries both, including the closed ones, so a query by type or by priority returns the whole history rather than the part that happened to be labelled that way.
 - Record progress on the issue as you go, commenting on what you found and what you tried, so the next person does not repeat the investigation.
 - Reference the issue from the commit or pull request that fixes it (`Fixes #12`), so it closes together with the change.
 

@@ -9,15 +9,21 @@ the three consecutive bold lines, section presence and order, collapsible-block
 shape and nesting, the closing block byte for byte, dashes, forbidden tokens,
 machine-specific strings, control characters outside code blocks, trailing
 whitespace, relative links, contiguous lesson numbering, README rows against
-lesson front matter, and glossary alphabetical order.
+lesson front matter, the arc table against the lessons that exist, and glossary
+alphabetical order.
 
 Not every rule is universal. Some are one workspace's local convention, and
 applying them everywhere produces false positives rather than findings: the
 Java workspace marks Practice items with `▢` and ends Going further with its
 stage reference sheet, both starting at lesson 7, while the Go and Python
 workspaces predate those conventions and do not use them. Those rules live in
-CONVENTIONS, keyed by workspace directory name, and default to off. Add a key
-when a workspace adopts a convention rather than relaxing the shared rules.
+CONVENTIONS, keyed by workspace directory name, over the values in DEFAULTS.
+
+Most of them default to off, and a key turns one on for the workspace that
+adopted it. A few default to on, because FORMATS.md requires them of every
+workspace, and there a key turns one off for an arc written before the rule.
+Say which case a new key is, in a comment, and for the second case say what is
+tracking the retrofit. Never turn a rule off to quiet a finding.
 
 CONVENTIONS also carries `machine_allow`, for the case where a string on the
 machine-specific blacklist is genuinely subject matter in one workspace: the
@@ -64,13 +70,26 @@ DEFAULTS = {
     # each lesson on a forward pointer to the next instead, which is a
     # pedagogical choice rather than drift.
     "resources_bullet_last": True,
+    # Whether the arc table must carry a Lessons column tying every lesson to a
+    # stage. FORMATS.md requires it, because it is what makes "does every
+    # success bullet have a lesson behind it" checkable at all. The six arcs
+    # written before the rule are exempt until the column is added to them.
+    "arc_lessons_column": True,
 }
 
 CONVENTIONS = {
-    "java": {"practice_marker_from": 7, "stage_sheet_from": 7},
+    "java": {"practice_marker_from": 7, "stage_sheet_from": 7,
+             "arc_lessons_column": False},
     # Start methods genuinely differ by operating system, so naming one is a
     # fact the reader needs rather than a trace of the author's machine.
-    "python": {"machine_allow": (r"\bmacOS\b", r"\bWindows 1\d\b")},
+    "python": {"machine_allow": (r"\bmacOS\b", r"\bWindows 1\d\b"),
+               "arc_lessons_column": False},
+    # These arcs predate the Lessons column and carry 290 lessons between them,
+    # so assigning each to a stage is judgment work rather than a mechanical
+    # edit. Exempt rather than retrofitted; tracked in issue #99.
+    "golang": {"arc_lessons_column": False},
+    "rust": {"arc_lessons_column": False},
+    "sql": {"arc_lessons_column": False},
     # This arc ends 26 of its 27 Going further sections on a forward pointer
     # to the lesson that pays the material off, or on the reference sheets it
     # earned, rather than on the Resources bullet. It is consistent enough to
@@ -80,7 +99,7 @@ CONVENTIONS = {
     # This arc has used the box marker since its first lesson, in the Warm-up
     # as well as in Practice, so it is enforced from lesson 1 rather than from
     # the lesson Java happened to adopt it at.
-    "typescript": {"practice_marker_from": 1},
+    "typescript": {"practice_marker_from": 1, "arc_lessons_column": False},
 }
 
 # Strings that identify the machine a lesson was drafted on rather than a fact
@@ -549,6 +568,7 @@ class Workspace:
 
         if (self.root / "README.md").exists():
             self.check_readme()
+            self.check_arc()
         if (self.root / "GLOSSARY.md").exists():
             self.check_glossary()
 
@@ -571,6 +591,66 @@ class Workspace:
         for name in self.sheets:
             if f"reference/{name}" not in readme:
                 self.bad("README.md", f"reference sheet {name} is not linked")
+
+    def check_arc(self):
+        """The arc table ties every lesson to a stage.
+
+        FORMATS.md requires a Lessons column, because a stage nobody's lessons
+        reach, or a lesson no stage claims, is how an arc drifts from the
+        mission it is supposed to deliver. The column is also the only part of
+        "every success bullet leads to a lesson" a tool can check: whether the
+        prose of a bullet is delivered by the lessons of its stage stays a
+        reviewer's call, but a lesson outside every stage is a fact.
+        """
+        readme = (self.root / "README.md").read_text(encoding="utf-8")
+        m = re.search(r"^## The arc\n(.*?)(?=^## )", readme, re.S | re.M)
+        if not m:
+            self.bad("README.md", "no '## The arc' section")
+            return
+        rows = [[c.strip() for c in line.strip().strip("|").split("|")]
+                for line in m.group(1).splitlines() if line.strip().startswith("|")]
+        if not rows:
+            self.bad("README.md", "the arc section has no stage table")
+            return
+
+        header = rows[0]
+        if "Lessons" not in header:
+            if self.conv["arc_lessons_column"]:
+                self.bad("README.md", "the arc table has no Lessons column, so no lesson "
+                                      "is tied to a stage (FORMATS.md, README.md rules)")
+            return
+        col = header.index("Lessons")
+
+        seen, stages = {}, 0
+        for row in rows[1:]:
+            if not row or set(row[0]) <= set("-: "):
+                continue
+            stages += 1
+            cell = row[col] if col < len(row) else ""
+            nums = set()
+            for a, b in re.findall(r"(\d{4})\s*to\s*(\d{4})", cell):
+                if int(a) > int(b):
+                    self.bad("README.md", f"arc stage {row[0]!r} names a backwards "
+                                          f"range: {a} to {b}")
+                nums |= set(range(int(a), int(b) + 1))
+            nums |= {int(n) for n in re.findall(r"(?<!\d)(\d{4})(?!\s*to)", cell)}
+            if not nums:
+                self.bad("README.md", f"arc stage {row[0]!r} names no lessons")
+            for n in nums:
+                if n in seen:
+                    self.bad("README.md", f"lesson {n:04d} is claimed by two stages: "
+                                          f"{seen[n]!r} and {row[0]!r}")
+                seen[n] = row[0]
+
+        if not stages:
+            self.bad("README.md", "the arc table has no stage rows")
+            return
+        taught = set(self.meta)
+        for n in sorted(taught - set(seen)):
+            self.bad("README.md", f"lesson {n:04d} exists but no arc stage covers it")
+        for n in sorted(set(seen) - taught):
+            self.bad("README.md", f"arc stage {seen[n]!r} names lesson {n:04d}, "
+                                  f"which does not exist")
 
     def check_glossary(self):
         """Alphabetical, because it is looked up rather than read, and every

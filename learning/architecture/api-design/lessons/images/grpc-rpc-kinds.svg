@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" width="480" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">gRPC's four RPC kinds differ in which side sends a stream of messages instead of a single one</title>
+  <desc id="desc">Four quadrants, each showing a client box and a server box. Unary: one request arrow, one response arrow. Server streaming: one request arrow, then several response arrows from server to client. Client streaming: several request arrows from client to server, then one response arrow. Bidirectional streaming: several arrows flowing independently in both directions between client and server over the same call.</desc>
+
+  <text x="115" y="14" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">unary: one request, one response</text>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="20" y="30" width="60" height="24"/>
+    <rect x="150" y="30" width="60" height="24"/>
+  </g>
+  <text x="50" y="46" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">client</text>
+  <text x="180" y="46" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">server</text>
+  <line x1="80" y1="38" x2="148" y2="38" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="148" y1="48" x2="80" y2="48" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+  <text x="365" y="14" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">server streaming: one request, many responses</text>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="270" y="30" width="60" height="24"/>
+    <rect x="400" y="30" width="60" height="24"/>
+  </g>
+  <text x="300" y="46" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">client</text>
+  <text x="430" y="46" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">server</text>
+  <line x1="330" y1="36" x2="398" y2="36" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="398" y1="44" x2="330" y2="44" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="398" y1="50" x2="330" y2="50" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="398" y1="56" x2="330" y2="56" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+  <text x="115" y="124" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">client streaming: many requests, one response</text>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="20" y="140" width="60" height="24"/>
+    <rect x="150" y="140" width="60" height="24"/>
+  </g>
+  <text x="50" y="156" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">client</text>
+  <text x="180" y="156" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">server</text>
+  <line x1="80" y1="146" x2="148" y2="146" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="80" y1="152" x2="148" y2="152" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="80" y1="158" x2="148" y2="158" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="148" y1="164" x2="80" y2="164" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+  <text x="365" y="124" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">bidirectional: both sides stream, either order</text>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="270" y="140" width="60" height="24"/>
+    <rect x="400" y="140" width="60" height="24"/>
+  </g>
+  <text x="300" y="156" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">client</text>
+  <text x="430" y="156" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">server</text>
+  <line x1="330" y1="146" x2="398" y2="146" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="398" y1="152" x2="330" y2="152" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="330" y1="158" x2="398" y2="158" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <line x1="398" y1="164" x2="330" y2="164" stroke="#bf7d1a" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+  <defs>
+    <marker id="arrow1" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+      <path d="M0,0 L5,2.5 L0,5 Z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+</svg>

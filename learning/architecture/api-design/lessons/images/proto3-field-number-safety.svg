@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">Adding a new field number is safe; reusing a removed field's number silently reinterprets old data</title>
+  <desc id="desc">Two side-by-side message evolutions. On the left, safe: v1 has field 1 name and field 2 age; v2 adds field 3 email, a brand new number, so an old client reading v2 data still reads fields 1 and 2 correctly and simply ignores field 3. On the right, unsafe: v1 has field 1 name and field 2 age; v2 removes age and reuses field number 2 for a new email field, so an old client still expecting field 2 to mean age instead receives the email value, silently misinterpreted as an age.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">safe: add a new field number</text>
+    <text x="365" y="14" text-anchor="middle">unsafe: reuse a removed field's number</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="20" y="26" width="90" height="42"/>
+    <rect x="140" y="26" width="90" height="55"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="65" y="40" text-anchor="middle">v1</text>
+    <text x="65" y="52" text-anchor="middle">1: name</text>
+    <text x="65" y="63" text-anchor="middle">2: age</text>
+    <text x="185" y="40" text-anchor="middle">v2</text>
+    <text x="185" y="52" text-anchor="middle">1: name</text>
+    <text x="185" y="63" text-anchor="middle">2: age</text>
+  </g>
+  <text x="185" y="74" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">3: email (new)</text>
+  <line x1="110" y1="47" x2="140" y2="47" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="125" y="95" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">old client: reads 1, 2 fine,</text>
+  <text x="125" y="106" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">ignores unknown field 3</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="270" y="26" width="90" height="42"/>
+    <rect x="390" y="26" width="90" height="42"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="315" y="40" text-anchor="middle">v1</text>
+    <text x="315" y="52" text-anchor="middle">1: name</text>
+    <text x="315" y="63" text-anchor="middle">2: age</text>
+    <text x="435" y="40" text-anchor="middle">v2</text>
+    <text x="435" y="52" text-anchor="middle">1: name</text>
+  </g>
+  <text x="435" y="63" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">2: email (reused!)</text>
+  <line x1="360" y1="47" x2="390" y2="47" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="375" y="95" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">old client: reads field 2 expecting</text>
+  <text x="375" y="106" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">age, gets an email value instead</text>
+</svg>

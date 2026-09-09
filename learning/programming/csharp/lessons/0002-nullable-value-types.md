@@ -55,6 +55,13 @@ Set that against the Java habit. There, `Integer x = null; if (x > 5)` throws a 
 
 **Boxing erases the wrapper.** Box a `T?` and one of two things happens. If `HasValue` is `false`, the boxing operation returns a **null reference**. If it is `true`, the operation boxes the value of the underlying type `T`, **not** the `Nullable<T>` instance. Unboxing a boxed `T` back to `T?` works fine.
 
+```mermaid
+flowchart TD
+    A["box a T? value"] --> B{"HasValue?"}
+    B -- "false" --> C["null reference"]
+    B -- "true" --> D["boxed T,<br>not Nullable&lt;T&gt;"]
+```
+
 That has a practical consequence the docs call out: calling `GetType()` on an instance of a nullable value type boxes it first, so what you get back is the underlying type, and the nullability is simply not there to see. To ask whether a type is a nullable value type, ask the type rather than the instance: `Nullable.GetUnderlyingType(typeof(int?)) != null`.
 
 **One boundary to fix now, because the same character means two different things in C#.** This lesson is about nullable **value** types, a runtime construct: `Nullable<T>`, `HasValue`, boxing. Nullable **reference** types, where `string?` differs from `string`, are a separate feature built on compiler flow analysis rather than on a wrapper, and they arrive in lesson 15. Same `?`, different mechanism, and conflating them is the most common confusion in this corner of the language.

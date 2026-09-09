@@ -62,6 +62,8 @@ That table is the whole argument for money. A `decimal` carries 28 to 29 signifi
 {<interpolationExpression>[,<width>][:<formatString>]}
 ```
 
+![The hole {value,8:F2} broken into four labeled segments: the opening brace, the expression "value", ",8" labeled width, ":F2" labeled format string, and the closing brace. Below, for value 3.14159, the rendered result is right-aligned in a field of width 8: "|    3.14|".](images/interpolation-hole-grammar.svg)
+
 |Part|What it does|
 |---|---|
 |`interpolationExpression`|The expression to format. **When it evaluates to null, the output is the empty string**|

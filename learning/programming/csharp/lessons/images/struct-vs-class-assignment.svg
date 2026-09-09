@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">Assigning a struct copies the value; assigning a class copies the reference</title>
+  <desc id="desc">Left: var p2 = p1for a struct Point produces two separate boxes, p1 and p2, each independently holding X:1 Y:2, with no connection between them. Right: the same assignment for a class Point produces two reference boxes, p1 and p2, both pointing with an arrow at one shared object on the heap holding X:1 Y:2. Mutating through p2 changes the struct's own copy only; mutating through the class reference changes the one object both names point to.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="20">struct Point: var p2 = p1;</text>
+    <text x="300" y="20">class Point: var p2 = p1;</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <rect x="20" y="40" width="110" height="40" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="30" y="55" fill="#7a828c">p1</text>
+    <text x="30" y="70" fill="#7a828c">X: 1  Y: 2</text>
+
+    <rect x="150" y="40" width="110" height="40" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="160" y="55" fill="#bf7d1a">p2</text>
+    <text x="160" y="70" fill="#bf7d1a">X: 1  Y: 2</text>
+  </g>
+
+  <text x="20" y="110" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">two independent copies; changing p2 never touches p1</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <rect x="300" y="40" width="70" height="26" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="310" y="57" fill="#7a828c">p1</text>
+
+    <rect x="300" y="86" width="70" height="26" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="310" y="103" fill="#bf7d1a">p2</text>
+
+    <rect x="420" y="60" width="120" height="40" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="430" y="75" fill="#7a828c">heap object</text>
+    <text x="430" y="90" fill="#7a828c">X: 1  Y: 2</text>
+  </g>
+
+  <path d="M370,53 L420,75" stroke="#7a828c" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M370,99 L420,85" stroke="#bf7d1a" stroke-width="1.2" fill="none" marker-end="url(#arrow2)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7a828c"/>
+    </marker>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <text x="300" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">p1 and p2 both name the same object; mutating through either is visible in both</text>
+</svg>

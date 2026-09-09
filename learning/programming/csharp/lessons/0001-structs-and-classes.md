@@ -23,6 +23,8 @@ C# gives you a second option for a user-defined type: a **struct**. This isn't a
 - A **struct** is a **value type**. Assigning one struct-typed variable to another copies the entire value. Passing a struct to a method copies it into the parameter. Two struct-typed variables holding "the same" data are two entirely independent copies; mutating one can never affect the other.
 - A **class** is a **reference type**. Assigning one class-typed variable to another copies the *reference*, not the object. Two class-typed variables can point at the very same object, and mutating through either one is visible through both. This is the behavior every reference in Java already has, since every Java object is accessed this way.
 
+![Left: assigning a struct-typed p2 = p1 produces two separate boxes, p1 and p2, each independently holding X:1 Y:2, with no connection between them. Right: the same assignment for a class produces two reference boxes, p1 and p2, both pointing with an arrow at one shared heap object holding X:1 Y:2.](images/struct-vs-class-assignment.svg)
+
 The Java habit of reaching for a class for any new type carries an implicit assumption: that assignment and parameter-passing always mean "share a reference." In C#, that assumption is only true for classes. A struct silently breaks it, in a way that either helps you (independent copies, no aliasing bugs) or surprises you (a mutation you expected to propagate doesn't), depending on whether you knew which one you were using.
 
 ### What the CLR actually does differently

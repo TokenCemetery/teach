@@ -58,6 +58,18 @@ Three documented consequences follow, and the third surprises people:
 
 Java gives you no filters, so its idiom for "handle only some of these" is catch-everything-then-inspect-then-rethrow, and that idiom is exactly the one that destroys the trace. Carried into C# it produces a stack trace pointing at your own rethrow instead of at the code that failed, which is worse than useless while debugging. The C# form asks the question **before** committing: filter in the `when`, and never catch what you are not going to handle.
 
+```mermaid
+flowchart TD
+    A["exception thrown"] --> Q{"decide with a when filter,<br>or with an if inside catch?"}
+    Q -- "when filter" --> B{"filter true?"}
+    B -- "no" --> C["stack untouched,<br>search continues, original trace intact"]
+    B -- "yes" --> D["handled"]
+    Q -- "if inside catch" --> E["stack unwinds<br>on entering the catch block"]
+    E --> F{"is this mine to handle?"}
+    F -- "no" --> G["rethrow: trace now points<br>at the rethrow, not the failure"]
+    F -- "yes" --> H["handled"]
+```
+
 **`using` for cleanup that happens whatever else does.** The `using` statement ensures an `IDisposable` instance is disposed when control leaves the block, **including when an exception is thrown inside it** ([using statement](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/using)). This is Java's try-with-resources with a different interface name, and there is also a `using` **declaration** form that ties disposal to the end of the enclosing scope rather than to a nested block. `await using` does the same for an `IAsyncDisposable`, which stage 4 will need.
 
 **Three exceptions worth recognising on sight**, from the .NET overview's table:

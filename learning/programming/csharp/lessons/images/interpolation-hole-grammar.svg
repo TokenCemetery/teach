@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="480" height="160" role="img" aria-labelledby="title desc">
+  <title id="title">The three parts of an interpolation hole</title>
+  <desc id="desc">The hole {value,8:F2} broken into four labeled segments: the opening brace, the expression "value" labeled expression, ",8" labeled width, ":F2" labeled format string, and the closing brace. Below, for value equal to 3.14159, the rendered result is four spaces then 3.14, right-aligned in a field of width 8 because the width is positive.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" text-anchor="middle">
+    <rect x="20" y="50" width="20" height="24" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="30" y="66" fill="#7a828c">{</text>
+
+    <rect x="44" y="50" width="90" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="89" y="66" fill="#bf7d1a">value</text>
+
+    <rect x="138" y="50" width="50" height="24" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="163" y="66" fill="#7a828c">,8</text>
+
+    <rect x="192" y="50" width="60" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="222" y="66" fill="#bf7d1a">:F2</text>
+
+    <rect x="256" y="50" width="20" height="24" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="266" y="66" fill="#7a828c">}</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" text-anchor="middle" fill="#7a828c" opacity="0.85">
+    <text x="89" y="40">expression</text>
+    <text x="163" y="40">width</text>
+    <text x="222" y="40">format string</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="105">value = 3.14159, width = 8 (positive: right-align), format = F2</text>
+    <text x="20" y="130" fill="#bf7d1a">"|{value,8:F2}|" &#8594; "|    3.14|"</text>
+  </g>
+</svg>

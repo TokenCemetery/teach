@@ -38,6 +38,13 @@ A **resource** is a named, addressable thing (a user, an order, a specific comme
 
 A **collection** is a named set of resources of the same kind (`/orders` is the collection of orders; `/orders/42` is one specific resource within it). Nesting a collection under a resource (`/users/7/orders`, the orders belonging to user 7) expresses a real ownership or containment relationship, and clients build logic around that nesting exactly the way lesson 1 described for any other observable behavior: once `/users/7/orders` means "user 7's orders," changing what the nesting means, or flattening it later, breaks every client that learned the relationship from the URL shape.
 
+```mermaid
+flowchart TD
+    A["/users<br>(collection)"] --> B["/users/7<br>(resource)"]
+    B --> C["/users/7/orders<br>(nested collection: user 7's orders)"]
+    C --> D["/users/7/orders/42<br>(resource)"]
+```
+
 ### Standard methods are a contract clients can rely on without reading extra docs
 
 Google's AIP guidance names five **standard methods** (`List`, `Get`, `Create`, `Update`, `Delete`) that map onto HTTP's `GET` (collection), `GET` (single resource), `POST`, `PATCH` or `PUT`, and `DELETE` respectively, with consistent, predictable semantics for each. A client that has learned how `List` and `Get` behave on one resource type in an API can correctly predict how they behave on a different resource type in the same API, without reading that resource's documentation from scratch. Deviating from these standard shapes for no reason (a `List` that mutates state, a `Get` with side effects) breaks that transferable expectation, the REST-specific version of lesson 1's "contract is bigger than documentation."

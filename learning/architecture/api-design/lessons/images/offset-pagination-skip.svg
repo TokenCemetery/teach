@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">A deletion elsewhere in the collection shifts item positions, letting offset pagination silently skip an item</title>
+  <desc id="desc">Two rows of the same five items, I18 through I22. The top row shows their positions before a deletion happens elsewhere in the collection: page 1 already fetched up through position 19, stopping just before I20. The bottom row shows their positions after that deletion shifts everything down by one: page 2 then requests starting at position 20 using the new numbering, which is now I21, not I20. I20, highlighted, sat at position 20 when page 1 ran and at position 19 after the shift, so it is never returned by either page.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="240" y="16" text-anchor="middle">before the deletion (page 1 already ran)</text>
+  </g>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="10" y="24" width="50" height="24"/>
+    <rect x="70" y="24" width="50" height="24"/>
+    <rect x="130" y="24" width="50" height="24"/>
+    <rect x="190" y="24" width="50" height="24"/>
+    <rect x="250" y="24" width="50" height="24"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="35" y="40" text-anchor="middle">I18</text>
+    <text x="95" y="40" text-anchor="middle">I19</text>
+    <text x="155" y="40" text-anchor="middle">I20</text>
+    <text x="215" y="40" text-anchor="middle">I21</text>
+    <text x="275" y="40" text-anchor="middle">I22</text>
+    <text x="35" y="60" text-anchor="middle">pos 18</text>
+    <text x="95" y="60" text-anchor="middle">pos 19</text>
+    <text x="155" y="60" text-anchor="middle">pos 20</text>
+    <text x="215" y="60" text-anchor="middle">pos 21</text>
+    <text x="275" y="60" text-anchor="middle">pos 22</text>
+  </g>
+  <line x1="125" y1="18" x2="125" y2="66" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="125" y="15" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">page 1 fetches up to pos 19</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="240" y="90" text-anchor="middle">after an earlier item is deleted (everything shifts down by 1)</text>
+  </g>
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="10" y="98" width="50" height="24"/>
+    <rect x="70" y="98" width="50" height="24"/>
+    <rect x="190" y="98" width="50" height="24"/>
+    <rect x="250" y="98" width="50" height="24"/>
+  </g>
+  <rect x="130" y="98" width="50" height="24" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="35" y="114" text-anchor="middle">I18</text>
+    <text x="95" y="114" text-anchor="middle">I19</text>
+    <text x="215" y="114" text-anchor="middle">I21</text>
+    <text x="275" y="114" text-anchor="middle">I22</text>
+    <text x="35" y="134" text-anchor="middle">pos 17</text>
+    <text x="95" y="134" text-anchor="middle">pos 18</text>
+    <text x="215" y="134" text-anchor="middle">pos 20</text>
+    <text x="275" y="134" text-anchor="middle">pos 21</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">
+    <text x="155" y="114" text-anchor="middle">I20</text>
+    <text x="155" y="134" text-anchor="middle">pos 19</text>
+  </g>
+  <line x1="185" y1="92" x2="185" y2="140" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="185" y="155" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">page 2 starts at pos 20 (= I21)</text>
+  <text x="155" y="165" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">I20 falls in the gap: skipped entirely</text>
+</svg>

@@ -42,6 +42,8 @@ A larger block size means fewer blocks per sequence and less block-table bookkee
 
 Because a sequence's blocks are reached indirectly, through its block table, rather than by assuming a fixed physical layout, two different sequences' block tables can point at the *same* physical block when its content is identical, most commonly a shared prompt prefix. Parallel sampling (asking for several completions of the same prompt) or beam search are the clearest cases: every sample shares the identical prompt tokens' cache, so the prompt's blocks need to exist physically only once, with every sample's block table pointing at them. When a sample's generation diverges from the others (any new, sample-specific token), a **copy-on-write** creates that sample's own private copy of the block being modified, exactly the mechanism an operating system uses when two processes share memory pages until one of them writes.
 
+![Two block tables, sequence A on the left and sequence B on the right, each mapping four logical positions to physical block numbers. For positions 0 through 2, both tables point at the same three shared physical blocks holding an identical prompt prefix, so that prefix's cache exists only once in memory. At position 3 the two sequences have generated different tokens, so a copy-on-write has given each one its own private block: sequence A's block 9 and sequence B's block 3, neither shared with the other.](images/block-table-sharing.svg)
+
 ## Practice
 
 1. ▢ With a block size of 16 tokens, a sequence generates 40 tokens of output. How many blocks does it use, and how much space is wasted in the last one?

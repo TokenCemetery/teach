@@ -47,6 +47,18 @@ Tuning a running server is diagnosis, not guessing. Each symptom below points at
 - **One request stalls every other sequence's tokens**: that's lesson 5's head-of-line blocking; check the chunked-prefill chunk size, not the batch size.
 - **Memory looks wasted across many parallel samples of the same prompt**: that's lesson 11's block sharing; verify it's actually happening rather than reaching for a batch-size or memory-utilization change first.
 
+```mermaid
+flowchart TD
+    A{"what's the symptom?"}
+    A -->|"won't start / too little<br>memory for cache"| B["check --gpu-memory-utilization first"]
+    B --> B1{"still doesn't fit<br>at 100%?"}
+    B1 -->|"yes"| B2["memory-constrained (lesson 9):<br>quantize, add --tensor-parallel-size, or both"]
+    A -->|"decode slower than<br>latency budget"| C["check --max-num-seqs against<br>lesson 6's defended batch size"]
+    C --> C1["then check whether quantizing weights<br>or --kv-cache-dtype is justified"]
+    A -->|"one request stalls<br>every other sequence"| D["lesson 5's head-of-line blocking:<br>check the chunked-prefill chunk size,<br>not the batch size"]
+    A -->|"memory wasted across<br>parallel samples"| E["lesson 11's block sharing:<br>verify it's happening before<br>touching batch size or utilization"]
+```
+
 ## Practice
 
 1. ▢ A server fails to start with "not enough memory for KV cache," even though its 80 GB GPU has only 20 GB of weights loaded. What flag is the first thing to check, and what does raising it trade away?

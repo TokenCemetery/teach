@@ -62,6 +62,7 @@ Work through these in order.
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
 - [Attention](reference/attention.md): scaled dot-product attention, multi-head attention and causal masking, with the tensor shapes annotated at each step
+- [The Transformer Block](reference/the-transformer-block.md): positional encoding, layer norm and residuals, the feed-forward block, stacking, and weight tying
 
 ## How this works
 

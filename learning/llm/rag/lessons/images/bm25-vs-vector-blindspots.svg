@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 130" width="460" height="130" role="img" aria-labelledby="title desc">
+  <title id="title">BM25 and vector search have opposite blind spots</title>
+  <desc id="desc">A two-by-two grid. Row one: an exact-identifier query like "error code E502." BM25 matches it, since the literal string appears in the document; vector search may miss it, since its embedding model was trained for semantic similarity, not exact identifier matching. Row two: a synonymous-phrasing query like "broken pipe" against a document reading "leaking conduit," sharing no words. BM25 scores this near zero, since it only counts literal term overlap; vector search matches it, since the two phrases mean the same thing. Each method's blind spot is the other method's strength.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="230" y="14" text-anchor="middle">BM25 (lexical)</text>
+    <text x="350" y="14" text-anchor="middle">vector search (semantic)</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" fill="none">
+    <line x1="10" y1="22" x2="450" y2="22"/>
+    <line x1="10" y1="70" x2="450" y2="70"/>
+    <line x1="10" y1="118" x2="450" y2="118"/>
+    <line x1="170" y1="22" x2="170" y2="118"/>
+    <line x1="290" y1="22" x2="290" y2="118"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="15" y="40">query: "error code E502"</text>
+    <text x="15" y="52">(exact identifier)</text>
+    <text x="15" y="88">query: "broken pipe" vs.</text>
+    <text x="15" y="100">doc: "leaking conduit"</text>
+    <text x="15" y="112">(synonymous, no shared words)</text>
+  </g>
+
+  <g stroke-width="2" fill="none">
+    <path d="M215,38 l6,7 l12,-14" stroke="#bf7d1a"/>
+    <path d="M340,32 l12,12 M352,32 l-12,12" stroke="#7a828c"/>
+    <path d="M215,86 l12,12 M227,86 l-12,12" stroke="#7a828c"/>
+    <path d="M335,86 l6,7 l12,-14" stroke="#bf7d1a"/>
+  </g>
+
+  <text x="230" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">matches the literal string</text>
+  <text x="350" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">not trained for exact IDs</text>
+  <text x="230" y="108" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">shares no terms, scores ~0</text>
+  <text x="350" y="108" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">captures shared meaning</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 175" width="480" height="175" role="img" aria-labelledby="title desc">
+  <title id="title">A document strong in one ranking and weak in the other can out-fuse one that is merely moderate in both</title>
+  <desc id="desc">Two ranked lists side by side, BM25 rank and vector-search rank, each listing four positions. Document A ranks 1st under BM25 but 4th under vector search; document B ranks 4th under BM25 but 1st under vector search; document C ranks 2nd under both. Lines trace each document from its two rank positions into a fused RRF ranking on the right, where A and B tie for first place, each having excelled under one method, while C, only ever moderate, comes in behind them despite never ranking poorly in either list.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="20" y="14">BM25 rank</text>
+    <text x="200" y="14">vector rank</text>
+    <text x="400" y="14">RRF fused rank</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7">
+    <g fill="#7a828c">
+      <text x="20" y="28">1.</text><text x="20" y="58">2.</text><text x="20" y="88">3.</text><text x="20" y="118">4.</text>
+      <text x="200" y="28">1.</text><text x="200" y="58">2.</text><text x="200" y="88">3.</text><text x="200" y="118">4.</text>
+    </g>
+    <g fill="#bf7d1a"><text x="35" y="28">A</text></g>
+    <g fill="#7a828c"><text x="35" y="58">C</text></g>
+    <g fill="#7a828c" fill-opacity="0.6"><text x="35" y="88">(other)</text></g>
+    <g fill="#7a828c"><text x="35" y="118">B</text></g>
+
+    <g fill="#7a828c"><text x="215" y="28">B</text></g>
+    <g fill="#7a828c"><text x="215" y="58">C</text></g>
+    <g fill="#7a828c" fill-opacity="0.6"><text x="215" y="88">(other)</text></g>
+    <g fill="#bf7d1a"><text x="215" y="118">A</text></g>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.2" fill="none">
+    <path d="M45,25 C120,25 120,50 195,50"/>
+    <path d="M225,115 C300,115 300,50 375,50"/>
+  </g>
+  <g stroke="#7a828c" stroke-width="1.2" fill="none">
+    <path d="M45,115 C120,115 120,50 195,25"/>
+    <path d="M225,25 C300,25 300,50 375,50"/>
+  </g>
+  <g stroke="#7a828c" stroke-width="1" stroke-dasharray="3 2" fill="none" stroke-opacity="0.7">
+    <path d="M45,55 C120,55 120,95 195,55"/>
+    <path d="M225,55 C300,55 300,95 375,95"/>
+  </g>
+
+  <g fill="#bf7d1a" fill-opacity="0.1" stroke="#bf7d1a">
+    <rect x="375" y="40" width="90" height="20" rx="2"/>
+  </g>
+  <text x="420" y="53" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a" text-anchor="middle">1. A, B (tied)</text>
+
+  <g fill="#7a828c" fill-opacity="0.1" stroke="#7a828c">
+    <rect x="375" y="85" width="90" height="20" rx="2"/>
+  </g>
+  <text x="420" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c" text-anchor="middle">3. C</text>
+
+  <text x="20" y="145" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">A (1st/4th) and B (4th/1st) each excel under one method and tie for the fused top spot.</text>
+  <text x="20" y="157" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">C (2nd/2nd), never great under either, comes in behind both.</text>
+</svg>

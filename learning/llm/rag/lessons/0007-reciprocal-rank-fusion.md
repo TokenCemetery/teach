@@ -56,6 +56,8 @@ RRF(C) = 1/(1+2) + 1/(1+2) = 0.333 + 0.333 = 0.667
 
 A and B tie for first, each excelling under one method and doing poorly under the other; C, merely mediocre under both, loses to both. RRF rewards a document that any one method strongly believes in, not only a document both methods mildly agree on.
 
+![Two ranked lists side by side, BM25 rank and vector-search rank, each listing four positions. Document A ranks 1st under BM25 but 4th under vector search; document B ranks 4th under BM25 but 1st under vector search; document C ranks 2nd under both. Lines trace each document from its two rank positions into a fused RRF ranking on the right, where A and B tie for first place, each having excelled under one method, while C, only ever moderate, comes in behind them despite never ranking poorly in either list.](images/rrf-worked-example.svg)
+
 ### Tuning the blend against a measured metric
 
 RRF can be extended with a per-ranking weight, `sum of w_r / (k + rank_r(d))`, letting vector search count for more or less than BM25 in the final fusion. The right weight, and the right `k`, are not something to guess at: they're something to measure, the same way lesson 3 measured embedding quality at candidate dimensionalities instead of assuming one. Using stage 6's retrieval metrics (recall@k, MRR) against a labeled or synthetic query set representative of the corpus's actual traffic, different weightings can be compared directly, and the blend that actually retrieves the right documents more often for this corpus, not a default 50/50 split, is the one worth shipping.

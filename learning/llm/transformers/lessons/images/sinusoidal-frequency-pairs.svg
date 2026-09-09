@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" width="480" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">Sinusoidal positional encoding oscillates at different frequencies across its dimension pairs</title>
+  <desc id="desc">Two waves plotted against position along the horizontal axis. The top wave, from a low-index dimension pair, completes one slow oscillation across the whole range of positions shown. The bottom wave, from a high-index dimension pair, completes eight fast oscillations across the same range. Every position gets a unique combination of values across all these different-frequency waves, which is what gives each position a distinguishable signature.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="60" y="18">low-index dimension pair (small i): slow oscillation</text>
+    <text x="60" y="113">high-index dimension pair (large i): fast oscillation</text>
+    <text x="250" y="205" text-anchor="middle">position (pos), left to right</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="60" y1="55" x2="440" y2="55"/>
+    <line x1="60" y1="150" x2="440" y2="150"/>
+  </g>
+
+  <path d="M60.0,55.0 L73.1,50.3 L86.2,45.8 L99.3,41.7 L112.4,38.2 L125.5,35.6 L138.6,33.8 L151.7,33.0 L164.8,33.3 L177.9,34.6 L191.0,36.8 L204.1,39.9 L217.2,43.7 L230.3,48.0 L243.4,52.6 L256.6,57.4 L269.7,62.0 L282.8,66.3 L295.9,70.1 L309.0,73.2 L322.1,75.4 L335.2,76.7 L348.3,77.0 L361.4,76.2 L374.5,74.4 L387.6,71.8 L400.7,68.3 L413.8,64.2 L426.9,59.7 L440.0,55.0" fill="none" stroke="#7a828c" stroke-width="2"/>
+
+  <path d="M60.0,150.0 L66.4,133.4 L72.9,128.2 L79.3,137.8 L85.8,155.8 L92.2,169.8 L98.6,170.3 L105.1,156.9 L111.5,138.8 L118.0,128.4 L124.4,132.7 L130.8,148.8 L137.3,165.8 L143.7,171.9 L150.2,163.1 L156.6,145.3 L163.1,130.8 L169.5,129.3 L175.9,142.0 L182.4,160.1 L188.8,171.4 L195.3,168.0 L201.7,152.3 L208.1,135.1 L214.6,128.0 L221.0,136.0 L227.5,153.5 L233.9,168.7 L240.3,171.1 L246.8,159.1 L253.2,140.9 L259.7,128.9 L266.1,131.3 L272.5,146.5 L279.0,164.0 L285.4,172.0 L291.9,164.9 L298.3,147.7 L304.7,132.0 L311.2,128.6 L317.6,139.9 L324.1,158.0 L330.5,170.7 L336.9,169.2 L343.4,154.7 L349.8,136.9 L356.3,128.1 L362.7,134.2 L369.2,151.2 L375.6,167.3 L382.0,171.6 L388.5,161.2 L394.9,143.1 L401.4,129.7 L407.8,130.2 L414.2,144.2 L420.7,162.2 L427.1,171.8 L433.6,166.6 L440.0,150.0" fill="none" stroke="#bf7d1a" stroke-width="2"/>
+</svg>

@@ -44,6 +44,8 @@ The practical effect: layer norm keeps every sublayer's input in a similar, pred
 
 The original transformer paper places layer norm *after* the residual addition, `LayerNorm(x + Sublayer(x))`, called **post-norm**. Later work found that placing the norm *before* the sublayer, inside the residual branch instead, `x + Sublayer(LayerNorm(x))`, called **pre-norm**, trains more stably as models get much deeper. The reason: pre-norm leaves the residual path itself completely clean and unnormalized all the way through the network, an unobstructed identity connection end to end, where post-norm's placement means the residual sum itself gets normalized at every layer, muddying that clean gradient highway. This is why most current large models use pre-norm, despite the original paper's choice of post-norm.
 
+![Two side-by-side diagrams of a residual branch. On the left, post-norm: x splits into a bypass line and a line through the sublayer, the two are added together, and that sum is passed through layer norm, so the residual path itself gets normalized at every layer. On the right, pre-norm: x splits into a bypass line and a line that passes through layer norm before the sublayer, the two are added together, and the output is used directly with no further normalization, so the residual path running top to bottom stays completely clean and unobstructed end to end.](images/pre-norm-vs-post-norm.svg)
+
 ## Practice
 
 1. ▢ Why does a residual connection help train a deep stack of transformer blocks, in terms of what happens to gradients during backpropagation?

@@ -44,6 +44,14 @@ FFN(x) = max(0, x W1 + b1) W2 + b2
 
 (the original paper uses ReLU as its nonlinearity here; later architectures commonly swap in variants like GELU or SwiGLU, but the shape, expand, apply a nonlinearity, project back down, stays the same). This is where the network gets real nonlinear transformation capacity for a single position's own vector, complementing attention's job of mixing across positions with a distinct job: refining what a position now holds, after attention has already decided what to gather.
 
+```mermaid
+flowchart LR
+    X["x (one position's vector, size d_model)"] --> L1["x W1 + b1<br>(expand to d_ff)"]
+    L1 --> R["max(0, ...)<br>(ReLU)"]
+    R --> L2["... W2 + b2<br>(project back to d_model)"]
+    L2 --> Out["FFN(x)"]
+```
+
 ### Expand, then contract
 
 The first layer projects from `d_model` up to a larger hidden dimension `d_ff`, commonly four times `d_model` (512 to 2048 in the original paper), and the second layer projects back down to `d_model` so the result can still be added into the residual stream. That expansion gives the network a much larger intermediate space to compute in for each position, before compressing back to the size the rest of the block, and the next block stacked on top of it, expects.

@@ -46,6 +46,16 @@ A table with growing bloat has one of a few distinct root causes, and finding wh
 2. **Is something holding back what vacuum can reclaim, even though it's running?** A single long-running transaction, an idle-in-transaction session, an uncommitted prepared transaction, or a stalled replication slot all hold back the oldest snapshot vacuum has to respect: vacuum cannot reclaim any dead tuple newer than that snapshot, no matter how many workers are configured or how aggressive the thresholds are. This is the case that looks the most confusing from the outside: autovacuum logs show it ran, on schedule, and bloat still climbs, because it genuinely couldn't reclaim anything held back by that older transaction. Checking `pg_stat_activity` for long-running or idle-in-transaction sessions, and `pg_replication_slots` for a stalled slot, is how this gets found.
 3. **Is autovacuum triggering too late or running too slowly for this table's actual write rate?** The default trigger, `autovacuum_vacuum_scale_factor`, fires once roughly 20% of a table's rows have changed since the last vacuum. That percentage scales badly for a very large table: 20% of a million-row table is 200,000 dead tuples before autovacuum even considers it, by which point real bloat has already accumulated. Lowering the scale factor, or setting an absolute row-count threshold instead, for specifically large or high-churn tables is the fix once the first two causes are ruled out.
 
+```mermaid
+flowchart TD
+    A["bloat growing"] --> B{"is autovacuum running<br>and keeping pace?<br>(last_autovacuum, dead-tuple ratio trend)"}
+    B -->|"no: hasn't run recently"| C["fix autovacuum triggering first"]
+    B -->|"yes, running"| D{"is something holding back<br>what vacuum can reclaim?<br>(long-running/idle-in-transaction session,<br>stalled replication slot)"}
+    D -->|"yes"| E["fix the holdback:<br>end the long transaction or the stalled slot"]
+    D -->|"no"| F{"is the trigger too coarse<br>for this table's size/churn?<br>(autovacuum_vacuum_scale_factor)"}
+    F -->|"yes"| G["lower scale factor, or set<br>an absolute row-count threshold"]
+```
+
 ## Practice
 
 1. ▢ A table shows `n_live_tup = 800,000` and `n_dead_tup = 200,000`. Compute the bloat ratio, and say whether this figure alone is alarming or merely worth watching.

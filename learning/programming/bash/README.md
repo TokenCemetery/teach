@@ -60,6 +60,7 @@ Work through these in order.
 - [Quoting and Pitfalls](reference/quoting-and-pitfalls.md): the quoting rule, where it bites, and the Bash Pitfalls that survive careful quoting
 - [Exit Status and Error Handling](reference/exit-status-and-error-handling.md): `$?`, `set -euo pipefail`'s flags and real exceptions, and `trap` for guaranteed cleanup
 - [Portability](reference/portability.md): POSIX `sh` vs bash-only features, the shebang-honesty rule, and when the trade-off is worth it
+- [awk, sed, and Knowing When to Stop](reference/awk-sed-and-when-to-stop.md): matching the tool to the task's shape, and the concrete signals a script has outgrown shell
 
 ## How this works
 

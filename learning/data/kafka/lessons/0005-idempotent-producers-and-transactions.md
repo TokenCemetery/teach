@@ -42,6 +42,17 @@ A stream-processing application commonly does one logical unit of work made of s
 
 Kafka's **transactions** mechanism wraps a producer's writes to multiple partitions and topics, explicitly including a write to `__consumer_offsets`, into one atomic unit: either every write in the transaction becomes visible to consumers, or none of them do. A **transaction coordinator** (a broker, playing a role analogous to lesson 2's group coordinator) writes markers to the log recording whether a transaction committed or aborted. A consumer configured with `isolation.level=read_committed` only ever sees messages from transactions that actually committed, filtering out anything from a transaction that aborted or is still in doubt, which is what makes the read-process-write cycle atomic end to end, offset commit included.
 
+```mermaid
+flowchart LR
+    Consume["consume message from topic A"] --> TX
+    subgraph TX["one atomic transaction"]
+        direction TB
+        W1["produce result to topic B"]
+        W2["commit offset to __consumer_offsets"]
+    end
+    TX --> Visible["read_committed consumers see<br>both writes, or neither"]
+```
+
 ### Where the real cost actually lives
 
 Idempotence and transactions are not the same cost tier, and treating "exactly-once" as one monolithic expensive feature misses that. Idempotence costs almost nothing. Transactions cost something real: added latency, since a transactional commit requires an extra round trip to write its commit marker through the transaction coordinator; reduced throughput for `read_committed` consumers, since they may need to wait for a transaction's outcome before delivering its messages, even a transaction that ultimately commits successfully; and real operational complexity, since a producer's transactional ID has to be managed carefully across restarts to avoid a rolling deployment accidentally running two producer instances under the same transactional ID at once, which triggers Kafka's fencing mechanism to protect against exactly that. The defensible position: enable idempotence essentially always, since it costs nothing meaningful, and reach for full transactions specifically when read-process-write atomicity is actually needed, not as a blanket default for every simple producer.

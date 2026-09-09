@@ -38,6 +38,12 @@ A delivery guarantee has to be stated precisely, because loss and duplication ca
 - **The broker's own durability**: does the broker acknowledge a produced message before or after it's been replicated to enough other brokers, which decides whether a leader crash right after acking can still lose the message?
 - **Consumer to processing**: does the consumer commit its offset before or after actually processing the message, which decides what happens to that message if the consumer crashes in between?
 
+```mermaid
+flowchart LR
+    P["producer"] -->|"leg 1: retry on failed ack<br>(duplicate risk)"| Br["broker<br>(leg 2: acks=0/1/all decides loss risk)"]
+    Br -->|"leg 3: commit before processing = at-most-once (loss risk)<br>commit after processing = at-least-once (duplicate risk)"| C["consumer"]
+```
+
 ### At-most-once: commit before processing
 
 **At-most-once** means a message may be lost, but is never processed more than once. On the consumer side, this comes from committing the offset **before** processing the message. If the consumer crashes after committing but before finishing the work, the message is never reprocessed on restart: the group's recorded progress already moved past it, so it's simply skipped, lost from the consumer's perspective even though it was correctly delivered.

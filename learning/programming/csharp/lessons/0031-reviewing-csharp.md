@@ -46,6 +46,14 @@ Three questions turn a reaction into a comment:
 - **Who pays for the promise, and in what currency?** A signature, a lock, a round trip, a lifetime.
 - **When would you find out it was broken?** This is the one that ranks the finding.
 
+```mermaid
+flowchart TD
+    A["a reaction to some code"] --> B["what does this<br>construct promise?"]
+    B --> C["who pays for the promise,<br>and in what currency?"]
+    C --> D["when would you<br>find out it broke?"]
+    D --> E["a review comment:<br>name the cost, propose the rewrite"]
+```
+
 **Give the mechanical half to the tools, and mean it.** Conventions exist for readability, consistency and collaboration, and the documentation is clear that they are enforceable rather than negotiable in review: enable **code analysis** to enforce the rules you choose, and add an **`.editorconfig`** so the editor applies them, after which **code analysis produces warnings and diagnostics when it detects rule violations** and **each CI build notifies developers when they violate any of the rules** ([Common C# code conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)).
 
 A human review spent on brace placement is a review not spent on a captive dependency. Configure the first, then never discuss it again.

@@ -44,6 +44,17 @@ A thread waiting on I/O is an expensive resource doing nothing. Every answer in 
 
 Read those two side by side and the shared idea is visible: release the expensive resource at the wait point. What differs is who does the releasing, and what it costs you.
 
+```mermaid
+flowchart LR
+    A1["C#: method awaits I/O"] --> A2["await suspends,<br>control returns to the caller"]
+    A2 --> A3["thread is free"]
+    A3 --> A4["I/O completes,<br>method resumes"]
+
+    B1["Java: virtual thread<br>calls blocking I/O"] --> B2["runtime unmounts it<br>from its carrier"]
+    B2 --> B3["carrier thread is free"]
+    B3 --> B4["I/O completes,<br>thread remounts on a carrier"]
+```
+
 |Question|C# `async`/`await`|Java virtual threads|
 |---|---|---|
 |What is made cheap|the wait: the method suspends and the thread is not blocked|the thread: it is plentiful, so blocking one is cheap|

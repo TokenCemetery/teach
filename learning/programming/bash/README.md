@@ -59,6 +59,7 @@ Work through these in order.
 - [Resources](RESOURCES.md): trusted sources
 - [Quoting and Pitfalls](reference/quoting-and-pitfalls.md): the quoting rule, where it bites, and the Bash Pitfalls that survive careful quoting
 - [Exit Status and Error Handling](reference/exit-status-and-error-handling.md): `$?`, `set -euo pipefail`'s flags and real exceptions, and `trap` for guaranteed cleanup
+- [Portability](reference/portability.md): POSIX `sh` vs bash-only features, the shebang-honesty rule, and when the trade-off is worth it
 
 ## How this works
 

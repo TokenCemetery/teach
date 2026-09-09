@@ -50,6 +50,19 @@ If exact similarity places the correct chunk close to the query, but the deploye
 
 If vector search alone misses a chunk that BM25 would have found (or the reverse), and hybrid search still misses it, the hybrid weighting (lessons 6 and 7) may be under-weighting whichever method would have surfaced it. If the correct chunk is retrieved by hybrid search but ranked too low to reach the final top-k handed to generation, and no reranking stage is in place (or its candidate set or model isn't catching it), that points at stage 5 (lessons 8 and 9).
 
+```mermaid
+flowchart TD
+    A["wrong context retrieved"] --> B{"is the answer coherent<br>inside one chunk?"}
+    B -->|"no: split or buried"| C["fault: chunking (lesson 1)"]
+    B -->|"yes"| D{"is the chunk close to the query<br>under EXACT similarity?"}
+    D -->|"no"| E["fault: embedding model /<br>similarity metric (lesson 2)"]
+    D -->|"yes"| F{"does the deployed<br>ANN index surface it?"}
+    F -->|"no"| G["fault: index recall setting<br>(nprobe / ef_search, lessons 4-5)"]
+    F -->|"yes, but ranked too low"| H{"missed by one search<br>method but not the other?"}
+    H -->|"yes"| I["fault: hybrid weighting<br>(lessons 6-7)"]
+    H -->|"no: buried below top-k"| J["fault: reranking stage<br>(lessons 8-9)"]
+```
+
 ### Diagnose across a query set, not one anecdote
 
 A single failing query can be misleading: its failure might be a one-off caused by an unusual phrasing rather than a systemic pipeline problem. Measuring recall@k and MRR (lesson 10) at each stage, initial retrieval alone, after hybrid fusion, after reranking, across a small set of known, representative failures reveals where the aggregate biggest drop happens, which stage is systematically losing information rather than which stage happened to fail on one query someone noticed.

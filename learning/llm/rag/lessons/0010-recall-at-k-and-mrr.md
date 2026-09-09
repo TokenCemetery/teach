@@ -50,6 +50,8 @@ MRR: (1/1 + 1/3 + 1/1 + 1/8) / 4 = (1.000 + 0.333 + 1.000 + 0.125) / 4 ≈ 0.615
 
 recall@5 says three out of four queries would find their answer if the system only looked at its top 5 results. MRR's 0.615 reflects that most of those hits landed at rank 1, with one weaker hit at rank 3 and one miss dragging the average down.
 
+![Four queries plotted along a shared rank axis from 1 to 9, at the rank of their first relevant result: 1, 3, 1, and 8. A dashed line marks the recall-at-5 cutoff. The first three queries' hits fall left of the cutoff and count toward recall at 5, while the fourth, at rank 8, falls to the right and is a miss. Each query's reciprocal rank is shown alongside it: 1.000, 0.333, 1.000, and 0.125. Recall at 5 comes out to 3 of 4, 0.75, while averaging the reciprocal ranks gives an MRR of about 0.615, pulled down by how far right that one miss's rank sits, something recall at 5 cannot see at all.](images/recall-at-k-vs-mrr.svg)
+
 ### Choosing k, and choosing between the metrics
 
 The right *k* for recall@k isn't a default; it's whatever the downstream system actually uses. If only the top 5 chunks get passed to generation, recall@100 measures something the pipeline never actually exploits; recall@5 is the number that reflects reality. MRR is most informative when only the very top result matters a great deal (a single best answer surfaced to a user), since it specifically rewards rank 1 far more than rank 10. Recall@k is more informative when several results within a budget are all genuinely usable (generation can draw on several of the top-k chunks, not only the very first). Reporting both, at the *k* the pipeline actually uses, gives a fuller picture than either alone.

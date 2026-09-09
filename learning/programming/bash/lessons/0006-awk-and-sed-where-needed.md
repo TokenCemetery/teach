@@ -46,6 +46,16 @@ The mission's constraint is specific: `awk`/`sed` are touched only where a scrip
 
 Some tasks that look like "reach for sed/awk" are better served by bash's own built-in parameter expansion (`${var/pattern/replacement}`, bash-only per lesson 5, or `case` pattern matching) when the data is a single variable rather than a stream of lines, avoiding the overhead and subprocess cost of invoking an external tool for something bash can already do internally. The judgment call this lesson asks for isn't "always prefer sed/awk over bash string handling" or the reverse; it's matching the actual shape of the task (a single value versus a stream of lines or records) to the tool actually built for that shape.
 
+```mermaid
+flowchart TD
+    A["what shape is the task?"] --> B{"a stream of lines,<br>pattern substitution?"}
+    B -- "yes" --> C["sed"]
+    B -- "no" --> D{"field/column extraction<br>or arithmetic?"}
+    D -- "yes" --> E["awk"]
+    D -- "no" --> F{"a single variable's value?"}
+    F -- "yes" --> G["bash's own string ops"]
+```
+
 ## Practice
 
 1. ▢ A script needs to replace every occurrence of `old-value` with `new-value` in a config file. Which tool fits, and why?

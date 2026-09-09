@@ -38,6 +38,19 @@ Bash remains the right tool for control flow and gluing commands together; reach
 
 Several specific, checkable signals say a script has crossed shell's ceiling: needing a data structure beyond a flat list (a dictionary, a nested structure, a real object) that shell has no native way to represent cleanly; error handling more complex than "check the exit status and branch" (retry logic with backoff, structured error types, aggregating multiple failures); manipulating structured data (JSON, a real config format) beyond what a `sed`/`awk` one-liner handles cleanly, meaning every additional feature request makes the shell version more fragile rather than more capable; or the script's own length and branching complexity making it genuinely hard to reason about what it does, the "100 lines and growing" signal named directly. Any one of these, on its own, is worth pausing on; several together is a clear stop sign.
 
+```mermaid
+flowchart TD
+    A["reviewing a growing script"] --> B{"needs a data structure<br>beyond a flat list?"}
+    B -- "yes" --> S["stop: rewrite in<br>programming/python"]
+    B -- "no" --> C{"error handling beyond<br>exit-status checks?"}
+    C -- "yes" --> S
+    C -- "no" --> D{"structured data beyond<br>a sed/awk one-liner?"}
+    D -- "yes" --> S
+    D -- "no" --> E{"~100 lines and growing,<br>hard to reason about?"}
+    E -- "yes" --> S
+    E -- "no" --> F["stay in shell"]
+```
+
 ### Why the switch is a design decision, not a failure
 
 Recognizing a script has outgrown shell and rewriting it in Python isn't admitting the original shell script was a mistake; it's the same kind of judgment call lesson 6 asked for with `sed`/`awk`, matching the tool to the actual shape of the problem. A script that started simple and grew real branching logic, structured data, or non-trivial error handling has changed shape since it was first written, and continuing to force it into shell past that point produces exactly the fragile, hard-to-maintain code the mission opened by warning against, the same fragility a script with production-breaking quoting or exit-status bugs has, just from a different cause.

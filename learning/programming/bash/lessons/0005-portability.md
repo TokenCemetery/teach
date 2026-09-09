@@ -46,6 +46,15 @@ The mission's constraint isn't "never use bash"; it's writing for POSIX `sh` por
 
 Portability has a real cost: POSIX `sh`'s more limited feature set often means more verbose or more careful code for the same task (string manipulation via `sed`/`tr` instead of a one-line bash parameter expansion). This is worth paying specifically when a script's actual deployment target is uncertain or heterogeneous (a package's install script that could run on many different Linux distributions or Unix variants, a build tool invoked by users with unknown default shells) or when `/bin/sh` is the shebang for a good reason (some system-level scripts are invoked via `/bin/sh` specifically, and can't assume bash regardless of what's actually installed). It's not worth paying for an internal CI script that only ever runs in a controlled, known environment where bash is guaranteed present; forcing POSIX `sh` there trades real clarity (bash's arrays, `[[ ]]`, and string operations) for a portability guarantee nothing actually needs.
 
+```mermaid
+flowchart TD
+    A["choosing a shebang"] --> B{"deployment target uncertain<br>or heterogeneous?"}
+    B -- "yes" --> C["#!/bin/sh,<br>POSIX-portable syntax only"]
+    B -- "no" --> D{"/bin/sh required<br>for a specific reason?"}
+    D -- "yes" --> C
+    D -- "no, bash guaranteed" --> E["#!/bin/bash,<br>bash features are fine"]
+```
+
 ## Practice
 
 1. ▢ Why can a script that assumes bash but uses `#!/bin/sh` fail silently on some systems, rather than failing loudly and immediately?

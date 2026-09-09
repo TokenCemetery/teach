@@ -18,6 +18,17 @@ Call a function in the same process, and there are really only two outcomes: it 
 
 Call across a network, and a third outcome becomes possible: **no response arrives, and you cannot tell why.** The request might never have reached the other machine. It might have arrived and been processed, with only the reply lost on the way back. Or the other machine might simply be slow, still working on it, about to reply any moment. From where the caller stands, all three look identical: silence. This is **partial failure**, and it is the foundational problem this entire workspace is a response to.
 
+```mermaid
+flowchart LR
+    A["caller sends request"] --> B["no response after 30s"]
+    B --> C1["request never arrived"]
+    B --> C2["request arrived,<br>reply lost on the way back"]
+    B --> C3["still processing,<br>reply not sent yet (slow, not dead)"]
+    C1 --> D["all three look identical: silence"]
+    C2 --> D
+    C3 --> D
+```
+
 ### The fallacy behind it
 
 The Wikipedia article's list of "fallacies of distributed computing" catalogs assumptions that hold true on one machine and quietly stop holding once a network is involved: that the network is reliable, that latency is zero, that bandwidth is infinite, and several more. The first one, **"the network is reliable,"** is the one this lesson is about. Code that implicitly assumes a request will always get a response, the way a local function call always returns, is code that has not confronted partial failure yet. It will confront it in production instead, usually at the worst possible time.

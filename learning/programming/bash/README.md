@@ -58,6 +58,7 @@ Work through these in order.
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
 - [Quoting and Pitfalls](reference/quoting-and-pitfalls.md): the quoting rule, where it bites, and the Bash Pitfalls that survive careful quoting
+- [Exit Status and Error Handling](reference/exit-status-and-error-handling.md): `$?`, `set -euo pipefail`'s flags and real exceptions, and `trap` for guaranteed cleanup
 
 ## How this works
 

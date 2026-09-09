@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">Without a hash tag, related keys can land on different Cluster nodes; a hash tag forces them onto the same slot and node</title>
+  <desc id="desc">Two side-by-side diagrams. On the left, without a hash tag, the keys user:123:cart and user:123:profile hash independently and land on two different nodes, Node A and Node C, so a multi-key operation touching both can't be atomic across them. On the right, with the hash tag user:123 applied as curly-brace-user:123-cart and curly-brace-user:123-profile, both keys hash on the same tag and land on the same node, Node B, so an operation touching both stays atomic.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="110" y="14" text-anchor="middle">without a hash tag: different nodes</text>
+    <text x="360" y="14" text-anchor="middle">with hash tag {user:123}: same node</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="15" y="25" width="105" height="20"/>
+    <rect x="15" y="60" width="105" height="20"/>
+    <rect x="150" y="20" width="70" height="25"/>
+    <rect x="150" y="58" width="70" height="25"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">
+    <text x="67" y="38" text-anchor="middle">user:123:cart</text>
+    <text x="67" y="73" text-anchor="middle">user:123:profile</text>
+    <text x="185" y="35" text-anchor="middle">Node A</text>
+    <text x="185" y="73" text-anchor="middle">Node C</text>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1.5">
+    <line x1="120" y1="35" x2="148" y2="32"/>
+    <line x1="120" y1="70" x2="148" y2="70"/>
+  </g>
+  <text x="110" y="105" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">a multi-key op across both can't be atomic</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="265" y="25" width="105" height="20"/>
+    <rect x="265" y="60" width="105" height="20"/>
+    <rect x="400" y="40" width="70" height="25"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">
+    <text x="317" y="38" text-anchor="middle">{user:123}:cart</text>
+    <text x="317" y="73" text-anchor="middle">{user:123}:profile</text>
+    <text x="435" y="56" text-anchor="middle">Node B</text>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1.5">
+    <line x1="370" y1="35" x2="398" y2="48"/>
+    <line x1="370" y1="70" x2="398" y2="57"/>
+  </g>
+  <text x="360" y="105" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">same slot, same node: stays atomic</text>
+
+  <text x="240" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">every key hashes into one of 16,384 fixed slots;</text>
+  <text x="240" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">a hash tag forces related keys to share a slot</text>
+</svg>

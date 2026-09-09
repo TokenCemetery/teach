@@ -38,6 +38,14 @@ Every lambda passed to a higher-order function is, underneath, an actual object:
 
 Marking a function `inline fun <T> lock(lock: Lock, body: () -> T): T { ... }` tells the compiler to replace each call site with the function's actual code, and the lambda passed to it, directly, rather than generating a real function-object allocation and a call. `lock(l) { foo() }` compiles roughly as if you'd written `l.lock(); try { foo() } finally { l.unlock() }` yourself, no separate lambda object, no virtual call. This is a real trade-off, not a free win: inlining grows the generated code at every call site, so it's a net benefit specifically for small functions called often, not something to apply reflexively to every higher-order function.
 
+```mermaid
+flowchart TD
+    A["lock(l) { foo() }"] --> B{"lock is inline?"}
+    B -- "no" --> C["lambda allocated as an<br>object, called virtually"]
+    B -- "yes" --> D["compiler pastes lock's body<br>and foo() at the call site"]
+    D --> E["no allocation, no virtual call;<br>a return inside foo() exits the<br>enclosing function"]
+```
+
 ### Inlining is what makes a non-local `return` from inside a lambda legal
 
 Normally, a bare `return` inside a lambda is a compile error, since a lambda is its own separate function object and can't make the *enclosing* function return. But if the function the lambda is passed to is inlined, the lambda's code (return statement included) is pasted directly into the calling function's body, so the `return` genuinely does exit the enclosing function, a **non-local return**. This isn't a special case bolted onto `inline`; it's a direct, mechanical consequence of the lambda no longer being a separate function object by the time the return statement actually executes.

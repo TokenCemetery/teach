@@ -42,6 +42,13 @@ The documentation is explicit about this: an extension function or property neve
 
 This is the one genuinely surprising behavior worth internalizing precisely: `fun Shape.getName() = "Shape"` and `fun Rectangle.getName() = "Rectangle"` (where `Rectangle` is a subclass of `Shape`), called through a variable declared as type `Shape` holding an actual `Rectangle` instance, resolves to `Shape.getName()`, not `Rectangle.getName()`. Extension functions are dispatched statically: the compiler picks which extension to call based on the variable's declared type at compile time, never the object's actual runtime type. This is the opposite of how overriding a member function works (a member override always dispatches to the actual runtime type, virtually), and it's exactly the kind of subtle difference that produces a real bug for anyone assuming extension functions behave like inherited, overridable methods.
 
+```mermaid
+flowchart TD
+    A["val shape: Shape = Rectangle()"] --> B["shape.getName()"]
+    B --> C["resolved by shape's<br>declared type, Shape,<br>at compile time"]
+    C --> D["calls Shape.getName(),<br>never Rectangle.getName()"]
+```
+
 ### A member function always wins over an extension function with the same signature
 
 If a class already has a member function, and an extension function is declared with the same receiver type, name, and compatible arguments, the member function takes precedence at every call site; the extension is simply never reached for that exact signature. An extension can still *overload* a member (same name, different parameters), in which case ordinary overload resolution picks whichever matches the actual arguments, but it can never shadow or replace an existing member with a matching signature.

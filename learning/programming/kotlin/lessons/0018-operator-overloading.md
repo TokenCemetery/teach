@@ -34,6 +34,16 @@ The delegate object only ever sees its own implementations of the interface's me
 
 `a + b` is exactly `a.plus(b)`; `-a` is exactly `a.unaryMinus()`; `a[i]` is exactly `a.get(i)`; `a < b` is exactly `a.compareTo(b) < 0`. Kotlin defines a fixed table mapping each operator symbol to a specific function name and signature; to overload an operator, you implement a member or extension function with that exact name, marked with the `operator` modifier (`operator fun plus(other: Point): Point`). This is the direct extension of lesson 13's mechanism (an extension function callable with member syntax) to a fixed, compiler-recognized vocabulary of symbols instead of an arbitrary name you choose yourself.
 
+```mermaid
+flowchart LR
+    A["extension functions (13)"] --> F["every idiom this stage covered<br>is an ordinary function underneath"]
+    B["scope functions (14)"] --> F
+    C["higher-order functions (15)"] --> F
+    D["inline functions (16)"] --> F
+    E["delegation (17)"] --> F
+    F --> G["operators (18):<br>a + b is a.plus(b)"]
+```
+
 ### The `operator` modifier is a compile-time promise, not just a naming convention
 
 Marking a function `operator` is what actually authorizes the compiler to resolve `a + b` to it; a function named `plus` without the `operator` modifier is just an ordinary function that happens to share the name, never invoked by `+` syntax. This is a deliberate safety rail: it prevents an accidental function named `plus` from silently being picked up by operator syntax, and it means every operator overload in a codebase is explicitly, visibly marked as one.

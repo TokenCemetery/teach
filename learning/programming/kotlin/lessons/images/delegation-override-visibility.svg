@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190" width="480" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">A delegate's own internal calls never see the derived class's overrides</title>
+  <desc id="desc">Derived holds a reference to b, an object implementing Base, and overrides message to "Derived's message". Calling derived.print() forwards to b.print(). Inside b.print(), the call to message resolves to b's own message, "Base's message", not Derived's override, because b only ever sees its own implementation when calling between its own members.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9">
+    <rect x="20" y="30" width="180" height="80" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="30" y="48" fill="#bf7d1a">Derived</text>
+    <text x="30" y="66" fill="#bf7d1a">override message =</text>
+    <text x="30" y="80" fill="#bf7d1a">"Derived's message"</text>
+    <text x="30" y="98" fill="#bf7d1a">print() forwards to b</text>
+
+    <rect x="280" y="30" width="180" height="80" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="290" y="48" fill="#7a828c">b: Base (the delegate)</text>
+    <text x="290" y="66" fill="#7a828c">message =</text>
+    <text x="290" y="80" fill="#7a828c">"Base's message"</text>
+    <text x="290" y="98" fill="#7a828c">print() { println(message) }</text>
+  </g>
+
+  <path d="M200,70 L280,70" stroke="#7a828c" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+  <text x="205" y="63" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">holds, forwards to</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7a828c"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">derived.print() calls b.print(), which reads message from inside b itself,</text>
+  <text x="20" y="155" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">printing "Base's message", not Derived's override.</text>
+  <text x="20" y="175" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">b has no visibility into whatever Derived overrode.</text>
+</svg>

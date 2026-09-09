@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" width="480" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">Scope functions differ along two independent axes</title>
+  <desc id="desc">A two by two grid crossing object reference, exposed as it or as this, against return value, the lambda's result or the original object. it plus lambda result is let. it plus original object is also. this plus lambda result is run. this plus original object is apply. with sits outside the grid: it takes the object as an ordinary argument rather than as a receiver, so it cannot be used in a null-safe chain the way the other four can.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="160" y="20" text-anchor="middle">returns lambda result</text>
+    <text x="360" y="20" text-anchor="middle">returns original object</text>
+    <text x="20" y="80">it</text>
+    <text x="20" y="170">this</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" text-anchor="middle">
+    <rect x="60" y="35" width="200" height="60" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="160" y="70" fill="#bf7d1a">let</text>
+
+    <rect x="280" y="35" width="180" height="60" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="370" y="70" fill="#7a828c">also</text>
+
+    <rect x="60" y="125" width="200" height="60" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="160" y="160" fill="#bf7d1a">run</text>
+
+    <rect x="280" y="125" width="180" height="60" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="370" y="160" fill="#7a828c">apply</text>
+  </g>
+
+  <text x="20" y="210" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">with sits outside this grid: the object is an ordinary argument, not a receiver, so it can't chain with ?.</text>
+</svg>

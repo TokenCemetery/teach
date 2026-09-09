@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" width="420" height="240" role="img" aria-labelledby="title desc">
+  <title id="title">A paired comparison uses only the cells where the two models disagree</title>
+  <desc id="desc">A two by two grid crossing whether the baseline got an example right or wrong against whether the variant got it right or wrong. Both right and both wrong are agreement cells, shown in gray: they cancel out because they say nothing about which model is better. Baseline right and variant wrong, and baseline wrong and variant right, are the disagreement cells, shown in the accent color: a paired comparison counts only these.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">
+    <text x="210" y="20" text-anchor="middle">variant</text>
+    <text x="150" y="34" text-anchor="middle">right</text>
+    <text x="290" y="34" text-anchor="middle">wrong</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" opacity="0.85">
+    <text x="20" y="44">baseline</text>
+    <text x="20" y="86">right</text>
+    <text x="20" y="166">wrong</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" text-anchor="middle">
+    <rect x="100" y="46" width="100" height="80" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.4" stroke-width="1.2"/>
+    <text x="150" y="90" fill="#7a828c">both correct</text>
+
+    <rect x="200" y="46" width="100" height="80" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="250" y="84" fill="#bf7d1a">baseline wins</text>
+    <text x="250" y="96" fill="#bf7d1a">(disagreement)</text>
+
+    <rect x="100" y="126" width="100" height="80" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.2"/>
+    <text x="150" y="164" fill="#bf7d1a">variant wins</text>
+    <text x="150" y="176" fill="#bf7d1a">(disagreement)</text>
+
+    <rect x="200" y="126" width="100" height="80" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.4" stroke-width="1.2"/>
+    <text x="250" y="170" fill="#7a828c">both wrong</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="224">A paired comparison counts only the two accent cells, where the models disagree;</text>
+    <text x="20" y="236">the gray agreement cells cancel out regardless of which model is better.</text>
+  </g>
+</svg>

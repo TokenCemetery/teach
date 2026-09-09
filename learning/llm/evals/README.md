@@ -62,6 +62,7 @@ Work through these in order.
 - [Metrics](reference/metrics.md): exact match, F1, BLEU/ROUGE and pass@k side by side, with the pass@k formula and the decision principle for choosing among them
 - [LLM-as-Judge](reference/llm-as-judge.md): the judge-prompt design checklist, calibration and score compression, position and verbosity bias, and the human-vs-human agreement bar
 - [Eval Harness](reference/eval-harness.md): the four-stage pipeline, openai/evals vs lm-evaluation-harness, and what a defensible number logs alongside the score
+- [Go/No-Go](reference/go-no-go.md): the standard-error formula, paired comparison, setting a threshold honestly, and everything a complete defense cites
 
 ## How this works
 

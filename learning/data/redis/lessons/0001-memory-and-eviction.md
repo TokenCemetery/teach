@@ -25,6 +25,14 @@ Redis is configured with a `maxmemory` limit. What happens when the dataset hits
 
 The `allkeys-*` policies can evict **any** key. The `volatile-*` policies only evict keys that have a TTL set at all; a key with no expiry is never touched by a `volatile-*` policy, no matter how much memory pressure there is.
 
+```mermaid
+flowchart TD
+    A["maxmemory hit"] --> B{"eviction policy?"}
+    B -->|"noeviction (default)"| C["reject new writes with an error<br>(outage, no data lost)"]
+    B -->|"allkeys-* (lru/lfu/random)"| D["evict any key, TTL or not,<br>to make room"]
+    B -->|"volatile-* (lru/lfu/ttl/random)"| E["evict only keys with a TTL set;<br>keys with no TTL are never touched"]
+```
+
 ### The anti-pattern this produces
 
 The failure mode isn't a Redis bug; it's a mismatch between what an application assumes and what its eviction policy actually does:

@@ -46,6 +46,15 @@ A standby that appears to be lagging has one of a few distinct causes, checked i
 2. **Is WAL arriving slowly (a receive problem), or arriving fine but applying slowly (an apply problem)?** High `write_lag` or `flush_lag` alongside high `replay_lag` points at the network or the primary's own send rate; low `write_lag` and `flush_lag` with high `replay_lag` specifically means WAL is arriving but the standby can't keep up applying it.
 3. **If it's specifically an apply problem**, check the standby's own CPU and I/O load, whether a long-running query on the standby is holding back replay, and whether `recovery_min_apply_delay` is deliberately configured (a delayed replica kept intentionally behind, for protection against accidental data loss on the primary, is not a bug).
 
+```mermaid
+flowchart TD
+    A["standby appears to be lagging"] --> B{"is it even connected?<br>(row present in pg_stat_replication?)"}
+    B -->|"no"| C["disconnected, not a lag problem"]
+    B -->|"yes"| D{"receive problem or apply problem?<br>(write/flush_lag vs replay_lag)"}
+    D -->|"high write/flush_lag"| E["network or primary send rate"]
+    D -->|"low write/flush_lag,<br>high replay_lag"| F["check standby CPU/IO,<br>long-running query, recovery_min_apply_delay"]
+```
+
 ### The read-query-versus-replay trade-off
 
 A long-running query on a standby can conflict with replay, since applying a change (like a row deletion) that the running query still needs to see would break that query's consistent view. Postgres has to choose: `hot_standby_feedback` tells the primary to hold back cleanup the standby's queries still need, and `max_standby_streaming_delay` bounds how long replay will wait for a conflicting query before canceling that query instead. Which side of this trade-off a standby is configured for directly shapes whether long queries cause replay lag or get canceled to prevent it.

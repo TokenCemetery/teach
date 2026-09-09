@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">A failover creates a new timeline; a former primary's own continued WAL diverges and must be reset, not just resumed</title>
+  <desc id="desc">A shared history runs left to right until a failover promotes a standby, the point where the timeline splits in two. The upper branch shows the former primary continuing to write WAL on its own, now orphaned, timeline, never actually used by any client after the failover. The lower branch shows the new primary's WAL on timeline 2, the one now in use. A dashed arrow labeled pg_rewind shows the former primary being reset onto timeline 2 before it can safely rejoin as a standby, rather than being allowed to keep advancing its own divergent history.</desc>
+
+  <line x1="40" y1="90" x2="200" y2="90" stroke="#7a828c" stroke-width="2"/>
+  <text x="120" y="80" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">timeline 1 (shared history)</text>
+
+  <circle cx="200" cy="90" r="3" fill="#bf7d1a"/>
+  <text x="200" y="108" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">failover: standby promoted here</text>
+
+  <line x1="200" y1="90" x2="400" y2="50" stroke="#7a828c" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="400" y="42" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">former primary: keeps writing,</text>
+  <text x="400" y="52" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">now an orphaned timeline</text>
+
+  <line x1="200" y1="90" x2="400" y2="130" stroke="#bf7d1a" stroke-width="2"/>
+  <text x="400" y="145" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">new primary: timeline 2 (now in use)</text>
+
+  <path d="M400,54 C440,80 440,110 405,127" stroke="#bf7d1a" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+  <path d="M405,127 L397,120 L408,116 Z" fill="#bf7d1a"/>
+  <text x="450" y="90" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">pg_rewind resets</text>
+  <text x="450" y="100" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">onto timeline 2</text>
+</svg>

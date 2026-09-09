@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190" width="480" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">Without a replication slot the primary can recycle WAL a disconnected standby still needs; a slot prevents that</title>
+  <desc id="desc">Two rows of six WAL segments. On the left, with no replication slot, the primary has already recycled segments 1 and 2, marked with an X, even though the standby's last confirmed position is segment 2, so that standby can no longer catch up by replaying WAL and needs a fresh base backup. On the right, with an active replication slot, all six segments are still retained because the slot tells the primary not to remove anything the standby hasn't confirmed, so the standby can always catch up once it reconnects.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="110" y="14" text-anchor="middle">no replication slot: primary recycles freely</text>
+    <text x="370" y="14" text-anchor="middle">with a replication slot: retains until confirmed</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="110" y="32" text-anchor="middle">pg_wal segments (1-6)</text>
+    <text x="370" y="32" text-anchor="middle">pg_wal segments (1-6)</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5">
+    <rect x="20" y="40" width="28" height="24" fill="#7a828c" fill-opacity="0.15"/>
+    <rect x="50" y="40" width="28" height="24" fill="#7a828c" fill-opacity="0.15"/>
+    <rect x="80" y="40" width="28" height="24" fill="none"/>
+    <rect x="110" y="40" width="28" height="24" fill="none"/>
+    <rect x="140" y="40" width="28" height="24" fill="none"/>
+    <rect x="170" y="40" width="28" height="24" fill="none"/>
+
+    <rect x="260" y="40" width="28" height="24" fill="none"/>
+    <rect x="290" y="40" width="28" height="24" fill="none"/>
+    <rect x="320" y="40" width="28" height="24" fill="none"/>
+    <rect x="350" y="40" width="28" height="24" fill="none"/>
+    <rect x="380" y="40" width="28" height="24" fill="none"/>
+    <rect x="410" y="40" width="28" height="24" fill="none"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="34" y="56" text-anchor="middle">1</text>
+    <text x="64" y="56" text-anchor="middle">2</text>
+    <text x="94" y="56" text-anchor="middle">3</text>
+    <text x="124" y="56" text-anchor="middle">4</text>
+    <text x="154" y="56" text-anchor="middle">5</text>
+    <text x="184" y="56" text-anchor="middle">6</text>
+    <text x="274" y="56" text-anchor="middle">1</text>
+    <text x="304" y="56" text-anchor="middle">2</text>
+    <text x="334" y="56" text-anchor="middle">3</text>
+    <text x="364" y="56" text-anchor="middle">4</text>
+    <text x="394" y="56" text-anchor="middle">5</text>
+    <text x="424" y="56" text-anchor="middle">6</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5">
+    <line x1="22" y1="42" x2="46" y2="62"/>
+    <line x1="46" y1="42" x2="22" y2="62"/>
+    <line x1="52" y1="42" x2="76" y2="62"/>
+    <line x1="76" y1="42" x2="52" y2="62"/>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <line x1="64" y1="105" x2="64" y2="66"/>
+    <path d="M64,66 L60,74 L68,74 Z" fill="#bf7d1a"/>
+    <line x1="304" y1="105" x2="304" y2="66"/>
+    <path d="M304,66 L300,74 L308,74 Z" fill="#bf7d1a"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="64" y="120" text-anchor="middle">standby's last confirmed:</text>
+    <text x="64" y="130" text-anchor="middle">segment 2, already gone</text>
+    <text x="64" y="145" text-anchor="middle">-&gt; needs a fresh base backup</text>
+    <text x="304" y="120" text-anchor="middle">standby's last confirmed:</text>
+    <text x="304" y="130" text-anchor="middle">segment 2, still here</text>
+    <text x="304" y="145" text-anchor="middle">-&gt; can always catch up</text>
+  </g>
+</svg>

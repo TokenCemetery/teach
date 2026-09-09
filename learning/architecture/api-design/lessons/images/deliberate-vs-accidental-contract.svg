@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" width="480" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">The contract a client actually depends on is bigger than the deliberate, documented contract alone</title>
+  <desc id="desc">A larger outer rectangle labeled the actual contract clients depend on, per Hyrum's Law, contains a smaller inner rectangle labeled the deliberate contract: documented endpoints, fields, status codes, and error shapes. The margin between the inner and outer rectangles is labeled the accidental contract: field ordering, error message wording, and typical latency, behaviors never promised on purpose but still depended on once enough clients observe them.</desc>
+
+  <text x="240" y="18" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">actual contract clients depend on (Hyrum's Law)</text>
+
+  <rect x="40" y="28" width="400" height="150" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="140" y="70" width="200" height="75" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">
+    <text x="240" y="105" text-anchor="middle">deliberate contract:</text>
+    <text x="240" y="118" text-anchor="middle">documented endpoints, fields,</text>
+    <text x="240" y="130" text-anchor="middle">status codes, error shapes</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="240" y="160" text-anchor="middle">accidental contract: field ordering, error message</text>
+    <text x="240" y="171" text-anchor="middle">wording, typical latency, never promised, still depended on</text>
+  </g>
+</svg>

@@ -18,6 +18,8 @@ An API's contract is every promise a client can build logic against and expect t
 
 But **the contract a client actually depends on is not limited to what you documented.** This is [Hyrum's Law](https://www.hyrumslaw.com/): with enough users of an API, every observable behavior of the system, documented or not, will end up depended on by somebody. Field ordering in a JSON response you never promised to preserve. The exact wording of an error message. How long a request usually takes. None of these were promises you made on purpose, and all of them can become promises you're stuck keeping, the moment enough clients build on them.
 
+![A larger outer rectangle labeled the actual contract clients depend on, per Hyrum's Law, contains a smaller inner rectangle labeled the deliberate contract: documented endpoints, fields, status codes, and error shapes. The margin between the inner and outer rectangles is labeled the accidental contract: field ordering, error message wording, and typical latency, behaviors never promised on purpose but still depended on once enough clients observe them.](images/deliberate-vs-accidental-contract.svg)
+
 ### Two jobs, not one
 
 This splits API design into two distinct jobs:

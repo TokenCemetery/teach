@@ -42,6 +42,15 @@ The question worth asking isn't "does reranking improve quality in general" (it 
 
 A real-time chat system with a tight end-to-end latency budget may not be able to afford reranking at all, regardless of how much it would improve quality, if the added latency alone would blow the budget. An offline research or document-QA workload with a much more generous latency tolerance can often afford reranking easily, since the accuracy gain matters more to that workload than shaving off a few hundred milliseconds does. Neither "always rerank" nor "never rerank" is the right default; the decision is measuring the actual quality gain, measuring the actual added latency, and checking both against what this specific workload's budget and quality bar actually require.
 
+```mermaid
+flowchart TD
+    A["measure quality gain (with vs without rerank)<br>and added latency at this candidate-set size"] --> B{"does reranking fit the<br>remaining latency budget?"}
+    B -->|"no: chat, 100ms + 150ms > 200ms budget"| C["skip reranking"]
+    B -->|"yes"| D{"is the measured quality gain<br>worth it for this workload?"}
+    D -->|"yes: research, rank 12&#8594;1 for 300ms<br>inside a 5s budget"| E["add reranking"]
+    D -->|"marginal: hybrid search<br>already ranks well"| C
+```
+
 ## Practice
 
 1. ▢ What does adding a reranking stage concretely cost, and what does that cost scale with?

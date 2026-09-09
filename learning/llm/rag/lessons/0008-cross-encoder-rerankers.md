@@ -42,6 +42,14 @@ A cross-encoder's joint processing is also exactly what makes it too expensive t
 
 The standard pattern uses each approach where it's affordable: bi-encoder retrieval, plus hybrid search (stages 3 and 4), cheaply narrows a whole corpus down to a modest candidate set, commonly somewhere around the top 50 to 100 results. A cross-encoder reranker then runs only over that much smaller set, scoring each query-candidate pair individually and reordering them with the accuracy a bi-encoder alone couldn't provide, surfacing the truly best handful, often the top 5 to 10, to hand downstream. This two-stage design gets the bi-encoder's scale and the cross-encoder's accuracy together, by applying the expensive step only where the corpus has already been narrowed enough for it to be affordable.
 
+```mermaid
+flowchart LR
+    A["corpus<br>(millions of chunks)"] --> B["bi-encoder + hybrid search<br>(cheap, scales to the whole corpus)"]
+    B --> C["candidate set<br>(top 50-100)"]
+    C --> D["cross-encoder reranker<br>(one forward pass per candidate)"]
+    D --> E["top 5-10<br>to generation"]
+```
+
 ## Practice
 
 1. ▢ Why can a cross-encoder capture subtler relevance signals than a bi-encoder, even when both are built on similar underlying transformer architectures?

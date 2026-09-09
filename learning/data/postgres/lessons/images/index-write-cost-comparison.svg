@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">B-tree, GiST, and GIN each pay their write-time maintenance cost in a different shape</title>
+  <desc id="desc">Three columns, one per index type. B-tree: an ordinary insert into a leaf page is cheap, but when that page is full a page split allocates a new page and redistributes entries, an occasional cost spike. GiST: every insert runs a custom, data-type-specific compare-and-combine function to descend the tree and update overlapping regions, making every operation expensive rather than occasionally. GIN: a new entry goes into a small pending list cheaply at insert time, and the real cost is deferred to a later bulk merge into the main structure.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="90" y="14" text-anchor="middle">B-tree</text>
+    <text x="245" y="14" text-anchor="middle">GiST</text>
+    <text x="400" y="14" text-anchor="middle">GIN</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="25" y="26" width="130" height="28"/>
+    <line x1="90" y1="54" x2="90" y2="72"/>
+  </g>
+  <text x="90" y="42" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">insert into leaf page (cheap)</text>
+  <rect x="25" y="72" width="130" height="36" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="90" y="87" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">page full: split, allocate</text>
+  <text x="90" y="97" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">+ redistribute entries</text>
+
+  <rect x="180" y="26" width="130" height="82" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="245" y="55" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">custom per-type</text>
+  <text x="245" y="65" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">compare/combine function</text>
+  <text x="245" y="80" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">to descend the tree +</text>
+  <text x="245" y="90" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">update overlapping regions</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="335" y="26" width="130" height="28"/>
+    <line x1="400" y1="54" x2="400" y2="72"/>
+  </g>
+  <text x="400" y="42" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">insert into pending list (cheap)</text>
+  <rect x="335" y="72" width="130" height="36" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="400" y="87" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">later: bulk merge into</text>
+  <text x="400" y="97" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">the main structure</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="90" y="128" text-anchor="middle">cost spikes occasionally:</text>
+    <text x="90" y="138" text-anchor="middle">page splits</text>
+    <text x="245" y="128" text-anchor="middle">cost is high on</text>
+    <text x="245" y="138" text-anchor="middle">every single insert</text>
+    <text x="400" y="128" text-anchor="middle">cost deferred: paid</text>
+    <text x="400" y="138" text-anchor="middle">in bulk later</text>
+  </g>
+</svg>

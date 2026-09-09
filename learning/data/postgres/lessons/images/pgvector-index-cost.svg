@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" width="480" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">An HNSW index can be larger than the raw vectors it indexes, and it competes with everything else for shared buffers</title>
+  <desc id="desc">Two panels. On the left, a bar chart comparing disk footprint: the raw vector data is a shorter bar, while the HNSW index, which stores a graph of edges connecting vectors to their neighbors in addition to the vectors themselves, is a taller bar, larger than the raw data alone. On the right, a stacked bar representing an instance's shared buffers, a finite pool of memory, divided among the HNSW index (needing to stay resident for fast queries), other tables and indexes, WAL buffers, and other workload, all competing for the same limited space.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">disk: index can exceed raw vector size</text>
+    <text x="370" y="14" text-anchor="middle">memory: HNSW competes for shared buffers</text>
+  </g>
+
+  <line x1="40" y1="170" x2="200" y2="170" stroke="#7a828c" stroke-width="1"/>
+  <rect x="65" y="110" width="50" height="60" fill="#7a828c" fill-opacity="0.25" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="150" y="60" width="50" height="110" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="90" y="185" text-anchor="middle">raw vectors</text>
+    <text x="175" y="185" text-anchor="middle">HNSW index</text>
+    <text x="175" y="195" text-anchor="middle">(graph + vectors)</text>
+  </g>
+
+  <text x="370" y="75" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">shared buffers (finite memory)</text>
+  <g stroke="#7a828c" stroke-width="1.5">
+    <rect x="280" y="85" width="90" height="30" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a"/>
+    <rect x="370" y="85" width="45" height="30" fill="none"/>
+    <rect x="415" y="85" width="25" height="30" fill="none"/>
+    <rect x="440" y="85" width="20" height="30" fill="none"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">
+    <text x="325" y="104" text-anchor="middle">HNSW index</text>
+    <text x="325" y="112" text-anchor="middle">(must stay resident)</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6" fill="#7a828c">
+    <text x="392" y="103" text-anchor="middle">other</text>
+    <text x="392" y="110" text-anchor="middle">tables</text>
+    <text x="427" y="103" text-anchor="middle">WAL</text>
+    <text x="427" y="110" text-anchor="middle">buffers</text>
+    <text x="450" y="103" text-anchor="middle">other</text>
+    <text x="450" y="110" text-anchor="middle">workload</text>
+  </g>
+  <text x="370" y="135" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">a large index competes directly</text>
+  <text x="370" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">with everything else for this space</text>
+</svg>

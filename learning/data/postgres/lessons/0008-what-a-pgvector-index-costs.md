@@ -46,6 +46,8 @@ Deleted or updated rows still leave index entries that need reclaiming, the same
 
 An HNSW index has to be resident in memory (Postgres's shared buffers, or read from disk otherwise, far slower) to answer queries at the speed it's built for. For a large vector table, the index alone can require a substantial fraction of the instance's available memory, competing directly with everything else that same Postgres instance is running: other tables' data, other indexes, WAL buffers, and any other workload sharing the server. This is the operational question the mission's success criterion is actually asking: not just what it costs to build a vector index once, but what it costs to keep it fast, continuously, alongside everything else the instance has to do.
 
+![Two panels. On the left, a bar chart comparing disk footprint: the raw vector data is a shorter bar, while the HNSW index, which stores a graph of edges connecting vectors to their neighbors in addition to the vectors themselves, is a taller bar, larger than the raw data alone. On the right, a stacked bar representing an instance's shared buffers, a finite pool of memory, divided among the HNSW index (needing to stay resident for fast queries), other tables and indexes, WAL buffers, and other workload, all competing for the same limited space.](images/pgvector-index-cost.svg)
+
 ## Practice
 
 1. ▢ Why can an HNSW index be substantially larger on disk than the raw vector data it indexes, unlike a typical B-tree index relative to its table?

@@ -84,6 +84,14 @@ This is lesson 20's lesson again in a new place. There, the failure was passing 
 
 **Closing stage 4.** Four questions now cover most of what an unfamiliar piece of asynchronous C# is doing, and each one is a lesson: what is this task and who started it (17), where does this method suspend and where does control go (18), which of these operations overlap and which were serialised by accident (19), and what happens when someone stops caring about the result (20). Async streams are where the four meet, because a stream is a task-shaped thing that suspends repeatedly, hands control back each time, and can be abandoned by a consumer that simply stops asking.
 
+```mermaid
+flowchart LR
+    Q1["17: what is this task,<br>who started it?"] --> P["predicting an<br>async program"]
+    Q2["18: where does it suspend,<br>where does control go?"] --> P
+    Q3["19: which operations overlap,<br>which were serialised?"] --> P
+    Q4["20: what happens when<br>someone stops caring?"] --> P
+```
+
 ## Practice
 
 1. ▢ A method is declared `Task<IEnumerable<Order>> GetOrdersAsync(CancellationToken ct)` and fetches results a page at a time into a list. Rewrite the signature as an async stream and say what the caller gains.

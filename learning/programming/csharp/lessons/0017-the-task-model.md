@@ -69,6 +69,15 @@ Note that in the first two the thing you supply is a **user delegate**, expresse
 
 The answer is in the documentation and it is not comfortable: this behaviour enforces the policy that unhandled exceptions terminate the process, and a joining thread can prevent that by accessing the task's `Exception` property **before the task is garbage-collected**. So a faulted task that nothing ever observed is not a silent no-op; it is an unhandled exception waiting for a finalizer. Fire-and-forget is not free, and this is the mechanism behind that advice.
 
+```mermaid
+flowchart TD
+    A["task faults"] --> B{"does any thread join?<br>Wait, WaitAll, .Result, await"}
+    B -- "yes" --> C["AggregateException delivered<br>to the joining thread"]
+    B -- "no" --> D{"is Exception read<br>before garbage collection?"}
+    D -- "yes" --> E["exception observed,<br>no crash"]
+    D -- "no" --> F["unhandled exception at<br>finalization: process terminates"]
+```
+
 **On Java, briefly.** `Future` and `CompletableFuture` are the nearest equivalents, and the arc's real comparison, against virtual threads, belongs to stage 7. The shape worth noting now is the same one this lesson has been making: a task is a handle on an operation rather than a thread, so asking how many threads your asynchronous code uses is usually the wrong question.
 
 ## Practice

@@ -42,6 +42,8 @@ Nothing. A query is not executed until you iterate the query variable, so the va
 
 Which gives the rule this lesson exists for. **Awaiting each call in turn serialises them.** `await A(); await B();` starts A, waits for it, and only then starts B. Starting both and awaiting afterwards overlaps them. The two versions differ by the position of one keyword and by the entire latency of the slower operation.
 
+![Two timelines for one-second operations A and B. Top: await A(); await B(); runs A from 0 to 1 then B from 1 to 2, about two seconds total. Bottom: starting both calls before awaiting either runs A and B in parallel from 0 to 1, about one second total.](images/serial-vs-concurrent-await.svg)
+
 **`Task.WhenAll` waits for a set of operations without blocking.** It has overloads for a set of non-generic tasks, a non-uniform set of generic ones, and a uniform set, so it covers waiting for several void-returning operations, several value-returning ones of different types, or several of the same type ([Consuming the Task-based Asynchronous Pattern](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern)). Awaiting a uniform set of `Task<T>` gives you the results as an array, and awaiting the combined task lets exceptions **propagate out of that `await`**, so a `try`/`catch` around it is how you handle failures.
 
 **Now the trap, and it is this lesson's centre because it is made of two things you already know.** The documented way to build the task list with LINQ is:

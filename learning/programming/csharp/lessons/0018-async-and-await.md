@@ -42,6 +42,16 @@ A statement expression: an assignment, a method invocation, an object creation, 
 
 Read the last two clauses together and the mission's question is answered. The method stops; the thread does not. Control goes back to whoever called the method, which is free to carry on, and the remainder of the async method runs later, when the operation it was waiting for has finished.
 
+```mermaid
+flowchart TD
+    A["async method runs<br>synchronously until an await"] --> B{"operand already<br>completed?"}
+    B -- "yes" --> C["await returns the result<br>immediately, no suspension"]
+    B -- "no" --> D["method suspends;<br>control returns to the caller"]
+    D --> E["caller continues,<br>thread is free"]
+    D --> F["operation completes later"]
+    F --> G["method resumes,<br>runs the remainder"]
+```
+
 **Not every `await` suspends.** Applied to an operand representing an **already completed** operation, `await` returns the result **immediately, without suspending** the enclosing method. So `async` marks a method that *may* yield, not one that does, and an async method whose awaits all happen to complete synchronously runs start to finish like an ordinary method. That is worth knowing before you try to reason about ordering from the presence of the keyword.
 
 **The type of an `await` expression, and what it does with failure.**

@@ -63,6 +63,13 @@ The idiomatic body follows from that: call `ThrowIfCancellationRequested` on ent
 
 So passing the token both **into** the delegate and **to** `Task.Run` or `StartNew` is not duplication. The copy inside the delegate is what lets your code notice the request; the copy given to the task is what lets the task recognise the resulting exception as a cancellation rather than a failure. Omit the second and a correctly cancelled operation is reported as a fault.
 
+```mermaid
+flowchart TD
+    A["delegate throws<br>OperationCanceledException"] --> B{"exception's token equals<br>the task's own token,<br>and IsCancellationRequested?"}
+    B -- "yes" --> C["task status: Canceled"]
+    B -- "no" --> D["task status: Faulted"]
+```
+
 On the joining side, waiting on a cancelled task through `Wait` or `WaitAll` produces a `TaskCanceledException` inside an `AggregateException`, and the documentation is careful to say this **indicates successful cancellation rather than a faulty situation**. Read alongside lessons 17 and 18: the shape of what you receive still depends on how you observed the task, and now the *meaning* does too.
 
 **When a listener cannot poll.** Some operations block in a way that prevents checking the token in a timely manner. For those, register a callback that unblocks the operation when cancellation is requested. `Register` returns a `CancellationTokenRegistration`, and the documentation's example uses it to cancel pending HTTP requests from inside a token callback.

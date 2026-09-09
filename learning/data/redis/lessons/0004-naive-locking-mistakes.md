@@ -38,6 +38,20 @@ A distributed lock's job is to let only one client at a time hold a named resour
 
 The lock's TTL is a guess at "how long the critical section could possibly take," not a guarantee about it. If a client pauses for longer than that guess (a garbage-collection pause, a slow disk write, being descheduled by the OS, a slow network call it's waiting on) the lock expires while the client is still working. A second client then acquires the same lock and starts its own critical section, and now two clients believe they each hold exclusive access at the same time. The lock's *code* was correct: the assumption that "30 seconds is always enough" was not, and nothing in the design detects the violation when it happens.
 
+```mermaid
+sequenceDiagram
+    participant A as Client A
+    participant R as Redis
+    participant B as Client B
+    A->>R: SET lock_key A NX PX 30000
+    R-->>A: OK, lock acquired
+    Note over A: GC pause, 45 seconds
+    Note over R: lock expires at 30s
+    B->>R: SET lock_key B NX PX 30000
+    R-->>B: OK, lock acquired
+    Note over A,B: both A and B now believe they hold the lock
+```
+
 ### Failure mode 2: the single instance itself is the single point of failure
 
 A lock held on exactly one Redis instance is only as available, and as correct, as that one instance. If it crashes after granting a lock but before that lock's key has been replicated to a replica, and a replica is then promoted to take over, the new primary has no record the lock was ever granted: a second client can acquire "the same" lock on the new primary while the first client still believes it holds it. Running the lock on a single instance was never actually distributed; it just looked that way until the instance failed at the wrong moment.

@@ -42,6 +42,23 @@ Redlock says nothing new about lesson 4's first failure mode. A client that acqu
 
 Kleppmann's critique targets exactly this gap. His argument: a distributed lock used to protect a shared resource (a file, a database row, a downstream API call) is only actually safe if the *protected resource itself* can detect and reject a stale client, one whose lock has already expired. The standard fix for this is a **fencing token**, a monotonically increasing number handed out with each lock grant that the protected resource checks and rejects if it's lower than one already seen. Kleppmann's point isn't that Redlock's algorithm has a bug; it's that Redlock, as commonly used, protects access to the lock itself without also requiring the fencing token that would make the *protected resource* correct under a pause, and that Redlock's timing assumptions (bounded clock drift, bounded network delay) are difficult to guarantee in practice, which is where its safety margin actually comes from.
 
+```mermaid
+sequenceDiagram
+    participant A as Client A
+    participant Lock as Redlock
+    participant Res as Protected resource
+    participant B as Client B
+    A->>Lock: acquire lock
+    Lock-->>A: granted, fencing token = 1
+    Note over A: stalls past validity time
+    B->>Lock: acquire lock (A's has expired)
+    Lock-->>B: granted, fencing token = 2
+    B->>Res: write (token=2)
+    Res-->>B: accepted, last seen token = 2
+    A->>Res: write (token=1, stale)
+    Res-->>A: rejected: token 1 < last seen 2
+```
+
 ### The actual decision, not "Redlock is broken"
 
 This isn't a reason to treat Redlock, or Redis-based locks generally, as unusable. It's a reason to ask a sharper question before reaching for one: does the protected resource enforce a fencing token, making a stale client's action harmless even if it acts after its lock expired? If yes, a Redis-based lock (naive or Redlock) is a reasonable efficiency mechanism, since fencing is the actual safety net. If the protected resource *can't* enforce a fencing token, whether because it's a legacy system, an external API, or a physical action with no way to reject a stale caller, a Redis lock alone is not a correctness guarantee, no matter how many instances it runs on. This is the concrete shape of "a lock that is not one": not that the code is wrong, but that it's being asked to guarantee something it structurally can't guarantee alone.

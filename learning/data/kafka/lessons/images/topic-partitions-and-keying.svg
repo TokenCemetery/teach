@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" width="480" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">A topic is split into independent partitions, each its own ordered log; a key always routes to the same partition</title>
+  <desc id="desc">A producer sends messages into a topic made of three partitions, each drawn as a row of sequential, offset-numbered boxes. Messages with key A always land in partition 0, in order; messages with key B always land in partition 1, in order. Messages with no key are spread round-robin across all three partitions, with no ordering relationship between them. Each partition is its own independent, append-only log; there is no ordering guarantee across partitions.</desc>
+
+  <text x="240" y="14" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">topic = 3 independent, ordered partitions</text>
+
+  <rect x="10" y="74" width="70" height="30" rx="3" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="45" y="93" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">producer</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="105" y="36" text-anchor="end">partition 0</text>
+    <text x="105" y="100" text-anchor="end">partition 1</text>
+    <text x="105" y="164" text-anchor="end">partition 2</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5">
+    <rect x="110" y="20" width="38" height="24" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a"/>
+    <rect x="152" y="20" width="38" height="24" fill="none"/>
+    <rect x="194" y="20" width="38" height="24" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a"/>
+    <rect x="236" y="20" width="38" height="24" fill="none"/>
+    <rect x="278" y="20" width="38" height="24" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a"/>
+
+    <rect x="110" y="84" width="38" height="24" fill="none"/>
+    <rect x="152" y="84" width="38" height="24" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a"/>
+    <rect x="194" y="84" width="38" height="24" fill="none"/>
+    <rect x="236" y="84" width="38" height="24" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a"/>
+    <rect x="278" y="84" width="38" height="24" fill="none"/>
+
+    <rect x="110" y="148" width="38" height="24" fill="none"/>
+    <rect x="152" y="148" width="38" height="24" fill="none"/>
+    <rect x="194" y="148" width="38" height="24" fill="none"/>
+    <rect x="236" y="148" width="38" height="24" fill="none"/>
+    <rect x="278" y="148" width="38" height="24" fill="none"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="129" y="36" text-anchor="middle">A0</text>
+    <text x="213" y="36" text-anchor="middle">A1</text>
+    <text x="297" y="36" text-anchor="middle">A2</text>
+    <text x="171" y="100" text-anchor="middle">B0</text>
+    <text x="255" y="100" text-anchor="middle">B1</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="171" y="36" text-anchor="middle">m</text>
+    <text x="255" y="36" text-anchor="middle">m</text>
+    <text x="129" y="100" text-anchor="middle">m</text>
+    <text x="213" y="100" text-anchor="middle">m</text>
+    <text x="297" y="100" text-anchor="middle">m</text>
+    <text x="129" y="164" text-anchor="middle">m</text>
+    <text x="171" y="164" text-anchor="middle">m</text>
+    <text x="213" y="164" text-anchor="middle">m</text>
+    <text x="255" y="164" text-anchor="middle">m</text>
+    <text x="297" y="164" text-anchor="middle">m</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <line x1="80" y1="82" x2="108" y2="34"/>
+    <line x1="80" y1="90" x2="108" y2="96"/>
+  </g>
+  <line x1="80" y1="98" x2="108" y2="158" stroke="#7a828c" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="60" y="60" text-anchor="middle">key=A</text>
+    <text x="88" y="115" text-anchor="middle">key=B</text>
+  </g>
+  <text x="60" y="185" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">no key: round-robin across partitions</text>
+</svg>

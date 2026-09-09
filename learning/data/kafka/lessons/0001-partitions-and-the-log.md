@@ -21,6 +21,8 @@ Two mechanisms decide which partition a message lands in:
 - **With a key**, the producer hashes the key and always sends messages with that same key to the same partition. This is what preserves per-key ordering.
 - **Without a key**, messages are spread across partitions (round-robin, or a sticky variant), with no ordering relationship between them at all.
 
+![A producer sends messages into a topic made of three partitions, each drawn as a row of sequential, offset-numbered boxes. Messages with key A always land in partition 0, in order; messages with key B always land in partition 1, in order. Messages with no key are spread round-robin across all three partitions, with no ordering relationship between them. Each partition is its own independent, append-only log; there is no ordering guarantee across partitions.](images/topic-partitions-and-keying.svg)
+
 ### The ordering guarantee is per-partition, not per-topic
 
 Kafka guarantees message order **only within a single partition**. Two messages in different partitions of the same topic have no guaranteed relative order, no matter what order they were produced in. This is a direct consequence of partitions being independent logs: there's no single global sequence across them to preserve.

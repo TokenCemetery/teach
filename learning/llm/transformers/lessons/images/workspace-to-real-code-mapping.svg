@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 260" width="480" height="260" role="img" aria-labelledby="title desc">
+  <title id="title">Each derived piece from this workspace maps to a specific name in a real model library</title>
+  <desc id="desc">A two-column mapping. On the left, five pieces derived in this workspace: lessons 1 and 2's attention, lesson 3's causal mask, lesson 4's positional encoding, lesson 7's stacked blocks, and lesson 8's embedding and weight tying. On the right, the corresponding name each takes in Hugging Face's transformers library: GPT2Attention with a fused query-key-value projection, a registered lower-triangular buffer, a learned wpe position table, a ModuleList of blocks iterated in a for loop, and wte tied to lm_head. A line connects each left-hand concept to its right-hand real-code name.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="100" y="14" text-anchor="middle">this workspace</text>
+    <text x="380" y="14" text-anchor="middle">real code (transformers library)</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <g stroke="#7a828c" stroke-width="1.5" fill="none">
+      <rect x="10" y="26" width="180" height="30" rx="3"/>
+      <rect x="10" y="66" width="180" height="30" rx="3"/>
+      <rect x="10" y="106" width="180" height="30" rx="3"/>
+      <rect x="10" y="146" width="180" height="30" rx="3"/>
+      <rect x="10" y="186" width="180" height="30" rx="3"/>
+
+      <rect x="290" y="26" width="180" height="30" rx="3"/>
+      <rect x="290" y="66" width="180" height="30" rx="3"/>
+      <rect x="290" y="106" width="180" height="30" rx="3"/>
+      <rect x="290" y="146" width="180" height="30" rx="3"/>
+      <rect x="290" y="186" width="180" height="30" rx="3"/>
+    </g>
+
+    <text x="100" y="44" text-anchor="middle">lessons 1-2: attention</text>
+    <text x="100" y="84" text-anchor="middle">lesson 3: causal mask</text>
+    <text x="100" y="124" text-anchor="middle">lesson 4: positional encoding</text>
+    <text x="100" y="164" text-anchor="middle">lesson 7: stacked blocks</text>
+    <text x="100" y="204" text-anchor="middle">lesson 8: embedding + weight tying</text>
+
+    <text x="380" y="41" text-anchor="middle">GPT2Attention</text>
+    <text x="380" y="50" text-anchor="middle">(fused Q,K,V projection)</text>
+    <text x="380" y="84" text-anchor="middle">registered lower-triangular buffer</text>
+    <text x="380" y="124" text-anchor="middle">wpe (learned position table)</text>
+    <text x="380" y="161" text-anchor="middle">ModuleList of blocks,</text>
+    <text x="380" y="170" text-anchor="middle">iterated in a for loop</text>
+    <text x="380" y="204" text-anchor="middle">wte tied to lm_head</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5">
+    <line x1="190" y1="41" x2="290" y2="41"/>
+    <line x1="190" y1="81" x2="290" y2="81"/>
+    <line x1="190" y1="121" x2="290" y2="121"/>
+    <line x1="190" y1="161" x2="290" y2="161"/>
+    <line x1="190" y1="201" x2="290" y2="201"/>
+  </g>
+</svg>

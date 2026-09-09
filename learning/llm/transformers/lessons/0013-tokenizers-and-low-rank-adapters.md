@@ -36,6 +36,13 @@ Stacking means one block's output feeds directly into the next block's input; a 
 
 A tiny worked example: given the corpus `"low low lower"` (spaces mark word boundaries, kept separate), starting from individual characters, the pair `l, o` might be the most frequent adjacent pair across the corpus, so it merges into a new symbol `lo`. The next round finds the next most frequent pair among the updated symbols, `lo, w`, and merges that into `low`. Each merge round shrinks how many symbols represent common substrings and grows the vocabulary by exactly one entry. Iterating this enough times produces a vocabulary where frequent words compress to a single token and rare words fall back to smaller, more frequent pieces, exactly the property `llm/finetuning`'s tokenizer coverage observed: "tokens are not words."
 
+```mermaid
+flowchart LR
+    A["l o w _ l o w _ l o w e r<br>(individual characters)"] --> B["merge l,o -> lo<br>(most frequent adjacent pair)"]
+    B --> C["merge lo,w -> low<br>(next most frequent pair)"]
+    C --> D["... continues until vocab_size is reached"]
+```
+
 This is also where lesson 8's `vocab_size` actually comes from: it's however many merges (plus the starting symbols) the tokenizer's training was run for, fixed once training finishes, and the input embedding and output layers this workspace derived are sized to whatever number that training produced.
 
 ### Deriving the low-rank idea: where it attaches to a real weight matrix
@@ -49,6 +56,16 @@ Q_i = X (W_Q^i + (α / r) B_i A_i)
 ```
 
 `A_i` and `B_i` are new, small matrices, sized by rank `r`, and only they receive gradients during adapter training; `W_Q^i` never changes. Everything downstream, the rest of attention, layer norm, the feed-forward block, stacking, the output layer, runs exactly as this workspace derived it, entirely unaware that `Q_i` came from a frozen matrix plus a small additive correction rather than a single learned matrix. That's the concrete answer to "where does a low-rank adapter attach": at the exact same matrix multiply this workspace wrote out from raw tensors in lesson 2, with one term of that multiply split into a frozen part and a trainable low-rank part.
+
+```mermaid
+flowchart LR
+    X["X"] --> W0path["X * W_Q^i<br>(frozen)"]
+    X --> Apath["X * A_i<br>(trainable, down to rank r)"]
+    Apath --> Bpath["* B_i, scaled by a/r<br>(trainable, back up)"]
+    W0path --> Sum["+"]
+    Bpath --> Sum
+    Sum --> Q["Q_i = X (W_Q^i + (a/r) B_i A_i)"]
+```
 
 Because the update is additive and linear in exactly the same way lesson 2's projection itself is linear, `W_Q^i + (α/r) B_i A_i` collapses into one ordinary matrix after training, which is `llm/finetuning`'s point about zero inference overhead: nothing about the forward pass this workspace built has to change to serve a merged adapter, since the merged result is just another `W_Q^i`.
 

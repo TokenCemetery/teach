@@ -46,6 +46,8 @@ Take four requests batched together, needing 10, 20, 30, and 100 output tokens r
 
 In the four-request example, the sequence needing only 10 tokens frees its slot at step 10. A static scheduler leaves that slot idle for 90 more steps. A continuous scheduler admits a new request into it immediately, so the GPU keeps doing useful work in that slot instead of carrying dead weight until an arbitrary boundary. That is the mechanism behind the throughput gains this lesson's primary source reports: not a faster per-step computation, but far less of each step wasted on sequences that had nothing left to do.
 
+![Two batch slots over 100 decode steps: slot A needs 10 steps, slot D needs 100. Under static batching, slot A finishes at step 10 and sits idle for 90 steps until the whole batch finishes together. Under continuous batching, a new request is admitted into slot A the moment it frees, at step 10, so the slot keeps doing useful work.](images/static-vs-continuous-batching.svg)
+
 ## Practice
 
 1. ▢ A static batch holds two requests needing 15 and 60 output tokens. How many total slot-steps does the batch consume, how many are useful, and what fraction is wasted?

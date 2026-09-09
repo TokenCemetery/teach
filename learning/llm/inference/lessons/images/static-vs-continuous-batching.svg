@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">A finished sequence's slot sits idle under static batching, but is backfilled immediately under continuous batching</title>
+  <desc id="desc">Two batch slots over 100 decode steps. Slot A needs only 10 steps, slot D needs the full 100. Under static batching, slot A finishes at step 10 and then sits idle for 90 steps, wasted, until the whole batch of four finishes together at step 100. Under continuous batching, the moment slot A finishes at step 10 a new waiting request is admitted into it immediately, so the slot keeps doing useful work for the remaining 90 steps instead of sitting idle.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="10" y="18">static batching</text>
+    <text x="10" y="35">slot A (10 tok)</text>
+    <text x="10" y="60">slot D (100 tok)</text>
+
+    <text x="10" y="98">continuous batching</text>
+    <text x="10" y="115">slot A (10 tok)</text>
+    <text x="10" y="140">slot D (100 tok)</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7">
+    <rect x="120" y="25" width="34" height="16" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <rect x="154" y="25" width="306" height="16" rx="2" fill="#7a828c" fill-opacity="0.06" stroke="#7a828c" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+    <text x="307" y="37" fill="#7a828c" text-anchor="middle">idle for 90 steps, wasted, until step 100</text>
+
+    <rect x="120" y="50" width="340" height="16" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+
+    <rect x="120" y="105" width="34" height="16" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <rect x="154" y="105" width="306" height="16" rx="2" fill="#bf7d1a" fill-opacity="0.08" stroke="#bf7d1a" stroke-opacity="0.6"/>
+    <text x="307" y="117" fill="#bf7d1a" text-anchor="middle">new request admitted at step 10</text>
+
+    <rect x="120" y="130" width="340" height="16" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="120" y1="20" x2="120" y2="150"/>
+    <line x1="460" y1="20" x2="460" y2="150"/>
+  </g>
+</svg>

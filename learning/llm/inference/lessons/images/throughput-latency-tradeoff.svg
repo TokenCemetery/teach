@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 210" width="480" height="210" role="img" aria-labelledby="title desc">
+  <title id="title">Per-token latency barely rises with batch size until the compute-bound regime, then climbs steeply</title>
+  <desc id="desc">A chart of per-token latency against batch size. At small batch sizes decode is memory-bandwidth bound, so latency rises only gently as batch size grows, from 15 milliseconds at a batch of 8 towards 25 milliseconds at a batch of 32. Past that point the GPU's compute becomes the bottleneck, and latency climbs steeply, to 45 milliseconds at a batch of 64 and 90 milliseconds at a batch of 128. A latency budget of 30 milliseconds per token, marked with a dashed line, is crossed between batch size 32 and 64, which is why 32 is the largest batch size that satisfies that budget.</desc>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="50" y1="20" x2="50" y2="170"/>
+    <line x1="50" y1="170" x2="460" y2="170"/>
+  </g>
+
+  <path d="M50,155 L150,140 L280,95 L410,25" stroke="#bf7d1a" stroke-width="2" fill="none"/>
+  <g fill="#bf7d1a">
+    <circle cx="50" cy="155" r="3"/>
+    <circle cx="150" cy="140" r="3"/>
+    <circle cx="280" cy="95" r="3"/>
+    <circle cx="410" cy="25" r="3"/>
+  </g>
+
+  <line x1="50" y1="115" x2="460" y2="115" stroke="#7a828c" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="465" y="118" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">30ms budget</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="50" y="185" text-anchor="middle">8</text>
+    <text x="150" y="185" text-anchor="middle">32</text>
+    <text x="280" y="185" text-anchor="middle">64</text>
+    <text x="410" y="185" text-anchor="middle">128</text>
+    <text x="240" y="198" text-anchor="middle">batch size</text>
+
+    <text x="42" y="158" text-anchor="end">15ms</text>
+    <text x="42" y="143" text-anchor="end">25ms</text>
+    <text x="42" y="98" text-anchor="end">45ms</text>
+    <text x="42" y="28" text-anchor="end">90ms</text>
+  </g>
+
+  <text x="10" y="15" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" transform="rotate(0)">per-token latency</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7">
+    <text x="90" y="150" fill="#7a828c">memory-bandwidth bound:</text>
+    <text x="90" y="160" fill="#7a828c">nearly free to add a sequence</text>
+    <text x="320" y="70" fill="#bf7d1a">compute bound:</text>
+    <text x="320" y="80" fill="#bf7d1a">each sequence costs more</text>
+  </g>
+</svg>

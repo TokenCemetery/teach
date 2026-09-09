@@ -44,6 +44,8 @@ That is fine when the new request's prompt is short. It is not fine when it is l
 
 **Chunked prefill** splits a large prompt's prefill into smaller pieces and interleaves each piece with the batch's ongoing decode steps, rather than running the whole prefill in one step. Each batch step now admits only a bounded amount of new prefill work, whatever fits the step's latency budget, instead of however much a newly admitted request's prompt happens to contain. The trade is that the new request's own prefill now takes several steps to finish instead of one, but no other sequence in the batch is stalled waiting for it.
 
+![Top: without chunking, a large prompt's entire prefill is folded into one step, ballooning its latency far past the steady 20ms decode steps while every other sequence waits. Bottom: chunked prefill splits the same prompt's prefill into small pieces interleaved with decode, keeping every step near 20ms at the cost of the new request's prefill taking more steps to finish.](images/chunked-prefill.svg)
+
 ## Practice
 
 1. ▢ A continuous batch is running steady decode-only steps of about 20 ms each. A 6,000-token prompt is admitted and its full prefill is folded into the very next step, without chunking. What happens to that step's latency, and who feels the effect?

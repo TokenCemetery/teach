@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">An unchunked prefill stalls every other sequence in the batch for one long step</title>
+  <desc id="desc">Top: without chunking, a batch runs steady 20 millisecond decode steps until a large prompt is admitted, whose entire prefill is folded into the very next step, ballooning that one step's latency far past 20 milliseconds while every other sequence waits. Bottom: with chunked prefill, the same prompt's prefill is split into small pieces interleaved with ongoing decode steps, so every step's latency stays close to the normal 20 milliseconds and no sequence is stalled, at the cost of the new request's own prefill taking more steps in total to finish.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="10" y="18">no chunking</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7">
+    <rect x="20" y="25" width="40" height="20" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="40" y="38" fill="#7a828c" text-anchor="middle">20ms</text>
+    <rect x="65" y="25" width="40" height="20" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="85" y="38" fill="#7a828c" text-anchor="middle">20ms</text>
+
+    <rect x="110" y="25" width="220" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.18" stroke="#bf7d1a"/>
+    <text x="220" y="38" fill="#bf7d1a" text-anchor="middle">one step: full 6,000-token prefill, 300+ms</text>
+
+    <rect x="335" y="25" width="40" height="20" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="355" y="38" fill="#7a828c" text-anchor="middle">20ms</text>
+  </g>
+
+  <text x="20" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">every other sequence waits out that one oversized step</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="10" y="98">chunked prefill</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7">
+    <rect x="20" y="105" width="40" height="20" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="40" y="118" fill="#7a828c" text-anchor="middle">20ms</text>
+    <rect x="65" y="105" width="40" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="85" y="118" fill="#bf7d1a" text-anchor="middle">chunk</text>
+    <rect x="110" y="105" width="40" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="130" y="118" fill="#bf7d1a" text-anchor="middle">chunk</text>
+    <rect x="155" y="105" width="40" height="20" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="175" y="118" fill="#7a828c" text-anchor="middle">20ms</text>
+    <rect x="200" y="105" width="40" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="220" y="118" fill="#bf7d1a" text-anchor="middle">chunk</text>
+    <rect x="245" y="105" width="40" height="20" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="265" y="118" fill="#7a828c" text-anchor="middle">20ms</text>
+    <rect x="290" y="105" width="40" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="310" y="118" fill="#bf7d1a" text-anchor="middle">chunk</text>
+    <rect x="335" y="105" width="40" height="20" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="355" y="118" fill="#7a828c" text-anchor="middle">20ms</text>
+  </g>
+
+  <text x="20" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">every step stays near 20ms; the new request's prefill just spans more steps</text>
+</svg>

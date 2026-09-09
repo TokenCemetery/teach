@@ -38,6 +38,8 @@ Adding another sequence to a batch increases throughput: more tokens get produce
 
 At small batch sizes, decode is memory-bandwidth bound (lesson 4): the same weights and cache reads already dominate the step's cost, so adding another sequence is nearly free. Throughput rises roughly linearly with batch size while step latency barely moves. Past some batch size, there is enough stacked work that the GPU's raw compute, not its memory bandwidth, becomes the bottleneck: step latency starts climbing noticeably with every added sequence, and each further sequence buys less additional throughput than the last one did. That inflection is the same memory-bandwidth-bound-versus-compute-bound distinction lesson 3 drew between prefill and decode, now happening within decode itself as the batch grows.
 
+![Per-token latency against batch size: 15ms at 8, 25ms at 32, 45ms at 64, 90ms at 128. The curve stays flat while decode is memory-bandwidth bound, then climbs steeply once compute becomes the bottleneck. A 30ms latency budget, marked with a dashed line, is crossed between batch size 32 and 64.](images/throughput-latency-tradeoff.svg)
+
 ### Defending a configuration means picking a point on that curve, not the largest number available
 
 A stated workload gives two independent constraints, and the config worth defending is the largest batch size that satisfies both:

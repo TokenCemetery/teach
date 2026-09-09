@@ -42,6 +42,19 @@ API keys, OAuth 2.0 (with its several grant types depending on whether a human r
 
 A client hitting `429 Too Many Requests` with no further information has to guess at the actual limit, how long to wait, and how close it was to the limit before the failure, exactly the kind of accidental, undocumented behavior lesson 1 warns clients will build fragile logic around anyway (guessing at a safe request rate through trial and error). The IETF's RateLimit header fields draft standardizes communicating this state explicitly in every response, not just a failing one: how many requests remain, what the limit is, and when it resets, so a client can make an informed decision (slow down proactively) instead of discovering the limit only by tripping over it.
 
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    C->>S: request 1
+    S-->>C: 200 OK, RateLimit-Remaining: 5
+    C->>S: request 2
+    S-->>C: 200 OK, RateLimit-Remaining: 4
+    Note over C,S: state visible on every response, not just a failing one
+    C->>S: request N (limit reached)
+    S-->>C: 429 Too Many Requests, RateLimit-Reset: 30
+```
+
 ### The mission's closing point: none of these are bolted on after design, they're part of it
 
 Treating auth, authz, and rate limiting as contract means deciding, at the same time resources (lesson 4), errors (lessons 2-3), and evolution strategy (lessons 8-9) are decided: what scopes exist and what each one actually grants; which auth scheme fits the actual clients (human-facing versus machine-to-machine); and what rate-limit information a client can rely on seeing before it fails. An API where these are added later, whatever the security team's default middleware happens to produce, is exactly the kind of contract that grew accidentally instead of being designed, the mission's opening observation applied to security and quotas instead of resources and errors.

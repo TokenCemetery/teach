@@ -46,6 +46,16 @@ Two things change, and they are worth stating separately because people collapse
 
 **The order the work happens in.** `Iterable` finishes each step for the whole collection before it starts the next one. `Sequence` runs every step for one element, then moves to the next element. That ordering is what lets a bound like `take(4)` stop the whole chain early: once four results exist, the elements after them are never touched at all. The docs' own example filters and maps nine words; the list version filters all nine, then maps the five survivors, while the sequence version stops mid-list and never looks at the last three words.
 
+```mermaid
+flowchart TB
+    subgraph List["List: step across all elements, then the next step"]
+    L1["filter all 9 words"] --> L2["map all 5 survivors"] --> L3["take the first 4"]
+    end
+    subgraph Seq["Sequence: every step for one element, then the next element"]
+    S1["word 1: filter, map"] --> S2["word 2: filter, map"] --> S3["... stop once 4 results exist;<br>remaining words never touched"]
+    end
+```
+
 So a sequence avoids building the intermediate results, which is the performance case for it. The docs are equally clear about the other side: laziness adds overhead of its own, and that overhead can be significant on smaller collections or simpler computations, so you are expected to consider both and decide. Two more things push the decision back toward a plain list: a single-step chain has no intermediate collection to avoid, so there is nothing to win; and an operation that must see every element before it can emit one, sorting being the obvious case, has to accumulate the lot anyway. The docs classify operations by exactly this: **stateless** ones process each element independently (`map`, `filter`, and, with a small constant amount of state, `take` and `drop`), while **stateful** ones need state usually proportional to the element count.
 
 Four ways to get a sequence:

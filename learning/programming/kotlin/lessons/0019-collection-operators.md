@@ -58,6 +58,14 @@ The set worth holding in memory:
 
 Because each operator builds a complete new collection before the next one sees it ([Collection transformation operations](https://kotlinlang.org/docs/collection-transformations.html)), a chain of three operators over ten thousand elements builds three lists, two of which exist only to be discarded. Java's lazy streams do not have that cost, which is why a Java-shaped habit of chaining freely carries over a cost model that does not hold. Lesson 20 is where you buy the fused single pass back with `asSequence()`, and deciding when it is worth buying is what closes this stage.
 
+```mermaid
+flowchart LR
+    A["10,000 elements"] --> B["filter { }<br>builds list 1"]
+    B --> C["map { }<br>builds list 2"]
+    C --> D["take(5)<br>builds list 3"]
+    D --> E["final result"]
+```
+
 ## Practice
 
 1. ▢ Given `val numbers = listOf("one", "two", "three", "four")`, the next line is `numbers.filter { it.length > 3 }` and nothing holds the result. What runs, and what does `numbers` contain afterwards?

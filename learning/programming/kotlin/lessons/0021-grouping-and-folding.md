@@ -56,6 +56,13 @@ Three variants worth recognising:
 
 `groupingBy { }` is the answer to that. It returns a `Grouping` rather than a `Map`, and the operations you then call on it, `eachCount()` most commonly, accumulate one value per key without ever materialising the member lists ([Grouping](https://kotlinlang.org/docs/collection-grouping.html)). The same `Grouping` also carries `fold`, `reduce` and `aggregate`, which is how you get a per-group total, or a per-group anything, on the same terms.
 
+```mermaid
+flowchart TD
+    A["group by status code"] --> B{"need the member list,<br>or just one value per group?"}
+    B -- "member list" --> C["groupBy { }:<br>builds a List per key"]
+    B -- "one value per group" --> D["groupingBy { }.eachCount():<br>accumulates directly, no member lists"]
+```
+
 **So the stage's question, made concrete.** Folding streams: it consumes one element at a time and keeps one accumulator, so it is terminal on a sequence and costs nothing extra there. Grouping does not stream: it has to hold a slot for every key it has seen before it can answer anything, which is precisely lesson 20's stateful category, so its result is materialised wherever you put it. What `asSequence()` still buys you in front of a grouping step is everything upstream of it: the filters and maps that would otherwise each have built a full intermediate list. That is the shape of a defensible answer, and defending it is what closes this stage.
 
 ## Practice

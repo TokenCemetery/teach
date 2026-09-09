@@ -65,6 +65,16 @@ Console.WriteLine(message.Length);   // no warning: the compiler knows it is not
 
 The analysis follows `if` checks, **pattern matching** such as `is null` and `is { }`, and control flow that loops or returns early. That is lesson 9 paying off from an unexpected direction: the patterns you learned for taking types apart are also how you inform the null-state analysis, which is why `if (x is { } value)` both binds a variable and tells the compiler the rest of the branch is safe.
 
+```mermaid
+stateDiagram-v2
+    [*] --> NotNull: declared non-nullable
+    [*] --> MaybeNull: declared nullable
+    MaybeNull --> NotNull: assignment or null check proves non-null
+    NotNull --> MaybeNull: assignment of a possibly-null value
+    NotNull --> Dereferenced: dereference, no warning
+    MaybeNull --> Dereferenced: dereference, warning
+```
+
 **These are warnings.** Nothing here stops a build by default and nothing checks at run time, which is the honest summary of the feature's strength and its limit. The type system records a design decision and the compiler tells you when you contradict it, and that is the whole of the guarantee.
 
 **`!` is the escape hatch, and the documentation attaches its own discipline to it.** The null-forgiving operator declares that an expression is not-null even when the analysis says otherwise. The guidance is worth quoting almost directly: use it sparingly, because **each occurrence is a place the compiler can no longer protect you**, and prefer adding a null check, restructuring the code, or annotating the relevant API so that the compiler reaches the right conclusion on its own.

@@ -53,6 +53,16 @@ That is a real widening rather than a syntax preference. The `this` form gives y
 
 **The binding rule is the whole lesson.** Extension members can extend a class or interface but **cannot override behaviour defined in a class**. At compile time they always have **lower priority** than the instance or static members the type declares itself. The compiler first looks for a match among the type's own members; only if it finds none does it search extension members, and it then binds to the **first** extension member it finds.
 
+```mermaid
+flowchart TD
+    A["call site: x.Method(args)"] --> B{"type declares a<br>matching member?"}
+    B -- "yes" --> C["bind to the<br>type's own member"]
+    B -- "no" --> D["search extension<br>members in scope"]
+    D --> E{"any match found?"}
+    E -- "yes" --> F["bind to the<br>first one found"]
+    E -- "no" --> G["compile error:<br>no such method"]
+```
+
 Three consequences follow, and each is a real hazard rather than a technicality:
 
 - **An extension with the same name and signature as an existing member is never called.** Not preferred less often: never. If your extension appears to be ignored, this is why.

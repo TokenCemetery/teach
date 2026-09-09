@@ -49,6 +49,12 @@ Java's answer to the same problem is a functional interface: a type you declare 
 Then three documented consequences, and the first two are the ones to remember:
 
 - **If any method throws an exception that is not caught inside it, the exception passes to the caller of the delegate and no subsequent methods in the invocation list are called.** One badly behaved handler silences every handler after it.
+
+```mermaid
+flowchart LR
+    A["handler 1<br>runs"] --> B["handler 2<br>throws"]
+    B -- "uncaught exception" --> C["propagates to caller;<br>handler 3 never runs"]
+```
 - **If the delegate has a return value or `out` parameters, you get those of the last method invoked.** Every earlier return value is discarded, which is why a multicast delegate with a return type is almost always a design mistake.
 - Reference parameters are passed to each method in turn, so a change made by one is visible to the next.
 

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">Prefill claims most of a request's cache in one step; decode adds the rest gradually</title>
+  <desc id="desc">A cache-size-over-time chart. The cache jumps almost vertically from empty to most of its eventual size during the single prefill step, processing the whole prompt at once, then rises in a slow, steady staircase during decode as each output token adds one more token's worth of cache. A worked example shows a 2048-token prompt claiming about 640 megabytes at prefill while 128 decode steps add only about 40 more megabytes, six percent of the total.</desc>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="40" y1="20" x2="40" y2="150"/>
+    <line x1="40" y1="150" x2="460" y2="150"/>
+  </g>
+
+  <path d="M40,148 L60,148 L60,40 L440,25" stroke="#bf7d1a" stroke-width="2" fill="none"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="10" y="30" transform="rotate(-90 10 30)">cache size</text>
+    <text x="240" y="168" text-anchor="middle">time / tokens generated</text>
+
+    <text x="45" y="165">prefill</text>
+    <text x="55" y="35" fill="#bf7d1a">jump: whole prompt,</text>
+    <text x="55" y="47" fill="#bf7d1a">one forward pass</text>
+
+    <text x="250" y="20" fill="#bf7d1a">decode: +1 token's cache per step,</text>
+    <text x="250" y="32" fill="#bf7d1a">slow trickle</text>
+  </g>
+
+  <text x="40" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">Example: a 2048-token prompt claims ~640 MB at prefill; 128 decode steps add only ~40 MB more (6% of the total).</text>
+</svg>

@@ -40,6 +40,8 @@ A request has two phases, and they claim cache memory very differently.
 
 A long prompt therefore claims most of a request's eventual cache footprint immediately, at prefill, while decode adds the rest gradually. A capacity plan that only looks at "final context length" is really asking "how big will this get after prefill plus however many decode steps I expect," and the two phases contribute on very different schedules.
 
+![A cache-size-over-time chart: the cache jumps almost vertically during the single prefill step, then rises in a slow, steady staircase during decode as each output token adds one more token's worth of cache. A 2048-token prompt claims about 640 MB at prefill, while 128 decode steps add only about 40 MB more, 6% of the total.](images/prefill-decode-cache-growth.svg)
+
 ### A lever independent of the model's own weights: cache precision
 
 Lesson 2's formula carried `bytes_per_value` as its own term, separate from `num_layers`, `num_kv_heads`, and `head_dim`. That term does not have to match the precision the model computes in. A serving stack can store the KV cache itself in a lower precision, commonly fp8, while the model still computes in bf16 or fp16. Halving `bytes_per_value` from 2 bytes to 1 halves the cache's footprint outright, with no change to `num_kv_heads`, no change to context length, and no retraining: it is a serving-time choice, independent of whatever precision the weights were quantized to.

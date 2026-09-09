@@ -40,6 +40,8 @@ bytes per token = 2 (K and V) × num_layers × num_kv_heads × head_dim × bytes
 
 where `head_dim = d_model / num_heads`, and `num_kv_heads` is the number that matters now, not the total head count. When `num_kv_heads = num_heads` this reduces exactly to lesson 1's formula (MHA is GQA's special case). When `num_kv_heads` is much smaller, the cache shrinks by that same ratio, for free, with no change to context length or batch size.
 
+![Three rows: MHA has 8 query heads each paired with its own KV head, GQA has groups of query heads sharing one of 2 KV heads (a quarter the cache), MQA has all 8 query heads sharing a single KV head (an eighth the cache). Query head count never appears in the cache formula; only the KV head count does.](images/mha-gqa-mqa-head-sharing.svg)
+
 Llama-2-70B is a concrete case: 80 layers, 64 query heads, but only 8 KV heads, `head_dim` = 128. In fp16:
 
 ```text

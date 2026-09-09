@@ -43,6 +43,8 @@ A naive implementation reserves one contiguous memory block per sequence, sized 
 
 The PagedAttention paper measured naive systems keeping as little as 20 to 40% of allocated KV cache memory actually holding useful data. Its fix borrows straight from operating-system virtual memory: split the cache into fixed-size blocks, store them non-contiguously, and keep a per-sequence block table that maps logical positions to physical blocks. That's the idea vLLM is built around, and it's why the framework matters as much as the arithmetic: the same cache, allocated well, serves far more concurrent requests.
 
+![Top: naive contiguous, max-length-sized blocks waste memory as internal fragmentation (reserved but unused) and external fragmentation (a gap between blocks). Bottom: PagedAttention's fixed-size, non-contiguous blocks interleave freely, so a sequence holds only as many blocks as it has actually used.](images/paged-attention-fragmentation.svg)
+
 ## Practice
 
 1. ▢ In one sentence, what does the KV cache let a server skip on every generated token after the first?

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" width="560" height="210" role="img" aria-labelledby="title desc">
+  <title id="title">The KV cache scales with the number of KV heads, not query heads</title>
+  <desc id="desc">Three rows, each showing 8 query heads on top connecting down to key/value heads below. Multi-head attention, MHA: each of the 8 query heads has its own KV head, 8 total, so the cache is largest. Grouped-query attention, GQA: groups of query heads share one of 2 KV heads, so the cache is a quarter the size. Multi-query attention, MQA: all 8 query heads share a single KV head, so the cache is an eighth the size. Query head count never appears in the cache formula; only the KV head count does.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="15">MHA: 8 query heads, 8 KV heads</text>
+    <text x="20" y="80">GQA: 8 query heads, 2 KV heads</text>
+    <text x="20" y="145">MQA: 8 query heads, 1 KV head</text>
+  </g>
+
+  <!-- MHA row -->
+  <g>
+    <g fill="#7a828c" fill-opacity="0.15" stroke="#7a828c" stroke-opacity="0.5">
+      <rect x="20" y="20" width="16" height="12" rx="1"/><rect x="40" y="20" width="16" height="12" rx="1"/>
+      <rect x="60" y="20" width="16" height="12" rx="1"/><rect x="80" y="20" width="16" height="12" rx="1"/>
+      <rect x="100" y="20" width="16" height="12" rx="1"/><rect x="120" y="20" width="16" height="12" rx="1"/>
+      <rect x="140" y="20" width="16" height="12" rx="1"/><rect x="160" y="20" width="16" height="12" rx="1"/>
+    </g>
+    <g fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a">
+      <rect x="20" y="42" width="16" height="12" rx="1"/><rect x="40" y="42" width="16" height="12" rx="1"/>
+      <rect x="60" y="42" width="16" height="12" rx="1"/><rect x="80" y="42" width="16" height="12" rx="1"/>
+      <rect x="100" y="42" width="16" height="12" rx="1"/><rect x="120" y="42" width="16" height="12" rx="1"/>
+      <rect x="140" y="42" width="16" height="12" rx="1"/><rect x="160" y="42" width="16" height="12" rx="1"/>
+    </g>
+    <g stroke="#7a828c" stroke-opacity="0.4" stroke-width="0.75">
+      <line x1="28" y1="32" x2="28" y2="42"/><line x1="48" y1="32" x2="48" y2="42"/>
+      <line x1="68" y1="32" x2="68" y2="42"/><line x1="88" y1="32" x2="88" y2="42"/>
+      <line x1="108" y1="32" x2="108" y2="42"/><line x1="128" y1="32" x2="128" y2="42"/>
+      <line x1="148" y1="32" x2="148" y2="42"/><line x1="168" y1="32" x2="168" y2="42"/>
+    </g>
+  </g>
+
+  <!-- GQA row -->
+  <g>
+    <g fill="#7a828c" fill-opacity="0.15" stroke="#7a828c" stroke-opacity="0.5">
+      <rect x="20" y="85" width="16" height="12" rx="1"/><rect x="40" y="85" width="16" height="12" rx="1"/>
+      <rect x="60" y="85" width="16" height="12" rx="1"/><rect x="80" y="85" width="16" height="12" rx="1"/>
+      <rect x="100" y="85" width="16" height="12" rx="1"/><rect x="120" y="85" width="16" height="12" rx="1"/>
+      <rect x="140" y="85" width="16" height="12" rx="1"/><rect x="160" y="85" width="16" height="12" rx="1"/>
+    </g>
+    <g fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a">
+      <rect x="60" y="107" width="16" height="12" rx="1"/><rect x="140" y="107" width="16" height="12" rx="1"/>
+    </g>
+    <g stroke="#7a828c" stroke-opacity="0.4" stroke-width="0.75">
+      <line x1="28" y1="97" x2="68" y2="107"/><line x1="48" y1="97" x2="68" y2="107"/>
+      <line x1="68" y1="97" x2="68" y2="107"/><line x1="88" y1="97" x2="68" y2="107"/>
+      <line x1="108" y1="97" x2="148" y2="107"/><line x1="128" y1="97" x2="148" y2="107"/>
+      <line x1="148" y1="97" x2="148" y2="107"/><line x1="168" y1="97" x2="148" y2="107"/>
+    </g>
+  </g>
+
+  <!-- MQA row -->
+  <g>
+    <g fill="#7a828c" fill-opacity="0.15" stroke="#7a828c" stroke-opacity="0.5">
+      <rect x="20" y="150" width="16" height="12" rx="1"/><rect x="40" y="150" width="16" height="12" rx="1"/>
+      <rect x="60" y="150" width="16" height="12" rx="1"/><rect x="80" y="150" width="16" height="12" rx="1"/>
+      <rect x="100" y="150" width="16" height="12" rx="1"/><rect x="120" y="150" width="16" height="12" rx="1"/>
+      <rect x="140" y="150" width="16" height="12" rx="1"/><rect x="160" y="150" width="16" height="12" rx="1"/>
+    </g>
+    <g fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a">
+      <rect x="90" y="172" width="16" height="12" rx="1"/>
+    </g>
+    <g stroke="#7a828c" stroke-opacity="0.4" stroke-width="0.75">
+      <line x1="28" y1="162" x2="98" y2="172"/><line x1="48" y1="162" x2="98" y2="172"/>
+      <line x1="68" y1="162" x2="98" y2="172"/><line x1="88" y1="162" x2="98" y2="172"/>
+      <line x1="108" y1="162" x2="98" y2="172"/><line x1="128" y1="162" x2="98" y2="172"/>
+      <line x1="148" y1="162" x2="98" y2="172"/><line x1="168" y1="162" x2="98" y2="172"/>
+    </g>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="380" y="30">cache: full size</text>
+    <text x="380" y="98">cache: 1/4 size</text>
+    <text x="380" y="163">cache: 1/8 size</text>
+  </g>
+</svg>

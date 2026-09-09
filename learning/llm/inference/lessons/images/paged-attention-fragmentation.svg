@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">Naive contiguous allocation wastes memory that paged, block-based allocation reclaims</title>
+  <desc id="desc">Top: two sequences hold contiguous blocks sized for the maximum sequence length. Sequence A uses only part of its reserved block, wasting the rest as internal fragmentation, and a gap between the two blocks is unusable by either as external fragmentation. Bottom: the same two sequences under PagedAttention hold only as many fixed-size blocks as they actually need, drawn from a shared pool, with no reserved-but-unused space.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="20">naive: contiguous, max-length-sized blocks</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <rect x="20" y="30" width="80" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="60" y="46" fill="#bf7d1a" text-anchor="middle">A: used</text>
+    <rect x="100" y="30" width="140" height="24" rx="2" fill="#7a828c" fill-opacity="0.08" stroke="#7a828c" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+    <text x="170" y="46" fill="#7a828c" text-anchor="middle">A: reserved, unused (internal)</text>
+
+    <rect x="240" y="30" width="30" height="24" rx="2" fill="none" stroke="#7a828c" stroke-opacity="0.3" stroke-dasharray="2 2"/>
+    <text x="255" y="46" fill="#7a828c" text-anchor="middle" font-size="6">gap</text>
+
+    <rect x="270" y="30" width="110" height="24" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="325" y="46" fill="#bf7d1a" text-anchor="middle">B: used</text>
+    <rect x="380" y="30" width="60" height="24" rx="2" fill="#7a828c" fill-opacity="0.08" stroke="#7a828c" stroke-opacity="0.4" stroke-dasharray="3 2"/>
+    <text x="410" y="46" fill="#7a828c" text-anchor="middle" font-size="7">unused</text>
+  </g>
+
+  <text x="20" y="90" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">PagedAttention: fixed-size blocks, non-contiguous, drawn as needed</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7">
+    <rect x="20" y="100" width="45" height="22" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="42" y="115" fill="#bf7d1a" text-anchor="middle">A</text>
+    <rect x="70" y="100" width="45" height="22" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="92" y="115" fill="#bf7d1a" text-anchor="middle">A</text>
+
+    <rect x="120" y="100" width="45" height="22" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#7a828c"/>
+    <text x="142" y="115" fill="#7a828c" text-anchor="middle">B</text>
+
+    <rect x="170" y="100" width="45" height="22" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="192" y="115" fill="#bf7d1a" text-anchor="middle">A</text>
+
+    <rect x="220" y="100" width="45" height="22" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#7a828c"/>
+    <text x="242" y="115" fill="#7a828c" text-anchor="middle">B</text>
+
+    <rect x="270" y="100" width="45" height="22" rx="2" fill="#7a828c" fill-opacity="0.12" stroke="#7a828c"/>
+    <text x="292" y="115" fill="#7a828c" text-anchor="middle">B</text>
+
+    <rect x="320" y="100" width="45" height="22" rx="2" fill="none" stroke="#7a828c" stroke-opacity="0.3" stroke-dasharray="2 2"/>
+    <text x="342" y="115" fill="#7a828c" text-anchor="middle" font-size="6">free</text>
+  </g>
+
+  <text x="20" y="145" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">Blocks are the same fixed size and interleave freely; a sequence holds exactly as many as it has used,</text>
+  <text x="20" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">addressed through a per-sequence block table, so nothing is reserved ahead of actual need.</text>
+</svg>

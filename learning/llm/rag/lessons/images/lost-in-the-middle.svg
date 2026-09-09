@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190" width="480" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">A model uses information near the start or end of a long context far more reliably than information buried in the middle</title>
+  <desc id="desc">A curve plotting how reliably a model uses a piece of retrieved information against where that information sits in the assembled prompt. The curve starts high when the information is near the beginning, dips to its lowest point when the information is in the middle of the context, and climbs back up when the information is near the end, a valley shape rather than a straight or flat line. A chunk placed in the middle of a long, chunk-stuffed prompt is the least reliably used, even though it is technically present within the context window the whole time.</desc>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="50" y1="20" x2="50" y2="150"/>
+    <line x1="50" y1="150" x2="460" y2="150"/>
+  </g>
+
+  <path d="M70,40 L170,75 L270,100 L370,75 L450,40" stroke="#bf7d1a" stroke-width="2" fill="none"/>
+  <g fill="#bf7d1a">
+    <circle cx="70" cy="40" r="3"/>
+    <circle cx="170" cy="75" r="3"/>
+    <circle cx="270" cy="100" r="3"/>
+    <circle cx="370" cy="75" r="3"/>
+    <circle cx="450" cy="40" r="3"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="70" y="165" text-anchor="middle">beginning</text>
+    <text x="270" y="165" text-anchor="middle">middle</text>
+    <text x="450" y="165" text-anchor="middle">end</text>
+    <text x="260" y="178" text-anchor="middle">position of the relevant chunk in the assembled prompt</text>
+  </g>
+
+  <text x="10" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">reliability of use</text>
+  <text x="270" y="115" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">least reliably used here,</text>
+  <text x="270" y="124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">even though it's in the context window</text>
+</svg>

@@ -46,6 +46,15 @@ Retrieved context is usually meant to be treated as more current or more specifi
 
 When multiple retrieved passages are provided together, a model can use the right information but cite the wrong one as its source, mixing up which chunk actually supports which claim. This matters directly whenever the system needs to show citations: a plausible-looking citation that points at the wrong passage is its own kind of failure, separate from whether the underlying claim was even correct.
 
+```mermaid
+flowchart TD
+    A["correct chunk retrieved,<br>well positioned in the prompt"] --> B["generation"]
+    B --> C["faithfulness / groundedness failure:<br>a claim the passage doesn't support"]
+    B --> D["confident fabrication:<br>context lacks the answer, model invents one anyway"]
+    B --> E["ignores retrieved context:<br>defaults to older parametric knowledge"]
+    B --> F["misattribution:<br>correct claim, wrong source cited"]
+```
+
 ### Checking for these is generation evaluation, not retrieval evaluation
 
 Stage 6 diagnosed whether retrieval found and ranked the right chunk. None of that machinery checks whether the generated answer actually stayed faithful to what was retrieved; that is a distinct question, checked by comparing each claim in the generated answer against the retrieved context it's supposed to rest on, commonly with an LLM-as-judge prompt built specifically for that comparison (the LLM-as-judge design and calibration discipline `llm/evals` covers, applied here to a different question than whether retrieval succeeded). Building and defending that evaluation is `llm/evals`' territory, linked to rather than restated here; what this lesson establishes is that the question exists at all, separately from everything stages 1 to 7 already checked.

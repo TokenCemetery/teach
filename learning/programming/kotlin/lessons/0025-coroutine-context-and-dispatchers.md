@@ -63,6 +63,12 @@ Two facts about `Dispatchers.IO` that correct the obvious mental model, both fro
 
 So `launch(Dispatchers.IO)` and `launch(Dispatchers.IO + Job())` look like the same kind of edit, one adding a second element to a context. The first is a child of its scope, cancelled with it and waited for by it. The second is not, and nothing about the call site says so.
 
+```mermaid
+flowchart LR
+    A["launch(Dispatchers.IO)"] --> B["inherits the parent's Job:<br>a child, cancelled with the scope"]
+    C["launch(Dispatchers.IO + Job())"] --> D["own Job overrides the parent's:<br>independent, outlives the scope"]
+```
+
 ## Practice
 
 1. ▢ Inside `suspend fun main()`, a `coroutineScope { }` block calls `launch { }` with no arguments. Which dispatcher runs that coroutine, and what decides it?

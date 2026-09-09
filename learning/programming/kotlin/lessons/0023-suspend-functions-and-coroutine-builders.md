@@ -60,6 +60,8 @@ The docs are pointed about `runBlocking`: use it only when there is no other opt
 
 **Suspending is sequential by default.** Two suspending calls one after the other run one after the other, exactly as they read, so two operations of a second each take about two seconds. Nothing about `suspend` makes them concurrent. Concurrency is something you ask for: start both with `async`, then `await` both, and the same work takes about one second ([Composing suspending functions](https://kotlinlang.org/docs/composing-suspending-functions.html)). `async` can even be made lazy with `start = CoroutineStart.LAZY`, in which case it does not begin until `await()` or `Job.start()`.
 
+![Two timelines for one-second suspending operations one and two. Top: calling them one after the other takes about two seconds, since two doesn't start until one finishes. Bottom: starting both with async before awaiting either runs them in parallel, about one second total.](images/sequential-vs-concurrent-async.svg)
+
 **Why `launch` needs a receiver.** `launch` and `async` are extension functions on `CoroutineScope`, which is the warm-up's third answer arriving in practice: inside a block whose receiver is a `CoroutineScope`, they resolve with no qualifier. Move such a call into a helper function and it stops compiling unless that function declares the receiver, as `fun CoroutineScope.launchAll()`. So a builder call is never floating free; it always belongs to some scope.
 
 Which scope, and what that scope guarantees about waiting for its children and cancelling them, is lesson 24's subject. For now, one fact from it is enough to read the examples: `coroutineScope { }` runs its block and does not return until every coroutine launched inside it has finished.

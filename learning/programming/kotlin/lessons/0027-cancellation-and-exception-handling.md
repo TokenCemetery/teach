@@ -64,6 +64,17 @@ A timeout is cancellation with a clock attached. `withTimeoutOrNull(duration)` r
 
 Condition 1 is why cancelling one child does not take the family down, while one child throwing an `IOException` does: cancellation is a request travelling down the tree, and failure is news travelling up it. Condition 3 is the opt-out, and it has two spellings: build the scope with `SupervisorJob()`, or use `supervisorScope` in place of `coroutineScope`. That is what lesson 24 was pointing at when it used `SupervisorJob()` without explaining it.
 
+```mermaid
+flowchart TD
+    A["child throws"] --> B{"CancellationException?"}
+    B -- "yes" --> C["does not fail the parent:<br>cancellation, not failure"]
+    B -- "no" --> D{"created with a lexical<br>builder (coroutineScope,<br>withContext)?"}
+    D -- "yes" --> G["fails the parent,<br>cancels siblings"]
+    D -- "no" --> E{"parent's Job is a<br>SupervisorJob?"}
+    E -- "yes" --> F["does not fail the parent<br>(supervised)"]
+    E -- "no" --> G
+```
+
 **How exceptions reach you at all.** Builders come in two flavours: `launch` propagates exceptions automatically, while `async` exposes them to you ([Coroutine exceptions handling](https://kotlinlang.org/docs/exception-handling.html)). As a **root** coroutine, `launch` treats an exception as uncaught, in the manner of Java's `Thread.uncaughtExceptionHandler`, and `async` relies on you to consume it, through `await`. A `CoroutineExceptionHandler` in a root coroutine's context is the generic catch block for it and its children: you cannot recover in it, because the coroutine has already completed with that exception by the time it is called, so it is for logging, reporting, terminating or restarting. It runs only for genuinely uncaught exceptions, and children delegate handling to their parent all the way to the root, which is why a handler installed on a child is never used.
 
 **The comparison this stage closes on.** Both models make blocking cheap, and they do it at different layers. A coroutine suspends at a suspension point the compiler produced; a virtual thread unmounts from its carrier when it blocks on a JDK blocking call. The Java workspace's [concurrency sheet](../../java/reference/concurrency.md) holds the virtual-thread side in detail, measured on one machine, including what still pins a carrier and why you do not pool them. Set against that, the axes that actually decide between them:

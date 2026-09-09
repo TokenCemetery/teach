@@ -45,6 +45,16 @@ The first has a backing field: `build()` runs once, and every read returns that 
 
 That is what makes cancellation and error handling predictable rather than a matter of remembering which handles you kept. It is also why a coroutine can only be launched in a `CoroutineScope`: the scope is the thing that defines and manages the lifecycle. A builder called inside another builder's block becomes a child automatically, because that block's receiver is itself a nested scope.
 
+```mermaid
+flowchart TD
+    P["coroutineScope { }"] --> C1["launch { }"]
+    P --> C2["async { }"]
+    C2 --> GC["launch { } (grandchild)"]
+    P -->|"cancel() flows down"| C1
+    P -->|"cancel() flows down"| C2
+    C2 -.->|"failure flows up"| P
+```
+
 **Two ways to get a scope, and they are not interchangeable.**
 
 The first is lexical: `coroutineScope { }`. It creates the root of a subtree, is the direct parent of what the block launches and the indirect parent of what those launch in turn, and it runs the suspending block and does not return until the block **and everything launched inside it** has completed. This is the default answer, and it buys a guarantee worth naming: a suspending function that fans work out through `coroutineScope` can promise its caller that when it returns, the work is finished. Nothing escapes it.

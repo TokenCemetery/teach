@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 150" width="480" height="150" role="img" aria-labelledby="title desc">
+  <title id="title">Suspending calls are sequential by default; async is how you ask for concurrency</title>
+  <desc id="desc">Two timelines for two one-second suspending operations, one and two. Top: calling them one after the other runs one from 0 to 1 and two only starting after one finishes, from 1 to 2, about two seconds total. Bottom: starting both with async before awaiting either runs one and two in parallel from 0 to 1, about one second total.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="20">one(); two()</text>
+    <text x="20" y="95">val a = async { one() }; val b = async { two() }; a.await(); b.await()</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <rect x="20" y="30" width="200" height="20" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="110" y="44" fill="#bf7d1a" text-anchor="middle">one()</text>
+
+    <rect x="220" y="30" width="200" height="20" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="320" y="44" fill="#7a828c" text-anchor="middle">two()</text>
+
+    <text x="440" y="44" fill="#7a828c">~2s</text>
+
+    <rect x="20" y="105" width="200" height="16" rx="2" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a"/>
+    <text x="110" y="117" fill="#bf7d1a" text-anchor="middle">one()</text>
+
+    <rect x="20" y="124" width="200" height="16" rx="2" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="110" y="136" fill="#7a828c" text-anchor="middle">two()</text>
+
+    <text x="230" y="122" fill="#7a828c">~1s</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="20" y1="25" x2="20" y2="55"/>
+    <line x1="220" y1="25" x2="220" y2="55"/>
+    <line x1="420" y1="25" x2="420" y2="55"/>
+  </g>
+</svg>

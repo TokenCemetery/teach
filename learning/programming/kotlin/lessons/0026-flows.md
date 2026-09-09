@@ -56,6 +56,17 @@ The two sanctioned ways round it are worth knowing together, because the error m
 
 **`.flowOn()` is context-preserving, and that phrase is precise.** By default a cold flow runs in the same coroutine context as its collector. `.flowOn()` changes the context of the **upstream** flow only, leaving everything downstream in the caller's context. So in `flow { ... }.map { ... }.flowOn(Dispatchers.IO).collect { ... }`, the builder and the `map` run on IO, while the `collect` lambda runs wherever the caller was. A collector never has its context changed underneath it by an operator, which is what makes the guarantee usable on Android, where the collector may have to be on `Dispatchers.Main`.
 
+```mermaid
+flowchart LR
+    subgraph Upstream["upstream: runs on Dispatchers.IO"]
+    A["flow { }"] --> B["map { }"]
+    end
+    B --> D["collect { }"]
+    subgraph Downstream["downstream: runs on the caller's context"]
+    D
+    end
+```
+
 **Hot flows, in one paragraph.** A hot flow emits independently of collectors: it keeps emitting when nobody is listening, and multiple collectors share the same emissions instead of each starting a new execution. Its collectors are called **subscribers**. There are two kinds. `SharedFlow` broadcasts values to many subscribers, for events that happen over time such as messages or notifications, and can be configured with a `replay` count so a new subscriber immediately receives that many past emissions. `StateFlow` is a specialised `SharedFlow` that always holds the latest state value, which is what you want for state rather than events. A cold flow can be turned into a hot one with `shareIn`.
 
 The choice between them is the one to get right, and it is not about performance. It is a question about the values: does each collector need its own run of the work, or are they all looking at one stream of things that happen whether or not anyone is looking?

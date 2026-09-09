@@ -63,6 +63,8 @@ Two ordering rules follow from that table and both are enforced. At most one of 
 
 Many built-in types are already variant, `IEnumerable<out T>`, `IReadOnlyList<out T>` and `Func<out T>` among them. This is also the promise lesson 4 made: the `out` in `IEnumerable<out T>` is why a sequence of a derived type flows into a parameter typed for the base, and the position rule is the reason a type with both a getter and an `Add` cannot be variant at all.
 
+![Three rows comparing where T appears. IEnumerable of out T: T only in an output position, Current's getter, so it is covariant. Action of in T: T only in an input position, Invoke's parameter, so it is contravariant. IList of T: T in both Add's parameter and the indexer's getter, so it is invariant.](images/variance-positions.svg)
+
 **`static abstract` members, and why they are unusual.** An interface can declare `static abstract` and `static virtual` members for every member kind except fields, which lets it require that implementing types define operators or other static members. That is what makes generic algorithms able to specify number-like behaviour, and the .NET numeric interfaces such as `System.Numerics.INumber<TSelf>` are built from it.
 
 The mechanism is the part to remember, because it explains the odd shapes you will see. There is **no runtime dispatch** for these members, nothing analogous to a `virtual` method on a class: the compiler must resolve the call at compile time from type information it already has. Consequently they are almost exclusively declared in **generic** interfaces, and most such interfaces constrain a type parameter to implement the interface itself:

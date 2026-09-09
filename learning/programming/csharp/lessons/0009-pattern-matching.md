@@ -67,6 +67,17 @@ Positional patterns also work on **tuples**, which lets one `switch` match sever
 
 So the compiler is a strong safety net with one hole in it, and the documentation's own tip is the fix: to guarantee that a `switch` expression handles every input, give it an arm with the discard pattern. Reach for `_` deliberately in a switch over sequences, where nothing will remind you.
 
+```mermaid
+flowchart TD
+    A["input value"] --> B{"arm 1 pattern<br>matches?"}
+    B -- "yes" --> R1["arm 1's value"]
+    B -- "no" --> C{"arm 2 pattern<br>matches?"}
+    C -- "yes" --> R2["arm 2's value"]
+    C -- "no" --> D["... remaining arms,<br>in order"]
+    D --> E{"any arm<br>matched?"}
+    E -- "no" --> F["throws:<br>SwitchExpressionException"]
+```
+
 **Arm order is a compile-time question, not a style one.** Arms are considered in order, and an arm already covered by an earlier one is an error rather than dead code you might not notice: the compiler reports CS8510, the pattern is unreachable, naming the arm that already handled it. So `Car => ...` before `Sedan => ...` fails to build, while the reverse order compiles and both arms are reachable.
 
 That is worth contrasting with what pattern matching replaces. A chain of `if` and `else if` with type checks has exactly the same ordering hazard and no diagnostic at all: put the base-type check first and the derived branch is simply never taken, silently, forever. Moving that chain to a `switch` expression converts a silent logic bug into a build failure, which is the strongest argument for the feature and a better one than brevity.

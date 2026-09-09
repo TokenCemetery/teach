@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" width="560" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">Variance is decided by which positions a type parameter appears in</title>
+  <desc id="desc">Three rows. IEnumerable of out T is covariant because T appears only in an output position, the return type of a member producing a T. Action of in T is contravariant because T appears only in an input position, a method parameter. IList of T is invariant because T appears in both an input position, Add of T, and an output position, the indexer getter, so it can be neither covariant nor contravariant.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9">
+    <text x="20" y="30" fill="#7a828c">IEnumerable&lt;out T&gt;</text>
+    <text x="200" y="30" fill="#7a828c">T Current { get; }</text>
+    <text x="380" y="30" fill="#bf7d1a">output only &#8594; covariant</text>
+
+    <text x="20" y="90" fill="#7a828c">Action&lt;in T&gt;</text>
+    <text x="200" y="90" fill="#7a828c">void Invoke(T arg)</text>
+    <text x="380" y="90" fill="#bf7d1a">input only &#8594; contravariant</text>
+
+    <text x="20" y="160" fill="#7a828c">IList&lt;T&gt;</text>
+    <text x="200" y="150" fill="#7a828c">void Add(T item)</text>
+    <text x="200" y="166" fill="#7a828c">T this[int i] { get; }</text>
+    <text x="380" y="160" fill="#bf7d1a">input and output &#8594; invariant</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="20" y1="45" x2="540" y2="45"/>
+    <line x1="20" y1="105" x2="540" y2="105"/>
+  </g>
+</svg>

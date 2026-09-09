@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" width="560" height="210" role="img" aria-labelledby="title desc">
+  <title id="title">A with expression copies the reference, not the array it points to</title>
+  <desc id="desc">Two record instances, person and person2 created with a with expression that changes FirstName. Each has its own FirstName value, Ann and Bea, but both records' PhoneNumbers property points with an arrow at the very same shared array on the heap. Mutating that array through either record is visible through both.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="20">person</text>
+    <text x="300" y="20">person2 = person with { FirstName = "Bea" }</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <rect x="20" y="30" width="220" height="60" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="30" y="48" fill="#7a828c">FirstName: "Ann"</text>
+    <text x="30" y="64" fill="#7a828c">PhoneNumbers: ref</text>
+
+    <rect x="300" y="30" width="220" height="60" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="310" y="48" fill="#bf7d1a">FirstName: "Bea"</text>
+    <text x="310" y="64" fill="#bf7d1a">PhoneNumbers: ref</text>
+
+    <rect x="220" y="150" width="120" height="40" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="230" y="165" fill="#7a828c">string[] on heap</text>
+    <text x="230" y="180" fill="#7a828c">["555-1234"]</text>
+  </g>
+
+  <path d="M150,90 L260,150" stroke="#7a828c" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M410,90 L300,150" stroke="#bf7d1a" stroke-width="1.2" fill="none" marker-end="url(#arrow2)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7a828c"/>
+    </marker>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="205" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">FirstName differs (init-only, copied by with); PhoneNumbers is the same array in both, since with copies the reference</text>
+</svg>

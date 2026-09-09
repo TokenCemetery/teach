@@ -42,6 +42,14 @@ A deployment design that says "we chose Postgres, and RDS, because it's popular"
 
 **Managed versus self-hosted (lesson 9):** weigh the team's actual operational capacity to monitor and diagnose vacuum, replication lag, and index cost themselves against what a managed service would automate and what it would still leave them responsible for understanding, and check whether a required extension (pgvector, for a RAG-backed table) is actually supported by the specific managed offering being considered.
 
+```mermaid
+flowchart LR
+    A["durability + replication (stages 1, 3):<br>RPO -> sync/async choice"] --> D["defended deployment design"]
+    B["vacuum (stage 2):<br>per-table autovacuum tuning"] --> D
+    C["indexes (stage 4):<br>type + write cost, vector index sizing"] --> D
+    E["managed vs self-hosted (stage 5):<br>ops capacity vs automation, extension support"] --> D
+```
+
 ### A worked example, pulling from every stage
 
 A small team is building a chat application backed by a pgvector-based RAG pipeline, with limited operations experience and no dedicated database administrator. They need near-zero data loss if the primary fails (a tight RPO), but they're also latency-sensitive, since users are waiting on a live chat response.

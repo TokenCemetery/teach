@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" width="480" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">A managed service automates access and tooling, but the underlying mechanisms this workspace covers keep operating unchanged underneath it</title>
+  <desc id="desc">A two-column comparison. On the left, what a managed service automates: patching and minor version upgrades, automated backups with point-in-time recovery, and failure detection paired with automated standby promotion. On the right, what still exists and still needs understanding underneath, unchanged: bloat and autovacuum tuning, replication receive and replay lag diagnosis, and every index's write-time maintenance cost. A managed service changes access and tooling, not whether these mechanisms happen.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="110" y="14" text-anchor="middle">what managed automates</text>
+    <text x="370" y="14" text-anchor="middle">what still exists underneath, unchanged</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="20" y="30" width="180" height="30" rx="3"/>
+    <rect x="20" y="72" width="180" height="30" rx="3"/>
+    <rect x="20" y="114" width="180" height="30" rx="3"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="110" y="46" text-anchor="middle">patching + minor version</text>
+    <text x="110" y="55" text-anchor="middle">upgrades</text>
+    <text x="110" y="88" text-anchor="middle">automated backups</text>
+    <text x="110" y="97" text-anchor="middle">+ point-in-time recovery</text>
+    <text x="110" y="130" text-anchor="middle">failure detection +</text>
+    <text x="110" y="139" text-anchor="middle">automated promotion</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <rect x="280" y="30" width="180" height="30" rx="3"/>
+    <rect x="280" y="72" width="180" height="30" rx="3"/>
+    <rect x="280" y="114" width="180" height="30" rx="3"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="370" y="46" text-anchor="middle">bloat + autovacuum</text>
+    <text x="370" y="55" text-anchor="middle">tuning (lessons 2-3)</text>
+    <text x="370" y="88" text-anchor="middle">receive vs replay lag</text>
+    <text x="370" y="97" text-anchor="middle">diagnosis (lesson 6)</text>
+    <text x="370" y="130" text-anchor="middle">index write-time</text>
+    <text x="370" y="139" text-anchor="middle">maintenance cost (lessons 7-8)</text>
+  </g>
+
+  <text x="240" y="170" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">access and tooling change</text>
+  <text x="240" y="182" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">the underlying mechanisms don't</text>
+</svg>

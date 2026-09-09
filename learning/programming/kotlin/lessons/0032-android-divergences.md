@@ -55,6 +55,13 @@ On a server nobody cares which thread a handler runs on, so the wrapping tends t
 
 **Composition lifetime is not lifecycle lifetime.** `LaunchedEffect` is tied to the composition, not to the host `Activity`'s `Lifecycle`, and the consequence is easy to miss: it can run while the composable is not visible to the user. The documentation's own example is a pager composing neighbouring pages off-screen to prepare for a swipe. So a side effect that depends on the user actually seeing the screen, an analytics event being the obvious one, does not belong in a `LaunchedEffect`; a lifecycle-aware API such as `LifecycleEventEffect` is what that needs.
 
+```mermaid
+flowchart TD
+    A["pager composes a neighbouring<br>page off-screen, for swipe readiness"] --> B["that page's composable<br>enters the composition"]
+    B --> C["its LaunchedEffect starts,<br>tied to the composition"]
+    C --> D["analytics event fires,<br>though the user never saw the page"]
+```
+
 That is the shape of the two Android traps together. Both are about a lifetime: one about which lifetime a scope follows, and one about whether "on screen" and "in the composition" mean the same thing. Neither is a language question, which is why nothing in stages 1 to 6 could have warned you.
 
 **One naming note.** Android KTX is the collection of extensions that make the platform APIs read idiomatically, by leveraging Kotlin's own language features, and the `ViewModel` coroutine extensions used above come from `lifecycle-viewmodel-ktx`. When Android documentation says an API is "KTX", it means an extension layer over an existing Java API rather than a new API, which is lesson 13 applied at platform scale.

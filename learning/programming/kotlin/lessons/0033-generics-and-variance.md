@@ -50,6 +50,8 @@ The Java mnemonic still applies, and the docs quote it from Effective Java: Bloc
 
 This is also the answer to warm-up 3. Kotlin's `List` is declared with an `out` element type, which is why `List<String>` simply is a `List<Any>`, while `MutableList` has an `add` and therefore cannot be, so it stays invariant. The variance you have been relying on since lesson 5 was declared for you.
 
+![EventSource of out T only returns T, an output position, so it is covariant. EventSink of in T only accepts T, an input position, so it is contravariant. Cache of T does both, so it stays invariant.](images/variance-directions.svg)
+
 **Type projections are the use-site tool, for when declaration-site is impossible.** Some classes genuinely both produce and consume: `Array<T>` has a `get` and a `set`, so it can be neither co- nor contravariant, and consequently `Array<Int>` is not a subtype of `Array<Any>`. To pass one anyway, project the parameter at the point of use: `fun copy(from: Array<out Any>, to: Array<Any>)`. `from` is now a restricted array on which only the methods returning `T` can be called, which corresponds to Java's `extends`-bounded wildcard while being, in the docs' words, slightly simpler. `in` projects the same way for the write-only direction.
 
 **Star projections, for when you know nothing about the argument.** `Foo<*>` gives a projection that every concrete instantiation is a subtype of, and what it means depends on how the parameter was declared:

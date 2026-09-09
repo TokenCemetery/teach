@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">A pure Kotlin project omits the common root package from its directory structure</title>
+  <desc id="desc">For the class com.acme.billing.invoice.pdf.Renderer, a pure Kotlin project puts the file at invoice/pdf/Renderer.kt under the source root, omitting the com/acme/billing root package directories. A mixed Kotlin and Java project instead mirrors the full package path, com/acme/billing/invoice/pdf/Renderer.kt, the same layout Java itself uses.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="20">package com.acme.billing.invoice.pdf</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <text x="20" y="45" fill="#bf7d1a">pure Kotlin project:</text>
+    <rect x="20" y="52" width="220" height="24" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="30" y="68" fill="#bf7d1a">invoice/pdf/Renderer.kt</text>
+
+    <text x="20" y="105" fill="#7a828c">mixed Kotlin + Java project:</text>
+    <rect x="20" y="112" width="360" height="24" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="30" y="128" fill="#7a828c">com/acme/billing/invoice/pdf/Renderer.kt</text>
+  </g>
+
+  <text x="20" y="155" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">The common root package (com/acme/billing) is omitted only in a pure Kotlin project.</text>
+</svg>

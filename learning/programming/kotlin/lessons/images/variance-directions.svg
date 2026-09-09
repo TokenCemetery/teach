@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="560" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">Variance is a statement about direction: where T is produced or consumed</title>
+  <desc id="desc">EventSource of out T only returns T from nextT, an output position, so it is covariant. EventSink of in T only accepts T through send, an input position, so it is contravariant. Cache of T both returns T from get and accepts T through put, both positions, so it stays invariant; a function that only reads it can use a use-site out projection, and one that only writes can use in.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9">
+    <text x="20" y="30" fill="#7a828c">EventSource&lt;out T&gt;</text>
+    <text x="220" y="30" fill="#7a828c">fun nextT(): T</text>
+    <text x="400" y="30" fill="#bf7d1a">output only &#8594; covariant</text>
+
+    <text x="20" y="90" fill="#7a828c">EventSink&lt;in T&gt;</text>
+    <text x="220" y="90" fill="#7a828c">fun send(item: T)</text>
+    <text x="400" y="90" fill="#bf7d1a">input only &#8594; contravariant</text>
+
+    <text x="20" y="160" fill="#7a828c">Cache&lt;T&gt;</text>
+    <text x="220" y="150" fill="#7a828c">fun get(): T</text>
+    <text x="220" y="166" fill="#7a828c">fun put(item: T)</text>
+    <text x="400" y="160" fill="#bf7d1a">both &#8594; invariant</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="20" y1="45" x2="540" y2="45"/>
+    <line x1="20" y1="105" x2="540" y2="105"/>
+  </g>
+</svg>

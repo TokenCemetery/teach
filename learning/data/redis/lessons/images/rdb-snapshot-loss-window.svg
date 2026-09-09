@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" width="480" height="140" role="img" aria-labelledby="title desc">
+  <title id="title">RDB's data-loss window is everything written between the last successful snapshot and a crash</title>
+  <desc id="desc">A timeline with three scheduled snapshots, S1, S2, and S3, evenly spaced. A crash occurs between S2 and S3. The region between S2 and the crash is shaded, representing every write made in that interval, which is lost, since restoring after the crash only recovers the dataset as it existed at S2, the last successful snapshot.</desc>
+
+  <line x1="40" y1="80" x2="440" y2="80" stroke="#7a828c" stroke-width="1.5"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <circle cx="100" cy="80" r="4" fill="#7a828c"/>
+    <text x="100" y="65" text-anchor="middle">S1</text>
+    <circle cx="220" cy="80" r="4" fill="#7a828c"/>
+    <text x="220" y="65" text-anchor="middle">S2</text>
+    <circle cx="340" cy="80" r="4" fill="#7a828c"/>
+    <text x="340" y="65" text-anchor="middle">S3</text>
+  </g>
+
+  <rect x="220" y="72" width="60" height="16" fill="#bf7d1a" fill-opacity="0.3"/>
+  <line x1="280" y1="60" x2="280" y2="100" stroke="#bf7d1a" stroke-width="2"/>
+  <text x="280" y="50" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">crash</text>
+
+  <text x="250" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">writes since S2 are lost</text>
+  <text x="250" y="127" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">restart recovers the dataset as of S2 only</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="480" height="160" role="img" aria-labelledby="title desc">
+  <title id="title">appendfsync's setting decides AOF's loss window, and even Redis's strongest common setting isn't automatically Postgres's default</title>
+  <desc id="desc">Four horizontal bars, not to a strict numeric scale, comparing loss windows. appendfsync=always has essentially no loss window, fsyncing every write, at the cost of per-write latency. appendfsync=everysec, Redis's default, has a bounded window of up to roughly one second. appendfsync=no has an unpredictable window, potentially much larger, shown with a jagged edge since it depends entirely on operating-system buffering. Postgres's default synchronous_commit=on has essentially no loss window for a reported-committed transaction, comparable to Redis's always setting, not its default.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="10" y="24" text-anchor="start">appendfsync=always</text>
+    <text x="10" y="64" text-anchor="start">appendfsync=everysec (default)</text>
+    <text x="10" y="104" text-anchor="start">appendfsync=no</text>
+    <text x="10" y="144" text-anchor="start">Postgres synchronous_commit=on (default)</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1">
+    <line x1="230" y1="18" x2="230" y2="150" stroke-opacity="0.3"/>
+  </g>
+
+  <rect x="230" y="12" width="6" height="14" fill="#bf7d1a" fill-opacity="0.4" stroke="#bf7d1a"/>
+  <text x="245" y="23" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">~0 (per-write fsync, costs latency)</text>
+
+  <rect x="230" y="52" width="45" height="14" fill="#bf7d1a" fill-opacity="0.4" stroke="#bf7d1a"/>
+  <text x="280" y="63" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">up to ~1 second</text>
+
+  <path d="M230,92 L400,92 L390,86 L400,92 L390,98 L410,92 L400,86" fill="none" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="230" y="86" width="170" height="12" fill="#bf7d1a" fill-opacity="0.25" stroke="none"/>
+  <text x="410" y="103" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">unpredictable, can be far larger</text>
+
+  <rect x="230" y="132" width="6" height="14" fill="#7a828c" fill-opacity="0.4" stroke="#7a828c"/>
+  <text x="245" y="143" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">~0, this is the reference point</text>
+</svg>

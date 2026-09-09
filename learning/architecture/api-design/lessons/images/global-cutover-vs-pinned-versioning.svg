@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190" width="480" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">A global cutover forces every client to migrate at once; per-key pinned versioning lets each client migrate on its own schedule</title>
+  <desc id="desc">Two side-by-side timelines, each showing three client integrations, A, B, and C. On the left, a global cutover: all three clients run on v1 until one fixed date, then all switch to v2 simultaneously, regardless of whether each has done the work to handle it. On the right, per-key pinned versioning: client A stays on v1 the whole time, client B migrates to v2 partway through on its own schedule, and client C migrates even later, each choosing when to move independently of the others.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="110" y="14" text-anchor="middle">global cutover: everyone forced at once</text>
+    <text x="365" y="14" text-anchor="middle">pinned versioning: each migrates on its own schedule</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="15" y="42" text-anchor="start">A</text>
+    <text x="15" y="82" text-anchor="start">B</text>
+    <text x="15" y="122" text-anchor="start">C</text>
+    <text x="270" y="42" text-anchor="start">A</text>
+    <text x="270" y="82" text-anchor="start">B</text>
+    <text x="270" y="122" text-anchor="start">C</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="30" y="32" width="120" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="30" y="72" width="120" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="30" y="112" width="120" height="18" fill="#7a828c" fill-opacity="0.25"/>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1">
+    <rect x="150" y="32" width="70" height="18" fill="#bf7d1a" fill-opacity="0.3"/>
+    <rect x="150" y="72" width="70" height="18" fill="#bf7d1a" fill-opacity="0.3"/>
+    <rect x="150" y="112" width="70" height="18" fill="#bf7d1a" fill-opacity="0.3"/>
+  </g>
+  <line x1="150" y1="26" x2="150" y2="136" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="150" y="150" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">forced cutover date: all move together</text>
+
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="285" y="32" width="180" height="18" fill="#7a828c" fill-opacity="0.25"/>
+  </g>
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="285" y="72" width="80" height="18" fill="#7a828c" fill-opacity="0.25"/>
+  </g>
+  <rect x="365" y="72" width="100" height="18" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1"/>
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="285" y="112" width="130" height="18" fill="#7a828c" fill-opacity="0.25"/>
+  </g>
+  <rect x="415" y="112" width="50" height="18" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1"/>
+
+  <text x="285" y="150" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">A: stays on v1</text>
+  <text x="375" y="150" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">B: migrates partway through</text>
+  <text x="440" y="163" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">C: migrates later still</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">
+    <text x="90" y="163" text-anchor="middle">v1</text>
+    <text x="185" y="163" text-anchor="middle" fill="#bf7d1a">v2</text>
+  </g>
+</svg>

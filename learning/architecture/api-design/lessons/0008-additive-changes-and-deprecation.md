@@ -42,6 +42,15 @@ The opposite direction, removing a field, changing what a field means, changing 
 
 **Deprecating** a field or endpoint means committing to two things explicitly: that it still works exactly as before for now, and a real, stated point (a date, a version, an announced cutoff) after which it may stop working or behave differently. A deprecation notice that never actually gets enforced, a field marked "deprecated" for years with no real removal plan, is worse than no notice at all: it trains clients to ignore deprecation warnings entirely, since the label has never once corresponded to an actual consequence. A deprecation notice a client can trust is one an API is actually willing to act on.
 
+```mermaid
+flowchart TD
+    A["planned API change"] --> B{"additive?<br>(new optional field, new endpoint, new enum value)"}
+    B -->|"yes"| C["ship directly:<br>old clients ignore what's new"]
+    B -->|"no: remove, rename, or change meaning"| D["mark deprecated:<br>old behavior keeps working for now"]
+    D --> E["announce a real, enforced timeline"]
+    E --> F["remove only after the timeline passes"]
+```
+
 ### Signaling deprecation so a client can actually respond
 
 A deprecation should be observable, not just written in a changelog nobody reads: a response header (`Deprecation: true`, or a date), a field explicitly marked deprecated in the schema (proto3 supports a `deprecated = true` field option; OpenAPI has an equivalent), or a Problem Details `type` warning included alongside an otherwise-successful response. The goal is that a client's own tooling, not just a human reading documentation, can detect "this thing I'm using is going away" and flag it, the same way a compiler flags a deprecated function call, rather than relying on every integrating team to have read and remembered a changelog entry from months earlier.

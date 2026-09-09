@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 190" width="520" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">Three GPU-scale mechanisms, and what replaces each at CPU/edge scale</title>
+  <desc id="desc">A three-row comparison. Batching: on a GPU, continuous batching amortizes memory bandwidth across hundreds of concurrent requests; at CPU/edge scale, with only single digits to low tens of concurrent requests, threads splitting one sequence's compute across cores replace it. Cache management: on a GPU, PagedAttention manages a large, constantly changing shared pool; at CPU/edge scale, a simple contiguous per-sequence cache is adequate. Quantization timing: on a GPU with vLLM, the scheme is a serve-time flag chosen at launch; on llama.cpp, the decision was already locked in when a specific GGUF quant level was picked, before the server ever starts.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="140" y="16" text-anchor="middle">GPU (vLLM)</text>
+    <text x="400" y="16" text-anchor="middle">CPU / edge (llama.cpp)</text>
+  </g>
+  <line x1="260" y1="8" x2="260" y2="182" stroke="#7a828c" stroke-opacity="0.3"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5">
+    <text x="10" y="38" fill="#7a828c" font-weight="bold">batching</text>
+    <text x="20" y="50" fill="#7a828c">continuous batching amortizes</text>
+    <text x="20" y="60" fill="#7a828c">bandwidth across 100s of requests</text>
+    <text x="270" y="50" fill="#bf7d1a">threads split one sequence's</text>
+    <text x="270" y="60" fill="#bf7d1a">compute across CPU cores instead</text>
+
+    <line x1="10" y1="70" x2="510" y2="70" stroke="#7a828c" stroke-opacity="0.2"/>
+
+    <text x="10" y="88" fill="#7a828c" font-weight="bold">cache management</text>
+    <text x="20" y="100" fill="#7a828c">PagedAttention manages a large,</text>
+    <text x="20" y="110" fill="#7a828c">constantly-changing shared pool</text>
+    <text x="270" y="100" fill="#bf7d1a">simple contiguous per-sequence</text>
+    <text x="270" y="110" fill="#bf7d1a">cache is adequate at this scale</text>
+
+    <line x1="10" y1="120" x2="510" y2="120" stroke="#7a828c" stroke-opacity="0.2"/>
+
+    <text x="10" y="138" fill="#7a828c" font-weight="bold">quantization timing</text>
+    <text x="20" y="150" fill="#7a828c">--quantization is a serve-time</text>
+    <text x="20" y="160" fill="#7a828c">flag, chosen when the server starts</text>
+    <text x="270" y="150" fill="#bf7d1a">locked in earlier, when a GGUF</text>
+    <text x="270" y="160" fill="#bf7d1a">quant level was picked or produced</text>
+  </g>
+</svg>

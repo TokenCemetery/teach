@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190" width="480" height="190" role="img" aria-labelledby="title desc">
+  <title id="title">A Hugging Face checkpoint's separate files versus one bundled GGUF file</title>
+  <desc id="desc">Two layouts side by side. On the left, a Hugging Face checkpoint as three separate files with gaps between them: weights, a config.json describing the architecture, and a tokenizer file. On the right, a single GGUF file with the same three pieces, weights, tokenizer, and metadata, bundled together inside one file boundary with no gaps, so the whole model ships and loads as one self-contained unit.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="20" y="16">Hugging Face checkpoint: several files</text>
+    <text x="270" y="16">GGUF: one file</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.6" stroke-dasharray="3 2" fill="none">
+    <rect x="20" y="26" width="180" height="24" rx="2"/>
+    <rect x="20" y="60" width="180" height="24" rx="2"/>
+    <rect x="20" y="94" width="180" height="24" rx="2"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="30" y="41">weights.safetensors</text>
+    <text x="30" y="75">config.json</text>
+    <text x="30" y="109">tokenizer.json</text>
+  </g>
+
+  <rect x="270" y="26" width="190" height="92" rx="3" fill="#bf7d1a" fill-opacity="0.08" stroke="#bf7d1a"/>
+  <g stroke="#bf7d1a" stroke-opacity="0.5" fill="none">
+    <rect x="280" y="36" width="170" height="22" rx="1"/>
+    <rect x="280" y="62" width="170" height="22" rx="1"/>
+    <rect x="280" y="88" width="170" height="22" rx="1"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">
+    <text x="290" y="50">weights</text>
+    <text x="290" y="76">tokenizer</text>
+    <text x="290" y="102">metadata</text>
+  </g>
+
+  <text x="20" y="148" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">A GPU server's existing Python/HF stack</text>
+  <text x="20" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">reassembles these at load time.</text>
+
+  <text x="270" y="148" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">An edge device ships and loads this one</text>
+  <text x="270" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">file with no separate stack required.</text>
+</svg>

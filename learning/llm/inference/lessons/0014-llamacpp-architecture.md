@@ -38,6 +38,14 @@ llama.cpp is built on **ggml**, a C tensor library written to have no external d
 
 ggml supports multiple **backends**, CPU (using SIMD instructions like AVX2 or NEON depending on the processor), CUDA, Metal, and Vulkan among others, all implementing the same graph interface. This is the architectural reason llama.cpp can run the same GGUF file on a phone's ARM CPU, a Mac's Metal GPU, and a Raspberry Pi, from one codebase with no Python runtime required, where vLLM's design is built around CUDA specifically and cannot run without an NVIDIA GPU at all. Portability across hardware, not raw GPU throughput, is what ggml's architecture optimizes for.
 
+```mermaid
+flowchart TD
+    A["ggml computation graph<br>(built once per forward pass)"] --> B["CPU backend<br>(AVX2 / NEON)"]
+    A --> C["CUDA backend"]
+    A --> D["Metal backend"]
+    A --> E["Vulkan backend"]
+```
+
 ### Threads take the place batching held on a GPU
 
 On a GPU server, lesson 4's batching amortizes memory-bandwidth cost across many concurrent sequences sharing the same GPU. A CPU has no equivalent of thousands of parallel GPU cores to batch requests across; instead, llama.cpp's main lever is **threads**, splitting a single sequence's matrix multiplies across the CPU's own cores. The `--threads` flag controls how many CPU threads are used for this, and the number that helps is bounded by the CPU's physical core count, not by how many concurrent requests are being served the way `--max-num-seqs` was. Threading speeds up one sequence's own compute; it is not the same lever as GPU batching, which spreads memory traffic across multiple sequences at once.

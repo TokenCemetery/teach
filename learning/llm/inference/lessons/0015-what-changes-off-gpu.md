@@ -46,6 +46,8 @@ curl http://localhost:8080/v1/chat/completions \
 
 The request and response shape is familiar. What changes is everything underneath it.
 
+![A three-row comparison. Batching: on a GPU, continuous batching amortizes memory bandwidth across hundreds of concurrent requests; at CPU/edge scale, with only single digits to low tens of concurrent requests, threads splitting one sequence's compute across cores replace it. Cache management: on a GPU, PagedAttention manages a large, constantly changing shared pool; at CPU/edge scale, a simple contiguous per-sequence cache is adequate. Quantization timing: on a GPU with vLLM, the scheme is a serve-time flag chosen at launch; on llama.cpp, the decision was already locked in when a specific GGUF quant level was picked, before the server ever starts.](images/gpu-vs-cpu-edge-mechanisms.svg)
+
 ### Batching matters less at this scale
 
 vLLM's continuous batching (lessons 4 and 5) exists to amortize a GPU's memory-bandwidth cost across hundreds of concurrent strangers' requests. A CPU has no equivalent of thousands of parallel cores to spread that cost across; llama.cpp's server does support a handful of parallel request slots, but at a scale of single digits to low tens, not hundreds. This isn't a missing feature: an edge deployment's typical workload, one device serving its own user, rarely has hundreds of concurrent requests to batch in the first place. Heavy batching solves a problem CPU/edge serving usually doesn't have.

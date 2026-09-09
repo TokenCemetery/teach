@@ -46,6 +46,13 @@ Kotlin generates, for every enum class, an `entries` property (a specialized, re
 
 An enum fits a fixed set of constants that are fundamentally the same *kind* of thing, differing only in which specific value or behavior they represent (a day of the week, a traffic light color, a fixed set of named strategies), where every constant is a singleton, exactly one instance ever exists per constant. A sealed class fits when different variants need to carry genuinely different *shapes* of data, not just different values of the same shape (a network result that's `Loading` with no payload, `Success(data: T)` carrying a typed payload, or `Failure(error: Throwable)` carrying an exception, three structurally different cases, not three instances of the same structure). Reaching for an enum with awkward, only-relevant-to-some-constants extra fields is usually the signal that a sealed class actually fits the data better.
 
+```mermaid
+flowchart TD
+    A["modelling a fixed<br>set of variants"] --> B{"all the same shape,<br>one singleton instance each?"}
+    B -- "yes" --> C["enum"]
+    B -- "no, different data<br>shapes per variant" --> D["sealed class"]
+```
+
 ## Practice
 
 1. ▢ Why can `enum class Color(val rgb: Int) { RED(0xFF0000), GREEN(0x00FF00), BLUE(0x0000FF) }` give each constant its own distinct `rgb` value, when a simpler language's enum is just a named integer?

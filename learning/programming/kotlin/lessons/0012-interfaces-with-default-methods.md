@@ -42,6 +42,15 @@ An interface can derive from another interface, both inheriting (and optionally 
 
 When a class implements two interfaces that each provide their own default implementation of the same method, Kotlin doesn't pick one automatically or complain vaguely; it forces the implementing class to resolve the conflict explicitly. `class D : A, B { override fun foo() { super<A>.foo(); super<B>.foo() } }` uses `super<Type>.method()` to call a specific interface's implementation by name, and the class is required to provide its own `override` deciding what actually happens, whether that means calling one, both, or neither of the inherited implementations. This is a deliberate design choice: silently picking one parent's implementation over another (a common ambiguity in languages with multiple inheritance) is exactly the kind of "compiles but hides a real decision" trap this mission's Java-habit vocabulary keeps naming, so Kotlin makes the conflict a compile error demanding an explicit answer instead.
 
+```mermaid
+flowchart TD
+    A["interface A: foo() prints A"] --> D["class D : A, B"]
+    B["interface B: foo() prints B"] --> D
+    D --> E{"D overrides foo()?"}
+    E -- "no" --> F["compile error:<br>conflicting inherited members"]
+    E -- "yes" --> G["D.foo() explicitly calls<br>super&lt;A&gt;.foo(), super&lt;B&gt;.foo(),<br>or neither"]
+```
+
 ### Why this is the stage's actual capstone: modelling without reaching for class inheritance first
 
 An interface with default methods lets unrelated types share behavior without needing a common base class, or a class-per-thing hierarchy where every shared capability forces a new supertype into the inheritance chain. Combined with lessons 7-11 (a plain class only when real behavior beyond storing data is needed; a data class for holding data; a sealed class for closed, differently-shaped variants; an enum for a closed set of same-shape constants; an object for a singleton), an interface is the tool for "these otherwise-unrelated types all need to do this one thing," resolved by composition (implementing an interface) rather than by inheritance (extending a shared, possibly ill-fitting base class).

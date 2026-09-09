@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 150" width="480" height="150" role="img" aria-labelledby="title desc">
+  <title id="title">Only primary-constructor properties participate in a data class's generated members</title>
+  <desc id="desc">data class Person(val name: String) { var age: Int = 0 }. name, declared in the primary constructor, participates in the generated equals, hashCode, toString, componentN and copy. age, declared in the class body, is invisible to all of them: two Person instances with the same name but different age still compare equal.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="20">data class Person(</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9">
+    <rect x="20" y="30" width="150" height="24" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="30" y="46" fill="#bf7d1a">val name: String</text>
+  </g>
+
+  <text x="180" y="46" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">) {</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9">
+    <rect x="20" y="60" width="150" height="24" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="30" y="76" fill="#7a828c">var age: Int = 0</text>
+  </g>
+
+  <text x="180" y="76" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">}</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <text x="240" y="46" fill="#bf7d1a">in equals, hashCode, toString, componentN, copy</text>
+    <text x="240" y="76" fill="#7a828c">invisible to all of them</text>
+  </g>
+
+  <text x="20" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">Two Person instances with the same name but different age still compare == equal,</text>
+  <text x="20" y="135" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">since age never participates in the generated equals().</text>
+</svg>

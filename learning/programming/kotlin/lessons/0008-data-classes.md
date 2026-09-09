@@ -38,6 +38,8 @@ Marking a class `data class User(val name: String, val age: Int)` makes the comp
 
 The compiler only uses properties declared *inside the primary constructor* for all four generated members; a property declared in the class body (`data class Person(val name: String) { var age: Int = 0 }`) is invisible to `equals()`, `hashCode()`, `toString()`, `componentN()`, and `copy()`. This has a real, non-obvious consequence: two `Person` instances with the same `name` but different `age` values are considered `==`-equal, since `age` was never a primary-constructor property and never participates in equality at all. This is exactly the kind of precise rule worth internalizing rather than assuming "all the class's properties" are covered.
 
+![data class Person(val name: String) { var age: Int = 0 }. name, declared in the primary constructor, participates in equals, hashCode, toString, componentN and copy. age, declared in the class body, is invisible to all of them.](images/data-class-property-participation.svg)
+
 ### Data classes have real requirements, not just the `data` keyword
 
 The primary constructor must have at least one parameter, and every primary constructor parameter must be `val` or `var` (a plain, unmarked parameter, per lesson 7, isn't a property and couldn't participate in generation anyway). Data classes can't be `abstract`, `open`, `sealed`, or `inner`. Providing your own `componentN()` or `copy()` implementations isn't allowed; if you need genuinely custom `equals()`, `hashCode()`, or `toString()` behavior, you write those explicitly in the class body and the compiler skips generating them in favor of your version, but `componentN()` and `copy()` have no such override path.

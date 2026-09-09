@@ -38,6 +38,13 @@ A **sealed class** (or **sealed interface**) restricts inheritance: every direct
 
 Lesson 6 established that `when`-as-expression requires exhaustiveness, ordinarily satisfied with an `else` branch covering anything not explicitly matched. Matching on a sealed type changes this: since the compiler knows every possible subclass, a `when` covering every one of them is exhaustive *without* an `else` at all, and the compiler verifies this by checking the sealed hierarchy's actual, closed member list against the branches written. If a new subclass is later added to the sealed hierarchy, every `when` over that type that lacks an `else` immediately fails to compile until the new case is handled, turning "someone forgot to update this `when`" from a silent runtime gap into a compile error at the exact place it needs fixing.
 
+```mermaid
+flowchart LR
+    A["sealed class Result:<br>Loading, Success, Failure"] --> B["when(result) matches<br>all 3, no else needed"]
+    A --> C["new subclass Cancelled<br>added later"]
+    C --> D["existing when, still<br>missing Cancelled:<br>fails to compile"]
+```
+
 ### This is the same shape of guarantee null safety gave nullability
 
 Before sealed classes, modelling a fixed set of possible states (a network request that's loading, succeeded, or failed) with an open class hierarchy or an exception-based signal leaves handling every case as a manual discipline: nothing stops a developer from forgetting the "failed" branch, the same way nothing in Java stops a developer from forgetting a null check. Sealing the hierarchy moves that discipline into the type system, exactly the way `String?` moved "could this be null" out of a runtime surprise. A sealed class used with `when` is the mission's clearest example of "type-safe design," modelling a domain so the compiler itself enforces every case is handled, not the developer's memory.

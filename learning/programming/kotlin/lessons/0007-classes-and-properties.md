@@ -38,6 +38,15 @@ Java's convention for exposing a field safely is a private field plus a public g
 
 The primary source opens with an explicit recommendation: before writing a class from scratch, consider a data class if the goal is just storing data (lesson 8), or an extension function (lesson 13) if the goal is adding behavior to an existing type. This isn't a stylistic footnote; it's the mission's "reaching for a class-per-thing hierarchy" habit named directly by Kotlin's own documentation as something to actively avoid defaulting to. A plain class is the right tool specifically when a type needs real, non-generated behavior beyond storing values, not the default starting point for every new type.
 
+```mermaid
+flowchart TD
+    A["need a new type?"] --> B{"just storing data?"}
+    B -- "yes" --> C["data class (8)"]
+    B -- "no" --> D{"adding behavior to<br>an existing type?"}
+    D -- "yes" --> E["extension function (13)"]
+    D -- "no" --> F["a plain class"]
+```
+
 ### A custom getter or setter replaces the default without changing how it's called
 
 A property's default getter/setter can be overridden to run custom logic: `val area: Int get() = width * height` computes a value on every access rather than storing it, and `var name: String = ""; set(value) { field = value.trim() }` validates or transforms on assignment. `field` inside a custom accessor refers to the **backing field**, the actual storage location; using it explicitly (rather than referring to the property name itself, which would recurse infinitely into the accessor) is what lets a custom accessor still store or read the underlying value. Crucially, the call site (`person.area`, `person.name = "Ada "`) looks identical whether the property is a simple stored value or backed by custom logic, exactly the same "syntax stays uniform, behavior underneath can differ" pattern lesson 4 described for basic types.

@@ -46,6 +46,17 @@ Lamport's paper defines the **happens-before relation** to describe when we can 
 
 A **logical clock** (a Lamport clock) is a counter each process keeps, incremented on every local event, and attached to every message it sends; a process receiving a message sets its own counter to one more than the higher of its current value and the message's attached value. This produces a number for every event such that if A happens-before B, A's logical clock value is guaranteed to be lower than B's. It does not run on wall-clock time, doesn't require any two machines' clocks to agree, and gives exactly the ordering guarantee happens-before actually promises, no more and no less: it cannot tell you which of two truly concurrent events "really" came first, because there is no such fact to tell.
 
+```mermaid
+sequenceDiagram
+    participant P1
+    participant P2
+    Note over P1: local event, clock=1
+    Note over P1: local event, clock=2
+    P1->>P2: message (attached clock=2)
+    Note over P2: local event, clock=1
+    Note over P2: receive: max(1,2)+1, clock=3
+```
+
 ## Practice
 
 1. ▢ Why can't NTP-synchronized clocks be trusted to order events across two different machines, even though NTP actively works to keep them in sync?

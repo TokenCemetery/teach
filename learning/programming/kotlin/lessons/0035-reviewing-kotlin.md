@@ -44,6 +44,14 @@ That the reference will not be reassigned, and nothing more. The object on the o
 
 A comment with all four is a fact the author can check. A comment with only the first and last is a preference, and it is why review threads go in circles. When the answer is a judgement rather than a mechanism, say what it rests on and name what would change it, which converts an argument into a decision somebody can make.
 
+```mermaid
+flowchart TD
+    A["a habit that compiles"] --> B["name the mechanism<br>it actually uses"]
+    B --> C["name the consequence<br>that follows"]
+    C --> D["name the cheaper<br>alternative"]
+    D --> E["a review comment:<br>a fact, not a preference"]
+```
+
 **The arc, turned into a checklist.** Each row is a habit that compiles, the cost it hides, and the lesson that explains the mechanism if the author wants it.
 
 |Habit that compiles|What it is costing|Lesson|

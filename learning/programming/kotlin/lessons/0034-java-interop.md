@@ -40,6 +40,12 @@ Because top-level functions belong to no class, so the JVM compiles them into st
 
 **The boundary is asymmetric, and that is the whole lesson.** Crossing from Java into Kotlin costs you **nullability information**. Crossing from Kotlin into Java costs you **Kotlin's conveniences**. Both directions work without ceremony, which is exactly why the losses are easy to miss.
 
+```mermaid
+flowchart LR
+    A["Java code"] -->|"into Kotlin:<br>loses nullability info"| B["Kotlin code"]
+    B -->|"into Java:<br>loses defaults, checked<br>exceptions, top-level fns"| A
+```
+
 ### Java into Kotlin: you lose nullability
 
 Pretty much all Java code can be called with no trouble, and the friction is concentrated in one place: Kotlin cannot know whether an unannotated Java method may return null, so the result is a platform type. Platform types cannot be written in Kotlin source at all, there is no syntax for them, but the compiler and IDE need to show them, so there is a mnemonic notation you will meet in error messages and tooltips ([Calling Java from Kotlin](https://kotlinlang.org/docs/java-interop.html)):

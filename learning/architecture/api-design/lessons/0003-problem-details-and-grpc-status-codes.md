@@ -46,6 +46,14 @@ gRPC uses its own status code set (`OK`, `CANCELLED`, `INVALID_ARGUMENT`, `NOT_F
 
 The mission's actual requirement is a single error model conceptually consistent across REST/HTTP and gRPC, not identical wire formats (they can't be identical; the transports differ). The pattern: define a small, stable set of problem-type identifiers (or gRPC error-detail messages, via the `google.rpc.Status` extension mechanism) that mean the same thing regardless of transport, mapped to the appropriate status code on each side (`INVALID_ARGUMENT` in gRPC maps naturally to `400` with a Problem Details `type` describing the same validation failure over HTTP). A client integrating with either transport should be able to branch on the same conceptual error, insufficient funds, resource not found, rate limited, using whichever transport-native mechanism carries that identifier.
 
+```mermaid
+flowchart TD
+    A["conceptual error: insufficient funds"] --> B["HTTP: 4xx status +<br>Problem Details type=.../insufficient-funds"]
+    A --> C["gRPC: FAILED_PRECONDITION +<br>google.rpc.Status detail"]
+    B --> D["client branches on the same<br>conceptual identifier either way"]
+    C --> D
+```
+
 ## Practice
 
 1. ▢ What specific problem does RFC 9457's Problem Details format solve that a bare HTTP status code doesn't?

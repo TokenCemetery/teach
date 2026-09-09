@@ -46,6 +46,16 @@ The `1xx`/`2xx`/`3xx`/`4xx`/`5xx` classes each carry a general meaning (informat
 
 A method being idempotent (`GET`, `PUT`, `DELETE`) means repeating the same request has the same effect as making it once; this is a property of the *method*, defined by RFC 9110, not of any particular status code returned. A `201 Created` in response to a `POST` signals a new resource was created, and `POST` is *not* idempotent by default, meaning retrying a timed-out `POST` risks creating the resource twice unless the API separately provides an idempotency mechanism (an idempotency key, a client-supplied resource ID via `PUT` instead). Confusing "this status code looked successful" with "this request is safe to retry" is a common, concrete source of duplicate-resource bugs.
 
+```mermaid
+flowchart TD
+    A["response received"] --> B{"status code?"}
+    B -->|"429 / 503"| C["retry (honor Retry-After if present):<br>transient, not the request's fault"]
+    B -->|"400"| D["don't retry identically:<br>the request itself is malformed"]
+    B -->|"2xx"| E{"is the method idempotent?<br>(GET/PUT/DELETE vs POST)"}
+    E -->|"no (POST)"| F["retry is unsafe without an<br>idempotency key or PUT instead"]
+    E -->|"yes"| G["safe to retry identically"]
+```
+
 ## Practice
 
 1. ▢ A client receives a `503` and, right after, a `400` for a similar-looking request. Should it retry either, both, or neither, and why?

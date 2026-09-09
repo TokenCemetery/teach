@@ -24,6 +24,17 @@ Sequential writes to one log file are far cheaper than random writes scattered a
 
 On startup after a crash, Postgres finds the last consistent point it knows about, then **replays** every WAL record written after that point, reapplying each change to the data pages exactly as it would have applied it the first time. This is why a Postgres crash doesn't (ordinarily) lose a committed transaction: the transaction's WAL record was fsynced before commit was reported, so it's there to replay even if the data page itself never made it to disk before the crash.
 
+```mermaid
+sequenceDiagram
+    participant Client
+    participant WAL as WAL (disk)
+    participant Pages as data pages (shared buffers)
+    Client->>WAL: write WAL record, fsync
+    WAL-->>Client: commit acknowledged
+    Note over Pages: dirty pages flushed later, lazily
+    Note over WAL,Pages: crash before flush? replay WAL from the last checkpoint to reconstruct the pages
+```
+
 ### Checkpoints bound how far back recovery has to look
 
 Replaying WAL from the beginning of time would make recovery take longer with every day the server runs. A **checkpoint** periodically flushes all currently-dirty data pages to disk and records the WAL position at that moment. Recovery then only has to replay WAL from the most recent checkpoint forward, not from the start of the log.

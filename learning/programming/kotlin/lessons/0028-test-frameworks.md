@@ -61,6 +61,13 @@ Virtual time belongs to a `TestCoroutineScheduler`, which the docs call the shar
 
 The remedy the docs give is not a test trick, it is a design rule: make the dispatcher replaceable, through dependency injection, a service locator, or a default parameter, so a test can pass a `TestDispatcher` instead. This is the clearest case in the whole arc of testability dictating a production signature, and it is why "do not hardcode a dispatcher" is engineering advice rather than taste.
 
+```mermaid
+flowchart TD
+    A["delay(...) inside runTest"] --> B{"still on the test's<br>TestCoroutineScheduler?"}
+    B -- "yes" --> C["skipped instantly,<br>virtual time advances"]
+    B -- "no, e.g. withContext(Dispatchers.Default)" --> D["real delay,<br>virtual time does not advance"]
+```
+
 **The two test dispatchers, and a trap in choosing between them.** `StandardTestDispatcher` is a plain dispatcher linked to a scheduler, so a coroutine you `launch` in a test does not run until the test yields or advances the clock. With `UnconfinedTestDispatcher`, child coroutines launched at the top level are entered **eagerly**, running until their first suspension without a dispatch, so an assertion written straight after a `launch` sees the effect already applied.
 
 That difference makes `UnconfinedTestDispatcher` tempting for the wrong reason. Reaching for it because a test failed removes the dispatching that production will impose, so the test stops being able to catch an ordering bug. The docs' own suggestion, when you want eagerness in general but accuracy somewhere specific, is to keep the unconfined dispatcher and `launch` that part with a `StandardTestDispatcher`.

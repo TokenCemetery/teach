@@ -58,6 +58,14 @@ Accessors are not always there, and the documentation's own example shows the fa
 
 Maven answers the same question differently, and the Java sheet records it as verified there: **nearest wins, not newest**, with ties broken by whichever was declared first in the POM. Two consequences for anyone crossing over. A Maven habit of declaring a coordinate directly to pin an older version does not work in Gradle, where depth buys nothing and a constraint or a `strictly` declaration is the tool; note that a `strictly` version lower than the highest requested makes resolution fail rather than quietly winning. And "highest" is not purely numeric: Gradle prefers versions without qualifiers, comparing base versions first, so `1.0.0` is treated as higher than `1.0.0-beta`.
 
+```mermaid
+flowchart LR
+    A["your project depends on<br>guava:20.0 directly"] --> C{"Gradle or Maven?"}
+    B["guice:4.2.2 brings<br>guava:25.1-android transitively"] --> C
+    C -- "Gradle: highest wins" --> D["guava 25.1-android"]
+    C -- "Maven: nearest wins" --> E["guava 20.0"]
+```
+
 Gradle also handles a second kind of conflict, where two modules provide the same capability rather than different versions of one module. That one is resolved during variant selection and is beyond this lesson.
 
 ## Practice

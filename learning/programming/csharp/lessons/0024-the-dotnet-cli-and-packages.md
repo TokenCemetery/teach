@@ -67,6 +67,14 @@ So the stage 5 done-when has a short answer. A person who clones the repository 
 
 Floating versions such as `Version="3.6.*"` say the same thing out loud, and the documentation lists both alongside a third case, a version disappearing from a feed, as the reasons a lock file exists: restore's input is the set of direct `PackageReference` items and its output is **the full closure of all package dependencies including transitive ones**, and NuGet tries to reproduce that closure but cannot always do so. If you have carried the habit that a declared version is the version you get, this is where it breaks.
 
+```mermaid
+flowchart LR
+    A["Version=4.0.0 in the project file,<br>unchanged"] --> B["day 1: feed has<br>4.1.0, 4.2.0, 4.3.0"]
+    B --> C["resolves to 4.1.0,<br>the nearest minimum version"]
+    A --> D["day 2: 4.0.0<br>is published"]
+    D --> E["resolves to 4.0.0,<br>the exact match"]
+```
+
 **Central package management moves the version out of the project file entirely.** Put a `Directory.Packages.props` at the root of the repository, set `ManagePackageVersionsCentrally` to `true`, and declare the versions there; each project then references the package with no `Version` at all ([Central Package Management](https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management)):
 
 ```xml

@@ -53,6 +53,15 @@ It was created while the test ran: a type built at run time that implements the 
 
 Read the second row again. Not a compile error, not a failing test: a green test that asserts nothing. The documentation recommends installing NSubstitute.Analyzers to detect these cases, while noting it catches many of them and not all, so the analyzer is a safety net rather than a permission slip.
 
+```mermaid
+flowchart TD
+    A["substitute for a member"] --> B{"interface member, or<br>virtual/abstract class member?"}
+    B -- "yes" --> C["proxy intercepts it:<br>configuration and assertions work"]
+    B -- "no: non-virtual or static" --> D["no dispatch to intercept"]
+    D --> E["configuring it runs<br>the real method instead"]
+    D --> F["asserting on it always<br>passes, even with no calls"]
+```
+
 **Two libraries, one mechanism, and a difference at the call site.** Moq hands you a controller object with the substitute hanging off it, configured with `Setup` and read through `Object` ([Moq Quickstart](https://github.com/devlooped/moq/wiki/Quickstart)):
 
 ```csharp

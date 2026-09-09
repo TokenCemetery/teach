@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 170" width="560" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">xUnit constructs a fresh instance per test; NUnit shares one instance by default</title>
+  <desc id="desc">Left: xUnit, three tests, each pointing to its own separate freshly constructed instance, A, B and C. Right: NUnit's default SingleInstance lifecycle, the same three tests all pointing with an arrow at one shared instance, so state left in a field by one test is still there for the next.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="20" y="20">xUnit: new instance per test</text>
+    <text x="300" y="20">NUnit: SingleInstance (default)</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <rect x="20" y="35" width="70" height="24" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="30" y="51" fill="#7a828c">Test 1</text>
+    <rect x="130" y="35" width="90" height="24" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="140" y="51" fill="#bf7d1a">instance A</text>
+
+    <rect x="20" y="73" width="70" height="24" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="30" y="89" fill="#7a828c">Test 2</text>
+    <rect x="130" y="73" width="90" height="24" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="140" y="89" fill="#bf7d1a">instance B</text>
+
+    <rect x="20" y="111" width="70" height="24" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="30" y="127" fill="#7a828c">Test 3</text>
+    <rect x="130" y="111" width="90" height="24" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="140" y="127" fill="#bf7d1a">instance C</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8">
+    <rect x="300" y="35" width="70" height="24" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="310" y="51" fill="#7a828c">Test 1</text>
+    <rect x="300" y="73" width="70" height="24" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="310" y="89" fill="#7a828c">Test 2</text>
+    <rect x="300" y="111" width="70" height="24" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="310" y="127" fill="#7a828c">Test 3</text>
+
+    <rect x="440" y="73" width="100" height="24" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="450" y="89" fill="#bf7d1a">shared instance</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1" fill="none">
+    <path d="M370,47 L440,80"/>
+    <path d="M370,85 L440,85"/>
+    <path d="M370,123 L440,90"/>
+  </g>
+
+  <text x="300" y="155" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">a field's value set by Test 1 is still there when Test 2 runs</text>
+</svg>

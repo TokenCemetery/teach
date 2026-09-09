@@ -46,6 +46,8 @@ One restriction falls out of using a constructor for it: you cannot call asynchr
 
 **NUnit shares one instance across the fixture.** NUnit's `LifeCycle` enumeration has two values, and the documentation labels the first of them: `LifeCycle.SingleInstance` means **a single instance is created and shared for all test cases**, and **this is the default**; `LifeCycle.InstancePerTestCase` means a new instance is created for each test case ([FixtureLifeCycle](https://docs.nunit.org/articles/nunit/writing-tests/attributes/fixturelifecycle.html), added in NUnit 3.13). Because the default shares, NUnit needs a place to undo the sharing, and that is `[SetUp]`, which marks a method NUnit calls immediately before each test in the fixture, for per-test state that should not leak between cases ([SetUp](https://docs.nunit.org/articles/nunit/writing-tests/attributes/setup.html)). Its companions are `[TearDown]`, `[OneTimeSetUp]` and `[OneTimeTearDown]`.
 
+![Left: xUnit, three tests, each pointing to its own separate freshly constructed instance. Right: NUnit's default SingleInstance lifecycle, the same three tests all pointing at one shared instance, so state left in a field by one test is still there for the next.](images/xunit-vs-nunit-lifecycle.svg)
+
 Read the two together and the vocabulary stops being arbitrary:
 
 |Question|xUnit|NUnit|

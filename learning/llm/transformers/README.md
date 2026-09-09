@@ -61,6 +61,7 @@ Work through these in order.
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
+- [Attention](reference/attention.md): scaled dot-product attention, multi-head attention and causal masking, with the tensor shapes annotated at each step
 
 ## How this works
 

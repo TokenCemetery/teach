@@ -64,6 +64,7 @@ Work through these in order.
 - [Attention](reference/attention.md): scaled dot-product attention, multi-head attention and causal masking, with the tensor shapes annotated at each step
 - [The Transformer Block](reference/the-transformer-block.md): positional encoding, layer norm and residuals, the feed-forward block, stacking, and weight tying
 - [The Training Loop](reference/the-training-loop.md): cross-entropy loss, the backward pass and autograd, and the AdamW optimizer step, with the worked chain-rule and gradient-descent examples
+- [Mapping to Real Code](reference/mapping-to-real-code.md): the transformers/llama.cpp name mapping, the three standard deviations from the original paper, byte-pair encoding, and where a low-rank adapter attaches
 
 ## How this works
 

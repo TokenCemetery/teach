@@ -56,6 +56,22 @@ w = w - lr × (m_hat / (sqrt(v_hat) + eps) + weight_decay × w)
 
 The decay term is added to the update directly, never passed through `m`, `v`, or the adaptive denominator, which is exactly why AdamW ("W" for weight decay) rather than plain Adam is the standard optimizer for training transformers.
 
+```mermaid
+flowchart TB
+    subgraph Adam["original Adam: decay folded into the gradient"]
+        direction LR
+        A1["grad + weight_decay * w"] --> A2["m, v computed from this combined value"]
+        A2 --> A3["/ sqrt(v_hat)"]
+        A3 --> A4["w = w - lr * result<br>(decay gets scaled by sqrt(v_hat) too)"]
+    end
+    subgraph AdamW["AdamW: decay applied directly to the weight"]
+        direction LR
+        B1["grad"] --> B2["m, v computed from grad only"]
+        B2 --> B3["/ sqrt(v_hat)"]
+        B3 --> B4["w = w - lr * (result + weight_decay * w)<br>(decay bypasses the adaptive scaling)"]
+    end
+```
+
 ## Practice
 
 1. ▢ Using plain gradient descent, a weight is `w = 5.0`, its gradient is `2.0`, and the learning rate is `0.1`. Compute the updated weight.

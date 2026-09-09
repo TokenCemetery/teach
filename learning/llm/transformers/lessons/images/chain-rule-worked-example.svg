@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 180" width="460" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">The forward pass computes values left to right; the backward pass multiplies local derivatives right to left to get the gradient</title>
+  <desc id="desc">A worked example with y = 3x + 1 and z = y squared, at x = 2. The forward pass, drawn top to bottom left to right, computes x = 2, then y = 7 through the operation y = 3x + 1, then z through the operation z = y squared. The backward pass, drawn below running right to left, starts at z, multiplies by the local derivative dz/dy = 14 to reach y, then multiplies by the local derivative dy/dx = 3 to reach x, giving dz/dx = 14 times 3 = 42 by the chain rule.</desc>
+
+  <text x="230" y="16" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">forward pass</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <circle cx="60" cy="50" r="20"/>
+    <line x1="80" y1="50" x2="160" y2="50" marker-end="url(#arrow-gray)"/>
+    <circle cx="180" cy="50" r="20"/>
+    <line x1="200" y1="50" x2="280" y2="50" marker-end="url(#arrow-gray)"/>
+    <circle cx="300" cy="50" r="20"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="60" y="53" text-anchor="middle">x=2</text>
+    <text x="180" y="53" text-anchor="middle">y=7</text>
+    <text x="300" y="53" text-anchor="middle">z</text>
+    <text x="120" y="42" text-anchor="middle">y = 3x + 1</text>
+    <text x="240" y="42" text-anchor="middle">z = y^2</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="2,2">
+    <line x1="60" y1="70" x2="60" y2="120"/>
+    <line x1="180" y1="70" x2="180" y2="120"/>
+    <line x1="300" y1="70" x2="300" y2="120"/>
+  </g>
+
+  <text x="230" y="100" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#bf7d1a">backward pass</text>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <line x1="280" y1="130" x2="200" y2="130" marker-end="url(#arrow-orange)"/>
+    <line x1="160" y1="130" x2="80" y2="130" marker-end="url(#arrow-orange)"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#bf7d1a">
+    <text x="240" y="122" text-anchor="middle">dz/dy = 14</text>
+    <text x="120" y="122" text-anchor="middle">dy/dx = 3</text>
+  </g>
+
+  <text x="230" y="160" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#bf7d1a">dz/dx = dz/dy x dy/dx = 14 x 3 = 42</text>
+
+  <defs>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#7a828c"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#bf7d1a"/>
+    </marker>
+  </defs>
+</svg>

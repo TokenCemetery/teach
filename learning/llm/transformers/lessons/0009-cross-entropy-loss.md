@@ -34,6 +34,15 @@ A query at position *i* can only attend to key positions 0 through *i*; position
 
 Lesson 8's output layer produces a `vocab_size`-length logit vector at every position, one raw score per possible next token. Softmax turns those logits into a proper probability distribution. Training then needs a single number measuring how wrong that distribution was, given what the actual next token in the training data turned out to be: **cross-entropy loss** is that number, computed as the negative log of the probability the model assigned to the actual correct token: `loss = -log(p_correct)`.
 
+```mermaid
+flowchart LR
+    Logits["logits (vocab_size)"] --> Softmax["softmax"]
+    Softmax --> P["p_correct<br>(probability of actual next token)"]
+    P --> NLL["-log(p_correct)"]
+    NLL --> Avg["average over positions and batch"]
+    Avg --> Loss["scalar loss"]
+```
+
 ### Why negative log probability specifically
 
 A perfect prediction, probability 1 for the correct token, gives a loss of exactly 0. As the assigned probability for the correct token shrinks toward 0, `-log(p)` grows without bound, an unboundedly increasing penalty for a confidently wrong prediction. Compare `p = 0.8` for the correct token, giving `-log(0.8) ≈ 0.223`, against `p = 0.1`, giving `-log(0.1) ≈ 2.303`: the loss grows sharply, not just linearly, as the model's confidence moves further from the truth. A simpler-looking alternative like `1 - p` doesn't have this property: it saturates at 1 no matter how confidently wrong the model is, giving no extra signal to distinguish "somewhat wrong" from "catastrophically, confidently wrong." Cross-entropy also has a clean gradient with respect to the logits, `softmax_output - one_hot_true_label`, a simple, numerically well-behaved expression that backpropagation (next lesson) can use directly, which is part of why softmax and cross-entropy are almost always paired together and often implemented as one fused, numerically stable operation taking raw logits directly, rather than a separate softmax step followed by a log.

@@ -42,6 +42,21 @@ Each consumer periodically sends a heartbeat to the group coordinator to signal 
 
 When a rebalance is triggered (a consumer joining, leaving, or being declared dead), members send a JoinGroup request to the coordinator. The elected group leader computes a fresh assignment, and every member receives its portion back through a SyncGroup response. Coordination lives entirely in this join/sync exchange between consumers and the coordinator; no consumer needs to know about any other member's identity beyond what the coordinator and leader tell it.
 
+```mermaid
+sequenceDiagram
+    participant C1 as Consumer 1
+    participant C2 as Consumer 2 (leader)
+    participant GC as Group Coordinator
+    C1->>GC: JoinGroup
+    C2->>GC: JoinGroup
+    GC-->>C2: elected group leader
+    C2->>C2: compute partition assignment
+    C1->>GC: SyncGroup
+    C2->>GC: SyncGroup (includes assignment)
+    GC-->>C1: assigned partitions
+    GC-->>C2: assigned partitions
+```
+
 ### Committed offsets track progress independently of who's consuming
 
 A group's progress through each partition is tracked as a **committed offset**, typically stored in Kafka's internal `__consumer_offsets` topic, recording the last message position that group has successfully processed for that partition. This is what lets a restarted consumer, or a partition reassigned to a different member after a rebalance, pick up exactly where the group left off, rather than restarting from the beginning or losing track of progress entirely. The offset belongs to the group and the partition, not to any specific consumer instance, which is precisely what makes reassignment during a rebalance work without losing the group's place.

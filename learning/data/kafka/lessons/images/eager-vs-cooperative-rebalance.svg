@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" width="480" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">Eager rebalancing pauses every consumer; cooperative rebalancing pauses only the partitions that move</title>
+  <desc id="desc">Two side-by-side timelines, each showing three consumers, C1, C2, and C3, over time. On the left, eager (stop-the-world) rebalancing: all three consumers stop processing at the same time and pause through the whole rebalance, even ones that end up keeping their original partitions, then all resume together. On the right, cooperative (incremental) rebalancing: only consumer C2, whose partition actually needs to move, pauses briefly, while C1 and C3 keep processing throughout without interruption.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="130" y="14" text-anchor="middle">eager: stop-the-world</text>
+    <text x="360" y="14" text-anchor="middle">cooperative: incremental</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="45" y="42" text-anchor="end">C1</text>
+    <text x="45" y="82" text-anchor="end">C2</text>
+    <text x="45" y="122" text-anchor="end">C3</text>
+    <text x="265" y="42" text-anchor="end">C1</text>
+    <text x="265" y="82" text-anchor="end">C2</text>
+    <text x="265" y="122" text-anchor="end">C3</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="50" y="32" width="50" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="150" y="32" width="50" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="50" y="72" width="50" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="150" y="72" width="50" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="50" y="112" width="50" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="150" y="112" width="50" height="18" fill="#7a828c" fill-opacity="0.25"/>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1">
+    <rect x="100" y="32" width="50" height="18" fill="#bf7d1a" fill-opacity="0.3"/>
+    <rect x="100" y="72" width="50" height="18" fill="#bf7d1a" fill-opacity="0.3"/>
+    <rect x="100" y="112" width="50" height="18" fill="#bf7d1a" fill-opacity="0.3"/>
+  </g>
+  <text x="125" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">all 3 consumers pause together</text>
+
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="270" y="32" width="150" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="270" y="72" width="60" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="330" y="72" width="30" height="18" fill="none" stroke="#bf7d1a"/>
+    <rect x="360" y="72" width="60" height="18" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="270" y="112" width="150" height="18" fill="#7a828c" fill-opacity="0.25"/>
+  </g>
+  <rect x="330" y="72" width="30" height="18" fill="#bf7d1a" fill-opacity="0.3"/>
+  <text x="345" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">only C2 pauses</text>
+  <text x="345" y="155" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">(its partition is the one moving)</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="75" y="180" text-anchor="middle">processing</text>
+    <text x="125" y="180" text-anchor="middle" fill="#bf7d1a">paused</text>
+    <text x="175" y="180" text-anchor="middle">processing</text>
+  </g>
+</svg>

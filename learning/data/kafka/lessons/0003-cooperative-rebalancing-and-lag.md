@@ -38,6 +38,8 @@ Kafka's original ("eager") rebalance protocol is **stop-the-world**: when a reba
 
 **Cooperative (incremental) rebalancing** only revokes the specific partitions that actually need to move to a different consumer, letting every other consumer keep processing its still-assigned partitions throughout the rebalance. It does this across two rounds instead of eager rebalancing's single round trip: the first round determines which partitions must actually move, and the second reassigns only those. The trade is a bit more protocol complexity in exchange for shrinking a rebalance's disruption from "the whole group stops" to "only the partitions changing hands pause," which is exactly what prevents ordinary membership churn from becoming a storm.
 
+![Two side-by-side timelines, each showing three consumers, C1, C2, and C3, over time. On the left, eager (stop-the-world) rebalancing: all three consumers stop processing at the same time and pause through the whole rebalance, even ones that end up keeping their original partitions, then all resume together. On the right, cooperative (incremental) rebalancing: only consumer C2, whose partition actually needs to move, pauses briefly, while C1 and C3 keep processing throughout without interruption.](images/eager-vs-cooperative-rebalance.svg)
+
 ### Consumer lag: what it measures
 
 **Consumer lag** is the gap between a partition's latest produced offset (its log-end-offset) and a consumer group's committed offset for that partition, how many messages are sitting produced but not yet consumed. It's visible directly from a consumer-group describe command (`CURRENT-OFFSET` versus `LOG-END-OFFSET`, with `LAG` computed as their difference) or through metrics like `records-lag-max`. A stable lag that isn't growing means the group is keeping pace with production, even if it never reaches zero; a lag that keeps growing over time means the group is falling behind.
@@ -49,6 +51,17 @@ Growing lag has more than one possible cause, and checking in order avoids fixin
 1. **Is the group even stable?** A group stuck in repeated rebalances can't make consumption progress during each pause, which shows up as lag even though nothing is wrong with processing speed itself. Check for frequent join and leave activity (in broker logs or the consumer group's state) before assuming lag is a throughput problem at all.
 2. **If the group is stable, is the bottleneck parallelism or processing speed?** Too few partitions for the actual throughput needed, or a consumer instance that's technically a member but not actually pulling messages, looks like lag from an entirely different cause than genuinely slow per-message processing (a slow downstream write per message, for instance).
 3. **If it's specifically slow processing, is it one partition or all of them?** Lag concentrated on one partition or consumer points at that instance's own resource constraints, or uneven data skew across keys landing disproportionately on one partition. Lag spread evenly across every partition points at systemic under-provisioning: not enough consumer instances for the group as a whole, or fetch and poll settings tuned too conservatively across the board.
+
+```mermaid
+flowchart TD
+    A["growing lag observed"] --> B{"is the group stable?<br>(check join/leave activity)"}
+    B -->|"no: stuck rebalancing"| C["fix rebalance churn first,<br>not a throughput problem"]
+    B -->|"yes, stable"| D{"parallelism or<br>processing speed?"}
+    D -->|"too few partitions,<br>or an idle member"| E["fix partition count<br>or membership"]
+    D -->|"genuinely slow processing"| F{"one partition,<br>or all of them?"}
+    F -->|"one partition"| G["that instance's resources,<br>or data skew on one key"]
+    F -->|"all partitions evenly"| H["systemic under-provisioning:<br>too few consumers, conservative fetch/poll settings"]
+```
 
 ## Practice
 

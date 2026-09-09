@@ -44,6 +44,17 @@ A 7B model's weights take about 14 GB in fp16 (lesson 1). Every decode step read
 
 **AWQ** (activation-aware weight quantization) takes a different angle: it observes which weight channels see the largest activation magnitudes during a calibration pass, on the theory that a channel multiplied by large activations contributes more to the layer's output and so is more sensitive to quantization error. It scales those salient channels to protect them from as much quantization error, rather than correcting for error after the fact the way GPTQ does. Both target the same result, an accurate model at 4-bit weights, by different mechanisms: GPTQ compensates error after quantizing each column, AWQ protects the weights most likely to matter before quantizing at all.
 
+```mermaid
+flowchart TD
+    A["GPTQ"] --> A1["quantize one column"]
+    A1 --> A2["correct the remaining columns<br>to compensate for the error"]
+    A2 --> A1
+
+    B["AWQ"] --> B1["calibration pass:<br>find high-activation channels"]
+    B1 --> B2["scale those channels<br>to protect them"]
+    B2 --> B3["quantize all channels"]
+```
+
 ## Practice
 
 1. ▢ A model's fp16 weights take 14 GB. Roughly how much memory would int8 and int4 versions of the same weights take?

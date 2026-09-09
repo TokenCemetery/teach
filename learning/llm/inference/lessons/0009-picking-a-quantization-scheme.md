@@ -42,6 +42,15 @@ When something does need fixing, name what it is, because it decides how far to 
 - **Latency-constrained**: the model fits in memory, but decode is slower than the stated budget allows. Since decode is memory-bandwidth bound, a smaller weight footprint from int8 or int4 can help, but the actual speedup has to be measured (lesson 8), not assumed from the bit width.
 - **Accuracy-constrained**: the workload has a benchmark score or perplexity ceiling it cannot cross. This constraint doesn't rule out quantization, but it rules out picking a scheme by memory or speed alone: GPTQ and AWQ hold up differently on different models, so the one that preserves more accuracy has to be measured for this model, not assumed from which paper's numbers looked better in general.
 
+```mermaid
+flowchart TD
+    A["does fp16 already meet the<br>memory and latency budgets?"] -->|"yes"| B["don't quantize"]
+    A -->|"no"| C{"which constraint<br>is binding?"}
+    C -- "memory" --> D["quantize just enough to fit:<br>int8 first, int4 only if still short"]
+    C -- "latency" --> E["quantize, but measure the<br>actual decode speedup"]
+    C -- "accuracy" --> F["measure GPTQ vs AWQ<br>for this specific model"]
+```
+
 ### Defending the choice means citing three numbers, not one
 
 A defensible answer to "why this scheme" names:

@@ -31,6 +31,17 @@ Reading it left to right:
 - `softmax(...)` turns each query's row of scores into a probability distribution: non-negative, summing to 1.
 - Multiplying by `V` uses those per-query weight distributions to compute a weighted sum of the value vectors. That weighted sum is the output for each query.
 
+```mermaid
+flowchart LR
+    Q["Q"] --> QK["Q K^T<br>(similarity score per query-key pair)"]
+    K["K"] --> QK
+    QK --> Scale["/ sqrt(d_k)"]
+    Scale --> Softmax["softmax<br>(per-query weights, sum to 1)"]
+    Softmax --> Weighted["weighted sum"]
+    V["V"] --> Weighted
+    Weighted --> Out["Attention(Q, K, V)"]
+```
+
 ### Why the scaling factor matters
 
 Assume the entries of `Q` and `K` are roughly independent with variance 1. Each dot product `q · k` sums `d_k` such products, so its variance grows with `d_k`, meaning the raw scores get larger in magnitude as the key dimension grows.

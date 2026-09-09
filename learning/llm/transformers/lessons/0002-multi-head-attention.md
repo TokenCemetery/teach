@@ -55,6 +55,21 @@ MultiHead(Q, K, V) = Concat(head_1, ..., head_h) W_O
 
 The final projection isn't optional decoration: concatenation alone just places each head's output side by side in a bigger vector, with no way for information from one head to combine with another. `W_O` is what lets the model learn how to blend the different heads' separate views back into a single, unified representation for whatever comes next in the network.
 
+```mermaid
+flowchart TD
+    X["input X"] --> P1["W_Q^1, W_K^1, W_V^1"]
+    X --> P2["W_Q^2, W_K^2, W_V^2"]
+    X --> Pn["W_Q^h, W_K^h, W_V^h"]
+    P1 --> H1["head_1 = Attention(Q_1, K_1, V_1)"]
+    P2 --> H2["head_2 = Attention(Q_2, K_2, V_2)"]
+    Pn --> Hn["head_h = Attention(Q_h, K_h, V_h)"]
+    H1 --> C["Concat(head_1, ..., head_h)"]
+    H2 --> C
+    Hn --> C
+    C --> O["W_O projection"]
+    O --> Out["MultiHead(Q, K, V)"]
+```
+
 ### The per-head dimension is what the scaling formula actually uses
 
 Since each head operates at `d_k = d_model / h`, not the full `d_model`, lesson 1's `/ sqrt(d_k)` scaling uses that smaller, per-head dimension. This matters because it's easy to assume the scaling should track the model's overall size; it doesn't, it tracks whatever dimension the dot products inside that specific attention computation are actually summed over, which is the per-head dimension once attention is split across heads.

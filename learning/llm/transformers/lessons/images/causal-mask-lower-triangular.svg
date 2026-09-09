@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 230" width="260" height="230" role="img" aria-labelledby="title desc">
+  <title id="title">A causal mask allows each query position to attend only to key positions at or before its own position</title>
+  <desc id="desc">A 4 by 4 grid where rows are query positions 0 to 3 and columns are key positions 0 to 3. Cells where the key position is less than or equal to the query position are shaded gray and allowed. Cells where the key position is greater than the query position, above the diagonal, are marked with an orange X and masked out before softmax. The allowed cells form a lower-triangular pattern including the diagonal.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="90" y="20" text-anchor="middle">k0</text>
+    <text x="126" y="20" text-anchor="middle">k1</text>
+    <text x="162" y="20" text-anchor="middle">k2</text>
+    <text x="198" y="20" text-anchor="middle">k3</text>
+    <text x="58" y="52" text-anchor="end">q0</text>
+    <text x="58" y="88" text-anchor="end">q1</text>
+    <text x="58" y="124" text-anchor="end">q2</text>
+    <text x="58" y="160" text-anchor="end">q3</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="72" y="34" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="72" y="70" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="72" y="106" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="72" y="142" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+
+    <rect x="108" y="70" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="108" y="106" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="108" y="142" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+
+    <rect x="144" y="106" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+    <rect x="144" y="142" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+
+    <rect x="180" y="142" width="36" height="36" fill="#7a828c" fill-opacity="0.25"/>
+
+    <rect x="108" y="34" width="36" height="36" fill="none"/>
+    <rect x="144" y="34" width="36" height="36" fill="none"/>
+    <rect x="180" y="34" width="36" height="36" fill="none"/>
+    <rect x="144" y="70" width="36" height="36" fill="none"/>
+    <rect x="180" y="70" width="36" height="36" fill="none"/>
+    <rect x="180" y="106" width="36" height="36" fill="none"/>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1.5">
+    <line x1="115" y1="41" x2="137" y2="63"/>
+    <line x1="137" y1="41" x2="115" y2="63"/>
+
+    <line x1="151" y1="41" x2="173" y2="63"/>
+    <line x1="173" y1="41" x2="151" y2="63"/>
+    <line x1="151" y1="77" x2="173" y2="99"/>
+    <line x1="173" y1="77" x2="151" y2="99"/>
+
+    <line x1="187" y1="41" x2="209" y2="63"/>
+    <line x1="209" y1="41" x2="187" y2="63"/>
+    <line x1="187" y1="77" x2="209" y2="99"/>
+    <line x1="209" y1="77" x2="187" y2="99"/>
+    <line x1="187" y1="113" x2="209" y2="135"/>
+    <line x1="209" y1="113" x2="187" y2="135"/>
+  </g>
+
+  <text x="144" y="192" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">key position (columns)</text>
+  <text x="144" y="204" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">gray = allowed (key &lt;= query), orange x = masked before softmax</text>
+</svg>

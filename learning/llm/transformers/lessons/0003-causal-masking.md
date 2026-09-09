@@ -50,6 +50,8 @@ Setting a future position's raw score to 0, rather than a large negative number,
 
 For a sequence of length *n*, the causal mask is the same lower-triangular pattern every time: query position *i* is allowed to attend to key positions 0 through *i* (inclusive), and masked from every position after *i*. The same mask shape applies across every attention head and every example in a batch, added once to the score matrix before softmax runs.
 
+![A 4 by 4 grid where rows are query positions 0 to 3 and columns are key positions 0 to 3. Cells where the key position is less than or equal to the query position are shaded gray and allowed. Cells where the key position is greater than the query position, above the diagonal, are marked with an orange X and masked out before softmax. The allowed cells form a lower-triangular pattern including the diagonal.](images/causal-mask-lower-triangular.svg)
+
 ## Practice
 
 1. ▢ Why must position *i*'s attention not include any position *j* greater than *i*, given how the model will actually be used at inference time?

@@ -34,6 +34,16 @@ Redlock genuinely fixes the single-instance failure mode it targets. The critiqu
 
 **Cache-aside** (also called lazy loading) is the standard pattern for using Redis as a cache in front of a primary database: on a read, the application checks Redis first; on a hit, it returns the cached value directly; on a miss, it queries the primary database, then writes the result into Redis with a TTL before returning it. Redis never talks to the primary database itself, and the primary database has no idea Redis exists: the application is what wires the two together, on every read.
 
+```mermaid
+flowchart TD
+    R["read request"] --> H{"key in Redis?"}
+    H -->|"hit"| Return["return cached value"]
+    H -->|"miss"| DB["query primary database"]
+    DB --> Fill["write value into Redis with a TTL"]
+    Fill --> Return
+    W["write to the underlying record"] --> Inval["DEL the cache key<br>(invalidate, don't rewrite)"]
+```
+
 ### The write side: invalidate, don't rewrite
 
 When the underlying record changes, the correct move is to delete the cache key (`DEL`), not to write the new value into Redis directly. This matters because cache-aside's actual safety property is that it never assumes the cache holds the latest value: a miss always re-fetches from the primary, so deleting a stale key is enough to guarantee the next read is correct, even under concurrent writes and reads that would make "write the new value to both places" hard to get right. A TTL is a second, independent line of defense against a delete getting missed for any reason, not a substitute for it.

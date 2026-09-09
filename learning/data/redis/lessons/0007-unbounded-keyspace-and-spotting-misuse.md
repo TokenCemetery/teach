@@ -46,6 +46,15 @@ Every key in a Redis instance should have an answer to "what removes this key ev
 
 For any Redis usage in an existing system, two questions cover both anti-patterns this stage names: first, on a miss or an eviction of this key, is there a durable system of record to fall back to, or is the data actually gone (lesson 6's store anti-pattern)? Second, does this key have a TTL, an explicit deletion point, or a deliberate justification for living forever, or does it just accumulate (this lesson's unbounded-keyspace anti-pattern)? A key can fail either question independently: a session cache with a TTL can still be a store anti-pattern if there's no database backing it, and a properly backed cache entry can still be unbounded if its write path forgot the TTL.
 
+```mermaid
+flowchart TD
+    K["a given Redis key"] --> Q1{"on a miss or eviction, is there<br>a durable primary to fall back to?"}
+    Q1 -->|"no"| SA["store anti-pattern"]
+    Q1 -->|"yes"| Q2{"does the key have a TTL, an explicit<br>DEL point, or deliberate permanence?"}
+    Q2 -->|"no"| UK["unbounded-keyspace anti-pattern"]
+    Q2 -->|"yes"| OK["correctly bounded, correctly backed"]
+```
+
 ## Practice
 
 1. ▢ What does Redis do by default (`noeviction`) when `maxmemory` is reached and a write comes in?

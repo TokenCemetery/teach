@@ -42,6 +42,13 @@ The right partition count starts from the workload's actual required parallelism
 
 Bringing the whole arc together, a defended topic and consumer-group layout states: what ordering guarantee the workload actually needs, and the key choice (lesson 6) that provides it without creating an avoidable hot key; what parallelism target the workload needs, and the partition count chosen to meet it with reasonable headroom, weighed against the per-partition overhead that scales with the whole cluster; and what delivery guarantee the workload needs, and the specific producer and consumer settings, acks, idempotence, and transactions if genuinely required, that provide it at the cost lessons 4 and 5 already measured. A layout that only states a partition count, with no accounting for ordering, key choice, or delivery guarantee, hasn't defended a design; it's picked a number.
 
+```mermaid
+flowchart LR
+    A["ordering needed?<br>-> key choice (lesson 6)"] --> D["defended topic layout"]
+    B["parallelism target?<br>-> partition count + headroom (lesson 7)"] --> D
+    C["delivery guarantee needed?<br>-> acks, idempotence, transactions (lessons 4-5)"] --> D
+```
+
 ## Practice
 
 1. ▢ Besides capping consumer parallelism, name at least two direct costs that scale with the total partition count across a whole cluster, not just within one topic.

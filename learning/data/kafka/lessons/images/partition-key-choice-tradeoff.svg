@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">Keying by customer_id funnels one customer's traffic into a single partition; keying by order_id spreads it out</title>
+  <desc id="desc">Two side-by-side sets of three partitions. On the left, keyed by customer_id: all of customer X's orders land in partition 0 alone, a hot key, while partitions 1 and 2 carry other customers' traffic. On the right, keyed by order_id: customer X's three different orders are spread one each across partitions 0, 1, and 2, alongside other customers' traffic, removing the hot-key risk but only preserving ordering within a single order, not across customer X's orders as a whole.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="110" y="14" text-anchor="middle">keyed by customer_id: hot key risk</text>
+    <text x="360" y="14" text-anchor="middle">keyed by order_id: spread, ordering only within one order</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="5" y="46" text-anchor="start">P0</text>
+    <text x="5" y="82" text-anchor="start">P1</text>
+    <text x="5" y="118" text-anchor="start">P2</text>
+    <text x="255" y="46" text-anchor="start">P0</text>
+    <text x="255" y="82" text-anchor="start">P1</text>
+    <text x="255" y="118" text-anchor="start">P2</text>
+  </g>
+
+  <rect x="30" y="30" width="180" height="24" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="30" y="66" width="180" height="24" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="30" y="102" width="180" height="24" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="120" y="46" text-anchor="middle">customer X: order1, order2, order3 (all here)</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="120" y="82" text-anchor="middle">other customers</text>
+    <text x="120" y="118" text-anchor="middle">other customers</text>
+  </g>
+
+  <rect x="280" y="30" width="180" height="24" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="280" y="66" width="180" height="24" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="280" y="102" width="180" height="24" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="280" y="30" width="55" height="24" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="280" y="66" width="55" height="24" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="280" y="102" width="55" height="24" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">
+    <text x="307" y="46" text-anchor="middle">X: order1</text>
+    <text x="307" y="82" text-anchor="middle">X: order2</text>
+    <text x="307" y="118" text-anchor="middle">X: order3</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="398" y="46" text-anchor="middle">other customers</text>
+    <text x="398" y="82" text-anchor="middle">other customers</text>
+    <text x="398" y="118" text-anchor="middle">other customers</text>
+  </g>
+
+  <text x="110" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">one consumer serves all of customer X's traffic</text>
+  <text x="360" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">customer X's orders processed by up to 3 consumers</text>
+</svg>

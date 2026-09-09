@@ -40,6 +40,8 @@ Take an e-commerce order-events topic. Keying it by `customer_id` preserves orde
 
 Keying the same topic by `order_id` instead spreads a single customer's different orders across different partitions, removing that hot-key risk and improving parallelism, at the cost of losing ordering *across* a customer's different orders: only the events within a single order's own stream are guaranteed to arrive in order, not the customer's activity as a whole. Neither choice is universally correct; each is the right choice for a different actual ordering requirement.
 
+![Two side-by-side sets of three partitions. On the left, keyed by customer_id: all of customer X's orders land in partition 0 alone, a hot key, while partitions 1 and 2 carry other customers' traffic. On the right, keyed by order_id: customer X's three different orders are spread one each across partitions 0, 1, and 2, alongside other customers' traffic, removing the hot-key risk but only preserving ordering within a single order, not across customer X's orders as a whole.](images/partition-key-choice-tradeoff.svg)
+
 ### Hot-key skew is created at design time, not just discovered at runtime
 
 Lesson 3 named lag concentrated on one specific partition as a sign of uneven skew, something to diagnose after the fact. This lesson is where that skew actually gets created, or avoided, in the first place: the key choice is the load-balancing decision. A key that distributes traffic close to evenly across the topic's expected traffic pattern prevents the hot-key symptom from ever appearing; a key chosen without considering the traffic distribution behind it creates the exact bottleneck lesson 3 taught how to recognize.

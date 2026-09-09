@@ -34,6 +34,15 @@ It gives gradients a direct path through the identity `+ x` connection at every 
 
 A transformer block, attention plus its residual and layer norm, followed by the feed-forward block plus its own residual and layer norm, takes an input of dimension `d_model` and produces an output of the exact same dimension. That shape-preservation is what makes stacking meaningful at all: block 2's output can become block 3's input with no adapter or reshaping step needed, and the same holds true no matter how many blocks are stacked. A single running vector, often called the **residual stream**, simply passes through block after block, each one reading it and adding its own contribution back into it.
 
+```mermaid
+flowchart LR
+    In["input (d_model)"] --> B1["Block 1<br>(own weights)"]
+    B1 --> B2["Block 2<br>(own weights)"]
+    B2 --> Dots["..."]
+    Dots --> BN["Block N<br>(own weights)"]
+    BN --> Out["output (d_model)"]
+```
+
 ### Depth builds up composed representations
 
 Each block gives the model one more round of "gather relevant information via attention, then transform it via the feed-forward block." Stacking many blocks lets progressively more composed, abstract representations build up layer by layer, the same way a deeper convolutional network builds higher-level visual features out of lower-level ones layer by layer. A single block can only do one round of gather-then-transform; a deep stack lets the model represent functions of the input a single block has no way to express on its own.

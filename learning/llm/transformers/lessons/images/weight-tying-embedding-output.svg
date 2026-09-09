@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 200" width="460" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">Weight tying reuses one embedding matrix as both the input lookup table and the transposed output projection</title>
+  <desc id="desc">Two side-by-side diagrams. On the left, a token id looks up its row in the embedding matrix, shaped vocab_size by d_model, producing an embedding vector. On the right, a hidden vector is projected through the same matrix, transposed to d_model by vocab_size, producing a vector of logits, one score per vocabulary token. A dashed line connects the two matrices, labeled same weight matrix, transposed, showing that weight tying reuses one learned matrix for both the input lookup and the output projection instead of learning two separate ones.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="130" y="14" text-anchor="middle">input: token id -&gt; embedding (lookup)</text>
+    <text x="370" y="14" text-anchor="middle">output: hidden -&gt; logits (weight tied)</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="95" y="25" width="70" height="18"/>
+    <line x1="130" y1="43" x2="130" y2="58"/>
+    <rect x="80" y="58" width="100" height="110"/>
+    <line x1="180" y1="109" x2="200" y2="109"/>
+    <rect x="200" y="100" width="70" height="18"/>
+  </g>
+  <rect x="80" y="105" width="100" height="8" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="130" y="37" text-anchor="middle">token id i</text>
+    <text x="235" y="112" text-anchor="middle">embedding</text>
+    <text x="130" y="184" text-anchor="middle">W_embedding (vocab_size x d_model)</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="300" y="25" width="80" height="18"/>
+    <line x1="340" y1="43" x2="340" y2="58"/>
+    <rect x="300" y="58" width="140" height="50"/>
+    <line x1="340" y1="108" x2="340" y2="123"/>
+    <rect x="305" y="123" width="90" height="18"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="340" y="37" text-anchor="middle">hidden h (d_model)</text>
+    <text x="350" y="136" text-anchor="middle">logits (vocab_size)</text>
+    <text x="370" y="184" text-anchor="middle">W_embedding^T (d_model x vocab_size)</text>
+  </g>
+
+  <path d="M180,75 C230,50 280,50 300,75" stroke="#bf7d1a" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+  <text x="240" y="55" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">same weight matrix, transposed</text>
+</svg>

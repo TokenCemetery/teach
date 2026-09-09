@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 165" width="480" height="165" role="img" aria-labelledby="title desc">
+  <title id="title">An MRL vector's prefixes are each, on their own, a usable embedding</title>
+  <desc id="desc">A single 1536-dimension vector drawn as one bar, with dashed lines marking where its first 256 dimensions and first 768 dimensions end. Three bracketed ranges above the bar, all starting at dimension 0, show that stopping at 256, at 768, or reading the full 1536 dimensions each yields a usable, meaningful embedding, because Matryoshka Representation Learning trained every prefix of the vector to work on its own, unlike a standard embedding model where only the full vector is meaningful.</desc>
+
+  <g stroke="#7a828c" stroke-width="1" fill="none">
+    <line x1="20" y1="18" x2="460" y2="18"/>
+    <line x1="20" y1="14" x2="20" y2="22"/>
+    <line x1="460" y1="14" x2="460" y2="22"/>
+  </g>
+  <text x="240" y="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c" text-anchor="middle">1536 dims (full vector)</text>
+
+  <g stroke="#7a828c" stroke-width="1" fill="none">
+    <line x1="20" y1="38" x2="240" y2="38"/>
+    <line x1="20" y1="34" x2="20" y2="42"/>
+    <line x1="240" y1="34" x2="240" y2="42"/>
+  </g>
+  <text x="130" y="32" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c" text-anchor="middle">768 dims (also usable on its own)</text>
+
+  <g stroke="#bf7d1a" stroke-width="1" fill="none">
+    <line x1="20" y1="58" x2="93" y2="58"/>
+    <line x1="20" y1="54" x2="20" y2="62"/>
+    <line x1="93" y1="54" x2="93" y2="62"/>
+  </g>
+  <text x="56" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a" text-anchor="middle">256 dims (also usable on its own)</text>
+
+  <rect x="20" y="70" width="440" height="30" fill="#7a828c" fill-opacity="0.12" stroke="#7a828c"/>
+  <rect x="20" y="70" width="220" height="30" fill="#7a828c" fill-opacity="0.12" stroke="#7a828c"/>
+  <rect x="20" y="70" width="73" height="30" fill="#bf7d1a" fill-opacity="0.2" stroke="#bf7d1a"/>
+  <g stroke="#7a828c" stroke-dasharray="3 2">
+    <line x1="93" y1="66" x2="93" y2="104"/>
+    <line x1="240" y1="66" x2="240" y2="104"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="20" y="118">0</text>
+    <text x="93" y="118" text-anchor="middle">256</text>
+    <text x="240" y="118" text-anchor="middle">768</text>
+    <text x="460" y="118" text-anchor="end">1536</text>
+  </g>
+
+  <text x="20" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">A standard (non-MRL) model only makes the full 1536-dim vector meaningful;</text>
+  <text x="20" y="152" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">truncating it anywhere else destroys information unpredictably.</text>
+</svg>

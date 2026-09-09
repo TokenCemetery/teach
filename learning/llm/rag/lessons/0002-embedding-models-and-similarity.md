@@ -34,6 +34,14 @@ So a fact or sentence that straddles a chunk boundary isn't fragmented and unrec
 
 An embedding model of the kind this workspace uses is a **bi-encoder**: it maps a piece of text to a fixed-size dense vector, independently of any other text, such that texts with similar meaning land close together in that vector space. Crucially, a query and a passage are each embedded on their own, not jointly as a pair. This is what makes large-scale retrieval fast at all: every chunk in a corpus gets embedded once, ahead of time, and stored; at search time, only the query needs embedding, and it's compared against the already-computed chunk vectors. Comparing two independently-produced vectors is cheap; running a model over every query-passage pair, which is what a cross-encoder does (lesson 8), is not, and doesn't scale to searching a large corpus at query time.
 
+```mermaid
+flowchart LR
+    P["corpus passages"] --> E1["bi-encoder"] --> V1["passage vectors<br>(computed once, stored)"]
+    Q["query, at search time"] --> E2["same bi-encoder"] --> V2["query vector"]
+    V1 --> S["similarity comparison<br>(cosine / dot product)"]
+    V2 --> S
+```
+
 ### Three similarity metrics, and why they aren't interchangeable
 
 Given two vectors, three common ways to measure how similar they are: **cosine similarity** (the angle between them, ignoring magnitude), **dot product** (cosine similarity without normalizing by magnitude), and **Euclidean distance** (straight-line distance between the two points). When both vectors are normalized to unit length, cosine similarity and dot product produce the same ranking, since the magnitude term that distinguishes them is fixed at 1 for both. When vectors aren't normalized, dot product implicitly rewards larger-magnitude vectors, which can introduce a bias unrelated to actual semantic relevance if magnitude varies systematically across the corpus (for instance, with passage length).

@@ -36,6 +36,16 @@ A missed p99 budget is a symptom, not a diagnosis. The first split is which phas
 
 Once the phase is identified, the lever order follows cost: the cheapest fix that doesn't cost accuracy comes first (batch size, since lesson 6 already showed how to compute the largest batch a budget allows), then a cache-precision change (lesson 3's fp8 KV cache, which costs no weight accuracy), then weight quantization (lessons 7 to 9, which does cost measured accuracy and should only be reached for once the cheaper levers are exhausted or insufficient).
 
+```mermaid
+flowchart TD
+    A["p99 budget missed"] --> B{"which phase is<br>missing budget?"}
+    B -->|"p99 TTFT"| C["prefill / scheduling:<br>chunked-prefill chunk size (lesson 5)"]
+    B -->|"p99 ITL"| D["decode: cheapest lever first"]
+    D --> E["1. batch size<br>(lesson 6, no accuracy cost)"]
+    E --> F["2. KV cache precision<br>(fp8, lesson 3, no weight accuracy cost)"]
+    F --> G["3. weight quantization<br>(lessons 7-9, measured accuracy cost)"]
+```
+
 ### A worked chain
 
 A server serving a 13B model on one 80 GB GPU measures, from a realistic 2,000-request benchmark (lesson 16), a p99 TTFT comfortably under budget and a p99 inter-token latency of 80 ms against a 50 ms budget. TTFT being fine rules out lesson 5's scheduling problems; this is a decode-phase, ITL problem. The team checks the batch size first: it's already at the figure lesson 6 would defend for this workload, so shrinking it further would cost throughput the workload needs. Next, they quantize the weights to int8 (lesson 7), which lowers ITL to 65 ms, measuring the accuracy delta against the unquantized model as lesson 9 requires. Still over budget, they weigh two remaining options: drop the batch size further (free of accuracy cost, but costs throughput) or quantize to int4 with AWQ (frees more decode time, at a further, measured accuracy cost). Lesson 9's framework decides it: whichever option closes the remaining gap without paying for more than the budget actually needs. If a smaller batch size still meets the workload's required concurrency, that is the cheaper fix; only if it doesn't does the further accuracy cost of int4 get paid.

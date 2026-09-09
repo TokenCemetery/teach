@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" width="480" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">A long tail of slow requests barely moves the average, but is exactly what p99 catches</title>
+  <desc id="desc">A histogram of request latency. Most requests cluster at low latency, forming a tall bulk on the left that trails off quickly. A separate, sparse cluster of requests sits far to the right at much higher latency, the slow tail. A dashed line marking the average sits inside the left-hand bulk, barely shifted by the rare far-right requests, since they are too few to move it. A marker for p99 instead sits out at that far-right tail, since p99 is defined by the worst one percent, which is precisely where the rare, slow requests are.</desc>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-width="1">
+    <line x1="30" y1="20" x2="30" y2="170"/>
+    <line x1="30" y1="170" x2="460" y2="170"/>
+  </g>
+
+  <g fill="#7a828c" fill-opacity="0.25" stroke="#7a828c" stroke-opacity="0.6">
+    <rect x="40" y="80" width="18" height="90"/>
+    <rect x="62" y="40" width="18" height="130"/>
+    <rect x="84" y="70" width="18" height="100"/>
+    <rect x="106" y="110" width="18" height="60"/>
+    <rect x="128" y="140" width="18" height="30"/>
+    <rect x="150" y="155" width="18" height="15"/>
+    <rect x="172" y="162" width="18" height="8"/>
+    <rect x="194" y="166" width="18" height="4"/>
+  </g>
+
+  <g fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a">
+    <rect x="400" y="163" width="18" height="7"/>
+  </g>
+
+  <line x1="70" y1="20" x2="70" y2="170" stroke="#7a828c" stroke-dasharray="4 3" stroke-width="1"/>
+  <text x="70" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c" text-anchor="middle">average</text>
+
+  <line x1="409" y1="30" x2="409" y2="163" stroke="#bf7d1a" stroke-dasharray="4 3" stroke-width="1"/>
+  <text x="409" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a" text-anchor="middle">p99</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="120" y="185" text-anchor="middle">the fast 99%</text>
+    <text x="409" y="185" text-anchor="middle">the slow 1%</text>
+  </g>
+
+  <text x="10" y="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">request count</text>
+  <text x="450" y="182" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c" text-anchor="end">latency</text>
+</svg>

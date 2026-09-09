@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200" role="img" aria-labelledby="title desc">
+  <title id="title">IVF searches only the nearest clusters; HNSW descends a layered graph</title>
+  <desc id="desc">Two panels. On the left, IVF: four clusters of vectors, each with a centroid. The query sits between two nearby clusters, shaded and searched, while two farther clusters are left unshaded and skipped, a low nprobe searching only the nearby ones. On the right, HNSW: three stacked graph layers, sparse on top and dense on the bottom, with a path descending from an entry point at the top layer, hopping to progressively closer nodes at each layer down, refining its position until it reaches the nearest neighbor at the dense bottom layer.</desc>
+
+  <line x1="250" y1="10" x2="250" y2="195" stroke="#7a828c" stroke-opacity="0.3"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="10" y="14">IVF: search only nearby clusters (nprobe = 2)</text>
+    <text x="260" y="14">HNSW: greedy descent through layers</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-dasharray="3 2" fill="#bf7d1a" fill-opacity="0.08">
+    <circle cx="75" cy="80" r="32"/>
+    <circle cx="150" cy="60" r="26"/>
+  </g>
+  <g stroke="#7a828c" stroke-dasharray="3 2" fill="#7a828c" fill-opacity="0.06">
+    <circle cx="195" cy="130" r="28"/>
+    <circle cx="45" cy="150" r="25"/>
+  </g>
+
+  <g fill="#bf7d1a">
+    <circle cx="65" cy="70" r="2.2"/><circle cx="85" cy="90" r="2.2"/><circle cx="80" cy="65" r="2.2"/><circle cx="60" cy="95" r="2.2"/>
+    <circle cx="140" cy="55" r="2.2"/><circle cx="160" cy="65" r="2.2"/><circle cx="150" cy="45" r="2.2"/>
+  </g>
+  <g fill="#7a828c" fill-opacity="0.6">
+    <circle cx="188" cy="122" r="2.2"/><circle cx="202" cy="135" r="2.2"/><circle cx="195" cy="115" r="2.2"/>
+    <circle cx="40" cy="145" r="2.2"/><circle cx="52" cy="158" r="2.2"/><circle cx="42" cy="160" r="2.2"/>
+  </g>
+  <g fill="#bf7d1a"><rect x="73" y="78" width="4" height="4"/><rect x="148" y="58" width="4" height="4"/></g>
+  <g fill="#7a828c" fill-opacity="0.6"><rect x="193" y="128" width="4" height="4"/><rect x="43" y="148" width="4" height="4"/></g>
+
+  <path d="M108,72 l4,-4 l4,4 l-4,4 z" fill="#bf7d1a"/>
+  <text x="118" y="74" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">query</text>
+
+  <g stroke="#7a828c" stroke-opacity="0.3" stroke-dasharray="2 2">
+    <line x1="270" y1="35" x2="480" y2="35"/>
+    <line x1="270" y1="90" x2="480" y2="90"/>
+    <line x1="270" y1="150" x2="480" y2="150"/>
+  </g>
+
+  <g stroke="#7a828c" stroke-opacity="0.3">
+    <line x1="330" y1="35" x2="400" y2="35"/>
+    <line x1="290" y1="90" x2="340" y2="90"/><line x1="340" y1="90" x2="400" y2="90"/><line x1="400" y1="90" x2="450" y2="90"/>
+    <line x1="280" y1="150" x2="320" y2="150"/><line x1="320" y1="150" x2="360" y2="150"/><line x1="360" y1="150" x2="400" y2="150"/><line x1="400" y1="150" x2="440" y2="150"/><line x1="440" y1="150" x2="470" y2="150"/>
+  </g>
+  <g fill="#7a828c" fill-opacity="0.6">
+    <circle cx="330" cy="35" r="3"/><circle cx="365" cy="35" r="3"/><circle cx="400" cy="35" r="3"/>
+    <circle cx="290" cy="90" r="3"/><circle cx="340" cy="90" r="3"/><circle cx="400" cy="90" r="3"/><circle cx="450" cy="90" r="3"/>
+    <circle cx="280" cy="150" r="3"/><circle cx="320" cy="150" r="3"/><circle cx="360" cy="150" r="3"/><circle cx="440" cy="150" r="3"/><circle cx="470" cy="150" r="3"/>
+  </g>
+
+  <path d="M365,35 L400,90 L400,150" fill="none" stroke="#bf7d1a" stroke-width="1.5"/>
+  <g fill="#bf7d1a">
+    <circle cx="365" cy="35" r="3.5"/>
+    <circle cx="400" cy="90" r="3.5"/>
+    <circle cx="400" cy="150" r="3.5"/>
+  </g>
+  <text x="365" y="27" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">entry</text>
+  <text x="400" y="167" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">nearest neighbor</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="490" y="38" text-anchor="end">sparse</text>
+    <text x="490" y="153" text-anchor="end">dense</text>
+  </g>
+</svg>

@@ -34,6 +34,14 @@ Backward compatibility (a new schema can read data written under the previous sc
 
 **Kafka Connect** is a framework for moving data into and out of Kafka without hand-writing a producer or consumer for every integration. A **source connector** pulls data from an external system, a database, a file, an API, into a Kafka topic. A **sink connector** pushes data from a Kafka topic into an external system. Most common integrations already have existing connector plugins (a JDBC source or sink, an S3 sink, a change-data-capture source like Debezium) that only need configuring, not writing from scratch.
 
+```mermaid
+flowchart LR
+    Ext1["external system<br>(DB, file, API)"] -->|"source connector"| Tasks1["tasks"]
+    Tasks1 --> Topic["Kafka topic"]
+    Topic -->|"sink connector"| Tasks2["tasks<br>(= a consumer group)"]
+    Tasks2 --> Ext2["external system<br>(S3, DB, ...)"]
+```
+
 ### Tasks are Connect's own unit of parallelism
 
 A connector splits its work across one or more **tasks**. A source connector might split by table or by partition of the external system; a sink connector's tasks map onto a subset of the topic's partitions, the same way a consumer group's members do, since a sink connector's tasks are, under the hood, essentially a consumer group. This is the same parallelism idea lesson 1 introduced for partitions and lesson 2 introduced for consumer group members, now expressed at Connect's own layer: tasks are the unit that determines how much of a connector's work can run concurrently.

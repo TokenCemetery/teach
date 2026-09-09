@@ -38,6 +38,14 @@ A Kafka message is just bytes to the broker; nothing in the log enforces what sh
 
 **Schema Registry** is a separate service, not part of the Kafka brokers themselves, that stores and versions schemas (commonly Avro, though also Protobuf and JSON Schema) for a topic's messages. A producer serializes a message against a registered schema and includes only a compact schema ID in the message itself, not the full schema definition; a consumer looks that ID up against the registry to get the actual schema needed to deserialize correctly. This saves real bandwidth and storage compared to every message carrying its own full schema, but the more important effect is what happens before a new schema is even allowed to register: the registry checks it against a configured **compatibility mode**, and rejects a registration that would break that mode, catching an incompatible change at produce and registration time instead of letting it reach the topic and surface later as a consume-time failure.
 
+```mermaid
+flowchart LR
+    P["producer serializes message<br>against a schema"] --> R{"Schema Registry:<br>compatible with configured mode?"}
+    R -->|"yes"| T["schema ID + message<br>written to topic"]
+    R -->|"no"| X["registration rejected<br>at produce time"]
+    T --> C["consumer looks up schema ID,<br>deserializes correctly"]
+```
+
 ### Backward, forward, and full compatibility protect different upgrade orders
 
 **Backward compatibility** means a new schema can read data written under the previous schema, which lets consumers upgrade to the new schema first and still correctly read older messages; it does not guarantee that consumers still on the old schema can read new messages. **Forward compatibility** means the reverse: data written with a new schema can still be read using the previous schema, which lets producers move to a new schema first while old consumers keep working unmodified until they migrate. **Full compatibility** requires both simultaneously, the strictest and safest option, but the most restrictive on what changes are actually allowed going forward, typically limiting evolution to adding optional fields with defaults rather than removing fields or changing a field's type. Choosing full compatibility isn't a free, obviously-correct default; it's a real constraint traded for the strongest safety guarantee, the same kind of trade-off this workspace's earlier stages made explicit for delivery guarantees and partition count.

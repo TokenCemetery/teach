@@ -21,6 +21,16 @@ Write `$file` or `$(some command)` without quotes, and before the shell treats t
 
 Both of these happen to *the result of expansion*, not to what you wrote. `rm $file` doesn't mean "remove the file named by `$file`"; it means "remove whatever files result from splitting and globbing the value of `$file`." Those are usually the same thing, until they aren't.
 
+```mermaid
+flowchart LR
+    A["$var or $(cmd)"] --> B{"quoted?"}
+    B -- "no" --> C["word splitting<br>on $IFS"]
+    C --> D["globbing<br>(*, ?, [ )"]
+    D --> E["result: N separate words"]
+    B -- "yes, double-quoted" --> F["expansion only,<br>no splitting or globbing"]
+    F --> G["result: 1 word"]
+```
+
 ### Where this actually bites
 
 If `file="notes final.txt"`, then `rm $file` doesn't try to remove one file called `notes final.txt`. Word splitting turns it into two words, `notes` and `final.txt`, and `rm` receives them as two separate arguments: it tries to remove a file called `notes` and a file called `final.txt`, either or both of which may not exist, while the file you actually meant to remove is untouched.

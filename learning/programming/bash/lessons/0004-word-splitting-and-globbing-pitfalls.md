@@ -38,6 +38,15 @@ A classic pitfall: `for f in $(ls *.txt); do ...; done` looks reasonable, and th
 
 `for f in *.txt; do ...; done` in a directory with no `.txt` files doesn't skip the loop as you might expect; by default, bash passes the literal, unmatched pattern `*.txt` through as a single word, and the loop runs once with `f` set to the literal string `*.txt`. This is a real, common footgun precisely because it looks like it should mean "for each matching file, do nothing if there are none," but actually means "for each matching file, or the literal pattern if nothing matches." `shopt -s nullglob` changes this so an unmatched glob expands to nothing at all instead of the literal pattern, which is usually what a script actually wants.
 
+```mermaid
+flowchart TD
+    A["for f in *.txt"] --> B{"any files match?"}
+    B -- "yes" --> C["loop runs once<br>per matching file"]
+    B -- "no" --> D{"nullglob set?"}
+    D -- "no, default" --> E["loop runs once,<br>f = literal '*.txt'"]
+    D -- "yes" --> F["loop runs zero times"]
+```
+
 ### Word splitting on command substitution output still needs `$IFS` awareness
 
 Even a properly double-quoted `"$(command)"` preserves the *content* faithfully as a single string, including internal newlines, but code that then processes that string with something like an unquoted `for word in $output` loop reintroduces word splitting on `$IFS`. This is a common mistake in scripts that quote correctly at the point of capturing output but then iterate over the captured value carelessly; the fix is either restructuring to avoid iterating over unquoted split output at all (reading line-by-line with `while IFS= read -r line`, or using an array) or being deliberate about exactly which characters should separate words.

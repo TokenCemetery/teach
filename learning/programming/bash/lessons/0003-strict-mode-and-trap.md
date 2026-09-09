@@ -34,6 +34,13 @@ By default, a pipeline's exit status is only the last command's (`cmd2`'s), rega
 
 `set -e` (`errexit`) makes the script exit immediately if any command's exit status is nonzero, instead of continuing to the next line. This directly closes lesson 2's default-continues problem for the common case. It has real, well-documented exceptions worth knowing rather than assuming universal coverage: a command's failure is *not* fatal under `set -e` if it's part of an `if`/`while` condition, negated with `!`, or on the left side of `&&`/`||`, since those contexts are explicitly checking the status themselves, which is exactly the point.
 
+```mermaid
+flowchart TD
+    A["a command fails<br>(nonzero exit)"] --> B{"in a checked context?<br>if/while, &&/||, negated with !"}
+    B -- "yes" --> C["not fatal:<br>the context is testing it itself"]
+    B -- "no" --> D["set -e triggers:<br>script exits immediately"]
+```
+
 ### `set -u`: fail on an unset variable instead of silently using an empty string
 
 `set -u` (`nounset`) makes referencing an unset variable an error instead of silently substituting an empty string. Without it, a typo (`$fiel` instead of `$file`) or a variable that was supposed to be set earlier but wasn't produces an empty string with no warning, which then flows into whatever command uses it, frequently with dangerous results (`rm -rf "$dir/"` when `$dir` is unset and unquoted becomes `rm -rf /`, a well-known catastrophic Bash Pitfall). `set -u` turns that silent substitution into an immediate, loud failure at the point of the typo.

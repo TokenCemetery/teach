@@ -46,6 +46,15 @@ The direct check is `if command; then ... else ... fi`, or the shorthand `comman
 
 `cmd1 | cmd2` returns the exit status of `cmd2` by default, regardless of whether `cmd1` succeeded or failed. A script checking `$?` after a pipeline is checking only whether the *last* stage worked, which can silently hide a failure earlier in the pipe (a `grep` that failed to find anything feeding an unrelated `sort` that always "succeeds" on empty input). This gap is exactly what `set -o pipefail` (covered as part of lesson 3's strict-mode capstone) exists to close.
 
+```mermaid
+flowchart LR
+    A["cmd1"] --> P["cmd1 | cmd2"]
+    B["cmd2"] --> P
+    P --> S{"pipefail set?"}
+    S -- "no, default" --> L["$? = cmd2's status only"]
+    S -- "yes" --> R["$? = rightmost nonzero<br>status among all stages"]
+```
+
 ## Practice
 
 1. ▢ What does an exit status of `0` mean, and what does any nonzero value mean?

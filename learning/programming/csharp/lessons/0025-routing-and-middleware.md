@@ -53,6 +53,18 @@ app.Use(async (context, next) =>
 
 Those two comments are the documentation's own, and the asymmetry they describe is the point. Before `next`, you are ahead of everything downstream and the response is yours to write. After `next` returns, the rest of the application has already run, and what the documentation puts in that position is work that does not write to the response. The outward halves also run in reverse: the first middleware registered gets its second half last.
 
+```mermaid
+flowchart LR
+    R["request"] --> M1in["MW1: before next"]
+    M1in --> M2in["MW2: before next"]
+    M2in --> M3in["MW3: before next"]
+    M3in --> E["endpoint"]
+    E --> M3out["MW3: after next"]
+    M3out --> M2out["MW2: after next"]
+    M2out --> M1out["MW1: after next"]
+    M1out --> Resp["response"]
+```
+
 `Run` is the other end of the same idea. It takes a delegate with no `next`, so nothing follows it. In the documentation's branching example, `app.Run` at the top level is what answers every request that did not match a branch.
 
 **Branching, and the difference between a detour and an insert.** Three ways to split the pipeline, and they do not behave the same:

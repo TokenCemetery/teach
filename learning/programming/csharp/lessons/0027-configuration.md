@@ -54,6 +54,15 @@ A colon **does not work with environment variables on all platforms**, Bash bein
 
 There is no merge, no precedence table keyed by importance, and no way to tell from the reading code which source answered. When production disagrees with the file you are looking at, the question is which provider came later, not which file is right.
 
+```mermaid
+flowchart LR
+    A["appsettings.json"] --> B["appsettings.{ENVIRONMENT}.json"]
+    B --> C["user secrets<br>(Development)"]
+    C --> D["environment<br>variables"]
+    D --> E["command line"]
+    E --> F["last provider added<br>wins the key"]
+```
+
 **The options pattern is how you stop reading that dictionary by hand.** Bind a section to a class and inject the class ([Options pattern in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options)):
 
 ```csharp

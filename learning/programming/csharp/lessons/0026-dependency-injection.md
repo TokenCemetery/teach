@@ -61,6 +61,8 @@ Both sentences describe the same failure. A scoped registration does not make an
 |Scoped|Transient|The transient lives as long as that scope|
 |Anything|Something longer-lived|Fine, since nothing is being held past its intended life|
 
+![A singleton OrderCache, created once, holds a reference to the DbContext instance from request 1's scope. Requests 2 and 3 each get their own fresh DbContext, but OrderCache never sees either one: it still points at request 1's instance, now effectively a singleton too.](images/captive-dependency.svg)
+
 **There is a check, and it is worth knowing exactly how far it reaches.** When an app runs **in the development environment** and builds its host with `CreateApplicationBuilder`, the default service provider verifies that scoped services are not resolved from the root service provider and are not injected into singletons. You can also ask for it directly by passing `validateScopes: true` to `BuildServiceProvider`, which produces an `InvalidOperationException`.
 
 Read the qualifier rather than the promise. This is a development-environment check on the container's own graph. It is a good reason to run the app in Development before shipping, and not a reason to believe the shape of your lifetimes has been proved.

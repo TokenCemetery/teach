@@ -49,6 +49,14 @@ Because there is nothing to intercept. A substitute is a proxy that implements a
 
 Notice that none of these produce a compiler error, and that all four have a documented detection mechanism attached. The point of structuring is to make each mechanism actually run.
 
+```mermaid
+flowchart LR
+    Q1["how long may this<br>object live? (26)"] --> S["a structured,<br>tested service"]
+    Q2["where does this code sit<br>in the pipeline? (25)"] --> S
+    Q3["where does this value<br>come from? (27)"] --> S
+    Q4["what is one unit<br>of work? (28)"] --> S
+```
+
 **The seam a test uses is the container, not the class.** Lesson 23 said a substitute needs something to intercept, and lesson 26 said the container is what supplies a class's dependencies. Put those together and the testing strategy for a whole service follows: you do not replace a class, you replace a **registration**, and the rest of the application is assembled around your replacement exactly as it is in production.
 
 **Two kinds of test, and the documentation gives the rule for choosing.** Unit tests test isolated components, using **fakes or mock objects in place of infrastructure components**. Integration tests **confirm that two or more app components work together to produce an expected result, possibly including every component required to fully process a request**, and cover infrastructure: database, file system, network appliances, and the request-response pipeline ([Integration tests in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests)).

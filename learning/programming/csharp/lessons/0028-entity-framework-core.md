@@ -66,6 +66,17 @@ Two lessons meet in those four lines. The connection string comes from configura
 
 **All entities returned from queries are initially `Unchanged`**, and EF Core **tracks changes at the property level**, so modifying one property updates only that column.
 
+```mermaid
+stateDiagram-v2
+    [*] --> Unchanged: returned from a query
+    [*] --> Added: new entity added to the context
+    Unchanged --> Modified: a property is assigned
+    Modified --> Unchanged: SaveChanges, update
+    Added --> Unchanged: SaveChanges, insert
+    Unchanged --> Deleted: marked for removal
+    Deleted --> Detached: SaveChanges, delete
+```
+
 Read the `Modified` row as an instruction about your own code. There is no update call. You query an object, assign to a property, call `SaveChanges`, and a row changes. That is convenient exactly as long as every assignment you make to a tracked object is one you meant to persist, and the failure mode is an entity mutated for some unrelated reason, such as normalising a value before returning it, being written back without anyone deciding to.
 
 **`AsNoTracking` is a different promise, not just a faster one.** No-tracking queries are for read-only results and are **generally quicker to execute because there is no need to set up the change tracking information** ([Tracking vs. no-tracking queries](https://learn.microsoft.com/en-us/ef/core/querying/tracking)). Two behavioural differences come with the speed:

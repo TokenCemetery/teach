@@ -61,6 +61,7 @@ Work through these in order.
 - [Held-Out Data and Contamination](reference/held-out-data-and-contamination.md): the two contamination pathways, the guided-instruction test, and the prevention toolkit for a custom eval set
 - [Metrics](reference/metrics.md): exact match, F1, BLEU/ROUGE and pass@k side by side, with the pass@k formula and the decision principle for choosing among them
 - [LLM-as-Judge](reference/llm-as-judge.md): the judge-prompt design checklist, calibration and score compression, position and verbosity bias, and the human-vs-human agreement bar
+- [Eval Harness](reference/eval-harness.md): the four-stage pipeline, openai/evals vs lm-evaluation-harness, and what a defensible number logs alongside the score
 
 ## How this works
 

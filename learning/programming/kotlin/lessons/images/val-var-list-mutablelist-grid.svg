@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 220" width="440" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">val/var and List/MutableList are two independent guarantees</title>
+  <desc id="desc">A two by two grid crossing val versus var, the reference guarantee, against List versus MutableList, the object guarantee. val with List: reference fixed, contents fixed. val with MutableList: reference fixed, contents mutable, the case people mistake for read only. var with List: reference reassignable, contents fixed. var with MutableList: reference reassignable, contents mutable.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" fill="#7a828c">
+    <text x="140" y="20" text-anchor="middle">List</text>
+    <text x="320" y="20" text-anchor="middle">MutableList</text>
+    <text x="20" y="80">val</text>
+    <text x="20" y="180">var</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" text-anchor="middle">
+    <rect x="60" y="36" width="160" height="70" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="140" y="66" fill="#7a828c">reference fixed</text>
+    <text x="140" y="82" fill="#7a828c">contents fixed</text>
+
+    <rect x="240" y="36" width="160" height="70" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="320" y="66" fill="#bf7d1a">reference fixed</text>
+    <text x="320" y="82" fill="#bf7d1a">contents mutable</text>
+
+    <rect x="60" y="136" width="160" height="70" rx="3" fill="#7a828c" fill-opacity="0.10" stroke="#7a828c" stroke-opacity="0.5"/>
+    <text x="140" y="166" fill="#7a828c">reference reassignable</text>
+    <text x="140" y="182" fill="#7a828c">contents fixed</text>
+
+    <rect x="240" y="136" width="160" height="70" rx="3" fill="#bf7d1a" fill-opacity="0.12" stroke="#bf7d1a"/>
+    <text x="320" y="166" fill="#bf7d1a">reference reassignable</text>
+    <text x="320" y="182" fill="#bf7d1a">contents mutable</text>
+  </g>
+</svg>

@@ -46,6 +46,14 @@ In Java, `if` only controls which statements execute; producing a value conditio
 
 Kotlin's `for (item in collection)` works identically over a `List`, a `Set`, a `Map` (destructuring each entry into a key and value), a range, or any custom type exposing the right iteration protocol. There's no separate "for-each" syntax distinct from a plain `for`, the way some languages distinguish an index-based loop from an enhanced one; ranges and collections both satisfy the same iteration contract, which is why `for (i in 1..10)` and `for (item in list)` look identical despite iterating over structurally different things.
 
+```mermaid
+flowchart LR
+    Q1["1: could this be null?"] --> P["predict nullability and<br>mutability without running code"]
+    Q2["2, 5: is the reference fixed,<br>are the contents mutable?"] --> P
+    Q3["3: same object,<br>or same content?"] --> P
+    Q4["6: which branch runs,<br>which value comes out?"] --> P
+```
+
 ## Practice
 
 1. ▢ Why does an `if` used as an expression require an `else` branch, while an `if` used purely as a statement doesn't?

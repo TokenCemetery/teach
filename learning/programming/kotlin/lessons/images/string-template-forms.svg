@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 130" width="480" height="130" role="img" aria-labelledby="title desc">
+  <title id="title">The two forms a string template takes</title>
+  <desc id="desc">Top: "Hello, $name" where $name is a bare identifier reference, needing no braces. Bottom: "Total: ${a + b}" where the braces are required because the template holds a full expression rather than a single identifier.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10">
+    <text x="20" y="30" fill="#7a828c">"Hello, </text>
+    <text x="90" y="30" fill="#bf7d1a">$name</text>
+    <text x="130" y="30" fill="#7a828c">"</text>
+    <text x="20" y="45" font-size="7" fill="#7a828c" opacity="0.85">bare identifier, no braces needed</text>
+
+    <text x="20" y="90" fill="#7a828c">"Total: </text>
+    <text x="90" y="90" fill="#bf7d1a">${a + b}</text>
+    <text x="150" y="90" fill="#7a828c">"</text>
+    <text x="20" y="105" font-size="7" fill="#7a828c" opacity="0.85">full expression, braces required to parse it</text>
+  </g>
+
+  <g stroke="#bf7d1a" stroke-width="1" fill="none">
+    <rect x="85" y="17" width="50" height="16" rx="2" opacity="0.5"/>
+    <rect x="85" y="77" width="65" height="16" rx="2" opacity="0.5"/>
+  </g>
+</svg>

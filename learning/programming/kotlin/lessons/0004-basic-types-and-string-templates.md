@@ -42,6 +42,8 @@ Because Kotlin's basic types are real classes, they can be used as generic type 
 
 A **string template** embeds an expression directly inside a string literal: `"$name"` substitutes the value of `name`, and `"${expr}"` substitutes the result of evaluating any expression (`"${user.name.uppercase()}"`, `"${a + b}"`). This isn't syntactic sugar over `+`-based concatenation bolted on afterward; it's Kotlin's actual way of building a string from parts, and it's why every lesson so far has written `"Hello, $name"` rather than `"Hello, " + name`. The simple `$name` form only works for a bare identifier; anything more than that (a property access, a method call, an expression) needs the `${...}` braces.
 
+![Top: "Hello, $name" where $name is a bare identifier, needing no braces. Bottom: "Total: ${a + b}" where the braces are required because the template holds a full expression rather than a single identifier.](images/string-template-forms.svg)
+
 ### `String` is immutable, the same shape of guarantee as `val`
 
 Kotlin's `String` type is immutable: once created, its contents never change, and every operation that looks like it modifies a string (`.uppercase()`, `.replace(...)`, `+`) actually returns a new `String` rather than mutating the original. This is independent of whether the reference holding it is `val` or `var` (lesson 2): a `var name: String` can be reassigned to point at a different string, but neither `val` nor `var` ever makes the string object itself mutable, since `String` simply has no mutating methods to call.

@@ -27,6 +27,15 @@ This turns "could this be null here?" from a question you answer by reading care
 - **Safe call (`?.`)**: `user?.name` evaluates to `null` immediately if `user` is `null`, instead of throwing. It's the null-aware version of just calling `.name`, and it short-circuits: `user?.address?.city` stops at the first `null` link in the chain.
 - **Elvis (`?:`)**: `user?.name ?: "unknown"` supplies a default when the left side is `null`. Together, these two cover the large majority of places a Java method would reach for an `if (x != null)` check.
 
+```mermaid
+flowchart TD
+    A["user?.address?.city"] --> B{"user is null?"}
+    B -- "yes" --> C["result: null<br>(chain stops here)"]
+    B -- "no" --> D{"user.address is null?"}
+    D -- "yes" --> C
+    D -- "no" --> E["result: user.address.city"]
+```
+
 ### Where the Java habit shows up in otherwise-compiling Kotlin
 
 Two Java-shaped anti-patterns show up constantly in code written by someone still thinking in Java, and both compile fine, which is exactly why they're worth naming explicitly:

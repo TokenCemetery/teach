@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 175" width="480" height="175" role="img" aria-labelledby="title desc">
+  <title id="title">Fixed-size chunking cuts blind to structure; structure-aware chunking respects it</title>
+  <desc id="desc">Three bars representing the same document. The top bar shows its natural structure: a short section, a long section, and a medium section, marked with dashed lines at the true section boundaries. The middle bar shows fixed-size chunking, splitting the same document into four equal-width pieces regardless of where the sections actually end, so one cut lands in the middle of the long section, splitting it in half. The bottom bar shows structure-aware chunking, whose chunk boundaries line up exactly with the natural section boundaries from the top bar, so no section is split across two chunks.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="20" y="14">document (natural section boundaries)</text>
+  </g>
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="20" y="20" width="120" height="20" fill="#7a828c" fill-opacity="0.12"/>
+    <rect x="140" y="20" width="180" height="20" fill="#7a828c" fill-opacity="0.22"/>
+    <rect x="320" y="20" width="140" height="20" fill="#7a828c" fill-opacity="0.12"/>
+  </g>
+  <g stroke="#7a828c" stroke-dasharray="3 2">
+    <line x1="140" y1="16" x2="140" y2="44"/>
+    <line x1="320" y1="16" x2="320" y2="44"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="20" y="64">fixed-size (cuts blind to structure)</text>
+  </g>
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="20" y="70" width="110" height="20" fill="#7a828c" fill-opacity="0.12"/>
+    <rect x="130" y="70" width="110" height="20" fill="#7a828c" fill-opacity="0.22"/>
+    <rect x="240" y="70" width="110" height="20" fill="#7a828c" fill-opacity="0.22"/>
+    <rect x="350" y="70" width="110" height="20" fill="#7a828c" fill-opacity="0.12"/>
+  </g>
+  <line x1="240" y1="66" x2="240" y2="94" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="245" y="64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">splits the long section in half</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="20" y="114">structure-aware (respects section boundaries)</text>
+  </g>
+  <g stroke="#7a828c" stroke-width="1">
+    <rect x="20" y="120" width="120" height="20" fill="#7a828c" fill-opacity="0.12"/>
+    <rect x="140" y="120" width="180" height="20" fill="#7a828c" fill-opacity="0.22"/>
+    <rect x="320" y="120" width="140" height="20" fill="#7a828c" fill-opacity="0.12"/>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1.5">
+    <line x1="140" y1="116" x2="140" y2="144"/>
+    <line x1="320" y1="116" x2="320" y2="144"/>
+  </g>
+  <text x="20" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">chunk boundaries land exactly where the sections do</text>
+</svg>

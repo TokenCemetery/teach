@@ -37,6 +37,8 @@ There is no universal right chunk size. The right choice depends on the corpus (
 - **Semantic chunking.** Embed consecutive sentences and split where the similarity between neighbors drops sharply, on the idea that a topic shift is where a chunk boundary belongs. More expensive to compute, and it targets the actual failure mode (mixed topics inside one chunk) directly rather than by proxy.
 - **Document-structure-aware.** Treat structural units the format already provides, such as a heading's section, a table, or a code block, as atomic: never split one across a chunk boundary, because doing so usually destroys its meaning.
 
+![Three bars representing the same document. The top bar shows its natural structure: a short section, a long section, and a medium section, marked with dashed lines at the true section boundaries. The middle bar shows fixed-size chunking, splitting the same document into four equal-width pieces regardless of where the sections actually end, so one cut lands in the middle of the long section, splitting it in half. The bottom bar shows structure-aware chunking, whose chunk boundaries line up exactly with the natural section boundaries from the top bar, so no section is split across two chunks.](images/fixed-vs-structure-aware-chunking.svg)
+
 ### Overlap
 
 Consecutive chunks commonly overlap by some number of tokens. Without overlap, a fact or a sentence that straddles exactly where two chunks split can end up fragmented, unrecoverable in full from either chunk alone. Overlap costs some redundant storage and embedding computation in exchange for not losing information at chunk boundaries.

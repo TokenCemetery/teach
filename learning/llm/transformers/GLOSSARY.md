@@ -10,6 +10,18 @@ Canonical terms for the transformer architecture, derived from raw tensors rathe
 
 ## Terms
 
+**Cross-attention**:
+An attention sublayer whose queries come from one sequence (a decoder's own generated output so far) but whose keys and values come from a different sequence (a separate encoder's output), letting a decoder consult a full, already-encoded input while generating. Absent from a decoder-only model, which has no separate encoder or input sequence to attend across.
+_Avoid_: self-attention (a different sublayer whose queries, keys, and values all come from the same sequence; cross-attention specifically draws its keys/values from a different sequence than its queries)
+
+**Encoder-decoder**:
+An architecture (as in the original transformer paper, or T5) pairing a bidirectional encoder, no causal mask, processing a complete input, with a decoder that generates output autoregressively using causal self-attention plus cross-attention back to the encoder's output. Suited to tasks with a clean, fixed input-then-output split, like translation.
+_Avoid_: decoder-only (the architecture this workspace builds, with no separate encoder or cross-attention, since its single stream serves as both the conditioning context and the generated output)
+
+**Encoder-only**:
+An architecture (as in BERT) using bidirectional attention, jointly conditioning on both left and right context in every layer, with no causal mask at all. Builds a representation of a complete, already-given input for understanding tasks (classification, extraction), rather than generating text autoregressively, which its architecture cannot do.
+_Avoid_: decoder-only (a causally-masked architecture built specifically to generate one token at a time; encoder-only's bidirectional attention was never trained to predict from only a prefix)
+
 **Gated linear unit (GLU)**:
 The elementwise product of two linear projections of the same input, with a nonlinearity (originally sigmoid) applied to one of them first. That projection acts as a gate, scaling the other projection's output element by element rather than applying one fixed nonlinearity uniformly.
 _Avoid_: SwiGLU (a specific GLU variant, gated with Swish/SiLU; "GLU" is the general family, not this one member of it)

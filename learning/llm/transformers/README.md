@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [20. Mixed Precision and Gradient Accumulation](lessons/0020-mixed-precision-and-gradient-accumulation.md)
+**Latest lesson:** [21. Encoder-Decoder and Encoder-Only Architectures](lessons/0021-encoder-decoder-and-encoder-only-architectures.md)
 
 ## Success looks like
 
@@ -40,6 +40,7 @@ Eleven stages, one equation to reading and generating from real model code. A st
 | 7. Modern feed-forward and attention variants | 0016 to 0017 | SwiGLU/the gated feed-forward, grouped-query and multi-query attention, KV caching | Can derive a gated feed-forward block and explain why fewer KV heads trade quality for cache size |
 | 8. Generation and sampling | 0018 | Greedy decoding, temperature, top-k and top-p sampling, running the model forward to produce text | Can generate text from the hand-built model and explain why greedy decoding degenerates |
 | 9. The training loop's practicalities | 0019 to 0020 | Xavier initialization, learning-rate warmup and decay, gradient clipping, mixed precision, gradient accumulation | Can explain what each practicality guards against and add them to a working training loop |
+| 10. Encoder-decoder and encoder-only architectures | 0021 | BERT's bidirectional encoder, T5's encoder-decoder with cross-attention, placing this workspace's decoder-only model | Can explain why each architecture does or doesn't use a causal mask, and where cross-attention fits |
 
 ## Lessons
 
@@ -67,6 +68,7 @@ Work through these in order.
 | [0018](lessons/0018-generation-and-sampling.md) | Generation and Sampling | The model this workspace built and trained has never once produced text, because training and generation ask it two different questions, and always taking the single most likely next token turns out to be a worse answer to the second question than a well-chosen amount of randomness |
 | [0019](lessons/0019-initialization-warmup-and-gradient-clipping.md) | Initialization, Warmup, and Gradient Clipping | A model this deep can fail before training even starts if its initial weights are scaled wrong, and the AdamW step lesson 11 derived still needs two more guardrails, a slow start and a hard ceiling on the gradient, to actually survive real training |
 | [0020](lessons/0020-mixed-precision-and-gradient-accumulation.md) | Mixed Precision and Gradient Accumulation | Both techniques exist to fit a bigger effective training run into hardware smaller than the run seems to need, one by shrinking every number's footprint, the other by simulating a batch larger than memory could ever hold at once |
+| [0021](lessons/0021-encoder-decoder-and-encoder-only-architectures.md) | Encoder-Decoder and Encoder-Only Architectures | This workspace built one stream with a causal mask because it only ever needed to do one thing, generate the next token, and the other two architecture shapes exist because BERT and the original translation model needed a structurally different guarantee instead |
 
 ## Reference
 

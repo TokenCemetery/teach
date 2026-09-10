@@ -50,6 +50,10 @@ type: resources
   Analyzes the vanishing and exploding gradient problems and proposes gradient norm clipping as the fix for the latter. Use for: why clipping rescales the whole gradient vector by its norm rather than capping each parameter's gradient independently.
 - [Paper: "Mixed Precision Training", Micikevicius et al., 2018](https://arxiv.org/abs/1710.03740)
   Introduces training in half precision with a full-precision master weight copy and loss scaling to counter half precision's limited numerical range, reducing memory use by nearly half. Use for: exactly what has to be added to plain half-precision training to keep small updates and gradients from underflowing to zero.
+- [Paper: "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding", Devlin et al., 2018](https://arxiv.org/abs/1810.04805)
+  Introduces the encoder-only architecture: bidirectional attention jointly conditioning on left and right context in every layer, with no causal mask. Use for: why an encoder-only model builds a representation of a complete input rather than generating text autoregressively, and can't do what this workspace's decoder-only model does.
+- [Paper: "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer" (T5), Raffel et al., 2019](https://arxiv.org/abs/1910.10683)
+  Casts a wide range of NLP tasks into one consistent text-to-text, encoder-decoder format. Use for: the encoder-decoder shape's cross-attention sublayer, and why it fits a task with a clean, fixed input-then-output split.
 
 ## Gaps
 

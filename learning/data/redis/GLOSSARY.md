@@ -10,6 +10,10 @@ Canonical terms for using Redis for what it actually is: an in-memory store with
 
 ## Terms
 
+**Access control list (ACL)**:
+A named user's permissions in Redis: which commands (or command categories) and which key patterns it's allowed to touch, replacing a single shared `requirepass` secret with per-user scoping.
+_Avoid_: permissions, roles (both used loosely elsewhere; say "ACL" or "access control list" for Redis's specific mechanism)
+
 **Active expiration**:
 A background cycle that samples keys carrying a TTL several times a second and deletes any that have already expired, independent of `maxmemory` pressure.
 _Avoid_: garbage collection (a different mechanism in other systems; say "active expiration" for this specific sweep)
@@ -45,6 +49,10 @@ _Avoid_: unacked queue (say "pending entries list" or "PEL", the stream's own te
 **Pipelining**:
 Sending several commands in one batch without waiting for each response individually, reducing round trips; a purely network-level optimization with no atomicity guarantee on its own.
 _Avoid_: batching (too generic; "pipelining" is the specific mechanism of not waiting for each response before sending the next)
+
+**Protected mode**:
+A default that refuses any non-loopback connection to an instance bound to a network interface with no password configured, forcing a deliberate choice instead of defaulting into an exposed, unauthenticated instance.
+_Avoid_: safe mode (a different concept in other systems; say "protected mode" for this specific Redis default)
 
 **Round trip**:
 The time spent sending a request and waiting for its response, separate from and usually far larger than a command's own execution time inside Redis.

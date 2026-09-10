@@ -8,7 +8,7 @@ type: topic
 
 Be able to spot where an existing system is quietly misusing Redis, such as a cache treated as a store or a lock that is not one, and to design correct usage from scratch instead.
 
-**Latest lesson:** [16. Operational Visibility](lessons/0016-operational-visibility.md)
+**Latest lesson:** [17. ACLs and Protected Mode](lessons/0017-acls-and-protected-mode.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to spot where an existing system is quietly misusing Redis, such as a ca
 
 ## The arc
 
-Nine stages, eviction to operational visibility. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Ten stages, eviction to access control. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -40,6 +40,7 @@ Nine stages, eviction to operational visibility. A stage takes several lessons a
 | 7. Messaging and expiration | 0011 to 0012 | Pub/Sub vs streams, consumer groups compared to Kafka's, lazy vs active key expiration | Can pick the right messaging mechanism for a use case and explain how a key actually leaves Redis |
 | 8. Transactions and scripting | 0013 to 0014 | `MULTI`/`EXEC`, optimistic locking with `WATCH`, Lua scripting, Redis Functions | Can build a check-then-act sequence that's actually safe, and explain what makes a lock's release atomic |
 | 9. Performance and operations | 0015 to 0016 | Round-trip cost, pipelining, connection pooling, `INFO`/`SLOWLOG`/latency monitor/`MEMORY USAGE`, `SCAN` vs `KEYS` | Can reduce a chatty client's network cost and diagnose an instance's actual behavior without freezing it |
+| 10. Access control | 0017 | Protected mode, ACLs, command categories, the default user | Can restrict what an unauthenticated connection and an authenticated user can each do |
 
 ## Lessons
 
@@ -63,6 +64,7 @@ Work through these in order.
 | [0014](lessons/0014-lua-scripting-and-redis-functions.md) | Lua Scripting and Redis Functions | The mechanism that actually makes a lock's release safe, by running a check and an action as one atomic step |
 | [0015](lessons/0015-pipelining-round-trip-cost-and-connection-pooling.md) | Pipelining, Round-Trip Cost, and Connection Pooling | Why N sequential commands cost N network round trips even though each one executes in microseconds, and the two separate fixes |
 | [0016](lessons/0016-operational-visibility.md) | Operational Visibility | The tools that show what a Redis instance is actually doing, and the one command that has caused more outages than almost any other |
+| [0017](lessons/0017-acls-and-protected-mode.md) | ACLs and Protected Mode | How Redis stops an unauthenticated instance from being reachable at all, and scopes what an authenticated client is actually allowed to do |
 
 ## Reference
 

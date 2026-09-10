@@ -26,6 +26,10 @@ _Avoid_: hash (imprecise; a fingerprint can be a full digest, a partial-field ma
 A unique, client-generated value (a UUID is the recommended form) attached to a non-idempotent request (`POST`, `PATCH`) via the `Idempotency-Key` header, letting the server recognize and safely respond to a retried request without reprocessing it.
 _Avoid_: request ID (a different, often server-assigned concept; an idempotency key is specifically client-generated and retry-safety-oriented)
 
+**Long-running operation**:
+A method whose actual work may take longer than an ordinary request-response cycle, returning an operation resource (`name`, `done`, and eventually `response` or `error`) immediately instead of blocking until the work finishes.
+_Avoid_: async job (use only when quoting a source that uses it; "long-running operation" and "operation resource" are this workspace's terms)
+
 **Optimistic concurrency**:
 Detecting, at write time, whether a resource has changed since a client last read it (via `If-Match` and a strong ETag), rejecting the write with `412 Precondition Failed` if so, rather than locking the resource in advance or silently overwriting a concurrent change.
 _Avoid_: pessimistic locking (a different strategy this workspace does not cover; optimistic concurrency detects a conflict after the fact instead of preventing one in advance)
@@ -33,3 +37,7 @@ _Avoid_: pessimistic locking (a different strategy this workspace does not cover
 **Validator (HTTP)**:
 An opaque identifier (an `ETag`) for a specific state of a representation. Strong validators change on any byte-level difference and support strong comparison (required for `If-Match`); weak validators (`W/` prefix) only change on a semantically significant difference and support only weak comparison (sufficient for `If-None-Match`).
 _Avoid_: version number (a validator need not be sequential or human-meaningful; it only needs to support equality comparison)
+
+**Webhook**:
+A server-initiated HTTP request delivering an event notification to a client-registered URL, inverting who initiates the request compared to polling. Requires the receiver to verify a signature and timestamp tolerance, acknowledge quickly, and deduplicate by event ID, since neither delivery order nor a single delivery attempt is guaranteed.
+_Avoid_: callback (too generic; this workspace uses "webhook" for this specific HTTP-delivery pattern)

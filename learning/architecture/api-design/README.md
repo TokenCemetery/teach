@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [12. HTTP Caching as Contract](lessons/0012-http-caching-as-contract.md)
+**Latest lesson:** [14. Webhooks and Callbacks as Delivery](lessons/0014-webhooks-and-callbacks-as-delivery.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## The arc
 
-Eight stages, the contract to caching as contract. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Nine stages, the contract to asynchronous delivery. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -39,6 +39,7 @@ Eight stages, the contract to caching as contract. A stage takes several lessons
 | 6. Auth, authz and rate limiting as contract | 0010 | Treating these as part of what a client depends on, not an afterthought | Can design auth and rate limiting as contract, not bolted on separately |
 | 7. Idempotency and safe retries | 0011 | The `Idempotency-Key` header, idempotency fingerprints, and the retry-versus-concurrent-request distinction | Can design an idempotency mechanism that makes a non-idempotent method genuinely safe to retry |
 | 8. HTTP caching as contract | 0012 | `ETag`, weak vs. strong validators, conditional requests, `If-Match` optimistic concurrency, `Cache-Control` | Can design a caching and concurrency-control contract, and knows which comparison strength each conditional header needs |
+| 9. Long-running operations and async delivery | 0013 to 0014 | The operation resource and polling, webhook signing, retries, and ordering | Can design an async contract (polled operation or pushed webhook) and its failure, retry, and ordering guarantees |
 
 ## Lessons
 
@@ -58,6 +59,8 @@ Work through these in order.
 | [0010](lessons/0010-auth-authz-and-rate-limiting-as-contract.md) | Auth, Authz, and Rate Limiting as Contract | Why scopes, not just tokens, and visible rate-limit state, not just a 429, are what make access control and quotas part of the deliberate contract |
 | [0011](lessons/0011-idempotency-keys-and-safe-retries.md) | Idempotency Keys and Safe Retries | A key alone only deduplicates; a fingerprint is what tells the server whether a repeated key is the same request retried or a different one reusing it by mistake, and a retry that arrives while the original is still running gets a conflict, not a replay |
 | [0012](lessons/0012-http-caching-as-contract.md) | HTTP Caching as Contract | The same ETag validator serves two different jobs depending on which comparison it needs, weak comparison is enough to skip a redundant download, but only a strong comparison is safe for detecting someone else's concurrent write |
+| [0013](lessons/0013-the-operation-resource-and-polling.md) | The Operation Resource and Polling | A long-running method returns a promise-shaped resource instead of blocking, and a failure during execution reports differently than a failure that stops the operation from starting at all |
+| [0014](lessons/0014-webhooks-and-callbacks-as-delivery.md) | Webhooks and Callbacks as Delivery | Pushing a notification instead of waiting to be polled inverts who initiates the request, and that inversion is exactly why signing, retries, and ordering all need their own explicit contract on the receiving end |
 
 ## Reference
 

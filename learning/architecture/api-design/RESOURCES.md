@@ -48,3 +48,7 @@ type: resources
   A standardization effort (still a draft, not yet an RFC) for the header that makes a non-idempotent method like `POST` safe to retry. Use for: the idempotency-fingerprint mechanism, the exact three-way enforcement outcome (first time, retry-after-completion, concurrent-in-flight), and the specific `400`/`422` error cases.
 - [RFC 9111: "HTTP Caching", IETF](https://www.rfc-editor.org/rfc/rfc9111)
   The authoritative specification for `Cache-Control` and cache behavior. Use for: the precise, commonly-confused difference between `no-cache` (permits storage, requires revalidation before reuse) and `no-store` (forbids storage entirely), and what `must-revalidate` adds once a response is stale.
+- [AIP-151: "Long-running operations", Google](https://google.aip.dev/151)
+  Google's design guidance for the operation-resource pattern. Use for: the exact shape of an operation resource (`name`, `done`, `metadata`, `response`/`error`), the distinction between a failure to start and a failure during execution, and the ~30-day expiration rule of thumb.
+- [Docs: "Receive Stripe events in your webhook endpoint", Stripe](https://docs.stripe.com/webhooks)
+  A real, production webhook implementation's documented contract. Use for: the `Stripe-Signature` header's timestamp-based replay protection (and the common mistake of setting its tolerance to 0), the multi-day exponential-backoff retry policy, and the explicit statement that event delivery order is not guaranteed.

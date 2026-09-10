@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a topic and partition layout for a real workload and to diagnose consumer lag, rebalancing storms or unexpected message loss instead of guessing at a fix.
 
-**Latest lesson:** [9. Kafka Connect Basics](lessons/0009-kafka-connect-basics.md)
+**Latest lesson:** [11. Replication, ISR, acks, and Unclean Leader Election](lessons/0011-replication-isr-acks-and-unclean-leader-election.md)
 
 ## Success looks like
 
@@ -29,7 +29,7 @@ Be able to design a topic and partition layout for a real workload and to diagno
 
 ## The arc
 
-Five stages, the log to a designed layout. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Six stages, the log to retention and replication. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -38,6 +38,7 @@ Five stages, the log to a designed layout. A stage takes several lessons and the
 | 3. Delivery guarantees | 0004 to 0005 | At-most/at-least/exactly-once semantics, idempotent producers, transactions | Can defend a delivery-guarantee choice and state what exactly-once costs |
 | 4. Designing the layout | 0006 to 0007 | Key choice, partition-count trade-offs, ordering guarantees | Can design a topic and partition layout for a stated workload |
 | 5. The surrounding ecosystem | 0008 to 0009 | Schema Registry, Kafka Connect basics | Can explain how these fit around the log in a real pipeline |
+| 6. Retention and replication | 0010 to 0011 | `cleanup.policy`, log compaction, replication factor, ISR, `acks`, `min.insync.replicas`, unclean leader election | Can defend how long a topic's data lives and what durability its replication settings actually guarantee |
 
 ## Lessons
 
@@ -54,6 +55,8 @@ Work through these in order.
 | [0007](lessons/0007-partition-count-and-topic-layout.md) | Partition-Count Trade-offs and Designing a Topic Layout | Why more partitions isn't free, and what a fully defended topic layout has to name from every earlier stage |
 | [0008](lessons/0008-schema-registry.md) | Schema Registry | How catching an incompatible schema change at produce time replaces a silent, downstream consume-time break |
 | [0009](lessons/0009-kafka-connect-basics.md) | Kafka Connect Basics | How Connect's tasks and worker modes provide parallelism and fault tolerance, and why Connect grants no guarantee the underlying producer or consumer API didn't already provide |
+| [0010](lessons/0010-retention-and-log-compaction.md) | Retention and Log Compaction | How long a message actually survives in a topic, and the other cleanup policy that keeps a key's history instead of its age |
+| [0011](lessons/0011-replication-isr-acks-and-unclean-leader-election.md) | Replication, ISR, acks, and Unclean Leader Election | What acks=all actually waits for, the floor that stops it from silently meaning less than it sounds like, and the trade-off when every in-sync replica is gone |
 
 ## Reference
 

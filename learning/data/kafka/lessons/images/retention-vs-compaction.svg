@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">Retention deletes whole segments once they age out; compaction keeps only the latest value per key, regardless of age</title>
+  <desc id="desc">Two partitions shown as a sequence of messages. On the left, cleanup.policy=delete: messages are grouped into segments, and a whole segment is deleted once every message in it is older than retention.ms, regardless of whether any individual message inside it might still be wanted. On the right, cleanup.policy=compact: multiple messages for the same key, such as key A appearing three times, are compacted down to just the latest value for that key, A3, with the older A1 and A2 removed, while a different key's single message, B1, is kept as is.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">cleanup.policy=delete: whole segments age out</text>
+    <text x="365" y="14" text-anchor="middle">cleanup.policy=compact: latest value per key</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="30" y="30" width="70" height="24"/>
+    <rect x="100" y="30" width="70" height="24"/>
+    <rect x="170" y="30" width="70" height="24"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="65" y="45" text-anchor="middle">segment 1</text>
+    <text x="135" y="45" text-anchor="middle">segment 2</text>
+    <text x="205" y="45" text-anchor="middle">segment 3</text>
+  </g>
+  <rect x="30" y="30" width="70" height="24" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="65" y="65" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">past retention.ms:</text>
+  <text x="65" y="75" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">whole segment deleted</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="290" y="30" width="42" height="24"/>
+    <rect x="332" y="30" width="42" height="24"/>
+    <rect x="374" y="30" width="42" height="24"/>
+    <rect x="416" y="30" width="42" height="24"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="311" y="45" text-anchor="middle">A1</text>
+    <text x="353" y="45" text-anchor="middle">B1</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="395" y="45" text-anchor="middle">A2</text>
+    <text x="437" y="45" text-anchor="middle">A3</text>
+  </g>
+  <line x1="311" y1="20" x2="311" y2="28" stroke="#bf7d1a" stroke-width="1"/>
+  <path d="M290,66 L332,66 L374,66" stroke="#bf7d1a" stroke-width="1.2" fill="none" stroke-dasharray="2,2"/>
+  <text x="311" y="78" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6" fill="#bf7d1a">A1, A2 compacted away</text>
+  <text x="437" y="65" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">kept: latest for key A</text>
+  <text x="353" y="65" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">kept: only value for key B</text>
+
+  <text x="120" y="105" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">a full history within the retention window</text>
+  <text x="360" y="95" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">a materialized, latest-value-per-key snapshot,</text>
+  <text x="360" y="107" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">not a full history of every write</text>
+</svg>

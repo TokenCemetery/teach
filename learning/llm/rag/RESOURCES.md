@@ -33,6 +33,9 @@ type: resources
 - [Paper: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
   Defines faithfulness (whether a generated claim is actually supported by the retrieved context) as a metric distinct from retrieval quality, and how to check it without needing new human-labeled ground truth for every generated answer. Use for: evaluating whether the generation step stayed grounded in what was retrieved, once retrieval itself is confirmed correct.
 
+- [Paper: "Precise Zero-Shot Dense Retrieval without Relevance Labels" (HyDE), Gao et al., 2022](https://arxiv.org/abs/2212.10496)
+  Introduces embedding a generated hypothetical answer instead of the query itself, letting the encoder's dense bottleneck filter out the hypothetical document's factual errors while keeping its genuine relevance signal. Use for: the precise mechanism behind why an invented, sometimes-wrong document still improves retrieval.
+
 ## Gaps
 
 - No source yet on semantic chunking specifically for structured or code-heavy corpora (as opposed to prose), where fixed-size and paragraph-boundary heuristics both perform poorly; worth closing once lesson design reaches chunking strategy selection.

@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [13. What Generation Still Gets Wrong](lessons/0013-what-generation-still-gets-wrong.md)
+**Latest lesson:** [14. Query-Side Transformation](lessons/0014-query-side-transformation.md)
 
 ## Success looks like
 
@@ -30,7 +30,7 @@ Be able to design a retrieval pipeline for a real corpus and use case, and to di
 
 ## The arc
 
-Seven stages, first chunk to a diagnosed pipeline. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Thirteen stages, first chunk to a diagnosed, production-ready pipeline. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -41,6 +41,7 @@ Seven stages, first chunk to a diagnosed pipeline. A stage takes several lessons
 | 5. Reranking | 0008 to 0009 | Cross-encoder rerankers, when reranking earns its latency cost | Can add a reranking stage and justify it against the cost |
 | 6. Retrieval evaluation and diagnosis | 0010 to 0011 | Recall@k, MRR, diagnosing which pipeline stage is at fault | Given wrong retrieved context, can name the at-fault stage |
 | 7. From retrieval to generation | 0012 to 0013 | Prompt construction over retrieved context, context-window budget, what generation still gets wrong | Can take retrieved context to a generated answer and name generation-stage failure modes |
+| 8. Query-side transformation | 0014 | HyDE, query rewriting, multi-query expansion, query decomposition | Given a query-side failure lesson 11's procedure doesn't catch, can pick and justify the right remedy |
 
 ## Lessons
 
@@ -61,6 +62,7 @@ Work through these in order.
 | [0011](lessons/0011-diagnosing-the-pipeline.md) | Diagnosing the Pipeline | A stage-by-stage procedure for finding which part of a retrieval pipeline is actually responsible for wrong retrieved context |
 | [0012](lessons/0012-prompt-construction-and-context-budget.md) | Prompt Construction and Context-Window Budget | Why retrieved chunks compete for a shared context-window budget, and why where a chunk sits in the prompt matters as much as whether it was retrieved |
 | [0013](lessons/0013-what-generation-still-gets-wrong.md) | What Generation Still Gets Wrong | The failure modes that survive even correct, well-placed retrieved context, and how they differ from a retrieval failure |
+| [0014](lessons/0014-query-side-transformation.md) | Query-Side Transformation | Lesson 11's diagnosis procedure checks chunking, embedding, the index, hybrid weighting, and reranking, but never the query itself, and a query that's too short, too compound, or phrased nothing like the corpus needs its own remedy, not another pipeline-stage fix |
 
 ## Reference
 

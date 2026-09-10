@@ -14,6 +14,10 @@ Canonical terms for shell that survives production: what an unquoted expansion a
 A bash-only array indexed by arbitrary string keys instead of sequential positions, declared with `declare -A` before assignment.
 _Avoid_: hash, dictionary, map (say "associative array", the shell's own term, even though the concept is the same one those words name elsewhere)
 
+**Background job**:
+A command started with a trailing `&`, running without blocking the script that started it; its PID is available in `$!` immediately afterward.
+_Avoid_: async task, thread (neither applies; a background job is a separate process, not a lighter-weight unit inside one)
+
 **Command substitution**:
 Running a command and replacing `$(command)` with what it wrote to standard output, trailing newlines stripped.
 _Avoid_: backtick substitution (use for the older, non-nesting `` ` ` `` syntax specifically, not the concept)
@@ -45,6 +49,10 @@ _Avoid_: glob expansion (use "globbing" or the full term)
 **Process substitution**:
 A bash-only `<(command)` or `>(command)` form that lets a command's output or input be treated as a readable or writable file, without a pipe or a temporary file.
 _Avoid_: process piping (this is not a pipe; the whole point is that it avoids a pipeline's subshell)
+
+**Signal**:
+An asynchronous notification sent to a process (`SIGTERM`, `SIGINT`, `SIGKILL`, and others), caught with `trap` unless it's `SIGKILL`, which cannot be handled at all.
+_Avoid_: interrupt (reserve for `SIGINT` specifically, which is what `Ctrl-C` sends; "signal" is the general term)
 
 **Subshell**:
 A copy of the current shell's environment, forked to run a command or block; an assignment or a `cd` made inside it never affects the shell that forked it.

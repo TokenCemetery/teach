@@ -42,6 +42,24 @@ Every server is a **follower**, a **candidate**, or the **leader**. A follower t
 
 Once elected, the leader accepts client commands, appends each one to its own log, and replicates that log entry to followers via `AppendEntries` messages. A log entry is considered **committed**, safe to apply and report as done, once the leader confirms a majority of servers have stored it. Followers never accept commands directly from clients and never independently decide their own log order; they only ever adopt entries the current leader sends them. This is the mechanism that provides the single agreed order lesson 6 and 7 described: since only one leader proposes order at a time, and a majority must durably store each entry before it's committed, no two conflicting orders can both become committed.
 
+```mermaid
+sequenceDiagram
+    participant F1 as Follower 1
+    participant C as Follower 2 (candidate)
+    participant F3 as Follower 3
+    Note over C: election timeout: becomes candidate, term+1
+    C->>F1: RequestVote (term N)
+    C->>F3: RequestVote (term N)
+    F1-->>C: vote granted
+    F3-->>C: vote granted
+    Note over C: majority received: becomes leader
+    C->>F1: AppendEntries (log entry)
+    C->>F3: AppendEntries (log entry)
+    F1-->>C: ack
+    F3-->>C: ack
+    Note over C: majority stored: entry committed
+```
+
 ### Why a term number, not just an election, prevents split-brain
 
 A stale leader that hasn't noticed a new election happened (it was partitioned away, then reconnects) could otherwise keep believing it's still in charge. Raft prevents this with the term number: every message carries the sender's term, and a server that sees a higher term than its own immediately steps down (if it was a leader or candidate) and updates its own term. A stale leader's `AppendEntries` messages get rejected by followers who've already voted in, and moved on to, a higher term, so the old leader discovers it's stale as soon as it talks to anyone from the new term and reverts to being a follower.

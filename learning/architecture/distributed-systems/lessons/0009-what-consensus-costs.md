@@ -38,6 +38,8 @@ A client write isn't committed, and can't be safely reported as successful, unti
 
 If a network partition splits the cluster such that no side has a majority, the side without one cannot elect a leader, and the side that does have one keeps working normally. This isn't a bug to be fixed; it's the direct, intended consequence of the safety property from lesson 8: allowing the minority side to also elect its own leader and keep accepting writes would let both sides commit conflicting entries, exactly the split-brain the majority requirement exists to prevent. A minority partition loses availability specifically so the majority side's guarantee stays intact.
 
+![A five-node cluster is split by a network partition into a group of three nodes and a group of two nodes. The group of three is a majority of the original five, so it can still elect a leader and commit writes normally. The group of two is not a majority, so it cannot elect a leader or commit anything at all, and correctly stays unavailable rather than risk a conflicting decision with the other side.](images/majority-partition-availability.svg)
+
 ### This is CAP's trade-off, concretely mechanized
 
 Lesson 4 described CAP's conditional choice: during an actual partition, a system prioritizing consistency refuses to answer rather than risk a stale or conflicting response. Consensus is the concrete mechanism that makes this real: the minority side of a partition isn't merely "choosing" unavailability in the abstract, it structurally cannot elect a leader or commit anything, because it cannot assemble a majority. What CAP describes as a trade-off, Raft (and any majority-based consensus protocol) enforces as a hard mechanical consequence of its safety requirement.

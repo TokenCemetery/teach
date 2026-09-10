@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">A partition splitting a 5-node cluster into 3 and 2 leaves only the 3-node majority side able to elect a leader and commit writes</title>
+  <desc id="desc">A five-node cluster is split by a network partition into a group of three nodes and a group of two nodes. The group of three is a majority of the original five, so it can still elect a leader and commit writes normally. The group of two is not a majority, so it cannot elect a leader or commit anything at all, and correctly stays unavailable rather than risk a conflicting decision with the other side.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#bf7d1a">
+    <text x="115" y="18" text-anchor="middle">3 of 5: majority, keeps working</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="380" y="18" text-anchor="middle">2 of 5: minority, unavailable</text>
+  </g>
+
+  <g fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5">
+    <circle cx="60" cy="60" r="20"/>
+    <circle cx="115" cy="90" r="20"/>
+    <circle cx="170" cy="60" r="20"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="60" y="64" text-anchor="middle">N1</text>
+    <text x="115" y="94" text-anchor="middle">N2</text>
+    <text x="170" y="64" text-anchor="middle">N3</text>
+  </g>
+  <text x="115" y="130" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">can elect a leader, commit entries</text>
+
+  <line x1="255" y1="20" x2="255" y2="150" stroke="#7a828c" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="255" y="163" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">network partition</text>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <circle cx="350" cy="70" r="20"/>
+    <circle cx="410" cy="70" r="20"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="350" y="74" text-anchor="middle">N4</text>
+    <text x="410" y="74" text-anchor="middle">N5</text>
+  </g>
+  <text x="380" y="130" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">cannot assemble a majority:</text>
+  <text x="380" y="142" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">no leader, no commits</text>
+</svg>

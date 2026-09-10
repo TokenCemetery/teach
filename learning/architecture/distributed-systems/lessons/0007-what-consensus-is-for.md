@@ -42,6 +42,12 @@ If message delivery were instant and reliable and servers never crashed, replica
 
 A linearizable key-value store, for instance, is typically built by running a replicated state machine underneath it: every write is a command, consensus gets every replica to agree on the order commands are applied in, and the system exposes that agreed, ordered sequence to clients as a single, coherent history. The client-facing guarantee from lesson 5 (a single real-time-consistent order) is implemented by the internal guarantee this lesson names (replicas agreeing on a single order of commands). Consensus is the load-bearing mechanism most systems reach for when they need lesson 5's guarantee and can't get it for free.
 
+```mermaid
+flowchart TD
+    A["client-facing guarantee: linearizability<br>(single real-time-consistent order)"] --> B["built on: a replicated state machine"]
+    B --> C["consensus: replicas agree on the<br>order commands are applied in"]
+```
+
 ### What a consensus protocol has to promise, at minimum
 
 Regardless of the specific protocol (lesson 8 covers Raft specifically), any consensus algorithm has to guarantee **safety** (never two different values decided for the same slot, even under network partitions, message delays, or reordering) and, under reasonable conditions, **liveness** (the system does eventually make progress, deciding new values, once enough of the network is behaving well enough). Safety is absolute, it must hold no matter how badly the network behaves; liveness is conditional, since the FLP impossibility result (not covered here) shows no protocol can guarantee progress under fully arbitrary asynchronous conditions, which is why liveness is stated as "eventually, under reasonable behavior" rather than "always."

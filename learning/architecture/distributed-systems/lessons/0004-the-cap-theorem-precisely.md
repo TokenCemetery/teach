@@ -38,6 +38,14 @@ A heartbeat is a periodic ping used to detect whether a remote node is still res
 
 The most common misreading treats CAP as "pick any two of three," as if partition tolerance were a design choice a team could decline. It isn't: partial failure (lesson 1) is a structural fact about networks, not a preference, and any distributed system spanning more than one node has to survive the possibility of a partition whether or not its designers accounted for it. Brewer's retrospective is explicit about this: the real choice CAP describes only exists *once a partition is actually happening*, and it's between C and A, not among all three: during a partition, a node that keeps responding despite being unable to confirm it has the latest data is choosing availability over consistency, and a node that refuses to respond (or returns an error) rather than risk a stale answer is choosing consistency over availability.
 
+```mermaid
+flowchart TD
+    A["is there an active network partition?"] -->|"no"| B["consistency and availability<br>both fully achievable"]
+    A -->|"yes"| C{"choose one for<br>the affected requests"}
+    C -->|"prioritize consistency"| D["refuse to answer if unsure<br>(risk unavailability)"]
+    C -->|"prioritize availability"| E["answer anyway<br>(risk stale data)"]
+```
+
 ### Outside a partition, the trade-off doesn't apply
 
 CAP's constraint is conditional: while the network is behaving normally, a well-designed system can be fully consistent and fully available at the same time, since there's no partition forcing the choice. This is a large part of why "CAP says you can only have two of three" oversimplifies things: it's not a permanent, always-in-effect two-out-of-three menu, it's a specific trade-off that only bites during an actual partition, and only for the specific requests affected by it.

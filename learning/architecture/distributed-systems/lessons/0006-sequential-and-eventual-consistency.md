@@ -42,6 +42,12 @@ Even without the real-time requirement, sequential consistency still requires ev
 
 **Eventual consistency** drops the "single agreed order" requirement entirely. Its guarantee is much smaller: if no new writes occur, all replicas will *eventually* converge to the same value, given enough time for updates to propagate. In between, different clients reading different replicas can observe different values, in different orders, with no promise about how long "eventually" takes. This is what makes eventual consistency available even during a partition (each side just keeps answering with whatever it locally has), at the cost of every client potentially seeing a temporarily different, possibly stale picture of the data.
 
+```mermaid
+flowchart LR
+    A["linearizability:<br>single order + matches real time"] -->|"drop the real-time requirement"| B["sequential consistency:<br>single agreed order, not necessarily real-time"]
+    B -->|"drop the single-order requirement"| C["eventual consistency:<br>no order guarantee, just eventual convergence"]
+```
+
 ### Choosing a model is choosing what an application is allowed to observe
 
 The actual design decision isn't "which model is best," it's "what does this specific piece of data need other clients to never be able to observe going wrong." A distributed lock or a bank balance right after a debit needs linearizability, since a single stale or reordered read is a correctness failure (lesson 5). A collaborative document's operation log, or a replicated counter used only for a rough dashboard estimate, can tolerate sequential consistency or even eventual consistency, since a client seeing a slightly different, eventually-converging order isn't a correctness failure for that use case, just a temporary inconvenience. The mission's actual success criterion is this: given a stated design, name which of these three models the data genuinely needs, not which one sounds the strongest.

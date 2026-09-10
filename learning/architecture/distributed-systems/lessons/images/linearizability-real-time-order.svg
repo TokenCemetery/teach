@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">If operation A finishes in real time before operation B starts, linearizability requires the agreed order to place A before B</title>
+  <desc id="desc">A real-time axis shows operation A as a bar that starts and completes first, followed by operation B, which starts only after A has already finished, with no overlap between them. Below, two candidate agreed orders are shown: A then B, marked valid, matches real-time precedence exactly as linearizability requires. B then A, marked invalid with an X, would place the later operation first, violating real-time precedence, which linearizability never permits.</desc>
+
+  <text x="240" y="14" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">real time -&gt;</text>
+  <line x1="40" y1="40" x2="440" y2="40" stroke="#7a828c" stroke-width="1"/>
+
+  <rect x="60" y="28" width="140" height="24" fill="#7a828c" fill-opacity="0.25" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="130" y="44" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">operation A</text>
+
+  <rect x="280" y="28" width="140" height="24" fill="#7a828c" fill-opacity="0.25" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="350" y="44" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">operation B</text>
+
+  <text x="240" y="64" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">A completes fully before B starts: no overlap</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="240" y="90" text-anchor="middle">candidate agreed orders</text>
+  </g>
+
+  <rect x="60" y="100" width="180" height="24" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="150" y="116" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">A, then B: valid</text>
+
+  <rect x="260" y="100" width="180" height="24" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="350" y="116" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">B, then A: invalid</text>
+  <g stroke="#bf7d1a" stroke-width="1.5">
+    <line x1="264" y1="104" x2="286" y2="120"/>
+    <line x1="286" y1="104" x2="264" y2="120"/>
+  </g>
+
+  <text x="240" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">linearizability requires the agreed order to match real-time precedence</text>
+</svg>

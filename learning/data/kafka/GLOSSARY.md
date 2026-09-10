@@ -45,3 +45,7 @@ _Avoid_: rate limit (use only when quoting a source that uses it; "quota" is thi
 **Topic**:
 A named collection of one or more partitions. Ordering is guaranteed only within a partition, never across a topic's partitions as a whole.
 _Avoid_: queue, channel
+
+**Under-replicated partition**:
+A partition whose ISR has shrunk below its configured replication factor, exposed per-partition as `UnderReplicated` and, cluster-wide, as the most watched single Kafka operational metric. Distinct from and earlier than `UnderMinIsr`, which marks the ISR falling to or below `min.insync.replicas`, the point produce requests actually start being rejected.
+_Avoid_: replication lag (vague; "under-replicated" is the specific, checkable gauge this workspace means)

@@ -36,6 +36,8 @@ type: resources
   Official chapter on Kafka's own Raft-based metadata quorum: `process.roles`, combined versus dedicated controller nodes, and the operational commands for describing and reshaping a running quorum. Use for: how the controller quorum actually works, and why its failover needs no full metadata re-fetch.
 - [Docs: "Security", Apache Kafka](https://kafka.apache.org/documentation/#security)
   Official chapter on `security.protocol`, the SASL mechanisms (PLAIN, SCRAM, GSSAPI, OAUTHBEARER), authorization and ACLs, and quotas. Use for: the precise default behavior on authorization, including that with no authorizer configured every authenticated principal has full access, and that deny-by-default applies only once an authorizer is actually in place.
+- [Docs: "Monitoring", Apache Kafka](https://kafka.apache.org/documentation/#monitoring)
+  Official chapter listing every JMX metric a broker exposes, including per-partition `UnderReplicated`/`UnderMinIsr` gauges, per-partition log size and retention-percent gauges, and the request-handling latency and idle-percent metrics. Use for: the exact gauge names and what triggers each one to move.
 
 ## Gaps
 

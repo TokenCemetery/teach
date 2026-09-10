@@ -10,9 +10,17 @@ Canonical terms for owning a Kafka log: how it's partitioned, and what ordering 
 
 ## Terms
 
+**Controller quorum**:
+The set of KRaft nodes (`process.roles=controller`) that replicate the cluster's metadata log via Raft; only quorum members are eligible to become the active controller, and only the active controller processes metadata writes.
+_Avoid_: ZooKeeper ensemble (a different, removed external system; "controller quorum" is KRaft's own internal quorum)
+
 **In-sync replica set (ISR)**:
 The subset of a partition's replicas, leader included, caught up closely enough (per `replica.lag.time.max.ms`) to be eligible for leader election without losing data. `acks=all` waits for the current ISR, not the topic's full configured replication factor.
 _Avoid_: healthy replicas (vague; "ISR" is the specific, checkable set this workspace means)
+
+**KRaft**:
+Kafka's own Raft-based metadata consensus, replacing ZooKeeper. A controller quorum replicates a metadata log that every controller continuously replays, so failover promotes an already-caught-up standby instead of re-fetching a full state from an external store.
+_Avoid_: ZooKeeper (the external system KRaft replaced; current Kafka no longer supports it)
 
 **Log compaction**:
 A cleanup policy retaining only the latest value per key, via a periodic log cleaner, rather than deleting by age. A key is fully removed only after a tombstone (a `null`-valued write for that key) has itself aged past `delete.retention.ms`.

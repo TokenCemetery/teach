@@ -32,6 +32,8 @@ type: resources
   The worker configuration reference. Use for: the three internal topics distributed mode needs, the converters that are configured independently of any connector, and `exactly.once.source.support`, which is `disabled` by default and takes a two-step rollout to enable on a running cluster.
 - [Docs: "Schema Registry", Confluent](https://docs.confluent.io/platform/current/schema-registry/index.html)
   Official docs for managing and evolving message schemas across producers and consumers without breaking compatibility. Use for: the other surrounding-ecosystem piece, schema management, this mission touches briefly.
+- [Docs: "KRaft", Apache Kafka](https://kafka.apache.org/documentation/#kraft)
+  Official chapter on Kafka's own Raft-based metadata quorum: `process.roles`, combined versus dedicated controller nodes, and the operational commands for describing and reshaping a running quorum. Use for: how the controller quorum actually works, and why its failover needs no full metadata re-fetch.
 
 ## Gaps
 

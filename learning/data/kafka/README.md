@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a topic and partition layout for a real workload and to diagnose consumer lag, rebalancing storms or unexpected message loss instead of guessing at a fix.
 
-**Latest lesson:** [12. Producer and Consumer Configuration Under Load](lessons/0012-producer-and-consumer-configuration-under-load.md)
+**Latest lesson:** [13. KRaft, and What Replaced ZooKeeper](lessons/0013-kraft-and-what-replaced-zookeeper.md)
 
 ## Success looks like
 
@@ -29,7 +29,7 @@ Be able to design a topic and partition layout for a real workload and to diagno
 
 ## The arc
 
-Seven stages, the log to client-side tuning under load. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eight stages, the log to cluster coordination. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -40,6 +40,7 @@ Seven stages, the log to client-side tuning under load. A stage takes several le
 | 5. The surrounding ecosystem | 0008 to 0009 | Schema Registry, Kafka Connect basics | Can explain how these fit around the log in a real pipeline |
 | 6. Retention and replication | 0010 to 0011 | `cleanup.policy`, log compaction, replication factor, ISR, `acks`, `min.insync.replicas`, unclean leader election | Can defend how long a topic's data lives and what durability its replication settings actually guarantee |
 | 7. Client configuration under load | 0012 | `batch.size`, `linger.ms`, `fetch.min.bytes`, `max.poll.interval.ms` | Can match a throughput, latency or spurious-rebalance symptom to the specific client setting that addresses it |
+| 8. Cluster coordination | 0013 | KRaft, the controller quorum, `process.roles`, what replaced ZooKeeper | Can explain what the controller quorum does and why KRaft failover needs no full metadata re-fetch |
 
 ## Lessons
 
@@ -59,6 +60,7 @@ Work through these in order.
 | [0010](lessons/0010-retention-and-log-compaction.md) | Retention and Log Compaction | How long a message actually survives in a topic, and the other cleanup policy that keeps a key's history instead of its age |
 | [0011](lessons/0011-replication-isr-acks-and-unclean-leader-election.md) | Replication, ISR, acks, and Unclean Leader Election | What acks=all actually waits for, the floor that stops it from silently meaning less than it sounds like, and the trade-off when every in-sync replica is gone |
 | [0012](lessons/0012-producer-and-consumer-configuration-under-load.md) | Producer and Consumer Configuration Under Load | The client-side knobs that trade latency for throughput, and the one that can trigger a rebalance for a consumer that was never actually dead |
+| [0013](lessons/0013-kraft-and-what-replaced-zookeeper.md) | KRaft, and What Replaced ZooKeeper | How the cluster agrees on its own metadata now that the external coordination service is gone, and why a full-state re-fetch on failover was the problem worth solving |
 
 ## Reference
 

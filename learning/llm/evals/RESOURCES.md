@@ -29,6 +29,10 @@ type: resources
   The chance-corrected inter-rater agreement statistic: its formula, why a kappa of 0 means no better than chance, and its known tendency to underestimate agreement on a rare category. Use for: measuring human-rater agreement precisely instead of eyeballing a raw agreement percentage.
 - [Article: "Inter-rater reliability", Wikipedia](https://en.wikipedia.org/wiki/Inter-rater_reliability)
   Covers why raw joint-probability agreement is misleading (inflated by chance, worse with fewer categories) and Krippendorff's alpha as the generalization of chance-corrected agreement to any number of raters and any level of measurement. Use for: choosing the right agreement statistic for more than two raters or non-categorical ratings.
+- [Paper: "HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal", Mazeika et al., 2024](https://arxiv.org/abs/2402.04249)
+  Introduces a standardized framework for evaluating automated red-teaming methods against models and defenses, at scale and comparably, where the field previously lacked one. Use for: attack success rate as a metric, and the distinction between an attack-generation method and a rigorous way to evaluate it.
+- [Paper: "XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models", Röttger et al., 2023](https://arxiv.org/abs/2308.01263)
+  A test suite of safe prompts written to resemble unsafe ones, specifically to surface over-refusal. Use for: the precise tension between harmlessness (refuse unsafe prompts) and helpfulness (don't refuse safe ones), and a concrete way to measure a model landing badly on that trade-off.
 
 ## Gaps
 

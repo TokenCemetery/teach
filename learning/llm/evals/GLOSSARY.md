@@ -25,3 +25,11 @@ _Avoid_: leakage, cheating
 **Held-out data**:
 Eval examples, or close paraphrases of them, that the model being judged never saw during training or fine-tuning. A score is only informative when the data behind it is held out.
 _Avoid_: test set (ambiguous with a training-pipeline split), unseen data
+
+**Over-refusal**:
+A model refusing a prompt that is actually safe, typically because it resembles an unsafe prompt in wording or touches a sensitive-sounding topic without being harmful. A genuinely different failure mode from a jailbreak, and one a red-team (unsafe-prompt-only) eval cannot detect.
+_Avoid_: false refusal (used interchangeably in some sources; this workspace standardizes on "over-refusal")
+
+**Red-teaming**:
+Deliberately constructing inputs designed to make a model produce unsafe output, whether by a human tester or an automated attack-generation method, then measuring how often those inputs succeed (a jailbreak) against a given model and its defenses.
+_Avoid_: reporting only attack success rate as "the safety eval"; it measures nothing about over-refusal, a distinct failure mode needing its own test set

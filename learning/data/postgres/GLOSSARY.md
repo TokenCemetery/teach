@@ -34,6 +34,14 @@ _Avoid_: restoring a backup (imprecise; a base backup alone only restores to its
 Postgres's connection model: each client connection gets its own dedicated OS backend process, not a lightweight thread or a shared worker. Why `max_connections` costs real memory per connection regardless of activity, and why raising it requires a restart.
 _Avoid_: thread-per-connection (a different model some other databases use; Postgres backends are OS processes)
 
+**Role**:
+Postgres's single unified concept for what other systems split into "user" and "group": a role can log in (given `LOGIN`), own objects, and be granted or hold membership in other roles. Special attributes (`LOGIN`, `SUPERUSER`, `CREATEDB`, `CREATEROLE`, `REPLICATION`, `BYPASSRLS`) are never inherited through membership.
+_Avoid_: user, group (Postgres has no separate concepts for these; both are roles)
+
+**Row-level security (RLS)**:
+A per-table policy layer, beneath ordinary table-level GRANTs, that filters which specific rows a role may see (`USING`) or write (`WITH CHECK`). Enabling it with no policies defined denies every row by default, except to the table owner or a superuser, who bypass RLS entirely unless `FORCE ROW LEVEL SECURITY` is set.
+_Avoid_: row security (imprecise; "row-level security" or "RLS" is this workspace's term)
+
 **Wait event**:
 The specific thing a backend is currently stalled on (`pg_stat_activity`'s `wait_event`/`wait_event_type` columns), such as a lock, an I/O operation, or an internal lightweight lock. Independent of `state`: a backend can show `active` with a non-null wait event, meaning it's running but currently blocked, not actively executing.
 _Avoid_: waiting (vague; "wait event" is the specific, named signal this workspace means)

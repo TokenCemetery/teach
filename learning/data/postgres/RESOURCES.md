@@ -52,6 +52,10 @@ type: resources
   Official chapter on publications, subscriptions, and the publish-and-subscribe model. Use for: exactly what logical replication does and does not replicate, especially that DDL is never replicated automatically, and the documented workaround of applying additive schema changes to the subscriber first.
 - [Docs: "pg_upgrade", PostgreSQL](https://www.postgresql.org/docs/current/pgupgrade.html)
   Official docs for the major-version upgrade utility. Use for: the exact difference between copy, link, clone, and swap transfer modes and what each does to the old cluster's recoverability, and the current, precise statement of which statistics categories `pg_upgrade` does and doesn't transfer automatically.
+- [Docs: "Database Roles", PostgreSQL](https://www.postgresql.org/docs/current/user-manag.html)
+  Official chapter on roles and role membership. Use for: the precise rule that special role attributes are never inherited through membership regardless of grant options, and the independent `INHERIT` and `SET` options a role membership grant can carry.
+- [Docs: "Row Security Policies", PostgreSQL](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
+  Official chapter on row-level security. Use for: the exact deny-by-default behavior of enabling RLS with no policies defined, and the rule that table owners and superusers bypass RLS entirely unless `FORCE ROW LEVEL SECURITY` is set.
 
 ## Gaps
 

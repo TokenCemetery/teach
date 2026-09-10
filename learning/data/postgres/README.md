@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** [16. Major-Version Upgrades and pg_upgrade](lessons/0016-major-version-upgrades-and-pg-upgrade.md)
+**Latest lesson:** [17. Roles, Privileges, and Row-Level Security](lessons/0017-roles-privileges-and-row-level-security.md)
 
 ## Success looks like
 
@@ -28,7 +28,7 @@ Be able to operate a running Postgres instance, self-hosted or managed, and to d
 
 ## The arc
 
-Ten stages, durability to major-version upgrades. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eleven stages, durability to roles and row-level security. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -42,6 +42,7 @@ Ten stages, durability to major-version upgrades. A stage takes several lessons 
 | 8. Monitoring | 0013 | `pg_stat_activity`, wait events, `pg_stat_statements`, the server log | Can pick the right monitoring surface (live backend state, aggregate query cost, or a logged event) for a given symptom |
 | 9. Connection management | 0014 | `max_connections`, the process-per-connection cost, PgBouncer's session/transaction/statement pooling modes | Can choose a pooling mode that matches what the application actually depends on, rather than defaulting to the most efficient one |
 | 10. Logical replication and major-version upgrades | 0015 to 0016 | Publications and subscriptions, logical replication's DDL restriction, `pg_upgrade`'s transfer modes, the low-downtime logical-replication upgrade path | Can choose and defend an upgrade path (in-place `pg_upgrade` or logical-replication cutover) for a stated downtime budget |
+| 11. Roles, privileges, and row-level security | 0017 | Roles vs. the user/group split other systems make, membership's INHERIT/SET options, table-level GRANTs, row-level security and its owner-bypass default | Can design a role and RLS policy layout and name why enabling RLS alone does not restrict the table owner |
 
 ## Lessons
 
@@ -65,6 +66,7 @@ Work through these in order.
 | [0014](lessons/0014-connection-management-and-pgbouncer.md) | Connection Management and PgBouncer | Every Postgres connection is a full OS process, which is why a pooler is usually required, and PgBouncer's three pooling modes each trade session-level correctness for reuse efficiency differently |
 | [0015](lessons/0015-logical-replication-publications-and-subscriptions.md) | Logical Replication, Publications, and Subscriptions | Streaming replication ships raw WAL to build an identical whole-cluster copy; logical replication decodes those same changes into row-level events a subscriber can apply selectively, across major versions, at the cost of never replicating DDL on its own |
 | [0016](lessons/0016-major-version-upgrades-and-pg-upgrade.md) | Major-Version Upgrades and pg_upgrade | pg_upgrade's fastest transfer modes buy their speed by giving up the ability to simply revert, and logical replication offers a genuinely different trade, near-zero downtime, at the cost of handling DDL by hand throughout the migration |
+| [0017](lessons/0017-roles-privileges-and-row-level-security.md) | Roles, Privileges, and Row-Level Security | Table-level GRANTs and row-level security are two separate authorization layers, and enabling RLS does not restrict the table owner unless you explicitly tell it to |
 
 ## Reference
 

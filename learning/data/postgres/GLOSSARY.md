@@ -26,6 +26,10 @@ _Avoid_: idle (a materially different state; plain `idle` holds no open transact
 Reconstructing the database as it existed at an arbitrary past moment, by starting from a base backup and replaying its archived WAL forward to a chosen `recovery_target_time` (or LSN, name, or transaction ID), which must fall strictly after the base backup's own completion.
 _Avoid_: restoring a backup (imprecise; a base backup alone only restores to its own endpoint, not to a chosen moment after it)
 
+**Process-per-connection**:
+Postgres's connection model: each client connection gets its own dedicated OS backend process, not a lightweight thread or a shared worker. Why `max_connections` costs real memory per connection regardless of activity, and why raising it requires a restart.
+_Avoid_: thread-per-connection (a different model some other databases use; Postgres backends are OS processes)
+
 **Wait event**:
 The specific thing a backend is currently stalled on (`pg_stat_activity`'s `wait_event`/`wait_event_type` columns), such as a lock, an I/O operation, or an internal lightweight lock. Independent of `state`: a backend can show `active` with a non-null wait event, meaning it's running but currently blocked, not actively executing.
 _Avoid_: waiting (vague; "wait event" is the specific, named signal this workspace means)

@@ -44,6 +44,10 @@ type: resources
   Official docs for the query-statistics extension: how it normalizes query text, and every column it reports. Use for: the exact difference between ranking by `total_exec_time` versus `mean_exec_time`, and how constant normalization merges semantically identical queries into one entry.
 - [Docs: "Error Reporting and Logging", PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html)
   Official chapter on every logging parameter and its current default. Use for: `log_min_duration_statement`, `log_lock_waits`, `log_checkpoints`, and `log_autovacuum_min_duration`, and which of these force the query text itself into the log versus only a duration.
+- [Docs: "Connection Settings", PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-connection.html)
+  Official chapter on `max_connections` and the reserved-connection settings. Use for: why raising `max_connections` requires a restart, and the two tiers of reserved slots (`reserved_connections`, `superuser_reserved_connections`) meant to guarantee administrative access when a pool is near capacity.
+- [Docs: "pgbouncer.ini", PgBouncer](https://www.pgbouncer.org/config.html)
+  Official configuration reference for PgBouncer. Use for: the exact behavior of each `pool_mode` (session, transaction, statement), what `server_reset_query` does and why it's skipped in transaction mode, and why SQL-level `PREPARE`/`EXECUTE` is not reliably tracked across pooled connections.
 
 ## Gaps
 

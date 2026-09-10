@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [14. Webhooks and Callbacks as Delivery](lessons/0014-webhooks-and-callbacks-as-delivery.md)
+**Latest lesson:** [15. Bulk Operations and Partial Responses](lessons/0015-bulk-operations-and-partial-responses.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## The arc
 
-Nine stages, the contract to asynchronous delivery. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Ten stages, the contract to asynchronous delivery to bulk operations. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -40,6 +40,7 @@ Nine stages, the contract to asynchronous delivery. A stage takes several lesson
 | 7. Idempotency and safe retries | 0011 | The `Idempotency-Key` header, idempotency fingerprints, and the retry-versus-concurrent-request distinction | Can design an idempotency mechanism that makes a non-idempotent method genuinely safe to retry |
 | 8. HTTP caching as contract | 0012 | `ETag`, weak vs. strong validators, conditional requests, `If-Match` optimistic concurrency, `Cache-Control` | Can design a caching and concurrency-control contract, and knows which comparison strength each conditional header needs |
 | 9. Long-running operations and async delivery | 0013 to 0014 | The operation resource and polling, webhook signing, retries, and ordering | Can design an async contract (polled operation or pushed webhook) and its failure, retry, and ordering guarantees |
+| 10. Bulk operations and partial responses | 0015 | Atomic vs. partial-success batch methods, per-item error reporting, field masks | Can design a batch method's failure semantics and a partial-response contract |
 
 ## Lessons
 
@@ -61,6 +62,7 @@ Work through these in order.
 | [0012](lessons/0012-http-caching-as-contract.md) | HTTP Caching as Contract | The same ETag validator serves two different jobs depending on which comparison it needs, weak comparison is enough to skip a redundant download, but only a strong comparison is safe for detecting someone else's concurrent write |
 | [0013](lessons/0013-the-operation-resource-and-polling.md) | The Operation Resource and Polling | A long-running method returns a promise-shaped resource instead of blocking, and a failure during execution reports differently than a failure that stops the operation from starting at all |
 | [0014](lessons/0014-webhooks-and-callbacks-as-delivery.md) | Webhooks and Callbacks as Delivery | Pushing a notification instead of waiting to be polled inverts who initiates the request, and that inversion is exactly why signing, retries, and ordering all need their own explicit contract on the receiving end |
+| [0015](lessons/0015-bulk-operations-and-partial-responses.md) | Bulk Operations and Partial Responses | A batch method has to choose upfront whether it fails all-or-nothing or reports success and failure per item, and a client asking for a subset of fields needs that subset requested outside the body it's shaping |
 
 ## Reference
 

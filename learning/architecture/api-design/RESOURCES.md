@@ -52,3 +52,11 @@ type: resources
   Google's design guidance for the operation-resource pattern. Use for: the exact shape of an operation resource (`name`, `done`, `metadata`, `response`/`error`), the distinction between a failure to start and a failure during execution, and the ~30-day expiration rule of thumb.
 - [Docs: "Receive Stripe events in your webhook endpoint", Stripe](https://docs.stripe.com/webhooks)
   A real, production webhook implementation's documented contract. Use for: the `Stripe-Signature` header's timestamp-based replay protection (and the common mistake of setting its tolerance to 0), the multi-day exponential-backoff retry policy, and the explicit statement that event delivery order is not guaranteed.
+- [AIP-231: "Batch methods: Get", Google](https://google.aip.dev/231)
+  Design guidance for a synchronous batch read: request/response shape, and the rule that it must be atomic, with no partial success. Use for: the requirement that a batch response preserve the same order as the request, and for why an always-atomic method points a caller needing partial failure toward `List` instead.
+- [AIP-233: "Batch methods: Create", Google](https://google.aip.dev/233)
+  Design guidance for batch writes, including the explicit choice between atomic and partial-success behavior and the recorded rationale for how partial failures are reported. Use for: the rule that a synchronous batch write must be atomic while an asynchronous one may choose partial success, and the `map<int32, google.rpc.Status>` shape chosen (and the two alternatives rejected) for reporting which items failed.
+- [AIP-157: "Partial responses", Google](https://google.aip.dev/157)
+  Design guidance for letting a client request a subset of a resource's fields. Use for: the rule that a field mask travels as a side channel rather than a body field, that it must default to every field when omitted, and that changing that default later is a breaking change.
+- [Docs: "Well-Known Types: FieldMask", Protocol Buffers](https://protobuf.dev/reference/protobuf/google.protobuf/#field-mask)
+  The canonical reference for `google.protobuf.FieldMask`'s `paths` field and its JSON encoding. Use for: the exact syntax of a field-mask path, and the asymmetry between how a read mask and an update mask are each allowed to treat non-terminal repeated fields.

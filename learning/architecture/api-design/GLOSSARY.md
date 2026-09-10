@@ -10,9 +10,17 @@ Canonical terms for designing and evolving an interface others depend on.
 
 ## Terms
 
+**Batch operation**:
+A request that acts on several resources at once instead of one call per resource, requiring an explicit choice between atomic (all succeed or all fail) and partial success (each item reports its own result), since the two make genuinely different promises to the client.
+_Avoid_: bulk operation (use interchangeably only when quoting a source; this workspace standardizes on "batch operation" as the term with a settled contract)
+
 **Contract**:
 Every behavior of an API a client can rely on, whether deliberately documented or merely observed and depended on in practice (see Hyrum's Law).
 _Avoid_: interface (too broad; a contract is specifically what's relied on, not the shape of the API alone)
+
+**Field mask**:
+A `google.protobuf.FieldMask`, a list of field paths (`user.displayName`) that either narrows a read to a subset of fields (a read mask, part of a partial response) or scopes a write to only the fields named (an update mask), travelling as a query parameter, header, or metadata entry rather than as a body field.
+_Avoid_: assuming a read mask and an update mask behave identically; a read mask may allow non-terminal repeated fields where an update mask is not obligated to
 
 **Hyrum's Law**:
 The principle that with enough users of an API, every observable behavior, documented or not, will end up depended on by somebody.
@@ -33,6 +41,10 @@ _Avoid_: async job (use only when quoting a source that uses it; "long-running o
 **Optimistic concurrency**:
 Detecting, at write time, whether a resource has changed since a client last read it (via `If-Match` and a strong ETag), rejecting the write with `412 Precondition Failed` if so, rather than locking the resource in advance or silently overwriting a concurrent change.
 _Avoid_: pessimistic locking (a different strategy this workspace does not cover; optimistic concurrency detects a conflict after the fact instead of preventing one in advance)
+
+**Partial response**:
+A response narrowed to a client-requested subset of a resource's fields via a field mask, defaulting to every field when the mask is omitted; changing that default later is a breaking change, since every caller that omitted the mask relied on getting everything back.
+_Avoid_: sparse fieldset (a JSON:API-specific term this workspace does not otherwise use; "partial response" and "field mask" are the terms in use here)
 
 **Validator (HTTP)**:
 An opaque identifier (an `ETag`) for a specific state of a representation. Strong validators change on any byte-level difference and support strong comparison (required for `If-Match`); weak validators (`W/` prefix) only change on a semantically significant difference and support only weak comparison (sufficient for `If-None-Match`).

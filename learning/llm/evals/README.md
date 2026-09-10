@@ -8,7 +8,7 @@ type: topic
 
 Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change (a fine-tune, a prompt change, a RAG change) that you can defend with a number instead of a feeling.
 
-**Latest lesson:** [13. Evaluating Agents and Tool Use](lessons/0013-evaluating-agents-and-tool-use.md)
+**Latest lesson:** [14. RAG-Specific Evaluation](lessons/0014-rag-specific-evaluation.md)
 
 ## Success looks like
 
@@ -39,6 +39,7 @@ Twelve stages, a trustworthy eval to a defended go/no-go call that accounts for 
 | 6. Human evaluation as a method | 0011 | Annotation guidelines, sampling for review, Cohen's kappa, and what a human label costs | Can measure inter-rater agreement precisely and diagnose a low value |
 | 7. Safety and red-teaming evaluation | 0012 | Red-teaming, jailbreaks and attack success rate, over-refusal and XSTest | Can report both a refusal-rate and an over-refusal metric, and explain why neither alone is a safety eval |
 | 8. Evaluating agents and tool use | 0013 | Trajectories, task success vs. step accuracy, `pass^k` reliability | Can explain why task success beats step matching, and why single-trial success isn't repeated-trial reliability |
+| 9. RAG-specific evaluation | 0014 | Faithfulness/groundedness, citation correctness, separating a retrieval failure from a generation failure | Can measure faithfulness and citation correctness independently, and diagnose which side of a RAG pipeline actually failed |
 
 ## Lessons
 
@@ -59,6 +60,7 @@ Work through these in order.
 | [0011](lessons/0011-human-evaluation-as-a-method.md) | Human Evaluation as a Method | Lesson 6 measured a judge against human raters without ever teaching how a human rating is actually produced, and the raw agreement number it leaned on turns out to need its own correction for chance before it means anything |
 | [0012](lessons/0012-safety-and-red-teaming-evaluation.md) | Safety and Red-Teaming Evaluation | A safety eval that only measures how often a model refuses genuinely unsafe prompts is measuring half a trade-off, since the same tuning that raises that number can just as easily raise how often the model refuses prompts that were never unsafe at all |
 | [0013](lessons/0013-evaluating-agents-and-tool-use.md) | Evaluating Agents and Tool Use | An agent task has many valid paths to the same correct outcome, so scoring it against one reference sequence of actions repeats exact match's mistake at trajectory scale, and even a single trial's success rate hides how often the same agent fails the same task on a second try |
+| [0014](lessons/0014-rag-specific-evaluation.md) | RAG-Specific Evaluation | llm/rag drew the line between a retrieval failure and a generation failure but left the generation-side check undefined, and that check turns out to need two separate numbers, not one, since a faithful claim and a correctly cited claim can fail independently of each other |
 
 ## Reference
 

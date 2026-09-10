@@ -14,6 +14,10 @@ Canonical terms for proving whether a model change helped, and for defending tha
 A written definition of each rating category, with concrete borderline examples and how they were resolved, given to every human rater before they start. Low inter-rater agreement often signals a missing or ambiguous guideline rather than unreliable raters.
 _Avoid_: rating rubric (used interchangeably elsewhere; this workspace uses "annotation guideline" as the term)
 
+**Citation correctness**:
+Whether the specific passage cited for a claim actually supports that claim, a stricter, per-citation check than faithfulness. A claim can be faithful (grounded in the retrieved set somewhere) while still being attributed to the wrong citation, or to none at all.
+_Avoid_: faithfulness (a related but separate check; faithfulness asks whether a claim is supported by the retrieved context at all, citation correctness asks whether its specific cited source actually supports it)
+
 **Cohen's kappa**:
 A statistic measuring two raters' agreement after correcting for the agreement expected by chance alone: `κ = (p_o − p_e) / (1 − p_e)`. A kappa of 0 means no better than chance; a kappa can go negative. Known to underestimate agreement when one rating category is much rarer than the others.
 _Avoid_: percent agreement (the uncorrected, raw figure; kappa is specifically the chance-corrected version, and the two can tell different stories)
@@ -21,6 +25,10 @@ _Avoid_: percent agreement (the uncorrected, raw figure; kappa is specifically t
 **Data contamination**:
 Eval data, or a close paraphrase of it, ending up inside a model's training data (typically pretraining, via a benchmark scraped into web-crawl data) or a model being iteratively tuned against the same eval set until it stops measuring the underlying skill.
 _Avoid_: leakage, cheating
+
+**Faithfulness (groundedness)**:
+Whether each claim in a generated answer is actually supported by the retrieved context it's meant to rest on, rather than fabricated, contradicted, or embellished with an unsupported detail. A claim-level check: a mostly-faithful answer can still hide one unsupported claim.
+_Avoid_: citation correctness (a stricter, separate check on whether the specific cited passage for a claim is the one that actually supports it, distinct from whether the claim is grounded at all)
 
 **Held-out data**:
 Eval examples, or close paraphrases of them, that the model being judged never saw during training or fine-tuning. A score is only informative when the data behind it is held out.

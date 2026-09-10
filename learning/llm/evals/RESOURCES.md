@@ -37,6 +37,10 @@ type: resources
   Evaluates agents by comparing the end-of-conversation database state to an annotated goal state, and introduces `pass^k` for measuring an agent's reliability across repeated trials of the same task. Use for: why task success beats step-by-step trajectory matching, and the precise, easy-to-confuse distinction between `pass^k` and lesson 4's `pass@k`.
 - [Paper: "AgentBench: Evaluating LLMs as Agents", Liu et al., 2023](https://arxiv.org/abs/2308.03688)
   A multi-dimensional benchmark across 8 distinct interactive environments testing an LLM's reasoning and decision-making as an agent, finding a significant gap between top models and smaller ones specifically in agentic settings. Use for: evidence that agentic capability is a distinct thing to measure, not implied by single-turn benchmark performance.
+- [Paper: "Ragas: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
+  A reference-free framework separating a RAG system's retrieval-quality, faithfulness, and generation-quality dimensions into independent metrics. Use for: computing a faithfulness score without needing a human-written gold answer, and for keeping retrieval failure and generation failure diagnosable as separate questions.
+- [Paper: "Enabling Large Language Models to Generate Text with Citations" (ALCE), Gao et al., 2023](https://arxiv.org/abs/2305.14627)
+  Introduces automatic citation-quality metrics correlated with human judgment, and the finding that even top systems lack complete citation support for roughly half their claims on one test set. Use for: citation correctness as a stricter, separate check from faithfulness.
 
 ## Gaps
 

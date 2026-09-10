@@ -34,6 +34,8 @@ type: resources
   The synchronous single-standby shape, with two statements teams get wrong: the standby **cannot** serve read traffic, and write and commit latency is increased against a single-AZ deployment because the replication is synchronous. Use for: separating an availability decision from a read-capacity one, and for seeing the synchronous trade-off appear in a managed product.
 - [Docs: "Multi-AZ DB cluster deployments", AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html)
   The semisynchronous shape, with two readable replicas across three Availability Zones and lower write latency than the single-standby deployment. Use for: the third option, when the requirement is availability and read capacity together.
+- [Docs: "Continuous Archiving and Point-in-Time Recovery (PITR)", PostgreSQL](https://www.postgresql.org/docs/current/continuous-archiving.html)
+  Official chapter on combining a base backup with a continuous WAL archive to reconstruct any moment since the backup. Use for: why a logical dump can't be combined with WAL archiving, the requirement that the archive be gapless back to the base backup's start, and the exact recovery-target and recovery-target-action settings that control where a restore stops and what happens next.
 
 ## Gaps
 

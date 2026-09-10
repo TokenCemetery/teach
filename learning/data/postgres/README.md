@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** [10. Defending an Operating Choice](lessons/0010-defending-an-operating-choice.md)
+**Latest lesson:** [11. Backup and Point-in-Time Recovery](lessons/0011-backup-and-point-in-time-recovery.md)
 
 ## Success looks like
 
@@ -28,7 +28,7 @@ Be able to operate a running Postgres instance, self-hosted or managed, and to d
 
 ## The arc
 
-Five stages, durability to a defended deployment design. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Six stages, durability to backup and recovery. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -37,6 +37,7 @@ Five stages, durability to a defended deployment design. A stage takes several l
 | 3. Replication | 0004 to 0006 | Streaming replication, replication slots, failover, lag diagnosis | Can diagnose a lagging replica and design a replication topology |
 | 4. Indexes and their upkeep cost | 0007 to 0008 | B-tree/GiST/GIN maintenance cost, what a pgvector index costs to keep | Can design an index maintenance plan and account for pgvector's cost |
 | 5. Managed vs self-hosted | 0009 to 0010 | What an RDS-style managed service shields you from, and what it doesn't | Can explain the managed-service boundary and defend an operating choice |
+| 6. Backup and point-in-time recovery | 0011 | Base backups, continuous WAL archiving, `recovery_target_time`, and why an untested restore isn't a verified backup | Can design and defend a backup strategy that actually reconstructs a working database when tested |
 
 ## Lessons
 
@@ -54,6 +55,7 @@ Work through these in order.
 | [0008](lessons/0008-what-a-pgvector-index-costs.md) | What a pgvector Index Costs to Keep | The disk, build-time, and standing-memory cost a vector index adds beyond the raw vectors it indexes |
 | [0009](lessons/0009-what-managed-shields-you-from.md) | What a Managed Service Shields You From | What RDS-style automation actually removes, and why everything from earlier lessons still needs understanding underneath it |
 | [0010](lessons/0010-defending-an-operating-choice.md) | Defending an Operating Choice | A worked deployment design that cites a specific decision and cost from each stage, rather than assuming a default answer |
+| [0011](lessons/0011-backup-and-point-in-time-recovery.md) | Backup and Point-in-Time Recovery | A base backup and a continuous WAL archive together let you reconstruct any moment since the backup, not just the moment the backup itself was taken, and an untested restore isn't a verified backup |
 
 ## Reference
 

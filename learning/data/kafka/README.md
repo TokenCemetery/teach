@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a topic and partition layout for a real workload and to diagnose consumer lag, rebalancing storms or unexpected message loss instead of guessing at a fix.
 
-**Latest lesson:** [13. KRaft, and What Replaced ZooKeeper](lessons/0013-kraft-and-what-replaced-zookeeper.md)
+**Latest lesson:** [15. ACLs and Quotas: Authorization and Multi-Tenancy](lessons/0015-acls-and-quotas-authorization-and-multi-tenancy.md)
 
 ## Success looks like
 
@@ -29,7 +29,7 @@ Be able to design a topic and partition layout for a real workload and to diagno
 
 ## The arc
 
-Eight stages, the log to cluster coordination. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Nine stages, the log to securing and isolating a shared cluster. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -41,6 +41,7 @@ Eight stages, the log to cluster coordination. A stage takes several lessons and
 | 6. Retention and replication | 0010 to 0011 | `cleanup.policy`, log compaction, replication factor, ISR, `acks`, `min.insync.replicas`, unclean leader election | Can defend how long a topic's data lives and what durability its replication settings actually guarantee |
 | 7. Client configuration under load | 0012 | `batch.size`, `linger.ms`, `fetch.min.bytes`, `max.poll.interval.ms` | Can match a throughput, latency or spurious-rebalance symptom to the specific client setting that addresses it |
 | 8. Cluster coordination | 0013 | KRaft, the controller quorum, `process.roles`, what replaced ZooKeeper | Can explain what the controller quorum does and why KRaft failover needs no full metadata re-fetch |
+| 9. Security and multi-tenancy | 0014 to 0015 | TLS, SASL, `security.protocol`, ACLs, deny-by-default, quotas | Can name which mechanism (encryption, authentication, authorization, or resource isolation) a given security question actually concerns |
 
 ## Lessons
 
@@ -61,6 +62,8 @@ Work through these in order.
 | [0011](lessons/0011-replication-isr-acks-and-unclean-leader-election.md) | Replication, ISR, acks, and Unclean Leader Election | What acks=all actually waits for, the floor that stops it from silently meaning less than it sounds like, and the trade-off when every in-sync replica is gone |
 | [0012](lessons/0012-producer-and-consumer-configuration-under-load.md) | Producer and Consumer Configuration Under Load | The client-side knobs that trade latency for throughput, and the one that can trigger a rebalance for a consumer that was never actually dead |
 | [0013](lessons/0013-kraft-and-what-replaced-zookeeper.md) | KRaft, and What Replaced ZooKeeper | How the cluster agrees on its own metadata now that the external coordination service is gone, and why a full-state re-fetch on failover was the problem worth solving |
+| [0014](lessons/0014-tls-and-sasl-authenticating-to-a-cluster.md) | TLS and SASL: Authenticating to a Cluster | Encrypting the channel and authenticating the client are two separate jobs that security.protocol combines in one setting, and conflating them is where most confusion starts |
+| [0015](lessons/0015-acls-and-quotas-authorization-and-multi-tenancy.md) | ACLs and Quotas: Authorization and Multi-Tenancy | An authenticated principal still isn't authorized to do anything until an ACL says so, and a principal allowed to act still isn't protected from starving every other tenant of the cluster's capacity |
 
 ## Reference
 

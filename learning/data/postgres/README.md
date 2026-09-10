@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** [14. Connection Management and PgBouncer](lessons/0014-connection-management-and-pgbouncer.md)
+**Latest lesson:** [16. Major-Version Upgrades and pg_upgrade](lessons/0016-major-version-upgrades-and-pg-upgrade.md)
 
 ## Success looks like
 
@@ -28,7 +28,7 @@ Be able to operate a running Postgres instance, self-hosted or managed, and to d
 
 ## The arc
 
-Nine stages, durability to connection management. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Ten stages, durability to major-version upgrades. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -41,6 +41,7 @@ Nine stages, durability to connection management. A stage takes several lessons 
 | 7. Configuration and memory tuning | 0012 | `shared_buffers`, `work_mem`, `maintenance_work_mem`, checkpoint tuning | Can size these settings against actual concurrency instead of an isolated single-query test |
 | 8. Monitoring | 0013 | `pg_stat_activity`, wait events, `pg_stat_statements`, the server log | Can pick the right monitoring surface (live backend state, aggregate query cost, or a logged event) for a given symptom |
 | 9. Connection management | 0014 | `max_connections`, the process-per-connection cost, PgBouncer's session/transaction/statement pooling modes | Can choose a pooling mode that matches what the application actually depends on, rather than defaulting to the most efficient one |
+| 10. Logical replication and major-version upgrades | 0015 to 0016 | Publications and subscriptions, logical replication's DDL restriction, `pg_upgrade`'s transfer modes, the low-downtime logical-replication upgrade path | Can choose and defend an upgrade path (in-place `pg_upgrade` or logical-replication cutover) for a stated downtime budget |
 
 ## Lessons
 
@@ -62,6 +63,8 @@ Work through these in order.
 | [0012](lessons/0012-configuration-and-memory-tuning.md) | Configuration and Memory Tuning | shared_buffers, work_mem and maintenance_work_mem each answer a different memory question, and the one most often mistuned is the one that quietly multiplies by however many operations are actually running at once |
 | [0013](lessons/0013-monitoring-activity-statements-and-the-log.md) | Monitoring: Activity, Statements, and the Log | A live view of what every backend is doing right now, an aggregate view of what's actually costing the server the most over time, and a log that names exactly what a stuck query is blocked behind, are three different questions |
 | [0014](lessons/0014-connection-management-and-pgbouncer.md) | Connection Management and PgBouncer | Every Postgres connection is a full OS process, which is why a pooler is usually required, and PgBouncer's three pooling modes each trade session-level correctness for reuse efficiency differently |
+| [0015](lessons/0015-logical-replication-publications-and-subscriptions.md) | Logical Replication, Publications, and Subscriptions | Streaming replication ships raw WAL to build an identical whole-cluster copy; logical replication decodes those same changes into row-level events a subscriber can apply selectively, across major versions, at the cost of never replicating DDL on its own |
+| [0016](lessons/0016-major-version-upgrades-and-pg-upgrade.md) | Major-Version Upgrades and pg_upgrade | pg_upgrade's fastest transfer modes buy their speed by giving up the ability to simply revert, and logical replication offers a genuinely different trade, near-zero downtime, at the cost of handling DDL by hand throughout the migration |
 
 ## Reference
 

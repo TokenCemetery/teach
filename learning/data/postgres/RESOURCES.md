@@ -48,6 +48,10 @@ type: resources
   Official chapter on `max_connections` and the reserved-connection settings. Use for: why raising `max_connections` requires a restart, and the two tiers of reserved slots (`reserved_connections`, `superuser_reserved_connections`) meant to guarantee administrative access when a pool is near capacity.
 - [Docs: "pgbouncer.ini", PgBouncer](https://www.pgbouncer.org/config.html)
   Official configuration reference for PgBouncer. Use for: the exact behavior of each `pool_mode` (session, transaction, statement), what `server_reset_query` does and why it's skipped in transaction mode, and why SQL-level `PREPARE`/`EXECUTE` is not reliably tracked across pooled connections.
+- [Docs: "Logical Replication", PostgreSQL](https://www.postgresql.org/docs/current/logical-replication.html)
+  Official chapter on publications, subscriptions, and the publish-and-subscribe model. Use for: exactly what logical replication does and does not replicate, especially that DDL is never replicated automatically, and the documented workaround of applying additive schema changes to the subscriber first.
+- [Docs: "pg_upgrade", PostgreSQL](https://www.postgresql.org/docs/current/pgupgrade.html)
+  Official docs for the major-version upgrade utility. Use for: the exact difference between copy, link, clone, and swap transfer modes and what each does to the old cluster's recoverability, and the current, precise statement of which statistics categories `pg_upgrade` does and doesn't transfer automatically.
 
 ## Gaps
 

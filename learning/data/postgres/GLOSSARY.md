@@ -22,6 +22,10 @@ _Avoid_: snapshot (ambiguous with a transaction snapshot)
 A `pg_stat_activity` backend state where a session opened a transaction and has not yet committed or rolled it back. It still holds that transaction's snapshot and locks, and is one of the states that can hold back the vacuum horizon cluster-wide.
 _Avoid_: idle (a materially different state; plain `idle` holds no open transaction and no snapshot)
 
+**Logical replication**:
+Replication that decodes WAL into row-level insert/update/delete events tied to a table's replication identity, rather than replaying raw physical WAL. Unlike streaming replication, it allows per-table selection and cross-major-version replication, but does not replicate DDL automatically.
+_Avoid_: streaming replication (a different mechanism this workspace defines separately; do not use the two terms interchangeably)
+
 **Point-in-time recovery (PITR)**:
 Reconstructing the database as it existed at an arbitrary past moment, by starting from a base backup and replaying its archived WAL forward to a chosen `recovery_target_time` (or LSN, name, or transaction ID), which must fall strictly after the base backup's own completion.
 _Avoid_: restoring a backup (imprecise; a base backup alone only restores to its own endpoint, not to a chosen moment after it)

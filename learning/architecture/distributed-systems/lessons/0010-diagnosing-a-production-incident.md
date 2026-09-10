@@ -34,6 +34,18 @@ Because allowing the minority side to also elect a leader and accept writes woul
 
 Given an incident, the vocabulary this workspace built resolves into four questions, in order: (1) Was there partial failure involved, silence that got misread as success, failure, or vice versa (lesson 1)? (2) Did anything depend on comparing timestamps or events across machines in a way physical clocks can't support (lesson 2), or did a timeout or heartbeat make a wrong slow-versus-dead call (lesson 3)? (3) Did the incident involve two clients or replicas disagreeing about the order or currency of a value, and if so, which consistency model did the system actually need versus actually have (lessons 4 to 6)? (4) Did the incident involve a leader, a lock, or an agreed value, and if so, was consensus actually being used correctly, or was a step of it (majority confirmation, term checking) skipped or assumed (lessons 7 to 9)? Most real incidents answer "yes" to one or two of these, not all four; naming which one is the actual diagnosis.
 
+```mermaid
+flowchart TD
+    A["incident observed"] --> Q1{"1. was partial failure involved?<br>(silence misread as success or failure)"}
+    Q1 -->|"yes"| D1["diagnosis: partial failure (lesson 1)"]
+    Q1 -->|"no"| Q2{"2. cross-machine timestamps trusted,<br>or a wrong timeout/heartbeat call?"}
+    Q2 -->|"yes"| D2["diagnosis: clocks or<br>failure detection (lessons 2-3)"]
+    Q2 -->|"no"| Q3{"3. disagreement about order<br>or currency of a value?"}
+    Q3 -->|"yes"| D3["diagnosis: consistency model<br>mismatch (lessons 4-6)"]
+    Q3 -->|"no"| Q4{"4. leader, lock, or agreed value<br>with a consensus step skipped?"}
+    Q4 -->|"yes"| D4["diagnosis: consensus<br>misuse (lessons 7-9)"]
+```
+
 ### Reading a real incident: what to look for in an actual report
 
 A concrete incident report (a postmortem, or one of the Jepsen analyses in the primary source) typically describes: what the system was supposed to guarantee, what a client actually observed that violated that guarantee, and, once investigated, which specific mechanism failed to hold up its end. The diagnostic work is connecting the observed symptom ("we saw duplicate data," "two nodes both thought they were primary," "a write we confirmed came back stale") to one of the checklist's four questions, rather than stopping at a description of the symptom itself. "The database lost data during a network issue" is a symptom; "the system allowed a minority partition to keep accepting writes because its failover logic didn't actually check for a majority" is a diagnosis, because it names the specific mechanism (lesson 8's majority requirement, skipped or misimplemented) that failed.

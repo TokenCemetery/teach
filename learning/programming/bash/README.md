@@ -8,7 +8,7 @@ type: topic
 
 Be able to write and maintain shell scripts for CI pipelines, deployment and operational tooling that do not quietly break on a bad input or an unset variable, and to recognise when a script has outgrown shell and belongs in a real language instead.
 
-**Latest lesson:** [7. Knowing When to Stop](lessons/0007-knowing-when-to-stop.md)
+**Latest lesson:** [9. Functions, local, and Return Status vs Output](lessons/0009-functions-local-and-return-status-vs-output.md)
 
 ## Success looks like
 
@@ -28,7 +28,7 @@ Be able to write and maintain shell scripts for CI pipelines, deployment and ope
 
 ## The arc
 
-Six stages, quoting to knowing when to stop. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Seven stages, quoting to shell fundamentals. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -38,6 +38,7 @@ Six stages, quoting to knowing when to stop. A stage takes several lessons and t
 | 4. Portability | 0005 | POSIX `sh` versus bash-only idioms, when each matters | Can write portable `sh` and call out a bash-only feature explicitly |
 | 5. `awk`/`sed` where needed | 0006 | Using each only where a script genuinely needs it | Can reach for `awk`/`sed` for a real need without over-using them |
 | 6. Knowing when to stop | 0007 | Recognising shell has outgrown its judgment-free zone | Can say why a given job now belongs in `programming/python` |
+| 7. Shell fundamentals | 0008 to 0009 | Variables, command substitution, control flow (`if`/`case`/loops), functions, `local`, return status vs output | Can write a script using variables, command substitution and control flow, and organise repeated work into correctly-scoped functions |
 
 ## Lessons
 
@@ -52,6 +53,8 @@ Work through these in order.
 | [0005](lessons/0005-portability.md) | Portability | What POSIX sh actually guarantees, which common bash features aren't part of it, and when the difference actually matters |
 | [0006](lessons/0006-awk-and-sed-where-needed.md) | awk and sed Where Needed | Recognizing the shape of task sed and awk each fit, and reaching for one only when a script genuinely needs it, not as a habit |
 | [0007](lessons/0007-knowing-when-to-stop.md) | Knowing When to Stop | The concrete signals that a script has outgrown shell's judgment-free zone, and why the job now belongs in a real language instead |
+| [0008](lessons/0008-variables-command-substitution-and-control-flow.md) | Variables, Command Substitution, and Control Flow | The shell's own vocabulary for holding a value, capturing a command's output, and branching or looping over it |
+| [0009](lessons/0009-functions-local-and-return-status-vs-output.md) | Functions, local, and Return Status vs Output | Organizing repeated work into a function, and the sharpest thing a shell function does differently from a function in almost every other language |
 
 ## Reference
 

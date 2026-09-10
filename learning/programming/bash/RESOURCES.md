@@ -10,6 +10,8 @@ type: resources
 
 - [Docs: "Shell Command Language", POSIX.1-2017, The Open Group](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html)
   The authoritative specification for `sh`: quoting, expansion, exit status, and exactly what's portable versus bash-specific. Use for: settling what POSIX `sh` actually guarantees, rather than what happens to work in one shell.
+- [Docs: "Bash Reference Manual", GNU](https://www.gnu.org/software/bash/manual/bash.html)
+  The official reference for bash-specific behavior beyond POSIX `sh`: shell functions, `local`, parameter expansion, arrays, and job control. Use for: the exact rule for a bash-only feature, once POSIX's own specification doesn't cover it.
 - [Site: "Bash Pitfalls", Greg's Wiki](https://mywiki.wooledge.org/BashPitfalls)
   A long, concrete catalog of shell scripts that look correct and aren't, each with the specific input that breaks it and why. Use for: recognizing a failure mode by its shape, before writing the code that has it.
 - [Article: "Use the Unofficial Bash Strict Mode (Unless You Looove Debugging)", Aaron Maxwell](http://redsymbol.net/articles/unofficial-bash-strict-mode/)

@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [11. Idempotency Keys and Safe Retries](lessons/0011-idempotency-keys-and-safe-retries.md)
+**Latest lesson:** [12. HTTP Caching as Contract](lessons/0012-http-caching-as-contract.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## The arc
 
-Seven stages, the contract to safe retries. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eight stages, the contract to caching as contract. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -38,6 +38,7 @@ Seven stages, the contract to safe retries. A stage takes several lessons and th
 | 5. Versioning and evolution | 0008 to 0009 | Additive changes, deprecation, migration strategy | Can evolve an existing API's contract without breaking its clients |
 | 6. Auth, authz and rate limiting as contract | 0010 | Treating these as part of what a client depends on, not an afterthought | Can design auth and rate limiting as contract, not bolted on separately |
 | 7. Idempotency and safe retries | 0011 | The `Idempotency-Key` header, idempotency fingerprints, and the retry-versus-concurrent-request distinction | Can design an idempotency mechanism that makes a non-idempotent method genuinely safe to retry |
+| 8. HTTP caching as contract | 0012 | `ETag`, weak vs. strong validators, conditional requests, `If-Match` optimistic concurrency, `Cache-Control` | Can design a caching and concurrency-control contract, and knows which comparison strength each conditional header needs |
 
 ## Lessons
 
@@ -56,6 +57,7 @@ Work through these in order.
 | [0009](lessons/0009-versioning-and-migration-strategy.md) | Versioning and Migration Strategy | How to ship a genuine breaking change without breaking every existing integration at once, using Stripe's versioning strategy as a worked example |
 | [0010](lessons/0010-auth-authz-and-rate-limiting-as-contract.md) | Auth, Authz, and Rate Limiting as Contract | Why scopes, not just tokens, and visible rate-limit state, not just a 429, are what make access control and quotas part of the deliberate contract |
 | [0011](lessons/0011-idempotency-keys-and-safe-retries.md) | Idempotency Keys and Safe Retries | A key alone only deduplicates; a fingerprint is what tells the server whether a repeated key is the same request retried or a different one reusing it by mistake, and a retry that arrives while the original is still running gets a conflict, not a replay |
+| [0012](lessons/0012-http-caching-as-contract.md) | HTTP Caching as Contract | The same ETag validator serves two different jobs depending on which comparison it needs, weak comparison is enough to skip a redundant download, but only a strong comparison is safe for detecting someone else's concurrent write |
 
 ## Reference
 

@@ -42,6 +42,14 @@ _Avoid_: locking (the opposite strategy; reserve "locking" for actually blocking
 A Redis stream consumer group's per-consumer record of entries delivered but not yet acknowledged with `XACK`, reclaimable by another consumer via `XCLAIM`.
 _Avoid_: unacked queue (say "pending entries list" or "PEL", the stream's own term)
 
+**Pipelining**:
+Sending several commands in one batch without waiting for each response individually, reducing round trips; a purely network-level optimization with no atomicity guarantee on its own.
+_Avoid_: batching (too generic; "pipelining" is the specific mechanism of not waiting for each response before sending the next)
+
+**Round trip**:
+The time spent sending a request and waiting for its response, separate from and usually far larger than a command's own execution time inside Redis.
+_Avoid_: latency (use "round trip" specifically for the request-response cycle cost this workspace's performance lessons address)
+
 **Sorted set**:
 A Redis collection where every member carries a numeric score, kept ordered by that score automatically (backed by a skip list), with O(log N) insertion and range queries.
 _Avoid_: ranked set, scored list (say "sorted set", matching the `ZADD`/`ZRANGE` command family)

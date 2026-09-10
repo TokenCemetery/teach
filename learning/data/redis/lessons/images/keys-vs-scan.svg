@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">KEYS scans the whole keyspace in one blocking call; SCAN returns a small batch at a time without blocking other clients</title>
+  <desc id="desc">Two timelines. On the left, KEYS star: one single call walks the entire keyspace, during which the single-threaded server cannot serve any other client's command at all, shown as one long blocked interval. On the right, SCAN: a sequence of small calls, each returning a cursor and a small batch of keys, with other clients able to run commands in the gaps between each SCAN call, so no single call blocks the server for long.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">KEYS *: one call, blocks everything</text>
+    <text x="365" y="14" text-anchor="middle">SCAN: many small calls, nothing blocks long</text>
+  </g>
+
+  <rect x="30" y="30" width="170" height="24" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="115" y="46" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">KEYS * walks the entire keyspace</text>
+  <text x="115" y="68" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">every other client waits for this whole call</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="280" y="30" width="30" height="18"/>
+    <rect x="320" y="30" width="30" height="18"/>
+    <rect x="360" y="30" width="30" height="18"/>
+    <rect x="400" y="30" width="30" height="18"/>
+    <rect x="440" y="30" width="20" height="18"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6" fill="#7a828c">
+    <text x="295" y="42" text-anchor="middle">c0</text>
+    <text x="335" y="42" text-anchor="middle">c1</text>
+    <text x="375" y="42" text-anchor="middle">c2</text>
+    <text x="415" y="42" text-anchor="middle">c3</text>
+    <text x="450" y="42" text-anchor="middle">c4</text>
+  </g>
+  <g stroke="#bf7d1a" stroke-width="1" stroke-dasharray="2,2">
+    <line x1="310" y1="39" x2="320" y2="39"/>
+    <line x1="350" y1="39" x2="360" y2="39"/>
+    <line x1="390" y1="39" x2="400" y2="39"/>
+    <line x1="430" y1="39" x2="440" y2="39"/>
+  </g>
+  <text x="365" y="60" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">each call returns a cursor + a small batch of keys</text>
+  <text x="365" y="72" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">other clients run commands in the gaps between calls</text>
+
+  <text x="115" y="95" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">fine for a small keyspace,</text>
+  <text x="115" y="107" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">a real incident on a large one</text>
+  <text x="365" y="95" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">guarantees every key present for the</text>
+  <text x="365" y="107" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">whole scan is returned at least once</text>
+</svg>

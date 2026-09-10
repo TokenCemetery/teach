@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [10. Auth, Authz, and Rate Limiting as Contract](lessons/0010-auth-authz-and-rate-limiting-as-contract.md)
+**Latest lesson:** [11. Idempotency Keys and Safe Retries](lessons/0011-idempotency-keys-and-safe-retries.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## The arc
 
-Six stages, the contract to a treated-as-contract auth model. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Seven stages, the contract to safe retries. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -37,6 +37,7 @@ Six stages, the contract to a treated-as-contract auth model. A stage takes seve
 | 4. gRPC design | 0006 to 0007 | proto3, service design, streaming | Can design a gRPC contract for the same use case |
 | 5. Versioning and evolution | 0008 to 0009 | Additive changes, deprecation, migration strategy | Can evolve an existing API's contract without breaking its clients |
 | 6. Auth, authz and rate limiting as contract | 0010 | Treating these as part of what a client depends on, not an afterthought | Can design auth and rate limiting as contract, not bolted on separately |
+| 7. Idempotency and safe retries | 0011 | The `Idempotency-Key` header, idempotency fingerprints, and the retry-versus-concurrent-request distinction | Can design an idempotency mechanism that makes a non-idempotent method genuinely safe to retry |
 
 ## Lessons
 
@@ -54,6 +55,7 @@ Work through these in order.
 | [0008](lessons/0008-additive-changes-and-deprecation.md) | Additive Changes and Deprecation | Why adding is usually safe and removing or changing meaning is usually not, and how to deprecate a field or endpoint without breaking clients on the spot |
 | [0009](lessons/0009-versioning-and-migration-strategy.md) | Versioning and Migration Strategy | How to ship a genuine breaking change without breaking every existing integration at once, using Stripe's versioning strategy as a worked example |
 | [0010](lessons/0010-auth-authz-and-rate-limiting-as-contract.md) | Auth, Authz, and Rate Limiting as Contract | Why scopes, not just tokens, and visible rate-limit state, not just a 429, are what make access control and quotas part of the deliberate contract |
+| [0011](lessons/0011-idempotency-keys-and-safe-retries.md) | Idempotency Keys and Safe Retries | A key alone only deduplicates; a fingerprint is what tells the server whether a repeated key is the same request retried or a different one reusing it by mistake, and a retry that arrives while the original is still running gets a conflict, not a replay |
 
 ## Reference
 

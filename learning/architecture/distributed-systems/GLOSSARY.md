@@ -26,6 +26,10 @@ _Avoid_: assuming a bare ring is sufficient in practice; without virtual nodes, 
 A data type designed so that concurrent updates always merge to the same result regardless of delivery order, avoiding the need for a separate conflict-resolution step. State-based (CvRDT) sends whole states and requires a commutative, associative, idempotent merge; operation-based (CmRDT) broadcasts operations and requires commutative, associative operations plus exactly-once delivery in place of idempotence.
 _Avoid_: assuming any commutative merge is automatically a CRDT; the merge (or operation set) must also be associative and, for the state-based form, idempotent, or convergence isn't guaranteed
 
+**Distributed tracing**:
+Correlating every span produced by one logical request, across however many services it touches, into a single trace by propagating a shared trace ID (and each span's parent span ID) on every network call. Requires deliberate propagation on every hop; a service that fails to forward the trace context breaks the trace into disconnected pieces.
+_Avoid_: logging (a distributed trace ties related events across services together explicitly; a log line has no such structural connection to another service's log line unless a trace ID is embedded in both)
+
 **Last-write-wins (LWW)**:
 A conflict-handling rule that keeps the write with the later timestamp and silently discards the other when two writes conflict, guaranteeing convergence at the cost of losing the discarded write, whether or not the two writes were genuinely concurrent.
 _Avoid_: conflict resolution (imprecise; LWW avoids the need to reconcile by discarding one side, rather than resolving what both writes were trying to do)
@@ -57,6 +61,10 @@ _Avoid_: thundering herd (a related but broader term for synchronized contention
 **Saga**:
 A sequence of local transactions, each committing independently on its own service and publishing an event to trigger the next, used in place of one atomic cross-service transaction. A failed step is undone by compensating transactions rather than automatic rollback, and the sequence can be coordinated by choreography (each service reacts to the previous one's event) or orchestration (one dedicated coordinator directs every step).
 _Avoid_: distributed transaction (a saga deliberately gives up the atomicity and isolation a real distributed transaction would provide, in exchange for never blocking on another service's lock)
+
+**Span**:
+A record of one operation within a trace (one service handling one request, one database call), carrying a trace ID shared with every other span in the same logical request, its own span ID, and a parent span ID (omitted only for the trace's root span). Its kind (`INTERNAL`, `CLIENT`/`SERVER`, `PRODUCER`/`CONSUMER`) states what kind of relationship it has to the span that caused it.
+_Avoid_: assuming every span pair shares a `CLIENT`/`SERVER`-style critical-path latency relationship; a `PRODUCER` span ends when a broker accepts a message, with no such relationship to the `CONSUMER` span that later processes it
 
 **Timeout**:
 A caller's chosen limit on how long to wait for a response before treating the other side as failed. A guess made under permanent uncertainty, not a fact, since a network has no upper bound on message delay.

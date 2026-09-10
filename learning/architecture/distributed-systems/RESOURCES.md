@@ -60,6 +60,10 @@ type: resources
   Amazon's own worked simulation of capped exponential backoff with and without jitter, under contention from many clients. Use for: the measured effect of jitter (more than halving retry call volume in their 100-client case) versus backoff alone, which still leaves synchronized retry clusters.
 - [Article: "Circuit Breaker", Martin Fowler](https://martinfowler.com/bliki/CircuitBreaker.html)
   The reference description of the circuit breaker pattern (attributed to Michael Nygard's *Release It*), including the closed/open/half-open state machine. Use for: the precise trip and reset mechanics, and why an open breaker fails fast instead of attempting a call it has already decided is failing.
+- [Specification: "Trace API", OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md)
+  The authoritative definition of a span (trace ID, span ID, parent span ID) and the five span kinds. Use for: the precise structure that ties spans into a trace, and the specific, easy-to-miss fact that a `PRODUCER` span's duration has no critical-path relationship to its `CONSUMER` span.
+- [Specification: "Context Propagation API", OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/context/api-propagators.md)
+  Covers the W3C Trace Context `traceparent`/`tracestate` headers and what a propagator must do with them. Use for: exactly what has to be forwarded across a network boundary for a trace to stay connected, and why a missing propagation step silently breaks it in two.
 
 ## Gaps
 

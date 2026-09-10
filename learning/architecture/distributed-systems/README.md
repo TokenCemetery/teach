@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [17. Circuit Breakers, Load Shedding, and Backpressure](lessons/0017-circuit-breakers-load-shedding-and-backpressure.md)
+**Latest lesson:** [18. Distributed Tracing and Correlation](lessons/0018-distributed-tracing-and-correlation.md)
 
 ## Success looks like
 
@@ -41,6 +41,7 @@ Twelve stages, partial failure to a diagnosed incident to the mechanisms product
 | 8. Conflict resolution under eventual consistency | 0013 | Last-write-wins and what it loses, version vectors, CRDTs | Can distinguish detecting a conflict from resolving one, and explain how a CRDT merges without loss |
 | 9. Transactions across services | 0014 to 0015 | Two-phase commit and its blocking failure mode, sagas and compensation, the transactional outbox, idempotent consumers | Can explain why 2PC blocks, what a saga trades away to avoid it, and how the outbox pattern avoids the dual-write problem |
 | 10. The resilience toolkit | 0016 to 0017 | Timeout budgets, retries with backoff and jitter, retry storms, circuit breakers, load shedding, backpressure | Can explain what to do after a timeout fires, and match a failing dependency, an overloaded server, or a filling queue to the right mechanism |
+| 11. Observability of partial failure | 0018 | Spans, traces, propagation across a network boundary, span kinds | Can explain how a trace ties one request's spans together across services, and why propagation must happen explicitly on every hop |
 
 ## Lessons
 
@@ -65,6 +66,7 @@ Work through these in order.
 | [0015](lessons/0015-the-transactional-outbox-and-idempotent-consumers.md) | The Transactional Outbox and Idempotent Consumers | Updating a database and publishing an event can't both happen atomically without a distributed transaction, so the outbox pattern sidesteps that entirely by writing the event as an ordinary row in the same local transaction, then paying for it with a message that might be sent twice |
 | [0016](lessons/0016-timeouts-retries-and-backoff.md) | Timeouts, Retries, and Backoff | Lesson 3 established that a timeout is the only failure signal available, but firing one and retrying immediately is exactly what turns a recovering service's bad day into a pile-on, which is the specific problem backoff and jitter exist to prevent |
 | [0017](lessons/0017-circuit-breakers-load-shedding-and-backpressure.md) | Circuit Breakers, Load Shedding, and Backpressure | A retry with backoff and jitter still assumes the failing call is worth attempting at all, and a circuit breaker, load shedding, and backpressure are the three answers for when it stops being worth it, aimed at a failing dependency, an overloaded server, and an overwhelmed queue respectively |
+| [0018](lessons/0018-distributed-tracing-and-correlation.md) | Distributed Tracing and Correlation | Every mechanism this workspace has covered so far tells you what a system does under failure, but none of it tells you which hop in a specific request actually failed, which is the one thing a trace is built to answer |
 
 ## Reference
 

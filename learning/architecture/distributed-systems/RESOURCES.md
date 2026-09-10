@@ -64,6 +64,12 @@ type: resources
   The authoritative definition of a span (trace ID, span ID, parent span ID) and the five span kinds. Use for: the precise structure that ties spans into a trace, and the specific, easy-to-miss fact that a `PRODUCER` span's duration has no critical-path relationship to its `CONSUMER` span.
 - [Specification: "Context Propagation API", OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/context/api-propagators.md)
   Covers the W3C Trace Context `traceparent`/`tracestate` headers and what a propagator must do with them. Use for: exactly what has to be forwarded across a network boundary for a trace to stay connected, and why a missing propagation step silently breaks it in two.
+- [Article: "Analyses", Jepsen](https://jepsen.io/analyses)
+  Jepsen's own stated methodology (opaque-box testing of real binaries, testing under actual distributed-systems failure modes, generative testing checked against a formal model), alongside every analysis it has published. Use for: the precise trade-off Jepsen makes, real, production-observable bugs at the cost of nondeterministic, unrepeatable test runs.
+- [Article: "Chaos engineering", Wikipedia](https://en.wikipedia.org/wiki/Chaos_engineering)
+  Covers the origin of Chaos Monkey at Netflix, the "Principles of Chaos Engineering" manifesto, and the steady-state-hypothesis framing. Use for: how chaos engineering's aim (does production behavior match what's expected under a specific induced fault) differs from Jepsen's precise, model-checked claim.
+- [Docs: "Simulation and Testing", FoundationDB](https://apple.github.io/foundationdb/testing.html)
+  FoundationDB's own account of its deterministic simulation testing: full determinism for repeatable debugging, and the time-compression that lets it run the equivalent of roughly a trillion CPU-hours of testing. Use for: the opposite trade from Jepsen and chaos engineering, reproducibility and volume in exchange for testing a simulated system rather than the real production binary.
 
 ## Gaps
 

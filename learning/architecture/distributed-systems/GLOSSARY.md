@@ -14,6 +14,10 @@ Canonical terms for reasoning about partial failure, consistency, and consensus 
 A signal a consumer sends back toward a producer to slow down, rather than silently absorbing an unbounded, ever-growing queue. Pushes the overload problem back to whoever is generating the load, instead of forcing the consumer to accept everything sent to it.
 _Avoid_: load shedding (a different mechanism: backpressure asks the producer to slow down, while load shedding has the receiver reject some requests outright)
 
+**Chaos engineering**:
+Deliberately injecting real faults into a live (often production) system to test whether a steady-state hypothesis about its behavior holds under a specific kind of induced turbulence, rather than checking a recorded history against a formal correctness model.
+_Avoid_: Jepsen-style testing (a related but distinct technique: chaos engineering tests a broader, less formally precise hypothesis about production behavior, while Jepsen checks a specific claim, like linearizability, against a model)
+
 **Circuit breaker**:
 A wrapper around a call to a dependency that tracks failures and, once they cross a threshold, trips open: further calls fail immediately without attempting the protected call at all. After a reset timeout it moves to half-open, allowing one trial call through to decide whether to reset to closed or reopen.
 _Avoid_: retry (a circuit breaker stops attempting a call it has decided is currently failing; a retry assumes the call is still worth attempting)
@@ -25,6 +29,10 @@ _Avoid_: assuming a bare ring is sufficient in practice; without virtual nodes, 
 **CRDT (conflict-free replicated data type)**:
 A data type designed so that concurrent updates always merge to the same result regardless of delivery order, avoiding the need for a separate conflict-resolution step. State-based (CvRDT) sends whole states and requires a commutative, associative, idempotent merge; operation-based (CmRDT) broadcasts operations and requires commutative, associative operations plus exactly-once delivery in place of idempotence.
 _Avoid_: assuming any commutative merge is automatically a CRDT; the merge (or operation set) must also be associative and, for the state-based form, idempotent, or convergence isn't guaranteed
+
+**Deterministic simulation testing**:
+Running an entire simulated cluster within a single deterministic process, so a failing run can be replayed exactly, trading a real system's opaque-box realism for perfect reproducibility and massive time compression (a large amount of simulated time within a small amount of real execution time).
+_Avoid_: chaos engineering (a real-system technique; deterministic simulation specifically gives up testing the actual production binary and hardware in exchange for reproducibility and testing volume)
 
 **Distributed tracing**:
 Correlating every span produced by one logical request, across however many services it touches, into a single trace by propagating a shared trace ID (and each span's parent span ID) on every network call. Requires deliberate propagation on every hop; a service that fails to forward the trace context breaks the trace into disconnected pieces.

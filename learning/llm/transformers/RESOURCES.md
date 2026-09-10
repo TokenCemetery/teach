@@ -36,7 +36,7 @@ type: resources
   Identifies why folding weight decay into the gradient in original Adam interacts badly with its adaptive scaling, and fixes it by applying decay directly to the weights instead. Use for: why AdamW, not plain Adam, is the standard optimizer for training transformers.
 - [Paper: "Neural Machine Translation of Rare Words with Subword Units", Sennrich, Haddow, and Birch, 2016](https://arxiv.org/abs/1508.07909)
   Introduces byte-pair encoding for subword tokenization: iteratively merging the most frequent adjacent symbol pair to build a vocabulary from raw bytes upward. Use for: deriving the tokenizer mechanism `llm/finetuning` names in passing rather than restating it.
-
-## Gaps
-
-- No source yet on rotary positional embeddings (RoPE), used by most current models in place of the original paper's sinusoidal or learned schemes; lesson 4 covers sinusoidal vs. learned from the original paper and stable, uncontested mechanics, but a RoPE comparison still needs a source once lesson design reaches it.
+- [Paper: "RoFormer: Enhanced Transformer with Rotary Position Embedding", Su et al., 2021](https://arxiv.org/abs/2104.09864)
+  Introduces RoPE: rotating the projected query and key vectors by an angle proportional to position, producing an attention score that depends only on relative offset. Use for: the mechanism nearly every current open model uses in place of sinusoidal or learned positional encoding.
+- [Paper: "Root Mean Square Layer Normalization", Zhang and Sennrich, 2019](https://arxiv.org/abs/1910.07467)
+  Introduces RMSNorm, hypothesizing that layer norm's re-centering (mean-subtraction) operation is dispensable and re-scaling alone accounts for most of its benefit. Use for: the cheaper normalization current models place inside the pre-norm branch lesson 5 derives.

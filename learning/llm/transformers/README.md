@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [13. Tokenizers and Low-Rank Adapters](lessons/0013-tokenizers-and-low-rank-adapters.md)
+**Latest lesson:** [15. RMSNorm](lessons/0015-rmsnorm.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to implement a transformer's forward pass and its training loop from raw
 
 ## The arc
 
-Five stages, one equation to reading real model code. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eleven stages, one equation to reading and generating from real model code. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -36,6 +36,7 @@ Five stages, one equation to reading real model code. A stage takes several less
 | 3. The full model | 0007 to 0008 | Stacking blocks, embedding and output layers, weight tying | A full forward pass matches a reference implementation's output |
 | 4. The training loop | 0009 to 0011 | Cross-entropy loss over the vocabulary, the backward pass, the AdamW optimizer step | The model trains from scratch and the loss decreases as expected |
 | 5. Reading real model code | 0012 to 0013 | Mapping each derived piece to a real library (`transformers` or `llama.cpp`), tokenizers and low-rank adapters named in passing | Can point to where each derived piece lives in real model code |
+| 6. Modern positional encoding and normalization | 0014 to 0015 | Rotary position embeddings, RMSNorm | Can derive RoPE's relative-position property and explain what RMSNorm drops from layer norm |
 
 ## Lessons
 
@@ -56,6 +57,8 @@ Work through these in order.
 | [0011](lessons/0011-adamw-optimizer.md) | The AdamW Optimizer Step | What Adam's momentum and adaptive scaling add over plain gradient descent, and why AdamW decouples weight decay from the gradient update |
 | [0012](lessons/0012-reading-real-model-code.md) | Reading Real Model Code | Where each derived piece lives in a production model library, and the small, common deviations from the original paper worth recognizing rather than being confused by |
 | [0013](lessons/0013-tokenizers-and-low-rank-adapters.md) | Tokenizers and Low-Rank Adapters | Deriving byte-pair encoding, and where a low-rank adapter actually attaches to a weight matrix this workspace built from scratch |
+| [0014](lessons/0014-rotary-position-embeddings.md) | Rotary Position Embeddings | Sinusoidal encoding adds a fixed vector to the embedding before attention ever runs; RoPE instead rotates Q and K themselves, and that one change is what makes a dot product between two rotated vectors depend only on their relative distance |
+| [0015](lessons/0015-rmsnorm.md) | RMSNorm | LayerNorm does two things, re-centering and re-scaling, and RMSNorm exists because the re-centering half turns out to be dispensable, leaving a cheaper normalization that current models use inside the pre-norm branch lesson 5 already derived |
 
 ## Reference
 

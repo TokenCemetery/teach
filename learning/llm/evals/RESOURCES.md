@@ -33,6 +33,10 @@ type: resources
   Introduces a standardized framework for evaluating automated red-teaming methods against models and defenses, at scale and comparably, where the field previously lacked one. Use for: attack success rate as a metric, and the distinction between an attack-generation method and a rigorous way to evaluate it.
 - [Paper: "XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models", Röttger et al., 2023](https://arxiv.org/abs/2308.01263)
   A test suite of safe prompts written to resemble unsafe ones, specifically to surface over-refusal. Use for: the precise tension between harmlessness (refuse unsafe prompts) and helpfulness (don't refuse safe ones), and a concrete way to measure a model landing badly on that trade-off.
+- [Paper: "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains", Yao et al., 2024](https://arxiv.org/abs/2406.12045)
+  Evaluates agents by comparing the end-of-conversation database state to an annotated goal state, and introduces `pass^k` for measuring an agent's reliability across repeated trials of the same task. Use for: why task success beats step-by-step trajectory matching, and the precise, easy-to-confuse distinction between `pass^k` and lesson 4's `pass@k`.
+- [Paper: "AgentBench: Evaluating LLMs as Agents", Liu et al., 2023](https://arxiv.org/abs/2308.03688)
+  A multi-dimensional benchmark across 8 distinct interactive environments testing an LLM's reasoning and decision-making as an agent, finding a significant gap between top models and smaller ones specifically in agentic settings. Use for: evidence that agentic capability is a distinct thing to measure, not implied by single-turn benchmark performance.
 
 ## Gaps
 

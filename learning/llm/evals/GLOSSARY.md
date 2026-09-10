@@ -33,3 +33,11 @@ _Avoid_: false refusal (used interchangeably in some sources; this workspace sta
 **Red-teaming**:
 Deliberately constructing inputs designed to make a model produce unsafe output, whether by a human tester or an automated attack-generation method, then measuring how often those inputs succeed (a jailbreak) against a given model and its defenses.
 _Avoid_: reporting only attack success rate as "the safety eval"; it measures nothing about over-refusal, a distinct failure mode needing its own test set
+
+**Task success**:
+Comparing an agent trajectory's actual end state against an annotated goal state, crediting any sequence of actions that reaches the correct outcome rather than only one predetermined reference sequence. More faithful than step accuracy, which can only credit the one trajectory it was given.
+_Avoid_: step accuracy (a narrower, brittler measurement: matching each action to a reference trajectory, which wrongly penalizes a different, equally valid path to the same correct outcome)
+
+**Trajectory**:
+The full sequence of tool calls, intermediate decisions, and turns an agent produces while working a task, as opposed to the single output a per-response eval scores. A per-response metric has nothing to attach to here, which is why agent evaluation needs its own metrics.
+_Avoid_: response (too narrow; a trajectory is the whole multi-step, often multi-turn process, not any single output within it)

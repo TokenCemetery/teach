@@ -22,6 +22,10 @@ _Avoid_: decoder-only (the architecture this workspace builds, with no separate 
 An architecture (as in BERT) using bidirectional attention, jointly conditioning on both left and right context in every layer, with no causal mask at all. Builds a representation of a complete, already-given input for understanding tasks (classification, extraction), rather than generating text autoregressively, which its architecture cannot do.
 _Avoid_: decoder-only (a causally-masked architecture built specifically to generate one token at a time; encoder-only's bidirectional attention was never trained to predict from only a prefix)
 
+**FlashAttention**:
+An IO-aware, exact implementation of scaled dot-product attention that tiles the computation to stay in fast on-chip GPU memory (SRAM), never materializing the full, quadratically-large attention score matrix in slower main memory (HBM). Computes the identical mathematical result as lesson 1's equation; the speedup comes entirely from memory access, not from approximating anything.
+_Avoid_: approximate attention (a different family of methods that trade quality for speed; FlashAttention is exact and gets its speedup purely from IO efficiency)
+
 **Gated linear unit (GLU)**:
 The elementwise product of two linear projections of the same input, with a nonlinearity (originally sigmoid) applied to one of them first. That projection acts as a gate, scaling the other projection's output element by element rather than applying one fixed nonlinearity uniformly.
 _Avoid_: SwiGLU (a specific GLU variant, gated with Swish/SiLU; "GLU" is the general family, not this one member of it)
@@ -53,6 +57,10 @@ _Avoid_: applying the target learning rate from step one (risks a large, poorly-
 **Mixed precision training**:
 Storing weights, activations, and gradients in half precision for most of training instead of full (single) precision, cutting memory use nearly in half. Requires a full-precision master weight copy (to preserve small updates that would otherwise underflow) and loss scaling (to keep small gradients from underflowing to zero).
 _Avoid_: training in half precision alone, with no master weight copy or loss scaling (risks silently losing small updates and gradients to underflow)
+
+**Mixture-of-experts (MoE)**:
+A layer replacing a single feed-forward block with several parallel expert feed-forward blocks plus a router that selects which expert(s) process a given token. Sparsely activated: total parameter count grows with the number of experts, but per-token compute cost stays roughly constant, since only the selected expert(s) actually run.
+_Avoid_: assuming more experts means more compute per token (only the router's chosen expert's compute counts toward a given token's cost, regardless of how many total experts exist)
 
 **Nucleus sampling (top-p)**:
 Sampling from the smallest set of highest-probability tokens whose cumulative probability exceeds a threshold `p`, a set whose size varies from step to step depending on how peaked or flat the distribution is. Contrasts with top-k's fixed-size truncation, which can't adapt to that variation.

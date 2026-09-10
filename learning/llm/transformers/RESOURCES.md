@@ -54,6 +54,10 @@ type: resources
   Introduces the encoder-only architecture: bidirectional attention jointly conditioning on left and right context in every layer, with no causal mask. Use for: why an encoder-only model builds a representation of a complete input rather than generating text autoregressively, and can't do what this workspace's decoder-only model does.
 - [Paper: "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer" (T5), Raffel et al., 2019](https://arxiv.org/abs/1910.10683)
   Casts a wide range of NLP tasks into one consistent text-to-text, encoder-decoder format. Use for: the encoder-decoder shape's cross-attention sublayer, and why it fits a task with a clean, fixed input-then-output split.
+- [Paper: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness", Dao et al., 2022](https://arxiv.org/abs/2205.14135)
+  Diagnoses standard attention's slowness on long sequences as an IO problem (memory reads/writes between HBM and SRAM), not a compute problem, and introduces a tiled, exact algorithm that avoids materializing the full score matrix. Use for: why a real attention implementation looks structurally different from lesson 1's version while computing the identical result.
+- [Paper: "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity", Fedus, Zoph, and Shazeer, 2021](https://arxiv.org/abs/2101.03961)
+  Introduces a simplified, one-expert-per-token MoE routing scheme, decoupling total parameter count from per-token compute cost. Use for: the specific trade sparsely-activated models make, and why simplifying routing to one expert addressed instabilities more complex MoE designs ran into.
 
 ## Gaps
 

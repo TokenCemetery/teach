@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [12. Partitioning and Sharding](lessons/0012-partitioning-and-sharding.md)
+**Latest lesson:** [13. Conflict Resolution Under Eventual Consistency](lessons/0013-conflict-resolution-under-eventual-consistency.md)
 
 ## Success looks like
 
@@ -38,6 +38,7 @@ Twelve stages, partial failure to a diagnosed incident to the mechanisms product
 | 5. Diagnosing incidents | 0010 | Applying the mechanisms above to a real production incident | Given an incident caused by partial failure, can name the mechanism responsible |
 | 6. Replication and quorums | 0011 | Leader-based vs. leaderless replication, read/write quorums, the `R + W > N` condition | Can explain how a quorum guarantees a read sees the latest write, and choose R and W for a stated workload |
 | 7. Partitioning and sharding | 0012 | Consistent hashing, virtual nodes, hot-key replication, request routing | Can explain why consistent hashing bounds the cost of a resize, and what a bare ring still needs to handle failure and hot keys |
+| 8. Conflict resolution under eventual consistency | 0013 | Last-write-wins and what it loses, version vectors, CRDTs | Can distinguish detecting a conflict from resolving one, and explain how a CRDT merges without loss |
 
 ## Lessons
 
@@ -57,6 +58,7 @@ Work through these in order.
 | [0010](lessons/0010-diagnosing-a-production-incident.md) | Diagnosing a Production Incident | Applying partial failure, failure detection, consistency models, and consensus to name the mechanism behind a real incident, instead of reasoning about "the network" or "consistency" in the abstract |
 | [0011](lessons/0011-replication-and-quorums.md) | Replication and Quorums | A consensus protocol isn't the only way to replicate data, and the quorum condition behind its cheaper alternative is a single overlap guarantee, not a vague notion of majority agreement |
 | [0012](lessons/0012-partitioning-and-sharding.md) | Partitioning and Sharding | Consistent hashing exists because naive hash-mod-N partitioning remaps almost everything the moment a node joins or leaves, and even consistent hashing needs virtual nodes before it stops dumping a failed node's whole load onto one unlucky neighbor |
+| [0013](lessons/0013-conflict-resolution-under-eventual-consistency.md) | Conflict Resolution Under Eventual Consistency | Detecting that two writes were concurrent and deciding what to do about it are two different problems, and last-write-wins solves neither, it just picks a survivor and throws the loser away |
 
 ## Reference
 

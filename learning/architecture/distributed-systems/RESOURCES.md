@@ -46,6 +46,10 @@ type: resources
   Covers Gifford's 1979 quorum-based voting for replicated data: the `Vr + Vw > V` rule that guarantees a read quorum and a write quorum overlap, and the separate `Vw > V/2` rule that guarantees two write quorums overlap with each other. Use for: the precise arithmetic behind `R + W > N`, rather than an intuitive but imprecise notion of "majority agreement".
 - [Article: "Consistent hashing", Wikipedia](https://en.wikipedia.org/wiki/Consistent_hashing)
   Covers the ring construction, the `O(K/N)` average-case bound on keys remapped when a node joins or leaves, and the practical extensions: virtual nodes (to avoid dumping a failed node's whole load onto one neighbor) and replicating a single "hot" key onto multiple contiguous nodes. Use for: precisely why consistent hashing beats plain `hash(key) mod M`, and the specific gaps a bare ring still leaves that virtual nodes and hot-key replication close.
+- [Article: "Version vector", Wikipedia](https://en.wikipedia.org/wiki/Version_vector)
+  Covers how a version vector detects happened-before versus concurrent updates for causality tracking among replicas, and its explicit distinction from a vector clock despite sharing the same underlying state. Use for: the precise mechanism behind detecting whether two writes actually conflict, before any resolution strategy is applied.
+- [Article: "Conflict-free replicated data type", Wikipedia](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
+  Covers the state-based (CvRDT) versus operation-based (CmRDT) distinction, the commutative/associative/idempotent properties each requires, and a concrete worked example (the G-Counter, merging by element-wise maximum). Use for: how a CRDT merges concurrent updates without loss, and the delivery-guarantee trade-off between the two CRDT shapes.
 
 ## Gaps
 

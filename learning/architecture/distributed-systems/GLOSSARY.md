@@ -14,6 +14,14 @@ Canonical terms for reasoning about partial failure, consistency, and consensus 
 A hashing scheme that maps both nodes and keys onto positions on a shared ring, assigning each key to the nearest node clockwise, so that adding or removing a node remaps only the keys between it and its neighbor (on average `O(K/N)` of the dataset) rather than nearly everything, the way plain `hash(key) mod M` would.
 _Avoid_: assuming a bare ring is sufficient in practice; without virtual nodes, a single node's failure dumps its whole load onto one neighbor instead of spreading it
 
+**CRDT (conflict-free replicated data type)**:
+A data type designed so that concurrent updates always merge to the same result regardless of delivery order, avoiding the need for a separate conflict-resolution step. State-based (CvRDT) sends whole states and requires a commutative, associative, idempotent merge; operation-based (CmRDT) broadcasts operations and requires commutative, associative operations plus exactly-once delivery in place of idempotence.
+_Avoid_: assuming any commutative merge is automatically a CRDT; the merge (or operation set) must also be associative and, for the state-based form, idempotent, or convergence isn't guaranteed
+
+**Last-write-wins (LWW)**:
+A conflict-handling rule that keeps the write with the later timestamp and silently discards the other when two writes conflict, guaranteeing convergence at the cost of losing the discarded write, whether or not the two writes were genuinely concurrent.
+_Avoid_: conflict resolution (imprecise; LWW avoids the need to reconcile by discarding one side, rather than resolving what both writes were trying to do)
+
 **Partial failure**:
 The failure mode unique to distributed systems: a request produces no response, and the caller cannot tell whether it was lost in transit, its reply was lost, or the other side is merely slow.
 _Avoid_: network error (too specific; partial failure includes cases with no error at all, just silence)
@@ -33,3 +41,7 @@ _Avoid_: mirroring (a narrower, often storage-specific term; this workspace uses
 **Timeout**:
 A caller's chosen limit on how long to wait for a response before treating the other side as failed. A guess made under permanent uncertainty, not a fact, since a network has no upper bound on message delay.
 _Avoid_: deadline (use only when quoting a source or API that uses that specific term)
+
+**Version vector**:
+A mechanism that tracks, per replica, how many updates it has seen from every other replica, letting any two versions be compared to determine whether one happened-before the other or whether they're concurrent. Maintains the same state as a vector clock but with update rules specifically adapted to replica versioning.
+_Avoid_: vector clock (a related but distinct mechanism; the two aren't interchangeable despite sharing the same underlying state)

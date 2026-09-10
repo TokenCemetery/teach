@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [15. RMSNorm](lessons/0015-rmsnorm.md)
+**Latest lesson:** [17. Grouped-Query Attention and KV Caching](lessons/0017-grouped-query-attention-and-kv-caching.md)
 
 ## Success looks like
 
@@ -37,6 +37,7 @@ Eleven stages, one equation to reading and generating from real model code. A st
 | 4. The training loop | 0009 to 0011 | Cross-entropy loss over the vocabulary, the backward pass, the AdamW optimizer step | The model trains from scratch and the loss decreases as expected |
 | 5. Reading real model code | 0012 to 0013 | Mapping each derived piece to a real library (`transformers` or `llama.cpp`), tokenizers and low-rank adapters named in passing | Can point to where each derived piece lives in real model code |
 | 6. Modern positional encoding and normalization | 0014 to 0015 | Rotary position embeddings, RMSNorm | Can derive RoPE's relative-position property and explain what RMSNorm drops from layer norm |
+| 7. Modern feed-forward and attention variants | 0016 to 0017 | SwiGLU/the gated feed-forward, grouped-query and multi-query attention, KV caching | Can derive a gated feed-forward block and explain why fewer KV heads trade quality for cache size |
 
 ## Lessons
 
@@ -59,6 +60,8 @@ Work through these in order.
 | [0013](lessons/0013-tokenizers-and-low-rank-adapters.md) | Tokenizers and Low-Rank Adapters | Deriving byte-pair encoding, and where a low-rank adapter actually attaches to a weight matrix this workspace built from scratch |
 | [0014](lessons/0014-rotary-position-embeddings.md) | Rotary Position Embeddings | Sinusoidal encoding adds a fixed vector to the embedding before attention ever runs; RoPE instead rotates Q and K themselves, and that one change is what makes a dot product between two rotated vectors depend only on their relative distance |
 | [0015](lessons/0015-rmsnorm.md) | RMSNorm | LayerNorm does two things, re-centering and re-scaling, and RMSNorm exists because the re-centering half turns out to be dispensable, leaving a cheaper normalization that current models use inside the pre-norm branch lesson 5 already derived |
+| [0016](lessons/0016-swiglu-and-the-gated-feed-forward.md) | SwiGLU and the Gated Feed-Forward Block | Lesson 6's feed-forward block expands, applies one nonlinearity, and contracts; a gated variant computes two projections instead of one and multiplies them together, letting the network learn how much of its own computation to let through |
+| [0017](lessons/0017-grouped-query-attention-and-kv-caching.md) | Grouped-Query Attention and KV Caching | Autoregressive generation makes attention recompute keys and values it already has, and once caching them becomes the obvious fix, the cache's own size is what makes fewer key/value heads worth trading a small amount of quality for |
 
 ## Reference
 

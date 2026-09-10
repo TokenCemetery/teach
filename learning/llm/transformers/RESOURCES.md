@@ -40,3 +40,7 @@ type: resources
   Introduces RoPE: rotating the projected query and key vectors by an angle proportional to position, producing an attention score that depends only on relative offset. Use for: the mechanism nearly every current open model uses in place of sinusoidal or learned positional encoding.
 - [Paper: "Root Mean Square Layer Normalization", Zhang and Sennrich, 2019](https://arxiv.org/abs/1910.07467)
   Introduces RMSNorm, hypothesizing that layer norm's re-centering (mean-subtraction) operation is dispensable and re-scaling alone accounts for most of its benefit. Use for: the cheaper normalization current models place inside the pre-norm branch lesson 5 derives.
+- [Paper: "GLU Variants Improve Transformer", Shazeer, 2020](https://arxiv.org/abs/2002.05202)
+  Tests gated linear unit variants (including the Swish-gated SwiGLU) in the transformer's feed-forward sublayer, finding some outperform the typically-used ReLU or GELU. Use for: the gated, two-up-projection design that replaces lesson 6's single-projection feed-forward block in current models.
+- [Paper: "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints", Ainslie et al., 2023](https://arxiv.org/abs/2305.13245)
+  Introduces grouped-query attention as a middle ground between full multi-head attention and multi-query attention's single shared key/value head, plus a cheap recipe for uptraining an existing multi-head checkpoint into one. Use for: why fewer key/value heads trade a small amount of quality for a much smaller KV cache and faster inference.

@@ -68,3 +68,7 @@ type: resources
   Reference for Spectral's rulesets: extending a built-in ruleset like `spectral:oas`, per-rule severities, and writing a custom rule. Use for: understanding that a style linter checks one document's conformance to a ruleset, a genuinely different question from whether a change is breaking.
 - [Docs: oasdiff, Tufin](https://github.com/oasdiff/oasdiff)
   Reference for oasdiff's subcommands. Use for: the three-way distinction between `diff` (everything, including documentation-only edits), `changelog` (every consumer-visible change, breaking or not), and `breaking` (only the changes that break an existing client).
+- [Docs: "Consumer Driven Contracts", Pact](https://docs.pact.io/)
+  The authoritative source for consumer-driven contract testing. Use for: how a pact file is generated from a consumer's own tests rather than declared independently, the provider-verification step, and the `can-i-deploy` check that replaces a shared staging environment with a query against recorded verification results.
+- [Docs: "Schema Design: Versioning", GraphQL](https://graphql.org/learn/schema-design/#versioning)
+  GraphQL's own stated rationale for versionless schema evolution. Use for: why an additive change can't break an existing query when every query already names the exact fields it wants, and the `@deprecated` directive as GraphQL's equivalent of a documented deprecation signal.

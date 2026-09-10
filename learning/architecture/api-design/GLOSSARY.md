@@ -22,6 +22,10 @@ _Avoid_: linter (too broad; a style linter and a breaking-change detector check 
 Every behavior of an API a client can rely on, whether deliberately documented or merely observed and depended on in practice (see Hyrum's Law).
 _Avoid_: interface (too broad; a contract is specifically what's relied on, not the shape of the API alone)
 
+**Contract testing**:
+Verifying a provider's actual runtime behavior against a consumer's recorded expectations (a set of concrete request/response examples), rather than checking a schema's validity or its compatibility with a previous version; in the consumer-driven model, the consumer's own tests generate the contract.
+_Avoid_: schema validation (a different, narrower check; a schema can be valid and backward-compatible while the provider's real behavior still diverges from what a consumer's contract test expects)
+
 **Field mask**:
 A `google.protobuf.FieldMask`, a list of field paths (`user.displayName`) that either narrows a read to a subset of fields (a read mask, part of a partial response) or scopes a write to only the fields named (an update mask), travelling as a query parameter, header, or metadata entry rather than as a body field.
 _Avoid_: assuming a read mask and an update mask behave identically; a read mask may allow non-terminal repeated fields where an update mask is not obligated to

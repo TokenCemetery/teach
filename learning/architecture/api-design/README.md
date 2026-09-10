@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [17. Breaking-Change Linting](lessons/0017-breaking-change-linting.md)
+**Latest lesson:** [19. Where GraphQL Fits](lessons/0019-where-graphql-fits.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## The arc
 
-Eleven stages, the contract to asynchronous delivery to the machine-readable contract itself. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Twelve stages, the contract to asynchronous delivery to verifying the contract itself against real behavior. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -42,6 +42,7 @@ Eleven stages, the contract to asynchronous delivery to the machine-readable con
 | 9. Long-running operations and async delivery | 0013 to 0014 | The operation resource and polling, webhook signing, retries, and ordering | Can design an async contract (polled operation or pushed webhook) and its failure, retry, and ordering guarantees |
 | 10. Bulk operations and partial responses | 0015 | Atomic vs. partial-success batch methods, per-item error reporting, field masks | Can design a batch method's failure semantics and a partial-response contract |
 | 11. The machine-readable contract | 0016 to 0017 | OpenAPI documents and `.proto` files as generated artifacts, breaking-change detection with Buf, Spectral, and oasdiff | Can explain what a machine-readable contract enables, and how a style linter differs from a breaking-change detector |
+| 12. Contract testing and GraphQL's place | 0018 to 0019 | Consumer-driven contract testing and `can-i-deploy`, and where GraphQL sits relative to REST and gRPC | Can explain how a contract test verifies real behavior beyond a schema, and place GraphQL's versionless evolution accurately against this arc's REST/gRPC material |
 
 ## Lessons
 
@@ -66,6 +67,8 @@ Work through these in order.
 | [0015](lessons/0015-bulk-operations-and-partial-responses.md) | Bulk Operations and Partial Responses | A batch method has to choose upfront whether it fails all-or-nothing or reports success and failure per item, and a client asking for a subset of fields needs that subset requested outside the body it's shaping |
 | [0016](lessons/0016-openapi-and-protobuf-as-artifacts.md) | OpenAPI and Protobuf as Artifacts | Once the contract exists as a machine-readable document instead of only prose, the document itself becomes something to version, review, and generate other things from, rather than a description written after the fact |
 | [0017](lessons/0017-breaking-change-linting.md) | Breaking-Change Linting | A linter that checks a contract's style and a diff tool that checks whether it broke a client are answering two different questions, and a diff tool itself has to be asked the right one of three |
+| [0018](lessons/0018-contract-testing.md) | Contract Testing | A schema artifact checks shape and a breaking-change linter checks compatibility, but neither confirms a provider actually behaves the way a real consumer's tests expect, which is what a contract test verifies through recorded example interactions instead |
+| [0019](lessons/0019-where-graphql-fits.md) | Where GraphQL Fits | GraphQL solves the same versioning problem this workspace spent two lessons on by making every request already a field mask, at the cost of a contract this workspace's tools don't apply to |
 
 ## Reference
 

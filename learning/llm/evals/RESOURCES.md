@@ -25,6 +25,11 @@ type: resources
 - [Paper: "Evaluating Large Language Models Trained on Code" (Codex), Chen et al., 2021](https://arxiv.org/abs/2107.03374)
   Introduces functional correctness (execute generated code against test cases rather than comparing text) and the unbiased pass@k estimator, with the combinatorial formula that avoids the high variance of directly re-sampling k completions. Use for: evaluating code generation, and for the general principle of checking behavior over text similarity wherever a task is executable.
 
+- [Article: "Cohen's kappa", Wikipedia](https://en.wikipedia.org/wiki/Cohen%27s_kappa)
+  The chance-corrected inter-rater agreement statistic: its formula, why a kappa of 0 means no better than chance, and its known tendency to underestimate agreement on a rare category. Use for: measuring human-rater agreement precisely instead of eyeballing a raw agreement percentage.
+- [Article: "Inter-rater reliability", Wikipedia](https://en.wikipedia.org/wiki/Inter-rater_reliability)
+  Covers why raw joint-probability agreement is misleading (inflated by chance, worse with fewer categories) and Krippendorff's alpha as the generalization of chance-corrected agreement to any number of raters and any level of measurement. Use for: choosing the right agreement statistic for more than two raters or non-categorical ratings.
+
 ## Gaps
 
 - No dedicated source yet on statistical significance testing for eval score differences (standard error of a proportion, paired significance tests like McNemar's). The mission needs this for stage 5's "is this difference real or noise" question; lesson 9 teaches it from stable, standard statistical method rather than a single cited source, and this gap should close once a good practitioner-level source is found.

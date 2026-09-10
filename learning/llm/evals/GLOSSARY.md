@@ -10,6 +10,14 @@ Canonical terms for proving whether a model change helped, and for defending tha
 
 ## Terms
 
+**Annotation guideline**:
+A written definition of each rating category, with concrete borderline examples and how they were resolved, given to every human rater before they start. Low inter-rater agreement often signals a missing or ambiguous guideline rather than unreliable raters.
+_Avoid_: rating rubric (used interchangeably elsewhere; this workspace uses "annotation guideline" as the term)
+
+**Cohen's kappa**:
+A statistic measuring two raters' agreement after correcting for the agreement expected by chance alone: `κ = (p_o − p_e) / (1 − p_e)`. A kappa of 0 means no better than chance; a kappa can go negative. Known to underestimate agreement when one rating category is much rarer than the others.
+_Avoid_: percent agreement (the uncorrected, raw figure; kappa is specifically the chance-corrected version, and the two can tell different stories)
+
 **Data contamination**:
 Eval data, or a close paraphrase of it, ending up inside a model's training data (typically pretraining, via a benchmark scraped into web-crawl data) or a model being iteratively tuned against the same eval set until it stops measuring the underlying skill.
 _Avoid_: leakage, cheating

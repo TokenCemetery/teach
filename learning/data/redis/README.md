@@ -8,7 +8,7 @@ type: topic
 
 Be able to spot where an existing system is quietly misusing Redis, such as a cache treated as a store or a lock that is not one, and to design correct usage from scratch instead.
 
-**Latest lesson:** [8. Redis Cluster and Sentinel](lessons/0008-cluster-and-sentinel.md)
+**Latest lesson:** [10. Sets, Sorted Sets, and Probabilistic Structures](lessons/0010-sets-sorted-sets-and-probabilistic-structures.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to spot where an existing system is quietly misusing Redis, such as a ca
 
 ## The arc
 
-Five stages, eviction to spotting misuse on sight. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Six stages, eviction to picking a data structure. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -36,6 +36,7 @@ Five stages, eviction to spotting misuse on sight. A stage takes several lessons
 | 3. Distributed locks | 0004 to 0005 | Naive locking mistakes, Redlock, Kleppmann's critique | Can design, or correctly reject, a Redis-based distributed lock |
 | 4. Cache-vs-store anti-patterns | 0006 to 0007 | Cache-aside, a cache treated as a durable store, an unbounded keyspace | Given an existing system, can identify the misuse and say what breaks |
 | 5. Clustering | 0008 | Redis Cluster and Sentinel, the compromises clustering introduces | Can reason about clustering trade-offs without needing to operate one |
+| 6. Data types and their cost model | 0009 to 0010 | Strings, hashes, lists, sets, sorted sets, bitmaps, HyperLogLog, and picking between them | Can choose a data structure for a stated use case and explain what it costs |
 
 ## Lessons
 
@@ -51,6 +52,8 @@ Work through these in order.
 | [0006](lessons/0006-cache-aside-and-the-store-anti-pattern.md) | Cache-Aside and the Store Anti-Pattern | What correct cache-aside usage looks like, and the specific way a cache quietly becomes the system of record when that pattern is skipped |
 | [0007](lessons/0007-unbounded-keyspace-and-spotting-misuse.md) | The Unbounded-Keyspace Anti-Pattern and Spotting Misuse | How a keyspace grows without bound when nobody sets it a TTL or an eviction policy, and a checklist for spotting this and the store anti-pattern in an existing system |
 | [0008](lessons/0008-cluster-and-sentinel.md) | Redis Cluster and Sentinel | The compromises Redis Cluster's sharding and Sentinel's automatic failover each introduce, reasoned about without needing to operate either |
+| [0009](lessons/0009-strings-hashes-and-lists.md) | Strings, Hashes, and Lists | The three core data structures Redis actually stores, and what each one costs to read, write, and grow |
+| [0010](lessons/0010-sets-sorted-sets-and-probabilistic-structures.md) | Sets, Sorted Sets, and Probabilistic Structures | Picking a data structure for a use case, from exact membership to an approximate count that costs almost nothing to keep |
 
 ## Reference
 

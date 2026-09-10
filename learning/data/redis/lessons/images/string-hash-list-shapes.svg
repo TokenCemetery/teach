@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">A string is one blob under a key; a hash is a set of fields under a key; a list is an ordered sequence under a key</title>
+  <desc id="desc">Three keys, each holding a different shape. session:42 holds a single string value. user:42 is a hash holding several named fields, name, email, and plan, each with its own value. queue:jobs is a list holding an ordered sequence of values, job3, job2, job1, with new items pushed onto one end.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="80" y="16" text-anchor="middle">session:42 (string)</text>
+    <text x="240" y="16" text-anchor="middle">user:42 (hash)</text>
+    <text x="400" y="16" text-anchor="middle">queue:jobs (list)</text>
+  </g>
+
+  <rect x="20" y="28" width="120" height="28" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="80" y="46" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">"a1b2c3...token"</text>
+  <text x="80" y="72" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">one opaque value</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="180" y="28" width="120" height="18"/>
+    <rect x="180" y="46" width="120" height="18"/>
+    <rect x="180" y="64" width="120" height="18"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="240" y="41" text-anchor="middle">name: "Ada"</text>
+    <text x="240" y="59" text-anchor="middle">email: "ada@x.com"</text>
+    <text x="240" y="77" text-anchor="middle">plan: "pro"</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="340" y="28" width="42" height="24"/>
+    <rect x="382" y="28" width="42" height="24"/>
+    <rect x="424" y="28" width="42" height="24"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="361" y="44" text-anchor="middle">job3</text>
+    <text x="403" y="44" text-anchor="middle">job2</text>
+    <text x="445" y="44" text-anchor="middle">job1</text>
+  </g>
+  <text x="400" y="68" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">ordered sequence; push/pop the ends</text>
+
+  <text x="80" y="100" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">O(1) get/set the</text>
+  <text x="80" y="110" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">whole value</text>
+  <text x="240" y="100" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">O(1) per field;</text>
+  <text x="240" y="110" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">no N separate keys needed</text>
+  <text x="400" y="100" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">O(1) at either end;</text>
+  <text x="400" y="110" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">O(N) random access by index</text>
+</svg>

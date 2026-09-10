@@ -38,6 +38,12 @@ type: resources
   Official chapter on combining a base backup with a continuous WAL archive to reconstruct any moment since the backup. Use for: why a logical dump can't be combined with WAL archiving, the requirement that the archive be gapless back to the base backup's start, and the exact recovery-target and recovery-target-action settings that control where a restore stops and what happens next.
 - [Docs: "Resource Consumption", PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-resource.html)
   Official chapter on `shared_buffers`, `work_mem`, `maintenance_work_mem`, and `autovacuum_work_mem`, with each parameter's current default. Use for: the 25%-of-RAM starting guidance for `shared_buffers`, and the exact rule that `work_mem` is a per-operation limit that multiplies across concurrent sorts and hashes, not a per-connection ceiling.
+- [Docs: "The Statistics Collector", PostgreSQL](https://www.postgresql.org/docs/current/monitoring-stats.html)
+  Official chapter on `pg_stat_activity`'s state and wait-event columns and how they relate, and the other dynamic statistics views. Use for: the exact backend states (including `idle in transaction`), and the rule that `state` and `wait_event` are reported independently and can disagree instant to instant.
+- [Docs: "pg_stat_statements", PostgreSQL](https://www.postgresql.org/docs/current/pgstatstatements.html)
+  Official docs for the query-statistics extension: how it normalizes query text, and every column it reports. Use for: the exact difference between ranking by `total_exec_time` versus `mean_exec_time`, and how constant normalization merges semantically identical queries into one entry.
+- [Docs: "Error Reporting and Logging", PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html)
+  Official chapter on every logging parameter and its current default. Use for: `log_min_duration_statement`, `log_lock_waits`, `log_checkpoints`, and `log_autovacuum_min_duration`, and which of these force the query text itself into the log versus only a duration.
 
 ## Gaps
 

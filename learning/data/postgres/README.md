@@ -8,7 +8,7 @@ type: topic
 
 Be able to operate a running Postgres instance, self-hosted or managed, and to diagnose bloat, replication lag or a slow-to-recover failover instead of guessing at a fix, as well as design storage, replication and index upkeep for a new deployment from the start.
 
-**Latest lesson:** [12. Configuration and Memory Tuning](lessons/0012-configuration-and-memory-tuning.md)
+**Latest lesson:** [13. Monitoring: Activity, Statements, and the Log](lessons/0013-monitoring-activity-statements-and-the-log.md)
 
 ## Success looks like
 
@@ -28,7 +28,7 @@ Be able to operate a running Postgres instance, self-hosted or managed, and to d
 
 ## The arc
 
-Seven stages, durability to memory tuning. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eight stages, durability to monitoring the instance. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -39,6 +39,7 @@ Seven stages, durability to memory tuning. A stage takes several lessons and the
 | 5. Managed vs self-hosted | 0009 to 0010 | What an RDS-style managed service shields you from, and what it doesn't | Can explain the managed-service boundary and defend an operating choice |
 | 6. Backup and point-in-time recovery | 0011 | Base backups, continuous WAL archiving, `recovery_target_time`, and why an untested restore isn't a verified backup | Can design and defend a backup strategy that actually reconstructs a working database when tested |
 | 7. Configuration and memory tuning | 0012 | `shared_buffers`, `work_mem`, `maintenance_work_mem`, checkpoint tuning | Can size these settings against actual concurrency instead of an isolated single-query test |
+| 8. Monitoring | 0013 | `pg_stat_activity`, wait events, `pg_stat_statements`, the server log | Can pick the right monitoring surface (live backend state, aggregate query cost, or a logged event) for a given symptom |
 
 ## Lessons
 
@@ -58,6 +59,7 @@ Work through these in order.
 | [0010](lessons/0010-defending-an-operating-choice.md) | Defending an Operating Choice | A worked deployment design that cites a specific decision and cost from each stage, rather than assuming a default answer |
 | [0011](lessons/0011-backup-and-point-in-time-recovery.md) | Backup and Point-in-Time Recovery | A base backup and a continuous WAL archive together let you reconstruct any moment since the backup, not just the moment the backup itself was taken, and an untested restore isn't a verified backup |
 | [0012](lessons/0012-configuration-and-memory-tuning.md) | Configuration and Memory Tuning | shared_buffers, work_mem and maintenance_work_mem each answer a different memory question, and the one most often mistuned is the one that quietly multiplies by however many operations are actually running at once |
+| [0013](lessons/0013-monitoring-activity-statements-and-the-log.md) | Monitoring: Activity, Statements, and the Log | A live view of what every backend is doing right now, an aggregate view of what's actually costing the server the most over time, and a log that names exactly what a stuck query is blocked behind, are three different questions |
 
 ## Reference
 

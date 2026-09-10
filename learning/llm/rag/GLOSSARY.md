@@ -18,9 +18,17 @@ _Avoid_: segment, passage (use only when quoting a source that uses it)
 The process of splitting a document into chunks, by a fixed size, by the document's own structure, or by detecting where its topic shifts.
 _Avoid_: splitting (too generic; use only in prose describing the mechanical act, not as the process name)
 
+**Error cascading**:
+A mistake at an early ingestion step (misidentifying a heading, merging columns in the wrong order) propagating into every later step that operates on the already-corrupted structure it was handed, corrupting a whole section's worth of eventual chunks rather than staying contained to the single element the mistake directly touched.
+_Avoid_: an isolated parsing error (understates the effect; the point of naming this cascading is that one early mistake compounds rather than staying local)
+
 **HyDE (Hypothetical Document Embeddings)**:
 Embedding a language model's generated hypothetical answer to a query, rather than the query itself, then searching the corpus by similarity to that embedding. Tolerates factually wrong details in the hypothetical document, since the encoder's embedding step filters them out while preserving genuine topical similarity.
 _Avoid_: query rewriting (a different query-side fix: rewriting reformulates the query itself, HyDE embeds a generated answer instead of the query)
+
+**Ingestion**:
+Turning a raw source document (a PDF, HTML page, or office file) into the clean, structured text that chunking actually operates on. A genuine pipeline stage upstream of chunking, with its own failure modes, not a preprocessing detail beneath the pipeline's notice.
+_Avoid_: treating chunking as the pipeline's first stage (chunking assumes ingestion already produced clean text; ingestion is what actually produces it)
 
 **Metadata filtering**:
 Restricting retrieval to chunks matching a predicate on structured attributes (document type, date, owner, permission tag) in addition to nearest-neighbor similarity, rather than searching the whole corpus by similarity alone.

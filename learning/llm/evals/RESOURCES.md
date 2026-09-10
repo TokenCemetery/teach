@@ -47,6 +47,10 @@ type: resources
   Google's internal ML engineering guidance, including Rule #37 (measuring training/serving skew as several distinct comparisons, not one) and Rule #8 (freshness requirements). Use for: precisely which of an offline/online gap's several possible causes, ordinary variance, drift, or an engineering error, actually applies, and why each needs a different fix.
 - [Paper: "The Tail at Scale", Dean and Barroso, 2013](https://www.barroso.org/publications/TheTailAtScale.pdf)
   The canonical explanation of why tail latency, not average latency, determines real-world responsiveness at scale, especially once a request fans out to many backend calls. Use for: why a go/no-go call needs a percentile (p95/p99), not just an average, before ruling out a latency regression.
+- [Paper: "The Leaderboard Illusion", Singh et al., 2025](https://arxiv.org/abs/2504.20879)
+  Documents selective disclosure on Chatbot Arena: private pre-release testing of many model variants (27 for Llama 4 alone) and large, asymmetric data access favoring a handful of closed-model providers. Use for: a concrete, current, well-documented example of why a leaderboard rank isn't a neutral, trustworthy measurement on its own.
+- [Article: "Does Style Matter?", LMArena](https://lmarena.ai/blog/style-control)
+  The arena's own analysis showing rankings shift meaningfully once response length and markdown formatting are controlled for. Use for: confirming lesson 6's verbosity-bias mechanism operates identically at full leaderboard scale, with human raters instead of a single LLM judge.
 
 ## Gaps
 

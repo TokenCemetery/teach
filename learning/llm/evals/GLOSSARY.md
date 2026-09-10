@@ -54,6 +54,14 @@ _Avoid_: false refusal (used interchangeably in some sources; this workspace sta
 Deliberately constructing inputs designed to make a model produce unsafe output, whether by a human tester or an automated attack-generation method, then measuring how often those inputs succeed (a jailbreak) against a given model and its defenses.
 _Avoid_: reporting only attack success rate as "the safety eval"; it measures nothing about over-refusal, a distinct failure mode needing its own test set
 
+**Saturation**:
+A benchmark reaching a ceiling where models score near-perfectly on it while still failing the same kind of task in real use, because the benchmark stopped measuring the underlying skill and started measuring familiarity with the benchmark itself.
+_Avoid_: data contamination (a related but distinct cause; saturation can also result from extensive legitimate tuning against a benchmark over time, not only from the benchmark's questions leaking into training data)
+
+**Selective disclosure**:
+Testing multiple private, unreleased model variants against a benchmark or arena and publicly reporting only the best-scoring one. Turns a leaderboard into an optimization target (Goodhart's Law) rather than a neutral measurement, and creates a gap between the score a leaderboard reports and the model version actually released.
+_Avoid_: data contamination (a different gaming vector; selective disclosure is a reporting practice, not eval data leaking into training)
+
 **Tail latency**:
 The slowest fraction of requests (commonly reported as p95 or p99), as opposed to the average. An unchanged average latency can hide a meaningfully worse tail, and at scale, a request fanning out to many backend calls only completes once all of them finish, making the tail the thing that actually decides real-world response time.
 _Avoid_: average latency (an aggregate that can stay flat while the tail, which dominates real user experience, gets meaningfully worse)

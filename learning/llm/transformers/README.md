@@ -8,7 +8,7 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [17. Grouped-Query Attention and KV Caching](lessons/0017-grouped-query-attention-and-kv-caching.md)
+**Latest lesson:** [18. Generation and Sampling](lessons/0018-generation-and-sampling.md)
 
 ## Success looks like
 
@@ -38,6 +38,7 @@ Eleven stages, one equation to reading and generating from real model code. A st
 | 5. Reading real model code | 0012 to 0013 | Mapping each derived piece to a real library (`transformers` or `llama.cpp`), tokenizers and low-rank adapters named in passing | Can point to where each derived piece lives in real model code |
 | 6. Modern positional encoding and normalization | 0014 to 0015 | Rotary position embeddings, RMSNorm | Can derive RoPE's relative-position property and explain what RMSNorm drops from layer norm |
 | 7. Modern feed-forward and attention variants | 0016 to 0017 | SwiGLU/the gated feed-forward, grouped-query and multi-query attention, KV caching | Can derive a gated feed-forward block and explain why fewer KV heads trade quality for cache size |
+| 8. Generation and sampling | 0018 | Greedy decoding, temperature, top-k and top-p sampling, running the model forward to produce text | Can generate text from the hand-built model and explain why greedy decoding degenerates |
 
 ## Lessons
 
@@ -62,6 +63,7 @@ Work through these in order.
 | [0015](lessons/0015-rmsnorm.md) | RMSNorm | LayerNorm does two things, re-centering and re-scaling, and RMSNorm exists because the re-centering half turns out to be dispensable, leaving a cheaper normalization that current models use inside the pre-norm branch lesson 5 already derived |
 | [0016](lessons/0016-swiglu-and-the-gated-feed-forward.md) | SwiGLU and the Gated Feed-Forward Block | Lesson 6's feed-forward block expands, applies one nonlinearity, and contracts; a gated variant computes two projections instead of one and multiplies them together, letting the network learn how much of its own computation to let through |
 | [0017](lessons/0017-grouped-query-attention-and-kv-caching.md) | Grouped-Query Attention and KV Caching | Autoregressive generation makes attention recompute keys and values it already has, and once caching them becomes the obvious fix, the cache's own size is what makes fewer key/value heads worth trading a small amount of quality for |
+| [0018](lessons/0018-generation-and-sampling.md) | Generation and Sampling | The model this workspace built and trained has never once produced text, because training and generation ask it two different questions, and always taking the single most likely next token turns out to be a worse answer to the second question than a well-chosen amount of randomness |
 
 ## Reference
 

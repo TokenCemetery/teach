@@ -14,6 +14,10 @@ Canonical terms for the transformer architecture, derived from raw tensors rathe
 The elementwise product of two linear projections of the same input, with a nonlinearity (originally sigmoid) applied to one of them first. That projection acts as a gate, scaling the other projection's output element by element rather than applying one fixed nonlinearity uniformly.
 _Avoid_: SwiGLU (a specific GLU variant, gated with Swish/SiLU; "GLU" is the general family, not this one member of it)
 
+**Greedy decoding**:
+Always choosing the single highest-probability token from the model's predicted distribution at each generation step. Deterministic, and despite maximizing the same quantity the model was trained to predict well, produces bland, strangely repetitive text in practice.
+_Avoid_: assuming the training objective (likelihood) is automatically the right decoding objective; the two are different questions with different answers
+
 **Grouped-query attention (GQA)**:
 An attention variant using an intermediate number of key/value heads, more than one, fewer than the number of query heads, with groups of query heads sharing one key/value head each. A middle ground between full multi-head attention's per-head keys/values and multi-query attention's single shared head.
 _Avoid_: multi-query attention (MQA) (the more extreme case, a single shared key/value head; GQA is the generalization that keeps more than one)
@@ -21,6 +25,10 @@ _Avoid_: multi-query attention (MQA) (the more extreme case, a single shared key
 **KV cache**:
 Stored key and value vectors from every previous position during autoregressive generation, reused at each new generation step instead of being recomputed from scratch. Its size scales with the number of distinct key/value head sets a model has, which is exactly what grouped-query and multi-query attention reduce.
 _Avoid_: recomputing keys and values at every generation step (correct but wasteful; the cache exists specifically to avoid this)
+
+**Nucleus sampling (top-p)**:
+Sampling from the smallest set of highest-probability tokens whose cumulative probability exceeds a threshold `p`, a set whose size varies from step to step depending on how peaked or flat the distribution is. Contrasts with top-k's fixed-size truncation, which can't adapt to that variation.
+_Avoid_: top-k sampling (a fixed-count truncation; nucleus sampling's cutoff is a dynamic, cumulative-probability-based set instead)
 
 **RMSNorm**:
 A normalization that divides an activation vector by its root mean square and applies a learned scale, keeping layer norm's re-scaling operation while dropping its re-centering (mean-subtraction) step entirely. Cheaper than layer norm, with comparable task performance in practice.
@@ -41,3 +49,11 @@ _Avoid_: intra-attention
 **SwiGLU**:
 The GLU variant gated with the Swish (SiLU) activation, used in the feed-forward sublayer of most current open models in place of a plain ReLU or GELU nonlinearity. Uses three weight matrices (two up-projections, one down-projection) rather than a plain feed-forward block's two.
 _Avoid_: GELU, ReLU (the fixed, single-projection nonlinearities SwiGLU's gated, two-projection design replaces in current models)
+
+**Temperature**:
+A value dividing the logits before the softmax that produces a next-token distribution during generation. Below 1, it sharpens the distribution toward greedy's behavior; above 1, it flattens it. Reshapes how peaked the distribution is without deciding which tokens are eligible to be sampled at all.
+_Avoid_: top-k, top-p (temperature only rescales probability sharpness; deciding the eligible set is a separate, subsequent step those methods perform)
+
+**Top-k sampling**:
+Truncating a next-token distribution to its `k` highest-probability tokens, discarding the rest, and sampling from that fixed-size, renormalized set. Unlike nucleus (top-p) sampling, the eligible set's size never adapts to how peaked or flat the distribution actually is at a given step.
+_Avoid_: nucleus sampling (top-p) (a dynamically-sized alternative; top-k's cutoff count is fixed regardless of the distribution's actual shape)

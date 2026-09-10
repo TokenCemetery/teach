@@ -44,6 +44,8 @@ type: resources
   A summary of Amazon's Dynamo paper (DeCandia et al., 2007) and its techniques table: consistent hashing for partitioning, vector clocks for highly available writes, sloppy quorums and hinted handoff for temporary failures, and Merkle-tree anti-entropy for permanent ones. Use for: leaderless replication as a concrete, real design, and the fact that DynamoDB itself later chose single-leader replication instead, despite the shared name and lineage.
 - [Article: "Quorum (distributed computing)", Wikipedia](https://en.wikipedia.org/wiki/Quorum_(distributed_computing))
   Covers Gifford's 1979 quorum-based voting for replicated data: the `Vr + Vw > V` rule that guarantees a read quorum and a write quorum overlap, and the separate `Vw > V/2` rule that guarantees two write quorums overlap with each other. Use for: the precise arithmetic behind `R + W > N`, rather than an intuitive but imprecise notion of "majority agreement".
+- [Article: "Consistent hashing", Wikipedia](https://en.wikipedia.org/wiki/Consistent_hashing)
+  Covers the ring construction, the `O(K/N)` average-case bound on keys remapped when a node joins or leaves, and the practical extensions: virtual nodes (to avoid dumping a failed node's whole load onto one neighbor) and replicating a single "hot" key onto multiple contiguous nodes. Use for: precisely why consistent hashing beats plain `hash(key) mod M`, and the specific gaps a bare ring still leaves that virtual nodes and hot-key replication close.
 
 ## Gaps
 

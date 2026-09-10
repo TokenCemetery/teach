@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">Redirections are applied left to right, so the same two operators in a different order send stderr somewhere else entirely</title>
+  <desc id="desc">Two timelines showing redirections applied left to right. On the left, cmd greater-than file, then 2 greater-than ampersand 1: stdout is redirected to file first, then stderr is pointed at wherever stdout currently points, which is now file, so both streams end up in file. On the right, cmd 2 greater-than ampersand 1, then greater-than file: stderr is pointed at wherever stdout currently points, which is still the terminal, and only afterward is stdout redirected to file, so stderr still goes to the terminal while stdout alone goes to file.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">cmd &gt; file 2&gt;&amp;1</text>
+    <text x="365" y="14" text-anchor="middle">cmd 2&gt;&amp;1 &gt; file</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="30" y="35" text-anchor="start">step 1: &gt; file</text>
+  </g>
+  <text x="30" y="48" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">stdout -&gt; file</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="30" y="68" text-anchor="start">step 2: 2&gt;&amp;1</text>
+  </g>
+  <text x="30" y="81" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">stderr -&gt; wherever stdout now points: file</text>
+  <text x="30" y="100" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">result: both streams land in file</text>
+
+  <line x1="240" y1="20" x2="240" y2="150" stroke="#7a828c" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="280" y="35" text-anchor="start">step 1: 2&gt;&amp;1</text>
+  </g>
+  <text x="280" y="48" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">stderr -&gt; wherever stdout points now: terminal</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="280" y="68" text-anchor="start">step 2: &gt; file</text>
+  </g>
+  <text x="280" y="81" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">stdout -&gt; file (stderr already pointed elsewhere)</text>
+  <text x="280" y="100" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">result: stderr stays on the terminal, only stdout goes to file</text>
+
+  <text x="240" y="135" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">redirections are applied strictly left to right</text>
+</svg>

@@ -18,6 +18,14 @@ _Avoid_: hash, dictionary, map (say "associative array", the shell's own term, e
 Running a command and replacing `$(command)` with what it wrote to standard output, trailing newlines stripped.
 _Avoid_: backtick substitution (use for the older, non-nesting `` ` ` `` syntax specifically, not the concept)
 
+**File descriptor**:
+A number identifying an open input or output stream for a process; `0`, `1`, and `2` are standard input, output, and error, and a script may open others.
+_Avoid_: file handle (a term from other languages; this workspace says "file descriptor", matching the shell's own numbering)
+
+**Here-doc**:
+A `<<DELIMITER ... DELIMITER` block that feeds its contents to a command's standard input inline, without a separate file.
+_Avoid_: heredoc (one word; use the hyphenated form for consistency across lessons)
+
 **Indexed array**:
 A bash-only array whose elements sit at sequential integer positions starting at `0`, created with `arr=(a b c)`.
 _Avoid_: list, plain array (say "indexed array" once associative arrays are also in scope, so the two aren't confused)
@@ -33,6 +41,14 @@ _Avoid_: variable substitution (reserve "substitution" for command substitution 
 **Pathname expansion (globbing)**:
 Replacing a word containing `*`, `?`, or `[` with the filenames that match it, applied to unquoted expansions before the shell treats the result as arguments.
 _Avoid_: glob expansion (use "globbing" or the full term)
+
+**Process substitution**:
+A bash-only `<(command)` or `>(command)` form that lets a command's output or input be treated as a readable or writable file, without a pipe or a temporary file.
+_Avoid_: process piping (this is not a pipe; the whole point is that it avoids a pipeline's subshell)
+
+**Subshell**:
+A copy of the current shell's environment, forked to run a command or block; an assignment or a `cd` made inside it never affects the shell that forked it.
+_Avoid_: child process (true but imprecise here; "subshell" specifically names a forked copy of the shell itself, not any child process)
 
 **Word splitting**:
 Breaking an unquoted expansion's result into separate words wherever a character in `$IFS` (space, tab, newline by default) appears.

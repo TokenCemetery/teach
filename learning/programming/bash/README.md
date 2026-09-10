@@ -8,7 +8,7 @@ type: topic
 
 Be able to write and maintain shell scripts for CI pipelines, deployment and operational tooling that do not quietly break on a bad input or an unset variable, and to recognise when a script has outgrown shell and belongs in a real language instead.
 
-**Latest lesson:** [11. Arrays (Indexed and Associative)](lessons/0011-arrays.md)
+**Latest lesson:** [13. Pipes, Subshells, and Process Substitution](lessons/0013-pipes-subshells-and-process-substitution.md)
 
 ## Success looks like
 
@@ -28,7 +28,7 @@ Be able to write and maintain shell scripts for CI pipelines, deployment and ope
 
 ## The arc
 
-Eight stages, quoting to parameter expansion and arrays. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Nine stages, quoting to pipes, subshells and process substitution. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -40,6 +40,7 @@ Eight stages, quoting to parameter expansion and arrays. A stage takes several l
 | 6. Knowing when to stop | 0007 | Recognising shell has outgrown its judgment-free zone | Can say why a given job now belongs in `programming/python` |
 | 7. Shell fundamentals | 0008 to 0009 | Variables, command substitution, control flow (`if`/`case`/loops), functions, `local`, return status vs output | Can write a script using variables, command substitution and control flow, and organise repeated work into correctly-scoped functions |
 | 8. Parameter expansion and arrays | 0010 to 0011 | Defaulting/erroring on unset (`${v:-}`, `${v:?}`), stripping (`${v%%}`), substitution, indexed and associative arrays | Can default, validate and transform a value inline, and hold a list or a map without encoding it into a string |
+| 9. Redirection and composition | 0012 to 0013 | Redirection order, file descriptors, here-docs, why a piped `while` loop loses its variables, process substitution | Can redirect streams correctly and explain why a variable set inside a piped loop doesn't survive it |
 
 ## Lessons
 
@@ -58,6 +59,8 @@ Work through these in order.
 | [0009](lessons/0009-functions-local-and-return-status-vs-output.md) | Functions, local, and Return Status vs Output | Organizing repeated work into a function, and the sharpest thing a shell function does differently from a function in almost every other language |
 | [0010](lessons/0010-parameter-expansion.md) | Parameter Expansion | Defaulting, erroring, and stripping a value inline, without reaching for a separate command |
 | [0011](lessons/0011-arrays.md) | Arrays (Indexed and Associative) | Holding more than one value without encoding structure into a string, and the one quoting form that keeps each element intact |
+| [0012](lessons/0012-redirection-file-descriptors-and-here-docs.md) | Redirection, File Descriptors, and Here-Docs | Sending a command's output somewhere other than the screen, precisely, and feeding it a block of input inline |
+| [0013](lessons/0013-pipes-subshells-and-process-substitution.md) | Pipes, Subshells, and Process Substitution | Why a variable set inside a piped loop vanishes the moment the pipe ends, and the bash-only fix that keeps it |
 
 ## Reference
 

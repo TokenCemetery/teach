@@ -46,3 +46,11 @@ type: resources
   Introduces grouped-query attention as a middle ground between full multi-head attention and multi-query attention's single shared key/value head, plus a cheap recipe for uptraining an existing multi-head checkpoint into one. Use for: why fewer key/value heads trade a small amount of quality for a much smaller KV cache and faster inference.
 - [Paper: "The Curious Case of Neural Text Degeneration", Holtzman et al., 2019](https://arxiv.org/abs/1904.09751)
   Documents why maximizing likelihood at decoding time (greedy decoding) produces bland, repetitive text despite likelihood being a good training objective, and introduces nucleus (top-p) sampling as the fix. Use for: the precise reason a dynamic, cumulative-probability cutoff beats both greedy decoding and a fixed top-k count.
+- [Paper: "On the difficulty of training Recurrent Neural Networks", Pascanu, Mikolov, and Bengio, 2013](https://arxiv.org/abs/1211.5063)
+  Analyzes the vanishing and exploding gradient problems and proposes gradient norm clipping as the fix for the latter. Use for: why clipping rescales the whole gradient vector by its norm rather than capping each parameter's gradient independently.
+- [Paper: "Mixed Precision Training", Micikevicius et al., 2018](https://arxiv.org/abs/1710.03740)
+  Introduces training in half precision with a full-precision master weight copy and loss scaling to counter half precision's limited numerical range, reducing memory use by nearly half. Use for: exactly what has to be added to plain half-precision training to keep small updates and gradients from underflowing to zero.
+
+## Gaps
+
+- No source yet on the exact learning-rate-warmup-then-decay schedule; lesson 19 derives it from the shape stated in the original transformer paper's own training details (linear warmup, then decay proportional to the inverse square root of the step number), but a direct, freshly-verified excerpt from that section wasn't obtainable through available tooling in this session (the paper's abstract page doesn't carry the training-details section, and other PDF sources for it did not extract as readable text). Revisit if a cleaner source becomes available.

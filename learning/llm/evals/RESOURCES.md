@@ -41,6 +41,10 @@ type: resources
   A reference-free framework separating a RAG system's retrieval-quality, faithfulness, and generation-quality dimensions into independent metrics. Use for: computing a faithfulness score without needing a human-written gold answer, and for keeping retrieval failure and generation failure diagnosable as separate questions.
 - [Paper: "Enabling Large Language Models to Generate Text with Citations" (ALCE), Gao et al., 2023](https://arxiv.org/abs/2305.14627)
   Introduces automatic citation-quality metrics correlated with human judgment, and the finding that even top systems lack complete citation support for roughly half their claims on one test set. Use for: citation correctness as a stricter, separate check from faithfulness.
+- [Paper: "Seven Rules of Thumb for Web Site Experimenters", Kohavi et al., 2014](https://exp-platform.com/Documents/2014%20experimentersRulesOfThumb.pdf)
+  Kohavi and coauthors' practitioner guidance on running online controlled experiments, including the OEC concept (movable and causally connected to the real outcome) and guardrail metrics. Use for: choosing a defensible OEC instead of an easily-moved but uncausal metric, and why a guardrail metric has to be tracked alongside it.
+- [Guide: "Rules of Machine Learning", Zinkevich, Google](https://developers.google.com/machine-learning/guides/rules-of-ml)
+  Google's internal ML engineering guidance, including Rule #37 (measuring training/serving skew as several distinct comparisons, not one) and Rule #8 (freshness requirements). Use for: precisely which of an offline/online gap's several possible causes, ordinary variance, drift, or an engineering error, actually applies, and why each needs a different fix.
 
 ## Gaps
 

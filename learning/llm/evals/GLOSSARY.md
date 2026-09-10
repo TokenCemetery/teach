@@ -26,13 +26,25 @@ _Avoid_: percent agreement (the uncorrected, raw figure; kappa is specifically t
 Eval data, or a close paraphrase of it, ending up inside a model's training data (typically pretraining, via a benchmark scraped into web-crawl data) or a model being iteratively tuned against the same eval set until it stops measuring the underlying skill.
 _Avoid_: leakage, cheating
 
+**Drift**:
+The real-world relationship between features and outcomes changing over time, so a model or eval built on older data progressively stops matching current reality. Specifically what a large gap between held-out and more-recent ("next-day") data indicates; a gap between offline and live results on the identical input is a different problem, an engineering error, not drift.
+_Avoid_: training-serving skew (a broader term covering any train/serve discrepancy; drift is specifically the time-based, real-world-changed-underneath-the-model case)
+
 **Faithfulness (groundedness)**:
 Whether each claim in a generated answer is actually supported by the retrieved context it's meant to rest on, rather than fabricated, contradicted, or embellished with an unsupported detail. A claim-level check: a mostly-faithful answer can still hide one unsupported claim.
 _Avoid_: citation correctness (a stricter, separate check on whether the specific cited passage for a claim is the one that actually supports it, distinct from whether the claim is grounded at all)
 
+**Guardrail metric**:
+A metric an experiment or a production system isn't trying to optimize, tracked specifically to catch a change quietly damaging it while a different metric (the OEC) is being improved. Reporting an OEC's gain without a guardrail metric checked alongside it can hide a real regression.
+_Avoid_: OEC (a guardrail metric is explicitly not being optimized; conflating the two defeats the purpose of tracking either separately)
+
 **Held-out data**:
 Eval examples, or close paraphrases of them, that the model being judged never saw during training or fine-tuning. A score is only informative when the data behind it is held out.
 _Avoid_: test set (ambiguous with a training-pipeline split), unseen data
+
+**OEC (Overall Evaluation Criterion)**:
+The specific metric, or small weighted combination, an experiment is actually trying to move. A good OEC candidate is both movable (sensitive enough to shift within a feasible experiment) and causally connected to the outcome that actually matters, not merely correlated with it.
+_Avoid_: any metric that's easy to move but not causally tied to the real outcome (Kohavi's own example: "photos viewed" moves easily but has little causal effect on revenue)
 
 **Over-refusal**:
 A model refusing a prompt that is actually safe, typically because it resembles an unsafe prompt in wording or touches a sensitive-sounding topic without being harmful. A genuinely different failure mode from a jailbreak, and one a red-team (unsafe-prompt-only) eval cannot detect.
@@ -45,6 +57,10 @@ _Avoid_: reporting only attack success rate as "the safety eval"; it measures no
 **Task success**:
 Comparing an agent trajectory's actual end state against an annotated goal state, crediting any sequence of actions that reaches the correct outcome rather than only one predetermined reference sequence. More faithful than step accuracy, which can only credit the one trajectory it was given.
 _Avoid_: step accuracy (a narrower, brittler measurement: matching each action to a reference trajectory, which wrongly penalizes a different, equally valid path to the same correct outcome)
+
+**Training-serving skew**:
+Any discrepancy between a model's offline (training or held-out) performance and its live, in-production performance. Google's own guidance splits this into distinct comparisons with distinct causes; a discrepancy on the identical input between an offline score and a live result specifically indicates an engineering error, not drift or a modeling problem.
+_Avoid_: drift (the narrower, time-based case where the real world has changed since training; not every offline/online discrepancy is drift)
 
 **Trajectory**:
 The full sequence of tool calls, intermediate decisions, and turns an agent produces while working a task, as opposed to the single output a per-response eval scores. A per-response metric has nothing to attach to here, which is why agent evaluation needs its own metrics.

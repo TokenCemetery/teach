@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [10. Diagnosing a Production Incident](lessons/0010-diagnosing-a-production-incident.md)
+**Latest lesson:** [11. Replication and Quorums](lessons/0011-replication-and-quorums.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to choose and defend a consistency model for a system you are designing,
 
 ## The arc
 
-Five stages, partial failure to a diagnosed incident. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Twelve stages, partial failure to a diagnosed incident to the mechanisms production systems actually use to survive one. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -36,6 +36,7 @@ Five stages, partial failure to a diagnosed incident. A stage takes several less
 | 3. Consistency models | 0004 to 0006 | CAP, linearizability, sequential and eventual consistency | Can choose and defend a consistency model for a stated design |
 | 4. Consensus | 0007 to 0009 | Raft, leader election, what consensus buys and why it costs what it costs | Can explain what a consensus protocol buys and costs without proving its correctness |
 | 5. Diagnosing incidents | 0010 | Applying the mechanisms above to a real production incident | Given an incident caused by partial failure, can name the mechanism responsible |
+| 6. Replication and quorums | 0011 | Leader-based vs. leaderless replication, read/write quorums, the `R + W > N` condition | Can explain how a quorum guarantees a read sees the latest write, and choose R and W for a stated workload |
 
 ## Lessons
 
@@ -53,6 +54,7 @@ Work through these in order.
 | [0008](lessons/0008-raft-leader-election-and-log-replication.md) | Raft, Leader Election and Log Replication | How Raft elects a single leader and replicates a log through it, the two mechanisms that turn the replicated-state-machine problem into something concrete |
 | [0009](lessons/0009-what-consensus-costs.md) | What Consensus Costs | Why every write pays a round trip to a majority, why a minority partition loses availability rather than consistency, and how to weigh that cost against what consensus buys |
 | [0010](lessons/0010-diagnosing-a-production-incident.md) | Diagnosing a Production Incident | Applying partial failure, failure detection, consistency models, and consensus to name the mechanism behind a real incident, instead of reasoning about "the network" or "consistency" in the abstract |
+| [0011](lessons/0011-replication-and-quorums.md) | Replication and Quorums | A consensus protocol isn't the only way to replicate data, and the quorum condition behind its cheaper alternative is a single overlap guarantee, not a vague notion of majority agreement |
 
 ## Reference
 

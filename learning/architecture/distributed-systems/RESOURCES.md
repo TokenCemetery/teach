@@ -40,6 +40,11 @@ type: resources
 - [Paper: "The Accrual Failure Detector", Hayashibara, Defago, Yared and Katayama, 2004](https://dspace.jaist.ac.jp/dspace/bitstream/10119/4784/1/IS-RR-2004-010.pdf)
   Introduces accrual failure detection, where the detector reports a suspicion level on a continuous scale instead of a boolean trust-or-suspect, so each application picks its own threshold against a scale the detector adapts to observed network conditions. The `phi` detector is the implementation, measured over an intercontinental link. Use for: the detection and timeout mechanics behind telling a slow node from a dead one, and for why a fixed timeout is a bet on a distribution.
 
+- [Article: "Dynamo (storage system)", Wikipedia](https://en.wikipedia.org/wiki/Dynamo_(storage_system))
+  A summary of Amazon's Dynamo paper (DeCandia et al., 2007) and its techniques table: consistent hashing for partitioning, vector clocks for highly available writes, sloppy quorums and hinted handoff for temporary failures, and Merkle-tree anti-entropy for permanent ones. Use for: leaderless replication as a concrete, real design, and the fact that DynamoDB itself later chose single-leader replication instead, despite the shared name and lineage.
+- [Article: "Quorum (distributed computing)", Wikipedia](https://en.wikipedia.org/wiki/Quorum_(distributed_computing))
+  Covers Gifford's 1979 quorum-based voting for replicated data: the `Vr + Vw > V` rule that guarantees a read quorum and a write quorum overlap, and the separate `Vw > V/2` rule that guarantees two write quorums overlap with each other. Use for: the precise arithmetic behind `R + W > N`, rather than an intuitive but imprecise notion of "majority agreement".
+
 ## Gaps
 
 - No source yet on how a real incident is diagnosed end to end, as opposed to the mechanisms individually. Rechecked while writing the stage 5 reference sheet: the Phenomena pages supply the vocabulary for naming a symptom, and the Analyses supply worked examples, but each analysis is written about one system rather than as a method, so the four-question sequence in the sheet is the workspace's own synthesis and rests on no single source. Still open.

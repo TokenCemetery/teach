@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">Releasing a lock by checking its value client-side then deleting it is racy; a Lua script does both in one atomic step</title>
+  <desc id="desc">Two panels showing a client releasing a lock it believes it holds. On the left, client-side: the client runs GET to check the lock's value matches its own token, then, separately, runs DEL. Between those two round trips, the lock could expire and be re-acquired by another client, whose lock this DEL would then incorrectly delete. On the right, a Lua script: the check and the delete happen inside one EVAL call, run atomically inside Redis with no other command able to interleave between the check and the delete, closing that window entirely.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">client-side: GET then DEL (racy)</text>
+    <text x="365" y="14" text-anchor="middle">Lua script: check-and-delete atomically</text>
+  </g>
+
+  <rect x="30" y="28" width="170" height="20" fill="#7a828c" fill-opacity="0.25" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="115" y="42" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">GET lock: value == my token?</text>
+
+  <rect x="30" y="70" width="170" height="20" fill="none" stroke="#bf7d1a" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="115" y="84" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">lock expires, another client acquires it here</text>
+
+  <rect x="30" y="112" width="170" height="20" fill="#7a828c" fill-opacity="0.25" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="115" y="126" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">DEL lock (deletes the OTHER client's lock)</text>
+
+  <line x1="115" y1="48" x2="115" y2="68" stroke="#bf7d1a" stroke-width="1.5"/>
+  <line x1="115" y1="90" x2="115" y2="110" stroke="#bf7d1a" stroke-width="1.5"/>
+
+  <rect x="280" y="55" width="170" height="60" fill="#bf7d1a" fill-opacity="0.15" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="365" y="72" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">EVAL script:</text>
+  <text x="365" y="86" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">if GET(lock) == token</text>
+  <text x="365" y="98" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">then DEL(lock)</text>
+  <text x="365" y="110" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#bf7d1a">no other command can run in between</text>
+
+  <text x="115" y="155" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">a window exists between the two round trips</text>
+  <text x="365" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">one round trip, one atomic operation:</text>
+  <text x="365" y="157" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">no window for another client to slip through</text>
+</svg>

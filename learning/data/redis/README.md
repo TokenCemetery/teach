@@ -8,7 +8,7 @@ type: topic
 
 Be able to spot where an existing system is quietly misusing Redis, such as a cache treated as a store or a lock that is not one, and to design correct usage from scratch instead.
 
-**Latest lesson:** [12. Key Expiration: Lazy vs Active Expiry](lessons/0012-key-expiration-lazy-vs-active.md)
+**Latest lesson:** [14. Lua Scripting and Redis Functions](lessons/0014-lua-scripting-and-redis-functions.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to spot where an existing system is quietly misusing Redis, such as a ca
 
 ## The arc
 
-Seven stages, eviction to key expiration. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eight stages, eviction to Lua scripting and Redis functions. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -38,6 +38,7 @@ Seven stages, eviction to key expiration. A stage takes several lessons and the 
 | 5. Clustering | 0008 | Redis Cluster and Sentinel, the compromises clustering introduces | Can reason about clustering trade-offs without needing to operate one |
 | 6. Data types and their cost model | 0009 to 0010 | Strings, hashes, lists, sets, sorted sets, bitmaps, HyperLogLog, and picking between them | Can choose a data structure for a stated use case and explain what it costs |
 | 7. Messaging and expiration | 0011 to 0012 | Pub/Sub vs streams, consumer groups compared to Kafka's, lazy vs active key expiration | Can pick the right messaging mechanism for a use case and explain how a key actually leaves Redis |
+| 8. Transactions and scripting | 0013 to 0014 | `MULTI`/`EXEC`, optimistic locking with `WATCH`, Lua scripting, Redis Functions | Can build a check-then-act sequence that's actually safe, and explain what makes a lock's release atomic |
 
 ## Lessons
 
@@ -57,6 +58,8 @@ Work through these in order.
 | [0010](lessons/0010-sets-sorted-sets-and-probabilistic-structures.md) | Sets, Sorted Sets, and Probabilistic Structures | Picking a data structure for a use case, from exact membership to an approximate count that costs almost nothing to keep |
 | [0011](lessons/0011-streams-and-pubsub-as-messaging.md) | Streams and Pub/Sub as a Messaging Surface | Two ways Redis moves messages between clients, and why only one of them is safe to build a queue on |
 | [0012](lessons/0012-key-expiration-lazy-vs-active.md) | Key Expiration: Lazy vs Active Expiry | Why a key's TTL reaching zero doesn't remove it from memory by itself, and the two mechanisms that eventually do |
+| [0013](lessons/0013-multi-exec-and-optimistic-locking-with-watch.md) | MULTI/EXEC and Optimistic Locking with WATCH | Queuing several commands to run without interruption, and detecting a value changed out from under you before you act on it |
+| [0014](lessons/0014-lua-scripting-and-redis-functions.md) | Lua Scripting and Redis Functions | The mechanism that actually makes a lock's release safe, by running a check and an action as one atomic step |
 
 ## Reference
 

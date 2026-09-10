@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [14. Query-Side Transformation](lessons/0014-query-side-transformation.md)
+**Latest lesson:** [15. Metadata Filtering and Permission-Aware Retrieval](lessons/0015-metadata-filtering-and-access-control.md)
 
 ## Success looks like
 
@@ -42,6 +42,7 @@ Thirteen stages, first chunk to a diagnosed, production-ready pipeline. A stage 
 | 6. Retrieval evaluation and diagnosis | 0010 to 0011 | Recall@k, MRR, diagnosing which pipeline stage is at fault | Given wrong retrieved context, can name the at-fault stage |
 | 7. From retrieval to generation | 0012 to 0013 | Prompt construction over retrieved context, context-window budget, what generation still gets wrong | Can take retrieved context to a generated answer and name generation-stage failure modes |
 | 8. Query-side transformation | 0014 | HyDE, query rewriting, multi-query expansion, query decomposition | Given a query-side failure lesson 11's procedure doesn't catch, can pick and justify the right remedy |
+| 9. Metadata filtering and permission-aware retrieval | 0015 | Metadata filtering, pre- vs. post-filtering, why access control specifically needs pre-filtering | Can design a permission-aware retrieval path and explain why post-filtering is unsafe for it |
 
 ## Lessons
 
@@ -63,6 +64,7 @@ Work through these in order.
 | [0012](lessons/0012-prompt-construction-and-context-budget.md) | Prompt Construction and Context-Window Budget | Why retrieved chunks compete for a shared context-window budget, and why where a chunk sits in the prompt matters as much as whether it was retrieved |
 | [0013](lessons/0013-what-generation-still-gets-wrong.md) | What Generation Still Gets Wrong | The failure modes that survive even correct, well-placed retrieved context, and how they differ from a retrieval failure |
 | [0014](lessons/0014-query-side-transformation.md) | Query-Side Transformation | Lesson 11's diagnosis procedure checks chunking, embedding, the index, hybrid weighting, and reranking, but never the query itself, and a query that's too short, too compound, or phrased nothing like the corpus needs its own remedy, not another pipeline-stage fix |
+| [0015](lessons/0015-metadata-filtering-and-access-control.md) | Metadata Filtering and Permission-Aware Retrieval | An access-control filter that fails doesn't crash and doesn't look wrong, it produces a perfectly well-formed answer built from a document the user was never supposed to see, which is exactly why post-filtering is the wrong choice for this one kind of filter |
 
 ## Reference
 

@@ -35,6 +35,8 @@ type: resources
 
 - [Paper: "Precise Zero-Shot Dense Retrieval without Relevance Labels" (HyDE), Gao et al., 2022](https://arxiv.org/abs/2212.10496)
   Introduces embedding a generated hypothetical answer instead of the query itself, letting the encoder's dense bottleneck filter out the hypothetical document's factual errors while keeping its genuine relevance signal. Use for: the precise mechanism behind why an invented, sometimes-wrong document still improves retrieval.
+- [Paper: "Policy-aware Vector Search: A Vision for Fine Grained Access Control in Vector Databases", Yalamarthi and Pappachan, 2026](https://arxiv.org/abs/2606.19803)
+  Formalizes fine-grained access control as an enforcement problem in vector databases, and the inherent tension between correct enforcement, ANN recall, and query latency. Use for: why access control specifically needs pre-filtering rather than the faster but recall- and security-risking post-filtering.
 
 ## Gaps
 

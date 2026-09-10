@@ -56,6 +56,10 @@ type: resources
   Chris Richardson's pattern reference for sagas: compensating transactions in place of automatic rollback, choreography versus orchestration, and the drawbacks (lost isolation, the dual-write problem each step still faces). Use for: the precise trade-offs a saga makes against 2PC, not just "it's the microservices way to do transactions."
 - [Pattern: "Transactional outbox", microservices.io](https://microservices.io/patterns/data/transactional-outbox.html)
   Chris Richardson's pattern reference for the outbox table and message relay. Use for: exactly what the pattern guarantees (atomicity between a database commit and a message send, preserved order) and what it explicitly does not (exactly-once delivery, which is why a consumer must be idempotent).
+- [Article: "Exponential Backoff And Jitter", AWS Architecture Blog](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)
+  Amazon's own worked simulation of capped exponential backoff with and without jitter, under contention from many clients. Use for: the measured effect of jitter (more than halving retry call volume in their 100-client case) versus backoff alone, which still leaves synchronized retry clusters.
+- [Article: "Circuit Breaker", Martin Fowler](https://martinfowler.com/bliki/CircuitBreaker.html)
+  The reference description of the circuit breaker pattern (attributed to Michael Nygard's *Release It*), including the closed/open/half-open state machine. Use for: the precise trip and reset mechanics, and why an open breaker fails fast instead of attempting a call it has already decided is failing.
 
 ## Gaps
 

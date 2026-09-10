@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [15. The Transactional Outbox and Idempotent Consumers](lessons/0015-the-transactional-outbox-and-idempotent-consumers.md)
+**Latest lesson:** [17. Circuit Breakers, Load Shedding, and Backpressure](lessons/0017-circuit-breakers-load-shedding-and-backpressure.md)
 
 ## Success looks like
 
@@ -40,6 +40,7 @@ Twelve stages, partial failure to a diagnosed incident to the mechanisms product
 | 7. Partitioning and sharding | 0012 | Consistent hashing, virtual nodes, hot-key replication, request routing | Can explain why consistent hashing bounds the cost of a resize, and what a bare ring still needs to handle failure and hot keys |
 | 8. Conflict resolution under eventual consistency | 0013 | Last-write-wins and what it loses, version vectors, CRDTs | Can distinguish detecting a conflict from resolving one, and explain how a CRDT merges without loss |
 | 9. Transactions across services | 0014 to 0015 | Two-phase commit and its blocking failure mode, sagas and compensation, the transactional outbox, idempotent consumers | Can explain why 2PC blocks, what a saga trades away to avoid it, and how the outbox pattern avoids the dual-write problem |
+| 10. The resilience toolkit | 0016 to 0017 | Timeout budgets, retries with backoff and jitter, retry storms, circuit breakers, load shedding, backpressure | Can explain what to do after a timeout fires, and match a failing dependency, an overloaded server, or a filling queue to the right mechanism |
 
 ## Lessons
 
@@ -62,6 +63,8 @@ Work through these in order.
 | [0013](lessons/0013-conflict-resolution-under-eventual-consistency.md) | Conflict Resolution Under Eventual Consistency | Detecting that two writes were concurrent and deciding what to do about it are two different problems, and last-write-wins solves neither, it just picks a survivor and throws the loser away |
 | [0014](lessons/0014-two-phase-commit-and-sagas.md) | Two-Phase Commit and Sagas | Two-phase commit looks like consensus (a coordinator, a vote, a commit), but it solves a different problem and pays a worse price for it, blocking forever if the coordinator dies mid-vote, which is exactly why production systems reach for sagas instead |
 | [0015](lessons/0015-the-transactional-outbox-and-idempotent-consumers.md) | The Transactional Outbox and Idempotent Consumers | Updating a database and publishing an event can't both happen atomically without a distributed transaction, so the outbox pattern sidesteps that entirely by writing the event as an ordinary row in the same local transaction, then paying for it with a message that might be sent twice |
+| [0016](lessons/0016-timeouts-retries-and-backoff.md) | Timeouts, Retries, and Backoff | Lesson 3 established that a timeout is the only failure signal available, but firing one and retrying immediately is exactly what turns a recovering service's bad day into a pile-on, which is the specific problem backoff and jitter exist to prevent |
+| [0017](lessons/0017-circuit-breakers-load-shedding-and-backpressure.md) | Circuit Breakers, Load Shedding, and Backpressure | A retry with backoff and jitter still assumes the failing call is worth attempting at all, and a circuit breaker, load shedding, and backpressure are the three answers for when it stops being worth it, aimed at a failing dependency, an overloaded server, and an overwhelmed queue respectively |
 
 ## Reference
 

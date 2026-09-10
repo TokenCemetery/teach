@@ -10,6 +10,14 @@ Canonical terms for reasoning about partial failure, consistency, and consensus 
 
 ## Terms
 
+**Backpressure**:
+A signal a consumer sends back toward a producer to slow down, rather than silently absorbing an unbounded, ever-growing queue. Pushes the overload problem back to whoever is generating the load, instead of forcing the consumer to accept everything sent to it.
+_Avoid_: load shedding (a different mechanism: backpressure asks the producer to slow down, while load shedding has the receiver reject some requests outright)
+
+**Circuit breaker**:
+A wrapper around a call to a dependency that tracks failures and, once they cross a threshold, trips open: further calls fail immediately without attempting the protected call at all. After a reset timeout it moves to half-open, allowing one trial call through to decide whether to reset to closed or reopen.
+_Avoid_: retry (a circuit breaker stops attempting a call it has decided is currently failing; a retry assumes the call is still worth attempting)
+
 **Consistent hashing**:
 A hashing scheme that maps both nodes and keys onto positions on a shared ring, assigning each key to the nearest node clockwise, so that adding or removing a node remaps only the keys between it and its neighbor (on average `O(K/N)` of the dataset) rather than nearly everything, the way plain `hash(key) mod M` would.
 _Avoid_: assuming a bare ring is sufficient in practice; without virtual nodes, a single node's failure dumps its whole load onto one neighbor instead of spreading it
@@ -21,6 +29,10 @@ _Avoid_: assuming any commutative merge is automatically a CRDT; the merge (or o
 **Last-write-wins (LWW)**:
 A conflict-handling rule that keeps the write with the later timestamp and silently discards the other when two writes conflict, guaranteeing convergence at the cost of losing the discarded write, whether or not the two writes were genuinely concurrent.
 _Avoid_: conflict resolution (imprecise; LWW avoids the need to reconcile by discarding one side, rather than resolving what both writes were trying to do)
+
+**Load shedding**:
+A server-side decision to deliberately reject some incoming requests once at or near capacity, rather than accepting every request and risking unbounded queue growth or a total collapse. Protects the server itself, not the caller or a downstream dependency.
+_Avoid_: circuit breaker (a caller-side mechanism protecting against a failing dependency; load shedding is a server protecting its own capacity)
 
 **Partial failure**:
 The failure mode unique to distributed systems: a request produces no response, and the caller cannot tell whether it was lost in transit, its reply was lost, or the other side is merely slow.
@@ -38,6 +50,10 @@ _Avoid_: majority (imprecise; a quorum's size is a deliberate configuration choi
 Copying the same data across multiple nodes, either through leader-based replication (one node accepts all writes and propagates them) or leaderless replication (any replica can accept a write directly, with quorum overlap or reconciliation keeping replicas consistent enough).
 _Avoid_: mirroring (a narrower, often storage-specific term; this workspace uses "replication" for the general mechanism regardless of implementation)
 
+**Retry storm**:
+The failure mode where many clients retrying a failing or recovering service in synchronized bursts become themselves the reason the service can't recover, each burst adding exactly the load spike a struggling service can least absorb. Not a separate mechanism from ordinary retries, but what unbounded, unjittered, uncoordinated retries turn into at scale.
+_Avoid_: thundering herd (a related but broader term for synchronized contention generally; this workspace uses "retry storm" specifically for the retry case)
+
 **Saga**:
 A sequence of local transactions, each committing independently on its own service and publishing an event to trigger the next, used in place of one atomic cross-service transaction. A failed step is undone by compensating transactions rather than automatic rollback, and the sequence can be coordinated by choreography (each service reacts to the previous one's event) or orchestration (one dedicated coordinator directs every step).
 _Avoid_: distributed transaction (a saga deliberately gives up the atomicity and isolation a real distributed transaction would provide, in exchange for never blocking on another service's lock)
@@ -45,6 +61,10 @@ _Avoid_: distributed transaction (a saga deliberately gives up the atomicity and
 **Timeout**:
 A caller's chosen limit on how long to wait for a response before treating the other side as failed. A guess made under permanent uncertainty, not a fact, since a network has no upper bound on message delay.
 _Avoid_: deadline (use only when quoting a source or API that uses that specific term)
+
+**Timeout budget**:
+The total time a multi-hop request chain is allowed to take, divided across hops so each layer's own timeout and retries fit inside what's left of the budget by the time it's that layer's turn. Set independently per hop with no accounting for the others, the total worst-case latency can exceed what the original caller was ever willing to wait.
+_Avoid_: timeout (a single hop's own limit; a timeout budget is specifically the whole chain's allocation across every hop)
 
 **Transactional outbox**:
 A pattern that writes an event as an ordinary row in the same local database transaction as the business update it accompanies, so the two commit or roll back atomically without a distributed transaction; a separate message relay then publishes each outbox row to the broker, at-least-once, which is why a consumer of these events must be idempotent.

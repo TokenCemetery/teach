@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" width="480" height="170" role="img" aria-labelledby="title desc">
+  <title id="title">An indexed array maps sequential integer positions to values; an associative array maps arbitrary string keys to values</title>
+  <desc id="desc">Two side-by-side structures. On the left, an indexed array, arr, with three slots at positions 0, 1, and 2 holding the values web, db, and cache. On the right, an associative array, svc, with string keys web, db, and cache, each mapping to a port number value, 8080, 5432, and 6379. Both are bash-only, with no POSIX sh equivalent.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">indexed array: arr=(web db cache)</text>
+    <text x="365" y="14" text-anchor="middle">associative array: declare -A svc</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="30" y="30" width="60" height="28"/>
+    <rect x="90" y="30" width="60" height="28"/>
+    <rect x="150" y="30" width="60" height="28"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="60" y="26" text-anchor="middle">arr[0]</text>
+    <text x="120" y="26" text-anchor="middle">arr[1]</text>
+    <text x="180" y="26" text-anchor="middle">arr[2]</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">
+    <text x="60" y="48" text-anchor="middle">web</text>
+    <text x="120" y="48" text-anchor="middle">db</text>
+    <text x="180" y="48" text-anchor="middle">cache</text>
+  </g>
+  <text x="105" y="80" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">position is sequential and implicit</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="280" y="30" width="60" height="28"/>
+    <rect x="345" y="30" width="60" height="28"/>
+    <rect x="410" y="30" width="60" height="28"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="310" y="26" text-anchor="middle">svc[web]</text>
+    <text x="375" y="26" text-anchor="middle">svc[db]</text>
+    <text x="440" y="26" text-anchor="middle">svc[cache]</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">
+    <text x="310" y="48" text-anchor="middle">8080</text>
+    <text x="375" y="48" text-anchor="middle">5432</text>
+    <text x="440" y="48" text-anchor="middle">6379</text>
+  </g>
+  <text x="360" y="80" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">key is an arbitrary string, chosen explicitly</text>
+
+  <text x="240" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">both are bash-only: no POSIX sh equivalent</text>
+</svg>

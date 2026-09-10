@@ -8,7 +8,7 @@ type: topic
 
 Be able to write and maintain shell scripts for CI pipelines, deployment and operational tooling that do not quietly break on a bad input or an unset variable, and to recognise when a script has outgrown shell and belongs in a real language instead.
 
-**Latest lesson:** [9. Functions, local, and Return Status vs Output](lessons/0009-functions-local-and-return-status-vs-output.md)
+**Latest lesson:** [11. Arrays (Indexed and Associative)](lessons/0011-arrays.md)
 
 ## Success looks like
 
@@ -28,7 +28,7 @@ Be able to write and maintain shell scripts for CI pipelines, deployment and ope
 
 ## The arc
 
-Seven stages, quoting to shell fundamentals. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eight stages, quoting to parameter expansion and arrays. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -39,6 +39,7 @@ Seven stages, quoting to shell fundamentals. A stage takes several lessons and t
 | 5. `awk`/`sed` where needed | 0006 | Using each only where a script genuinely needs it | Can reach for `awk`/`sed` for a real need without over-using them |
 | 6. Knowing when to stop | 0007 | Recognising shell has outgrown its judgment-free zone | Can say why a given job now belongs in `programming/python` |
 | 7. Shell fundamentals | 0008 to 0009 | Variables, command substitution, control flow (`if`/`case`/loops), functions, `local`, return status vs output | Can write a script using variables, command substitution and control flow, and organise repeated work into correctly-scoped functions |
+| 8. Parameter expansion and arrays | 0010 to 0011 | Defaulting/erroring on unset (`${v:-}`, `${v:?}`), stripping (`${v%%}`), substitution, indexed and associative arrays | Can default, validate and transform a value inline, and hold a list or a map without encoding it into a string |
 
 ## Lessons
 
@@ -55,6 +56,8 @@ Work through these in order.
 | [0007](lessons/0007-knowing-when-to-stop.md) | Knowing When to Stop | The concrete signals that a script has outgrown shell's judgment-free zone, and why the job now belongs in a real language instead |
 | [0008](lessons/0008-variables-command-substitution-and-control-flow.md) | Variables, Command Substitution, and Control Flow | The shell's own vocabulary for holding a value, capturing a command's output, and branching or looping over it |
 | [0009](lessons/0009-functions-local-and-return-status-vs-output.md) | Functions, local, and Return Status vs Output | Organizing repeated work into a function, and the sharpest thing a shell function does differently from a function in almost every other language |
+| [0010](lessons/0010-parameter-expansion.md) | Parameter Expansion | Defaulting, erroring, and stripping a value inline, without reaching for a separate command |
+| [0011](lessons/0011-arrays.md) | Arrays (Indexed and Associative) | Holding more than one value without encoding structure into a string, and the one quoting form that keeps each element intact |
 
 ## Reference
 

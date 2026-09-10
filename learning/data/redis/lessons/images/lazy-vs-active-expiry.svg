@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="480" height="160" role="img" aria-labelledby="title desc">
+  <title id="title">A key's TTL reaching zero doesn't remove it immediately; lazy expiry waits for an access, active expiry sweeps for it regardless</title>
+  <desc id="desc">A timeline marks the moment a key's TTL reaches zero. In the lazy expiry row, the key still occupies memory until something actually accesses it, well after the TTL passed, at which point it's found to be expired and removed. In the active expiry row, a background cycle samples keys with a TTL several times a second and removes this one within its next sweep, shortly after the TTL passed, regardless of whether anything ever accessed it again.</desc>
+
+  <line x1="40" y1="30" x2="440" y2="30" stroke="#7a828c" stroke-width="1"/>
+  <circle cx="120" cy="30" r="3" fill="#bf7d1a"/>
+  <text x="120" y="20" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">TTL reaches zero</text>
+
+  <text x="20" y="65" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">lazy expiry</text>
+  <rect x="120" y="55" width="200" height="18" fill="#7a828c" fill-opacity="0.2" stroke="#7a828c" stroke-width="1"/>
+  <text x="220" y="68" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">still in memory, unread</text>
+  <circle cx="320" cy="64" r="3" fill="#bf7d1a"/>
+  <text x="320" y="88" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">a GET touches it here:</text>
+  <text x="320" y="98" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">found expired, removed</text>
+
+  <text x="20" y="120" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">active expiry</text>
+  <rect x="120" y="110" width="35" height="18" fill="#bf7d1a" fill-opacity="0.25" stroke="#bf7d1a" stroke-width="1"/>
+  <text x="137" y="123" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6" fill="#bf7d1a">removed</text>
+  <text x="220" y="123" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">background sweep samples keys with a TTL, several times a second</text>
+
+  <text x="240" y="145" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">active expiry removes it regardless of whether anything ever reads it again</text>
+</svg>

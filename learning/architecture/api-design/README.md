@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and to evolve an existing one, changing its contract without breaking the clients that depend on it.
 
-**Latest lesson:** [15. Bulk Operations and Partial Responses](lessons/0015-bulk-operations-and-partial-responses.md)
+**Latest lesson:** [17. Breaking-Change Linting](lessons/0017-breaking-change-linting.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## The arc
 
-Ten stages, the contract to asynchronous delivery to bulk operations. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eleven stages, the contract to asynchronous delivery to the machine-readable contract itself. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -41,6 +41,7 @@ Ten stages, the contract to asynchronous delivery to bulk operations. A stage ta
 | 8. HTTP caching as contract | 0012 | `ETag`, weak vs. strong validators, conditional requests, `If-Match` optimistic concurrency, `Cache-Control` | Can design a caching and concurrency-control contract, and knows which comparison strength each conditional header needs |
 | 9. Long-running operations and async delivery | 0013 to 0014 | The operation resource and polling, webhook signing, retries, and ordering | Can design an async contract (polled operation or pushed webhook) and its failure, retry, and ordering guarantees |
 | 10. Bulk operations and partial responses | 0015 | Atomic vs. partial-success batch methods, per-item error reporting, field masks | Can design a batch method's failure semantics and a partial-response contract |
+| 11. The machine-readable contract | 0016 to 0017 | OpenAPI documents and `.proto` files as generated artifacts, breaking-change detection with Buf, Spectral, and oasdiff | Can explain what a machine-readable contract enables, and how a style linter differs from a breaking-change detector |
 
 ## Lessons
 
@@ -63,6 +64,8 @@ Work through these in order.
 | [0013](lessons/0013-the-operation-resource-and-polling.md) | The Operation Resource and Polling | A long-running method returns a promise-shaped resource instead of blocking, and a failure during execution reports differently than a failure that stops the operation from starting at all |
 | [0014](lessons/0014-webhooks-and-callbacks-as-delivery.md) | Webhooks and Callbacks as Delivery | Pushing a notification instead of waiting to be polled inverts who initiates the request, and that inversion is exactly why signing, retries, and ordering all need their own explicit contract on the receiving end |
 | [0015](lessons/0015-bulk-operations-and-partial-responses.md) | Bulk Operations and Partial Responses | A batch method has to choose upfront whether it fails all-or-nothing or reports success and failure per item, and a client asking for a subset of fields needs that subset requested outside the body it's shaping |
+| [0016](lessons/0016-openapi-and-protobuf-as-artifacts.md) | OpenAPI and Protobuf as Artifacts | Once the contract exists as a machine-readable document instead of only prose, the document itself becomes something to version, review, and generate other things from, rather than a description written after the fact |
+| [0017](lessons/0017-breaking-change-linting.md) | Breaking-Change Linting | A linter that checks a contract's style and a diff tool that checks whether it broke a client are answering two different questions, and a diff tool itself has to be asked the right one of three |
 
 ## Reference
 

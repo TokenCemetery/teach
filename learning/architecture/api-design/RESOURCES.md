@@ -60,3 +60,11 @@ type: resources
   Design guidance for letting a client request a subset of a resource's fields. Use for: the rule that a field mask travels as a side channel rather than a body field, that it must default to every field when omitted, and that changing that default later is a breaking change.
 - [Docs: "Well-Known Types: FieldMask", Protocol Buffers](https://protobuf.dev/reference/protobuf/google.protobuf/#field-mask)
   The canonical reference for `google.protobuf.FieldMask`'s `paths` field and its JSON encoding. Use for: the exact syntax of a field-mask path, and the asymmetry between how a read mask and an update mask are each allowed to treat non-terminal repeated fields.
+- [Docs: "OpenAPI Specification", OpenAPI Initiative](https://spec.openapis.org/oas/latest.html)
+  The authoritative specification for the OpenAPI document format. Use for: the document's required minimum shape (at least one of `components`, `paths`, or `webhooks`), and the distinction between the `openapi` field (specification version) and `info.version` (the API's own version).
+- [Docs: `buf breaking`, Buf](https://buf.build/docs/breaking/overview/)
+  Reference for Buf's breaking-change detection against a protobuf schema, including its rule categories and the sources `--against` accepts (git ref, registry module, local directory, image). Use for: configuring which categories of wire-compatibility actually matter for a given service's clients.
+- [Docs: "Rulesets", Spectral](https://github.com/stoplightio/spectral/blob/develop/docs/getting-started/3-rulesets.md)
+  Reference for Spectral's rulesets: extending a built-in ruleset like `spectral:oas`, per-rule severities, and writing a custom rule. Use for: understanding that a style linter checks one document's conformance to a ruleset, a genuinely different question from whether a change is breaking.
+- [Docs: oasdiff, Tufin](https://github.com/oasdiff/oasdiff)
+  Reference for oasdiff's subcommands. Use for: the three-way distinction between `diff` (everything, including documentation-only edits), `changelog` (every consumer-visible change, breaking or not), and `breaking` (only the changes that break an existing client).

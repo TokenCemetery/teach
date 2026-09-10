@@ -14,6 +14,10 @@ Canonical terms for designing and evolving an interface others depend on.
 A request that acts on several resources at once instead of one call per resource, requiring an explicit choice between atomic (all succeed or all fail) and partial success (each item reports its own result), since the two make genuinely different promises to the client.
 _Avoid_: bulk operation (use interchangeably only when quoting a source; this workspace standardizes on "batch operation" as the term with a settled contract)
 
+**Breaking-change detector**:
+A tool (`buf breaking`, `oasdiff breaking`) that compares two versions of a contract artifact and reports only the changes that break an existing client, distinct from a style linter (Spectral), which checks a single document's conformance to a ruleset at one point in time with no notion of a previous version.
+_Avoid_: linter (too broad; a style linter and a breaking-change detector check genuinely different properties and neither substitutes for the other)
+
 **Contract**:
 Every behavior of an API a client can rely on, whether deliberately documented or merely observed and depended on in practice (see Hyrum's Law).
 _Avoid_: interface (too broad; a contract is specifically what's relied on, not the shape of the API alone)
@@ -37,6 +41,10 @@ _Avoid_: request ID (a different, often server-assigned concept; an idempotency 
 **Long-running operation**:
 A method whose actual work may take longer than an ordinary request-response cycle, returning an operation resource (`name`, `done`, and eventually `response` or `error`) immediately instead of blocking until the work finishes.
 _Avoid_: async job (use only when quoting a source that uses it; "long-running operation" and "operation resource" are this workspace's terms)
+
+**OpenAPI document**:
+A single machine-readable artifact describing a REST contract's paths, operations, and reusable schemas, which SDKs, mock servers, and structural or breaking-change checks can be generated or run from directly. Must include at least one of `components`, `paths`, or `webhooks`; its `openapi` field (the specification version) and `info.version` field (the API's own version) track different things and advance independently.
+_Avoid_: Swagger file (the specification and its ecosystem are called OpenAPI since version 3.0; "Swagger" now properly refers only to a specific set of Smartbear tools)
 
 **Optimistic concurrency**:
 Detecting, at write time, whether a resource has changed since a client last read it (via `If-Match` and a strong ETag), rejecting the write with `412 Precondition Failed` if so, rather than locking the resource in advance or silently overwriting a concurrent change.

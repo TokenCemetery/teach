@@ -26,6 +26,10 @@ _Avoid_: idle (a materially different state; plain `idle` holds no open transact
 Replication that decodes WAL into row-level insert/update/delete events tied to a table's replication identity, rather than replaying raw physical WAL. Unlike streaming replication, it allows per-table selection and cross-major-version replication, but does not replicate DDL automatically.
 _Avoid_: streaming replication (a different mechanism this workspace defines separately; do not use the two terms interchangeably)
 
+**Partition pruning**:
+The planner determining, from a query's `WHERE` clause and each partition's range/list/hash bounds, which partitions cannot possibly contain a matching row, and skipping them entirely rather than scanning them.
+_Avoid_: partition elimination (use only when quoting a source that uses that term; this workspace says "partition pruning")
+
 **Point-in-time recovery (PITR)**:
 Reconstructing the database as it existed at an arbitrary past moment, by starting from a base backup and replaying its archived WAL forward to a chosen `recovery_target_time` (or LSN, name, or transaction ID), which must fall strictly after the base backup's own completion.
 _Avoid_: restoring a backup (imprecise; a base backup alone only restores to its own endpoint, not to a chosen moment after it)
@@ -41,6 +45,10 @@ _Avoid_: user, group (Postgres has no separate concepts for these; both are role
 **Row-level security (RLS)**:
 A per-table policy layer, beneath ordinary table-level GRANTs, that filters which specific rows a role may see (`USING`) or write (`WITH CHECK`). Enabling it with no policies defined denies every row by default, except to the table owner or a superuser, who bypass RLS entirely unless `FORCE ROW LEVEL SECURITY` is set.
 _Avoid_: row security (imprecise; "row-level security" or "RLS" is this workspace's term)
+
+**TOAST**:
+The Oversized-Attribute Storage Technique: transparently compressing and/or moving a large variable-length value out-of-line into a separate TOAST table, since a row can never span more than one 8kB page. The TOAST table is a real table with its own index and its own vacuum and bloat behavior.
+_Avoid_: BLOB storage (a different concept in other databases; "TOAST" is this workspace's specific mechanism)
 
 **Wait event**:
 The specific thing a backend is currently stalled on (`pg_stat_activity`'s `wait_event`/`wait_event_type` columns), such as a lock, an I/O operation, or an internal lightweight lock. Independent of `state`: a backend can show `active` with a non-null wait event, meaning it's running but currently blocked, not actively executing.

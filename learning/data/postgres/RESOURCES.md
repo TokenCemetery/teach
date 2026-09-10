@@ -56,6 +56,10 @@ type: resources
   Official chapter on roles and role membership. Use for: the precise rule that special role attributes are never inherited through membership regardless of grant options, and the independent `INHERIT` and `SET` options a role membership grant can carry.
 - [Docs: "Row Security Policies", PostgreSQL](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
   Official chapter on row-level security. Use for: the exact deny-by-default behavior of enabling RLS with no policies defined, and the rule that table owners and superusers bypass RLS entirely unless `FORCE ROW LEVEL SECURITY` is set.
+- [Docs: "Table Partitioning", PostgreSQL](https://www.postgresql.org/docs/current/ddl-partitioning.html)
+  Official chapter on range, list, and hash partitioning. Use for: exactly what partition pruning skips versus scans, and the documented `ONLY` + `CONCURRENTLY` + `ATTACH PARTITION` sequence for adding an index to a large partitioned table without long lock times.
+- [Docs: "TOAST", PostgreSQL](https://www.postgresql.org/docs/current/storage-toast.html)
+  Official chapter on the out-of-line, oversized-attribute storage mechanism. Use for: the fixed 8kB page size that makes TOAST necessary at all, and the precise difference between the four column storage strategies (`PLAIN`, `MAIN`, `EXTENDED`, `EXTERNAL`).
 
 ## Gaps
 

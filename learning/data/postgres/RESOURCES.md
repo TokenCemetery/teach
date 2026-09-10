@@ -36,6 +36,8 @@ type: resources
   The semisynchronous shape, with two readable replicas across three Availability Zones and lower write latency than the single-standby deployment. Use for: the third option, when the requirement is availability and read capacity together.
 - [Docs: "Continuous Archiving and Point-in-Time Recovery (PITR)", PostgreSQL](https://www.postgresql.org/docs/current/continuous-archiving.html)
   Official chapter on combining a base backup with a continuous WAL archive to reconstruct any moment since the backup. Use for: why a logical dump can't be combined with WAL archiving, the requirement that the archive be gapless back to the base backup's start, and the exact recovery-target and recovery-target-action settings that control where a restore stops and what happens next.
+- [Docs: "Resource Consumption", PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-resource.html)
+  Official chapter on `shared_buffers`, `work_mem`, `maintenance_work_mem`, and `autovacuum_work_mem`, with each parameter's current default. Use for: the 25%-of-RAM starting guidance for `shared_buffers`, and the exact rule that `work_mem` is a per-operation limit that multiplies across concurrent sorts and hashes, not a per-connection ceiling.
 
 ## Gaps
 

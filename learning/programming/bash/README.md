@@ -8,7 +8,7 @@ type: topic
 
 Be able to write and maintain shell scripts for CI pipelines, deployment and operational tooling that do not quietly break on a bad input or an unset variable, and to recognise when a script has outgrown shell and belongs in a real language instead.
 
-**Latest lesson:** [15. Signals, Background Jobs, and wait](lessons/0015-signals-background-jobs-and-wait.md)
+**Latest lesson:** [17. shellcheck, shfmt, and Testing a Script](lessons/0017-shellcheck-shfmt-and-testing-a-script.md)
 
 ## Success looks like
 
@@ -28,7 +28,7 @@ Be able to write and maintain shell scripts for CI pipelines, deployment and ope
 
 ## The arc
 
-Ten stages, quoting to signals, background jobs and wait. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Eleven stages, quoting to shellcheck, shfmt and testing. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -42,6 +42,7 @@ Ten stages, quoting to signals, background jobs and wait. A stage takes several 
 | 8. Parameter expansion and arrays | 0010 to 0011 | Defaulting/erroring on unset (`${v:-}`, `${v:?}`), stripping (`${v%%}`), substitution, indexed and associative arrays | Can default, validate and transform a value inline, and hold a list or a map without encoding it into a string |
 | 9. Redirection and composition | 0012 to 0013 | Redirection order, file descriptors, here-docs, why a piped `while` loop loses its variables, process substitution | Can redirect streams correctly and explain why a variable set inside a piped loop doesn't survive it |
 | 10. Arguments and job control | 0014 to 0015 | `getopts`, a usage/help convention, signals, background jobs, `wait` | Can parse a script's own flags and arguments, and manage background work and its own shutdown correctly |
+| 11. Safety and tooling | 0016 to 0017 | `mktemp`, the `eval`/injection surface, ShellCheck, `shfmt`, testing with bats/shunit2 | Can create temp files and dynamic commands safely, and use static analysis and tests to catch what review alone would miss |
 
 ## Lessons
 
@@ -64,6 +65,8 @@ Work through these in order.
 | [0013](lessons/0013-pipes-subshells-and-process-substitution.md) | Pipes, Subshells, and Process Substitution | Why a variable set inside a piped loop vanishes the moment the pipe ends, and the bash-only fix that keeps it |
 | [0014](lessons/0014-argument-parsing-with-getopts.md) | Argument Parsing with getopts and a Usage Convention | Parsing a script's own flags and arguments the same disciplined way it's supposed to parse everything else |
 | [0015](lessons/0015-signals-background-jobs-and-wait.md) | Signals, Background Jobs, and wait | Running work concurrently inside one script, and making sure a script's own shutdown doesn't orphan it |
+| [0016](lessons/0016-mktemp-safe-temp-files-and-the-eval-injection-surface.md) | mktemp, Safe Temp Files, and the eval/Injection Surface | Creating a temporary file that can't be predicted or hijacked, and why eval turns untrusted input into arbitrary code |
+| [0017](lessons/0017-shellcheck-shfmt-and-testing-a-script.md) | shellcheck, shfmt, and Testing a Script | The tool that catches most of a script's quiet breakages before it ever runs, and how to test the rest |
 
 ## Reference
 

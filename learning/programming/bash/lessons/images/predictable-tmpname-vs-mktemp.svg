@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-labelledby="title desc">
+  <title id="title">A predictable temp filename lets an attacker pre-create a symlink to a target file; mktemp creates a uniquely-named file atomically instead</title>
+  <desc id="desc">Two panels. On the left, a script writes to a predictable path like slash tmp slash app dot dollar-dollar, built from its own process id. An attacker who can guess that name in advance creates a symlink at that path pointing at a sensitive file before the script runs, so the script's write lands on the attacker's chosen target instead of a fresh temp file. On the right, mktemp creates a file with a random, unpredictable name atomically, so there is nothing for an attacker to pre-create a symlink at, and no race window between checking the name is free and creating the file.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">predictable name: a symlink attack surface</text>
+    <text x="365" y="14" text-anchor="middle">mktemp: atomic, unpredictable, exclusive</text>
+  </g>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="20" y="30" width="180" height="24"/>
+  </g>
+  <text x="110" y="46" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">script: writes to /tmp/app.$$</text>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <rect x="20" y="70" width="180" height="24"/>
+  </g>
+  <text x="110" y="86" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">attacker: pre-creates a symlink at that same, predicted path</text>
+
+  <line x1="110" y1="54" x2="110" y2="68" stroke="#bf7d1a" stroke-width="1.5"/>
+  <line x1="110" y1="94" x2="110" y2="108" stroke="#bf7d1a" stroke-width="1.5"/>
+  <text x="110" y="124" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">script's write follows the symlink to</text>
+  <text x="110" y="136" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">whatever file the attacker chose</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="270" y="30" width="180" height="24"/>
+  </g>
+  <text x="360" y="46" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">script: tmpfile=$(mktemp)</text>
+
+  <g stroke="#7a828c" stroke-width="1.5" fill="none">
+    <rect x="270" y="70" width="180" height="24"/>
+  </g>
+  <text x="360" y="86" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">a random, mode-600 file is created</text>
+  <text x="360" y="94" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="6.5" fill="#7a828c">in one atomic step, no name to predict</text>
+
+  <line x1="360" y1="54" x2="360" y2="68" stroke="#7a828c" stroke-width="1.5"/>
+  <text x="360" y="124" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">nothing for an attacker to</text>
+  <text x="360" y="136" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">pre-create a symlink at</text>
+</svg>

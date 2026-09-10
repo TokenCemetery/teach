@@ -58,6 +58,10 @@ _Avoid_: interrupt (reserve for `SIGINT` specifically, which is what `Ctrl-C` se
 A copy of the current shell's environment, forked to run a command or block; an assignment or a `cd` made inside it never affects the shell that forked it.
 _Avoid_: child process (true but imprecise here; "subshell" specifically names a forked copy of the shell itself, not any child process)
 
+**Symlink attack**:
+Pre-creating a symlink at a predictable path a script is about to write to, so the script's write follows the link to a file the attacker chose instead.
+_Avoid_: TOCTOU race (a broader, more general term for the same shape of bug; say "symlink attack" for this specific instance of it)
+
 **Word splitting**:
 Breaking an unquoted expansion's result into separate words wherever a character in `$IFS` (space, tab, newline by default) appears.
 _Avoid_: tokenizing (a different, unrelated meaning in other contexts)

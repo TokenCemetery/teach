@@ -22,3 +22,7 @@ type: resources
   A practical style guide that also states explicitly when a script has grown complex enough that it should be rewritten in a real scripting language instead. Use for: the "knowing when to stop" half of the mission, stated as a concrete, opinionated rule rather than a vague feeling.
 - [Docs: "A Sed and Awk Micro-Primer", Advanced Bash-Scripting Guide, TLDP](https://tldp.org/LDP/abs/html/sedawk.html)
   A brief introduction to `sed` and `awk` specifically in the context of shell scripts that call them, not as standalone languages of their own. Use for: recognizing the shape of task each tool actually fits, without treating either as a topic to learn in full.
+- [Tool: shfmt](https://github.com/mvdan/sh)
+  An automatic formatter for shell scripts, normalizing indentation and layout to a consistent style. Use for: the formatting half of the checks a script should pass before shipping, distinct from ShellCheck's correctness checks.
+- [Tool: bats-core](https://github.com/bats-core/bats-core)
+  A TAP-compliant testing framework for Bash, with a `run` helper that captures a command's exit status and output for assertions. Use for: testing a script's actual behavior, not just its static correctness.

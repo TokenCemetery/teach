@@ -45,6 +45,8 @@ type: resources
   Kohavi and coauthors' practitioner guidance on running online controlled experiments, including the OEC concept (movable and causally connected to the real outcome) and guardrail metrics. Use for: choosing a defensible OEC instead of an easily-moved but uncausal metric, and why a guardrail metric has to be tracked alongside it.
 - [Guide: "Rules of Machine Learning", Zinkevich, Google](https://developers.google.com/machine-learning/guides/rules-of-ml)
   Google's internal ML engineering guidance, including Rule #37 (measuring training/serving skew as several distinct comparisons, not one) and Rule #8 (freshness requirements). Use for: precisely which of an offline/online gap's several possible causes, ordinary variance, drift, or an engineering error, actually applies, and why each needs a different fix.
+- [Paper: "The Tail at Scale", Dean and Barroso, 2013](https://www.barroso.org/publications/TheTailAtScale.pdf)
+  The canonical explanation of why tail latency, not average latency, determines real-world responsiveness at scale, especially once a request fans out to many backend calls. Use for: why a go/no-go call needs a percentile (p95/p99), not just an average, before ruling out a latency regression.
 
 ## Gaps
 

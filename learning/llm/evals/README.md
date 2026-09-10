@@ -8,7 +8,7 @@ type: topic
 
 Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change (a fine-tune, a prompt change, a RAG change) that you can defend with a number instead of a feeling.
 
-**Latest lesson:** [16. Production Telemetry and Drift](lessons/0016-production-telemetry-and-drift.md)
+**Latest lesson:** [17. Cost and Latency as Eval Dimensions](lessons/0017-cost-and-latency-as-eval-dimensions.md)
 
 ## Success looks like
 
@@ -41,6 +41,7 @@ Twelve stages, a trustworthy eval to a defended go/no-go call that accounts for 
 | 8. Evaluating agents and tool use | 0013 | Trajectories, task success vs. step accuracy, `pass^k` reliability | Can explain why task success beats step matching, and why single-trial success isn't repeated-trial reliability |
 | 9. RAG-specific evaluation | 0014 | Faithfulness/groundedness, citation correctness, separating a retrieval failure from a generation failure | Can measure faithfulness and citation correctness independently, and diagnose which side of a RAG pipeline actually failed |
 | 10. Online evaluation | 0015 to 0016 | A/B tests, OEC and guardrail metrics, production telemetry, drift, training-serving skew | Can choose a defensible OEC with a guardrail metric, and correctly attribute an offline/online gap to variance, drift, or an engineering error |
+| 11. Cost and latency as eval dimensions | 0017 | Tail latency vs. average, per-request/token cost, folding both into the go/no-go call | Can defend a go/no-go call that weighs quality, tail latency, and cost together, not quality alone |
 
 ## Lessons
 
@@ -64,6 +65,7 @@ Work through these in order.
 | [0014](lessons/0014-rag-specific-evaluation.md) | RAG-Specific Evaluation | llm/rag drew the line between a retrieval failure and a generation failure but left the generation-side check undefined, and that check turns out to need two separate numbers, not one, since a faithful claim and a correctly cited claim can fail independently of each other |
 | [0015](lessons/0015-ab-tests-and-guardrail-metrics.md) | A/B Tests and Guardrail Metrics | Every stage so far has been offline, but shipping to real users needs its own decision metric, and that metric alone is exactly as dangerous as the single safety numbers earlier stages already warned against trusting in isolation |
 | [0016](lessons/0016-production-telemetry-and-drift.md) | Production Telemetry and Drift | An offline number and a live number disagreeing isn't one problem, it's three different ones, and treating an engineering bug as drift, or drift as an engineering bug, sends the fix to the wrong team entirely |
+| [0017](lessons/0017-cost-and-latency-as-eval-dimensions.md) | Cost and Latency as Eval Dimensions | A quality win measured in isolation from what it costs to serve is half a go/no-go call, and an average latency number hides exactly the tail that determines whether users actually experience the system as fast |
 
 ## Reference
 

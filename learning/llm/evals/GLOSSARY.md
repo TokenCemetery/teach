@@ -54,6 +54,10 @@ _Avoid_: false refusal (used interchangeably in some sources; this workspace sta
 Deliberately constructing inputs designed to make a model produce unsafe output, whether by a human tester or an automated attack-generation method, then measuring how often those inputs succeed (a jailbreak) against a given model and its defenses.
 _Avoid_: reporting only attack success rate as "the safety eval"; it measures nothing about over-refusal, a distinct failure mode needing its own test set
 
+**Tail latency**:
+The slowest fraction of requests (commonly reported as p95 or p99), as opposed to the average. An unchanged average latency can hide a meaningfully worse tail, and at scale, a request fanning out to many backend calls only completes once all of them finish, making the tail the thing that actually decides real-world response time.
+_Avoid_: average latency (an aggregate that can stay flat while the tail, which dominates real user experience, gets meaningfully worse)
+
 **Task success**:
 Comparing an agent trajectory's actual end state against an annotated goal state, crediting any sequence of actions that reaches the correct outcome rather than only one predetermined reference sequence. More faithful than step accuracy, which can only credit the one trajectory it was given.
 _Avoid_: step accuracy (a narrower, brittler measurement: matching each action to a reference trajectory, which wrongly penalizes a different, equally valid path to the same correct outcome)

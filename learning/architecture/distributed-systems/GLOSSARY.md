@@ -38,9 +38,21 @@ _Avoid_: majority (imprecise; a quorum's size is a deliberate configuration choi
 Copying the same data across multiple nodes, either through leader-based replication (one node accepts all writes and propagates them) or leaderless replication (any replica can accept a write directly, with quorum overlap or reconciliation keeping replicas consistent enough).
 _Avoid_: mirroring (a narrower, often storage-specific term; this workspace uses "replication" for the general mechanism regardless of implementation)
 
+**Saga**:
+A sequence of local transactions, each committing independently on its own service and publishing an event to trigger the next, used in place of one atomic cross-service transaction. A failed step is undone by compensating transactions rather than automatic rollback, and the sequence can be coordinated by choreography (each service reacts to the previous one's event) or orchestration (one dedicated coordinator directs every step).
+_Avoid_: distributed transaction (a saga deliberately gives up the atomicity and isolation a real distributed transaction would provide, in exchange for never blocking on another service's lock)
+
 **Timeout**:
 A caller's chosen limit on how long to wait for a response before treating the other side as failed. A guess made under permanent uncertainty, not a fact, since a network has no upper bound on message delay.
 _Avoid_: deadline (use only when quoting a source or API that uses that specific term)
+
+**Transactional outbox**:
+A pattern that writes an event as an ordinary row in the same local database transaction as the business update it accompanies, so the two commit or roll back atomically without a distributed transaction; a separate message relay then publishes each outbox row to the broker, at-least-once, which is why a consumer of these events must be idempotent.
+_Avoid_: message queue (too generic; the outbox table itself is not the queue, it's the durable, transactionally-consistent staging area a relay drains into one)
+
+**Two-phase commit (2PC)**:
+A protocol for committing one transaction atomically across several independent participants: a voting phase where every participant agrees to commit or aborts, followed by a commit phase where the coordinator commits only if all votes were yes. Its defining weakness is blocking: a participant that voted yes must wait, still holding its locks, until the coordinator's final decision, even if the coordinator has failed permanently.
+_Avoid_: two-phase locking (2PL) (an unrelated concurrency-control protocol that happens to share the "two-phase" name)
 
 **Version vector**:
 A mechanism that tracks, per replica, how many updates it has seen from every other replica, letting any two versions be compared to determine whether one happened-before the other or whether they're concurrent. Maintains the same state as a vector clock but with update rules specifically adapted to replica versioning.

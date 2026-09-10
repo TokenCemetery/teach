@@ -50,6 +50,12 @@ type: resources
   Covers how a version vector detects happened-before versus concurrent updates for causality tracking among replicas, and its explicit distinction from a vector clock despite sharing the same underlying state. Use for: the precise mechanism behind detecting whether two writes actually conflict, before any resolution strategy is applied.
 - [Article: "Conflict-free replicated data type", Wikipedia](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
   Covers the state-based (CvRDT) versus operation-based (CmRDT) distinction, the commutative/associative/idempotent properties each requires, and a concrete worked example (the G-Counter, merging by element-wise maximum). Use for: how a CRDT merges concurrent updates without loss, and the delivery-guarantee trade-off between the two CRDT shapes.
+- [Article: "Two-phase commit protocol", Wikipedia](https://en.wikipedia.org/wiki/Two-phase_commit_protocol)
+  Covers the voting and commit phases, the exact message flow, and the documented blocking failure mode when a coordinator fails after a participant has voted yes. Use for: precisely why 2PC is a blocking protocol, and the specific, worse case where the coordinator and a participant fail together.
+- [Pattern: "Saga", microservices.io](https://microservices.io/patterns/data/saga.html)
+  Chris Richardson's pattern reference for sagas: compensating transactions in place of automatic rollback, choreography versus orchestration, and the drawbacks (lost isolation, the dual-write problem each step still faces). Use for: the precise trade-offs a saga makes against 2PC, not just "it's the microservices way to do transactions."
+- [Pattern: "Transactional outbox", microservices.io](https://microservices.io/patterns/data/transactional-outbox.html)
+  Chris Richardson's pattern reference for the outbox table and message relay. Use for: exactly what the pattern guarantees (atomicity between a database commit and a message send, preserved order) and what it explicitly does not (exactly-once delivery, which is why a consumer must be idempotent).
 
 ## Gaps
 

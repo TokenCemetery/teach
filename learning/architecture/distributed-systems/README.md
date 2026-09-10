@@ -8,7 +8,7 @@ type: topic
 
 Be able to choose and defend a consistency model for a system you are designing, and to reason about a production incident caused by a partial failure instead of treating the network as reliable.
 
-**Latest lesson:** [13. Conflict Resolution Under Eventual Consistency](lessons/0013-conflict-resolution-under-eventual-consistency.md)
+**Latest lesson:** [15. The Transactional Outbox and Idempotent Consumers](lessons/0015-the-transactional-outbox-and-idempotent-consumers.md)
 
 ## Success looks like
 
@@ -39,6 +39,7 @@ Twelve stages, partial failure to a diagnosed incident to the mechanisms product
 | 6. Replication and quorums | 0011 | Leader-based vs. leaderless replication, read/write quorums, the `R + W > N` condition | Can explain how a quorum guarantees a read sees the latest write, and choose R and W for a stated workload |
 | 7. Partitioning and sharding | 0012 | Consistent hashing, virtual nodes, hot-key replication, request routing | Can explain why consistent hashing bounds the cost of a resize, and what a bare ring still needs to handle failure and hot keys |
 | 8. Conflict resolution under eventual consistency | 0013 | Last-write-wins and what it loses, version vectors, CRDTs | Can distinguish detecting a conflict from resolving one, and explain how a CRDT merges without loss |
+| 9. Transactions across services | 0014 to 0015 | Two-phase commit and its blocking failure mode, sagas and compensation, the transactional outbox, idempotent consumers | Can explain why 2PC blocks, what a saga trades away to avoid it, and how the outbox pattern avoids the dual-write problem |
 
 ## Lessons
 
@@ -59,6 +60,8 @@ Work through these in order.
 | [0011](lessons/0011-replication-and-quorums.md) | Replication and Quorums | A consensus protocol isn't the only way to replicate data, and the quorum condition behind its cheaper alternative is a single overlap guarantee, not a vague notion of majority agreement |
 | [0012](lessons/0012-partitioning-and-sharding.md) | Partitioning and Sharding | Consistent hashing exists because naive hash-mod-N partitioning remaps almost everything the moment a node joins or leaves, and even consistent hashing needs virtual nodes before it stops dumping a failed node's whole load onto one unlucky neighbor |
 | [0013](lessons/0013-conflict-resolution-under-eventual-consistency.md) | Conflict Resolution Under Eventual Consistency | Detecting that two writes were concurrent and deciding what to do about it are two different problems, and last-write-wins solves neither, it just picks a survivor and throws the loser away |
+| [0014](lessons/0014-two-phase-commit-and-sagas.md) | Two-Phase Commit and Sagas | Two-phase commit looks like consensus (a coordinator, a vote, a commit), but it solves a different problem and pays a worse price for it, blocking forever if the coordinator dies mid-vote, which is exactly why production systems reach for sagas instead |
+| [0015](lessons/0015-the-transactional-outbox-and-idempotent-consumers.md) | The Transactional Outbox and Idempotent Consumers | Updating a database and publishing an event can't both happen atomically without a distributed transaction, so the outbox pattern sidesteps that entirely by writing the event as an ordinary row in the same local transaction, then paying for it with a message that might be sent twice |
 
 ## Reference
 

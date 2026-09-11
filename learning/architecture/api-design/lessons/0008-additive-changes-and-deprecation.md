@@ -53,7 +53,7 @@ flowchart TD
 
 ### Signaling deprecation so a client can actually respond
 
-A deprecation should be observable, not just written in a changelog nobody reads: a response header (`Deprecation: true`, or a date), a field explicitly marked deprecated in the schema (proto3 supports a `deprecated = true` field option; OpenAPI has an equivalent), or a Problem Details `type` warning included alongside an otherwise-successful response. The goal is that a client's own tooling, not just a human reading documentation, can detect "this thing I'm using is going away" and flag it, the same way a compiler flags a deprecated function call, rather than relying on every integrating team to have read and remembered a changelog entry from months earlier.
+A deprecation should be observable, not just written in a changelog nobody reads: a response header (`Deprecation`, whose value RFC 9745 requires to be a Date, e.g. `Deprecation: @1688169599`, not the boolean `Deprecation: true` of an earlier draft, which the RFC does not allow), paired with a `Sunset` date (RFC 8594) for when the resource stops responding and, optionally, a `deprecation` link relation pointing at the policy, which can be sent before anything is actually deprecated so the policy is discoverable in advance; a field explicitly marked deprecated in the schema (proto3 supports a `deprecated = true` field option; OpenAPI has an equivalent); or a Problem Details `type` warning included alongside an otherwise-successful response. The goal is that a client's own tooling, not just a human reading documentation, can detect "this thing I'm using is going away" and flag it, the same way a compiler flags a deprecated function call, rather than relying on every integrating team to have read and remembered a changelog entry from months earlier.
 
 ## Practice
 
@@ -118,6 +118,7 @@ Relying on every integrating team to have read and remembered a changelog entry 
 
 - [Site: "API Improvement Proposals", Google](https://google.aip.dev/)
 - [Docs: "API versioning", Stripe](https://docs.stripe.com/api/versioning)
+- [Versioning and Evolution](../reference/versioning-and-evolution.md): the full deprecation header syntax, including the `Link` relation and why `Deprecation` and `Sunset` use different date formats
 - [Resources](../RESOURCES.md)
 
 ---

@@ -290,6 +290,10 @@ _Avoid_: thread-safe as a general claim, `Sync`, safe to share
 Declaring a new binding with the name of an existing one, so the earlier binding becomes unreachable. It is not mutation: the type may change, and no `mut` is required.
 _Avoid_: reassignment, overwriting, redeclaration
 
+**Should-panic test**:
+A `#[test]` function marked `#[should_panic]`, passing only if its body panics, with an optional `expected = "..."` argument checked as a substring of the panic message rather than an exact match. Cannot be combined with a test that returns `Result`, since the two signal failure through different, non-mixing mechanisms.
+_Avoid_: assuming `expected` requires an exact match (it only checks the panic message contains the given text, precise enough to confirm the right panic occurred without demanding the whole message)
+
 **Slice**:
 A borrowed view into a contiguous sequence, carrying a pointer and a length and owning nothing. `&str` and `&[T]` are the two that appear constantly, and both are what a signature should ask for.
 _Avoid_: array, view, range, substring

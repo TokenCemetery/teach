@@ -9,7 +9,7 @@ type: resources
 ## Knowledge
 
 - [Book: "The Rust Programming Language", Steve Klabnik, Carol Nichols and contributors, doc.rust-lang.org](https://doc.rust-lang.org/book/)
-  The official book, free and maintained with the language. Use for: stages 1 to 5, and as the default first source for anything in them.
+  The official book, free and maintained with the language. Use for: stages 1 to 5 and stage 9 (Chapter 11, "Writing Automated Tests"), and as the default first source for anything in them.
 
 - [Docs: "Rust by Example", The Rust Project, doc.rust-lang.org](https://doc.rust-lang.org/rust-by-example/)
   The same ground as the book, but as runnable examples with exercises. Use for: a second pass on a concept the prose did not land.

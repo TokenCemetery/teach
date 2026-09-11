@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0063. Reviewing Rust](lessons/0063-reviewing-rust.md)
+**Latest lesson:** [0064. The Test Attribute and cargo test](lessons/0064-the-test-attribute-and-cargo-test.md)
 
 ## Success looks like
 
@@ -53,6 +53,7 @@ Eight stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 6. Async | Futures and executors, tasks and cancellation, why a blocking call in async is a bug, locks across `await`, what pinning is for | Writes async code that does not stall, and can explain where it would |
 | 7. Unsafe and performance | What `unsafe` actually promises, undefined behaviour, encapsulating an invariant, checking with Miri, benchmarking, allocation and copying costs | Can defend an `unsafe` boundary, and proves a performance claim with a measurement |
 | 8. Judgment | Publishing, semantic versioning of a public API, the API guidelines, review, reading the standard library and the RFCs for answers | Trusted to make the call and to explain it to someone else |
+| 9. Testing | `#[test]` and `cargo test`, unit tests versus integration tests, organising tests for a library, property-based and snapshot testing | Writes and organises a test suite the way the standard library itself does, not only doctests and benchmarks |
 
 ## Lessons
 
@@ -123,6 +124,7 @@ Work through these in order.
 | [0061](lessons/0061-the-api-guidelines.md) | The API Guidelines | The checklist the ecosystem already agreed on, which items matter most, and how to use it without cargo-culting it |
 | [0062](lessons/0062-reading-the-source-and-the-rfcs.md) | Reading the Source and the RFCs | Answering a question the documentation does not, from the standard library, the tracking issues and the RFCs |
 | [0063](lessons/0063-reviewing-rust.md) | Reviewing Rust | What to look for in somebody else's Rust, in what order, and which comments are worth making |
+| [0064](lessons/0064-the-test-attribute-and-cargo-test.md) | The Test Attribute and cargo test | A doctest lives in a doc comment and runs an example; a #[test] function lives in the crate's own source and is the ordinary shape almost all Rust testing actually takes, and cargo test runs both under the same command without them being the same mechanism |
 
 ## Reference
 

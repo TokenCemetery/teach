@@ -107,6 +107,7 @@ Work through these in order.
 - [Idiom](reference/idiom.md): extension methods, LINQ, delegates and events, nullable reference types
 - [Async](reference/async.md): the `Task` model, `async`/`await` mechanics, cancellation tokens, `IAsyncEnumerable`
 - [Testing and Build](reference/testing-and-build.md): xUnit/NUnit, mocking, the `dotnet` CLI and project/package management
+- [Shipping the Service](reference/shipping-the-service.md): ASP.NET Core routing and middleware, dependency injection, configuration, Entity Framework Core basics
 
 ## How this works
 

@@ -108,6 +108,7 @@ Work through these in order.
 - [Async](reference/async.md): the `Task` model, `async`/`await` mechanics, cancellation tokens, `IAsyncEnumerable`
 - [Testing and Build](reference/testing-and-build.md): xUnit/NUnit, mocking, the `dotnet` CLI and project/package management
 - [Shipping the Service](reference/shipping-the-service.md): ASP.NET Core routing and middleware, dependency injection, configuration, Entity Framework Core basics
+- [Judgment](reference/judgment.md): `async`/`await` vs Java virtual threads, LINQ vs the Stream API, reviewing C# for a habit that merely compiles
 
 ## How this works
 

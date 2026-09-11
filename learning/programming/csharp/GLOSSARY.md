@@ -74,6 +74,10 @@ _Avoid_: treating this as a failure of background GC (background GC only ever pr
 One of three age-based divisions (0, 1, 2) of the managed heap. Every new object starts in generation 0; surviving a collection promotes it to the next generation. The split lets a collection reclaim memory in a small, frequently-turned-over portion of the heap instead of the whole thing.
 _Avoid_: assuming an object is collected once, wherever it lives (an object is repeatedly re-examined and promoted across generations until it either dies or reaches generation 2)
 
+**Global packages folder**:
+The local cache where a resolved NuGet package version is stored. Can hold onto a previously resolved version after a package is rebuilt and repacked, so a consumer's retest may silently keep running the stale, cached version until the cache is cleared.
+_Avoid_: assuming a correct version number in a project file guarantees the newly rebuilt bits are what's actually running (the cache can still be serving an older resolution of that version)
+
 **JsonSerializerContext**:
 A source-generated, partial class (`[JsonSerializable(typeof(T))]`, optionally `[JsonSourceGenerationOptions(...)]`) whose settings are computed once at compile time instead of resolved through runtime reflection, needed for AOT compilation and faster than the reflection-based path. Constructing it with an explicit `JsonSerializerOptions` instance overrides the attribute's settings silently.
 _Avoid_: assuming the attribute's settings always apply (the constructor overload taking an explicit `JsonSerializerOptions` instance uses that instance instead, regardless of what `[JsonSourceGenerationOptions]` specified)
@@ -105,6 +109,10 @@ _Avoid_: string interpolation (`$"Getting user {userId}"` collapses everything i
 **ObsoleteAttribute**:
 Marks a member deprecated: `error: false` (default) produces a suppressible `CS0618` warning, `error: true` a `CS0619` compiler error, a deliberate escalation path rather than two unrelated settings. Every unconfigured obsoletion shares those standard IDs, so a custom `DiagnosticId` (plus a `UrlFormat` pointing at migration docs) is what lets one specific obsoletion be suppressed without silencing every other one in the project.
 _Avoid_: suppressing the standard `CS0618`/`CS0619` diagnostic ID project-wide to acknowledge one deprecation (that silences every other unconfigured obsoletion too; give the one being acknowledged its own `DiagnosticId` instead)
+
+**Pre-release version (NuGet)**:
+Any version with a hyphenated suffix (`-alpha`, `-beta`, `-rc`, or any other string); NuGet enforces nothing about what the suffix means, only that its presence marks the version pre-release. Excluded from an ordinary restore by default; dropping the suffix produces the stable version, which then takes precedence.
+_Avoid_: assuming NuGet checks or enforces a suffix's specific meaning (`-alpha` vs `-beta` vs anything else is a team's own convention, not something the tool validates)
 
 **Readiness check**:
 A health check answering "is this instance ready to receive requests right now." Can legitimately report unhealthy during a slow startup dependency without the process having crashed, which is exactly what should route traffic away from it without triggering a restart.

@@ -68,6 +68,10 @@ type: resources
   Official API reference for the warning/error escalation (`CS0618`/`CS0619`) and the message argument. Use for: the mechanics of marking a member deprecated.
 - [Docs: "Obsolete features in .NET 5+", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/fundamentals/syslib-diagnostics/obsoletions-overview)
   Official docs for `DiagnosticId` and `UrlFormat`, the .NET runtime's own `SYSLIB0XXX`/`EXTOBS0XXX` conventions, and why the standard diagnostic ID can't be suppressed one obsoletion at a time. Use for: making one specific deprecation individually suppressible and documented.
+- [Docs: "NuGet Package Version Reference", Microsoft Learn](https://learn.microsoft.com/en-us/nuget/concepts/package-versioning)
+  Official docs for NuGet's SemVer-compliant version format, the requirement that a version be specified at upload, and the documented advice against an upper-bounded dependency range with no known compatibility problem behind it. Use for: setting and consuming a package version correctly.
+- [Docs: "Pre-release versions in NuGet packages", Microsoft Learn](https://learn.microsoft.com/en-us/nuget/create-packages/prerelease-packages)
+  Official docs for pre-release suffixes: that NuGet enforces nothing about their meaning beyond marking a version pre-release, common conventions (`-alpha`/`-beta`/`-rc`), and that stable versions take precedence once the suffix is dropped. Use for: publishing and interpreting a pre-release package version.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

@@ -465,10 +465,8 @@ class Workspace:
         # rather than a per-item indent census, and it fails closed. #53
         # converted the whole corpus to four, so the rule starts from silence.
         #
-        # Contents of an indented fence are scanned rather than skipped, since
-        # FENCE only recognises a fence at column zero. That is harmless here:
-        # an indented fence opens at four, so nothing inside one sits at
-        # exactly three unless the author has already broken the block.
+        # code_free_lines skips fence contents regardless of indentation
+        # (#100), so a fenced code sample never trips this check.
         for i, line in code_free_lines(text):
             if re.match(r"^ {3}\S", line):
                 self.bad(rel, f"line {i}: continuation indented three spaces, which falls "

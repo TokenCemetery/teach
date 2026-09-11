@@ -18,9 +18,17 @@ _Avoid_: treating it as a request-queueing problem (a scheduler or router has no
 Masking out every token that would violate a required structure (valid JSON, a grammar) before sampling happens, so the output's structure is guaranteed by construction rather than merely encouraged. Kept cheap per token by reframing the grammar as a finite-state machine and precomputing, once, an index of which tokens are valid from each state.
 _Avoid_: checking the output for validity after generation completes (doesn't guarantee anything, since the model was always free to sample an invalid token; masking before sampling is what makes the guarantee structural)
 
+**Cost per million tokens**:
+A GPU's hourly rental cost divided by its measured throughput (tokens/sec, converted to tokens/hour), scaled to a million tokens. Derived from the same measured throughput lesson 6's batch-size trade-off produces, not quoted from a vendor's advertised per-token price measured on a different workload's batch size.
+_Avoid_: a fixed, vendor-quoted per-token price (throughput, and therefore cost per token, depends on the batch size and workload it was measured under, and doesn't transfer across configurations)
+
 **Draft model**:
 A small, cheap model (or a non-model mechanism like n-gram matching, or extra heads on the target model itself) that proposes several candidate next tokens for the target model to verify in one parallel pass, rather than generating them itself one at a time.
 _Avoid_: a smaller, lower-quality alternative to the target model (a draft model's output is never used directly; it's only ever verified, and possibly corrected, by the target model)
+
+**Error budget**:
+1 minus a service level objective: the amount of allowed misses against that target before a service is considered out of compliance with it. A single missed request isn't a problem by itself; what matters is whether the rate of misses is consuming the budget faster than the SLO's measurement window allows.
+_Avoid_: treating any single missed measurement as a problem (the budget exists precisely because some rate of misses is expected and tolerated; only the consumption rate against the window matters)
 
 **KV cache**:
 The stored key and value vectors for every already-generated token, at every layer, kept so a server never has to recompute them for later tokens. Its size grows linearly with sequence length and is often the memory bottleneck in serving, not the model's own weights.
@@ -45,6 +53,14 @@ _Avoid_: splitting the computation inside a single layer (that's tensor parallel
 **Prefix caching**:
 Reusing a shared prefix's already-computed KV cache across otherwise unrelated requests (a common system prompt, a repeatedly-queried document, earlier turns of a conversation), the same block-sharing mechanism PagedAttention uses within one request's parallel samples, extended across requests. Speeds up prefill only; decode time is unaffected.
 _Avoid_: assuming it also speeds up decode (it only skips redundant prefill computation for a matched prefix; generating new tokens afterward costs exactly the same either way)
+
+**SLI (service level indicator)**:
+A quantitative, user-relevant ratio picked out of a raw exported metric, for example the fraction of requests with TTFT under a stated threshold, framed from the user's experience rather than the server's internal state.
+_Avoid_: a raw metric histogram itself (a histogram is measured data; an SLI is the specific user-relevant ratio chosen out of it to hold a target against)
+
+**SLO (service level objective)**:
+A stated target for an SLI, for example "99% of requests have TTFT under 300ms over a rolling 28 days." What's left over, 1 minus the SLO, is the error budget.
+_Avoid_: a one-time benchmark result (lesson 16's single measured p99 is a snapshot; an SLO is a standing target held against continuously exported metrics)
 
 **Speculative decoding**:
 Drafting several candidate next tokens cheaply, then verifying all of them in one parallel forward pass through the target model, accepting correct guesses and resampling incorrect ones so the final output distribution exactly matches running the target model alone. A pure latency lever with no quality trade-off.

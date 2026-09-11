@@ -42,6 +42,10 @@ type: resources
   Official docs for vLLM's reference Kubernetes-native fleet deployment: KV-cache aware request routing and KEDA-based autoscaling off queue-depth metrics like `vllm:num_requests_waiting`. Use for: how routing and autoscaling actually work at fleet scale, beyond a single server.
 - [Paper: "ServerlessLLM: Low-Latency Serverless Inference for Large Language Models", Fu et al., OSDI 2024](https://arxiv.org/abs/2401.14351)
   Measures why LLM cold starts are severe (checkpoint load time far exceeds per-token generation time, tens of seconds in production traces) and fixes it with multi-tier, near-GPU checkpoint loading. Use for: why adding a fleet replica isn't instant, and what actually bounds how fast it can become useful.
+- [Docs: "Metrics", vLLM Project](https://docs.vllm.ai/en/stable/design/metrics/)
+  vLLM's own list of exported Prometheus metrics: TTFT, inter-token latency, end-to-end latency, and separate prefill/decode time histograms. Use for: what a production server actually exports continuously, as opposed to a one-time benchmark.
+- [Google SRE Workbook: "Implementing SLOs"](https://sre.google/workbook/implementing-slos/)
+  The canonical SRE framing of SLIs, SLOs, and error budgets: a user-relevant ratio, a stated target for it, and the tolerance for missing that target derived directly from the SLO. Use for: turning a raw exported metric into an actionable production target.
 
 ## Gaps
 

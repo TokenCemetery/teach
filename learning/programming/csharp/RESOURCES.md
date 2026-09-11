@@ -60,6 +60,10 @@ type: resources
   Official docs stating the bare serializer's own defaults (unchanged casing, case-sensitive matching) against what ASP.NET Core configures automatically (camelCase, case-insensitive, quoted-number deserialization). Use for: the divergence between testing the serializer directly and testing through the framework.
 - [Docs: "How to use source generation in System.Text.Json", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/source-generation)
   Official docs for `JsonSerializerContext`, `[JsonSourceGenerationOptions]`, and the gotcha where an explicit `JsonSerializerOptions` instance passed to the generated context's constructor overrides the attribute's settings. Use for: compile-time, reflection-free serialization, and why AOT scenarios need it.
+- [Docs: "Breaking changes in .NET", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/compatibility/categories)
+  Official docs categorizing a change's compatibility impact: binary, source, and behavioral, among six documented types overall. Use for: precisely naming what kind of breaking change a modification actually is.
+- [Docs: "How the .NET Runtime and SDK are versioned", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/versions/)
+  Official docs for .NET's semantic-versioning scheme: MAJOR for breaking changes, MINOR for backward-compatible additions, PATCH for fixes, and the high bar for a MAJOR bump. Use for: what a version number is supposed to promise a consumer.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

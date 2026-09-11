@@ -34,6 +34,14 @@ _Avoid_: conflating it with authentication (a policy is evaluated against the id
 The mode that lets managed threads keep running while a generation 2 collection proceeds on a dedicated background thread (one for workstation GC, one per logical processor for server GC). Only ever applies to generation 2; generation 0 and generation 1 collections are always non-concurrent.
 _Avoid_: assuming it removes all pausing (a foreground GC can still suspend every thread if generation 0 or 1 needs to collect while a background generation 2 collection is running)
 
+**Behavioral change**:
+A change that keeps a member's public signature both binary- and source-compatible while its runtime behavior itself differs (a different exception type, a different computed result). Announced by neither a compile error nor a load failure, discoverable only by running the code.
+_Avoid_: assuming a compiler or loader would catch this (it's the one category of breaking change that passes both checks silently)
+
+**Binary compatibility**:
+Whether an already-compiled consumer can load and run against a new version without recompiling. Adding a method doesn't affect it; removing or altering a public signature a compiled caller references does. Bumping only `AssemblyVersion`, with no public API text changed at all, is enough to break it on its own.
+_Avoid_: assuming source compatibility implies binary compatibility (a change can recompile cleanly for everyone and still fail an already-built binary that never recompiles, the `AssemblyVersion` case)
+
 **ClaimsPrincipal**:
 The identity authentication produces, which authorization then evaluates a policy's requirements against. Authentication's whole job is providing this; authorization is a separate, distinct decision about what it's permitted to do.
 _Avoid_: assuming authentication and authorization are the same check (identifying a caller and deciding what that caller may do are documented as separate concerns, the second relying on but distinct from the first)
@@ -109,6 +117,10 @@ _Avoid_: object type (ambiguous with C#'s `object` base type)
 **Server GC**:
 A GC flavor that collects across multiple threads, typically one per logical processor, built for a server application needing high throughput and scalability. Can cause contention when many processes each running server GC share the same small number of CPUs.
 _Avoid_: assuming it is always the better choice for a service (many small processes sharing one host, each running server GC, compete for the same CPUs; workstation GC with concurrent GC disabled is the documented fix for that shape of deployment)
+
+**Source compatibility**:
+Whether existing source code still compiles successfully against a new version, a separate question from binary compatibility. Adding a member to a published interface is source-incompatible for any external implementer, whose code no longer satisfies the interface until the new member is added.
+_Avoid_: assuming it's the same check as binary compatibility (a caller that only invokes through an interface, rather than implementing it, isn't affected by an interface-member addition the same way an implementer is)
 
 **Span&lt;T&gt;**:
 A type-safe, allocation-free view over a contiguous region of existing memory (an array, a string, a `stackalloc`'d buffer). Slicing produces another view over the same memory, never a copy. A ref struct, so it can never be stored on the heap or held across an `await`.

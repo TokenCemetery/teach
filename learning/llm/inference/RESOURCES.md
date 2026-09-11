@@ -38,6 +38,10 @@ type: resources
   The canonical tensor-parallelism paper: an intra-layer model-parallel scheme that splits a transformer layer's matrix multiplies across GPUs, needing only a few communication operations, and explicitly orthogonal and complementary to pipeline parallelism. Use for: what `--tensor-parallel-size` (lesson 12) actually does inside a layer.
 - [Paper: "GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism", Huang et al., 2018](https://arxiv.org/abs/1811.06965)
   The canonical pipeline-parallelism paper: partitions any network expressible as a sequence of layers into consecutive groups placed on separate accelerators, and introduces micro-batching to shrink (not eliminate) the resulting pipeline bubble. Use for: the alternative split to tensor parallelism, and why it tolerates a slower inter-device link.
+- [Docs: "Welcome to production-stack" and use-case guides, vLLM Production Stack](https://docs.vllm.ai/projects/production-stack)
+  Official docs for vLLM's reference Kubernetes-native fleet deployment: KV-cache aware request routing and KEDA-based autoscaling off queue-depth metrics like `vllm:num_requests_waiting`. Use for: how routing and autoscaling actually work at fleet scale, beyond a single server.
+- [Paper: "ServerlessLLM: Low-Latency Serverless Inference for Large Language Models", Fu et al., OSDI 2024](https://arxiv.org/abs/2401.14351)
+  Measures why LLM cold starts are severe (checkpoint load time far exceeds per-token generation time, tens of seconds in production traces) and fixes it with multi-tier, near-GPU checkpoint loading. Use for: why adding a fleet replica isn't instant, and what actually bounds how fast it can become useful.
 
 ## Gaps
 

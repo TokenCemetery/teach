@@ -10,6 +10,10 @@ Canonical terms for serving a trained model: what a server holds in memory, and 
 
 ## Terms
 
+**Cold start (serving)**:
+The gap between an autoscaler deciding to add a replica and that replica actually being able to serve a request, dominated by the time it takes to load a large model's checkpoint into memory, which can take tens of seconds and far exceeds the time to generate a single token.
+_Avoid_: treating it as a request-queueing problem (a scheduler or router has no effect on it; it's set entirely by checkpoint size and the storage path it has to move across)
+
 **Constrained (guided) decoding**:
 Masking out every token that would violate a required structure (valid JSON, a grammar) before sampling happens, so the output's structure is guaranteed by construction rather than merely encouraged. Kept cheap per token by reframing the grammar as a finite-state machine and precomputing, once, an index of which tokens are valid from each state.
 _Avoid_: checking the output for validity after generation completes (doesn't guarantee anything, since the model was always free to sample an invalid token; masking before sampling is what makes the guarantee structural)
@@ -21,6 +25,10 @@ _Avoid_: a smaller, lower-quality alternative to the target model (a draft model
 **KV cache**:
 The stored key and value vectors for every already-generated token, at every layer, kept so a server never has to recompute them for later tokens. Its size grows linearly with sequence length and is often the memory bottleneck in serving, not the model's own weights.
 _Avoid_: attention cache, key-value store
+
+**KV-cache aware routing**:
+A fleet-level request-routing policy that sends a new request to whichever server already holds the highest cache-hit rate for it, rather than routing purely on load (round-robin, least-connections). Extends prefix caching's per-server benefit to a multi-server fleet by making the routing decision itself aware of where a matching cache already lives.
+_Avoid_: ordinary load balancing (round-robin or least-connections ignore cache locality entirely, and can route a cache-friendly request to a server that has to redo the prefill from scratch)
 
 **Memory-bandwidth-bound**:
 A computation whose dominant cost is moving data (like a model's weights) from memory to the compute unit, rather than the arithmetic performed once that data arrives. Ordinary autoregressive decoding is memory-bandwidth-bound, which is exactly what lets speculative decoding verify several candidate tokens in one pass for roughly the cost of generating just one.

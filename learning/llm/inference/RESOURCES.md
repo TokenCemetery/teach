@@ -30,6 +30,8 @@ type: resources
   Replaces speculative decoding's separate draft model with extra decoding heads added directly to the target model. Use for: solving the operational burden of maintaining a second model, while keeping the same verify-and-correct guarantee.
 - [Paper: "EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty", Li et al., 2024](https://arxiv.org/abs/2401.15077)
   Drafts at the level of the model's internal features rather than raw tokens, resolving feature-level prediction uncertainty by incorporating a one-step-ahead token sequence. Use for: a further refinement over Medusa, with a larger reported speedup while still preserving the target model's output distribution.
+- [Paper: "Efficient Guided Generation for Large Language Models" (Outlines), Willard and Louf, 2023](https://arxiv.org/abs/2307.09702)
+  Reframes constrained generation as transitions between finite-state-machine states, letting a vocabulary index be precomputed once per grammar and reused as a fast per-token lookup. Use for: why grammar- or schema-constrained decoding adds little per-token overhead and guarantees output structure by construction rather than by hope.
 
 ## Gaps
 

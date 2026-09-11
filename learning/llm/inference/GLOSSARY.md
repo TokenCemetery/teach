@@ -10,6 +10,10 @@ Canonical terms for serving a trained model: what a server holds in memory, and 
 
 ## Terms
 
+**Constrained (guided) decoding**:
+Masking out every token that would violate a required structure (valid JSON, a grammar) before sampling happens, so the output's structure is guaranteed by construction rather than merely encouraged. Kept cheap per token by reframing the grammar as a finite-state machine and precomputing, once, an index of which tokens are valid from each state.
+_Avoid_: checking the output for validity after generation completes (doesn't guarantee anything, since the model was always free to sample an invalid token; masking before sampling is what makes the guarantee structural)
+
 **Draft model**:
 A small, cheap model (or a non-model mechanism like n-gram matching, or extra heads on the target model itself) that proposes several candidate next tokens for the target model to verify in one parallel pass, rather than generating them itself one at a time.
 _Avoid_: a smaller, lower-quality alternative to the target model (a draft model's output is never used directly; it's only ever verified, and possibly corrected, by the target model)

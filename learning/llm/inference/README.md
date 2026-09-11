@@ -85,6 +85,7 @@ Work through these in order.
 - [Quantization at Serve Time](reference/quantization-at-serve-time.md): int8/int4/GPTQ/AWQ, why memory, speed and accuracy don't move together, and a decision framework for picking a scheme
 - [vLLM](reference/vllm.md): standing up vLLM, PagedAttention, and the tuning knobs that matter
 - [llama.cpp](reference/llama-cpp.md): GGUF, llama.cpp's architecture, and what changes off-GPU
+- [Latency Budget](reference/latency-budget.md): p99 measurement methodology, and tying a missed budget back to cache, batching and quantization choices
 
 ## How this works
 

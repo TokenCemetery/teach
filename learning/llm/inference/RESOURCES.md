@@ -24,6 +24,13 @@ type: resources
 - [Article: "How continuous batching enables 23x throughput in LLM inference while reducing p50 latency", Anyscale](https://www.anyscale.com/blog/continuous-batching-llm-inference)
   Written by engineers who built continuous batching into an early serving engine; explains why static batching wastes GPU time on a mixed-length request stream and how continuous batching fixes it. Use for: the batching half of the latency/throughput trade this workspace defends.
 
+- [Paper: "Fast Inference from Transformers via Speculative Decoding", Leviathan et al., 2022](https://arxiv.org/abs/2211.17192)
+  Introduces speculative decoding: a small model drafts several tokens, the large model verifies them all in one parallel pass, with a sampling method that guarantees the exact same output distribution as running the large model alone. Use for: why this is a pure latency lever, not a quality trade-off, and the memory-bandwidth argument for why parallel verification is nearly free.
+- [Paper: "Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads", Cai et al., 2024](https://arxiv.org/abs/2401.10774)
+  Replaces speculative decoding's separate draft model with extra decoding heads added directly to the target model. Use for: solving the operational burden of maintaining a second model, while keeping the same verify-and-correct guarantee.
+- [Paper: "EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty", Li et al., 2024](https://arxiv.org/abs/2401.15077)
+  Drafts at the level of the model's internal features rather than raw tokens, resolving feature-level prediction uncertainty by incorporating a one-step-ahead token sequence. Use for: a further refinement over Medusa, with a larger reported speedup while still preserving the target model's output distribution.
+
 ## Gaps
 
 - No source yet on quantization-aware serving specifically for llama.cpp's GGUF formats (as opposed to GPTQ/AWQ, which target GPU stacks); the mission needs a CPU/edge-specific quantization comparison once lesson design reaches that stage.

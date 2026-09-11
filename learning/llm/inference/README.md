@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [17. Defending a Latency Budget End to End](lessons/0017-defending-a-latency-budget-end-to-end.md)
+**Latest lesson:** [18. Speculative Decoding](lessons/0018-speculative-decoding.md)
 
 ## Success looks like
 
@@ -27,7 +27,7 @@ Be able to stand up an inference server for a real model, on GPU and on CPU/edge
 
 ## The arc
 
-Six stages, first request to a defended latency budget. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Thirteen stages, first request to a defended, fleet-scale, production-monitored latency budget. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -37,6 +37,7 @@ Six stages, first request to a defended latency budget. A stage takes several le
 | 4. vLLM in practice | 0010 to 0012 | Standing up vLLM, PagedAttention, the tuning knobs that matter | A vLLM stack is running and answering real requests |
 | 5. llama.cpp on CPU/edge | 0013 to 0015 | GGUF, llama.cpp's architecture, what changes off-GPU | A llama.cpp stack is running on CPU and answering real requests |
 | 6. The latency budget | 0016 to 0017 | p99 measurement methodology, tying the number back to cache, batching and quantization choices | Can quote and defend a p99 latency budget end to end |
+| 7. Speculative decoding | 0018 | Draft-model, n-gram, Medusa, and EAGLE speculative decoding | Can explain why parallel verification is nearly free and pick a speculative-decoding variant for a workload |
 
 ## Lessons
 
@@ -61,6 +62,7 @@ Work through these in order.
 | [0015](lessons/0015-what-changes-off-gpu.md) | What Changes Off-GPU | Standing up llama.cpp's server, and how batching, cache management, and quantization each look different at CPU/edge scale |
 | [0016](lessons/0016-p99-latency-methodology.md) | p99 Latency Measurement Methodology | Why p99 beats an average, why TTFT and inter-token latency need separate numbers, and what makes a p99 measurement trustworthy |
 | [0017](lessons/0017-defending-a-latency-budget-end-to-end.md) | Defending a Latency Budget End to End | A diagnostic order for a missed p99 budget, and the three things a final defended configuration must cite |
+| [0018](lessons/0018-speculative-decoding.md) | Speculative Decoding | Verifying several candidate tokens in one parallel forward pass costs about what generating one token normally costs, since decoding is bottlenecked on moving weights, not on the arithmetic, which is the one fact every variant of speculative decoding is built on |
 
 ## Reference
 

@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Go on a team: able to design, ship and operate a production Go service, review someone else's Go and name concretely why a design is wrong, and recognise when a design imported from another language is fighting Go rather than using it.
 
-**Latest lesson:** [0037. Reading the Standard Library](lessons/0037-reading-the-standard-library.md)
+**Latest lesson:** [0038. Middleware and Request-Scoped Values](lessons/0038-middleware-and-request-scoped-values.md)
 
 ## Success looks like
 
@@ -36,7 +36,7 @@ Become the engineer trusted to own Go on a team: able to design, ship and operat
 
 ## The arc
 
-Six stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
 | Stage | Covers | Done when |
 |---|---|---|
@@ -46,6 +46,7 @@ Six stages, zero to senior. Not a lesson list: a stage takes several lessons, an
 | 4. Production | HTTP services, config, `slog`, graceful shutdown, health checks, database access, generics where they earn their keep | Has shipped a service that survives being operated |
 | 5. Performance and tooling | Table-driven tests, fuzzing, benchmarks, `pprof`, escape analysis, allocation reduction, modules and versioning, release builds | Optimises from a profile and proves the win with `benchstat` |
 | 6. Judgment | API design and compatibility, when *not* to use a goroutine, review, reading stdlib source for answers | Trusted to make the call and to explain it to someone else |
+| 7. Production Observability and Testing | Middleware and request-scoped values, metrics and tracing (RED/USE, OpenTelemetry), testing an HTTP handler, integration testing against a real database | Ships a service with the third and fourth signal stage 4 stopped short of: metrics, tracing, and tests around the handlers and the database, not only around functions |
 
 ## Lessons
 
@@ -90,6 +91,7 @@ Work through these in order.
 | [0035](lessons/0035-when-not-to-use-a-goroutine.md) | When Not to Use a Goroutine | Concurrency is a structure, not a speedup, and the sequential version is often the right answer |
 | [0036](lessons/0036-reviewing-go.md) | Reviewing Go | Let the tools find style, spend your attention on lifecycle, boundaries and what the compiler cannot check |
 | [0037](lessons/0037-reading-the-standard-library.md) | Reading the Standard Library | The source is on your machine, it settles arguments the docs cannot, and it is the style reference |
+| [0038](lessons/0038-middleware-and-request-scoped-values.md) | Middleware and Request-Scoped Values | Lesson 22 showed a middleware writing a value into the context; this lesson is the other half, reading it back out safely, and the mechanism that example never needed, a middleware that decides not to call the next handler at all |
 
 ## Reference
 

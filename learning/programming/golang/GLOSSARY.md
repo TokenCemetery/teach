@@ -66,6 +66,10 @@ _Avoid_: synchronised, ordered, sequenced
 The methods a type carries for the purpose of satisfying an **interface**. `T` has only its value-receiver methods; `*T` has both, which is why a value can fail to satisfy an interface its pointer satisfies.
 _Avoid_: method list, vtable, type signature
 
+**Middleware**:
+A function from `http.Handler` to `http.Handler`, wrapping a handler with behavior that runs before, after, or instead of calling the wrapped handler. Composed by nesting, outermost first to see a request and last to see its response; not calling the wrapped handler on some path is how it rejects a request outright.
+_Avoid_: assuming it always calls the next handler (an auth or validation middleware routinely writes a response and returns instead, on purpose)
+
 **Minimal version selection**:
 The rule that resolves a build to the highest of the minimum versions required across the module graph, rather than to the newest published version. It is what makes builds reproducible without a lockfile.
 _Avoid_: dependency resolution, version pinning

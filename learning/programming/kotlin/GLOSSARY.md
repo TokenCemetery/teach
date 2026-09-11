@@ -14,6 +14,10 @@ Canonical terms for owning Kotlin on the JVM, and for naming precisely where a J
 An annotation applied to every receiver type in a type-safe builder DSL, restricting implicit member access inside a nested lambda to only the nearest enclosing receiver. Reaching an outer receiver is still possible, but only by naming it explicitly (`this@outer.member { }`).
 _Avoid_: sharing one marker across two unrelated DSLs (each DSL should define its own, so unrelated builder hierarchies can coexist and nest without one's scope restriction interfering with the other's)
 
+**@Serializable**:
+Marks a class for `kotlinx.serialization`'s compiler plugin, which generates the class's actual serialization logic (a "visitor") at compile time. Requires both the `kotlin("plugin.serialization")` Gradle plugin and the runtime dependency; the plugin alone missing leaves the annotation compiling with no generated code behind it.
+_Avoid_: assuming the annotation alone does anything (without the compiler plugin, `@Serializable` compiles as an ordinary, unprocessed annotation, silently generating no serialization code at all)
+
 **Not-null assertion (`!!`)**:
 An operator that forces a nullable value to be treated as non-null, throwing a `NullPointerException` immediately if it's actually `null`. Routine use to silence a compile error, rather than backed by specific evidence, recreates the runtime crash null safety exists to prevent.
 _Avoid_: bang-bang (informal; name the operator by what it does)

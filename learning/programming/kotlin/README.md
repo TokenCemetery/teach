@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [37. value class and @JvmInline](lessons/0037-value-classes.md)
+**Latest lesson:** [38. kotlinx.serialization](lessons/0038-kotlinx-serialization.md)
 
 ## Success looks like
 
@@ -42,7 +42,7 @@ Nine stages, zero to senior. Not a lesson list: a stage takes several lessons, a
 | 6. Testing and build | 0028 to 0030 | Kotlin test frameworks, mocking, the Gradle Kotlin DSL and dependency management | Someone else can clone, build, test and run it |
 | 7. Shipping a service | 0031 to 0033 | Structuring a typed, tested backend service, Android-specific idioms where the platform diverges, generics and variance (`in`/`out`) | Has shipped a typed, tested Kotlin backend service or Android component |
 | 8. Judgment | 0034 to 0035 | Java interop, reviewing Kotlin and naming precisely what a construct is costing | Trusted to make the call and explain it to someone else |
-| 9. Advanced Idiom | 0036 to 0037 | Type-safe builders and DSLs, `value class`/`@JvmInline`, `kotlinx.serialization`, `Result` and error-handling idioms | Writes a small type-safe builder DSL, a zero-cost wrapper type, and a `Result`-based error path idiomatically |
+| 9. Advanced Idiom | 0036 to 0038 | Type-safe builders and DSLs, `value class`/`@JvmInline`, `kotlinx.serialization`, `Result` and error-handling idioms | Writes a small type-safe builder DSL, a zero-cost wrapper type, and a `Result`-based error path idiomatically |
 
 ## Lessons
 
@@ -87,6 +87,7 @@ Work through these in order.
 | [0035](lessons/0035-reviewing-kotlin.md) | Reviewing Kotlin | Turning the arc into a review instrument: the cost each habit hides, the shape of a comment that names it, and what not to review |
 | [0036](lessons/0036-type-safe-builders-and-dsls.md) | Type-Safe Builders and DSLs | Lesson 15 taught the receiver-style function type that lets run and apply expose this; a type-safe builder is that exact mechanism nested recursively, and @DslMarker is the one attribute that keeps a nested builder from silently reaching the wrong receiver |
 | [0037](lessons/0037-value-classes.md) | value class and @JvmInline | A value class is the fix for primitive obsession that the JVM usually lets you have for free, represented as its own underlying value with no wrapper object at all, except in the specific, documented cases where the compiler still has to box it |
+| [0038](lessons/0038-kotlinx-serialization.md) | kotlinx.serialization | A Java habit reaches for a library that inspects a class's shape through reflection at runtime; kotlinx.serialization generates that same logic at compile time instead, through a compiler plugin, which is exactly what lets it work on Kotlin targets that have no runtime reflection API at all |
 
 ## Reference
 

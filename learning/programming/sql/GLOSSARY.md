@@ -184,6 +184,10 @@ _Avoid_: security through obscurity, a synonym for read-only, a one-time setup r
 A multicolumn index can only be searched from its first column inward, so an index on two columns serves a query on the first, or on both, and not one on the second alone. Skip scan relaxes this only when the leading column has few distinct values.
 _Avoid_: column order as a preference, covering index, partial index, index-only scan
 
+**Lexeme**:
+The normalized form a word is reduced to inside a `tsvector`, stripped of the ending that made it plural or otherwise inflected, so `cats` and `rats` become `cat` and `rat`. A `tsquery`'s own terms are normalized the same way, which is what lets a query for `rat` match a document that only ever held `rats`.
+_Avoid_: token, the original word, stem as a synonym for the result rather than one way of producing it, keyword
+
 **Lock queue**:
 The line of statements waiting on the same object, released in arrival order. A read that would have succeeded blocks behind a waiting `ALTER TABLE`, not behind whatever the `ALTER TABLE` is waiting for, which is how a fast migration becomes an outage.
 _Avoid_: deadlock, contention, lock wait, blocking as a synonym

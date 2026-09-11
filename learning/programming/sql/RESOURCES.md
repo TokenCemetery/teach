@@ -113,6 +113,9 @@ type: resources
 - [Docs: "CREATE POLICY", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/sql-createpolicy.html)
   The full syntax a policy accepts, including `FOR` a specific command and `TO` a specific role. Use for: stage 8, the exact clause a policy needs.
 
+- [Docs: "Chapter 12. Full Text Search", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/textsearch-intro.html)
+  `tsvector` and `tsquery`, why `LIKE` lacks linguistic support and ranking, and the tables, indexes and configuration chapters that follow the introduction. Use for: stage 8, full-text search.
+
 - [Docs: "Don't Do This", PostgreSQL contributors, wiki.postgresql.org](https://wiki.postgresql.org/wiki/Don%27t_Do_This)
   A maintained list of choices that look reasonable and are regretted, with the reason for each. Use for: stage 4 type and schema decisions, and for review vocabulary.
 

@@ -11,7 +11,7 @@ type: resources
 - [Article: "Chunking Strategies for LLM Applications", Pinecone](https://www.pinecone.io/learn/chunking-strategies/)
   Practitioner survey of chunking approaches (fixed-size, recursive, semantic, document-structure-aware) and the trade-offs each makes between context and precision. Use for: choosing and justifying a chunking strategy for a given corpus.
 - [Repo: pgvector, pgvector](https://github.com/pgvector/pgvector)
-  Official repo for the vector store this workspace standardizes on: index types (IVFFlat, HNSW), distance functions, and the operators that make a Postgres table a vector index. Use for: how to run and configure pgvector itself.
+  Official repo for the vector store this workspace standardizes on: index types (IVFFlat, HNSW), distance functions, the operators that make a Postgres table a vector index, and its own maintenance guidance (reindexing before vacuuming after deletes, IVFFlat's training-data dependency). Use for: how to run and configure pgvector itself, and how each index type handles incremental additions and deletes differently.
 - [Paper: "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks", Reimers and Gurevych, 2019](https://arxiv.org/abs/1908.10084)
   The paper behind the bi-encoder embedding approach nearly every retrieval pipeline uses: why a shared embedding space lets similarity be computed by distance instead of by running the model on every pair. Use for: understanding what an embedding model is actually optimizing for.
 - [Paper: "Passage Re-ranking with BERT", Nogueira and Cho, 2019](https://arxiv.org/abs/1901.04085)

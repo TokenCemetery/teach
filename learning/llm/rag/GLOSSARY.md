@@ -26,6 +26,10 @@ _Avoid_: an isolated parsing error (understates the effect; the point of naming 
 Embedding a language model's generated hypothetical answer to a query, rather than the query itself, then searching the corpus by similarity to that embedding. Tolerates factually wrong details in the hypothetical document, since the encoder's embedding step filters them out while preserving genuine topical similarity.
 _Avoid_: query rewriting (a different query-side fix: rewriting reformulates the query itself, HyDE embeds a generated answer instead of the query)
 
+**Incremental indexing**:
+Adding new vectors to an already-built index without rebuilding it from scratch. Well-supported by HNSW, which has no training step; weaker for IVFFlat, whose cluster centroids are fixed at build time and never recomputed, so newly added content that differs from the original training data can be poorly clustered.
+_Avoid_: reindexing (a full rebuild from scratch, required specifically when the embedding model changes, not the same operation as incrementally adding new vectors to an unchanged index)
+
 **Ingestion**:
 Turning a raw source document (a PDF, HTML page, or office file) into the clean, structured text that chunking actually operates on. A genuine pipeline stage upstream of chunking, with its own failure modes, not a preprocessing detail beneath the pipeline's notice.
 _Avoid_: treating chunking as the pipeline's first stage (chunking assumes ingestion already produced clean text; ingestion is what actually produces it)
@@ -45,3 +49,7 @@ _Avoid_: post-filtering (searches the whole index first and discards afterward; 
 **Query decomposition**:
 Splitting a compound question into its separate sub-questions and retrieving for each independently, rather than embedding the whole compound question as one vector that sits close to none of the passages that would answer any single part of it well.
 _Avoid_: multi-query expansion (a different technique: expansion generates several full reformulations of one question, decomposition splits one question into separate, narrower sub-questions)
+
+**Reindexing**:
+Rebuilding a vector index from scratch, required when the embedding model itself changes, since every existing vector was produced by the old model's own vector space and shares no comparable distances with a new model's embeddings. A different operation from incremental indexing, and from the periodic maintenance deletes and updates require.
+_Avoid_: incremental indexing (adding new vectors to an unchanged index; reindexing specifically means rebuilding everything because the model producing the vectors changed)

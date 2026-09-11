@@ -103,6 +103,7 @@ Work through these in order.
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
 - [Null Safety and Mutability](reference/null-safety-and-mutability.md): null safety, `val`/`var`, values vs references, predicting nullability and mutability
+- [Modelling](reference/modelling.md): data classes, sealed classes and exhaustive `when`, object declarations and companion objects, interfaces with default methods
 
 ## How this works
 

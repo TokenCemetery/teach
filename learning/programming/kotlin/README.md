@@ -106,6 +106,7 @@ Work through these in order.
 - [Modelling](reference/modelling.md): data classes, sealed classes and exhaustive `when`, object declarations and companion objects, interfaces with default methods
 - [Idiom](reference/idiom.md): extension functions, scope functions (`let`/`run`/`with`/`apply`/`also`), delegation (`by`), operator overloading
 - [Collections and Sequences](reference/collections-and-sequences.md): Kotlin's collection operators, lazy `Sequence` vs eager collections, grouping and folding
+- [Concurrency](reference/concurrency.md): suspend functions and coroutine builders, structured concurrency, coroutine context and dispatchers, `Flow`, comparison to Java virtual threads
 
 ## How this works
 

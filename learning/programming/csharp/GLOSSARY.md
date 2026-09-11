@@ -102,6 +102,10 @@ _Avoid_: assuming it counts every kind of allocation (`stackalloc`'d memory is n
 A logging call's fixed string with named placeholders (`"Getting user {UserId}"`), passed separately from its values so a structured logging provider keeps each placeholder as its own named, queryable property in the emitted log entry.
 _Avoid_: string interpolation (`$"Getting user {userId}"` collapses everything into one flat string before the logger sees it, destroying the structure a template preserves)
 
+**ObsoleteAttribute**:
+Marks a member deprecated: `error: false` (default) produces a suppressible `CS0618` warning, `error: true` a `CS0619` compiler error, a deliberate escalation path rather than two unrelated settings. Every unconfigured obsoletion shares those standard IDs, so a custom `DiagnosticId` (plus a `UrlFormat` pointing at migration docs) is what lets one specific obsoletion be suppressed without silencing every other one in the project.
+_Avoid_: suppressing the standard `CS0618`/`CS0619` diagnostic ID project-wide to acknowledge one deprecation (that silences every other unconfigured obsoletion too; give the one being acknowledged its own `DiagnosticId` instead)
+
 **Readiness check**:
 A health check answering "is this instance ready to receive requests right now." Can legitimately report unhealthy during a slow startup dependency without the process having crashed, which is exactly what should route traffic away from it without triggering a restart.
 _Avoid_: conflating it with liveness (a failed readiness check should stop traffic, not restart the process; only a failed liveness check should do that)

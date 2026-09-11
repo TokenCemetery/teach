@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [32. The Managed Heap and Generations](lessons/0032-the-managed-heap-and-generations.md)
+**Latest lesson:** [33. GC Modes and Trade-offs](lessons/0033-gc-modes-and-tradeoffs.md)
 
 ## Success looks like
 
@@ -41,7 +41,7 @@ Eight stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 5. Testing and build | 0022 to 0024 | xUnit/NUnit, mocking, the `dotnet` CLI and project/package management | Someone else can clone, build, test and run it |
 | 6. Shipping the service | 0025 to 0029 | ASP.NET Core routing and middleware, dependency injection, configuration, Entity Framework Core basics, structuring a typed, tested backend | Ships a typed, tested ASP.NET Core service |
 | 7. Judgment | 0030 to 0031 | Comparing `async`/`await` to Java virtual threads and LINQ to the Stream API, reviewing C# for a habit that merely compiles | Trusted to make the call and explain it to someone else |
-| 8. The CLR Runtime and Performance | 0032 | The managed heap's generational design, GC modes, `Span<T>`/`Memory<T>`, `stackalloc`/`ArrayPool<T>`, measuring struct vs class with BenchmarkDotNet, and profiling | Optimises from a profile and defends the win with a trustworthy benchmark, tied back to the CLR's actual generational and allocation behaviour |
+| 8. The CLR Runtime and Performance | 0032 to 0033 | The managed heap's generational design, GC modes, `Span<T>`/`Memory<T>`, `stackalloc`/`ArrayPool<T>`, measuring struct vs class with BenchmarkDotNet, and profiling | Optimises from a profile and defends the win with a trustworthy benchmark, tied back to the CLR's actual generational and allocation behaviour |
 
 ## Lessons
 
@@ -81,6 +81,7 @@ Work through these in order.
 | [0030](lessons/0030-two-comparisons-with-java.md) | Two Comparisons with Java | The same waiting problem solved at two different layers, why Java's answer removes the style C# requires rather than adopting it, and the expression tree that has no counterpart in a Stream |
 | [0031](lessons/0031-reviewing-csharp.md) | Reviewing a C# Codebase | The difference between a style opinion and a cost you can name, a review pass ordered by what the compiler will never tell you, and the habits this arc has been collecting since lesson 1 |
 | [0032](lessons/0032-the-managed-heap-and-generations.md) | The Managed Heap and Generations | Lesson 1 said a class instance lives on the managed heap; this lesson opens up what happens to it there, why the heap is split into three generations, and why most objects are meant to die in the youngest one without ever being promoted |
+| [0033](lessons/0033-gc-modes-and-tradeoffs.md) | GC Modes and Trade-offs | Lesson 32 established the generational heap; this lesson covers how a collection actually runs against it, one dedicated thread or one per core, blocking every managed thread or letting most of them keep going, and the one moment even the non-blocking mode still has to stop everything |
 
 ## Reference
 

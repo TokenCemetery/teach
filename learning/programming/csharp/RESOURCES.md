@@ -12,6 +12,10 @@ type: resources
   Official docs for the managed heap's generational design: why it's split into generations 0, 1 and 2, the promotion rule between them, and the generational hypothesis that most objects should die in generation 0. Use for: what actually happens to a class instance after lesson 1 puts it on the heap.
 - [Docs: "Large object heap (LOH) on Windows", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap)
   Official docs for the size threshold above which an object bypasses the normal generation 0 to 1 to 2 path entirely, and why the LOH is only collected alongside a generation 2 collection. Use for: why a large array or buffer is a different, more expensive kind of allocation.
+- [Docs: "Workstation vs. server garbage collection (GC)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/workstation-server-gc)
+  Official docs for the two GC flavors: one collecting thread versus one per logical processor, and the documented case (many processes sharing few CPUs) where server GC's own parallelism backfires. Use for: choosing a GC flavor from a deployment's actual shape.
+- [Docs: "Background garbage collection", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/background-gc)
+  Official docs for background (concurrent) GC: why it only ever applies to generation 2, the thread-count difference between workstation and server background GC, and foreground GC as the one case a background collection still stops everything. Use for: what "concurrent" GC actually leaves concurrent.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

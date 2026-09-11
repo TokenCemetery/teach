@@ -16,6 +16,10 @@ type: resources
   Official docs for the two GC flavors: one collecting thread versus one per logical processor, and the documented case (many processes sharing few CPUs) where server GC's own parallelism backfires. Use for: choosing a GC flavor from a deployment's actual shape.
 - [Docs: "Background garbage collection", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/background-gc)
   Official docs for background (concurrent) GC: why it only ever applies to generation 2, the thread-count difference between workstation and server background GC, and foreground GC as the one case a background collection still stops everything. Use for: what "concurrent" GC actually leaves concurrent.
+- [API: "Span<T> Struct", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.span-1)
+  Official API reference and remarks for `Span<T>`: a stack-only, allocation-free view over contiguous memory, and the full list of ref-struct restrictions (no boxing, no heap fields, no lambda capture, no crossing `await`/`yield`) that guarantee it. Use for: what a ref struct actually forbids, and why.
+- [Docs: "Memory<T> and Span<T> usage guidelines", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/memory-and-spans/memory-t-usage-guidelines)
+  Official guidance for `Memory<T>` as `Span<T>`'s heap-safe counterpart, the ownership/consumption model for a buffer, and the rule to prefer the read-only variants when a buffer is only read. Use for: choosing between the four related types, and for the discipline of claiming only the access a method actually needs.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

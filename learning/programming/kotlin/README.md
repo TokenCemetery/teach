@@ -109,6 +109,7 @@ Work through these in order.
 - [Concurrency](reference/concurrency.md): suspend functions and coroutine builders, structured concurrency, coroutine context and dispatchers, `Flow`, comparison to Java virtual threads
 - [Testing and Build](reference/testing-and-build.md): Kotlin test frameworks, mocking, the Gradle Kotlin DSL and dependency management
 - [Shipping a Service](reference/shipping-a-service.md): structuring a typed, tested backend, Android-specific idioms, generics and variance
+- [Judgment](reference/judgment.md): Java interop, reviewing Kotlin and naming precisely what a construct is costing
 
 ## How this works
 

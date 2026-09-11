@@ -116,6 +116,8 @@ type: resources
   Official docs on sealed hierarchies: every direct subclass known at compile time, and the compiler-enforced exhaustiveness this gives a `when` expression over one, with no `else` branch needed. Use for: type-safe state modelling where an exception or a runtime check would otherwise stand in for the type system.
 - [Docs: "Data classes", Kotlin](https://kotlinlang.org/docs/data-classes.html)
   Official docs on what `data class` generates automatically (`equals()`/`hashCode()`, `toString()`, `componentN()`, `copy()`), its requirements, and the subtle rule that only primary-constructor properties participate. Use for: what a data class actually buys over a hand-written class, precisely.
+- [Docs: "Inline value classes", Kotlin](https://kotlinlang.org/docs/inline-classes.html)
+  Official docs on `@JvmInline value class`: the single-property constraint, the compiler's preference for an unboxed runtime representation, the documented "boxed whenever used as another type" rule (generics, `Any`, interfaces), and the doubly-nullable case that boxes even ordinary-looking usage. Use for: the zero-cost fix for primitive obsession, and precisely where "zero-cost" stops applying.
 - [Docs: "Classes", Kotlin](https://kotlinlang.org/docs/classes.html)
   Official docs on Kotlin classes: the primary constructor, properties declared directly in the class header, and when the docs themselves recommend a data class or an extension function instead of a plain class. Use for: what a class actually needs to encapsulate, before reaching for one reflexively.
 - [Docs: "Properties", Kotlin](https://kotlinlang.org/docs/properties.html)

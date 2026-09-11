@@ -25,3 +25,7 @@ _Avoid_: none in particular, but do not treat it as equivalent to a Kotlin non-n
 **Type-safe builder (DSL)**:
 A builder function taking a receiver-style lambda parameter (`T.() -> R`), nested recursively, so a caller can write nested blocks that read like their own small, structured language while every call resolves against an ordinary receiver's members. The construct receiver-style function types (lesson 15) exist for.
 _Avoid_: treating it as a distinct compiler feature (it's the same receiver-style function type mechanism used elsewhere, applied recursively, with no additional language support needed beyond `@DslMarker`'s scope restriction)
+
+**value class (`@JvmInline`)**:
+A class wrapping exactly one property, with no identity of its own, represented at runtime as either the plain underlying value (unboxed, no allocation) or a compiler-generated wrapper (boxed), boxed whenever it's used as another type (`Any`, a generic collection, an interface reference) or when both its underlying type and usage site are nullable at once.
+_Avoid_: assuming it's always zero-cost (the unboxed representation holds only where the documented rule says it does; a generic collection or an interface reference boxes it like any other type)

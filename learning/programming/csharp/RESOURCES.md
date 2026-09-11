@@ -24,6 +24,10 @@ type: resources
   Official reference for stack allocation: why pairing it with `Span<T>`/`ReadOnlySpan<T>` needs no `unsafe` context, the automatic buffer-overrun detection the CLR enables when it's used, and the `StackOverflowException` risk from over-allocating. Use for: what `stackalloc` actually does, and its real failure mode.
 - [API: "ArrayPool<T> Class", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.buffers.arraypool-1)
   Official API reference for the shared array pool: the rent/return contract, that `Rent` may hand back a larger array than requested but never a smaller one, and that there is no finalizer safety net for a forgotten `Return`. Use for: the fallback for a buffer too large or too long-lived for `stackalloc`.
+- [Docs: "How BenchmarkDotNet works", BenchmarkDotNet](https://benchmarkdotnet.org/articles/guides/how-it-works.html)
+  Official docs for the harness's internal pipeline: an isolated Release-mode process per benchmark, the Pilot/Warmup/Actual stages that measure and subtract the harness's own overhead, and the delegate-invocation trick that stops the JIT from inlining a benchmark method away. Use for: why a raw stopwatch loop isn't trustworthy and what actually fixes that.
+- [Docs: "Diagnosers", BenchmarkDotNet](https://benchmarkdotnet.org/articles/configs/diagnosers.html)
+  Official docs for `MemoryDiagnoser`: bytes allocated per operation via `GC.GetAllocatedBytesForCurrentThread`, 99.5% accuracy at default settings, the `GenX` collections-per-1000-operations columns, and that it counts managed heap allocations only. Use for: measuring lesson 1's struct-vs-class allocation claim instead of reasoning about it.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

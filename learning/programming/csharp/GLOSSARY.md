@@ -34,6 +34,10 @@ _Avoid_: assuming a large object gets its own cheap, frequent collection (it rid
 A heap-safe wrapper over a contiguous region of memory, complementary to `Span<T>`: not a ref struct, so it can be a field, captured by a closure, or held across an `await`. Convert to a `Span<T>` via `.Span` for the synchronous window that needs the fast view.
 _Avoid_: assuming it is just a slower `Span<T>` (it exists specifically for the scenarios `Span<T>`'s ref-struct restrictions rule out, not as a general-purpose alternative)
 
+**MemoryDiagnoser**:
+A BenchmarkDotNet diagnoser that reports bytes allocated per operation (via `GC.GetAllocatedBytesForCurrentThread`) and `GenX` columns for collections per 1,000 operations. Counts managed heap allocations only.
+_Avoid_: assuming it counts every kind of allocation (`stackalloc`'d memory is never on the managed heap, so it never appears in the `Allocated` column at all)
+
 **ref struct**:
 A struct restricted so it can never be promoted to the managed heap: it cannot be boxed, cannot be a field of an ordinary class, cannot be the element type of an array, cannot be captured by a lambda or local function, and cannot be used across an `await` or `yield` boundary. `Span<T>` is the canonical example.
 _Avoid_: treating the restrictions as independent rules to memorise (every one of them is the same guarantee stated a different way: a ref struct can never outlive the stack frame or memory it was created to view)

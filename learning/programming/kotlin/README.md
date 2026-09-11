@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [43. Persistence](lessons/0043-persistence.md)
+**Latest lesson:** [44. Testing Coroutines Beyond runTest](lessons/0044-testing-coroutines-beyond-runtest.md)
 
 ## Success looks like
 
@@ -30,7 +30,7 @@ Become the engineer trusted to own Kotlin on a team, in a backend service or an 
 
 ## The arc
 
-Ten stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Eleven stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -44,6 +44,7 @@ Ten stages, zero to senior. Not a lesson list: a stage takes several lessons, an
 | 8. Judgment | 0034 to 0035 | Java interop, reviewing Kotlin and naming precisely what a construct is costing | Trusted to make the call and explain it to someone else |
 | 9. Advanced Idiom | 0036 to 0039 | Type-safe builders and DSLs, `value class`/`@JvmInline`, `kotlinx.serialization`, `Result` and error-handling idioms | Writes a small type-safe builder DSL, a zero-cost wrapper type, and a `Result`-based error path idiomatically |
 | 10. Completing the Service | 0040 to 0043 | An HTTP layer, configuration, logging, and persistence for the Kotlin backend service stage 7 started structuring | Ships a Kotlin backend service with a routed HTTP layer, externalized configuration, structured logging, and database access, not only a structured shell |
+| 11. Testing Coroutines Beyond runTest | 0044 | Turbine's `cancelAndIgnoreRemainingEvents()` for a flow that never completes, and what a cancellation test actually has to assert given that cancellation is cooperative | Tests an infinite flow without hanging, and tests cancellation by its actual, documented evidence rather than a `Job` flag alone |
 
 ## Lessons
 
@@ -94,6 +95,7 @@ Work through these in order.
 | [0041](lessons/0041-configuration.md) | Configuration | A service's actual behavior, its port, its database URL, its secrets, has to change across environments without recompiling a single line, and Ktor's configuration file plus one specific, easy-to-miss substitution idiom is how a default and an environment override live in exactly one place |
 | [0042](lessons/0042-logging.md) | Logging | SLF4J silently does nothing until a real logging backend is added as a dependency, and CallLogging's per-request MDC values are silently invisible until the log pattern itself is updated to print them, the same shape of trap appearing twice in the same lesson |
 | [0043](lessons/0043-persistence.md) | Persistence | Exposed's DSL is another type-safe builder, and it is mostly blocking underneath, since it wraps JDBC; the stage 10 capstone is dispatching that blocking work correctly instead of stalling whatever thread happened to be running the request, and revisiting what stage 7's shipped service actually needed all along |
+| [0044](lessons/0044-testing-coroutines-beyond-runtest.md) | Testing Coroutines Beyond runTest | Lesson 28 taught Turbine's awaitItem and the hang it causes if nothing terminates it; this lesson covers the specific tool for a flow that never terminates on its own, and what a cancellation test actually has to assert, given that cancellation is cooperative and does not update everything the instant cancel() is called |
 
 ## Reference
 

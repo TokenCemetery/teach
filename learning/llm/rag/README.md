@@ -82,6 +82,7 @@ Work through these in order.
 - [Vector Search and Indexing](reference/vector-search-and-indexing.md): ANN indexes (HNSW/IVF), pgvector specifics, the recall/latency trade-off
 - [Hybrid Search](reference/hybrid-search.md): BM25 plus vector search, reciprocal rank fusion, tuning the blend
 - [Reranking](reference/reranking.md): cross-encoder rerankers, and when reranking earns its latency cost
+- [Retrieval Evaluation](reference/retrieval-evaluation.md): Recall@k, MRR, and diagnosing which pipeline stage is at fault
 
 ## How this works
 

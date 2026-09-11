@@ -58,6 +58,20 @@ The same file behaves differently depending only on which path it is placed on a
 | `--runtime-image <dir>` | a pre-built image is copied in instead of jpackage running jlink itself |
 | No `--jlink-options` given | defaults to `--strip-native-commands --strip-debug --no-man-pages --no-header-files` |
 
+## Reflection and annotation retention
+
+The two primitives every out-of-scope framework is built from. See [lesson 52](../lessons/0052-reflection-and-annotations.md).
+
+| Retention | Reaches the class file? | Reflectively visible? |
+|---|---|---|
+| `SOURCE` | No, discarded by the compiler | No |
+| `CLASS` (the default if `@Retention` is omitted) | Yes | No, the VM need not keep it |
+| `RUNTIME` | Yes | Yes, via `getAnnotation`/`isAnnotationPresent` |
+
+`@Target` restricts which kinds of declarations an annotation may be placed on, checked by the compiler; it says nothing about retention, which is a separate, orthogonal declaration.
+
+Reflection operates within the same encapsulation lesson 50 already described: `setAccessible` on a member in a package that is neither exported nor opened throws `InaccessibleObjectException`, regardless of the member's own visibility keyword.
+
 ## Symptom to cause
 
 Populated only from failures the lessons actually reproduced.
@@ -69,6 +83,8 @@ Populated only from failures the lessons actually reproduced.
 | A missing `requires` module is reported before any application code runs at all | module resolution follows every `requires` edge outward from the initial module at launch, and fails immediately if one is missing, earlier than the class-path era's `NoClassDefFoundError` (lesson 50) |
 | `jlink` fails on a dependency that runs fine normally | that dependency has no `module-info.class` of its own, so it became an automatic module the moment it hit the module path, and `jlink` only links explicit modules (lesson 51) |
 | A service or an optional dependency the application uses is missing from a linked image | `jlink`'s resolution does not bind services or resolve `requires static` dependencies by default, unlike an ordinary launch (lesson 51) |
+| A custom annotation compiles, attaches, and is never seen by `getAnnotation`/`isAnnotationPresent` | it has no `@Retention(RetentionPolicy.RUNTIME)`; with `@Retention` omitted the default is `CLASS`, recorded in the class file but not kept by the VM at run time (lesson 52) |
+| `InaccessibleObjectException` from a framework's own reflective field access, on a package that is `exported` | `exports` grants compile- and run-time access to public members only; reflective access to a field, public or not, needs `opens` specifically (lesson 52) |
 
 ## Sources
 
@@ -79,3 +95,6 @@ Populated only from failures the lessons actually reproduced.
 - [The jlink Command, Oracle](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jlink.html): options, the automatic-module refusal, and the stripping/compression examples
 - [The jpackage Command, Oracle](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jpackage.html): modular versus non-modular input, and the default jlink options
 - [Creating Runtime and Application Images with JLink, dev.java](https://dev.java/learn/jlink/): worked examples of building a runtime image and an application image
+- [Package java.lang.reflect, Oracle](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/reflect/package-summary.html): what reflection is, and its own encapsulation and security restrictions
+- [RetentionPolicy, Oracle](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/annotation/RetentionPolicy.html): the three constants
+- [Retention, Oracle](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/annotation/Retention.html): the documented `CLASS` default when `@Retention` is omitted

@@ -50,6 +50,12 @@ type: resources
 - [Docs: "Creating Runtime and Application Images with JLink", Oracle, dev.java](https://dev.java/learn/jlink/)
   Worked examples of building a runtime image and an application image, including services and optional dependencies. Use for: stage 8, runtime images.
 
+- [Docs: "Package java.lang.reflect", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/reflect/package-summary.html)
+  What reflection actually is, stated as JVM modelling rather than a library, and its own encapsulation and security restrictions. Use for: stage 8, reflection and annotations.
+
+- [Docs: "RetentionPolicy" and "Retention", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/annotation/RetentionPolicy.html)
+  The three retention constants and the documented default when `@Retention` is left off an annotation type entirely. Use for: stage 8, why a custom annotation is or is not visible reflectively.
+
 - [Docs: "The jfr Command", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jfr.html)
   The command-line reader for a Flight Recorder file: `summary`, `print` and event filtering. Use for: stage 6, reading a recording without installing a graphical tool.
 

@@ -258,6 +258,10 @@ _Avoid_: heisenbug, observer effect, timing issue
 A generic type used with no type argument, such as `List` in place of `List<String>`. It switches off checking for every member whose signature mentions the parameter, which is how a wrong element gets in silently and surfaces as a cast failure somewhere else entirely.
 _Avoid_: untyped collection, legacy generic, unparameterised type
 
+**Reflection**:
+Reading a class's own shape, and calling its members, at run time rather than compiling against them directly: `Class`, `getDeclaredFields`/`getDeclaredMethods`, `Field.get`/`set`, `Method.invoke`. It operates within the same encapsulation the module system enforces everywhere else, so a private field in a package neither exported nor opened refuses `setAccessible` exactly as it refuses a direct reference.
+_Avoid_: introspection as a vague synonym, a library (it is a JVM capability every framework here reuses), something that bypasses encapsulation rather than being subject to it
+
 **Reproducible build**:
 A build that turns the same source into byte-identical output. Archive entry timestamps defeat it by default, so it has to be asked for explicitly, and until it is, two builds of one commit cannot be shown to have produced the same artifact.
 _Avoid_: deterministic build, repeatable build, clean build
@@ -265,6 +269,10 @@ _Avoid_: deterministic build, repeatable build, clean build
 **Resident memory**:
 The total memory the operating system charges to the JVM process, which is the heap plus metaspace plus thread stacks plus the code cache plus native and direct buffers. It is what a container limit is enforced against, and `-Xmx` bounds only the first term of it.
 _Avoid_: heap usage, virtual memory, max heap
+
+**Retention policy**:
+Whether an annotation survives past source (`SOURCE`, discarded by the compiler), into the class file only (`CLASS`, the default when `@Retention` is left off entirely), or into the running VM (`RUNTIME`, the only one reflection can actually see). A framework annotation with no stated retention compiles, attaches, and is invisible to every reflective check, with no error anywhere.
+_Avoid_: assuming an annotation is reflectively visible by default (the default is `CLASS`, not `RUNTIME`), a compiler-only concept, an access modifier
 
 **Runtime image**:
 The directory `jlink` produces, containing a working `java` launcher plus only the modules actually reached from the ones named on its command line. It links explicit modules only; an application depending on even one automatic module cannot be linked into one at all.

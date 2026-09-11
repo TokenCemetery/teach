@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0051. Runtime Images](lessons/0051-runtime-images.md)
+**Latest lesson:** [0052. Reflection and Annotations](lessons/0052-reflection-and-annotations.md)
 
 ## Success looks like
 
@@ -51,7 +51,7 @@ Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 4. Concurrency | Threads, the memory model, `synchronized` and `volatile`, `java.util.concurrent`, executors, virtual threads, structured concurrency, the traps | Can name the guarantee a broken concurrent program violated |
 | 5. Testing and build | JUnit 6, parameterised tests, test doubles and when not to use one, dependency declaration, a reproducible runnable artifact | Someone else can clone, build, test and run it |
 | 6. The runtime | Memory areas, object layout and escape analysis, garbage collectors and their trade-offs, reading a GC log, JMH, profiling, allocation reduction | Optimises from a profile and proves the win with a benchmark that is trustworthy |
-| 7. Judgment | API design and backwards compatibility, deprecation, review, reading the specification and the JEPs for answers | Trusted to make the call and to explain it to someone else |
+| 7. Judgment | API design and backwards compatibility, deprecation, review, reading the specification and the JEPs for answers | Trusted to make the call and to explain it to someone else; stage 8 completes it with the mechanism, reflection and annotations, every judged framework was actually built from |
 | 8. Modules and reflection | The module system, `module-info.java`, `requires` and `exports`, strong encapsulation, `jlink` and `jpackage` runtime images, reflection and annotations | Declares a module boundary deliberately, ships a runtime image built from it, and reads what a framework's reflection actually touches before judging whether it earns its place |
 
 ## Lessons
@@ -108,9 +108,10 @@ Work through these in order.
 | [0046](lessons/0046-deprecation-that-works.md) | Deprecation That Works | Marking something deprecated changes nothing unless you say what happens next |
 | [0047](lessons/0047-settling-it-from-the-source.md) | Settling It From the Source | Where to look when the argument is about what Java does, and which document answers which question |
 | [0048](lessons/0048-reviewing-java.md) | Reviewing Java | Naming what an abstraction costs, instead of saying it feels wrong |
-| [0049](lessons/0049-does-this-framework-earn-its-place.md) | Does This Framework Earn Its Place | The last judgment in the arc, made from the service's constraints rather than the framework's promises |
+| [0049](lessons/0049-does-this-framework-earn-its-place.md) | Does This Framework Earn Its Place | The last judgment in stage 7, made from the service's constraints rather than the framework's promises |
 | [0050](lessons/0050-the-module-system.md) | The Module System | module-info.java replaces the JAR as the boundary the compiler and runtime both recognise, requires and exports decide what crosses it, and strong encapsulation means a public class in an unexported package is invisible past its own module |
 | [0051](lessons/0051-runtime-images.md) | Runtime Images | jlink assembles a runtime image from nothing but the transitive closure of the modules it is told to start with, but only from explicit modules, an application depending on even one automatic module cannot be linked at all |
+| [0052](lessons/0052-reflection-and-annotations.md) | Reflection and Annotations | This is stage 8's capstone, reflection reads and calls a class's own shape at run time instead of at compile time, an annotation is inert data until something reads it reflectively, and every out-of-scope framework in this arc is built from exactly these two mechanisms |
 
 ## Reference
 

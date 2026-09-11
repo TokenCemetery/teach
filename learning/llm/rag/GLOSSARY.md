@@ -10,6 +10,10 @@ Canonical terms for a retrieval pipeline: what it splits documents into, and how
 
 ## Terms
 
+**Agentic retrieval**:
+A system deciding, per query and per step, whether retrieval is needed at all, whether what came back is sufficient, and whether to retrieve again based on something just derived, rather than following one fixed retrieve-then-generate pass.
+_Avoid_: multi-hop retrieval (a related but narrower case: multi-hop specifically covers a query's later sub-question depending on an earlier one's answer, while agentic retrieval also covers whether to retrieve at all)
+
 **Chunk**:
 One piece of a document, produced by splitting it before embedding and indexing, sized to keep its embedding focused on one topic rather than an average of several.
 _Avoid_: segment, passage (use only when quoting a source that uses it)
@@ -37,6 +41,10 @@ _Avoid_: treating chunking as the pipeline's first stage (chunking assumes inges
 **Metadata filtering**:
 Restricting retrieval to chunks matching a predicate on structured attributes (document type, date, owner, permission tag) in addition to nearest-neighbor similarity, rather than searching the whole corpus by similarity alone.
 _Avoid_: permission filtering (a specific, higher-stakes case of metadata filtering, where a failure is a security incident rather than a quality regression, and which specifically requires pre-filtering)
+
+**Multi-hop retrieval**:
+Retrieving in a loop where a later query depends on a fact derived from an earlier retrieval, rather than a fixed set of sub-questions decided upfront. Needed when a sub-question can't even be phrased until a prior sub-question's answer is known, which query decomposition alone can't handle.
+_Avoid_: query decomposition (splits sub-questions already visible in the original question's text; multi-hop retrieval handles sub-questions that don't exist until a prior hop's answer produces them)
 
 **Post-filtering**:
 Running an ANN search first, then discarding results that fail a predicate afterward. Fast, but a selective predicate can discard most of what an approximate index's bounded candidate scan found, collapsing recall; for a permission filter specifically, it also means unauthorized content briefly existed in the pipeline before being discarded.

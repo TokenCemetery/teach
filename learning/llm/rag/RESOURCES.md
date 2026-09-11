@@ -39,6 +39,10 @@ type: resources
   Formalizes fine-grained access control as an enforcement problem in vector databases, and the inherent tension between correct enforcement, ANN recall, and query latency. Use for: why access control specifically needs pre-filtering rather than the faster but recall- and security-risking post-filtering.
 - [Paper: "Docling Technical Report", Auer et al., 2024](https://arxiv.org/abs/2408.09869)
   Introduces a layout-analysis (DocLayNet) and table-structure-recognition (TableFormer) pipeline for PDF conversion, as the alternative to naive text extraction that flattens layout and table structure. Use for: what a layout-aware ingestion pipeline actually detects and reconstructs that a plain text extractor discards.
+- [Paper: "Interleaving Retrieval with Chain-of-Thought Reasoning for Knowledge-Intensive Multi-Step Questions" (IRCoT), Trivedi et al., 2022](https://arxiv.org/abs/2212.10509)
+  States precisely why single-pass retrieval fails multi-step questions (what to retrieve depends on what's already been derived) and interleaves a reasoning step with a retrieval step to solve it. Use for: the mechanism behind a retrieval loop where a later query depends on an earlier hop's answer.
+- [Paper: "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection", Asai et al., 2023](https://arxiv.org/abs/2310.11511)
+  Trains a model to decide whether retrieval is needed at all and to critique retrieved passages, rather than retrieving a fixed number of passages indiscriminately every time. Use for: agentic retrieval's other axis, whether to retrieve at all, distinct from how many hops a multi-step question needs.
 
 ## Gaps
 

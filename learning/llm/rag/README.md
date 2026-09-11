@@ -8,7 +8,7 @@ type: topic
 
 Be able to design a retrieval pipeline for a real corpus and use case, and to diagnose why an existing RAG system returns the wrong context instead of guessing at a fix.
 
-**Latest lesson:** [17. Freshness](lessons/0017-freshness.md)
+**Latest lesson:** [18. Multi-Hop and Agentic Retrieval](lessons/0018-multi-hop-and-agentic-retrieval.md)
 
 ## Success looks like
 
@@ -45,6 +45,7 @@ Thirteen stages, first chunk to a diagnosed, production-ready pipeline. A stage 
 | 9. Metadata filtering and permission-aware retrieval | 0015 | Metadata filtering, pre- vs. post-filtering, why access control specifically needs pre-filtering | Can design a permission-aware retrieval path and explain why post-filtering is unsafe for it |
 | 10. The ingestion pipeline | 0016 | Parsing PDFs/HTML/office documents, layout-aware vs. naive extraction, table structure, error cascading | Can explain why ingestion is upstream of chunking, and how a bad parse escapes lesson 11's diagnosis |
 | 11. Freshness | 0017 | Incremental indexing (HNSW vs. IVFFlat), delete/update maintenance, reindexing on a model change | Can plan for the three genuinely different ways a corpus and its index go stale |
+| 12. Multi-hop and agentic retrieval | 0018 | IRCoT's interleaved reasoning and retrieval, Self-RAG's adaptive retrieval decision | Can design a retrieval loop for a question decomposition alone can't answer |
 
 ## Lessons
 
@@ -69,6 +70,7 @@ Work through these in order.
 | [0015](lessons/0015-metadata-filtering-and-access-control.md) | Metadata Filtering and Permission-Aware Retrieval | An access-control filter that fails doesn't crash and doesn't look wrong, it produces a perfectly well-formed answer built from a document the user was never supposed to see, which is exactly why post-filtering is the wrong choice for this one kind of filter |
 | [0016](lessons/0016-the-ingestion-pipeline.md) | The Ingestion Pipeline | Chunking was never actually the first pipeline stage, it just assumed clean input text already existed, and a bad parse upstream of chunking corrupts everything after it while looking, to every later diagnostic, like a completely different failure |
 | [0017](lessons/0017-freshness.md) | Freshness | A corpus that keeps changing needs three genuinely different answers, not one, since adding a document, deleting one, and swapping the embedding model each break a different assumption the index was built on |
+| [0018](lessons/0018-multi-hop-and-agentic-retrieval.md) | Multi-Hop and Agentic Retrieval | Decomposition splits a compound question into sub-questions you can already see in the original text, but some questions only reveal their second half once the first half's answer comes back, which needs an actual loop, not a smarter upfront split |
 
 ## Reference
 

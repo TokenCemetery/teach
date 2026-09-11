@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [19. Sampling and Constrained Decoding at Serve Time](lessons/0019-sampling-and-constrained-decoding-at-serve-time.md)
+**Latest lesson:** [20. Prefix Caching](lessons/0020-prefix-caching.md)
 
 ## Success looks like
 
@@ -39,6 +39,7 @@ Thirteen stages, first request to a defended, fleet-scale, production-monitored 
 | 6. The latency budget | 0016 to 0017 | p99 measurement methodology, tying the number back to cache, batching and quantization choices | Can quote and defend a p99 latency budget end to end |
 | 7. Speculative decoding | 0018 | Draft-model, n-gram, Medusa, and EAGLE speculative decoding | Can explain why parallel verification is nearly free and pick a speculative-decoding variant for a workload |
 | 8. Sampling and constrained decoding at serve time | 0019 | Per-request sampling parameters in a shared batch, FSM-indexed constrained decoding | Can explain why constrained decoding's guarantee is structural and why its per-token cost stays small |
+| 9. Prefix caching | 0020 | Automatic prefix caching as cross-request block sharing, long-document and multi-turn workloads, its prefill-only limit | Can explain when prefix caching helps a workload and why it never speeds up decode |
 
 ## Lessons
 
@@ -65,6 +66,7 @@ Work through these in order.
 | [0017](lessons/0017-defending-a-latency-budget-end-to-end.md) | Defending a Latency Budget End to End | A diagnostic order for a missed p99 budget, and the three things a final defended configuration must cite |
 | [0018](lessons/0018-speculative-decoding.md) | Speculative Decoding | Verifying several candidate tokens in one parallel forward pass costs about what generating one token normally costs, since decoding is bottlenecked on moving weights, not on the arithmetic, which is the one fact every variant of speculative decoding is built on |
 | [0019](lessons/0019-sampling-and-constrained-decoding-at-serve-time.md) | Sampling and Constrained Decoding at Serve Time | A continuous batch already runs many requests through one shared forward pass, and giving each one its own sampling settings, or forcing one of them to only ever produce valid JSON, both have to happen per-row inside that same shared pass without slowing everyone else down |
+| [0020](lessons/0020-prefix-caching.md) | Prefix Caching | Lesson 11 let parallel samples of the same request share one prompt's cached blocks; prefix caching is the same sharing applied across otherwise unrelated requests, and it speeds up exactly the phase that redundant prefill wastes, never the phase that generates the answer |
 
 ## Reference
 

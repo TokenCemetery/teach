@@ -32,6 +32,8 @@ type: resources
   Drafts at the level of the model's internal features rather than raw tokens, resolving feature-level prediction uncertainty by incorporating a one-step-ahead token sequence. Use for: a further refinement over Medusa, with a larger reported speedup while still preserving the target model's output distribution.
 - [Paper: "Efficient Guided Generation for Large Language Models" (Outlines), Willard and Louf, 2023](https://arxiv.org/abs/2307.09702)
   Reframes constrained generation as transitions between finite-state-machine states, letting a vocabulary index be precomputed once per grammar and reused as a fast per-token lookup. Use for: why grammar- or schema-constrained decoding adds little per-token overhead and guarantees output structure by construction rather than by hope.
+- [Docs: "Automatic Prefix Caching", vLLM Project](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html)
+  vLLM's own documentation for reusing a shared prefix's KV cache across otherwise unrelated requests, its two named example workloads (long-document QA, multi-round conversation), and its stated limit (speeds up prefill only, never decode). Use for: prefix caching as PagedAttention's block-sharing mechanism extended across requests.
 
 ## Gaps
 

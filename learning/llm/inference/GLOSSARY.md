@@ -26,6 +26,10 @@ _Avoid_: attention cache, key-value store
 A computation whose dominant cost is moving data (like a model's weights) from memory to the compute unit, rather than the arithmetic performed once that data arrives. Ordinary autoregressive decoding is memory-bandwidth-bound, which is exactly what lets speculative decoding verify several candidate tokens in one pass for roughly the cost of generating just one.
 _Avoid_: compute-bound (the opposite regime, where arithmetic dominates; conflating the two misses why extra verification work is nearly free during decoding specifically)
 
+**Prefix caching**:
+Reusing a shared prefix's already-computed KV cache across otherwise unrelated requests (a common system prompt, a repeatedly-queried document, earlier turns of a conversation), the same block-sharing mechanism PagedAttention uses within one request's parallel samples, extended across requests. Speeds up prefill only; decode time is unaffected.
+_Avoid_: assuming it also speeds up decode (it only skips redundant prefill computation for a matched prefix; generating new tokens afterward costs exactly the same either way)
+
 **Speculative decoding**:
 Drafting several candidate next tokens cheaply, then verifying all of them in one parallel forward pass through the target model, accepting correct guesses and resampling incorrect ones so the final output distribution exactly matches running the target model alone. A pure latency lever with no quality trade-off.
 _Avoid_: an approximation technique (it changes only how many expensive forward passes generation takes, never what gets generated)

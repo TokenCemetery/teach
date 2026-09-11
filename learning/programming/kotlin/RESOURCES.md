@@ -130,6 +130,10 @@ type: resources
   Official docs for extracting request data (`requirePathParameter`, `requireQueryParameter`, `requireCookie`), each throwing (`MissingRequestParameterException`) rather than returning null when a required value is actually absent. Use for: the boundary code lesson 31's "nullability lives at the edge" principle describes, applied concretely.
 - [Docs: "Configuration in a file", Ktor](https://ktor.io/docs/server-configuration-file.html)
   Official docs for `application.conf`/`application.yaml`, environment-variable substitution (`${ENV}`, and the optional `${?ENV}` form for overriding a prior default), custom configuration sections alongside Ktor's own reserved block, and command-line config-file overrides. Use for: the exact idiom for a value with a safe default and an environment-driven override.
+- [Docs: "Logging in Ktor Server", Ktor](https://ktor.io/docs/server-logging.html)
+  Official docs on SLF4J as Ktor's JVM logging abstraction, and its silent no-op fallback when no concrete logging framework is present. Use for: why logging calls that compile and run can still produce zero output.
+- [Docs: "Call logging", Ktor](https://ktor.io/docs/server-call-logging.html)
+  Official docs for the `CallLogging` plugin: default `Level.INFO`, the `filter { }` block for logging only some requests, and `mdc(...)` for per-request diagnostic values scoped to one call's lifetime. Use for: request-level logging, and the pattern-update step MDC values need to actually appear in output.
 - [Docs: "Classes", Kotlin](https://kotlinlang.org/docs/classes.html)
   Official docs on Kotlin classes: the primary constructor, properties declared directly in the class header, and when the docs themselves recommend a data class or an extension function instead of a plain class. Use for: what a class actually needs to encapsulate, before reaching for one reflexively.
 - [Docs: "Properties", Kotlin](https://kotlinlang.org/docs/properties.html)

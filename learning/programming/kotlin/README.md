@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [35. Reviewing Kotlin](lessons/0035-reviewing-kotlin.md)
+**Latest lesson:** [36. Type-Safe Builders and DSLs](lessons/0036-type-safe-builders-and-dsls.md)
 
 ## Success looks like
 
@@ -30,7 +30,7 @@ Become the engineer trusted to own Kotlin on a team, in a backend service or an 
 
 ## The arc
 
-Eight stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Nine stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -42,6 +42,7 @@ Eight stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 6. Testing and build | 0028 to 0030 | Kotlin test frameworks, mocking, the Gradle Kotlin DSL and dependency management | Someone else can clone, build, test and run it |
 | 7. Shipping a service | 0031 to 0033 | Structuring a typed, tested backend service, Android-specific idioms where the platform diverges, generics and variance (`in`/`out`) | Has shipped a typed, tested Kotlin backend service or Android component |
 | 8. Judgment | 0034 to 0035 | Java interop, reviewing Kotlin and naming precisely what a construct is costing | Trusted to make the call and explain it to someone else |
+| 9. Advanced Idiom | 0036 | Type-safe builders and DSLs, `value class`/`@JvmInline`, `kotlinx.serialization`, `Result` and error-handling idioms | Writes a small type-safe builder DSL, a zero-cost wrapper type, and a `Result`-based error path idiomatically |
 
 ## Lessons
 
@@ -84,6 +85,7 @@ Work through these in order.
 | [0033](lessons/0033-generics-and-variance.md) | Generics and Variance | Declaration-site variance in place of wildcards, what out and in actually promise about a type parameter, and how to read a projected signature |
 | [0034](lessons/0034-java-interop.md) | Java Interop | Why the boundary is asymmetric, what a platform type costs you and how to pay it back, and which annotations you owe a Java caller |
 | [0035](lessons/0035-reviewing-kotlin.md) | Reviewing Kotlin | Turning the arc into a review instrument: the cost each habit hides, the shape of a comment that names it, and what not to review |
+| [0036](lessons/0036-type-safe-builders-and-dsls.md) | Type-Safe Builders and DSLs | Lesson 15 taught the receiver-style function type that lets run and apply expose this; a type-safe builder is that exact mechanism nested recursively, and @DslMarker is the one attribute that keeps a nested builder from silently reaching the wrong receiver |
 
 ## Reference
 

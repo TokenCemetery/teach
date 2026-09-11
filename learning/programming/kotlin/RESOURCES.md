@@ -100,6 +100,8 @@ type: resources
   Official docs on the `inline` modifier's actual cost/benefit trade-off, non-local returns, `noinline`/`crossinline`, and reified type parameters, which only work because inlining erases the usual generics-erasure boundary. Use for: why `inline` and `reified` are paired, not two unrelated features.
 - [Docs: "Higher-order functions and lambdas", Kotlin](https://kotlinlang.org/docs/lambdas.html)
   Official docs on function types, lambda syntax, trailing-lambda convention, and function literals with receiver (`A.(B) -> C`), the mechanism scope functions like `run` and `apply` are built on. Use for: functions as real values, not just something a lambda is loosely shorthand for.
+- [Docs: "Type-safe builders", Kotlin](https://kotlinlang.org/docs/type-safe-builders.html)
+  Official docs on building a type-safe builder DSL from a receiver-style function type, the receiver-conflict problem a nested builder introduces (a closure carries access to every enclosing receiver, not just the nearest one), and `@DslMarker` as the fix, restricting implicit member access to the nearest receiver unless an outer one is named explicitly. Use for: the construct receiver-style function types actually exist for.
 - [Docs: "Scope functions", Kotlin](https://kotlinlang.org/docs/scope-functions.html)
   Official docs on `let`, `run`, `with`, `apply`, and `also`: the object reference each provides (`it` vs `this`), what each returns (the lambda's result vs the context object), and the function-selection table distinguishing them. Use for: choosing the right scope function by what it actually returns, not by habit or resemblance to another one.
 - [Docs: "Extensions", Kotlin](https://kotlinlang.org/docs/extensions.html)

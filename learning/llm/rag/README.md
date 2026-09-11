@@ -83,6 +83,7 @@ Work through these in order.
 - [Hybrid Search](reference/hybrid-search.md): BM25 plus vector search, reciprocal rank fusion, tuning the blend
 - [Reranking](reference/reranking.md): cross-encoder rerankers, and when reranking earns its latency cost
 - [Retrieval Evaluation](reference/retrieval-evaluation.md): Recall@k, MRR, and diagnosing which pipeline stage is at fault
+- [Generation from Retrieval](reference/generation-from-retrieval.md): prompt construction over retrieved context, context-window budget, generation-stage failure modes
 
 ## How this works
 

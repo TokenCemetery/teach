@@ -10,6 +10,10 @@ Canonical terms for serving a trained model: what a server holds in memory, and 
 
 ## Terms
 
+**Attention sink**:
+The disproportionately large attention score a sequence's first few tokens receive regardless of their actual content, which is why dropping them from a sliding-window cache causes a quality collapse rather than a graceful loss of old context. Keeping just those initial tokens' KV entries permanently cached, alongside the usual sliding window, recovers most of full attention's performance (the StreamingLLM technique).
+_Avoid_: assuming any dropped old token causes the same damage (only the initial "sink" tokens carry this disproportionate weight; losing other old tokens outside the window degrades gracefully instead of collapsing)
+
 **Cold start (serving)**:
 The gap between an autoscaler deciding to add a replica and that replica actually being able to serve a request, dominated by the time it takes to load a large model's checkpoint into memory, which can take tens of seconds and far exceeds the time to generate a single token.
 _Avoid_: treating it as a request-queueing problem (a scheduler or router has no effect on it; it's set entirely by checkpoint size and the storage path it has to move across)
@@ -54,9 +58,17 @@ _Avoid_: splitting the computation inside a single layer (that's tensor parallel
 Reusing a shared prefix's already-computed KV cache across otherwise unrelated requests (a common system prompt, a repeatedly-queried document, earlier turns of a conversation), the same block-sharing mechanism PagedAttention uses within one request's parallel samples, extended across requests. Speeds up prefill only; decode time is unaffected.
 _Avoid_: assuming it also speeds up decode (it only skips redundant prefill computation for a matched prefix; generating new tokens afterward costs exactly the same either way)
 
+**RoPE scaling**:
+Extending how long a context a model can handle past its trained length by rescaling how rotary position embeddings encode distance between tokens (YaRN's approach: scaling high-frequency dimensions less and low-frequency dimensions more), rather than retraining from scratch. Changes nothing about how many tokens' keys and values get cached; a longer context handled this way still costs the KV cache's ordinary linear growth in full.
+_Avoid_: assuming it reduces or caps KV cache memory (it only extends the maximum usable context length; the cache for that longer context still grows exactly as it would without any scaling applied)
+
 **SLI (service level indicator)**:
 A quantitative, user-relevant ratio picked out of a raw exported metric, for example the fraction of requests with TTFT under a stated threshold, framed from the user's experience rather than the server's internal state.
 _Avoid_: a raw metric histogram itself (a histogram is measured data; an SLI is the specific user-relevant ratio chosen out of it to hold a target against)
+
+**Sliding-window attention**:
+Restricting each token to attend to at most a fixed number, `W`, of preceding tokens, rather than the entire sequence so far, paired with a rolling buffer cache that only ever holds `W` tokens' worth of keys and values. Caps a sequence's KV cache at a constant size regardless of how long the sequence actually grows, unlike RoPE scaling's unchanged linear growth.
+_Avoid_: assuming it extends how far a model can usefully see the same way RoPE scaling does (it caps the cache and bounds direct attention to the last `W` tokens; anything beyond that is reached only indirectly, through stacked layers, and on its own suffers a quality collapse without attention sinks)
 
 **SLO (service level objective)**:
 A stated target for an SLI, for example "99% of requests have TTFT under 300ms over a rolling 28 days." What's left over, 1 minus the SLO, is the error budget.

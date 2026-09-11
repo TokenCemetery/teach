@@ -46,6 +46,12 @@ type: resources
   vLLM's own list of exported Prometheus metrics: TTFT, inter-token latency, end-to-end latency, and separate prefill/decode time histograms. Use for: what a production server actually exports continuously, as opposed to a one-time benchmark.
 - [Google SRE Workbook: "Implementing SLOs"](https://sre.google/workbook/implementing-slos/)
   The canonical SRE framing of SLIs, SLOs, and error budgets: a user-relevant ratio, a stated target for it, and the tolerance for missing that target derived directly from the SLO. Use for: turning a raw exported metric into an actionable production target.
+- [Paper: "YaRN: Efficient Context Window Extension of Large Language Models", Peng et al., ICLR 2024](https://arxiv.org/abs/2309.00071)
+  Extends a model's usable context length past its trained length by rescaling RoPE's frequency dimensions non-uniformly, at a fraction of prior methods' fine-tuning cost. Use for: why RoPE scaling changes maximum context length without touching the KV cache's own growth.
+- [Paper: "Mistral 7B", Jiang et al., 2023](https://arxiv.org/abs/2310.06825)
+  Introduces sliding-window attention and its paired rolling buffer cache: each token attends to at most a fixed window of prior tokens, capping cache size regardless of sequence length. Use for: the mechanism that turns lesson 2's linear cache growth into a constant.
+- [Paper: "Efficient Streaming Language Models with Attention Sinks", Xiao et al., ICLR 2024](https://arxiv.org/abs/2309.17453)
+  Identifies the attention-sink phenomenon behind why plain sliding-window attention collapses once old tokens are dropped, and fixes it by permanently keeping a handful of initial tokens' KV entries. Use for: why a bounded cache can still serve an effectively unbounded stream.
 
 ## Gaps
 

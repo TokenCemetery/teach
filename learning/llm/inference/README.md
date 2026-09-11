@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [23. Production Observability and Cost](lessons/0023-production-observability-and-cost.md)
+**Latest lesson:** [24. Long Context at Serve Time](lessons/0024-long-context-at-serve-time.md)
 
 ## Success looks like
 
@@ -43,6 +43,7 @@ Thirteen stages, first request to a defended, fleet-scale, production-monitored 
 | 10. Multi-GPU and multi-node parallelism | 0021 | Tensor parallelism's actual mechanism past lesson 12's single flag, pipeline parallelism, and a decision procedure for which one (or both) a deployment needs | Can explain what a tensor-parallel combine step and a pipeline bubble each cost, and choose the right split for a given interconnect and node count |
 | 11. Fleet-level serving | 0022 | Request routing informed by cache locality, queue-depth-driven autoscaling, and why a cold start's model load time bounds how fast a new replica actually helps | Can explain how routing, autoscaling, and cold-start latency have to be reasoned about as one pipeline rather than tuned separately |
 | 12. Production observability and cost | 0023 | Continuously exported metrics, SLIs/SLOs/error budgets that turn a metric into a target, and cost per million tokens derived from measured throughput | Can defend a production configuration by citing its p99, the SLO and error budget it's held to, and its cost per million tokens |
+| 13. Long context at serve time | 0024 | RoPE scaling versus sliding-window attention and attention sinks, and what each actually does to lesson 2's cache-growth formula | Can explain whether a long-context technique extends usable length, caps cache size to a constant, or fixes a capped cache's failure mode |
 
 ## Lessons
 
@@ -73,6 +74,7 @@ Work through these in order.
 | [0021](lessons/0021-tensor-and-pipeline-parallelism.md) | Tensor and Pipeline Parallelism | Lesson 12 named tensor-parallel-size as a flag that splits a model across GPUs; this lesson opens up what that split actually does inside a layer, introduces pipeline parallelism as a different split of the same problem, and gives a decision procedure for which one (or both) a workload actually needs |
 | [0022](lessons/0022-fleet-level-serving.md) | Fleet-Level Serving | Lesson 5's scheduler picks the next request for one server's queue; a fleet adds a decision before that, which server gets the request at all, a decision about when to add more servers, and a cold-start cost that makes a freshly added server useless for tens of seconds |
 | [0023](lessons/0023-production-observability-and-cost.md) | Production Observability and Cost | Lesson 17 defended one measured p99 figure for one configuration; this lesson covers what has to be continuously exported to catch a regression automatically, the SLO and error budget that turn "good enough" into a target instead of a vibe, and the cost-per-million-tokens number that has to be defended alongside p99, not instead of it |
+| [0024](lessons/0024-long-context-at-serve-time.md) | Long Context at Serve Time | Lesson 2's capacity formula charges memory linearly with context length; RoPE scaling extends how long a context can be without changing that charge at all, while sliding-window attention and attention sinks change the formula itself by capping context length to a constant |
 
 ## Reference
 

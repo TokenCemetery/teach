@@ -128,6 +128,8 @@ type: resources
   Official docs stating that routing itself is implemented as a plugin, that Ktor activates none by default, and that a plugin can be scoped to specific routes rather than only installed globally. Use for: why nothing in a Ktor application works until it's explicitly installed.
 - [Docs: "Handling requests", Ktor](https://ktor.io/docs/server-requests.html)
   Official docs for extracting request data (`requirePathParameter`, `requireQueryParameter`, `requireCookie`), each throwing (`MissingRequestParameterException`) rather than returning null when a required value is actually absent. Use for: the boundary code lesson 31's "nullability lives at the edge" principle describes, applied concretely.
+- [Docs: "Configuration in a file", Ktor](https://ktor.io/docs/server-configuration-file.html)
+  Official docs for `application.conf`/`application.yaml`, environment-variable substitution (`${ENV}`, and the optional `${?ENV}` form for overriding a prior default), custom configuration sections alongside Ktor's own reserved block, and command-line config-file overrides. Use for: the exact idiom for a value with a safe default and an environment-driven override.
 - [Docs: "Classes", Kotlin](https://kotlinlang.org/docs/classes.html)
   Official docs on Kotlin classes: the primary constructor, properties declared directly in the class header, and when the docs themselves recommend a data class or an extension function instead of a plain class. Use for: what a class actually needs to encapsulate, before reaching for one reflexively.
 - [Docs: "Properties", Kotlin](https://kotlinlang.org/docs/properties.html)

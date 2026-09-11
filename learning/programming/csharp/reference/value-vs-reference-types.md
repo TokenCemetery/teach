@@ -64,3 +64,4 @@ Nullable **reference** types (`string?` vs `string`) are a separate, compiler-fl
 ## Related
 
 - [Lesson 1](../lessons/0001-structs-and-classes.md), [Lesson 2](../lessons/0002-nullable-value-types.md), [Lesson 3](../lessons/0003-basic-types-and-string-interpolation.md), [Lesson 4](../lessons/0004-collections.md), [Lesson 6](../lessons/0006-exceptions.md)
+- [Modelling](modelling.md): the constructs (record, interface, generics) built on this distinction

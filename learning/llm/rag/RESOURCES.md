@@ -43,6 +43,8 @@ type: resources
   States precisely why single-pass retrieval fails multi-step questions (what to retrieve depends on what's already been derived) and interleaves a reasoning step with a retrieval step to solve it. Use for: the mechanism behind a retrieval loop where a later query depends on an earlier hop's answer.
 - [Paper: "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection", Asai et al., 2023](https://arxiv.org/abs/2310.11511)
   Trains a model to decide whether retrieval is needed at all and to critique retrieved passages, rather than retrieving a fixed number of passages indiscriminately every time. Use for: agentic retrieval's other axis, whether to retrieve at all, distinct from how many hops a multi-step question needs.
+- [Guide: "RAG Observability: How Coralogix Helps You Trace Retrieval-to-Generation Quality", Coralogix, 2026](https://coralogix.com/guides/rag-observability/)
+  Covers why ordinary infrastructure monitoring (latency, throughput, error rate) stays green through silent retrieval and context-window failures, and the reference-free, context-window-utilization, and embedding-drift signals that catch them instead. Use for: what to actually monitor once a pipeline is live, beyond the offline metrics lesson 10 covers.
 
 ## Gaps
 

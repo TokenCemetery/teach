@@ -22,6 +22,10 @@ _Avoid_: segment, passage (use only when quoting a source that uses it)
 The process of splitting a document into chunks, by a fixed size, by the document's own structure, or by detecting where its topic shifts.
 _Avoid_: splitting (too generic; use only in prose describing the mechanical act, not as the process name)
 
+**Context window utilization**:
+The ratio of chunks actually cited in a generated answer to chunks retrieved and placed in the prompt. Low utilization means tokens are spent on context the model never used; consistently high utilization can instead warn that critical material is getting truncated out of the context window before it can be cited at all.
+_Avoid_: assuming higher utilization is always better; at the high end it's a truncation warning sign, not a pure efficiency win
+
 **Error cascading**:
 A mistake at an early ingestion step (misidentifying a heading, merging columns in the wrong order) propagating into every later step that operates on the already-corrupted structure it was handed, corrupting a whole section's worth of eventual chunks rather than staying contained to the single element the mistake directly touched.
 _Avoid_: an isolated parsing error (understates the effect; the point of naming this cascading is that one early mistake compounds rather than staying local)
@@ -57,6 +61,10 @@ _Avoid_: post-filtering (searches the whole index first and discards afterward; 
 **Query decomposition**:
 Splitting a compound question into its separate sub-questions and retrieving for each independently, rather than embedding the whole compound question as one vector that sits close to none of the passages that would answer any single part of it well.
 _Avoid_: multi-query expansion (a different technique: expansion generates several full reformulations of one question, decomposition splits one question into separate, narrower sub-questions)
+
+**Reference-free scoring**:
+An LLM-judged relevance score computed per retrieved chunk without needing a known correct answer, aggregated over a time window as a hit rate or average relevance. What production monitoring uses in place of recall@k or MRR, which both require a labeled or synthetic query set most live traffic doesn't have.
+_Avoid_: recall@k, MRR (offline metrics requiring known-correct results; reference-free scoring is specifically the production substitute when no such labels exist)
 
 **Reindexing**:
 Rebuilding a vector index from scratch, required when the embedding model itself changes, since every existing vector was produced by the old model's own vector space and shares no comparable distances with a new model's embeddings. A different operation from incremental indexing, and from the periodic maintenance deletes and updates require.

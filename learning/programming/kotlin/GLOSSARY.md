@@ -22,6 +22,10 @@ _Avoid_: assuming the annotation alone does anything (without the compiler plugi
 `application.conf` (HOCON) or `application.yaml`, loaded automatically by `EngineMain` from resources, supporting environment-variable substitution (`${ENV}`, or `${?ENV}` for an optional override of a prior default). Custom, application-specific sections can sit alongside Ktor's own reserved `ktor { }` block in the same file.
 _Avoid_: a bare required substitution with no prior default (`value = ${ENV}` alone fails outright if the variable is absent; pair a default assignment with the optional `${?ENV}` form instead)
 
+**Exposed**:
+JetBrains' Kotlin SQL library on JDBC, offering a type-safe DSL (another instance of the type-safe builder mechanism) and a lighter DAO layer. Mostly blocking underneath, since JDBC itself is; `newSuspendedTransaction`/`suspendedTransactionAsync` (or `suspendTransaction()` with R2DBC) are the coroutine-friendly entry points, and always start a fresh transaction rather than joining one already in progress.
+_Avoid_: calling an ordinary `transaction { }` block directly inside a suspending function (it runs synchronously on the calling thread, blocking it for the query's full duration)
+
 **MDC (Mapped Diagnostic Context)**:
 A per-request diagnostic value (`mdc("name") { call -> ... }` in Ktor's `CallLogging`), scoped to that specific call's lifetime and removed automatically afterward. Correctly computed the whole time, but invisible in actual log output unless the log pattern is separately updated to print MDC content (`%X` in Logback).
 _Avoid_: assuming adding an `mdc(...)` block alone makes the value appear in logs (the pattern itself must also be updated to print MDC content, a second, easy-to-forget step)

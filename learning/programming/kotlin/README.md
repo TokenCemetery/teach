@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Kotlin on a team, in a backend service or an Android app: able to model a domain idiomatically, write and reason about coroutines and `Flow`, ship a typed, tested Kotlin service or Android component, and review someone's Kotlin and name concretely what a construct is costing them.
 
-**Latest lesson:** [42. Logging](lessons/0042-logging.md)
+**Latest lesson:** [43. Persistence](lessons/0043-persistence.md)
 
 ## Success looks like
 
@@ -40,10 +40,10 @@ Ten stages, zero to senior. Not a lesson list: a stage takes several lessons, an
 | 4. Collections and sequences | 0019 to 0021 | Kotlin's collection operators, lazy `Sequence` vs eager collections, grouping and folding | Chooses between a collection pipeline and a sequence and can defend the cost of each |
 | 5. Concurrency | 0022 to 0027 | Threads and the JVM memory model basics, suspend functions and coroutine builders, structured concurrency, coroutine context and dispatchers, `Flow`, cancellation and exception handling | Can predict what a concurrent coroutine program does before running it, and compare the model to Java virtual threads |
 | 6. Testing and build | 0028 to 0030 | Kotlin test frameworks, mocking, the Gradle Kotlin DSL and dependency management | Someone else can clone, build, test and run it |
-| 7. Shipping a service | 0031 to 0033 | Structuring a typed, tested backend service, Android-specific idioms where the platform diverges, generics and variance (`in`/`out`) | Has shipped a typed, tested Kotlin backend service or Android component |
+| 7. Shipping a service | 0031 to 0033 | Structuring a typed, tested backend service, Android-specific idioms where the platform diverges, generics and variance (`in`/`out`) | Has structured a typed, tested Kotlin backend service or Android component; stage 10 completes it with an HTTP layer, configuration, logging and persistence |
 | 8. Judgment | 0034 to 0035 | Java interop, reviewing Kotlin and naming precisely what a construct is costing | Trusted to make the call and explain it to someone else |
 | 9. Advanced Idiom | 0036 to 0039 | Type-safe builders and DSLs, `value class`/`@JvmInline`, `kotlinx.serialization`, `Result` and error-handling idioms | Writes a small type-safe builder DSL, a zero-cost wrapper type, and a `Result`-based error path idiomatically |
-| 10. Completing the Service | 0040 to 0042 | An HTTP layer, configuration, logging, and persistence for the Kotlin backend service stage 7 started structuring | Ships a Kotlin backend service with a routed HTTP layer, externalized configuration, structured logging, and database access, not only a structured shell |
+| 10. Completing the Service | 0040 to 0043 | An HTTP layer, configuration, logging, and persistence for the Kotlin backend service stage 7 started structuring | Ships a Kotlin backend service with a routed HTTP layer, externalized configuration, structured logging, and database access, not only a structured shell |
 
 ## Lessons
 
@@ -93,6 +93,7 @@ Work through these in order.
 | [0040](lessons/0040-http-layer.md) | HTTP Layer | Lesson 31 deliberately deferred routing to whichever framework you chose; Ktor's own routing block turns out to be lesson 36's type-safe builder DSL applied to HTTP, nothing installed by default, and request-parameter extraction that fails loudly rather than silently binding the wrong thing |
 | [0041](lessons/0041-configuration.md) | Configuration | A service's actual behavior, its port, its database URL, its secrets, has to change across environments without recompiling a single line, and Ktor's configuration file plus one specific, easy-to-miss substitution idiom is how a default and an environment override live in exactly one place |
 | [0042](lessons/0042-logging.md) | Logging | SLF4J silently does nothing until a real logging backend is added as a dependency, and CallLogging's per-request MDC values are silently invisible until the log pattern itself is updated to print them, the same shape of trap appearing twice in the same lesson |
+| [0043](lessons/0043-persistence.md) | Persistence | Exposed's DSL is another type-safe builder, and it is mostly blocking underneath, since it wraps JDBC; the stage 10 capstone is dispatching that blocking work correctly instead of stalling whatever thread happened to be running the request, and revisiting what stage 7's shipped service actually needed all along |
 
 ## Reference
 

@@ -134,6 +134,10 @@ type: resources
   Official docs on SLF4J as Ktor's JVM logging abstraction, and its silent no-op fallback when no concrete logging framework is present. Use for: why logging calls that compile and run can still produce zero output.
 - [Docs: "Call logging", Ktor](https://ktor.io/docs/server-call-logging.html)
   Official docs for the `CallLogging` plugin: default `Level.INFO`, the `filter { }` block for logging only some requests, and `mdc(...)` for per-request diagnostic values scoped to one call's lifetime. Use for: request-level logging, and the pattern-update step MDC values need to actually appear in output.
+- [Docs: "Working with Transactions", Exposed](https://www.jetbrains.com/help/exposed/transactions.html)
+  Official JetBrains docs for Exposed's transaction model: synchronous, blocking execution on the current thread by default, `newSuspendedTransaction`/`suspendedTransactionAsync` as the coroutine-friendly alternative (always starting a fresh transaction), and nested-transaction rollback scoped by SQL `SAVEPOINT`. Use for: why a plain Exposed transaction inside a suspending function is a real defect, and the documented fix.
+- [Docs: "Integrate a database with Kotlin, Ktor, and Exposed", Ktor](https://ktor.io/docs/server-integrate-database.html)
+  Official docs for the `withTransaction()` pattern: a suspending block run inside a new top-level transaction with the coroutine context switched to `Dispatchers.IO`. Use for: dispatching Exposed's underlying blocking JDBC work correctly instead of stalling the handler's own thread.
 - [Docs: "Classes", Kotlin](https://kotlinlang.org/docs/classes.html)
   Official docs on Kotlin classes: the primary constructor, properties declared directly in the class header, and when the docs themselves recommend a data class or an extension function instead of a plain class. Use for: what a class actually needs to encapsulate, before reaching for one reflexively.
 - [Docs: "Properties", Kotlin](https://kotlinlang.org/docs/properties.html)

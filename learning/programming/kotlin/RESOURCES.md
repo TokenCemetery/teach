@@ -120,6 +120,8 @@ type: resources
   Official docs on `@JvmInline value class`: the single-property constraint, the compiler's preference for an unboxed runtime representation, the documented "boxed whenever used as another type" rule (generics, `Any`, interfaces), and the doubly-nullable case that boxes even ordinary-looking usage. Use for: the zero-cost fix for primitive obsession, and precisely where "zero-cost" stops applying.
 - [Repo: kotlinx.serialization, Kotlin](https://github.com/Kotlin/kotlinx.serialization)
   Official repo and docs for the compiler-plugin-based, reflectionless serialization library: the two-piece setup (compiler plugin plus runtime dependency), full JVM/JS/Native multiplatform support, and the explicit, per-type serialization-strategy philosophy with no global configuration point. Use for: what a Java habit's reflective serializer (Jackson, Gson) doesn't do, and why it can't reach every Kotlin target.
+- [API: "runCatching", Kotlin](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-run-catching.html)
+  Official stdlib reference for `runCatching`'s `Result<T>`-returning contract, and that it catches any `Throwable` a block throws, including `CancellationException`. Use for: the exact stdlib contract that collides with coroutine cancellation if used unguarded.
 - [Docs: "Classes", Kotlin](https://kotlinlang.org/docs/classes.html)
   Official docs on Kotlin classes: the primary constructor, properties declared directly in the class header, and when the docs themselves recommend a data class or an extension function instead of a plain class. Use for: what a class actually needs to encapsulate, before reaching for one reflexively.
 - [Docs: "Properties", Kotlin](https://kotlinlang.org/docs/properties.html)

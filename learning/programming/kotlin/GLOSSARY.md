@@ -26,6 +26,14 @@ _Avoid_: bang-bang (informal; name the operator by what it does)
 The type Kotlin assigns to a value returned from unannotated Java code, since it can't determine nullability from Java alone. Treat it as possibly null unless there's positive evidence otherwise.
 _Avoid_: none in particular, but do not treat it as equivalent to a Kotlin non-nullable type
 
+**Result&lt;T&gt;**:
+A value holding either a successful result or a caught `Throwable`, returned by `runCatching` instead of letting an exception propagate. Best suited to a single, expected, recoverable failure mode; several genuinely distinct failure kinds a caller must tell apart are better served by a sealed hierarchy instead.
+_Avoid_: wrapping every function in one reflexively (a genuine bug, an invariant violation, is often better left to crash loudly as an uncaught exception than quietly returned as a `Result.failure`)
+
+**runCatching**:
+Runs a block and wraps its outcome in a `Result<T>`, catching any `Throwable` the block throws, including `CancellationException`. Inside a coroutine, a caught `CancellationException` must be explicitly rethrown before treating anything else as an ordinary failure, since no stdlib variant does this automatically.
+_Avoid_: using it unguarded inside a suspend function or coroutine builder (it can silently swallow a `CancellationException`, breaking structured concurrency's cancellation propagation)
+
 **Type-safe builder (DSL)**:
 A builder function taking a receiver-style lambda parameter (`T.() -> R`), nested recursively, so a caller can write nested blocks that read like their own small, structured language while every call resolves against an ordinary receiver's members. The construct receiver-style function types (lesson 15) exist for.
 _Avoid_: treating it as a distinct compiler feature (it's the same receiver-style function type mechanism used elsewhere, applied recursively, with no additional language support needed beyond `@DslMarker`'s scope restriction)

@@ -104,6 +104,7 @@ Work through these in order.
 - [Resources](RESOURCES.md): trusted sources
 - [Null Safety and Mutability](reference/null-safety-and-mutability.md): null safety, `val`/`var`, values vs references, predicting nullability and mutability
 - [Modelling](reference/modelling.md): data classes, sealed classes and exhaustive `when`, object declarations and companion objects, interfaces with default methods
+- [Idiom](reference/idiom.md): extension functions, scope functions (`let`/`run`/`with`/`apply`/`also`), delegation (`by`), operator overloading
 
 ## How this works
 

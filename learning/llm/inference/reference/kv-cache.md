@@ -54,7 +54,7 @@ Llama-2-70B, tensor-parallel across four 80 GB GPUs (320 GB pool), weights plus 
 160 GB / 1.25 GB per sequence ≈ 128 concurrent sequences
 ```
 
-That ceiling, not the model's raw throughput, is usually what a batching scheduler is negotiating against.
+That ceiling, not the model's raw throughput, is usually what a batching scheduler is negotiating against; see [Batching](batching.md).
 
 ## Prefill claims most of the footprint in one step
 
@@ -87,3 +87,4 @@ Llama-2-70B, GQA, fp8:  160 KB/token   (half, only bytes_per_value changed)
 ## Related
 
 - [Lesson 1](../lessons/0001-the-kv-cache.md), [Lesson 2](../lessons/0002-capacity-and-batch-size.md), [Lesson 3](../lessons/0003-growth-prefill-decode-precision.md)
+- [Batching](batching.md): what the capacity ceiling this sheet computes actually constrains

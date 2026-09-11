@@ -78,6 +78,7 @@ Work through these in order.
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
+- [Chunking and Embeddings](reference/chunking-and-embeddings.md): chunking strategies, embedding models, similarity metrics, dimensionality trade-offs
 
 ## How this works
 

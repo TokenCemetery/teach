@@ -36,6 +36,28 @@ The same file behaves differently depending only on which path it is placed on a
 | A plain jar, no descriptor, on the module path | An automatic module | None: exports and opens every package it contains, for compatibility |
 | Any jar's classes, loaded from the class path | Merged into the one unnamed module | None: reads every module in the graph, exports and opens all of its own packages |
 
+## Building a runtime image with jlink
+
+`jlink --module-path <path> --add-modules <mod> --output <dir>` links only the named modules' transitive `requires` closure into a working `bin/java`. See [lesson 51](../lessons/0051-runtime-images.md).
+
+| Fact | Consequence |
+|---|---|
+| Only explicit (named) modules can be linked | an application depending on even one automatic module cannot be linked into an image at all, not degraded, refused |
+| Services are not bound by default | a module supplying a `ServiceLoader` implementation needs `--add-modules` naming it explicitly, or `--bind-services` for all of them |
+| Optional (`requires static`) dependencies are not resolved automatically | an application that runs fine normally can still fail to include an optional dependency in a linked image |
+| `--strip-debug`, `--compress={0,1,2}`, `--include-locales` | the documentation's own worked example: 23M stripped and compressed versus 36M without, same module set |
+
+## jpackage: modular versus non-modular input
+
+`jpackage` builds or accepts a runtime image and produces a platform application image or installer. See [lesson 51](../lessons/0051-runtime-images.md).
+
+| Input | What happens |
+|---|---|
+| `-m module/class`, a real module | passed straight to jlink; the identical automatic-module refusal applies |
+| `--main-class` + `--main-jar`, non-modular | jlink is run with a default platform module set instead of linking the app's own code; the jar rides inside the image as ordinary classpath content |
+| `--runtime-image <dir>` | a pre-built image is copied in instead of jpackage running jlink itself |
+| No `--jlink-options` given | defaults to `--strip-native-commands --strip-debug --no-man-pages --no-header-files` |
+
 ## Symptom to cause
 
 Populated only from failures the lessons actually reproduced.
@@ -45,6 +67,8 @@ Populated only from failures the lessons actually reproduced.
 | A compile error naming a package as inaccessible, on a type that is `public` | strong encapsulation: the package is not exported, or the calling module does not read the exporting one; `public` alone stopped being sufficient (lesson 50) |
 | `InaccessibleObjectException` from `setAccessible(true)` | the target package is neither `exported` nor `opened`; before the module system, `setAccessible` could reach any private member of any jar with no such gate (lesson 50) |
 | A missing `requires` module is reported before any application code runs at all | module resolution follows every `requires` edge outward from the initial module at launch, and fails immediately if one is missing, earlier than the class-path era's `NoClassDefFoundError` (lesson 50) |
+| `jlink` fails on a dependency that runs fine normally | that dependency has no `module-info.class` of its own, so it became an automatic module the moment it hit the module path, and `jlink` only links explicit modules (lesson 51) |
+| A service or an optional dependency the application uses is missing from a linked image | `jlink`'s resolution does not bind services or resolve `requires static` dependencies by default, unlike an ordinary launch (lesson 51) |
 
 ## Sources
 
@@ -52,3 +76,6 @@ Populated only from failures the lessons actually reproduced.
 - [Reflective Access with Open Modules and Open Packages, dev.java](https://dev.java/learn/modules/opening-for-reflection/): `opens`, open modules, and exactly what changes at compile time versus run time
 - [Code on the Class Path - the Unnamed Module, dev.java](https://dev.java/learn/modules/unnamed-module/): the unnamed module's name, dependencies and exports
 - [Incremental Modularization with Automatic Modules, dev.java](https://dev.java/learn/modules/automatic-module/): what an automatic module exports and opens, and why
+- [The jlink Command, Oracle](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jlink.html): options, the automatic-module refusal, and the stripping/compression examples
+- [The jpackage Command, Oracle](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jpackage.html): modular versus non-modular input, and the default jlink options
+- [Creating Runtime and Application Images with JLink, dev.java](https://dev.java/learn/jlink/): worked examples of building a runtime image and an application image

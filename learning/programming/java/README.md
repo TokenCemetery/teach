@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0050. The Module System](lessons/0050-the-module-system.md)
+**Latest lesson:** [0051. Runtime Images](lessons/0051-runtime-images.md)
 
 ## Success looks like
 
@@ -110,6 +110,7 @@ Work through these in order.
 | [0048](lessons/0048-reviewing-java.md) | Reviewing Java | Naming what an abstraction costs, instead of saying it feels wrong |
 | [0049](lessons/0049-does-this-framework-earn-its-place.md) | Does This Framework Earn Its Place | The last judgment in the arc, made from the service's constraints rather than the framework's promises |
 | [0050](lessons/0050-the-module-system.md) | The Module System | module-info.java replaces the JAR as the boundary the compiler and runtime both recognise, requires and exports decide what crosses it, and strong encapsulation means a public class in an unexported package is invisible past its own module |
+| [0051](lessons/0051-runtime-images.md) | Runtime Images | jlink assembles a runtime image from nothing but the transitive closure of the modules it is told to start with, but only from explicit modules, an application depending on even one automatic module cannot be linked at all |
 
 ## Reference
 

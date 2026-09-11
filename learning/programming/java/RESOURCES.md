@@ -41,6 +41,15 @@ type: resources
 - [Docs: "The jdeprscan Command", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jdeprscan.html)
   Scans compiled code for uses of deprecated API, and with `--release` scans against another platform's deprecation set. Use for: stage 7, answering whether code survives an upgrade before attempting one.
 
+- [Docs: "The jlink Command", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jlink.html)
+  Every option for assembling a custom runtime image, including the automatic-module refusal and the stripping and compression flags. Use for: stage 8, runtime images.
+
+- [Docs: "The jpackage Command", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jpackage.html)
+  Packaging a runtime image, modular or not, into a platform-specific application image or installer. Use for: stage 8, runtime images.
+
+- [Docs: "Creating Runtime and Application Images with JLink", Oracle, dev.java](https://dev.java/learn/jlink/)
+  Worked examples of building a runtime image and an application image, including services and optional dependencies. Use for: stage 8, runtime images.
+
 - [Docs: "The jfr Command", Oracle, docs.oracle.com](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jfr.html)
   The command-line reader for a Flight Recorder file: `summary`, `print` and event filtering. Use for: stage 6, reading a recording without installing a graphical tool.
 

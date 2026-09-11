@@ -266,6 +266,10 @@ _Avoid_: deterministic build, repeatable build, clean build
 The total memory the operating system charges to the JVM process, which is the heap plus metaspace plus thread stacks plus the code cache plus native and direct buffers. It is what a container limit is enforced against, and `-Xmx` bounds only the first term of it.
 _Avoid_: heap usage, virtual memory, max heap
 
+**Runtime image**:
+The directory `jlink` produces, containing a working `java` launcher plus only the modules actually reached from the ones named on its command line. It links explicit modules only; an application depending on even one automatic module cannot be linked into one at all.
+_Avoid_: JRE, JDK, a smaller JDK (it is not a general-purpose installation, only the modules it was built to include)
+
 **Scalar replacement**:
 The optimisation that follows escape analysis, holding a non-escaping object's fields in registers or on the stack instead of allocating the object. The allocation then does not appear in a measurement of bytes per operation at all, because it never happened.
 _Avoid_: inlining, stack allocation, elision

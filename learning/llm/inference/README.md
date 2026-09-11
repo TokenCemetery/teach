@@ -80,6 +80,7 @@ Work through these in order.
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
+- [KV cache](reference/kv-cache.md): per-token cost, head sharing, growth across a request, and capacity planning
 
 ## How this works
 

@@ -83,6 +83,12 @@ type: resources
 - [Blog: Amos Wenger, fasterthanli.me](https://fasterthanli.me/)
   Long, careful articles that follow one Rust problem all the way down, including several on async and on lifetimes. Use for: going one level below the book into why a rule holds.
 
+- [Book: "Proptest Book", altsysrq, altsysrq.github.io](https://altsysrq.github.io/proptest-book/)
+  The property-testing crate's own guide, worked through on one running example, including shrinking and failure persistence. Use for: stage 9, property-based testing.
+
+- [Docs: "insta", Armin Ronacher, docs.rs](https://docs.rs/insta/)
+  The snapshot-testing crate's reference: the assertion macros, the `INSTA_UPDATE` modes, and the `cargo insta review` workflow. Use for: stage 9, snapshot testing.
+
 ## Wisdom (Communities)
 
 - [Forum: "The Rust Programming Language Forum", The Rust Project, users.rust-lang.org](https://users.rust-lang.org/)

@@ -250,6 +250,10 @@ _Avoid_: the data being lost, a corrupted lock, an error you must `unwrap` past
 The two-variant enum a future's `poll` returns, either pending or ready. Pending is a promise to wake the caller later rather than a request to be asked again.
 _Avoid_: input and output polling, a busy loop, a status code
 
+**Property-based test**:
+A test that states a rule once and checks it against many generated inputs drawn from a `Strategy`, rather than one input a human chose, shrinking a failure down to the smallest case that still breaks the rule. It answers whether something always holds, not whether one particular output is the right one.
+_Avoid_: fuzzing (related, but undirected and not usually shrunk to a minimal case the same way), a replacement for an example-based test, randomised testing as a synonym
+
 **Provenance**:
 The information a pointer carries beyond its address, recording which allocation it came from and what it may reach. A round trip through an integer can lose it, leaving an address that is numerically right and not usable.
 _Avoid_: the address, a type, something a cast preserves automatically
@@ -302,9 +306,17 @@ _Avoid_: reassignment, overwriting, redeclaration
 A `#[test]` function marked `#[should_panic]`, passing only if its body panics, with an optional `expected = "..."` argument checked as a substring of the panic message rather than an exact match. Cannot be combined with a test that returns `Result`, since the two signal failure through different, non-mixing mechanisms.
 _Avoid_: assuming `expected` requires an exact match (it only checks the panic message contains the given text, precise enough to confirm the right panic occurred without demanding the whole message)
 
+**Shrinking**:
+A property-testing library's search, after a generated input breaks a stated rule, for a smaller input that still breaks it, repeated until no smaller failing case can be found. It's what turns a hundred generated inputs collapsing into one short counterexample, reported as the minimal failing input, rather than whatever random value happened to trigger the failure first.
+_Avoid_: retrying, minimisation as a general term, something the test author does by hand
+
 **Slice**:
 A borrowed view into a contiguous sequence, carrying a pointer and a length and owning nothing. `&str` and `&[T]` are the two that appear constantly, and both are what a signature should ask for.
 _Avoid_: array, view, range, substring
+
+**Snapshot test**:
+A test that compares one chosen input's rendered output against a baseline file a human reviewed and accepted, failing when the two differ so a human decides whether the difference is a bug or an intended update. It checks whether an output changed from what was already approved, not whether a rule holds across many inputs.
+_Avoid_: a property-based test (that checks a rule over many generated inputs; this checks one output against a stored baseline), a golden file as a synonym without the review step, an assertion you could just as well have written by hand
 
 **Soundness**:
 The property that no safe caller, however careless, can cause undefined behaviour through your interface. It is a much stronger claim than the code working, and tests cannot establish it.

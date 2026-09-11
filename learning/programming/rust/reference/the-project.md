@@ -56,6 +56,7 @@ These labels have to sit beside the input rather than inside it, because a line 
 | 6. Async | Read from sources that wait, without stalling the whole run on the slowest one | stage 6 |
 | 7. Unsafe and performance | Have a measured per-line cost, and either a faster path justified by that measurement or a written note saying why the obvious optimisation was not worth it | stage 7 |
 | 8. Judgment | Be published, versioned, documented, and reviewable, with a public API you could change without breaking a dependant | stage 8 |
+| 9. Testing | Have a test suite: unit tests beside the code they exercise, integration tests grouped by behaviour with shared setup in `tests/common/mod.rs`, at least one property that must always hold, and a snapshot of the summary report reviewed once and committed | stage 9 |
 
 ## The rule that makes it useful
 

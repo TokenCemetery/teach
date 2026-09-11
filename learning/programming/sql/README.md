@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0050. Roles and Least Privilege](lessons/0050-roles-and-least-privilege.md)
+**Latest lesson:** [0051. Row-Level Security](lessons/0051-row-level-security.md)
 
 ## Success looks like
 
@@ -109,6 +109,7 @@ Work through these in order.
 | [0048](lessons/0048-trusted-with-the-database.md) | Trusted With the Database | Seven stages end in one habit, which is naming the row, the lock or the plan that makes a call defensible |
 | [0049](lessons/0049-sql-injection-and-parameterised-statements.md) | SQL Injection and Parameterised Statements | String concatenation lets a value change what a statement means, not only what it matches, and a parameterised statement removes the possibility rather than trying to sanitise every case |
 | [0050](lessons/0050-roles-and-least-privilege.md) | Roles and Least Privilege | Roles subsume the old ideas of users and groups, ownership already grants every privilege with no GRANT needed, and least privilege is entirely about what everyone else is allowed to do |
+| [0051](lessons/0051-row-level-security.md) | Row-Level Security | GRANT decides access to a table as a whole, a row security policy decides it per row, and the engine enforces it on every access path, not only the one a developer remembered to filter |
 
 ## Reference
 

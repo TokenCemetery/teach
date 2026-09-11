@@ -260,6 +260,10 @@ _Avoid_: correctness, consistency, cascade, constraint
 The single concept PostgreSQL uses for what used to be a separate "user" and "group": any role can log in, own objects, or be granted membership in another role, any or all at once. `LOGIN` is the one attribute that lets it authenticate a connection; `CREATE USER` is `CREATE ROLE` with that attribute already on.
 _Avoid_: a synonym only for a person, group as a distinct kind of object, a login-only concept
 
+**Row security policy**:
+A per-row condition layered on top of `GRANT`, checked by the engine on every access path under a given role, absent by default and default-deny once a table enables it. `USING` governs which existing rows a command can see or target; `WITH CHECK` governs whether a row being written is allowed to exist at all.
+_Avoid_: a WHERE clause the application remembers to add, a view, a CHECK constraint, something GRANT alone can express
+
 **Savepoint**:
 A named point inside a transaction that `ROLLBACK TO SAVEPOINT` returns to, discarding the work after it and keeping the work before it. It is not a nested transaction: nothing it did is durable until the outer transaction commits.
 _Avoid_: nested transaction, checkpoint, commit, rollback

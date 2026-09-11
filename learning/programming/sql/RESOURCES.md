@@ -107,6 +107,12 @@ type: resources
 - [Docs: "ALTER DEFAULT PRIVILEGES", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/sql-alterdefaultprivileges.html)
   Setting privileges for objects a role has not created yet, and the exact scope of "future" it covers. Use for: stage 8, keeping an application role's access from silently lapsing after a migration.
 
+- [Docs: "5.9. Row Security Policies", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
+  The default-deny model, USING versus WITH CHECK, how policies for the same command combine, and who bypasses them by default. Use for: stage 8, row-level security.
+
+- [Docs: "CREATE POLICY", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/sql-createpolicy.html)
+  The full syntax a policy accepts, including `FOR` a specific command and `TO` a specific role. Use for: stage 8, the exact clause a policy needs.
+
 - [Docs: "Don't Do This", PostgreSQL contributors, wiki.postgresql.org](https://wiki.postgresql.org/wiki/Don%27t_Do_This)
   A maintained list of choices that look reasonable and are regretted, with the reason for each. Use for: stage 4 type and schema decisions, and for review vocabulary.
 

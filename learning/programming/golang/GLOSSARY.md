@@ -86,6 +86,10 @@ _Avoid_: namespace, module, folder
 The value or pointer a method is called on, declared between `func` and the method name. Choose value or pointer per type rather than per method.
 _Avoid_: this, self, instance
 
+**RED method**:
+A request-driven service's three instrumentation signals: Rate, Errors, Duration, the last tracked as a percentile rather than an average so a slow tail is visible. Measures a service from the outside, the user's experience of it, complementary to the USE method's resource-level view.
+_Avoid_: an average for duration (a mean is dragged toward the bulk of fast requests and can hide a real, painful slow tail entirely)
+
 **Rune**:
 An alias for `int32` holding a Unicode code point. Ranging a string yields runes with their byte offsets; indexing a string yields a byte.
 _Avoid_: character, char, symbol
@@ -98,9 +102,17 @@ _Avoid_: error constant, error code, marker error
 A three-word header (pointer, length, capacity) describing a view into a **backing array**. It is copied by value like everything else, which is why appending inside a function does not change the caller's length.
 _Avoid_: list, array, vector
 
+**traceparent**:
+The W3C Trace Context header (`00-{trace ID}-{span ID}-{flags}`) OpenTelemetry adopted to correlate a request across services. A service preserves the trace ID on its outgoing calls but must generate its own new span ID for each hop; failing to forward the header at all silently starts a disconnected new trace downstream.
+_Avoid_: forwarding the exact header unchanged (each hop needs its own span ID; only the trace ID stays constant across the whole request)
+
 **Type parameter**:
 A placeholder type in a function or type declaration, bounded by a constraint. Worth introducing when the same logic is genuinely identical across types, not when behaviour differs. That is an **interface**.
 _Avoid_: generic type, template parameter
+
+**USE method**:
+A resource's three instrumentation signals: Utilization, Saturation, Errors, checked from inside a system (a CPU, a disk, a connection pool) to find a bottleneck fast. Complementary to the RED method's outside-in, service-level view, not a competing choice.
+_Avoid_: applying it to a whole request-driven service (USE is scoped to a resource; RED is the service-level counterpart)
 
 **Wrapping**:
 Producing an error that keeps another retrievable, with `%w` in `fmt.Errorf` or an `Unwrap` method. What you wrap becomes part of your API, because callers can match on it.

@@ -145,7 +145,7 @@ FORBIDDEN = [
     "placeholder text", "[placeholder]", "<placeholder>",
 ]
 
-FENCE = re.compile(r"^(```|~~~)", re.M)
+FENCE = re.compile(r"^\s*(```|~~~)", re.M)
 
 # The site's markdown extensions, kept in step with mkdocs.yml. Rendering with
 # these is the only check that actually proves a collapsible block survives,

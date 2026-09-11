@@ -105,6 +105,7 @@ Work through these in order.
 - [Value vs Reference Types](reference/value-vs-reference-types.md): struct vs class, nullable value types, predicting copy-vs-reference behaviour
 - [Modelling](reference/modelling.md): `record` types, pattern matching and switch expressions, interfaces with default implementations, generics
 - [Idiom](reference/idiom.md): extension methods, LINQ, delegates and events, nullable reference types
+- [Async](reference/async.md): the `Task` model, `async`/`await` mechanics, cancellation tokens, `IAsyncEnumerable`
 
 ## How this works
 

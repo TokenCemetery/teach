@@ -595,6 +595,8 @@ class Workspace:
             self.check_arc()
         if (self.root / "GLOSSARY.md").exists():
             self.check_glossary()
+        if (self.root / "RESOURCES.md").exists():
+            self.check_resources()
 
     def check_readme(self):
         """Every lesson row must repeat the lesson's own title and description."""
@@ -675,6 +677,20 @@ class Workspace:
         for n in sorted(set(seen) - taught):
             self.bad("README.md", f"arc stage {seen[n]!r} names lesson {n:04d}, "
                                   f"which does not exist")
+
+    def check_resources(self):
+        """Every RESOURCES.md link entry must carry at least one annotation line.
+
+        FORMATS.md requires it: "a bare link is useless in three months."
+        Inserting a new entry immediately before an existing one is enough to
+        steal the annotation that followed, leaving the pushed-down entry bare
+        (#102). At least one line, not exactly one: a deliberate second line,
+        such as a reading-order hint, is an editorial choice, not a defect.
+        """
+        lines = (self.root / "RESOURCES.md").read_text(encoding="utf-8").split("\n")
+        for i, line in enumerate(lines, 1):
+            if line.startswith("- [") and not (i < len(lines) and lines[i].startswith("  ")):
+                self.bad("RESOURCES.md", f"line {i}: entry has no annotation line")
 
     def check_glossary(self):
         """Alphabetical, because it is looked up rather than read, and every

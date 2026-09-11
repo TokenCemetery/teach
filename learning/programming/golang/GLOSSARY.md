@@ -110,6 +110,10 @@ _Avoid_: list, array, vector
 The W3C Trace Context header (`00-{trace ID}-{span ID}-{flags}`) OpenTelemetry adopted to correlate a request across services. A service preserves the trace ID on its outgoing calls but must generate its own new span ID for each hop; failing to forward the header at all silently starts a disconnected new trace downstream.
 _Avoid_: forwarding the exact header unchanged (each hop needs its own span ID; only the trace ID stays constant across the whole request)
 
+**Transaction-per-test isolation**:
+Beginning a database transaction before a test runs and rolling it back in `t.Cleanup` instead of ever calling `Commit`, so nothing the test wrote is ever visible outside it and every test starts from the same known state. Schema migrations must run before this transaction begins, never inside it.
+_Avoid_: committing inside a test meant to be isolated this way (a committed change persists across tests, defeating the whole point of the pattern)
+
 **Type parameter**:
 A placeholder type in a function or type declaration, bounded by a constraint. Worth introducing when the same logic is genuinely identical across types, not when behaviour differs. That is an **interface**.
 _Avoid_: generic type, template parameter

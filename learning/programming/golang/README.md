@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Go on a team: able to design, ship and operate a production Go service, review someone else's Go and name concretely why a design is wrong, and recognise when a design imported from another language is fighting Go rather than using it.
 
-**Latest lesson:** [0040. Testing an HTTP Handler](lessons/0040-testing-an-http-handler.md)
+**Latest lesson:** [0041. Testing Against a Real Database](lessons/0041-testing-against-a-real-database.md)
 
 ## Success looks like
 
@@ -43,7 +43,7 @@ Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 1. Foundations | Types, zero values, value vs pointer semantics, slice and map mechanics including aliasing, strings vs runes vs bytes, package basics | Can predict aliasing and copy behaviour without running the code |
 | 2. Idiom | Errors as values, wrapping with `%w`, `errors.Is`/`As`, implicit interface satisfaction, small interfaces, struct embedding, package layout and naming | Writes Go that a reviewer would not describe as "Java in Go syntax" |
 | 3. Concurrency | Goroutines, channels, `select`, `sync` primitives, `context` cancellation, `errgroup`, the race detector, the memory model, leak patterns | Can find a leak and a race in unfamiliar code and explain the guarantee that was violated |
-| 4. Production | HTTP services, config, `slog`, graceful shutdown, health checks, database access, generics where they earn their keep | Has shipped a service that survives being operated |
+| 4. Production | HTTP services, config, `slog`, graceful shutdown, health checks, database access, generics where they earn their keep | Has structured a service that survives being operated; stage 7 completes it with metrics, tracing, and tests around the handlers and the database, not only around functions |
 | 5. Performance and tooling | Table-driven tests, fuzzing, benchmarks, `pprof`, escape analysis, allocation reduction, modules and versioning, release builds | Optimises from a profile and proves the win with `benchstat` |
 | 6. Judgment | API design and compatibility, when *not* to use a goroutine, review, reading stdlib source for answers | Trusted to make the call and to explain it to someone else |
 | 7. Production Observability and Testing | Middleware and request-scoped values, metrics and tracing (RED/USE, OpenTelemetry), testing an HTTP handler, integration testing against a real database | Ships a service with the third and fourth signal stage 4 stopped short of: metrics, tracing, and tests around the handlers and the database, not only around functions |
@@ -94,6 +94,7 @@ Work through these in order.
 | [0038](lessons/0038-middleware-and-request-scoped-values.md) | Middleware and Request-Scoped Values | Lesson 22 showed a middleware writing a value into the context; this lesson is the other half, reading it back out safely, and the mechanism that example never needed, a middleware that decides not to call the next handler at all |
 | [0039](lessons/0039-metrics-and-tracing.md) | Metrics and Tracing | pprof profiles one process's own CPU and memory locally; metrics and tracing are the two production signals that answer a different pair of questions, how the service is doing right now in aggregate, and what happened to this one request across every service it touched |
 | [0040](lessons/0040-testing-an-http-handler.md) | Testing an HTTP Handler | Lesson 22 mentioned in passing that a ResponseRecorder makes a handler testable with no network; this lesson is that claim made concrete, why the interface seam is what makes it possible, and the different, easily confused tool for testing a client instead of a handler |
+| [0041](lessons/0041-testing-against-a-real-database.md) | Testing Against a Real Database | This is stage 7's capstone, testing.Short() gates a slow database test out of the fast local loop, a transaction begun and never committed gives each test a clean, isolated slate, and one integration test finally exercises middleware, a handler and a real database together |
 
 ## Reference
 

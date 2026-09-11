@@ -106,6 +106,7 @@ Work through these in order.
 - [Modelling](reference/modelling.md): `record` types, pattern matching and switch expressions, interfaces with default implementations, generics
 - [Idiom](reference/idiom.md): extension methods, LINQ, delegates and events, nullable reference types
 - [Async](reference/async.md): the `Task` model, `async`/`await` mechanics, cancellation tokens, `IAsyncEnumerable`
+- [Testing and Build](reference/testing-and-build.md): xUnit/NUnit, mocking, the `dotnet` CLI and project/package management
 
 ## How this works
 

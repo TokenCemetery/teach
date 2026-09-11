@@ -50,6 +50,14 @@ _Avoid_: assuming an object is collected once, wherever it lives (an object is r
 A separate heap for objects above a size threshold, bypassing the generation 0 to 1 to 2 promotion path entirely. Sometimes called generation 3, but it is only collected as part of a generation 2 collection, never as cheaply as a small object dying in generation 0.
 _Avoid_: assuming a large object gets its own cheap, frequent collection (it rides along with the most expensive kind of collection this system has, generation 2)
 
+**Liveness check**:
+A health check answering "has this process crashed and does it need to be restarted." Should exclude every dependency check (a slow-starting dependency is not a crash) so only an actual process failure fails it.
+_Avoid_: running the same checks as readiness (a slow-but-not-broken dependency would then trigger an unnecessary restart, which hits the same slow startup all over again)
+
+**Log level**:
+The severity a log call states (`Trace`, `Debug`, `Information`, `Warning`, `Error`, `Critical`, or `None` to suppress everything), filtered against a configured minimum that decides what actually gets emitted. The minimum is a configuration value, not something the calling code needs to know or change per environment.
+_Avoid_: hardcoding different log calls per environment (only the configured minimum level should change; the same `LogDebug`/`LogWarning` calls stay in the code everywhere)
+
 **Memory&lt;T&gt;**:
 A heap-safe wrapper over a contiguous region of memory, complementary to `Span<T>`: not a ref struct, so it can be a field, captured by a closure, or held across an `await`. Convert to a `Span<T>` via `.Span` for the synchronous window that needs the fast view.
 _Avoid_: assuming it is just a slower `Span<T>` (it exists specifically for the scenarios `Span<T>`'s ref-struct restrictions rule out, not as a general-purpose alternative)
@@ -57,6 +65,14 @@ _Avoid_: assuming it is just a slower `Span<T>` (it exists specifically for the 
 **MemoryDiagnoser**:
 A BenchmarkDotNet diagnoser that reports bytes allocated per operation (via `GC.GetAllocatedBytesForCurrentThread`) and `GenX` columns for collections per 1,000 operations. Counts managed heap allocations only.
 _Avoid_: assuming it counts every kind of allocation (`stackalloc`'d memory is never on the managed heap, so it never appears in the `Allocated` column at all)
+
+**Message template**:
+A logging call's fixed string with named placeholders (`"Getting user {UserId}"`), passed separately from its values so a structured logging provider keeps each placeholder as its own named, queryable property in the emitted log entry.
+_Avoid_: string interpolation (`$"Getting user {userId}"` collapses everything into one flat string before the logger sees it, destroying the structure a template preserves)
+
+**Readiness check**:
+A health check answering "is this instance ready to receive requests right now." Can legitimately report unhealthy during a slow startup dependency without the process having crashed, which is exactly what should route traffic away from it without triggering a restart.
+_Avoid_: conflating it with liveness (a failed readiness check should stop traffic, not restart the process; only a failed liveness check should do that)
 
 **ref struct**:
 A struct restricted so it can never be promoted to the managed heap: it cannot be boxed, cannot be a field of an ordinary class, cannot be the element type of an array, cannot be captured by a lambda or local function, and cannot be used across an `await` or `yield` boundary. `Span<T>` is the canonical example.

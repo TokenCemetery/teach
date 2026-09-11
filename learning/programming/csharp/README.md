@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [38. IDisposable and IAsyncDisposable](lessons/0038-idisposable-and-iasyncdisposable.md)
+**Latest lesson:** [39. Logging and Health Checks](lessons/0039-logging-and-health-checks.md)
 
 ## Success looks like
 
@@ -30,7 +30,7 @@ Become the engineer trusted to own a C# service on a team: able to model a domai
 
 ## The arc
 
-Nine stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Ten stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -43,6 +43,7 @@ Nine stages, zero to senior. Not a lesson list: a stage takes several lessons, a
 | 7. Judgment | 0030 to 0031 | Comparing `async`/`await` to Java virtual threads and LINQ to the Stream API, reviewing C# for a habit that merely compiles | Trusted to make the call and explain it to someone else |
 | 8. The CLR Runtime and Performance | 0032 to 0037 | The managed heap's generational design, GC modes, `Span<T>`/`Memory<T>`, `stackalloc`/`ArrayPool<T>`, measuring struct vs class with BenchmarkDotNet, and profiling | Optimises from a profile and defends the win with a trustworthy benchmark, tied back to the CLR's actual generational and allocation behaviour |
 | 9. Resource Lifetime | 0038 | Implementing `IDisposable` and `IAsyncDisposable`: the dispose pattern, the `disposing` parameter, finalizers, and `DisposeAsyncCore` | Implements a correct, idempotent dispose pattern instead of only consuming one through `using` |
+| 10. Operating and Securing the Service | 0039 | Structured logging with `ILogger`, liveness/readiness health checks, OpenTelemetry, authentication and authorization, and `System.Text.Json` serialization | Ships a service that can be observed, health-checked, secured, and correctly serialized, not just built |
 
 ## Lessons
 
@@ -88,6 +89,7 @@ Work through these in order.
 | [0036](lessons/0036-struct-vs-class-measured.md) | Struct vs Class, Measured | Lesson 1 argued that a struct can avoid a heap allocation a class of the same shape would require; this lesson is where that argument gets measured instead of reasoned about, and why the obvious way to measure it produces a number that means nothing at all |
 | [0037](lessons/0037-profiling-a-csharp-service.md) | Profiling a C# Service | dotnet-counters catches the symptom and dotnet-trace finds the hot stack behind it, profiling only after warm-up so the JIT isn't what gets measured, and the stage 8 capstone of sending a profile's finding back through one of this stage's own levers |
 | [0038](lessons/0038-idisposable-and-iasyncdisposable.md) | IDisposable and IAsyncDisposable | Lesson 6 taught using as a consumer, and lesson 26 taught that a container disposes what it creates; this lesson is for the other side, actually implementing IDisposable and IAsyncDisposable, the pattern that makes a type safe to dispose more than once, safe to finalize, and safe to await |
+| [0039](lessons/0039-logging-and-health-checks.md) | Logging and Health Checks | A typed, tested backend that nobody can observe or ask "are you working" isn't finished shipping; this lesson wires ILogger's structured logging and the liveness/readiness split into Program.cs the same way lesson 25 wired routing and lesson 26 wired the container |
 
 ## Reference
 

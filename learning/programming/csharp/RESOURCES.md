@@ -38,6 +38,12 @@ type: resources
   Official reference for the full dispose pattern: the public `Dispose()`/protected `Dispose(bool disposing)` split, what the `disposing` parameter changes about what's safe to touch, and when a finalizer is (and isn't) worth adding. Use for: implementing `IDisposable` correctly, not just consuming it.
 - [Docs: "Implement a DisposeAsync method", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-disposeasync)
   Official reference for the async half: `DisposeAsyncCore()` for a non-sealed class, why `DisposeAsync()` calls `Dispose(false)` rather than `Dispose(true)`, idempotency, and cascading disposal through a chain of owned objects. Use for: implementing `IAsyncDisposable` alongside (or instead of) `IDisposable`.
+- [Docs: "Logging in .NET and ASP.NET Core", Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/)
+  Official docs for `ILogger`'s category, log levels, and providers. Use for: what a logger actually attaches to each entry, and how the minimum emitted level is configuration rather than code.
+- [Docs: "Logging in C#", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/overview)
+  Official docs for message templates: named placeholders passed separately from their values, kept as queryable structured properties rather than collapsed into a flat interpolated string. Use for: the habit correction that matters most coming from plain string formatting.
+- [Docs: "Health checks in ASP.NET Core", Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks)
+  Official docs for the liveness/readiness split, `AddHealthChecks`/`MapHealthChecks`, and the documented example of why a slow-starting dependency should fail readiness without failing liveness. Use for: wiring a service so an orchestrator can tell "not ready yet" apart from "actually crashed."
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

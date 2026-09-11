@@ -34,6 +34,10 @@ type: resources
   Reframes constrained generation as transitions between finite-state-machine states, letting a vocabulary index be precomputed once per grammar and reused as a fast per-token lookup. Use for: why grammar- or schema-constrained decoding adds little per-token overhead and guarantees output structure by construction rather than by hope.
 - [Docs: "Automatic Prefix Caching", vLLM Project](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html)
   vLLM's own documentation for reusing a shared prefix's KV cache across otherwise unrelated requests, its two named example workloads (long-document QA, multi-round conversation), and its stated limit (speeds up prefill only, never decode). Use for: prefix caching as PagedAttention's block-sharing mechanism extended across requests.
+- [Paper: "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism", Shoeybi et al., 2019](https://arxiv.org/abs/1909.08053)
+  The canonical tensor-parallelism paper: an intra-layer model-parallel scheme that splits a transformer layer's matrix multiplies across GPUs, needing only a few communication operations, and explicitly orthogonal and complementary to pipeline parallelism. Use for: what `--tensor-parallel-size` (lesson 12) actually does inside a layer.
+- [Paper: "GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism", Huang et al., 2018](https://arxiv.org/abs/1811.06965)
+  The canonical pipeline-parallelism paper: partitions any network expressible as a sequence of layers into consecutive groups placed on separate accelerators, and introduces micro-batching to shrink (not eliminate) the resulting pipeline bubble. Use for: the alternative split to tensor parallelism, and why it tolerates a slower inter-device link.
 
 ## Gaps
 

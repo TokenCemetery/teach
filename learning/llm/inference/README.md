@@ -8,7 +8,7 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [20. Prefix Caching](lessons/0020-prefix-caching.md)
+**Latest lesson:** [21. Tensor and Pipeline Parallelism](lessons/0021-tensor-and-pipeline-parallelism.md)
 
 ## Success looks like
 
@@ -40,6 +40,7 @@ Thirteen stages, first request to a defended, fleet-scale, production-monitored 
 | 7. Speculative decoding | 0018 | Draft-model, n-gram, Medusa, and EAGLE speculative decoding | Can explain why parallel verification is nearly free and pick a speculative-decoding variant for a workload |
 | 8. Sampling and constrained decoding at serve time | 0019 | Per-request sampling parameters in a shared batch, FSM-indexed constrained decoding | Can explain why constrained decoding's guarantee is structural and why its per-token cost stays small |
 | 9. Prefix caching | 0020 | Automatic prefix caching as cross-request block sharing, long-document and multi-turn workloads, its prefill-only limit | Can explain when prefix caching helps a workload and why it never speeds up decode |
+| 10. Multi-GPU and multi-node parallelism | 0021 | Tensor parallelism's actual mechanism past lesson 12's single flag, pipeline parallelism, and a decision procedure for which one (or both) a deployment needs | Can explain what a tensor-parallel combine step and a pipeline bubble each cost, and choose the right split for a given interconnect and node count |
 
 ## Lessons
 
@@ -67,6 +68,7 @@ Work through these in order.
 | [0018](lessons/0018-speculative-decoding.md) | Speculative Decoding | Verifying several candidate tokens in one parallel forward pass costs about what generating one token normally costs, since decoding is bottlenecked on moving weights, not on the arithmetic, which is the one fact every variant of speculative decoding is built on |
 | [0019](lessons/0019-sampling-and-constrained-decoding-at-serve-time.md) | Sampling and Constrained Decoding at Serve Time | A continuous batch already runs many requests through one shared forward pass, and giving each one its own sampling settings, or forcing one of them to only ever produce valid JSON, both have to happen per-row inside that same shared pass without slowing everyone else down |
 | [0020](lessons/0020-prefix-caching.md) | Prefix Caching | Lesson 11 let parallel samples of the same request share one prompt's cached blocks; prefix caching is the same sharing applied across otherwise unrelated requests, and it speeds up exactly the phase that redundant prefill wastes, never the phase that generates the answer |
+| [0021](lessons/0021-tensor-and-pipeline-parallelism.md) | Tensor and Pipeline Parallelism | Lesson 12 named tensor-parallel-size as a flag that splits a model across GPUs; this lesson opens up what that split actually does inside a layer, introduces pipeline parallelism as a different split of the same problem, and gives a decision procedure for which one (or both) a workload actually needs |
 
 ## Reference
 

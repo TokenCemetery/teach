@@ -90,6 +90,10 @@ _Avoid_: this, self, instance
 A request-driven service's three instrumentation signals: Rate, Errors, Duration, the last tracked as a percentile rather than an average so a slow tail is visible. Measures a service from the outside, the user's experience of it, complementary to the USE method's resource-level view.
 _Avoid_: an average for duration (a mean is dragged toward the bulk of fast requests and can hide a real, painful slow tail entirely)
 
+**ResponseRecorder**:
+An `http.ResponseWriter` implementation from `httptest.NewRecorder()` that records a handler's writes for inspection instead of sending them over a network. Satisfies the interface implicitly, so a handler called with one runs its real logic with no listener and no port involved at all.
+_Avoid_: `httptest.NewServer` for the same job (that starts a real, loopback server for testing an HTTP *client*, the reverse direction from testing a handler directly)
+
 **Rune**:
 An alias for `int32` holding a Unicode code point. Ranging a string yields runes with their byte offsets; indexing a string yields a byte.
 _Avoid_: character, char, symbol

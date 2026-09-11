@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own Go on a team: able to design, ship and operate a production Go service, review someone else's Go and name concretely why a design is wrong, and recognise when a design imported from another language is fighting Go rather than using it.
 
-**Latest lesson:** [0039. Metrics and Tracing](lessons/0039-metrics-and-tracing.md)
+**Latest lesson:** [0040. Testing an HTTP Handler](lessons/0040-testing-an-http-handler.md)
 
 ## Success looks like
 
@@ -93,6 +93,7 @@ Work through these in order.
 | [0037](lessons/0037-reading-the-standard-library.md) | Reading the Standard Library | The source is on your machine, it settles arguments the docs cannot, and it is the style reference |
 | [0038](lessons/0038-middleware-and-request-scoped-values.md) | Middleware and Request-Scoped Values | Lesson 22 showed a middleware writing a value into the context; this lesson is the other half, reading it back out safely, and the mechanism that example never needed, a middleware that decides not to call the next handler at all |
 | [0039](lessons/0039-metrics-and-tracing.md) | Metrics and Tracing | pprof profiles one process's own CPU and memory locally; metrics and tracing are the two production signals that answer a different pair of questions, how the service is doing right now in aggregate, and what happened to this one request across every service it touched |
+| [0040](lessons/0040-testing-an-http-handler.md) | Testing an HTTP Handler | Lesson 22 mentioned in passing that a ResponseRecorder makes a handler testable with no network; this lesson is that claim made concrete, why the interface seam is what makes it possible, and the different, easily confused tool for testing a client instead of a handler |
 
 ## Reference
 

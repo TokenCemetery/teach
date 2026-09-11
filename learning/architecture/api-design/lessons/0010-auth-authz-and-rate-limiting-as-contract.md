@@ -40,19 +40,19 @@ API keys, OAuth 2.0 (with its several grant types depending on whether a human r
 
 ### Rate limiting without visible state is an undocumented, accidental contract
 
-A client hitting `429 Too Many Requests` with no further information has to guess at the actual limit, how long to wait, and how close it was to the limit before the failure, exactly the kind of accidental, undocumented behavior lesson 1 warns clients will build fragile logic around anyway (guessing at a safe request rate through trial and error). The IETF's RateLimit header fields draft standardizes communicating this state explicitly in every response, not just a failing one: how many requests remain, what the limit is, and when it resets, so a client can make an informed decision (slow down proactively) instead of discovering the limit only by tripping over it.
+A client hitting `429 Too Many Requests` with no further information has to guess at the actual limit, how long to wait, and how close it was to the limit before the failure, exactly the kind of accidental, undocumented behavior lesson 1 warns clients will build fragile logic around anyway (guessing at a safe request rate through trial and error). The IETF's RateLimit header fields draft (revision 11 as of this writing, not yet an RFC) standardizes communicating this state explicitly in every response, not just a failing one, through two Structured Fields: `RateLimit-Policy` for the stable quota (a quota amount and window that shouldn't change response to response) and `RateLimit` for the caller's live standing against it (how much quota remains, and the window that remaining amount applies to), so a client can make an informed decision (slow down proactively) instead of discovering the limit only by tripping over it. A quota failure isn't a bare `429` either: the draft registers RFC 9457 Problem Details types that distinguish "you asked for too much" from "the server has less capacity right now," a difference a status code alone can't express.
 
 ```mermaid
 sequenceDiagram
     participant C as Client
     participant S as Server
     C->>S: request 1
-    S-->>C: 200 OK, RateLimit-Remaining: 5
+    S-->>C: 200 OK, RateLimit: "default";r=5;t=30
     C->>S: request 2
-    S-->>C: 200 OK, RateLimit-Remaining: 4
+    S-->>C: 200 OK, RateLimit: "default";r=4;t=30
     Note over C,S: state visible on every response, not just a failing one
     C->>S: request N (limit reached)
-    S-->>C: 429 Too Many Requests, RateLimit-Reset: 30
+    S-->>C: 429 Too Many Requests, RateLimit: "default";r=0;t=30
 ```
 
 ### The mission's closing point: none of these are bolted on after design, they're part of it
@@ -121,7 +121,8 @@ Without visible rate-limit state (remaining requests, the limit, the reset time)
 ## Going further
 
 - [RFC 6749: "The OAuth 2.0 Authorization Framework", IETF](https://www.rfc-editor.org/rfc/rfc6749)
-- [Draft: "RateLimit header fields for HTTP", IETF](https://www.ietf.org/archive/id/draft-ietf-httpapi-ratelimit-headers-08.html)
+- [Draft: "RateLimit header fields for HTTP", IETF](https://datatracker.ietf.org/doc/draft-ietf-httpapi-ratelimit-headers/)
+- [Auth and Rate Limiting](../reference/auth-and-rate-limiting.md): the `RateLimit-Policy`/`RateLimit` parameters in full, what a client may and may not conclude from them, and the three registered problem types
 - [Resources](../RESOURCES.md)
 
 ---

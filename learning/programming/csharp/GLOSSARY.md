@@ -22,6 +22,10 @@ _Avoid_: assuming a health-check endpoint is reachable by default once authoriza
 A cooperative, caller-managed pool of reusable arrays (`ArrayPool<T>.Shared` is the general-purpose instance): `Rent(n)` hands back an existing array of at least the requested size or allocates a new one, and `Return` puts it back. There is no finalizer that returns a forgotten array, so a missing `Return` is a real leak.
 _Avoid_: assuming the pool cleans up a forgotten rental automatically (nothing reclaims an unreturned array; sustained forgetting depletes the pool and forces new allocations)
 
+**ASP.NET Core JSON defaults**:
+The settings ASP.NET Core configures on top of the bare `System.Text.Json` serializer for its own JSON formatter: camelCase property names, case-insensitive matching, and quoted-number deserialization, all different from the bare library's own defaults.
+_Avoid_: assuming a serializer test built with a bare `JsonSerializerOptions` matches what an actual endpoint produces (the bare library defaults to unchanged casing and case-sensitive matching; only ASP.NET Core's own formatter reconfigures both)
+
 **Authorization policy**:
 A bundle of one or more requirements, evaluated by a handler against a user's claims, requested by an endpoint with `[Authorize(Policy = "...")]` or `RequireAuthorization(...)` rather than an inline permission check. The simplest form, claims-based presence checking, just confirms a named claim exists (`RequireClaim("EmployeeNumber")`), regardless of its value.
 _Avoid_: conflating it with authentication (a policy is evaluated against the identity authentication already established; it never establishes identity itself)
@@ -61,6 +65,10 @@ _Avoid_: treating this as a failure of background GC (background GC only ever pr
 **Generation (GC)**:
 One of three age-based divisions (0, 1, 2) of the managed heap. Every new object starts in generation 0; surviving a collection promotes it to the next generation. The split lets a collection reclaim memory in a small, frequently-turned-over portion of the heap instead of the whole thing.
 _Avoid_: assuming an object is collected once, wherever it lives (an object is repeatedly re-examined and promoted across generations until it either dies or reaches generation 2)
+
+**JsonSerializerContext**:
+A source-generated, partial class (`[JsonSerializable(typeof(T))]`, optionally `[JsonSourceGenerationOptions(...)]`) whose settings are computed once at compile time instead of resolved through runtime reflection, needed for AOT compilation and faster than the reflection-based path. Constructing it with an explicit `JsonSerializerOptions` instance overrides the attribute's settings silently.
+_Avoid_: assuming the attribute's settings always apply (the constructor overload taking an explicit `JsonSerializerOptions` instance uses that instance instead, regardless of what `[JsonSourceGenerationOptions]` specified)
 
 **Large Object Heap (LOH)**:
 A separate heap for objects above a size threshold, bypassing the generation 0 to 1 to 2 promotion path entirely. Sometimes called generation 3, but it is only collected as part of a generation 2 collection, never as cheaply as a small object dying in generation 0.

@@ -20,6 +20,10 @@ type: resources
   Official API reference and remarks for `Span<T>`: a stack-only, allocation-free view over contiguous memory, and the full list of ref-struct restrictions (no boxing, no heap fields, no lambda capture, no crossing `await`/`yield`) that guarantee it. Use for: what a ref struct actually forbids, and why.
 - [Docs: "Memory<T> and Span<T> usage guidelines", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/memory-and-spans/memory-t-usage-guidelines)
   Official guidance for `Memory<T>` as `Span<T>`'s heap-safe counterpart, the ownership/consumption model for a buffer, and the rule to prefer the read-only variants when a buffer is only read. Use for: choosing between the four related types, and for the discipline of claiming only the access a method actually needs.
+- [Docs: "stackalloc expression", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/stackalloc)
+  Official reference for stack allocation: why pairing it with `Span<T>`/`ReadOnlySpan<T>` needs no `unsafe` context, the automatic buffer-overrun detection the CLR enables when it's used, and the `StackOverflowException` risk from over-allocating. Use for: what `stackalloc` actually does, and its real failure mode.
+- [API: "ArrayPool<T> Class", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.buffers.arraypool-1)
+  Official API reference for the shared array pool: the rent/return contract, that `Rent` may hand back a larger array than requested but never a smaller one, and that there is no finalizer safety net for a forgotten `Return`. Use for: the fallback for a buffer too large or too long-lived for `stackalloc`.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

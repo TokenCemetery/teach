@@ -10,6 +10,10 @@ Canonical terms for owning a C# service, and for naming precisely where a Java i
 
 ## Terms
 
+**ArrayPool&lt;T&gt;**:
+A cooperative, caller-managed pool of reusable arrays (`ArrayPool<T>.Shared` is the general-purpose instance): `Rent(n)` hands back an existing array of at least the requested size or allocates a new one, and `Return` puts it back. There is no finalizer that returns a forgotten array, so a missing `Return` is a real leak.
+_Avoid_: assuming the pool cleans up a forgotten rental automatically (nothing reclaims an unreturned array; sustained forgetting depletes the pool and forces new allocations)
+
 **Background GC**:
 The mode that lets managed threads keep running while a generation 2 collection proceeds on a dedicated background thread (one for workstation GC, one per logical processor for server GC). Only ever applies to generation 2; generation 0 and generation 1 collections are always non-concurrent.
 _Avoid_: assuming it removes all pausing (a foreground GC can still suspend every thread if generation 0 or 1 needs to collect while a background generation 2 collection is running)
@@ -45,6 +49,10 @@ _Avoid_: assuming it is always the better choice for a service (many small proce
 **Span&lt;T&gt;**:
 A type-safe, allocation-free view over a contiguous region of existing memory (an array, a string, a `stackalloc`'d buffer). Slicing produces another view over the same memory, never a copy. A ref struct, so it can never be stored on the heap or held across an `await`.
 _Avoid_: assuming a slice copies data (a slice is a view over the same underlying memory; a write through it is visible through the original)
+
+**stackalloc**:
+An expression that allocates a block of memory directly on the stack, discarded automatically when the allocating method returns; never garbage collected, never explicitly freed. Since C# 7.2, assignable directly to `Span<T>`/`ReadOnlySpan<T>` without `unsafe`, since a ref struct's restrictions already guarantee it can't outlive that stack frame.
+_Avoid_: sizing it from unbounded input (the stack is small and fixed, roughly 1 MB on a 64-bit process; overrunning it throws an unrecoverable `StackOverflowException` that terminates the process)
 
 **Value type**:
 A type (every `struct`, plus the built-in numeric types) where assigning, passing, or returning a variable of that type copies the entire value; two variables of a value type are always independent copies.

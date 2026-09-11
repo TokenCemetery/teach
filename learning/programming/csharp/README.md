@@ -102,6 +102,7 @@ Work through these in order.
 
 - [Glossary](GLOSSARY.md): canonical terms for this topic
 - [Resources](RESOURCES.md): trusted sources
+- [Value vs Reference Types](reference/value-vs-reference-types.md): struct vs class, nullable value types, predicting copy-vs-reference behaviour
 
 ## How this works
 

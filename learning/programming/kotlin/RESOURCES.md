@@ -122,6 +122,12 @@ type: resources
   Official repo and docs for the compiler-plugin-based, reflectionless serialization library: the two-piece setup (compiler plugin plus runtime dependency), full JVM/JS/Native multiplatform support, and the explicit, per-type serialization-strategy philosophy with no global configuration point. Use for: what a Java habit's reflective serializer (Jackson, Gson) doesn't do, and why it can't reach every Kotlin target.
 - [API: "runCatching", Kotlin](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-run-catching.html)
   Official stdlib reference for `runCatching`'s `Result<T>`-returning contract, and that it catches any `Throwable` a block throws, including `CancellationException`. Use for: the exact stdlib contract that collides with coroutine cancellation if used unguarded.
+- [Docs: "Routing", Ktor](https://ktor.io/docs/server-routing.html)
+  Official docs for Ktor's routing DSL: the per-verb functions (`get`, `post`, `put`, and others), path patterns including named parameters and full `Regex` support, and `route` for grouping and nesting. Use for: routing as an application of lesson 36's type-safe builder mechanism, not a new one.
+- [Docs: "Server plugins", Ktor](https://ktor.io/docs/server-plugins.html)
+  Official docs stating that routing itself is implemented as a plugin, that Ktor activates none by default, and that a plugin can be scoped to specific routes rather than only installed globally. Use for: why nothing in a Ktor application works until it's explicitly installed.
+- [Docs: "Handling requests", Ktor](https://ktor.io/docs/server-requests.html)
+  Official docs for extracting request data (`requirePathParameter`, `requireQueryParameter`, `requireCookie`), each throwing (`MissingRequestParameterException`) rather than returning null when a required value is actually absent. Use for: the boundary code lesson 31's "nullability lives at the edge" principle describes, applied concretely.
 - [Docs: "Classes", Kotlin](https://kotlinlang.org/docs/classes.html)
   Official docs on Kotlin classes: the primary constructor, properties declared directly in the class header, and when the docs themselves recommend a data class or an extension function instead of a plain class. Use for: what a class actually needs to encapsulate, before reaching for one reflexively.
 - [Docs: "Properties", Kotlin](https://kotlinlang.org/docs/properties.html)

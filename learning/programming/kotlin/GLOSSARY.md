@@ -34,6 +34,10 @@ _Avoid_: wrapping every function in one reflexively (a genuine bug, an invariant
 Runs a block and wraps its outcome in a `Result<T>`, catching any `Throwable` the block throws, including `CancellationException`. Inside a coroutine, a caught `CancellationException` must be explicitly rethrown before treating anything else as an ordinary failure, since no stdlib variant does this automatically.
 _Avoid_: using it unguarded inside a suspend function or coroutine builder (it can silently swallow a `CancellationException`, breaking structured concurrency's cancellation propagation)
 
+**Server plugin (Ktor)**:
+A capability (routing included) installed explicitly, never enabled by default, since Ktor activates no plugins on its own. Can be installed once, globally, or scoped to a specific subset of routes with its own separate configuration.
+_Avoid_: assuming routing (or any other capability) is available without installing it (Ktor's default is nothing installed at all; every capability is opted into explicitly)
+
 **Type-safe builder (DSL)**:
 A builder function taking a receiver-style lambda parameter (`T.() -> R`), nested recursively, so a caller can write nested blocks that read like their own small, structured language while every call resolves against an ordinary receiver's members. The construct receiver-style function types (lesson 15) exist for.
 _Avoid_: treating it as a distinct compiler feature (it's the same receiver-style function type mechanism used elsewhere, applied recursively, with no additional language support needed beyond `@DslMarker`'s scope restriction)

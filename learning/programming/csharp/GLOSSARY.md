@@ -10,6 +10,10 @@ Canonical terms for owning a C# service, and for naming precisely where a Java i
 
 ## Terms
 
+**ActivitySource / Activity**:
+.NET's native tracing types, predating the OpenTelemetry spec: `ActivitySource` is what the spec calls a Tracer, `Activity` is what it calls a Span. `StartActivity()` returns `null` and skips allocating an `Activity` when no listener is registered, making instrumentation nearly free until an exporter is actually configured.
+_Avoid_: assuming `StartActivity()` always allocates (it checks for a registered, interested listener first, and skips creation entirely when there is none)
+
 **ArrayPool&lt;T&gt;**:
 A cooperative, caller-managed pool of reusable arrays (`ArrayPool<T>.Shared` is the general-purpose instance): `Rent(n)` hands back an existing array of at least the requested size or allocates a new one, and `Return` puts it back. There is no finalizer that returns a forgotten array, so a missing `Return` is a real leak.
 _Avoid_: assuming the pool cleans up a forgotten rental automatically (nothing reclaims an unreturned array; sustained forgetting depletes the pool and forces new allocations)

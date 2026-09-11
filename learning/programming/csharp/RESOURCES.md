@@ -44,6 +44,10 @@ type: resources
   Official docs for message templates: named placeholders passed separately from their values, kept as queryable structured properties rather than collapsed into a flat interpolated string. Use for: the habit correction that matters most coming from plain string formatting.
 - [Docs: "Health checks in ASP.NET Core", Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks)
   Official docs for the liveness/readiness split, `AddHealthChecks`/`MapHealthChecks`, and the documented example of why a slow-starting dependency should fail readiness without failing liveness. Use for: wiring a service so an orchestrator can tell "not ready yet" apart from "actually crashed."
+- [Docs: ".NET Observability with OpenTelemetry", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/observability-with-otel)
+  Official docs explaining that .NET's `ILogger`, `Meter`, and `Activity`/`ActivitySource` APIs are the platform's own instrumentation, with OpenTelemetry exporting what they already emit rather than replacing them. Use for: the three pillars of observability, in .NET's own terms.
+- [Docs: "Add distributed tracing instrumentation", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs)
+  Official reference for `ActivitySource`/`Activity` as .NET's Tracer/Span, and the documented performance optimization where `StartActivity()` returns `null` with no listener registered. Use for: why tracing instrumentation is safe to leave in a hot path.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

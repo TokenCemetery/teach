@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own Rust on a team: able to design with ownership rather than negotiating with the borrow checker, shape errors and APIs so the types carry the invariants, reach for `unsafe` only behind a boundary that can be justified, and ship a crate other people depend on and can upgrade.
 
 **Start here:** [0001. Ownership and Drop](lessons/0001-ownership-and-drop.md)
-**Latest lesson:** [0065. Unit Tests Versus Integration Tests](lessons/0065-unit-versus-integration-tests.md)
+**Latest lesson:** [0066. Organising Tests for a Library](lessons/0066-organising-tests-for-a-library.md)
 
 ## Success looks like
 
@@ -126,6 +126,7 @@ Work through these in order.
 | [0063](lessons/0063-reviewing-rust.md) | Reviewing Rust | What to look for in somebody else's Rust, in what order, and which comments are worth making |
 | [0064](lessons/0064-the-test-attribute-and-cargo-test.md) | The Test Attribute and cargo test | A doctest lives in a doc comment and runs an example; a #[test] function lives in the crate's own source and is the ordinary shape almost all Rust testing actually takes, and cargo test runs both under the same command without them being the same mechanism |
 | [0065](lessons/0065-unit-versus-integration-tests.md) | Unit Tests Versus Integration Tests | Where a #[test] function lives decides what it can see, the same file as the code under #[cfg(test)] with access to every private item, or a separate tests/ directory that only ever sees what you actually made public |
+| [0066](lessons/0066-organising-tests-for-a-library.md) | Organising Tests for a Library | An integration suite's shape is forced by whatever you already made pub, shared setup goes in tests/common/mod.rs specifically, and a binary with no lib.rs cannot be integration-tested at all |
 
 ## Reference
 

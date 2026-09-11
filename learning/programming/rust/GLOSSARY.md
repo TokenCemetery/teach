@@ -142,6 +142,10 @@ _Avoid_: a configuration option, a build profile, a way to offer two behaviours,
 Cargo resolving one set of features per package per build, so if two dependants ask for different features everybody in that build gets both. It is the reason a feature that subtracts breaks somebody you never hear from.
 _Avoid_: per-dependant features, isolation between consumers, something a lock file prevents
 
+**Fixture**:
+Shared sample data used across multiple tests, kept as a constant or as a separate file read at compile time with `include_str!`, rather than repeated inline in every test that needs it. It needs no `#[cfg(test)]` of its own when it lives under `tests/`, since the directory is already the gate.
+_Avoid_: a shared helper function (that's setup code, not data), a mock, test configuration
+
 **Future**:
 A value implementing one method, `poll`, which either yields a result or says not yet. Constructing one runs nothing, and an `async fn` returns one, so something has to poll it before any of its body executes.
 _Avoid_: a promise, a thread, a running computation, a callback

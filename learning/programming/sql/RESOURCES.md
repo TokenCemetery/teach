@@ -95,6 +95,9 @@ type: resources
 - [Docs: "SQLAlchemy Documentation", SQLAlchemy contributors, docs.sqlalchemy.org](https://docs.sqlalchemy.org/en/20/)
   The one ORM this arc uses as its worked example, cited for how to see the SQL it emits rather than for how to use it. Use for: stage 7, and nowhere else, since ORMs are out of scope as subjects.
 
+- [Cheat sheet: "SQL Injection Prevention Cheat Sheet", OWASP, cheatsheetseries.owasp.org](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
+  Why string-built SQL is unsafe, and the defences ranked from parameterised statements down to escaping, discouraged. Use for: stage 8, and nowhere a database's own manual documents an application-layer vulnerability instead.
+
 - [Docs: "Don't Do This", PostgreSQL contributors, wiki.postgresql.org](https://wiki.postgresql.org/wiki/Don%27t_Do_This)
   A maintained list of choices that look reasonable and are regretted, with the reason for each. Use for: stage 4 type and schema decisions, and for review vocabulary.
 

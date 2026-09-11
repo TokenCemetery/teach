@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0048. Trusted With the Database](lessons/0048-trusted-with-the-database.md)
+**Latest lesson:** [0049. SQL Injection and Parameterised Statements](lessons/0049-sql-injection-and-parameterised-statements.md)
 
 ## Success looks like
 
@@ -51,6 +51,7 @@ Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 5. Transactions | ACID as four separate promises, isolation levels and the anomalies each permits, multiversion concurrency control, locking, deadlocks, explicit row locks, idempotency | Can name the anomaly a concurrency bug depends on, before reproducing it |
 | 6. Performance | B-tree indexes first and the others after, selectivity and cardinality, statistics, reading a plan with timings, join strategies, pagination, when the query is not the problem | Optimises from a plan and proves the win with a measurement |
 | 7. Operating and judgment | Migrations without downtime, reviewing queries and schemas, reading ORM output, portability across engines, when SQL is the wrong tool | Trusted to make the call and to explain it to someone else |
+| 8. Security and specialised tools | SQL injection and parameterised statements, roles and least privilege, row-level security, full-text search, triggers and stored procedures | Reviews an authorization boundary and a piece of procedural logic as concretely as a query or a schema change |
 
 ## Lessons
 
@@ -106,6 +107,7 @@ Work through these in order.
 | [0046](lessons/0046-portability.md) | Portability, and What It Costs | Most of this arc travels between engines, and the parts that do not are the parts worth depending on deliberately |
 | [0047](lessons/0047-reading-orm-output.md) | Reading What an ORM Emits | The ORM writes the SQL you did not write, and the only way to know what it sent is to look |
 | [0048](lessons/0048-trusted-with-the-database.md) | Trusted With the Database | Seven stages end in one habit, which is naming the row, the lock or the plan that makes a call defensible |
+| [0049](lessons/0049-sql-injection-and-parameterised-statements.md) | SQL Injection and Parameterised Statements | String concatenation lets a value change what a statement means, not only what it matches, and a parameterised statement removes the possibility rather than trying to sanitise every case |
 
 ## Reference
 

@@ -232,6 +232,10 @@ _Avoid_: query, statement, operator as a synonym for a scan, buffer
 The estimate `EXPLAIN` prints in arbitrary units, comparable only between plans for the same query on the same settings. It is not a time, not a byte count, and not comparable across queries.
 _Avoid_: execution time, milliseconds, buffers, price
 
+**Prepared statement**:
+A statement sent to the server once, parsed and planned before any value is supplied, with placeholders standing in for the values supplied afterward. Binding a parameter to it is what actually keeps a value out of the parsed text; the two are usually used together but name different things, one a statement's own compiled shape, the other where a value enters it.
+_Avoid_: bound parameter as a synonym, parameterised query as identical (a driver can parameterise safely without a literal prepare-then-execute round trip at the protocol level), an optimisation
+
 **Read skew**:
 Two different rows read once each in one transaction, each read correct on its own, and jointly describing a state that never existed, such as both sides of a transfer read either side of it.
 _Avoid_: non-repeatable read, write skew, phantom, inconsistency
@@ -271,6 +275,10 @@ _Avoid_: index scan, full index scan, leftmost-prefix rule as broken, bitmap sca
 **Snapshot**:
 A statement of which transactions had committed at one moment, which decides what a query sees. An isolation level is a rule about when a snapshot is taken and how long it is kept.
 _Avoid_: isolation level, backup, transaction, lock
+
+**SQL injection**:
+An attack in which a value crossing into a statement built by string concatenation is interpreted as SQL syntax rather than as the data it was meant to be, changing what the statement does rather than only what it matches. It is a structural gap in how the statement was built, not a property of any one malicious-looking value.
+_Avoid_: a data-validation bug, an encoding problem, something only user-facing forms need to worry about, a defect the engine could fix on its own
 
 **Surrogate key**:
 An identifier invented for the purpose of identifying a row, carrying no meaning of its own. It is chosen over a natural key for stability, since data that means something tends to change.

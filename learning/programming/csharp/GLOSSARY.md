@@ -18,6 +18,14 @@ _Avoid_: assuming the pool cleans up a forgotten rental automatically (nothing r
 The mode that lets managed threads keep running while a generation 2 collection proceeds on a dedicated background thread (one for workstation GC, one per logical processor for server GC). Only ever applies to generation 2; generation 0 and generation 1 collections are always non-concurrent.
 _Avoid_: assuming it removes all pausing (a foreground GC can still suspend every thread if generation 0 or 1 needs to collect while a background generation 2 collection is running)
 
+**Dispose pattern**:
+The full `IDisposable` implementation: a public, non-virtual `Dispose()` that calls `protected virtual void Dispose(bool disposing)` then `GC.SuppressFinalize(this)`, with a guard flag so a repeated call is a safe no-op. The `disposing` parameter is `true` from `Dispose()` itself (safe to touch other managed objects) and `false` from a finalizer (other managed objects may already be gone).
+_Avoid_: putting cleanup logic directly in `Dispose()` (the logic belongs in the overridable `Dispose(bool disposing)`, so a derived class can extend it without changing the public entry point)
+
+**DisposeAsyncCore**:
+A `protected virtual ValueTask` method holding a non-sealed class's asynchronous managed-resource cleanup, awaited by the public `DisposeAsync()` before it calls `Dispose(false)` (not `true`, to avoid repeating the managed cleanup) and `GC.SuppressFinalize(this)`. A sealed class skips it and cleans up directly inside `DisposeAsync()`.
+_Avoid_: calling `Dispose(true)` after it (that would redo the managed-resource cleanup `DisposeAsyncCore` already performed asynchronously)
+
 **dotnet-counters**:
 A lightweight, ad-hoc health-monitoring CLI tool that observes performance counters (`EventCounter`/`Meter`) on a running process, cheap enough to run continuously. Used to notice a symptom (CPU, GC, exceptions) before reaching for a deeper trace.
 _Avoid_: using it to find a specific hot stack (it reports aggregate counters, not call stacks; that is `dotnet-trace`'s job)
@@ -25,6 +33,10 @@ _Avoid_: using it to find a specific hot stack (it reports aggregate counters, n
 **dotnet-trace**:
 A cross-platform CLI tool that captures a diagnostic trace over a time window, producing a `.nettrace` file viewable as a call tree with Total/Self time per method. Its default profile samples call stacks statistically (~100 Hz), low overhead, at the cost of possibly undercounting a very fast, short-lived hot path.
 _Avoid_: capturing from process launch (the first window mixes JIT warm-up and tiered recompilation into what should be a steady-state trace; capture after the service has served real traffic)
+
+**Finalizer**:
+A last-resort method the garbage collector calls before reclaiming an object, worth adding only when a class directly owns an unmanaged resource. Its job is to call `Dispose(false)` as a fallback for when nobody ever called `Dispose()`; `GC.SuppressFinalize(this)` inside a well-behaved `Dispose()` skips it entirely for that instance.
+_Avoid_: adding one to a class that only holds other managed, already-disposable objects (it costs an extra step before reclamation for no benefit, since those objects should clean up themselves)
 
 **Foreground GC**:
 A generation 0 or generation 1 collection that runs while a background generation 2 collection is in progress, suspending every managed thread (including pausing the background collection) until it finishes.

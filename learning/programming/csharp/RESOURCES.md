@@ -34,6 +34,10 @@ type: resources
   Official reference for the trace-capture tool: its current default profiles (`dotnet-common`, `dotnet-sampled-thread-time`), the dedicated `gc-verbose`/`gc-collect` profiles, and why the older `cpu-sampling` profile name was removed. Use for: capturing the specific hot stack behind a symptom.
 - [Docs: "dotnet-counters", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-counters)
   Official reference for the ad-hoc health-monitoring tool built on `EventCounter`/`Meter`. Use for: noticing a symptom cheaply, before a deeper, more expensive trace.
+- [Docs: "Implement a Dispose method", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose)
+  Official reference for the full dispose pattern: the public `Dispose()`/protected `Dispose(bool disposing)` split, what the `disposing` parameter changes about what's safe to touch, and when a finalizer is (and isn't) worth adding. Use for: implementing `IDisposable` correctly, not just consuming it.
+- [Docs: "Implement a DisposeAsync method", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-disposeasync)
+  Official reference for the async half: `DisposeAsyncCore()` for a non-sealed class, why `DisposeAsync()` calls `Dispose(false)` rather than `Dispose(true)`, idempotency, and cascading disposal through a chain of owned objects. Use for: implementing `IAsyncDisposable` alongside (or instead of) `IDisposable`.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

@@ -83,6 +83,7 @@ Work through these in order.
 - [KV cache](reference/kv-cache.md): per-token cost, head sharing, growth across a request, and capacity planning
 - [Batching](reference/batching.md): static vs continuous batching, request scheduling, and the throughput/latency trade-off
 - [Quantization at Serve Time](reference/quantization-at-serve-time.md): int8/int4/GPTQ/AWQ, why memory, speed and accuracy don't move together, and a decision framework for picking a scheme
+- [vLLM](reference/vllm.md): standing up vLLM, PagedAttention, and the tuning knobs that matter
 
 ## How this works
 

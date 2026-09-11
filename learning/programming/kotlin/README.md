@@ -108,6 +108,7 @@ Work through these in order.
 - [Collections and Sequences](reference/collections-and-sequences.md): Kotlin's collection operators, lazy `Sequence` vs eager collections, grouping and folding
 - [Concurrency](reference/concurrency.md): suspend functions and coroutine builders, structured concurrency, coroutine context and dispatchers, `Flow`, comparison to Java virtual threads
 - [Testing and Build](reference/testing-and-build.md): Kotlin test frameworks, mocking, the Gradle Kotlin DSL and dependency management
+- [Shipping a Service](reference/shipping-a-service.md): structuring a typed, tested backend, Android-specific idioms, generics and variance
 
 ## How this works
 

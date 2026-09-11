@@ -158,6 +158,10 @@ _Avoid_: wall-clock order, any two operations on the same atomic, something a st
 A trait bound quantified over every lifetime rather than one particular lifetime, which is what a closure bound such as `Fn(&str) -> usize` already means. Offering a closure fixed to one lifetime against such a bound is what the compiler reports as an implementation not being general enough, contrasting a lifetime it needs for any against one the closure provides for some.
 _Avoid_: lifetime parameter, generic lifetime, a `'static` bound
 
+**Integration test**:
+A test in a `tests/` file, compiled as its own separate crate depending on your library exactly the way an external caller would, seeing only what you actually marked `pub`. Needs no `#[cfg(test)]`, since the whole directory is already gated to test builds.
+_Avoid_: assuming it can reach a private item the way a unit test can (it can't, and its inability to is an honest signal about what your public API actually exposes)
+
 **Interior mutability**:
 Mutating a value through a shared reference, using a type that enforces the borrow rule itself instead of leaving it to the compiler. `Cell` and `RefCell` do it in one thread and `Mutex` and `RwLock` across threads, and the check moves from compile time to run time.
 _Avoid_: a hole in the borrow rule, `unsafe` by another name, mutability you get for free
@@ -337,6 +341,10 @@ _Avoid_: cast, type annotation, generic declaration
 **Undefined behaviour**:
 An operation whose premise the compiler was entitled to assume never happens, so once it does, the optimisations licensed by that assumption can misbehave anywhere in the program. It is a broken premise rather than an unpredictable result.
 _Avoid_: unpredictable output, a runtime error, a crash, something a passing run rules out
+
+**Unit test**:
+A `#[test]` function in a `#[cfg(test)] mod tests` block in the same file as the code it exercises, an ordinary child module that can see every private item in its ancestors, the standard visibility rule rather than a testing exception. Excluded from a normal `cargo build` by `#[cfg(test)]`, which is ordinary conditional compilation.
+_Avoid_: treating private-item access as a testing-specific privilege (it's the same child-module visibility rule that applies everywhere else in the module tree)
 
 **Unpin**:
 An auto trait meaning a type does not care whether it is pinned, which almost every ordinary type implements. Generated futures do not, which is why the pinning ceremony appears exactly where it is load-bearing.

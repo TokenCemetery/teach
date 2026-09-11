@@ -18,6 +18,14 @@ _Avoid_: assuming the pool cleans up a forgotten rental automatically (nothing r
 The mode that lets managed threads keep running while a generation 2 collection proceeds on a dedicated background thread (one for workstation GC, one per logical processor for server GC). Only ever applies to generation 2; generation 0 and generation 1 collections are always non-concurrent.
 _Avoid_: assuming it removes all pausing (a foreground GC can still suspend every thread if generation 0 or 1 needs to collect while a background generation 2 collection is running)
 
+**dotnet-counters**:
+A lightweight, ad-hoc health-monitoring CLI tool that observes performance counters (`EventCounter`/`Meter`) on a running process, cheap enough to run continuously. Used to notice a symptom (CPU, GC, exceptions) before reaching for a deeper trace.
+_Avoid_: using it to find a specific hot stack (it reports aggregate counters, not call stacks; that is `dotnet-trace`'s job)
+
+**dotnet-trace**:
+A cross-platform CLI tool that captures a diagnostic trace over a time window, producing a `.nettrace` file viewable as a call tree with Total/Self time per method. Its default profile samples call stacks statistically (~100 Hz), low overhead, at the cost of possibly undercounting a very fast, short-lived hot path.
+_Avoid_: capturing from process launch (the first window mixes JIT warm-up and tiered recompilation into what should be a steady-state trace; capture after the service has served real traffic)
+
 **Foreground GC**:
 A generation 0 or generation 1 collection that runs while a background generation 2 collection is in progress, suspending every managed thread (including pausing the background collection) until it finishes.
 _Avoid_: treating this as a failure of background GC (background GC only ever promised concurrency for generation 2; generation 0 and 1 were never concurrent to begin with)

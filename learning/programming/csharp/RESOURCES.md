@@ -28,6 +28,12 @@ type: resources
   Official docs for the harness's internal pipeline: an isolated Release-mode process per benchmark, the Pilot/Warmup/Actual stages that measure and subtract the harness's own overhead, and the delegate-invocation trick that stops the JIT from inlining a benchmark method away. Use for: why a raw stopwatch loop isn't trustworthy and what actually fixes that.
 - [Docs: "Diagnosers", BenchmarkDotNet](https://benchmarkdotnet.org/articles/configs/diagnosers.html)
   Official docs for `MemoryDiagnoser`: bytes allocated per operation via `GC.GetAllocatedBytesForCurrentThread`, 99.5% accuracy at default settings, the `GenX` collections-per-1000-operations columns, and that it counts managed heap allocations only. Use for: measuring lesson 1's struct-vs-class allocation claim instead of reasoning about it.
+- [Docs: "Profiling tools in .NET", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/profilers)
+  Official overview of the .NET diagnostic tools, and where `dotnet-counters` and `dotnet-trace` each fit. Use for: orientation before reaching for a specific tool.
+- [Docs: "dotnet-trace", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace)
+  Official reference for the trace-capture tool: its current default profiles (`dotnet-common`, `dotnet-sampled-thread-time`), the dedicated `gc-verbose`/`gc-collect` profiles, and why the older `cpu-sampling` profile name was removed. Use for: capturing the specific hot stack behind a symptom.
+- [Docs: "dotnet-counters", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-counters)
+  Official reference for the ad-hoc health-monitoring tool built on `EventCounter`/`Meter`. Use for: noticing a symptom cheaply, before a deeper, more expensive trace.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

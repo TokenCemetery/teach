@@ -8,7 +8,7 @@ type: topic
 
 Become the engineer trusted to own a C# service on a team: able to model a domain choosing correctly between a struct, a class and a record, write and reason about `async`/`await`, query and transform data fluently with LINQ, ship a typed, tested ASP.NET Core backend, and explain what the CLR does with the code you wrote.
 
-**Latest lesson:** [36. Struct vs Class, Measured](lessons/0036-struct-vs-class-measured.md)
+**Latest lesson:** [37. Profiling a C# Service](lessons/0037-profiling-a-csharp-service.md)
 
 ## Success looks like
 
@@ -41,7 +41,7 @@ Eight stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 5. Testing and build | 0022 to 0024 | xUnit/NUnit, mocking, the `dotnet` CLI and project/package management | Someone else can clone, build, test and run it |
 | 6. Shipping the service | 0025 to 0029 | ASP.NET Core routing and middleware, dependency injection, configuration, Entity Framework Core basics, structuring a typed, tested backend | Ships a typed, tested ASP.NET Core service |
 | 7. Judgment | 0030 to 0031 | Comparing `async`/`await` to Java virtual threads and LINQ to the Stream API, reviewing C# for a habit that merely compiles | Trusted to make the call and explain it to someone else |
-| 8. The CLR Runtime and Performance | 0032 to 0036 | The managed heap's generational design, GC modes, `Span<T>`/`Memory<T>`, `stackalloc`/`ArrayPool<T>`, measuring struct vs class with BenchmarkDotNet, and profiling | Optimises from a profile and defends the win with a trustworthy benchmark, tied back to the CLR's actual generational and allocation behaviour |
+| 8. The CLR Runtime and Performance | 0032 to 0037 | The managed heap's generational design, GC modes, `Span<T>`/`Memory<T>`, `stackalloc`/`ArrayPool<T>`, measuring struct vs class with BenchmarkDotNet, and profiling | Optimises from a profile and defends the win with a trustworthy benchmark, tied back to the CLR's actual generational and allocation behaviour |
 
 ## Lessons
 
@@ -85,6 +85,7 @@ Work through these in order.
 | [0034](lessons/0034-span-and-memory.md) | Span and Memory | A zero-allocation view over existing memory that never enters lesson 32's generational system at all, the compiler restrictions that keep it safely stack-only, and the heap-safe counterpart built for exactly the one thing it cannot do: cross an await |
 | [0035](lessons/0035-stackalloc-and-arraypool.md) | stackalloc and ArrayPool | Lesson 34 let a Span<T> view stackalloc'd memory; this lesson covers what stackalloc actually allocates, why pairing it with a ref struct is what makes it safe, its real risk (a stack overflow, not garbage collection), and ArrayPool<T> as the fallback for a buffer too large or too long-lived for the stack |
 | [0036](lessons/0036-struct-vs-class-measured.md) | Struct vs Class, Measured | Lesson 1 argued that a struct can avoid a heap allocation a class of the same shape would require; this lesson is where that argument gets measured instead of reasoned about, and why the obvious way to measure it produces a number that means nothing at all |
+| [0037](lessons/0037-profiling-a-csharp-service.md) | Profiling a C# Service | dotnet-counters catches the symptom and dotnet-trace finds the hot stack behind it, profiling only after warm-up so the JIT isn't what gets measured, and the stage 8 capstone of sending a profile's finding back through one of this stage's own levers |
 
 ## Reference
 

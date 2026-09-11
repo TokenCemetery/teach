@@ -79,3 +79,4 @@ The right dimensionality is the smallest one that still clears the quality bar t
 ## Related
 
 - [Lesson 1](../lessons/0001-chunking.md), [Lesson 2](../lessons/0002-embedding-models-and-similarity.md), [Lesson 3](../lessons/0003-embedding-dimensionality.md)
+- [Vector Search and Indexing](vector-search-and-indexing.md): what happens to these vectors once stored

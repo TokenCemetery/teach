@@ -48,6 +48,14 @@ type: resources
   Official docs explaining that .NET's `ILogger`, `Meter`, and `Activity`/`ActivitySource` APIs are the platform's own instrumentation, with OpenTelemetry exporting what they already emit rather than replacing them. Use for: the three pillars of observability, in .NET's own terms.
 - [Docs: "Add distributed tracing instrumentation", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs)
   Official reference for `ActivitySource`/`Activity` as .NET's Tracer/Span, and the documented performance optimization where `StartActivity()` returns `null` with no listener registered. Use for: why tracing instrumentation is safe to leave in a hot path.
+- [Docs: "Overview of ASP.NET Core Authentication", Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/)
+  Official docs for authentication's job: producing the `ClaimsPrincipal`, and the `UseAuthentication` middleware-ordering requirement. Use for: what authentication actually establishes, distinct from authorization.
+- [Docs: "Introduction to authorization in ASP.NET Core", Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/introduction)
+  Official docs stating authorization as separate and distinct from authentication, and the requirement/handler/policy model. Use for: the core distinction this lesson is built on.
+- [Docs: "Policy-based authorization in ASP.NET Core", Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/policies)
+  Official docs for bundling requirements into a named policy, applied via `[Authorize(Policy = "...")]` or `RequireAuthorization(...)`. Use for: declaring what an endpoint needs instead of an inline permission check.
+- [Docs: "Claim-based authorization in ASP.NET Core", Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/claims)
+  Official docs for the simplest policy shape: checking a claim's presence, optionally its value. Use for: the base case most simple authorization policies reduce to.
 - [Docs: "Types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
   Official docs on C#'s value-type/reference-type split, the distinction that decides where a struct belongs versus a class. Use for: the type-system foundation everything else in this workspace assumes.
 - [Docs: "Structure types (C# reference)", Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct)

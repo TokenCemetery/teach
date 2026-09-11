@@ -14,13 +14,25 @@ Canonical terms for owning a C# service, and for naming precisely where a Java i
 .NET's native tracing types, predating the OpenTelemetry spec: `ActivitySource` is what the spec calls a Tracer, `Activity` is what it calls a Span. `StartActivity()` returns `null` and skips allocating an `Activity` when no listener is registered, making instrumentation nearly free until an exporter is actually configured.
 _Avoid_: assuming `StartActivity()` always allocates (it checks for a registered, interested listener first, and skips creation entirely when there is none)
 
+**AllowAnonymous**:
+An override that opts a specific endpoint out of a service's default authorization requirement, letting an unauthenticated caller reach it. Applied to lesson 39's health-check endpoints, since an orchestrator checking liveness or readiness never authenticates at all.
+_Avoid_: assuming a health-check endpoint is reachable by default once authorization is required (every endpoint inherits the default requirement unless deliberately opted out)
+
 **ArrayPool&lt;T&gt;**:
 A cooperative, caller-managed pool of reusable arrays (`ArrayPool<T>.Shared` is the general-purpose instance): `Rent(n)` hands back an existing array of at least the requested size or allocates a new one, and `Return` puts it back. There is no finalizer that returns a forgotten array, so a missing `Return` is a real leak.
 _Avoid_: assuming the pool cleans up a forgotten rental automatically (nothing reclaims an unreturned array; sustained forgetting depletes the pool and forces new allocations)
 
+**Authorization policy**:
+A bundle of one or more requirements, evaluated by a handler against a user's claims, requested by an endpoint with `[Authorize(Policy = "...")]` or `RequireAuthorization(...)` rather than an inline permission check. The simplest form, claims-based presence checking, just confirms a named claim exists (`RequireClaim("EmployeeNumber")`), regardless of its value.
+_Avoid_: conflating it with authentication (a policy is evaluated against the identity authentication already established; it never establishes identity itself)
+
 **Background GC**:
 The mode that lets managed threads keep running while a generation 2 collection proceeds on a dedicated background thread (one for workstation GC, one per logical processor for server GC). Only ever applies to generation 2; generation 0 and generation 1 collections are always non-concurrent.
 _Avoid_: assuming it removes all pausing (a foreground GC can still suspend every thread if generation 0 or 1 needs to collect while a background generation 2 collection is running)
+
+**ClaimsPrincipal**:
+The identity authentication produces, which authorization then evaluates a policy's requirements against. Authentication's whole job is providing this; authorization is a separate, distinct decision about what it's permitted to do.
+_Avoid_: assuming authentication and authorization are the same check (identifying a caller and deciding what that caller may do are documented as separate concerns, the second relying on but distinct from the first)
 
 **Dispose pattern**:
 The full `IDisposable` implementation: a public, non-virtual `Dispose()` that calls `protected virtual void Dispose(bool disposing)` then `GC.SuppressFinalize(this)`, with a guard flag so a repeated call is a safe no-op. The `disposing` parameter is `true` from `Dispose()` itself (safe to touch other managed objects) and `false` from a finalizer (other managed objects may already be gone).

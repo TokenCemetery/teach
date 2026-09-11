@@ -105,6 +105,7 @@ Work through these in order.
 - [Null Safety and Mutability](reference/null-safety-and-mutability.md): null safety, `val`/`var`, values vs references, predicting nullability and mutability
 - [Modelling](reference/modelling.md): data classes, sealed classes and exhaustive `when`, object declarations and companion objects, interfaces with default methods
 - [Idiom](reference/idiom.md): extension functions, scope functions (`let`/`run`/`with`/`apply`/`also`), delegation (`by`), operator overloading
+- [Collections and Sequences](reference/collections-and-sequences.md): Kotlin's collection operators, lazy `Sequence` vs eager collections, grouping and folding
 
 ## How this works
 

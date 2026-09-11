@@ -214,6 +214,14 @@ _Avoid_: signature, prototype, type erasure
 A test double carrying expectations about how it is called, which are checked and can fail the test on their own. It tests the implementation's choice of interactions rather than its promise, which is why it is the double most likely to fail on a change that broke no behaviour.
 _Avoid_: stub, fake, double
 
+**Module**:
+A named, compiler- and runtime-recognised unit declared by a `module-info.java`, stating what it `requires` and which of its packages it `exports`. A type is usable outside its module only if it is public, its package is exported, and the using module reads this one; a public class in an unexported package is invisible past the module boundary.
+_Avoid_: JAR, package, library (a JAR is a packaging format; a module is a declared boundary the compiler and runtime both enforce, and a JAR with no `module-info.class` is not one)
+
+**Module path**:
+The list of JARs and directories the module system searches to resolve `requires` directives, parallel to the class path but a genuinely different list. A plain JAR placed here becomes an automatic module; the identical JAR placed on the class path instead becomes part of the unnamed module, with no encapsulation at all.
+_Avoid_: class path as a synonym, a build-tool concept, a classpath entry
+
 **Monitor**:
 The intrinsic lock and wait set that every object carries, entered by a `synchronized` method or block and released on exit or on a call to `wait`. Locking on an object anyone else can reach publishes its monitor, and then anyone else can hold it.
 _Avoid_: lock object, mutex, semaphore
@@ -278,6 +286,10 @@ _Avoid_: binary compatibility, API stability, non-breaking change
 A test double that records how it was called so the test can inspect it afterwards, or a wrapper that delegates to a real object while recording. It moves the check to after the call instead of declaring it in advance, which is what separates it from a mock.
 _Avoid_: mock, stub, listener
 
+**Strong encapsulation**:
+The module system's rule that a public type is reachable from outside its module only if its package is also exported and the calling module reads this one, closing the class-path-era hole where reflection could reach any private member of any JAR. `opens` reopens a package for reflection at run time only, without restoring compile-time access to it.
+_Avoid_: access modifiers alone, information hiding as a synonym (this is enforced by the runtime, not only a compiler convention), sealing (a different mechanism, for a type hierarchy)
+
 **Stub**:
 A test double that returns canned answers and checks nothing about how it was used. It supplies input rather than expectations, so a test built only on stubs is asserting on results.
 _Avoid_: mock, fake, dummy
@@ -325,6 +337,10 @@ _Avoid_: indirect import, sub-dependency, nested library
 **Uber jar**:
 A single jar holding the project's own classes together with the unpacked contents of all its dependencies, so it runs with nothing else on the classpath. The convenience costs a far larger artifact and flattens every dependency's identity, including its licence information, into one file.
 _Avoid_: fat jar, shaded jar, bundle
+
+**Unnamed module**:
+Where every class loaded from the class path lives: it has no name, so nothing can `require` it, and it reads every other module while exporting and opening all of its own packages. Whether a JAR's code ends up here or in a real module is decided by which path it is launched on, not by anything in the JAR itself.
+_Avoid_: automatic module (that's a module-path JAR with no descriptor; this is class-path code specifically), default module, anonymous module
 
 **View**:
 A collection that reads through to another one rather than holding its own contents, which is what `Collections.unmodifiableList` and `Map.values` return. It refuses writes through itself and still shows every change made to the collection behind it.

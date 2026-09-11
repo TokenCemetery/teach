@@ -9,7 +9,7 @@ type: topic
 Become the engineer trusted to own a Java service on a team: able to model a domain in modern Java rather than in the inheritance hierarchies the language used to demand, reason about concurrency from the memory model instead of from experiment, read a profile and a garbage-collection log to a decision, and review someone's Java and name concretely what an abstraction is costing them.
 
 **Start here:** [0001. References Are Values](lessons/0001-references-are-values.md)
-**Latest lesson:** [0049. Does This Framework Earn Its Place](lessons/0049-does-this-framework-earn-its-place.md), which closes the arc
+**Latest lesson:** [0050. The Module System](lessons/0050-the-module-system.md)
 
 ## Success looks like
 
@@ -52,6 +52,7 @@ Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 5. Testing and build | JUnit 6, parameterised tests, test doubles and when not to use one, dependency declaration, a reproducible runnable artifact | Someone else can clone, build, test and run it |
 | 6. The runtime | Memory areas, object layout and escape analysis, garbage collectors and their trade-offs, reading a GC log, JMH, profiling, allocation reduction | Optimises from a profile and proves the win with a benchmark that is trustworthy |
 | 7. Judgment | API design and backwards compatibility, deprecation, review, reading the specification and the JEPs for answers | Trusted to make the call and to explain it to someone else |
+| 8. Modules and reflection | The module system, `module-info.java`, `requires` and `exports`, strong encapsulation, `jlink` and `jpackage` runtime images, reflection and annotations | Declares a module boundary deliberately, ships a runtime image built from it, and reads what a framework's reflection actually touches before judging whether it earns its place |
 
 ## Lessons
 
@@ -108,6 +109,7 @@ Work through these in order.
 | [0047](lessons/0047-settling-it-from-the-source.md) | Settling It From the Source | Where to look when the argument is about what Java does, and which document answers which question |
 | [0048](lessons/0048-reviewing-java.md) | Reviewing Java | Naming what an abstraction costs, instead of saying it feels wrong |
 | [0049](lessons/0049-does-this-framework-earn-its-place.md) | Does This Framework Earn Its Place | The last judgment in the arc, made from the service's constraints rather than the framework's promises |
+| [0050](lessons/0050-the-module-system.md) | The Module System | module-info.java replaces the JAR as the boundary the compiler and runtime both recognise, requires and exports decide what crosses it, and strong encapsulation means a public class in an unexported package is invisible past its own module |
 
 ## Reference
 
@@ -120,6 +122,7 @@ Work through these in order.
 - [Testing and build](reference/testing-and-build.md): the build task each command actually performs, the double to reach for, and the failure that means the artifact is wrong
 - [The runtime](reference/the-runtime.md): where the memory goes, which collector answers which requirement, and the measurement that supports a claim
 - [Judgment](reference/judgment.md): which changes break what, how to retire an API, and how to argue the call from the source
+- [The Module System](reference/the-module-system.md): the stage 8 sheet, with the three conditions for cross-module access, what each directive does, and where a jar's code ends up
 
 ## How this works
 

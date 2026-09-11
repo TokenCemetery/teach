@@ -1,0 +1,54 @@
+---
+title: The Module System
+description: The stage 8 sheet, with the three conditions for cross-module access, what each directive actually does, and where a jar's code ends up depending on which path launched it
+type: reference
+---
+
+# The Module System
+
+## The three conditions for cross-module access
+
+All three, or the type is unreachable. See [lesson 50](../lessons/0050-the-module-system.md).
+
+| Condition | What it checks |
+|---|---|
+| The type itself is `public` | the ordinary visibility keyword, necessary but no longer sufficient on its own |
+| Its package is `exported` by its own module | a public type in an unexported package is invisible past the module boundary |
+| The using module `requires` (reads) the exporting module | an edge in the module graph, built at launch by module resolution |
+
+## What each directive actually does
+
+See [lesson 50](../lessons/0050-the-module-system.md).
+
+| Directive | At compile time | At run time |
+|---|---|---|
+| `exports pkg` | a module that `requires` this one can compile against `pkg`'s public types | the same access continues |
+| `opens pkg` | the package stays exactly as encapsulated as if neither directive existed; nothing compiles against it directly | reflection reaches every member, public or not, via `setAccessible` |
+| `open module` | opens every package the module contains, as if each carried its own `opens` | same, for all packages; a further `opens` on one of them is then a compile error |
+
+## Where a jar's code ends up
+
+The same file behaves differently depending only on which path it is placed on at launch. See [lesson 50](../lessons/0050-the-module-system.md).
+
+| Situation | Becomes | Encapsulation |
+|---|---|---|
+| Has `module-info.class`, on the module path | A named module | Full: `requires`/`exports` enforced by the compiler and the runtime |
+| A plain jar, no descriptor, on the module path | An automatic module | None: exports and opens every package it contains, for compatibility |
+| Any jar's classes, loaded from the class path | Merged into the one unnamed module | None: reads every module in the graph, exports and opens all of its own packages |
+
+## Symptom to cause
+
+Populated only from failures the lessons actually reproduced.
+
+| Symptom | What it actually means |
+|---|---|
+| A compile error naming a package as inaccessible, on a type that is `public` | strong encapsulation: the package is not exported, or the calling module does not read the exporting one; `public` alone stopped being sufficient (lesson 50) |
+| `InaccessibleObjectException` from `setAccessible(true)` | the target package is neither `exported` nor `opened`; before the module system, `setAccessible` could reach any private member of any jar with no such gate (lesson 50) |
+| A missing `requires` module is reported before any application code runs at all | module resolution follows every `requires` edge outward from the initial module at launch, and fails immediately if one is missing, earlier than the class-path era's `NoClassDefFoundError` (lesson 50) |
+
+## Sources
+
+- [Introduction to Modules in Java, dev.java](https://dev.java/learn/modules/intro/): module declarations, `requires`, `exports`, strong encapsulation, module resolution and the module graph
+- [Reflective Access with Open Modules and Open Packages, dev.java](https://dev.java/learn/modules/opening-for-reflection/): `opens`, open modules, and exactly what changes at compile time versus run time
+- [Code on the Class Path - the Unnamed Module, dev.java](https://dev.java/learn/modules/unnamed-module/): the unnamed module's name, dependencies and exports
+- [Incremental Modularization with Automatic Modules, dev.java](https://dev.java/learn/modules/automatic-module/): what an automatic module exports and opens, and why

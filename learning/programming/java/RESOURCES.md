@@ -48,7 +48,7 @@ type: resources
   What the recorder records, which events exist and what each one costs to collect. Use for: stage 6, deciding what to switch on before recording rather than after.
 
 - [Docs: "Learn Java", Oracle, dev.java](https://dev.java/learn/)
-  The official tutorials, maintained for current releases rather than left at Java 8. Use for: stages 1 to 3, and for a worked introduction to a feature.
+  The official tutorials, maintained for current releases rather than left at Java 8. Use for: stages 1 to 3, and for a worked introduction to a feature. Also the primary source for stage 8's module system series, `requires`/`exports`/`opens`, the module path, and the unnamed and automatic modules.
 
 - [Docs: "JEP 0: JEP Index", OpenJDK, openjdk.org](https://openjdk.org/jeps/0)
   Every proposal with its status and target release, each one arguing for its own feature. Use for: which release introduced something, and why it was designed that way.

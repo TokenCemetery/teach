@@ -176,6 +176,10 @@ _Avoid_: offset pagination, cursor, page number, seek
 A subquery in `FROM` marked `LATERAL`, which may reference columns of the items to its left and is evaluated once per row of them. Order in `FROM` therefore matters, since it can only see what is already to its left.
 _Avoid_: derived table, correlated subquery, join, inline view
 
+**Least privilege**:
+Granting a role only the specific privileges the task in front of it actually needs, rather than a broad grant that happens to cover it. Since ownership already grants everything with nothing to revoke, the principle applies to every role that is not the owner and not a superuser.
+_Avoid_: security through obscurity, a synonym for read-only, a one-time setup rather than a default of nothing granted until asked for
+
 **Leftmost-prefix rule**:
 A multicolumn index can only be searched from its first column inward, so an index on two columns serves a query on the first, or on both, and not one on the second alone. Skip scan relaxes this only when the leading column has few distinct values.
 _Avoid_: column order as a preference, covering index, partial index, index-only scan
@@ -207,6 +211,10 @@ _Avoid_: primary key, unique column, business key as a synonym for stable, compo
 **Outer join**:
 A join that keeps rows from one or both sides that matched nothing, filling the absent side's columns with `NULL`. Those `NULL`s were invented by the join rather than stored, and any later condition on them behaves exactly as three-valued logic says.
 _Avoid_: left join as a synonym for all three, full join, join, optional join
+
+**Ownership**:
+The role that created an object, which can act on it in every way with no `GRANT` needed, from the moment it exists. The right to alter or drop it is inherent in ownership and cannot itself be granted or revoked, only reassigned to another role with `ALTER ... OWNER TO`.
+_Avoid_: a privilege like any other, something REVOKE can remove, the same guarantee as SUPERUSER, a naming convention
 
 **Partial dependency**:
 A non-key column that depends on part of a composite key rather than on the whole of it, which second normal form forbids. It cannot arise in a table whose key is a single column.
@@ -247,6 +255,10 @@ _Avoid_: cascade as a synonym for all of them, trigger, constraint, default
 **Referential integrity**:
 The property a foreign key maintains, that every referencing value names a row that exists. It promises existence and nothing else: the row it names can still be the wrong one for the domain.
 _Avoid_: correctness, consistency, cascade, constraint
+
+**Role**:
+The single concept PostgreSQL uses for what used to be a separate "user" and "group": any role can log in, own objects, or be granted membership in another role, any or all at once. `LOGIN` is the one attribute that lets it authenticate a connection; `CREATE USER` is `CREATE ROLE` with that attribute already on.
+_Avoid_: a synonym only for a person, group as a distinct kind of object, a login-only concept
 
 **Savepoint**:
 A named point inside a transaction that `ROLLBACK TO SAVEPOINT` returns to, discarding the work after it and keeping the work before it. It is not a nested transaction: nothing it did is durable until the outer transaction commits.

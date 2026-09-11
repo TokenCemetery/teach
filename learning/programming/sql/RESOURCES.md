@@ -98,6 +98,15 @@ type: resources
 - [Cheat sheet: "SQL Injection Prevention Cheat Sheet", OWASP, cheatsheetseries.owasp.org](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
   Why string-built SQL is unsafe, and the defences ranked from parameterised statements down to escaping, discouraged. Use for: stage 8, and nowhere a database's own manual documents an application-layer vulnerability instead.
 
+- [Docs: "Chapter 21. Database Roles", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/user-manag.html)
+  Roles, attributes, membership and inheritance, and the predefined roles shipped with the engine. Use for: stage 8, roles and least privilege.
+
+- [Docs: "5.8. Privileges", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/ddl-priv.html)
+  Every privilege kind, what ownership grants for free, and what PUBLIC gets by default. Use for: stage 8, deciding exactly what to GRANT.
+
+- [Docs: "ALTER DEFAULT PRIVILEGES", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/sql-alterdefaultprivileges.html)
+  Setting privileges for objects a role has not created yet, and the exact scope of "future" it covers. Use for: stage 8, keeping an application role's access from silently lapsing after a migration.
+
 - [Docs: "Don't Do This", PostgreSQL contributors, wiki.postgresql.org](https://wiki.postgresql.org/wiki/Don%27t_Do_This)
   A maintained list of choices that look reasonable and are regretted, with the reason for each. Use for: stage 4 type and schema decisions, and for review vocabulary.
 

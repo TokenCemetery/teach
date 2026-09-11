@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0049. SQL Injection and Parameterised Statements](lessons/0049-sql-injection-and-parameterised-statements.md)
+**Latest lesson:** [0050. Roles and Least Privilege](lessons/0050-roles-and-least-privilege.md)
 
 ## Success looks like
 
@@ -108,6 +108,7 @@ Work through these in order.
 | [0047](lessons/0047-reading-orm-output.md) | Reading What an ORM Emits | The ORM writes the SQL you did not write, and the only way to know what it sent is to look |
 | [0048](lessons/0048-trusted-with-the-database.md) | Trusted With the Database | Seven stages end in one habit, which is naming the row, the lock or the plan that makes a call defensible |
 | [0049](lessons/0049-sql-injection-and-parameterised-statements.md) | SQL Injection and Parameterised Statements | String concatenation lets a value change what a statement means, not only what it matches, and a parameterised statement removes the possibility rather than trying to sanitise every case |
+| [0050](lessons/0050-roles-and-least-privilege.md) | Roles and Least Privilege | Roles subsume the old ideas of users and groups, ownership already grants every privilege with no GRANT needed, and least privilege is entirely about what everyone else is allowed to do |
 
 ## Reference
 

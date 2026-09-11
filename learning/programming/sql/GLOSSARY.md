@@ -248,6 +248,10 @@ _Avoid_: execution time, milliseconds, buffers, price
 A statement sent to the server once, parsed and planned before any value is supplied, with placeholders standing in for the values supplied afterward. Binding a parameter to it is what actually keeps a value out of the parsed text; the two are usually used together but name different things, one a statement's own compiled shape, the other where a value enters it.
 _Avoid_: bound parameter as a synonym, parameterised query as identical (a driver can parameterise safely without a literal prepare-then-execute round trip at the protocol level), an optimisation
 
+**Procedure**:
+A routine created with `CREATE PROCEDURE` and invoked with `CALL` rather than from inside a query, with no return value of its own beyond any `OUT` parameters. Unlike a function, it may `COMMIT` or `ROLLBACK` during its own execution, automatically starting a new transaction, as long as the invoking `CALL` is not already inside an explicit transaction block.
+_Avoid_: function, something callable from a SELECT, an autonomous transaction as a separate feature (it's this same in-procedure COMMIT/ROLLBACK)
+
 **Read skew**:
 Two different rows read once each in one transaction, each read correct on its own, and jointly describing a state that never existed, such as both sides of a transfer read either side of it.
 _Avoid_: non-repeatable read, write skew, phantom, inconsistency
@@ -319,6 +323,10 @@ _Avoid_: session, connection, statement, batch
 **Transitive dependency**:
 A non-key column that depends on the key only through another non-key column, which third normal form forbids. The tell is that one fact can be updated in one row and left stale in another that shares it.
 _Avoid_: partial dependency, indirect join, chained foreign key, derived column
+
+**Trigger**:
+A specification that the database itself runs a function whenever a given operation touches a table, on every path that reaches it regardless of which caller issued the statement. A row-level `BEFORE` trigger can rewrite the row being written or return `NULL` to skip it silently; an `AFTER` trigger's return value is ignored, since the write already happened.
+_Avoid_: an application-level hook, a CHECK constraint (which bounds one row's own values and cannot reach other rows the way a trigger can), something visible in a diff of the calling code
 
 **Unknown**:
 The third truth value, produced by comparing anything with `NULL`. It is not the same as false: `NOT unknown` is still unknown, and `false AND unknown` is false while `unknown AND unknown` is not.

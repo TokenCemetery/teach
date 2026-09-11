@@ -9,7 +9,7 @@ type: topic
 Become the engineer a team trusts with its database: able to express a question as a query that answers exactly it, read a query plan to find out why that query is slow, choose an index from evidence instead of instinct, reason about what concurrent transactions may observe, and design and migrate a schema that keeps bad data out and stays fast as the table grows.
 
 **Start here:** [0001. Tables, Rows and Types](lessons/0001-tables-rows-and-types.md)
-**Latest lesson:** [0052. Full-Text Search](lessons/0052-full-text-search.md)
+**Latest lesson:** [0053. Triggers, Stored Procedures, and Where Logic Belongs](lessons/0053-triggers-stored-procedures-and-where-logic-belongs.md)
 
 ## Success looks like
 
@@ -50,7 +50,7 @@ Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, 
 | 4. Schema design | Normalisation and when to stop, primary and foreign keys, constraints, choosing types deliberately, surrogate versus natural keys | Bad data is impossible rather than discouraged |
 | 5. Transactions | ACID as four separate promises, isolation levels and the anomalies each permits, multiversion concurrency control, locking, deadlocks, explicit row locks, idempotency | Can name the anomaly a concurrency bug depends on, before reproducing it |
 | 6. Performance | B-tree indexes first and the others after, selectivity and cardinality, statistics, reading a plan with timings, join strategies, pagination, when the query is not the problem | Optimises from a plan and proves the win with a measurement |
-| 7. Operating and judgment | Migrations without downtime, reviewing queries and schemas, reading ORM output, portability across engines, when SQL is the wrong tool | Trusted to make the call and to explain it to someone else |
+| 7. Operating and judgment | Migrations without downtime, reviewing queries and schemas, reading ORM output, portability across engines, when SQL is the wrong tool | Trusted to make the call and to explain it to someone else; stage 8 completes it with the authorization and procedural-logic review questions this stage's own checklist assumed |
 | 8. Security and specialised tools | SQL injection and parameterised statements, roles and least privilege, row-level security, full-text search, triggers and stored procedures | Reviews an authorization boundary and a piece of procedural logic as concretely as a query or a schema change |
 
 ## Lessons
@@ -111,6 +111,7 @@ Work through these in order.
 | [0050](lessons/0050-roles-and-least-privilege.md) | Roles and Least Privilege | Roles subsume the old ideas of users and groups, ownership already grants every privilege with no GRANT needed, and least privilege is entirely about what everyone else is allowed to do |
 | [0051](lessons/0051-row-level-security.md) | Row-Level Security | GRANT decides access to a table as a whole, a row security policy decides it per row, and the engine enforces it on every access path, not only the one a developer remembered to filter |
 | [0052](lessons/0052-full-text-search.md) | Full-Text Search | tsvector reduces a document to normalized lexemes a GIN index can search, tsquery asks whether they are present, and the boundary with a dedicated search engine is where ranking and scale outgrow one column |
+| [0053](lessons/0053-triggers-stored-procedures-and-where-logic-belongs.md) | Triggers, Stored Procedures, and Where Logic Belongs | This is stage 8's capstone, a trigger runs on every path that reaches a table and a procedure can commit or roll back its own transaction, and the judgment call is deciding when that invisibility is actually worth its cost |
 
 ## Reference
 

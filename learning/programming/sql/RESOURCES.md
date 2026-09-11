@@ -116,6 +116,12 @@ type: resources
 - [Docs: "Chapter 12. Full Text Search", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/textsearch-intro.html)
   `tsvector` and `tsquery`, why `LIKE` lacks linguistic support and ranking, and the tables, indexes and configuration chapters that follow the introduction. Use for: stage 8, full-text search.
 
+- [Docs: "Chapter 37. Triggers", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/triggers.html)
+  Trigger timing and level, and exactly what a BEFORE row trigger's return value does. Use for: stage 8, reviewing a trigger.
+
+- [Docs: "36.4. User-Defined Procedures", PostgreSQL Global Development Group, postgresql.org](https://www.postgresql.org/docs/current/xproc.html)
+  The precise differences from a function: no RETURNS clause, called with CALL, and transaction control a function cannot use. Use for: stage 8, reviewing a stored procedure.
+
 - [Docs: "Don't Do This", PostgreSQL contributors, wiki.postgresql.org](https://wiki.postgresql.org/wiki/Don%27t_Do_This)
   A maintained list of choices that look reasonable and are regretted, with the reason for each. Use for: stage 4 type and schema decisions, and for review vocabulary.
 

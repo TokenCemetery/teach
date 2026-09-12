@@ -32,26 +32,6 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 | architecture | [Distributed Systems](architecture/distributed-systems/) | Reason about partial failure: what a network can do to you, which consistency you are actually buying, and why consensus is expensive | 19 |
 | architecture | [API Design](architecture/api-design/) | Design an interface others depend on: the contract, its errors, and how it changes without breaking them | 19 |
 
-## Ownership
-
-Which workspace owns a subject, and which workspaces defer to it instead of restating it. Each workspace's own `Out of scope` section points back here.
-
-| Workspace | Defers to | Notes |
-|---|---|---|
-| [architecture/api-design](architecture/api-design/) | [programming/typescript](programming/typescript/) | crosses domain |
-| [data/kafka](data/kafka/) | [architecture/distributed-systems](architecture/distributed-systems/) | crosses domain |
-| [data/postgres](data/postgres/) | [programming/sql](programming/sql/) | crosses domain |
-| [data/redis](data/redis/) | [data/postgres](data/postgres/) | |
-| [llm/evals](llm/evals/) | [llm/finetuning](llm/finetuning/) | lessons 0020-0024 |
-| [llm/inference](llm/inference/) | [llm/evals](llm/evals/) | |
-| [llm/inference](llm/inference/) | [llm/finetuning](llm/finetuning/) | lessons 0025-0026 |
-| [llm/rag](llm/rag/) | [data/postgres](data/postgres/) | crosses domain |
-| [llm/rag](llm/rag/) | [llm/evals](llm/evals/) | |
-| [llm/transformers](llm/transformers/) | [llm/finetuning](llm/finetuning/) | |
-| [programming/bash](programming/bash/) | [programming/python](programming/python/) | |
-| [programming/kotlin](programming/kotlin/) | [programming/java](programming/java/) | |
-| [programming/python](programming/python/) | [llm/finetuning](llm/finetuning/) | crosses domain |
-
 ## Starting a topic
 
 ```bash

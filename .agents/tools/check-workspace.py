@@ -83,10 +83,9 @@ CONVENTIONS = {
     # Start methods genuinely differ by operating system, so naming one is a
     # fact the reader needs rather than a trace of the author's machine.
     "python": {"machine_allow": (r"\bmacOS\b", r"\bWindows 1\d\b")},
-    # These arcs predate the Lessons column and carry 290 lessons between them,
-    # so assigning each to a stage is judgment work rather than a mechanical
-    # edit. Exempt rather than retrofitted; tracked in issue #99.
-    "rust": {"arc_lessons_column": False},
+    # This arc predates the Lessons column and carries 53 lessons, so assigning
+    # each to a stage is judgment work rather than a mechanical edit. Exempt
+    # rather than retrofitted; tracked in issue #99.
     "sql": {"arc_lessons_column": False},
     # This arc ends 26 of its 27 Going further sections on a forward pointer
     # to the lesson that pays the material off, or on the reference sheets it

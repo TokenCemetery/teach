@@ -43,17 +43,17 @@ Become the engineer trusted to own Rust on a team: able to design with ownership
 
 Eight stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. Ownership | Values, stack and heap, moves, `Copy`, borrows and their rules, slices, `String` versus `&str`, shadowing | Can predict a move or borrow error before the compiler reports it |
-| 2. Data and control | Structs, enums, `Option` and `Result`, pattern matching and exhaustiveness, iterators, closures, the collections worth knowing | Models with enums, and handles absence without reaching for `unwrap` |
-| 3. Errors and API shape | Propagation with `?`, custom error types, `From` conversions, panic versus error, modules and visibility, writing documentation that compiles | Writes a library whose failures a caller can actually handle |
-| 4. Traits, generics and lifetimes | Trait bounds, associated types, generics versus dynamic dispatch, the orphan rule, lifetime annotations and elision, why a lifetime is not a duration | Reads a lifetime error as information rather than as an obstacle |
-| 5. Sharing and threads | `Box`, `Rc` and `Arc`, `RefCell` and `Mutex`, `Send` and `Sync`, threads, channels, deadlock and poisoning | Chooses a sharing strategy from the data rather than from habit |
-| 6. Async | Futures and executors, tasks and cancellation, why a blocking call in async is a bug, locks across `await`, what pinning is for | Writes async code that does not stall, and can explain where it would |
-| 7. Unsafe and performance | What `unsafe` actually promises, undefined behaviour, encapsulating an invariant, checking with Miri, benchmarking, allocation and copying costs | Can defend an `unsafe` boundary, and proves a performance claim with a measurement |
-| 8. Judgment | Publishing, semantic versioning of a public API, the API guidelines, review, reading the standard library and the RFCs for answers | Trusted to make the call and to explain it to someone else; stage 9 completes the release procedure's own first step, the test suite passes, with the suite this arc had not yet taught how to write |
-| 9. Testing | `#[test]` and `cargo test`, unit tests versus integration tests, organising tests for a library, property-based and snapshot testing | Writes and organises a test suite the way the standard library itself does, not only doctests and benchmarks |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Ownership | 0001 to 0006 | Values, stack and heap, moves, `Copy`, borrows and their rules, slices, `String` versus `&str`, shadowing | Can predict a move or borrow error before the compiler reports it |
+| 2. Data and control | 0007 to 0013 | Structs, enums, `Option` and `Result`, pattern matching and exhaustiveness, iterators, closures, the collections worth knowing | Models with enums, and handles absence without reaching for `unwrap` |
+| 3. Errors and API shape | 0014 to 0020 | Propagation with `?`, custom error types, `From` conversions, panic versus error, modules and visibility, writing documentation that compiles | Writes a library whose failures a caller can actually handle |
+| 4. Traits, generics and lifetimes | 0021 to 0028 | Trait bounds, associated types, generics versus dynamic dispatch, the orphan rule, lifetime annotations and elision, why a lifetime is not a duration | Reads a lifetime error as information rather than as an obstacle |
+| 5. Sharing and threads | 0029 to 0036 | `Box`, `Rc` and `Arc`, `RefCell` and `Mutex`, `Send` and `Sync`, threads, channels, deadlock and poisoning | Chooses a sharing strategy from the data rather than from habit |
+| 6. Async | 0037 to 0045 | Futures and executors, tasks and cancellation, why a blocking call in async is a bug, locks across `await`, what pinning is for | Writes async code that does not stall, and can explain where it would |
+| 7. Unsafe and performance | 0046 to 0054 | What `unsafe` actually promises, undefined behaviour, encapsulating an invariant, checking with Miri, benchmarking, allocation and copying costs | Can defend an `unsafe` boundary, and proves a performance claim with a measurement |
+| 8. Judgment | 0055 to 0063 | Publishing, semantic versioning of a public API, the API guidelines, review, reading the standard library and the RFCs for answers | Trusted to make the call and to explain it to someone else; stage 9 completes the release procedure's own first step, the test suite passes, with the suite this arc had not yet taught how to write |
+| 9. Testing | 0064 to 0067 | `#[test]` and `cargo test`, unit tests versus integration tests, organising tests for a library, property-based and snapshot testing | Writes and organises a test suite the way the standard library itself does, not only doctests and benchmarks |
 
 ## Lessons
 

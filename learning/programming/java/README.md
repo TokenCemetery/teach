@@ -43,16 +43,16 @@ Become the engineer trusted to own a Java service on a team: able to model a dom
 
 Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. Foundations | Primitives and references, `null`, strings and their pool, arrays, the collections framework, `equals` and `hashCode`, `Comparable` | Can predict identity versus equality and aliasing without running the code |
-| 2. Modelling | Classes and interfaces, records, sealed types, enums, generics and erasure, pattern matching, immutability as a default | Models a domain without reaching for inheritance first |
-| 3. Idiom and the library | Exceptions and what to do with checked ones, `Optional`, streams and collectors, iteration, files and IO, the time API, text blocks | Writes Java a reviewer would not describe as unidiomatic |
-| 4. Concurrency | Threads, the memory model, `synchronized` and `volatile`, `java.util.concurrent`, executors, virtual threads, structured concurrency, the traps | Can name the guarantee a broken concurrent program violated |
-| 5. Testing and build | JUnit 6, parameterised tests, test doubles and when not to use one, dependency declaration, a reproducible runnable artifact | Someone else can clone, build, test and run it |
-| 6. The runtime | Memory areas, object layout and escape analysis, garbage collectors and their trade-offs, reading a GC log, JMH, profiling, allocation reduction | Optimises from a profile and proves the win with a benchmark that is trustworthy |
-| 7. Judgment | API design and backwards compatibility, deprecation, review, reading the specification and the JEPs for answers | Trusted to make the call and to explain it to someone else; stage 8 completes it with the mechanism, reflection and annotations, every judged framework was actually built from |
-| 8. Modules and reflection | The module system, `module-info.java`, `requires` and `exports`, strong encapsulation, `jlink` and `jpackage` runtime images, reflection and annotations | Declares a module boundary deliberately, ships a runtime image built from it, and reads what a framework's reflection actually touches before judging whether it earns its place |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Foundations | 0001 to 0006 | Primitives and references, `null`, strings and their pool, arrays, the collections framework, `equals` and `hashCode`, `Comparable` | Can predict identity versus equality and aliasing without running the code |
+| 2. Modelling | 0007 to 0014 | Classes and interfaces, records, sealed types, enums, generics and erasure, pattern matching, immutability as a default | Models a domain without reaching for inheritance first |
+| 3. Idiom and the library | 0015 to 0021 | Exceptions and what to do with checked ones, `Optional`, streams and collectors, iteration, files and IO, the time API, text blocks | Writes Java a reviewer would not describe as unidiomatic |
+| 4. Concurrency | 0022 to 0028 | Threads, the memory model, `synchronized` and `volatile`, `java.util.concurrent`, executors, virtual threads, structured concurrency, the traps | Can name the guarantee a broken concurrent program violated |
+| 5. Testing and build | 0029 to 0035 | JUnit 6, parameterised tests, test doubles and when not to use one, dependency declaration, a reproducible runnable artifact | Someone else can clone, build, test and run it |
+| 6. The runtime | 0036 to 0042 | Memory areas, object layout and escape analysis, garbage collectors and their trade-offs, reading a GC log, JMH, profiling, allocation reduction | Optimises from a profile and proves the win with a benchmark that is trustworthy |
+| 7. Judgment | 0043 to 0049 | API design and backwards compatibility, deprecation, review, reading the specification and the JEPs for answers | Trusted to make the call and to explain it to someone else; stage 8 completes it with the mechanism, reflection and annotations, every judged framework was actually built from |
+| 8. Modules and reflection | 0050 to 0052 | The module system, `module-info.java`, `requires` and `exports`, strong encapsulation, `jlink` and `jpackage` runtime images, reflection and annotations | Declares a module boundary deliberately, ships a runtime image built from it, and reads what a framework's reflection actually touches before judging whether it earns its place |
 
 ## Lessons
 

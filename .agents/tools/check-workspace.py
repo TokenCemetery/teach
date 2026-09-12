@@ -79,8 +79,7 @@ DEFAULTS = {
 }
 
 CONVENTIONS = {
-    "java": {"practice_marker_from": 7, "stage_sheet_from": 7,
-             "arc_lessons_column": False},
+    "java": {"practice_marker_from": 7, "stage_sheet_from": 7},
     # Start methods genuinely differ by operating system, so naming one is a
     # fact the reader needs rather than a trace of the author's machine.
     "python": {"machine_allow": (r"\bmacOS\b", r"\bWindows 1\d\b"),

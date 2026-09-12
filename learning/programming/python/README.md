@@ -42,15 +42,15 @@ Become the engineer trusted to own Python on a team: able to ship a typed, teste
 
 Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. Foundations | Objects and names, mutability and aliasing, lists, dicts, sets, tuples, truthiness, comprehensions, functions and argument passing | Can predict aliasing and mutation without running the code |
-| 2. Idiom | Iterators and generators, context managers, exceptions as control flow, `dataclasses`, modules and packages, the standard library worth knowing | Reaches for a generator or a context manager rather than hand-rolling the loop and the `try/finally` |
-| 3. Types and tooling | Annotations, generics, `Protocol`, checker strictness, linting and formatting, virtual environments, dependency and project management, building a wheel | A strict checker passes, and someone else can install the result |
-| 4. The data model | Dunder methods, `__init__` versus `__new__`, properties, descriptors, class versus instance attributes, method resolution order, why metaclasses are almost never the answer | Implements the protocol a type needs, and can say when not to |
-| 5. Testing | `pytest` mechanics, fixtures and scope, parametrisation, property-based testing, what deserves a mock and what does not, coverage as a signal rather than a target | Has a test suite that caught a regression before a human did |
-| 6. Concurrency and performance | Threads, processes, `asyncio`, what the GIL actually serialises, blocking calls inside an event loop, profiling, the cost of attribute lookup and allocation | Chooses the concurrency model from the workload and proves the win from a profile |
-| 7. Judgment | API and package design, deprecation, review, reading the standard library and the PEPs for answers | Trusted to make the call and to explain it to someone else |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Foundations | 0001 to 0007 | Objects and names, mutability and aliasing, lists, dicts, sets, tuples, truthiness, comprehensions, functions and argument passing | Can predict aliasing and mutation without running the code |
+| 2. Idiom | 0008 to 0014 | Iterators and generators, context managers, exceptions as control flow, `dataclasses`, modules and packages, the standard library worth knowing | Reaches for a generator or a context manager rather than hand-rolling the loop and the `try/finally` |
+| 3. Types and tooling | 0015 to 0021 | Annotations, generics, `Protocol`, checker strictness, linting and formatting, virtual environments, dependency and project management, building a wheel | A strict checker passes, and someone else can install the result |
+| 4. The data model | 0022 to 0027 | Dunder methods, `__init__` versus `__new__`, properties, descriptors, class versus instance attributes, method resolution order, why metaclasses are almost never the answer | Implements the protocol a type needs, and can say when not to |
+| 5. Testing | 0028 to 0033 | `pytest` mechanics, fixtures and scope, parametrisation, property-based testing, what deserves a mock and what does not, coverage as a signal rather than a target | Has a test suite that caught a regression before a human did |
+| 6. Concurrency and performance | 0034 to 0039 | Threads, processes, `asyncio`, what the GIL actually serialises, blocking calls inside an event loop, profiling, the cost of attribute lookup and allocation | Chooses the concurrency model from the workload and proves the win from a profile |
+| 7. Judgment | 0040 to 0044 | API and package design, deprecation, review, reading the standard library and the PEPs for answers | Trusted to make the call and to explain it to someone else |
 
 ## Lessons
 

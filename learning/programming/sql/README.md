@@ -42,16 +42,16 @@ Become the engineer a team trusts with its database: able to express a question 
 
 Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. The relational model | Tables, rows and types, `NULL` and three-valued logic, `SELECT`, filtering, sorting, sets versus bags, what a key is | Can say why a query returned exactly those rows, including the ones `NULL` removed |
-| 2. Querying | Every kind of join, aggregation and `GROUP BY`, `HAVING`, subqueries, common table expressions, set operations | Expresses a question as one query without trial and error |
-| 3. Beyond the basics | Window functions and frames, lateral joins, recursive queries, `JSON` columns where they earn their place | Solves ranking and running-total problems in SQL rather than in application code |
-| 4. Schema design | Normalisation and when to stop, primary and foreign keys, constraints, choosing types deliberately, surrogate versus natural keys | Bad data is impossible rather than discouraged |
-| 5. Transactions | ACID as four separate promises, isolation levels and the anomalies each permits, multiversion concurrency control, locking, deadlocks, explicit row locks, idempotency | Can name the anomaly a concurrency bug depends on, before reproducing it |
-| 6. Performance | B-tree indexes first and the others after, selectivity and cardinality, statistics, reading a plan with timings, join strategies, pagination, when the query is not the problem | Optimises from a plan and proves the win with a measurement |
-| 7. Operating and judgment | Migrations without downtime, reviewing queries and schemas, reading ORM output, portability across engines, when SQL is the wrong tool | Trusted to make the call and to explain it to someone else; stage 8 completes it with the authorization and procedural-logic review questions this stage's own checklist assumed |
-| 8. Security and specialised tools | SQL injection and parameterised statements, roles and least privilege, row-level security, full-text search, triggers and stored procedures | Reviews an authorization boundary and a piece of procedural logic as concretely as a query or a schema change |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. The relational model | 0001 to 0006 | Tables, rows and types, `NULL` and three-valued logic, `SELECT`, filtering, sorting, sets versus bags, what a key is | Can say why a query returned exactly those rows, including the ones `NULL` removed |
+| 2. Querying | 0007 to 0013 | Every kind of join, aggregation and `GROUP BY`, `HAVING`, subqueries, common table expressions, set operations | Expresses a question as one query without trial and error |
+| 3. Beyond the basics | 0014 to 0020 | Window functions and frames, lateral joins, recursive queries, `JSON` columns where they earn their place | Solves ranking and running-total problems in SQL rather than in application code |
+| 4. Schema design | 0021 to 0027 | Normalisation and when to stop, primary and foreign keys, constraints, choosing types deliberately, surrogate versus natural keys | Bad data is impossible rather than discouraged |
+| 5. Transactions | 0028 to 0034 | ACID as four separate promises, isolation levels and the anomalies each permits, multiversion concurrency control, locking, deadlocks, explicit row locks, idempotency | Can name the anomaly a concurrency bug depends on, before reproducing it |
+| 6. Performance | 0035 to 0041 | B-tree indexes first and the others after, selectivity and cardinality, statistics, reading a plan with timings, join strategies, pagination, when the query is not the problem | Optimises from a plan and proves the win with a measurement |
+| 7. Operating and judgment | 0042 to 0048 | Migrations without downtime, reviewing queries and schemas, reading ORM output, portability across engines, when SQL is the wrong tool | Trusted to make the call and to explain it to someone else; stage 8 completes it with the authorization and procedural-logic review questions this stage's own checklist assumed |
+| 8. Security and specialised tools | 0049 to 0053 | SQL injection and parameterised statements, roles and least privilege, row-level security, full-text search, triggers and stored procedures | Reviews an authorization boundary and a piece of procedural logic as concretely as a query or a schema change |
 
 ## Lessons
 

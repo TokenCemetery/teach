@@ -76,36 +76,41 @@ plugins:
       # The theme sorts the language selector itself, so this does not affect
       # its order.
       languages:
-        - locale: es
-          name: Spanish
-          build: true
-          theme:
-            locale: es
-        - locale: zh
-          name: Chinese
-          build: true
-          theme:
-            locale: zh
-        - locale: hi
-          name: Hindi
-          build: true
-          theme:
-            locale: hi
-        - locale: pt
-          name: Portuguese
-          build: true
-          theme:
-            locale: pt
-        - locale: ru
-          name: Russian
-          build: true
-          theme:
-            locale: ru
-        - locale: fr
-          name: French
-          build: true
-          theme:
-            locale: fr
+        # No translated content exists yet (no *.es.md etc. files), so these
+        # locales only re-render the English pages once per language at ~9x
+        # the build cost for no translation value. Commented out, not
+        # removed: uncomment a locale once its content is actually
+        # translated.
+        # - locale: es
+        #   name: Spanish
+        #   build: true
+        #   theme:
+        #     locale: es
+        # - locale: zh
+        #   name: Chinese
+        #   build: true
+        #   theme:
+        #     locale: zh
+        # - locale: hi
+        #   name: Hindi
+        #   build: true
+        #   theme:
+        #     locale: hi
+        # - locale: pt
+        #   name: Portuguese
+        #   build: true
+        #   theme:
+        #     locale: pt
+        # - locale: ru
+        #   name: Russian
+        #   build: true
+        #   theme:
+        #     locale: ru
+        # - locale: fr
+        #   name: French
+        #   build: true
+        #   theme:
+        #     locale: fr
         - locale: en
           default: true
           name: English

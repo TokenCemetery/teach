@@ -23,7 +23,7 @@ Be able to design a versioned public API (REST/HTTP or gRPC) from scratch, and t
 
 ## Out of scope
 
-- Making the compiler reject an impossible state inside one codebase: that is `programming/typescript`. This workspace is the same instinct applied across a boundary where there is no shared compiler.
+- Making the compiler reject an impossible state inside one codebase: see the [ownership table](../../README.md#ownership) for the `programming/typescript` boundary. This workspace is the same instinct applied across a boundary where there is no shared compiler.
 
 ## The arc
 

@@ -33,7 +33,7 @@ Become the engineer trusted to own Python on a team: able to ship a typed, teste
 ## Out of scope
 
 - Web frameworks as subjects in their own right: Django, FastAPI, Flask.
-- The scientific and machine-learning stack as a subject: NumPy, pandas, PyTorch. A workspace on adapter fine-tuning exists separately, at [`llm/finetuning`](../../llm/finetuning/README.md).
+- The scientific and machine-learning stack as a subject: NumPy, pandas, PyTorch. See the [ownership table](../../README.md#ownership) for the `llm/finetuning` boundary.
 - Distribution beyond wheels published to an index: conda, OS packages, frozen single-file binaries.
 - CPython internals past the point where they stop predicting program behaviour: bytecode, the C API, writing extension modules.
 - Python 2, and migration from it.

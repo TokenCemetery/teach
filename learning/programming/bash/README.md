@@ -24,7 +24,7 @@ Be able to write and maintain shell scripts for CI pipelines, deployment and ope
 
 ## Out of scope
 
-- Everything past the point a script should have stopped being shell: `programming/python` is where it goes next.
+- Everything past the point a script should have stopped being shell: see the [ownership table](../../README.md#ownership) for the `programming/python` boundary.
 
 ## The arc
 

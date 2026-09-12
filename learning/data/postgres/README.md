@@ -24,7 +24,7 @@ Be able to operate a running Postgres instance, self-hosted or managed, and to d
 
 ## Out of scope
 
-- Queries, query plans, schema design and isolation semantics: that is `programming/sql`, linked to rather than restated. This workspace owns the running instance, not the language.
+- Queries, query plans, schema design and isolation semantics: see the [ownership table](../../README.md#ownership) for the `programming/sql` boundary, linked to rather than restated. This workspace owns the running instance, not the language.
 
 ## The arc
 

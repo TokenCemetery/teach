@@ -23,7 +23,7 @@ Be able to build an eval that catches a regression a vibe check would miss, and 
 
 ## Out of scope
 
-- Judging a variant, held-out design, metrics and the regression suite as taught inside one fine-tuning arc: `llm/finetuning` lessons 0020-0024 already own that, subordinated to fine-tuning specifically. This workspace owns evaluation as the subject and links back rather than restating.
+- Judging a variant, held-out design, metrics and the regression suite as taught inside one fine-tuning arc: see the [ownership table](../../README.md#ownership) for the `llm/finetuning` boundary (lessons 0020-0024), subordinated to fine-tuning specifically. This workspace owns evaluation as the subject and links back rather than restating.
 
 ## The arc
 

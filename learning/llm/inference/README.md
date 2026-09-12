@@ -22,8 +22,8 @@ Be able to stand up an inference server for a real model, on GPU and on CPU/edge
 
 ## Out of scope
 
-- Training or fine-tuning a model or adapter: that is `llm/finetuning`, whose lessons 0025 (serving adapters) and 0026 (cost, latency and throughput) this workspace links back to rather than restates.
-- Judging output quality or building an eval for a served model: that is `llm/evals`.
+- Training or fine-tuning a model or adapter: see the [ownership table](../../README.md#ownership) for the `llm/finetuning` boundary (lessons 0025, serving adapters, and 0026, cost, latency and throughput), linked back to rather than restated.
+- Judging output quality or building an eval for a served model: see the [ownership table](../../README.md#ownership) for the `llm/evals` boundary.
 
 ## The arc
 

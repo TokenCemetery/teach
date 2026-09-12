@@ -23,7 +23,7 @@ Be able to implement a transformer's forward pass and its training loop from raw
 
 ## Out of scope
 
-- Optimizer and scheduler variants beyond the basic loop needed to see the block train, distributed training, and the low-rank/adapter machinery built on top of it: `llm/finetuning` owns those, and this workspace derives what that workspace names in passing (tokenizers in its lesson 0003, the low-rank idea in its lesson 0008) rather than restating them.
+- Optimizer and scheduler variants beyond the basic loop needed to see the block train, distributed training, and the low-rank/adapter machinery built on top of it: see the [ownership table](../../README.md#ownership) for the `llm/finetuning` boundary. This workspace derives what that workspace names in passing (tokenizers in its lesson 0003, the low-rank idea in its lesson 0008) rather than restating them.
 
 ## The arc
 

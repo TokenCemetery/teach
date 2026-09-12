@@ -29,7 +29,7 @@ Follow that skill. Do not invent your own workflow. A personal skill named `teac
 - Do not restructure, reformat, or improve unrelated content unless asked.
 - If your change makes a project document wrong, fix that document in the same change.
 
-State your plan first when a change touches behavior, several files, shared conventions, structure, dependencies, or project docs. Say what you will change, how you will check it, and any real ambiguity. Ask one short question if the answer would change the scope. Writing one lesson into an existing workspace needs no plan.
+State your plan first when a change touches behavior, several files, shared conventions, structure, dependencies, or project docs. Say what you will change, how you will check it, and any real ambiguity. Ask one short question if the answer would change the scope. Writing one lesson into an existing track needs no plan.
 
 ## Checking your work
 

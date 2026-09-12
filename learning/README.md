@@ -1,12 +1,12 @@
 ---
-title: Learning Workspaces
+title: Learning Tracks
 description: Every topic in this repository, grouped by domain
 type: index
 ---
 
-# Learning Workspaces
+# Learning Tracks
 
-Grouped by domain, one directory per topic. Each topic is a self-contained workspace driven by the `teach` skill: a mission, an ordered set of lessons, and the reference material those lessons earned.
+Grouped by domain, one directory per topic. Each topic is a self-contained track driven by the `teach` skill: a mission, an ordered set of lessons, and the reference material those lessons earned.
 
 ## Topics
 
@@ -38,21 +38,21 @@ Grouped by domain, one directory per topic. Each topic is a self-contained works
 cp -r templates/learning-workspace learning/<domain>/<topic-slug>
 ```
 
-Then run the `teach` skill and name the topic. It reads the workspace, fills in the mission by interviewing you, and writes the first lesson.
+Then run the `teach` skill and name the topic. It reads the track, fills in the mission by interviewing you, and writes the first lesson.
 
-A domain is a grouping, not a workspace: it holds topic directories and nothing else. Add a new one when a second topic would share it.
+A domain is a grouping, not a track: it holds topic directories and nothing else. Add a new one when a second topic would share it.
 
 ## Layout
 
 ```text
 learning/
 ├── <domain>/              # programming, llm, …
-│   └── <topic>/           # one workspace per topic
+│   └── <topic>/           # one track per topic
 ├── .nav.yml               # sidebar order/titles for the published site
 └── README.md              # this index
 ```
 
-Each workspace:
+Each track:
 
 ```text
 learning/<domain>/<topic>/
@@ -65,7 +65,7 @@ learning/<domain>/<topic>/
 └── learning-records/      # NNNN-slug.md, what was demonstrably learned
 ```
 
-Lessons number from `0001` within each workspace. Workspaces may link to each other, but a link is a pointer rather than an inclusion: it does not pull another topic's material into this mission. Prefer linking a glossary term or a reference sheet over a lesson, because those are written for lookup and land on any reader.
+Lessons number from `0001` within each track. Tracks may link to each other, but a link is a pointer rather than an inclusion: it does not pull another topic's material into this mission. Prefer linking a glossary term or a reference sheet over a lesson, because those are written for lookup and land on any reader.
 
 The `teach` skill owns the format of every file here. Read [its spec](https://github.com/TokenCemetery/teach/blob/main/.agents/skills/teach/SKILL.md) before hand-authoring one.
 

@@ -88,7 +88,6 @@ CONVENTIONS = {
     # These arcs predate the Lessons column and carry 290 lessons between them,
     # so assigning each to a stage is judgment work rather than a mechanical
     # edit. Exempt rather than retrofitted; tracked in issue #99.
-    "golang": {"arc_lessons_column": False},
     "rust": {"arc_lessons_column": False},
     "sql": {"arc_lessons_column": False},
     # This arc ends 26 of its 27 Going further sections on a forward pointer

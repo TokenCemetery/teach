@@ -38,15 +38,15 @@ Become the engineer trusted to own Go on a team: able to design, ship and operat
 
 Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. Foundations | Types, zero values, value vs pointer semantics, slice and map mechanics including aliasing, strings vs runes vs bytes, package basics | Can predict aliasing and copy behaviour without running the code |
-| 2. Idiom | Errors as values, wrapping with `%w`, `errors.Is`/`As`, implicit interface satisfaction, small interfaces, struct embedding, package layout and naming | Writes Go that a reviewer would not describe as "Java in Go syntax" |
-| 3. Concurrency | Goroutines, channels, `select`, `sync` primitives, `context` cancellation, `errgroup`, the race detector, the memory model, leak patterns | Can find a leak and a race in unfamiliar code and explain the guarantee that was violated |
-| 4. Production | HTTP services, config, `slog`, graceful shutdown, health checks, database access, generics where they earn their keep | Has structured a service that survives being operated; stage 7 completes it with metrics, tracing, and tests around the handlers and the database, not only around functions |
-| 5. Performance and tooling | Table-driven tests, fuzzing, benchmarks, `pprof`, escape analysis, allocation reduction, modules and versioning, release builds | Optimises from a profile and proves the win with `benchstat` |
-| 6. Judgment | API design and compatibility, when *not* to use a goroutine, review, reading stdlib source for answers | Trusted to make the call and to explain it to someone else |
-| 7. Production Observability and Testing | Middleware and request-scoped values, metrics and tracing (RED/USE, OpenTelemetry), testing an HTTP handler, integration testing against a real database | Ships a service with the third and fourth signal stage 4 stopped short of: metrics, tracing, and tests around the handlers and the database, not only around functions |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. Foundations | 0001 to 0007 | Types, zero values, value vs pointer semantics, slice and map mechanics including aliasing, strings vs runes vs bytes, package basics | Can predict aliasing and copy behaviour without running the code |
+| 2. Idiom | 0008 to 0014 | Errors as values, wrapping with `%w`, `errors.Is`/`As`, implicit interface satisfaction, small interfaces, struct embedding, package layout and naming | Writes Go that a reviewer would not describe as "Java in Go syntax" |
+| 3. Concurrency | 0015 to 0021 | Goroutines, channels, `select`, `sync` primitives, `context` cancellation, `errgroup`, the race detector, the memory model, leak patterns | Can find a leak and a race in unfamiliar code and explain the guarantee that was violated |
+| 4. Production | 0022 to 0027 | HTTP services, config, `slog`, graceful shutdown, health checks, database access, generics where they earn their keep | Has structured a service that survives being operated; stage 7 completes it with metrics, tracing, and tests around the handlers and the database, not only around functions |
+| 5. Performance and tooling | 0028 to 0033 | Table-driven tests, fuzzing, benchmarks, `pprof`, escape analysis, allocation reduction, modules and versioning, release builds | Optimises from a profile and proves the win with `benchstat` |
+| 6. Judgment | 0034 to 0037 | API design and compatibility, when *not* to use a goroutine, review, reading stdlib source for answers | Trusted to make the call and to explain it to someone else |
+| 7. Production Observability and Testing | 0038 to 0041 | Middleware and request-scoped values, metrics and tracing (RED/USE, OpenTelemetry), testing an HTTP handler, integration testing against a real database | Ships a service with the third and fourth signal stage 4 stopped short of: metrics, tracing, and tests around the handlers and the database, not only around functions |
 
 ## Lessons
 

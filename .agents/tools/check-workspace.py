@@ -184,6 +184,18 @@ def md_unescape(text):
     return re.sub(r"\\([!-/:-@\[-`{-~])", r"\1", text)
 
 
+def unquote(text):
+    """Unwrap a YAML front-matter value that is quote-delimited.
+
+    Only strips a leading/trailing `"` when both are present, so a value
+    that merely ends with a quoted word (e.g. a description ending in
+    `"majority agreement"`) is left untouched instead of losing one quote.
+    """
+    if len(text) >= 2 and text.startswith('"') and text.endswith('"'):
+        return text[1:-1]
+    return text
+
+
 def code_free_lines(text):
     """Yield (lineno, line) for lines outside fenced blocks."""
     in_fence = False
@@ -236,7 +248,7 @@ class Workspace:
         if fm.get("type") != "lesson":
             self.bad(rel, f"type is {fm.get('type')!r}, expected 'lesson'")
 
-        title = fm.get("title", "").strip('"')
+        title = unquote(fm.get("title", ""))
         m = re.match(r"^(\d+)\. (.+)$", title)
         if not m:
             self.bad(rel, f"title {title!r} is not 'N. Title'")
@@ -246,7 +258,7 @@ class Workspace:
             if num != n_expected:
                 self.bad(rel, f"title numbers this lesson {num}, filename says {n_expected}")
 
-        desc = fm.get("description", "").strip('"')
+        desc = unquote(fm.get("description", ""))
         if not desc:
             self.bad(rel, "description is empty")
         elif desc.endswith("."):

@@ -42,15 +42,15 @@ Become the engineer trusted to own a TypeScript codebase on a team: able to mode
 
 Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
-| Stage | Covers | Done when |
-|---|---|---|
-| 1. The JavaScript underneath | Values and coercion, objects and prototypes, closures, `this`, modules, the event loop, promises and async | Can predict what a program does at runtime, with no types involved |
-| 2. Types over values | Primitives, arrays and tuples, unions, literal types, structural assignability, narrowing, function types, `readonly`, what inference already knows | Annotates only where inference cannot reach |
-| 3. Strictness and the compiler | The `strict` family flag by flag, the strict-shaped flags `strict` still omits, `unknown` versus `any`, assertions versus declarations, `tsconfig`, module resolution, `target` and `lib` | Keeps strictness on and fixes what it reports instead of suppressing it, and turns on the checks `strict` leaves out |
-| 4. Modelling | Discriminated unions, exhaustiveness with `never`, branded types, generics and constraints, `satisfies`, interface versus type alias | Illegal states are unrepresentable, and the compiler is what proves it |
-| 5. The runtime boundary | What erases, declaration files, validating input at the edge, errors as values, consuming untyped and wrongly typed dependencies | No value enters the program unvalidated, and no assertion is load-bearing |
-| 6. Type-level tools | Mapped and conditional types, `infer`, template literal types, variance and assignability, inference for library APIs, compiler performance | Writes an API whose types serve its callers, and stops before cleverness |
-| 7. Judgment | Publishing a public type surface, what counts as a breaking change in types, review, reading the release notes and the compiler's own declarations | Trusted to make the call and to explain it to someone else |
+| Stage | Lessons | Covers | Done when |
+|---|---|---|---|
+| 1. The JavaScript underneath | 0001 to 0007 | Values and coercion, objects and prototypes, closures, `this`, modules, the event loop, promises and async | Can predict what a program does at runtime, with no types involved |
+| 2. Types over values | 0008 to 0014 | Primitives, arrays and tuples, unions, literal types, structural assignability, narrowing, function types, `readonly`, what inference already knows | Annotates only where inference cannot reach |
+| 3. Strictness and the compiler | 0015 to 0021 | The `strict` family flag by flag, the strict-shaped flags `strict` still omits, `unknown` versus `any`, assertions versus declarations, `tsconfig`, module resolution, `target` and `lib` | Keeps strictness on and fixes what it reports instead of suppressing it, and turns on the checks `strict` leaves out |
+| 4. Modelling | 0022 to 0028 | Discriminated unions, exhaustiveness with `never`, branded types, generics and constraints, `satisfies`, interface versus type alias | Illegal states are unrepresentable, and the compiler is what proves it |
+| 5. The runtime boundary | 0029 to 0035 | What erases, declaration files, validating input at the edge, errors as values, consuming untyped and wrongly typed dependencies | No value enters the program unvalidated, and no assertion is load-bearing |
+| 6. Type-level tools | 0036 to 0042 | Mapped and conditional types, `infer`, template literal types, variance and assignability, inference for library APIs, compiler performance | Writes an API whose types serve its callers, and stops before cleverness |
+| 7. Judgment | 0043 to 0049 | Publishing a public type surface, what counts as a breaking change in types, review, reading the release notes and the compiler's own declarations | Trusted to make the call and to explain it to someone else |
 
 ## Lessons
 

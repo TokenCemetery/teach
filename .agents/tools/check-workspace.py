@@ -92,7 +92,7 @@ CONVENTIONS = {
     # This arc has used the box marker since its first lesson, in the Warm-up
     # as well as in Practice, so it is enforced from lesson 1 rather than from
     # the lesson Java happened to adopt it at.
-    "typescript": {"practice_marker_from": 1, "arc_lessons_column": False},
+    "typescript": {"practice_marker_from": 1},
 }
 
 # Strings that identify the machine a lesson was drafted on rather than a fact

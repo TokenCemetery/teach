@@ -25,8 +25,8 @@ Be able to design a retrieval pipeline for a real corpus and use case, and to di
 ## Out of scope
 
 - Prompt-engineering technique and generation quality in general: touched only for how retrieved context reaches the generation step, not restated as its own topic.
-- How the retrieval metric itself is built and defended: see the [ownership table](../../README.md#ownership) for the `llm/evals` boundary, linked to rather than restated.
-- What a vector index costs the database operationally: see the [ownership table](../../README.md#ownership) for the `data/postgres` boundary, linked to rather than restated.
+- How the retrieval metric itself is built and defended: see [`llm/evals`](../../llm/evals/), linked to rather than restated.
+- What a vector index costs the database operationally: see [`data/postgres`](../../data/postgres/), linked to rather than restated.
 
 ## The arc
 

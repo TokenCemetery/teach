@@ -24,7 +24,7 @@ Be able to design a topic and partition layout for a real workload and to diagno
 
 ## Out of scope
 
-- The failure model behind the delivery guarantees themselves: see the [ownership table](../../README.md#ownership) for the `architecture/distributed-systems` boundary, linked to rather than re-derived here.
+- The failure model behind the delivery guarantees themselves: see [`architecture/distributed-systems`](../../architecture/distributed-systems/), linked to rather than re-derived here.
 - ksqlDB and Kafka Streams as topics in their own right.
 
 ## The arc

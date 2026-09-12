@@ -23,7 +23,7 @@ Be able to spot where an existing system is quietly misusing Redis, such as a ca
 
 ## Out of scope
 
-- Operating a production Postgres instance: see the [ownership table](../../README.md#ownership) for the `data/postgres` boundary, linked to for the comparison rather than restated.
+- Operating a production Postgres instance: see [`data/postgres`](../../data/postgres/), linked to for the comparison rather than restated.
 
 ## The arc
 

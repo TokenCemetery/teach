@@ -25,7 +25,7 @@ Become the engineer trusted to own Kotlin on a team, in a backend service or an 
 
 ## Out of scope
 
-- JVM internals past what explains Kotlin's own compiled behaviour (full garbage-collector tuning, profiling, bytecode engineering): see the [ownership table](../../README.md#ownership) for the `programming/java` boundary, linked to for further depth rather than retaught.
+- JVM internals past what explains Kotlin's own compiled behaviour (full garbage-collector tuning, profiling, bytecode engineering): see [`programming/java`](../../programming/java/), linked to for further depth rather than retaught.
 - Other JVM languages (Java, Scala, Clojure, Groovy) as subjects in their own right, though a contrast appears where it clarifies a Kotlin idiom.
 - Kotlin Multiplatform: targeting JS, Native, or Wasm, structuring `expect`/`actual` declarations across source sets, and the platform-specific stdlib differences those targets introduce. This arc is JVM-only throughout, per the mission's own framing; a lesson here would need its own Gradle setup and its own set of idioms, not a JVM lesson with a multiplatform footnote. `kotlinx.serialization` (lesson 38) is the one place multiplatform reach is mentioned, as a documented reason for a JVM-side design choice, not as multiplatform material in its own right.
 

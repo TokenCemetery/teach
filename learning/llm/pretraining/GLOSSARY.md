@@ -26,6 +26,14 @@ _Avoid_: distributed training (data parallelism is one form of it; the general t
 Removing near-duplicate or exact-duplicate documents from a training corpus before tokenization, because repeated text is a leading cause of memorization and wasted compute.
 _Avoid_: dedup (fine informally, but the glossary spells it out once the concept is pinned)
 
+**Gradient clipping**:
+Rescaling a gradient proportionally, before the optimizer step uses it, so its global norm never exceeds a chosen threshold, bounding how large a single update can be regardless of what produced an unusually large gradient.
+_Avoid_: gradient clamping (clamping usually means bounding each value independently; clipping here rescales the whole gradient vector by one factor to bound its norm)
+
+**Learning rate warmup**:
+Ramping the learning rate up from near zero to its intended maximum over the first portion of training, rather than starting at the maximum immediately, so the network's least-informed early updates have a smaller effect on the weights.
+_Avoid_: burn-in (a term from other fields for a stabilization period; this workspace uses warmup specifically for the learning-rate ramp)
+
 **Loss spike**:
 A sudden, sharp rise in training loss partway through a run, usually caused by a numerically unstable batch or an accumulated optimizer-state drift, and distinguished from ordinary noise by whether the loss recovers on its own.
 _Avoid_: divergence (divergence is the outcome when a loss spike does not recover; the two are not the same event)

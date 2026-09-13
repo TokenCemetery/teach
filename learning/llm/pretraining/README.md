@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0014. Combining All Three: When Tensor and Pipeline Parallelism Earn Their Cost](lessons/0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md)
+**Latest lesson:** [0017. Warmup, Decay, and Growing the Batch Mid-Run](lessons/0017-warmup-decay-and-growing-the-batch-mid-run.md)
 
 ## Success looks like
 
@@ -72,6 +72,9 @@ Work through these in order.
 | [0012](lessons/0012-tensor-parallelism-splitting-a-layers-matrices.md) | Tensor Parallelism: Splitting a Layer's Matrices | Choosing which axis to split a weight matrix along so an entire transformer block needs only one all-reduce |
 | [0013](lessons/0013-pipeline-parallelism-splitting-the-models-layers.md) | Pipeline Parallelism: Splitting the Model's Layers | Assigning consecutive layers to different devices, and the idle time that costs at the start and end of every batch |
 | [0014](lessons/0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md) | Combining All Three: When Tensor and Pipeline Parallelism Earn Their Cost | Matching each parallelism strategy to the interconnect it tolerates, and when sharding alone is not enough |
+| [0015](lessons/0015-mixed-precision-at-scale-bfloat16-and-stochastic-rounding.md) | Mixed Precision at Scale: bfloat16 and Stochastic Rounding | A numeric format with fp32's range but less precision, and what it costs to update parameters in it directly |
+| [0016](lessons/0016-loss-spikes-and-the-optimizers-own-instabilities.md) | Loss Spikes and the Optimizer's Own Instabilities | The same spike can come from a bad batch or from the optimizer itself, and telling them apart takes a controlled comparison |
+| [0017](lessons/0017-warmup-decay-and-growing-the-batch-mid-run.md) | Warmup, Decay, and Growing the Batch Mid-Run | Starting slow, decaying on a schedule, and letting the batch size itself change partway through training |
 
 ## Reference
 

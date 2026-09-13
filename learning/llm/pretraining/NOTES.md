@@ -10,7 +10,7 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #133, not earned one lesson at a time. Stages 1 through 6 (lessons 0001 through 0014) are now written; the remaining four stages are not, and `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+The ten stages in `README.md` were written upfront during the planning session recorded in #133, not earned one lesson at a time. Stages 1 through 7 (lessons 0001 through 0017) are now written; the remaining three stages are not, and `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
 
 Stage 6's last lesson (0014) synthesizes a judgment call ("reach for ZeRO first, tensor/pipeline parallelism once sharding alone is not enough") from combining the ZeRO and Megatron-LM papers' own separately stated positions, rather than quoting either paper making that exact combined claim. Flagging this in case a future pass wants a single source that already makes the comparison directly, which was not found.
 

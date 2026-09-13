@@ -10,14 +10,14 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #133, not earned one lesson at a time. No lesson exists yet and `learning-records/` is empty, so nothing here has been calibrated against a demonstrated answer.
+The ten stages in `README.md` were written upfront during the planning session recorded in #133, not earned one lesson at a time. Stage 1 (lessons 0001 and 0002) is now written; the remaining nine stages are not, and `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
 
 One merge is held in reserve if the arc proves too long once it is being taught: stage 4 with 5, since data parallelism and memory sharding are usually taught and decided together in practice.
 
-The arc table has no `Lessons` column yet, because there are no lessons for it to name. Add the column with the first lesson, not later: `check-workspace.py` requires it once `lessons/` exists.
+**The arc table deliberately has no `Lessons` column yet, and will not until every stage has at least one lesson.** This track is being written stage by stage, one commit per stage, rather than in the single pass `llm/agents` and `llm/finetuning` used. The column requires every named stage to reference lessons that already exist, which a not-yet-reached stage cannot do, so adding it now would either drop stages 2 through 10 from the public arc table or fail the checker. `pretraining` carries an explicit `arc_lessons_column: False` entry in `CONVENTIONS` in `check-workspace.py` for exactly this reason; remove it and add the column once all ten stages have lessons.
 
 ## Open threads
 
 - Whether the learner has access to multiple GPUs for the distributed-training reps (stages 4 through 6) is unknown. Ask before writing those stages, since a CPU-only simulation of collective operations changes what the reps can show.
 - Checkpointing and fault tolerance (stage 8) is the thinnest-sourced stage; see the gap noted in `RESOURCES.md`. May need a practitioner account rather than a paper.
-- Nothing has been attempted yet. The first interactive session should calibrate before teaching forward, rather than assuming the written arc landed as planned.
+- Stage 1's lessons were written without an interactive session to calibrate against; nothing yet confirms they land at the right difficulty. The first real session on this track should check that before trusting the rest of the arc's pacing.

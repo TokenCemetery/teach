@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [0002. Deduplication and Quality Filtering](lessons/0002-deduplication-and-quality-filtering.md)
 
 ## Success looks like
 
@@ -58,7 +58,8 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-sourcing-and-mixing-a-pretraining-corpus.md) | Sourcing and Mixing a Pretraining Corpus | What goes into a pretraining corpus, and why the mixture of sources matters more than the total byte count |
+| [0002](lessons/0002-deduplication-and-quality-filtering.md) | Deduplication and Quality Filtering | Why near-duplicate text and low-quality documents get removed before training, and what it costs to skip that step |
 
 ## Reference
 

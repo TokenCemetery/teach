@@ -93,6 +93,15 @@ CONVENTIONS = {
     # as well as in Practice, so it is enforced from lesson 1 rather than from
     # the lesson Java happened to adopt it at.
     "typescript": {"practice_marker_from": 1},
+    # These two arcs are being written stage by stage, one committed change per
+    # stage, with all ten stages already named in README.md's arc table (the
+    # arc is public and planned upfront; see SKILL.md). The Lessons column
+    # requires every named stage to reference lessons that already exist, which
+    # a not-yet-reached stage cannot do, so the column cannot be added until
+    # every stage has at least one lesson. Remove this entry for each track,
+    # and add the column, once its arc is fully written.
+    "pretraining": {"arc_lessons_column": False},
+    "post-training": {"arc_lessons_column": False},
 }
 
 # Strings that identify the machine a lesson was drafted on rather than a fact

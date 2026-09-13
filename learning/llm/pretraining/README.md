@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0008. Why Data Parallelism Alone Runs Out of Memory](lessons/0008-why-data-parallelism-alone-runs-out-of-memory.md)
+**Latest lesson:** [0011. Activation Memory and ZeRO-R](lessons/0011-activation-memory-and-zero-r.md)
 
 ## Success looks like
 
@@ -66,6 +66,9 @@ Work through these in order.
 | [0006](lessons/0006-chinchilla-the-compute-optimal-correction.md) | Chinchilla: The Compute-Optimal Correction | Why model size and token count should scale together, and how to turn a compute budget into a token count |
 | [0007](lessons/0007-data-parallelism-and-gradient-all-reduce.md) | Data Parallelism and Gradient All-Reduce | Splitting a batch across devices that each hold a full copy of the model, and what keeps every copy identical |
 | [0008](lessons/0008-why-data-parallelism-alone-runs-out-of-memory.md) | Why Data Parallelism Alone Runs Out of Memory | Counting exactly what a mixed-precision Adam optimizer holds per parameter, and where that hits a wall |
+| [0009](lessons/0009-zero-stage-1-and-2-partitioning-optimizer-state-and-gradients.md) | ZeRO Stage 1 and 2: Partitioning Optimizer State and Gradients | Removing data parallelism's redundant copies for free, before communication cost has to grow at all |
+| [0010](lessons/0010-zero-stage-3-and-fsdp-partitioning-parameters-too.md) | ZeRO Stage 3 and FSDP: Partitioning Parameters Too | Sharding the parameters themselves means reconstructing them on demand, which is the first thing this costs |
+| [0011](lessons/0011-activation-memory-and-zero-r.md) | Activation Memory and ZeRO-R | Sharding model states solves one memory problem and leaves a second one, activations, standing |
 
 ## Reference
 

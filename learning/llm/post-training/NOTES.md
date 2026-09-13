@@ -11,7 +11,9 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 through 6 (lessons 0001 through 0012) are now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 through 7 (lessons 0001 through 0014) are now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+
+Stage 7's distillation-versus-direct-RL comparison (0014, the 32B AIME 2024 gap: 47.0% direct RL against 72.6% distilled) turned out to be an unusually strong, load-bearing piece of evidence, precise enough to cite numerically rather than only qualitatively. Worth reusing directly in Stage 10's judgment material rather than re-deriving a similar point from a weaker source.
 
 Stage 6 surfaced an attribution point worth being careful about: DeepSeekMath's own GRPO uses a *trained* reward model, not a rule-based verifiable one (checked directly in the paper; no mention of rule-based or ground-truth-checker rewards anywhere in its text). Lesson 12 introduces verifiable rewards as a natural pairing with GRPO's mechanism rather than attributing that specific combination to DeepSeekMath itself, and forwards the at-scale version to Stage 7's DeepSeek-R1 source, where it belongs.
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to take a pretrained base model to an aligned, instruction-following assistant: write the SFT, reward, and preference objectives correctly, choose between RLHF-PPO, DPO, and GRPO for a given team's budget and data, and defend that choice, including what it cost in alignment tax and where it is exposed to reward hacking.
 
-**Latest lesson:** [0012. Verifiable Rewards: When a Checker Replaces the Reward Model](lessons/0012-verifiable-rewards-when-a-checker-replaces-the-reward-model.md)
+**Latest lesson:** [0014. Distilling a Reasoning Model Down](lessons/0014-distilling-a-reasoning-model-down.md)
 
 ## Success looks like
 
@@ -70,6 +70,8 @@ Work through these in order.
 | [0010](lessons/0010-the-dpo-loss-and-what-it-drops-relative-to-ppo.md) | The DPO Loss, and What It Drops Relative to PPO | One loss, two models, no sampling loop, and the same beta a KL penalty would have used |
 | [0011](lessons/0011-grpo-group-relative-advantage-instead-of-a-value-function.md) | GRPO: Group-Relative Advantage Instead of a Value Function | Sample several answers to the same question, and let the group's own spread of rewards say which ones were better |
 | [0012](lessons/0012-verifiable-rewards-when-a-checker-replaces-the-reward-model.md) | Verifiable Rewards: When a Checker Replaces the Reward Model | A trained reward model is a guess at what a human would prefer; a unit test or a matched answer is not a guess at all |
+| [0013](lessons/0013-chain-of-thought-rl-what-deepseek-r1-zero-did-with-rule-based-rewards.md) | Chain-of-Thought RL: What DeepSeek-R1-Zero Did With Rule-Based Rewards | No learned reward model, no SFT step first, and extended reasoning emerged anyway because it kept getting more answers right |
+| [0014](lessons/0014-distilling-a-reasoning-model-down.md) | Distilling a Reasoning Model Down | Training a 32B model with RL directly lost to just fine-tuning it on a bigger model's own reasoning traces |
 
 ## Reference
 

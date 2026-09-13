@@ -1,0 +1,70 @@
+---
+title: LLM Post-Training
+description: "Align a base model: SFT, reward modeling, RLHF, DPO, and GRPO, and knowing which one to pick"
+type: topic
+---
+
+# LLM Post-Training
+
+Be able to take a pretrained base model to an aligned, instruction-following assistant: write the SFT, reward, and preference objectives correctly, choose between RLHF-PPO, DPO, and GRPO for a given team's budget and data, and defend that choice, including what it cost in alignment tax and where it is exposed to reward hacking.
+
+**Latest lesson:** _none yet_
+
+## Success looks like
+
+- Write an SFT training loop that masks loss on non-assistant tokens, and explain what breaks in a chat model trained without that mask.
+- Train a reward model on preference pairs using the Bradley-Terry loss, and identify a reward-hacked completion from a policy trained against it.
+- Derive the RLHF objective (reward minus a KL penalty against a reference model) and say what happens to the policy as the KL penalty is loosened.
+- Derive DPO's implicit reward from the same preference data RLHF uses, and say what it gives up by removing the RL loop.
+- Explain group-relative advantage in GRPO and why a verifiable reward (a unit test, a checked math answer) changes what RL training can target.
+- Given a team's data, budget, and target behavior, choose between SFT alone, DPO, RLHF-PPO, and GRPO, and defend the choice against the one rejected.
+- Read an aligned model's evaluation results and separate a genuine capability gain from an artifact of reward hacking or judge bias.
+
+## Constraints
+
+- Algorithm-first, not paper-survey. Each stage teaches one training objective from its loss function outward, what is being maximized and what the gradient does, rather than summarizing a list of papers; the papers anchor each stage as its primary source.
+- Small-scale reps: labs run SFT and DPO on a small open model, the same scale discipline `llm/finetuning` uses, and reason from there to what the cited frontier papers report.
+- Assumes `llm/transformers` (cross-entropy loss, the backward pass, AdamW) and familiarity with `llm/finetuning`'s adapter mechanics, since this track reuses them rather than re-deriving parameter efficiency.
+- No lesson trains a full RLHF pipeline end to end at frontier scale; PPO's cost is demonstrated at small scale and then reasoned about at the scale the cited papers report.
+
+## Out of scope
+
+- Parameter-efficient mechanics (LoRA rank and alpha, QLoRA, DoRA, target modules): see [`llm/finetuning`](../../llm/finetuning/). This track owns the training objective; `llm/finetuning` owns how it gets applied to fewer parameters.
+- Cross-entropy loss, the backward pass, and AdamW: see [`llm/transformers`](../../llm/transformers/). Assumed here, not re-taught.
+- LLM-as-judge mechanics and human evaluation methodology: see [`llm/evals`](../../llm/evals/). Carried here only as the one capability an aligned model needs, to judge whether alignment training helped, and linked to rather than restated.
+- Prompting a reasoning model, or building an agent around one: see [`llm/agents`](../../llm/agents/) (lesson 0017). This track covers how the reasoning behavior is produced by RL training, not how to use it from outside.
+- Training a model from random initialization: see [`llm/pretraining`](../../llm/pretraining/).
+
+## The arc
+
+Ten stages, from no prior knowledge to senior judgment. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+
+| Stage | Covers | Done when |
+| --- | --- | --- |
+| 1. What post-training buys | Base against instruct/chat model, the SFT/RLHF/DPO/GRPO landscape | Can place a given aligned model's behavior against what post-training stage produced it |
+| 2. SFT | Instruction datasets, chat templates, loss masking on non-assistant tokens | Can write an SFT loop with correct loss masking and explain what breaks without it |
+| 3. Reward modeling | Preference data collection, the Bradley-Terry loss, reward hacking | Can train a reward model and identify a reward-hacked completion against it |
+| 4. RLHF via PPO | The RL objective, the KL penalty against a reference model, why PPO is expensive and unstable | Can derive the RLHF objective and say what loosening the KL penalty does to the policy |
+| 5. Direct Preference Optimization | DPO's implicit reward, what it drops relative to PPO and why that is usually fine | Can derive DPO's implicit reward and say what it gives up relative to PPO |
+| 6. GRPO and RL with verifiable rewards | Group-relative advantage, why it fits math and code | Can explain group-relative advantage and why a verifiable reward changes what RL can target |
+| 7. Reasoning models | Chain-of-thought RL, what DeepSeek-R1 changed, distilling a reasoning model down | Can say how a reasoning model's behavior was produced, not just how to prompt it |
+| 8. Safety and refusal tuning | Red-teaming data, Constitutional AI, RLAIF | Can say where feedback came from (human or AI) in a given safety-tuning pipeline and what that trades |
+| 9. Evaluating an aligned model | Alignment tax, reward hacking detection, linking to `llm/evals` | Can separate a genuine capability gain from a reward-hacking or judge-bias artifact |
+| 10. Judgment | DPO against PPO against GRPO for a given budget, when SFT alone is enough, reviewing someone else's alignment recipe | Trusted to make the call and to explain it to someone else |
+
+## Lessons
+
+Work through these in order.
+
+| # | Lesson | Teaches |
+|---|---|---|
+| _none yet_ | | |
+
+## Reference
+
+- [Glossary](GLOSSARY.md): canonical terms for this topic
+- [Resources](RESOURCES.md): trusted sources
+
+## How this works
+
+Each lesson is short and self-contained. Answer keys are collapsed: recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Anything still unclear at the end of a lesson is worth chasing to its primary source before moving on.

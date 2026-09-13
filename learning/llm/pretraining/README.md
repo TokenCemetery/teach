@@ -1,0 +1,70 @@
+---
+title: LLM Pretraining
+description: "Train a model from scratch at scale: data, tokenizer, distributed training, and a defensible compute budget"
+type: topic
+---
+
+# LLM Pretraining
+
+Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
+
+**Latest lesson:** _none yet_
+
+## Success looks like
+
+- Build a deduplicated, quality-filtered pretraining corpus from raw sources, and say what each filtering step removes and why.
+- Train a tokenizer and defend a vocabulary size against its effect on sequence length and embedding table size.
+- Given a parameter count and a compute budget, compute the compute-optimal token count and defend it against a Kaplan-style undertrained alternative.
+- Explain what ZeRO/FSDP shard, why data parallelism alone runs out of memory before it runs out of compute, and when tensor or pipeline parallelism is worth its communication cost.
+- Read a training run's loss curve and gradient norms, and say whether a spike is recoverable or means restarting from an earlier checkpoint.
+- Design a checkpointing scheme for a multi-day run that survives a node failure without losing more than a few minutes of progress.
+- Decide whether a stated task calls for pretraining, continued pretraining, or fine-tuning an existing base model, and defend the choice on cost.
+
+## Constraints
+
+- Framework-adjacent, not framework-agnostic. Distributed-training techniques (ZeRO sharding, tensor and pipeline parallelism) are stable enough that lessons name the real library and API being described, unlike the provider-neutral pseudocode `llm/agents` uses for a faster-churning surface.
+- No lesson trains a frontier-scale model. Reps run small (a GPT-2-scale model on a handful of GPUs, or a simulated multi-node setup) and reason from there to what changes at the scale the cited papers describe.
+- Assumes `llm/transformers`: the attention mechanism, the training loop, cross-entropy loss, AdamW, mixed precision, and gradient clipping are prerequisites, not review.
+- Access to multiple GPUs (even two, or a multi-process CPU simulation of the collective operations) is assumed for the distributed-training reps.
+
+## Out of scope
+
+- The transformer architecture itself, cross-entropy loss, the backward pass, AdamW, mixed precision, and gradient clipping: see [`llm/transformers`](../../llm/transformers/). This track picks up once that loop needs to run on hundreds of GPUs against trillions of tokens, not before.
+- Adapting an existing base model with LoRA, QLoRA, or DoRA: see [`llm/finetuning`](../../llm/finetuning/). Pretraining starts from random weights, not a checkpoint, and the two are the two ways a model's weights change, covered as siblings rather than one including the other.
+- Parallelism and quantization at serve time: see [`llm/inference`](../../llm/inference/). This track covers the training-time versions of parallelism (gradient synchronization, activation and optimizer sharding), not serving.
+- Evaluation methodology and held-out data design: see [`llm/evals`](../../llm/evals/). Carried here only as the one capability a pretraining run needs, to validate a checkpoint mid-run, and linked to rather than restated.
+- Aligning a pretrained model into an assistant: see [`llm/post-training`](../../llm/post-training/).
+
+## The arc
+
+Ten stages, from no prior knowledge to senior judgment. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+
+| Stage | Covers | Done when |
+| --- | --- | --- |
+| 1. Data pipeline | Sourcing, deduplication, quality filtering | Can build a filtered, deduplicated corpus from raw sources and defend what each step removed |
+| 2. Tokenizer training | BPE and SentencePiece from scratch, vocabulary size tradeoffs | Can train a tokenizer and defend a vocabulary size choice |
+| 3. Scaling laws | Kaplan against Chinchilla, the compute-optimal token-to-parameter ratio | Given a compute budget, can derive a compute-optimal token count and defend it |
+| 4. Data parallelism | Gradient all-reduce, why it stops scaling alone | Can say why data parallelism alone runs out of memory before it runs out of compute |
+| 5. Sharding memory | ZeRO stages 1 to 3, FSDP, activation and optimizer sharding | Can say what each ZeRO stage shards and what it costs in communication |
+| 6. Model parallelism | Tensor and pipeline parallelism for training | Can decide when tensor or pipeline parallelism earns its communication cost over sharding alone |
+| 7. Numerics and stability at scale | Mixed precision at scale, loss spikes, gradient norms, warmup and decay schedules | Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint |
+| 8. Checkpointing and fault tolerance | Saving and resuming a multi-day run, surviving a node failure | Can design a checkpointing scheme that bounds lost progress after a node failure |
+| 9. Monitoring a training run | Loss curves, periodic eval checkpoints, linking to `llm/evals` | Can read a training dashboard and say whether the run is on track |
+| 10. Judgment | Pretrain against continue-pretrain against fine-tune, defending a compute budget, reviewing someone else's training run config | Trusted to make the call and to explain it to someone else |
+
+## Lessons
+
+Work through these in order.
+
+| # | Lesson | Teaches |
+|---|---|---|
+| _none yet_ | | |
+
+## Reference
+
+- [Glossary](GLOSSARY.md): canonical terms for this topic
+- [Resources](RESOURCES.md): trusted sources
+
+## How this works
+
+Each lesson is short and self-contained. Answer keys are collapsed: recall first, then open them. The real-world reps matter more than the reading, and spacing them out is the point. Anything still unclear at the end of a lesson is worth chasing to its primary source before moving on.

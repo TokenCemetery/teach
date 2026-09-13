@@ -11,11 +11,11 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. No lesson exists yet and `learning-records/` is empty, so nothing here has been calibrated against a demonstrated answer.
+The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stage 1 (lesson 0001) is now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
 
 One merge is held in reserve if the arc proves too long once it is being taught: stage 6 with 7, since GRPO is presented in the same paper that would anchor stage 7 anyway (DeepSeekMath), and DeepSeek-R1 extends rather than replaces it.
 
-The arc table has no `Lessons` column yet, because there are no lessons for it to name. Add the column with the first lesson, not later: `check-workspace.py` requires it once `lessons/` exists.
+**The arc table deliberately has no `Lessons` column yet, and will not until every stage has at least one lesson**, the same approach `llm/pretraining` used while it was written stage by stage (see its own `NOTES.md`). `post-training` carries an explicit `arc_lessons_column: False` entry in `CONVENTIONS` in `check-workspace.py`; remove it and add the column once all ten stages have lessons.
 
 ## Open threads
 

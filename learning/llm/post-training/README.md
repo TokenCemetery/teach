@@ -8,7 +8,7 @@ type: topic
 
 Be able to take a pretrained base model to an aligned, instruction-following assistant: write the SFT, reward, and preference objectives correctly, choose between RLHF-PPO, DPO, and GRPO for a given team's budget and data, and defend that choice, including what it cost in alignment tax and where it is exposed to reward hacking.
 
-**Latest lesson:** _none yet_
+**Latest lesson:** [0001. What Post-Training Buys](lessons/0001-what-post-training-buys.md)
 
 ## Success looks like
 
@@ -58,7 +58,7 @@ Work through these in order.
 
 | # | Lesson | Teaches |
 |---|---|---|
-| _none yet_ | | |
+| [0001](lessons/0001-what-post-training-buys.md) | What Post-Training Buys | A 100x smaller aligned model beat a raw base model at doing what users actually wanted |
 
 ## Reference
 

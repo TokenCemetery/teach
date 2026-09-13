@@ -206,6 +206,7 @@ class Workspace:
         self.problems = []
         self.meta = {}
         self.sheets = []
+        self.scaffold = False
 
     def bad(self, where, msg):
         self.problems.append(f"{where}: {msg}")
@@ -550,37 +551,42 @@ class Workspace:
     def run(self):
         lessons_dir = self.root / "lessons"
         ref_dir = self.root / "reference"
-        if not lessons_dir.is_dir():
-            self.bad(self.root.name, "has no lessons/ directory")
-            return
+        # A track scaffolded from templates/learning-workspace but not yet
+        # taught has no lessons/ directory: git does not track empty
+        # directories, and SKILL.md says to create each lazily on first need.
+        # That is a supported, committed state, not a problem, so it skips the
+        # lesson and arc checks, which have nothing to check yet, rather than
+        # bailing out of every other check.
+        self.scaffold = not lessons_dir.is_dir()
         self.sheets = sorted(p.name for p in ref_dir.glob("*.md")) if ref_dir.is_dir() else []
 
-        for path in sorted(lessons_dir.glob("*.md")):
-            rel = f"lessons/{path.name}"
-            m = re.match(r"^(\d{4})-([a-z0-9-]+)\.md$", path.name)
-            if not m:
-                self.bad(rel, "filename is not NNNN-kebab-slug.md")
-                continue
-            info = self.check_lesson(path, rel, int(m.group(1)))
-            self.check_prose(path, rel)
-            self.check_render(path, rel)
-            self.check_links(path, rel)
-            if info:
-                self.meta[int(m.group(1))] = info
+        if not self.scaffold:
+            for path in sorted(lessons_dir.glob("*.md")):
+                rel = f"lessons/{path.name}"
+                m = re.match(r"^(\d{4})-([a-z0-9-]+)\.md$", path.name)
+                if not m:
+                    self.bad(rel, "filename is not NNNN-kebab-slug.md")
+                    continue
+                info = self.check_lesson(path, rel, int(m.group(1)))
+                self.check_prose(path, rel)
+                self.check_render(path, rel)
+                self.check_links(path, rel)
+                if info:
+                    self.meta[int(m.group(1))] = info
 
-        nums = sorted(self.meta)
-        if nums and nums != list(range(1, len(nums) + 1)):
-            self.bad("lessons/", f"numbering is not contiguous from 1: {nums}")
+            nums = sorted(self.meta)
+            if nums and nums != list(range(1, len(nums) + 1)):
+                self.bad("lessons/", f"numbering is not contiguous from 1: {nums}")
 
-        for path in sorted(ref_dir.glob("*.md")) if ref_dir.is_dir() else []:
-            rel = f"reference/{path.name}"
-            self.check_prose(path, rel)
-            self.check_links(path, rel)
-            text = path.read_text(encoding="utf-8")
-            if not text.startswith("---\n"):
-                self.bad(rel, "no front matter")
-            if "<details" in text:
-                self.bad(rel, "a reference sheet must be scannable, no collapsible blocks")
+            for path in sorted(ref_dir.glob("*.md")) if ref_dir.is_dir() else []:
+                rel = f"reference/{path.name}"
+                self.check_prose(path, rel)
+                self.check_links(path, rel)
+                text = path.read_text(encoding="utf-8")
+                if not text.startswith("---\n"):
+                    self.bad(rel, "no front matter")
+                if "<details" in text:
+                    self.bad(rel, "a reference sheet must be scannable, no collapsible blocks")
 
         for name in ("README.md", "GLOSSARY.md", "RESOURCES.md"):
             path = self.root / name
@@ -596,7 +602,8 @@ class Workspace:
 
         if (self.root / "README.md").exists():
             self.check_readme()
-            self.check_arc()
+            if not self.scaffold:
+                self.check_arc()
         if (self.root / "GLOSSARY.md").exists():
             self.check_glossary()
         if (self.root / "RESOURCES.md").exists():
@@ -731,6 +738,9 @@ def main():
             print(f"{label}: {len(ws.problems)} PROBLEM(S)")
             for p in ws.problems:
                 print("  -", p)
+        elif ws.scaffold:
+            print(f"{label}: NO PROBLEMS "
+                  f"(0 lessons, scaffold: lessons/ not created yet)")
         else:
             print(f"{label}: NO PROBLEMS "
                   f"({len(ws.meta)} lessons, {len(ws.sheets)} sheets)")

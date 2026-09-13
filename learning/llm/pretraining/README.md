@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0019. Surviving a Node Failure](lessons/0019-surviving-a-node-failure.md)
+**Latest lesson:** [0021. Periodic Held-Out Evaluation](lessons/0021-periodic-held-out-evaluation.md)
 
 ## Success looks like
 
@@ -77,6 +77,8 @@ Work through these in order.
 | [0017](lessons/0017-warmup-decay-and-growing-the-batch-mid-run.md) | Warmup, Decay, and Growing the Batch Mid-Run | Starting slow, decaying on a schedule, and letting the batch size itself change partway through training |
 | [0018](lessons/0018-what-a-checkpoint-has-to-hold.md) | What a Checkpoint Has to Hold | A checkpoint that only saves weights cannot resume a run exactly, and choosing how often to save is its own tradeoff |
 | [0019](lessons/0019-surviving-a-node-failure.md) | Surviving a Node Failure | Pause, diagnose, cordon off what is broken, and resume from the last checkpoint, at whatever it costs |
+| [0020](lessons/0020-reading-a-loss-curve.md) | Reading a Loss Curve | The training loss curve alone under-reports trouble; two other signals catch what it misses, and catch it earlier |
+| [0021](lessons/0021-periodic-held-out-evaluation.md) | Periodic Held-Out Evaluation | Training loss says the model is fitting its own training data; only a held-out check says anything about the rest |
 
 ## Reference
 

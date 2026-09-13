@@ -10,7 +10,9 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #133, not earned one lesson at a time. Stages 1 through 8 (lessons 0001 through 0019) are now written; the remaining two stages (monitoring, then judgment) are not, and `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+The ten stages in `README.md` were written upfront during the planning session recorded in #133, not earned one lesson at a time. Stages 1 through 9 (lessons 0001 through 0021) are now written; only stage 10 (judgment) remains, and `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+
+Stage 9's second lesson (0021) is this track's one deliberate link into `llm/evals`, per the `## Out of scope` line in `README.md`. It links the reference sheet and glossary term directly rather than a lesson, per `SKILL.md`'s linking rule, and does not restate held-out design or contamination detection beyond the one sentence needed to explain why Gopher filtered its eval benchmarks out of training.
 
 Stage 8 turned out better sourced than `RESOURCES.md`'s original gap note expected: the OPT-175B paper's public logbook gave real failure-frequency numbers and a concrete recovery procedure, closing most of the gap. What is still missing, and noted in `RESOURCES.md`, is a primary source stating an actual checkpoint-interval policy; the checkpoint-frequency tradeoff itself is taught from general engineering reasoning rather than a cited number.
 

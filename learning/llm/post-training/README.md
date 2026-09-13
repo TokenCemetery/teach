@@ -8,7 +8,7 @@ type: topic
 
 Be able to take a pretrained base model to an aligned, instruction-following assistant: write the SFT, reward, and preference objectives correctly, choose between RLHF-PPO, DPO, and GRPO for a given team's budget and data, and defend that choice, including what it cost in alignment tax and where it is exposed to reward hacking.
 
-**Latest lesson:** [0014. Distilling a Reasoning Model Down](lessons/0014-distilling-a-reasoning-model-down.md)
+**Latest lesson:** [0016. RLAIF: How Well AI Feedback Actually Matches Human Feedback](lessons/0016-rlaif-how-well-ai-feedback-actually-matches-human-feedback.md)
 
 ## Success looks like
 
@@ -72,6 +72,8 @@ Work through these in order.
 | [0012](lessons/0012-verifiable-rewards-when-a-checker-replaces-the-reward-model.md) | Verifiable Rewards: When a Checker Replaces the Reward Model | A trained reward model is a guess at what a human would prefer; a unit test or a matched answer is not a guess at all |
 | [0013](lessons/0013-chain-of-thought-rl-what-deepseek-r1-zero-did-with-rule-based-rewards.md) | Chain-of-Thought RL: What DeepSeek-R1-Zero Did With Rule-Based Rewards | No learned reward model, no SFT step first, and extended reasoning emerged anyway because it kept getting more answers right |
 | [0014](lessons/0014-distilling-a-reasoning-model-down.md) | Distilling a Reasoning Model Down | Training a 32B model with RL directly lost to just fine-tuning it on a bigger model's own reasoning traces |
+| [0015](lessons/0015-constitutional-ai-feedback-from-a-model-not-a-human.md) | Constitutional AI: Feedback From a Model, Not a Human | Zero human labels for harm, a written list of principles instead, and an assistant that explains its objections rather than deflecting |
+| [0016](lessons/0016-rlaif-how-well-ai-feedback-actually-matches-human-feedback.md) | RLAIF: How Well AI Feedback Actually Matches Human Feedback | A model judging its own outputs, at its own size, still beat plain supervised fine-tuning |
 
 ## Reference
 

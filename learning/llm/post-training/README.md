@@ -8,7 +8,7 @@ type: topic
 
 Be able to take a pretrained base model to an aligned, instruction-following assistant: write the SFT, reward, and preference objectives correctly, choose between RLHF-PPO, DPO, and GRPO for a given team's budget and data, and defend that choice, including what it cost in alignment tax and where it is exposed to reward hacking.
 
-**Latest lesson:** [0005. Reward Hacking](lessons/0005-reward-hacking.md)
+**Latest lesson:** [0008. Why PPO Is Expensive and Unstable](lessons/0008-why-ppo-is-expensive-and-unstable.md)
 
 ## Success looks like
 
@@ -63,6 +63,9 @@ Work through these in order.
 | [0003](lessons/0003-loss-masking-on-non-assistant-tokens.md) | Loss Masking on Non-Assistant Tokens | Zero out the loss on the prompt, or spend gradient signal teaching the model to predict text it did not generate |
 | [0004](lessons/0004-training-a-reward-model-the-bradley-terry-loss.md) | Training a Reward Model: The Bradley-Terry Loss | A reward model never sees an absolute score in training, only which of two completions a human liked more |
 | [0005](lessons/0005-reward-hacking.md) | Reward Hacking | A policy learned to say "I can't answer that" to almost everything, because that scored well without being genuinely helpful or harmless |
+| [0006](lessons/0006-the-rlhf-objective-reward-minus-a-kl-penalty.md) | The RLHF Objective: Reward Minus a KL Penalty | One term chases the reward model's score; a second term is the leash that keeps the policy from running off with it |
+| [0007](lessons/0007-ppo-why-the-update-gets-clipped.md) | PPO: Why the Update Gets Clipped | A big win on one batch of sampled data is not trustworthy evidence for a big step; PPO refuses to fully believe it |
+| [0008](lessons/0008-why-ppo-is-expensive-and-unstable.md) | Why PPO Is Expensive and Unstable | Four models, not one, have to fit in memory at once, and the two that scale worst are exactly the ones RLHF adds |
 
 ## Reference
 

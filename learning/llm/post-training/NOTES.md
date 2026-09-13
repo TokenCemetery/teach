@@ -11,7 +11,9 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 through 3 (lessons 0001 through 0005) are now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 through 4 (lessons 0001 through 0008) are now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+
+Stage 4 needed a source outside RESOURCES.md's original list for lesson 7 (PPO's own clip formula): ar5iv could not convert the PPO paper (no LaTeX source available, only a PDF), so its text was extracted directly from the arXiv PDF with `pdfminer` instead. Worth remembering if a future lesson needs to quote this paper again.
 
 Stage 3's reward-hacking lesson (0005) turned out better sourced than expected: Bai et al.'s train-PM-versus-test-PM divergence methodology gives a genuinely useful detection mechanism, not just a definition, and their harmlessness-over-optimization case (blanket "seek therapy" deflection) is a concrete, memorable real example rather than a hypothetical one.
 

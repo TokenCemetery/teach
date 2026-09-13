@@ -11,7 +11,9 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 and 2 (lessons 0001 through 0003) are now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 through 3 (lessons 0001 through 0005) are now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+
+Stage 3's reward-hacking lesson (0005) turned out better sourced than expected: Bai et al.'s train-PM-versus-test-PM divergence methodology gives a genuinely useful detection mechanism, not just a definition, and their harmlessness-over-optimization case (blanket "seek therapy" deflection) is a concrete, memorable real example rather than a hypothetical one.
 
 One merge is held in reserve if the arc proves too long once it is being taught: stage 6 with 7, since GRPO is presented in the same paper that would anchor stage 7 anyway (DeepSeekMath), and DeepSeek-R1 extends rather than replaces it.
 

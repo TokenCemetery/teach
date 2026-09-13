@@ -11,7 +11,9 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 through 9 (lessons 0001 through 0018) are now written; only stage 10 (judgment) remains, and `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time, then written stage by stage, one commit per stage, across lessons 0001 through 0020. The arc closed exactly as planned: ten stages, no stage needed the stage-6-with-7 merge held in reserve, and the `Lessons` column has been added to the arc table now that every stage has one. `post-training`'s `arc_lessons_column: False` entry has been removed from `CONVENTIONS` in `check-workspace.py`, the same way `pretraining`'s was when its arc completed. `learning-records/` is still empty: no lesson here has yet been taught in an interactive session, so nothing has been calibrated against a demonstrated answer.
+
+Stage 10's closing lesson (0020) settles the same GRPO/verifiable-reward attribution point noted below as its own worked example of settling a disputed claim from the primary source, rather than introducing a fresh one.
 
 Stage 9's second lesson (0018) is this track's one deliberate link into `llm/evals`, per the `## Out of scope` line in `README.md`, mirroring how `llm/pretraining`'s own stage 9 handed off to the same track. Its primary source is `llm/evals`'s own LLM-as-judge reference sheet rather than a paper, since the lesson's content (over-refusal, judge bias) is drawn directly from it rather than from a source this track located independently.
 
@@ -23,12 +25,8 @@ Stage 4 needed a source outside RESOURCES.md's original list for lesson 7 (PPO's
 
 Stage 3's reward-hacking lesson (0005) turned out better sourced than expected: Bai et al.'s train-PM-versus-test-PM divergence methodology gives a genuinely useful detection mechanism, not just a definition, and their harmlessness-over-optimization case (blanket "seek therapy" deflection) is a concrete, memorable real example rather than a hypothetical one.
 
-One merge is held in reserve if the arc proves too long once it is being taught: stage 6 with 7, since GRPO is presented in the same paper that would anchor stage 7 anyway (DeepSeekMath), and DeepSeek-R1 extends rather than replaces it.
-
-**The arc table deliberately has no `Lessons` column yet, and will not until every stage has at least one lesson**, the same approach `llm/pretraining` used while it was written stage by stage (see its own `NOTES.md`). `post-training` carries an explicit `arc_lessons_column: False` entry in `CONVENTIONS` in `check-workspace.py`; remove it and add the column once all ten stages have lessons.
-
 ## Open threads
 
-- Whether the learner has GPU access sufficient for a small PPO run (stage 4) is unknown; PPO's instability is easier to demonstrate than to describe, but it is also the most compute-hungry lab in the arc. Ask before writing that stage.
+- Whether the learner has GPU access sufficient for a small PPO run (stage 4) is unknown, and was never asked, since no interactive session has run yet.
 - Preference-data quality (stage 3) is the thinnest-sourced part of the arc; see the gap noted in `RESOURCES.md`.
-- Nothing has been attempted yet. The first interactive session should calibrate before teaching forward, rather than assuming the written arc landed as planned.
+- Nothing in this track has been taught in a real session. The first one should calibrate before trusting the arc's pacing, difficulty, or stage boundaries as written; stage 4 (three lessons, dense with the RLHF objective, PPO's clip formula, and the four-model cost accounting) is a candidate for turning out too long for one sitting.

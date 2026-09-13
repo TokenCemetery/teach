@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0011. Activation Memory and ZeRO-R](lessons/0011-activation-memory-and-zero-r.md)
+**Latest lesson:** [0014. Combining All Three: When Tensor and Pipeline Parallelism Earn Their Cost](lessons/0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md)
 
 ## Success looks like
 
@@ -69,6 +69,9 @@ Work through these in order.
 | [0009](lessons/0009-zero-stage-1-and-2-partitioning-optimizer-state-and-gradients.md) | ZeRO Stage 1 and 2: Partitioning Optimizer State and Gradients | Removing data parallelism's redundant copies for free, before communication cost has to grow at all |
 | [0010](lessons/0010-zero-stage-3-and-fsdp-partitioning-parameters-too.md) | ZeRO Stage 3 and FSDP: Partitioning Parameters Too | Sharding the parameters themselves means reconstructing them on demand, which is the first thing this costs |
 | [0011](lessons/0011-activation-memory-and-zero-r.md) | Activation Memory and ZeRO-R | Sharding model states solves one memory problem and leaves a second one, activations, standing |
+| [0012](lessons/0012-tensor-parallelism-splitting-a-layers-matrices.md) | Tensor Parallelism: Splitting a Layer's Matrices | Choosing which axis to split a weight matrix along so an entire transformer block needs only one all-reduce |
+| [0013](lessons/0013-pipeline-parallelism-splitting-the-models-layers.md) | Pipeline Parallelism: Splitting the Model's Layers | Assigning consecutive layers to different devices, and the idle time that costs at the start and end of every batch |
+| [0014](lessons/0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md) | Combining All Three: When Tensor and Pipeline Parallelism Earn Their Cost | Matching each parallelism strategy to the interconnect it tolerates, and when sharding alone is not enough |
 
 ## Reference
 

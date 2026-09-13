@@ -8,7 +8,7 @@ type: topic
 
 Be able to take a pretrained base model to an aligned, instruction-following assistant: write the SFT, reward, and preference objectives correctly, choose between RLHF-PPO, DPO, and GRPO for a given team's budget and data, and defend that choice, including what it cost in alignment tax and where it is exposed to reward hacking.
 
-**Latest lesson:** [0001. What Post-Training Buys](lessons/0001-what-post-training-buys.md)
+**Latest lesson:** [0003. Loss Masking on Non-Assistant Tokens](lessons/0003-loss-masking-on-non-assistant-tokens.md)
 
 ## Success looks like
 
@@ -59,6 +59,8 @@ Work through these in order.
 | # | Lesson | Teaches |
 |---|---|---|
 | [0001](lessons/0001-what-post-training-buys.md) | What Post-Training Buys | A 100x smaller aligned model beat a raw base model at doing what users actually wanted |
+| [0002](lessons/0002-instruction-data-and-the-chat-template.md) | Instruction Data and the Chat Template | A special token marks where a prompt ends and an answer begins, and that boundary has to match at training and serving time |
+| [0003](lessons/0003-loss-masking-on-non-assistant-tokens.md) | Loss Masking on Non-Assistant Tokens | Zero out the loss on the prompt, or spend gradient signal teaching the model to predict text it did not generate |
 
 ## Reference
 

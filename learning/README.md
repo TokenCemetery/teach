@@ -23,7 +23,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained track
 | programming | [TypeScript](programming/typescript/) | Own a TypeScript codebase: make the compiler reject the states that should not exist | 49 |
 | llm | [Adapter fine-tuning](llm/finetuning/) | Decide whether to fine-tune, run it, prove it worked, ship it | 27 |
 | llm | [Pretraining](llm/pretraining/) | Train a model from scratch at scale: data, tokenizer, distributed training, and a defensible compute budget | 24 |
-| llm | [Post-training](llm/post-training/) | Align a base model: SFT, reward modeling, RLHF, DPO, and GRPO, and knowing which one to pick | 1 |
+| llm | [Post-training](llm/post-training/) | Align a base model: SFT, reward modeling, RLHF, DPO, and GRPO, and knowing which one to pick | 3 |
 | llm | [Inference](llm/inference/) | Serve a model: the KV cache, batching, quantization at serve time, and a latency budget you can defend | 24 |
 | llm | [Evals](llm/evals/) | Prove a model change helped: build the eval, hold out the data honestly, and defend the number against contamination | 18 |
 | llm | [RAG](llm/rag/) | Own retrieval: chunking, embeddings, hybrid search, reranking, and measuring whether the right thing was retrieved | 19 |

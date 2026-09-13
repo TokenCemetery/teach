@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0006. Chinchilla: The Compute-Optimal Correction](lessons/0006-chinchilla-the-compute-optimal-correction.md)
+**Latest lesson:** [0008. Why Data Parallelism Alone Runs Out of Memory](lessons/0008-why-data-parallelism-alone-runs-out-of-memory.md)
 
 ## Success looks like
 
@@ -64,6 +64,8 @@ Work through these in order.
 | [0004](lessons/0004-sentencepiece-and-the-vocabulary-size-tradeoff.md) | SentencePiece and the Vocabulary Size Tradeoff | Tokenizing raw text without a pre-tokenizer, and what a larger or smaller vocabulary actually costs |
 | [0005](lessons/0005-scaling-laws-what-kaplan-predicted.md) | Scaling Laws: What Kaplan Predicted | An empirical power law lets you forecast a training run's loss before paying for it, and what that predicted for how to spend a compute budget |
 | [0006](lessons/0006-chinchilla-the-compute-optimal-correction.md) | Chinchilla: The Compute-Optimal Correction | Why model size and token count should scale together, and how to turn a compute budget into a token count |
+| [0007](lessons/0007-data-parallelism-and-gradient-all-reduce.md) | Data Parallelism and Gradient All-Reduce | Splitting a batch across devices that each hold a full copy of the model, and what keeps every copy identical |
+| [0008](lessons/0008-why-data-parallelism-alone-runs-out-of-memory.md) | Why Data Parallelism Alone Runs Out of Memory | Counting exactly what a mixed-precision Adam optimizer holds per parameter, and where that hits a wall |
 
 ## Reference
 

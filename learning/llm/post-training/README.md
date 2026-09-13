@@ -8,7 +8,7 @@ type: topic
 
 Be able to take a pretrained base model to an aligned, instruction-following assistant: write the SFT, reward, and preference objectives correctly, choose between RLHF-PPO, DPO, and GRPO for a given team's budget and data, and defend that choice, including what it cost in alignment tax and where it is exposed to reward hacking.
 
-**Latest lesson:** [0008. Why PPO Is Expensive and Unstable](lessons/0008-why-ppo-is-expensive-and-unstable.md)
+**Latest lesson:** [0010. The DPO Loss, and What It Drops Relative to PPO](lessons/0010-the-dpo-loss-and-what-it-drops-relative-to-ppo.md)
 
 ## Success looks like
 
@@ -66,6 +66,8 @@ Work through these in order.
 | [0006](lessons/0006-the-rlhf-objective-reward-minus-a-kl-penalty.md) | The RLHF Objective: Reward Minus a KL Penalty | One term chases the reward model's score; a second term is the leash that keeps the policy from running off with it |
 | [0007](lessons/0007-ppo-why-the-update-gets-clipped.md) | PPO: Why the Update Gets Clipped | A big win on one batch of sampled data is not trustworthy evidence for a big step; PPO refuses to fully believe it |
 | [0008](lessons/0008-why-ppo-is-expensive-and-unstable.md) | Why PPO Is Expensive and Unstable | Four models, not one, have to fit in memory at once, and the two that scale worst are exactly the ones RLHF adds |
+| [0009](lessons/0009-dpos-implicit-reward-why-the-partition-function-cancels.md) | DPO's Implicit Reward: Why the Partition Function Cancels | An intractable normalizing term stands between a reward and its optimal policy, until a difference of two rewards makes it vanish |
+| [0010](lessons/0010-the-dpo-loss-and-what-it-drops-relative-to-ppo.md) | The DPO Loss, and What It Drops Relative to PPO | One loss, two models, no sampling loop, and the same beta a KL penalty would have used |
 
 ## Reference
 

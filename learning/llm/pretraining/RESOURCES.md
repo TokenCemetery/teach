@@ -36,9 +36,10 @@ type: resources
   A published, reproducible training recipe: data mixture, tokenizer, schedule, and hyperparameters, stated plainly enough to check a lesson's claims against. Use for: cross-checking stages 1 through 3 and 7 against a real, complete recipe.
 - [Paper: "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
   Released alongside a public logbook of the infrastructure problems the authors actually hit training a 175B model: hardware failures, manual and automatic restarts, loss divergences, and the concrete recovery procedure used for each. Use for: stage 8's central case study, and a second real example of the loss-divergence pattern stage 7 covers.
+- [Paper: "Don't Stop Pretraining: Adapt Language Models to Domains and Tasks", Gururangan et al., 2020](https://arxiv.org/abs/2004.10964)
+  Shows that continuing pretraining on an existing broad-coverage model (domain-adaptive pretraining) consistently improves target-domain performance across four domains and eight tasks, in both high- and low-resource settings, without training a new model from scratch. Use for: stage 10's central case that pretraining from scratch is usually the wrong default.
 
 ## Gaps
 
-- No primary source yet on continued pretraining or domain-adaptive pretraining as a cost tradeoff against fine-tuning. Needed before stage 10 can defend that specific choice; revisit once that lesson is drafted.
 - OPT's paper documents real failure frequency and recovery procedure but does not state a specific checkpoint-interval policy (how often checkpoints were actually saved). Stage 8's checkpoint-frequency tradeoff is taught from general engineering reasoning rather than a stated policy; a primary source with a concrete interval would strengthen it.
 - GPT-3's classifier-based filtering (2020) is the only worked quality-filtering example listed so far. Corpora built since 2023 (FineWeb, Dolma) filter far more aggressively and document it in more depth; a more recent primary source would strengthen stage 1.

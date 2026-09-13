@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0021. Periodic Held-Out Evaluation](lessons/0021-periodic-held-out-evaluation.md)
+**Latest lesson:** [0024. Reviewing Someone Else's Training Run Config](lessons/0024-reviewing-someone-elses-training-run-config.md)
 
 ## Success looks like
 
@@ -39,18 +39,18 @@ Be able to plan and run a pretraining job from random initialization: build the 
 
 Ten stages, from no prior knowledge to senior judgment. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
-| Stage | Covers | Done when |
-| --- | --- | --- |
-| 1. Data pipeline | Sourcing, deduplication, quality filtering | Can build a filtered, deduplicated corpus from raw sources and defend what each step removed |
-| 2. Tokenizer training | BPE and SentencePiece from scratch, vocabulary size tradeoffs | Can train a tokenizer and defend a vocabulary size choice |
-| 3. Scaling laws | Kaplan against Chinchilla, the compute-optimal token-to-parameter ratio | Given a compute budget, can derive a compute-optimal token count and defend it |
-| 4. Data parallelism | Gradient all-reduce, why it stops scaling alone | Can say why data parallelism alone runs out of memory before it runs out of compute |
-| 5. Sharding memory | ZeRO stages 1 to 3, FSDP, activation and optimizer sharding | Can say what each ZeRO stage shards and what it costs in communication |
-| 6. Model parallelism | Tensor and pipeline parallelism for training | Can decide when tensor or pipeline parallelism earns its communication cost over sharding alone |
-| 7. Numerics and stability at scale | Mixed precision at scale, loss spikes, gradient norms, warmup and decay schedules | Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint |
-| 8. Checkpointing and fault tolerance | Saving and resuming a multi-day run, surviving a node failure | Can design a checkpointing scheme that bounds lost progress after a node failure |
-| 9. Monitoring a training run | Loss curves, periodic eval checkpoints, linking to `llm/evals` | Can read a training dashboard and say whether the run is on track |
-| 10. Judgment | Pretrain against continue-pretrain against fine-tune, defending a compute budget, reviewing someone else's training run config | Trusted to make the call and to explain it to someone else |
+| Stage | Lessons | Covers | Done when |
+| --- | --- | --- | --- |
+| 1. Data pipeline | 0001 to 0002 | Sourcing, deduplication, quality filtering | Can build a filtered, deduplicated corpus from raw sources and defend what each step removed |
+| 2. Tokenizer training | 0003 to 0004 | BPE and SentencePiece from scratch, vocabulary size tradeoffs | Can train a tokenizer and defend a vocabulary size choice |
+| 3. Scaling laws | 0005 to 0006 | Kaplan against Chinchilla, the compute-optimal token-to-parameter ratio | Given a compute budget, can derive a compute-optimal token count and defend it |
+| 4. Data parallelism | 0007 to 0008 | Gradient all-reduce, why it stops scaling alone | Can say why data parallelism alone runs out of memory before it runs out of compute |
+| 5. Sharding memory | 0009 to 0011 | ZeRO stages 1 to 3, FSDP, activation and optimizer sharding | Can say what each ZeRO stage shards and what it costs in communication |
+| 6. Model parallelism | 0012 to 0014 | Tensor and pipeline parallelism for training | Can decide when tensor or pipeline parallelism earns its communication cost over sharding alone |
+| 7. Numerics and stability at scale | 0015 to 0017 | Mixed precision at scale, loss spikes, gradient norms, warmup and decay schedules | Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint |
+| 8. Checkpointing and fault tolerance | 0018 to 0019 | Saving and resuming a multi-day run, surviving a node failure | Can design a checkpointing scheme that bounds lost progress after a node failure |
+| 9. Monitoring a training run | 0020 to 0021 | Loss curves, periodic eval checkpoints, linking to `llm/evals` | Can read a training dashboard and say whether the run is on track |
+| 10. Judgment | 0022 to 0024 | Pretrain against continue-pretrain against fine-tune, defending a compute budget, reviewing someone else's training run config | Trusted to make the call and to explain it to someone else |
 
 ## Lessons
 
@@ -79,6 +79,9 @@ Work through these in order.
 | [0019](lessons/0019-surviving-a-node-failure.md) | Surviving a Node Failure | Pause, diagnose, cordon off what is broken, and resume from the last checkpoint, at whatever it costs |
 | [0020](lessons/0020-reading-a-loss-curve.md) | Reading a Loss Curve | The training loss curve alone under-reports trouble; two other signals catch what it misses, and catch it earlier |
 | [0021](lessons/0021-periodic-held-out-evaluation.md) | Periodic Held-Out Evaluation | Training loss says the model is fitting its own training data; only a held-out check says anything about the rest |
+| [0022](lessons/0022-pretraining-is-usually-the-wrong-default.md) | Pretraining Is Usually the Wrong Default | A second phase of pretraining on an existing model gets most of the benefit without paying the full cost again |
+| [0023](lessons/0023-defending-a-compute-budget.md) | Defending a Compute Budget | A pretraining plan is a bet made of many separate decisions, and defending it means defending each one on its own terms |
+| [0024](lessons/0024-reviewing-someone-elses-training-run-config.md) | Reviewing Someone Else's Training Run Config | Walk the plan through every stage this track covered, in order, and settle a disputed claim from the source rather than a blog post |
 
 ## Reference
 

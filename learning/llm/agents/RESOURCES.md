@@ -22,6 +22,10 @@ type: resources
   Introduces self-critique as an explicit loop stage: the agent reflects on a failed attempt in natural language and carries that reflection into the retry. Use for: stage 7's reflection material, and for what self-critique costs in tokens.
 - [Paper: "Toolformer: Language Models Can Teach Themselves to Use Tools", Schick et al., 2023](https://arxiv.org/abs/2302.04761)
   Shows tool use being learned by the model rather than prompted, which is the boundary between this track and `llm/finetuning`. Use for: stage 2's explanation of why a model emits a tool call at all.
+- [Docs: "Tool use with Claude", Claude Platform Docs](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)
+  One provider's own account of the tool-call wire format: the JSON schema a tool definition takes, how a tool-call request and its result are represented as messages, and parallel tool calls. Use for: stage 2's captured request and response pair, read against the OpenAI guide below as the diff.
+- [Guide: "Function calling", OpenAI](https://developers.openai.com/api/docs/guides/function-calling)
+  A second provider's wire format for the same mechanic, including the shift from a single function call to a general tool-calling convention. Use for: stage 2, as the second provider whose format appears only as the diff from the first.
 - [Specification: Model Context Protocol](https://modelcontextprotocol.io/specification)
   The normative specification for MCP: tools, resources, prompts, sampling, the transports, and the server lifecycle. Use for: stage 9, and for settling any MCP claim from the source rather than from a client's documentation.
 - [Article: "Code Execution with MCP", Anthropic Engineering](https://www.anthropic.com/engineering/code-execution-with-mcp)
@@ -40,10 +44,14 @@ type: resources
   Evaluates agents on multi-turn tool use against a simulated user and a domain policy, and introduces a repeated-trial reliability measure rather than single-trial success. Use for: stage 13's distinction between succeeding once and succeeding reliably.
 - [Paper: "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?", Jimenez et al., 2023](https://arxiv.org/abs/2310.06770)
   Evaluates agents on real repository issues with the project's own tests as the outcome check. Use for: stage 13's example of an outcome-graded benchmark where the trajectory is unconstrained.
+- [Docs: "Computer use tool", Claude Platform Docs](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool)
+  Describes the screenshot-and-action loop a computer-use agent runs: an observation is a screenshot rather than a tool result, and an action is a screen coordinate or a key press rather than a function argument. Use for: stage 11's grounding-an-action-to-a-coordinate material, and for why this loop needs a different reliability story than a tool-calling one.
 - [Paper: "WebArena: A Realistic Web Environment for Building Autonomous Agents", Zhou et al., 2023](https://arxiv.org/abs/2307.13854)
   A self-hosted web environment with functional correctness checks, built for agents that act through a browser. Use for: stage 11, as the standard against which browser-agent reliability claims are made.
 - [Paper: "GAIA: A Benchmark for General AI Assistants", Mialon et al., 2023](https://arxiv.org/abs/2311.12983)
   Questions that are easy for a person and hard for an agent, requiring multi-step tool use with a single unambiguous answer. Use for: stage 13, as the counterweight to benchmarks a model can pass without acting.
+- [Docs: "Prompt caching", Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
+  Caching a prompt prefix to cut repeated cost and latency, including why an agent's stable tool definitions and system prompt are exactly the prefix worth caching and what silently invalidates the cache. Use for: stage 15's token-amplification and cost material.
 
 ## Gaps
 

@@ -62,24 +62,20 @@ The cost is compute: dequantisation happens on every forward and again in the ba
 
 ### Preparing the model
 
-```python
-import torch
-from transformers import AutoModelForCausalLM, BitsAndBytesConfig
-from peft import LoraConfig, prepare_model_for_kbit_training, get_peft_model
+```text
+quant_config := {
+    load_in_4bit: true,
+    quant_type: "nf4",
+    use_double_quant: true,
+    compute_dtype: "bfloat16",
+}
 
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_compute_dtype=torch.bfloat16,
-)
+model := load_model("<base model>", quantization: quant_config)
+model := prepare_for_quantized_training(model, gradient_checkpointing: true)
 
-model = AutoModelForCausalLM.from_pretrained("<base model>", quantization_config=bnb_config)
-model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)
-
-config = LoraConfig(r=32, lora_alpha=64, target_modules="all-linear", task_type="CAUSAL_LM")
-model = get_peft_model(model, config)
-model.print_trainable_parameters()
+adapter_config := {rank: 32, alpha: 64, target_modules: "all-linear"}
+model := attach_adapter(model, adapter_config)
+print(model.trainable_parameter_count())
 ```
 
 `prepare_model_for_kbit_training` does several small necessary things: casts layer norms and the output head to a stable precision, enables gradient checkpointing and input-gradient requirements, and makes sure nothing that must stay in higher precision was quantized. Skipping it produces runs that are unstable or that fail with gradient errors, and the cause is not obvious from the message.

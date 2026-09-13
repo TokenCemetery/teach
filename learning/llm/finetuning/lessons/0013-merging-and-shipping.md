@@ -54,12 +54,9 @@ Small, often tens of megabytes. And **incomplete by design**: it is a diff, mean
 
 **Unmerged.** Load the base, apply the adapter at load time.
 
-```python
-from transformers import AutoModelForCausalLM
-from peft import PeftModel
-
-base = AutoModelForCausalLM.from_pretrained("<base model>", dtype="bfloat16")
-model = PeftModel.from_pretrained(base, "runs/first-adapter/final")
+```text
+base := load_model("<base model>", dtype: "bfloat16")
+model := load_adapter(base, "runs/first-adapter/final")
 ```
 
 **Merged.** Fold the update into the weights and discard the adapter structure.

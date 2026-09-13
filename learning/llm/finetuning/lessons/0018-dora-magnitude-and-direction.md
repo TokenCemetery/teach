@@ -83,18 +83,15 @@ The two panels use the same `W0` and the same `BA`. On the left one term moved b
 
 In PEFT, DoRA is a flag on the LoRA config rather than a separate method:
 
-```python
-from peft import LoraConfig
-
-config = LoraConfig(
-    use_dora=True,
-    r=8,
-    lora_alpha=32,
-    target_modules="all-linear",
-    lora_dropout=0.05,
-    bias="none",
-    task_type="CAUSAL_LM",
-)
+```text
+config := {
+    use_dora: true,
+    rank: 8,
+    alpha: 32,
+    target_modules: "all-linear",
+    dropout: 0.05,
+    adapt_bias: false,
+}
 ```
 
 Everything you know about rank, alpha, target modules and learning rate carries over. It is a modification to how the update is applied, not a new set of decisions. Confirm the flag name against the installed version, as always.

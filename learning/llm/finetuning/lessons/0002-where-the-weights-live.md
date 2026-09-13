@@ -74,13 +74,11 @@ Most current models use **grouped-query attention**, where several query heads s
 
 Never trust a remembered list of module names. They are set by the model implementation and they differ between architectures. Print them:
 
-```python
-from transformers import AutoModelForCausalLM
-
-model = AutoModelForCausalLM.from_pretrained("<some-small-model>")
-for name, module in model.named_modules():
-    if isinstance(module, torch.nn.Linear):
-        print(name, tuple(module.weight.shape))
+```text
+model := load_model("<some-small-model>")
+for name, module in model.modules():
+    if module is a linear layer:
+        print(name, module.weight.shape)
 ```
 
 This is the single most useful diagnostic in the whole workspace. A fine-tune that silently trains nothing usually means a target-module name that matched nothing.
@@ -137,7 +135,7 @@ So attention holds about 2 × 2048² + 2 × 2048 × 256 ≈ 9.4M per layer, not 
 
 ## Real-world reps
 
-- [ ] Run the `named_modules` loop above on the smallest model you can download. Write the seven names and their shapes into your own notes by hand.
+- [ ] Run the module-listing loop above, using your library's real model-inspection call (e.g. `named_modules()` in PyTorch), on the smallest model you can download. Write the seven names and their shapes into your own notes by hand.
 - [ ] From the shapes alone, compute the model's total parameter count. Compare it against the number on its model card and account for any gap.
 - [ ] Tomorrow: repeat for a model from a different family. Note every module name that differs.
 

@@ -111,16 +111,13 @@ This is the result that made QLoRA significant: it moved fine-tuning of large mo
 
 ### The configuration
 
-```python
-import torch
-from transformers import BitsAndBytesConfig
-
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",            # not "fp4"
-    bnb_4bit_use_double_quant=True,       # the 0.37 bits/param saving
-    bnb_4bit_compute_dtype=torch.bfloat16,  # storage is 4-bit; compute is not
-)
+```text
+quant_config := {
+    load_in_4bit: true,
+    quant_type: "nf4",            # not "fp4"
+    use_double_quant: true,       # the 0.37 bits/param saving
+    compute_dtype: "bfloat16",    # storage is 4-bit; compute is not
+}
 ```
 
 Four settings, each mapping to something in this lesson. `bnb_4bit_compute_dtype` is the one people leave at its default and should not: it is the precision the dequantised blocks are multiplied in, and leaving it at fp32 discards much of the speed benefit.

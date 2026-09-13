@@ -69,27 +69,24 @@ Another family uses entirely different markers. The format is not a convention y
 
 The template ships with the tokenizer, as a Jinja string. Use it rather than writing the format yourself:
 
-```python
-from transformers import AutoTokenizer
-
-tok = AutoTokenizer.from_pretrained("<model>")
-messages = [
-    {"role": "system", "content": "You are helpful."},
-    {"role": "user", "content": "Hello"},
+```text
+tokenizer := load_tokenizer("<model>")
+messages := [
+    {role: "system", content: "You are helpful."},
+    {role: "user", content: "Hello"},
 ]
 
 # For inference: leaves the sequence ready for the model to continue.
-prompt = tok.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+prompt := tokenizer.render(messages, add_generation_prompt: true)
 
 # For training: the assistant turn is already present, so no generation prompt.
-full = tok.apply_chat_template(
-    messages + [{"role": "assistant", "content": "Hi."}], tokenize=False
-)
-print(repr(prompt))
-print(repr(full))
+full := tokenizer.render(messages + [{role: "assistant", content: "Hi."}])
+
+print(exact(prompt))
+print(exact(full))
 ```
 
-`repr` matters. The difference between a correct and a broken template is often one whitespace character, and `print` hides it.
+Printing the exact string, not a summarised view, matters. The difference between a correct and a broken template is often one whitespace character, and an ordinary print can hide it — in Python that means `repr`, not `print`, on the string.
 
 ### The one rule
 
@@ -160,7 +157,7 @@ Temperature is applied after the model produces its distribution, so it is a ser
 
 ## Real-world reps
 
-- [ ] Take one model and print `apply_chat_template(..., tokenize=False)` with `repr`. Copy the exact string into your notes, whitespace included.
+- [ ] Take one model and render a template with your library's real chat-template call (e.g. `apply_chat_template(..., tokenize=False)` in Transformers), printing the exact string with whitespace included (e.g. Python's `repr`). Copy it into your notes.
 - [ ] Tokenize the same paragraph in two different model families and compare token counts. Then tokenize a block of JSON and compare again.
 - [ ] Tomorrow: deliberately break a template by dropping the end-of-turn marker, then prompt the model. Watch what it does. That is the failure you are learning to recognise.
 

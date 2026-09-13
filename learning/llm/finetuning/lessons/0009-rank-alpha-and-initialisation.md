@@ -104,20 +104,17 @@ Note the asymmetry with the memory lesson: rank costs very little memory (Lesson
 
 ### The config
 
-```python
-from peft import LoraConfig, get_peft_model
+```text
+config := {
+    rank: 16,
+    alpha: 32,               # α/r = 2
+    dropout: 0.05,
+    adapt_bias: false,
+    target_modules: [...],   # Lesson 10
+}
 
-config = LoraConfig(
-    r=16,
-    lora_alpha=32,          # α/r = 2
-    lora_dropout=0.05,
-    bias="none",            # do not adapt bias terms
-    task_type="CAUSAL_LM",
-    target_modules=[...],   # Lesson 10
-)
-
-model = get_peft_model(model, config)
-model.print_trainable_parameters()
+model := attach_adapter(model, config)
+print(model.trainable_parameter_count())
 ```
 
 That last line is not optional. It is the check that your target modules matched anything at all, and it should agree with the arithmetic you did in Lesson 8. Read the parameter names from the installed version's documentation rather than from memory, because this surface changes between releases.

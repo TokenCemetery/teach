@@ -50,47 +50,40 @@ Optimising anything before the pipeline is proven is wasted effort, and it hides
 
 ### A minimal run
 
-```python
-import torch
-from datasets import load_dataset
-from peft import LoraConfig
-from trl import SFTTrainer, SFTConfig
+```text
+dataset := load_dataset("<a small instruction dataset>", split: "train[:500]")
 
-dataset = load_dataset("<a small instruction dataset>", split="train[:500]")
+adapter_config := {
+    rank: 16,
+    alpha: 32,
+    dropout: 0.05,
+    adapt_bias: false,
+    target_modules: "all-linear",
+}
 
-peft_config = LoraConfig(
-    r=16,
-    lora_alpha=32,
-    lora_dropout=0.05,
-    bias="none",
-    task_type="CAUSAL_LM",
-    target_modules="all-linear",
-)
+run_config := {
+    output_dir: "runs/first-adapter",
+    max_steps: 50,
+    per_device_batch_size: 1,
+    gradient_accumulation_steps: 8,      # effective batch size 8
+    learning_rate: 2e-4,
+    warmup_steps: 5,
+    lr_schedule: "cosine",
+    logging_steps: 1,                    # every step, for the first run
+    max_length: 1024,
+    gradient_checkpointing: true,
+    precision: "bf16",
+}
 
-args = SFTConfig(
-    output_dir="runs/first-adapter",
-    max_steps=50,
-    per_device_train_batch_size=1,
-    gradient_accumulation_steps=8,      # effective batch size 8
-    learning_rate=2e-4,
-    warmup_steps=5,
-    lr_scheduler_type="cosine",
-    logging_steps=1,                     # every step, for the first run
-    max_length=1024,
-    gradient_checkpointing=True,
-    bf16=True,
-    report_to="none",
-)
-
-trainer = SFTTrainer(
-    model="<a small base model>",
-    train_dataset=dataset,
-    peft_config=peft_config,
-    args=args,
+trainer := new_trainer(
+    model: "<a small base model>",
+    train_dataset: dataset,
+    adapter_config: adapter_config,
+    run_config: run_config,
 )
 
 trainer.train()
-trainer.save_model("runs/first-adapter/final")
+trainer.save("runs/first-adapter/final")
 ```
 
 Two notes on this API surface. `SFTTrainer` accepts a model *string* and will load it for you. Sequence length is `max_length` on `SFTConfig`. Both of these have changed across releases, so **read the installed version's documentation rather than trusting this snippet or your memory.** That instruction is not boilerplate; it is the most reliable source of wasted afternoons in this whole workspace.

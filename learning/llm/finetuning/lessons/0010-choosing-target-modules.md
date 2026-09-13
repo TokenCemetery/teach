@@ -52,21 +52,19 @@ From Lesson 2: the MLP holds roughly four fifths of each block's parameters. The
 
 Recent work converges on a blunt recommendation: **adapt all linear layers**, and give the adapter enough rank. The TRL write-up of the "LoRA without regret" result is explicit: applying LoRA to every linear layer, including the MLP, with sufficient rank, closes the gap to full fine-tuning on supervised fine-tuning workloads, while attention-only configurations do not.
 
-```python
-from peft import LoraConfig
-
+```text
 # The modern default: let the library find every linear layer.
-config = LoraConfig(r=64, lora_alpha=128, target_modules="all-linear")
+config := {rank: 64, alpha: 128, target_modules: "all-linear"}
 
 # The explicit equivalent, for a Llama-style architecture.
-config = LoraConfig(
-    r=64,
-    lora_alpha=128,
-    target_modules=[
+config := {
+    rank: 64,
+    alpha: 128,
+    target_modules: [
         "q_proj", "k_proj", "v_proj", "o_proj",
         "gate_proj", "up_proj", "down_proj",
     ],
-)
+}
 ```
 
 `"all-linear"` is the safer of the two, because it cannot go stale against an architecture whose module names differ from the list you memorised. Its cost is that you give up precise control and should check what it actually matched.
@@ -93,10 +91,10 @@ Why this is affordable now: from Lesson 7, adapter parameters are a negligible s
 
 Print what matched, every time:
 
-```python
-model = get_peft_model(base_model, config)
-model.print_trainable_parameters()
-print([n for n, _ in model.named_parameters() if "lora" in n][:8])
+```text
+model := attach_adapter(base_model, config)
+print(model.trainable_parameter_count())
+print(first 8 parameter names containing "lora")
 ```
 
 A target-module name that matched nothing produces either an error or, depending on version, a model with no adapter at all, which trains, logs a loss, and learns nothing. A trainable-parameter count that disagrees with your Lesson 8 arithmetic is the earliest possible warning.

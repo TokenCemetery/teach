@@ -34,9 +34,11 @@ type: resources
   A detailed, honest account of a large training run, including where loss spikes and instability appeared and what the authors did about them. Use for: stage 7's central case study.
 - [Paper: "LLaMA: Open and Efficient Foundation Language Models", Touvron et al., 2023](https://arxiv.org/abs/2302.13971)
   A published, reproducible training recipe: data mixture, tokenizer, schedule, and hyperparameters, stated plainly enough to check a lesson's claims against. Use for: cross-checking stages 1 through 3 and 7 against a real, complete recipe.
+- [Paper: "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
+  Released alongside a public logbook of the infrastructure problems the authors actually hit training a 175B model: hardware failures, manual and automatic restarts, loss divergences, and the concrete recovery procedure used for each. Use for: stage 8's central case study, and a second real example of the loss-divergence pattern stage 7 covers.
 
 ## Gaps
 
 - No primary source yet on continued pretraining or domain-adaptive pretraining as a cost tradeoff against fine-tuning. Needed before stage 10 can defend that specific choice; revisit once that lesson is drafted.
-- Checkpointing and fault tolerance for a multi-day distributed run (stage 8) is currently documented mainly inside individual framework docs (PyTorch, DeepSpeed) rather than in a framework-neutral source. A vendor-neutral treatment has not been located.
+- OPT's paper documents real failure frequency and recovery procedure but does not state a specific checkpoint-interval policy (how often checkpoints were actually saved). Stage 8's checkpoint-frequency tradeoff is taught from general engineering reasoning rather than a stated policy; a primary source with a concrete interval would strengthen it.
 - GPT-3's classifier-based filtering (2020) is the only worked quality-filtering example listed so far. Corpora built since 2023 (FineWeb, Dolma) filter far more aggressively and document it in more depth; a more recent primary source would strengthen stage 1.

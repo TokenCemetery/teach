@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0017. Warmup, Decay, and Growing the Batch Mid-Run](lessons/0017-warmup-decay-and-growing-the-batch-mid-run.md)
+**Latest lesson:** [0019. Surviving a Node Failure](lessons/0019-surviving-a-node-failure.md)
 
 ## Success looks like
 
@@ -75,6 +75,8 @@ Work through these in order.
 | [0015](lessons/0015-mixed-precision-at-scale-bfloat16-and-stochastic-rounding.md) | Mixed Precision at Scale: bfloat16 and Stochastic Rounding | A numeric format with fp32's range but less precision, and what it costs to update parameters in it directly |
 | [0016](lessons/0016-loss-spikes-and-the-optimizers-own-instabilities.md) | Loss Spikes and the Optimizer's Own Instabilities | The same spike can come from a bad batch or from the optimizer itself, and telling them apart takes a controlled comparison |
 | [0017](lessons/0017-warmup-decay-and-growing-the-batch-mid-run.md) | Warmup, Decay, and Growing the Batch Mid-Run | Starting slow, decaying on a schedule, and letting the batch size itself change partway through training |
+| [0018](lessons/0018-what-a-checkpoint-has-to-hold.md) | What a Checkpoint Has to Hold | A checkpoint that only saves weights cannot resume a run exactly, and choosing how often to save is its own tradeoff |
+| [0019](lessons/0019-surviving-a-node-failure.md) | Surviving a Node Failure | Pause, diagnose, cordon off what is broken, and resume from the last checkpoint, at whatever it costs |
 
 ## Reference
 

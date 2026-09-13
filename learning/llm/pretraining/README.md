@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0002. Deduplication and Quality Filtering](lessons/0002-deduplication-and-quality-filtering.md)
+**Latest lesson:** [0004. SentencePiece and the Vocabulary Size Tradeoff](lessons/0004-sentencepiece-and-the-vocabulary-size-tradeoff.md)
 
 ## Success looks like
 
@@ -60,6 +60,8 @@ Work through these in order.
 |---|---|---|
 | [0001](lessons/0001-sourcing-and-mixing-a-pretraining-corpus.md) | Sourcing and Mixing a Pretraining Corpus | What goes into a pretraining corpus, and why the mixture of sources matters more than the total byte count |
 | [0002](lessons/0002-deduplication-and-quality-filtering.md) | Deduplication and Quality Filtering | Why near-duplicate text and low-quality documents get removed before training, and what it costs to skip that step |
+| [0003](lessons/0003-byte-pair-encoding-from-scratch.md) | Byte-Pair Encoding From Scratch | The algorithm that turns rare and unknown words into sequences of learned subword units, worked by hand |
+| [0004](lessons/0004-sentencepiece-and-the-vocabulary-size-tradeoff.md) | SentencePiece and the Vocabulary Size Tradeoff | Tokenizing raw text without a pre-tokenizer, and what a larger or smaller vocabulary actually costs |
 
 ## Reference
 

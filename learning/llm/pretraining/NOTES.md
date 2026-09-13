@@ -10,7 +10,7 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #133, not earned one lesson at a time. Stages 1 and 2 (lessons 0001 through 0004) are now written; the remaining eight stages are not, and `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+The ten stages in `README.md` were written upfront during the planning session recorded in #133, not earned one lesson at a time. Stages 1 through 3 (lessons 0001 through 0006) are now written; the remaining seven stages are not, and `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
 
 Lesson 3's worked BPE example surfaced a wrinkle not called out in the mission or arc: the "merge the most frequent pair" rule does not by itself resolve a tie between equally frequent pairs, which the paper's own toy corpus happens to produce on its very first step. Worth remembering if a later lesson references "the" BPE merge order for this example, since it is implementation-dependent, not uniquely determined.
 

@@ -8,7 +8,7 @@ type: topic
 
 Be able to plan and run a pretraining job from random initialization: build the data pipeline, train the tokenizer, pick a compute-optimal token budget for a given parameter count, keep a multi-day distributed run from diverging or stalling on a node failure, and defend that whole set of choices to someone who would otherwise have just fine-tuned an existing base model instead.
 
-**Latest lesson:** [0004. SentencePiece and the Vocabulary Size Tradeoff](lessons/0004-sentencepiece-and-the-vocabulary-size-tradeoff.md)
+**Latest lesson:** [0006. Chinchilla: The Compute-Optimal Correction](lessons/0006-chinchilla-the-compute-optimal-correction.md)
 
 ## Success looks like
 
@@ -62,6 +62,8 @@ Work through these in order.
 | [0002](lessons/0002-deduplication-and-quality-filtering.md) | Deduplication and Quality Filtering | Why near-duplicate text and low-quality documents get removed before training, and what it costs to skip that step |
 | [0003](lessons/0003-byte-pair-encoding-from-scratch.md) | Byte-Pair Encoding From Scratch | The algorithm that turns rare and unknown words into sequences of learned subword units, worked by hand |
 | [0004](lessons/0004-sentencepiece-and-the-vocabulary-size-tradeoff.md) | SentencePiece and the Vocabulary Size Tradeoff | Tokenizing raw text without a pre-tokenizer, and what a larger or smaller vocabulary actually costs |
+| [0005](lessons/0005-scaling-laws-what-kaplan-predicted.md) | Scaling Laws: What Kaplan Predicted | An empirical power law lets you forecast a training run's loss before paying for it, and what that predicted for how to spend a compute budget |
+| [0006](lessons/0006-chinchilla-the-compute-optimal-correction.md) | Chinchilla: The Compute-Optimal Correction | Why model size and token count should scale together, and how to turn a compute budget into a token count |
 
 ## Reference
 

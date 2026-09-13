@@ -8,7 +8,7 @@ type: topic
 
 Be able to take a pretrained base model to an aligned, instruction-following assistant: write the SFT, reward, and preference objectives correctly, choose between RLHF-PPO, DPO, and GRPO for a given team's budget and data, and defend that choice, including what it cost in alignment tax and where it is exposed to reward hacking.
 
-**Latest lesson:** [0010. The DPO Loss, and What It Drops Relative to PPO](lessons/0010-the-dpo-loss-and-what-it-drops-relative-to-ppo.md)
+**Latest lesson:** [0012. Verifiable Rewards: When a Checker Replaces the Reward Model](lessons/0012-verifiable-rewards-when-a-checker-replaces-the-reward-model.md)
 
 ## Success looks like
 
@@ -68,6 +68,8 @@ Work through these in order.
 | [0008](lessons/0008-why-ppo-is-expensive-and-unstable.md) | Why PPO Is Expensive and Unstable | Four models, not one, have to fit in memory at once, and the two that scale worst are exactly the ones RLHF adds |
 | [0009](lessons/0009-dpos-implicit-reward-why-the-partition-function-cancels.md) | DPO's Implicit Reward: Why the Partition Function Cancels | An intractable normalizing term stands between a reward and its optimal policy, until a difference of two rewards makes it vanish |
 | [0010](lessons/0010-the-dpo-loss-and-what-it-drops-relative-to-ppo.md) | The DPO Loss, and What It Drops Relative to PPO | One loss, two models, no sampling loop, and the same beta a KL penalty would have used |
+| [0011](lessons/0011-grpo-group-relative-advantage-instead-of-a-value-function.md) | GRPO: Group-Relative Advantage Instead of a Value Function | Sample several answers to the same question, and let the group's own spread of rewards say which ones were better |
+| [0012](lessons/0012-verifiable-rewards-when-a-checker-replaces-the-reward-model.md) | Verifiable Rewards: When a Checker Replaces the Reward Model | A trained reward model is a guess at what a human would prefer; a unit test or a matched answer is not a guess at all |
 
 ## Reference
 

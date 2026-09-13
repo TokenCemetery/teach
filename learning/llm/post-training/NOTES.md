@@ -11,7 +11,9 @@ Working notes for the teaching session. Not linked from `README.md`.
 
 ## On the arc
 
-The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 through 5 (lessons 0001 through 0010) are now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+The ten stages in `README.md` were written upfront during the planning session recorded in #134, not earned one lesson at a time. Stages 1 through 6 (lessons 0001 through 0012) are now written; `learning-records/` is still empty, so nothing here has been calibrated against a demonstrated answer yet.
+
+Stage 6 surfaced an attribution point worth being careful about: DeepSeekMath's own GRPO uses a *trained* reward model, not a rule-based verifiable one (checked directly in the paper; no mention of rule-based or ground-truth-checker rewards anywhere in its text). Lesson 12 introduces verifiable rewards as a natural pairing with GRPO's mechanism rather than attributing that specific combination to DeepSeekMath itself, and forwards the at-scale version to Stage 7's DeepSeek-R1 source, where it belongs.
 
 Stage 4 needed a source outside RESOURCES.md's original list for lesson 7 (PPO's own clip formula): ar5iv could not convert the PPO paper (no LaTeX source available, only a PDF), so its text was extracted directly from the arXiv PDF with `pdfminer` instead. Worth remembering if a future lesson needs to quote this paper again.
 

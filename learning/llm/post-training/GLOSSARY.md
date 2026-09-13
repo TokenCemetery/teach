@@ -19,7 +19,7 @@ The loss function used to train a reward model on pairwise preference data, trea
 _Avoid_: preference loss (used loosely for several objectives in this space, including DPO's; Bradley-Terry names the specific pairwise-comparison model reward modeling uses)
 
 **Group-relative advantage**:
-GRPO's replacement for a learned value function: the advantage of one sampled completion is its reward compared against the mean reward of a group of completions sampled for the same prompt.
+GRPO's replacement for a learned value function: for a group of completions sampled for the same prompt, one completion's advantage is its reward minus the group's mean reward, divided by the group's standard deviation, applied to every token in that completion.
 _Avoid_: baseline (a baseline is the general RL concept a group mean serves as; this workspace uses the specific name once GRPO is in scope)
 
 **Implicit reward**:

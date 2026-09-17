@@ -8,12 +8,13 @@ type: topic
 
 Be able to stand up an inference server for a real model, on GPU and on CPU/edge in turn, and defend the latency and throughput numbers it produces instead of quoting whatever the framework's defaults happen to give you.
 
-**Latest lesson:** [24. Long Context at Serve Time](lessons/0024-long-context-at-serve-time.md)
+**Latest lesson:** [25. Reviewing a Serving Configuration](lessons/0025-reviewing-a-serving-configuration.md)
 
 ## Success looks like
 
 - Stand up a serving stack (vLLM on GPU, then llama.cpp on CPU/edge) for a given model and get it answering requests.
 - Quote a p99 latency budget for a given batch size and model, and defend the number from the KV cache, batching and quantization choices that produced it.
+- Review someone else's serving configuration and name specifically what it costs (a knob mistuned against the stated workload's bottleneck, a topology chosen without a bottleneck that justifies it, a rollout that breaks a caller mid-flight), rather than saying it feels wrong.
 
 ## Constraints
 
@@ -27,7 +28,7 @@ Be able to stand up an inference server for a real model, on GPU and on CPU/edge
 
 ## The arc
 
-Thirteen stages, first request to a defended, fleet-scale, production-monitored latency budget. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Fourteen stages, first request to a defended, fleet-scale, production-monitored, and reviewed serving configuration. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -44,6 +45,7 @@ Thirteen stages, first request to a defended, fleet-scale, production-monitored 
 | 11. Fleet-level serving | 0022 | Request routing informed by cache locality, queue-depth-driven autoscaling, and why a cold start's model load time bounds how fast a new replica actually helps | Can explain how routing, autoscaling, and cold-start latency have to be reasoned about as one pipeline rather than tuned separately |
 | 12. Production observability and cost | 0023 | Continuously exported metrics, SLIs/SLOs/error budgets that turn a metric into a target, and cost per million tokens derived from measured throughput | Can defend a production configuration by citing its p99, the SLO and error budget it's held to, and its cost per million tokens |
 | 13. Long context at serve time | 0024 | RoPE scaling versus sliding-window attention and attention sinks, and what each actually does to lesson 2's cache-growth formula | Can explain whether a long-context technique extends usable length, caps cache size to a constant, or fixes a capped cache's failure mode |
+| 14. Judgment | 0025 | Reviewing someone else's configuration for mismatched knobs, safe rollouts through what others depend on, and saying when speculative decoding is not a free win | Trusted to review a serving configuration and name what each choice costs, not just that it feels wrong |
 
 ## Lessons
 
@@ -75,6 +77,7 @@ Work through these in order.
 | [0022](lessons/0022-fleet-level-serving.md) | Fleet-Level Serving | Lesson 5's scheduler picks the next request for one server's queue; a fleet adds a decision before that, which server gets the request at all, a decision about when to add more servers, and a cold-start cost that makes a freshly added server useless for tens of seconds |
 | [0023](lessons/0023-production-observability-and-cost.md) | Production Observability and Cost | Lesson 17 defended one measured p99 figure for one configuration; this lesson covers what has to be continuously exported to catch a regression automatically, the SLO and error budget that turn "good enough" into a target instead of a vibe, and the cost-per-million-tokens number that has to be defended alongside p99, not instead of it |
 | [0024](lessons/0024-long-context-at-serve-time.md) | Long Context at Serve Time | Lesson 2's capacity formula charges memory linearly with context length; RoPE scaling extends how long a context can be without changing that charge at all, while sliding-window attention and attention sinks change the formula itself by capping context length to a constant |
+| [0025](lessons/0025-reviewing-a-serving-configuration.md) | Reviewing a Serving Configuration | Review someone else's serving configuration and name specifically what it costs (a knob mistuned against the stated workload's bottleneck, a topology chosen without a bottleneck that justifies it, a rollout that breaks a caller mid-flight), rather than saying it feels wrong |
 
 ## Reference
 

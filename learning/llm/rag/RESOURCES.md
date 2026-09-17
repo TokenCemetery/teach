@@ -45,6 +45,8 @@ type: resources
   Trains a model to decide whether retrieval is needed at all and to critique retrieved passages, rather than retrieving a fixed number of passages indiscriminately every time. Use for: agentic retrieval's other axis, whether to retrieve at all, distinct from how many hops a multi-step question needs.
 - [Guide: "RAG Observability: How Coralogix Helps You Trace Retrieval-to-Generation Quality", Coralogix, 2026](https://coralogix.com/guides/rag-observability/)
   Covers why ordinary infrastructure monitoring (latency, throughput, error rate) stays green through silent retrieval and context-window failures, and the reference-free, context-window-utilization, and embedding-drift signals that catch them instead. Use for: what to actually monitor once a pipeline is live, beyond the offline metrics lesson 10 covers.
+- [Paper: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
+  Shows that models use information placed at the beginning or end of a long context far more reliably than information buried in the middle, even when everything is technically within the context window. Use for: understanding why retrieval that places relevant chunks near the top of the context outperforms resending an entire corpus where the relevant parts sink into the middle.
 
 ## Gaps
 

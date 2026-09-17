@@ -8,13 +8,14 @@ type: topic
 
 Be able to build an eval that catches a regression a vibe check would miss, and use it to make a go/no-go call on a model change (a fine-tune, a prompt change, a RAG change) that you can defend with a number instead of a feeling.
 
-**Latest lesson:** [18. Public Benchmarks](lessons/0018-public-benchmarks.md)
+**Latest lesson:** [19. Reviewing an Eval Report](lessons/0019-reviewing-an-eval-report.md)
 
 ## Success looks like
 
 - Design a held-out eval set for a given model change that resists contamination and would catch a regression a casual read-through would miss.
 - Use that eval to make and defend a go/no-go call on shipping the change, naming the number and why it is trustworthy.
 - Compare an LLM-as-judge approach against task-specific metrics for a given case, and choose between them on the merits rather than by default.
+- Review someone else's eval report or harness and name specifically what would make its number untrustworthy (an unheld-out set, an uncalibrated judge, a single run with no variance estimate, a leaderboard rank standing in for a task-specific call), rather than saying it feels thin.
 
 ## Constraints
 
@@ -27,7 +28,7 @@ Be able to build an eval that catches a regression a vibe check would miss, and 
 
 ## The arc
 
-Twelve stages, a trustworthy eval to a defended go/no-go call that accounts for humans, safety, agents, RAG, production, cost, and the pull of a public leaderboard. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
+Thirteen stages, from a trustworthy eval to a defended go/no-go call that accounts for humans, safety, agents, RAG, production, cost, and the pull of a public leaderboard, finishing with the judgment to review someone else's eval and maintain one honestly as shared infrastructure. A stage takes several lessons and the boundaries are soft; what makes a stage done is the capability, not the lesson count.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|
@@ -43,6 +44,7 @@ Twelve stages, a trustworthy eval to a defended go/no-go call that accounts for 
 | 10. Online evaluation | 0015 to 0016 | A/B tests, OEC and guardrail metrics, production telemetry, drift, training-serving skew | Can choose a defensible OEC with a guardrail metric, and correctly attribute an offline/online gap to variance, drift, or an engineering error |
 | 11. Cost and latency as eval dimensions | 0017 | Tail latency vs. average, per-request/token cost, folding both into the go/no-go call | Can defend a go/no-go call that weighs quality, tail latency, and cost together, not quality alone |
 | 12. Public benchmarks | 0018 | Static-benchmark contamination/saturation, arena-style selective disclosure, style bias at leaderboard scale | Can explain why a leaderboard rank fails the OEC test and isn't a substitute for a task-specific go/no-go call |
+| 13. Judgment | 0019 | Reviewing eval reports, settling disputed claims from primary sources, maintaining an eval suite others depend on | Trusted to review someone else's eval and defend its number or name what makes it untrustworthy, and to maintain an eval suite as shared infrastructure without breaking others' gates |
 
 ## Lessons
 
@@ -68,6 +70,7 @@ Work through these in order.
 | [0016](lessons/0016-production-telemetry-and-drift.md) | Production Telemetry and Drift | An offline number and a live number disagreeing isn't one problem, it's three different ones, and treating an engineering bug as drift, or drift as an engineering bug, sends the fix to the wrong team entirely |
 | [0017](lessons/0017-cost-and-latency-as-eval-dimensions.md) | Cost and Latency as Eval Dimensions | A quality win measured in isolation from what it costs to serve is half a go/no-go call, and an average latency number hides exactly the tail that determines whether users actually experience the system as fast |
 | [0018](lessons/0018-public-benchmarks.md) | Public Benchmarks | A leaderboard position is a movable metric optimized by people who aren't you, for users who aren't your users, scored by a process with its own documented gaming vectors, which makes it exactly the kind of metric lesson 15 warned against trusting as a go/no-go signal |
+| [0019](lessons/0019-reviewing-an-eval-report.md) | Reviewing an Eval Report | Name specifically what would make an eval report's number untrustworthy (contamination, an uncalibrated judge, a single run with no variance estimate, a leaderboard rank standing in for a task-specific call), rather than saying it feels thin |
 
 ## Reference
 

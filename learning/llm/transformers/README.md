@@ -8,13 +8,14 @@ type: topic
 
 Be able to implement a transformer's forward pass and its training loop from raw tensors, and to read or modify real model code without the architecture being a black box behind it.
 
-**Latest lesson:** [22. Mixture-of-Experts and FlashAttention](lessons/0022-mixture-of-experts-and-flashattention.md)
+**Latest lesson:** [23. Reviewing a Change to Model Code](lessons/0023-reviewing-a-change-to-model-code.md)
 
 ## Success looks like
 
 - Implement scaled dot-product attention, multi-head attention, and a full transformer block from raw tensors, matching a reference implementation's output.
 - Write the training loop that fits around that block from scratch and explain what each piece (loss, backward pass, optimizer step) is doing to the weights.
 - Read a real model's code (a library like `transformers` or `llama.cpp`) and point to where each derived piece lives.
+- Review someone else's change to model code and name specifically what it breaks or costs (a shape bug that only surfaces two layers downstream, a claimed speedup with no matching output, an architectural claim that doesn't survive rereading the paper's actual equations), rather than trusting the pull request description.
 
 ## Constraints
 
@@ -42,6 +43,7 @@ Twelve stages, one equation to reading and generating from real model code at an
 | 9. The training loop's practicalities | 0019 to 0020 | Xavier initialization, learning-rate warmup and decay, gradient clipping, mixed precision, gradient accumulation | Can explain what each practicality guards against and add them to a working training loop |
 | 10. Encoder-decoder and encoder-only architectures | 0021 | BERT's bidirectional encoder, T5's encoder-decoder with cross-attention, placing this workspace's decoder-only model | Can explain why each architecture does or doesn't use a causal mask, and where cross-attention fits |
 | 11. Mixture-of-experts and FlashAttention | 0022 | Sparsely-activated MoE routing, FlashAttention's IO-aware tiling | Can explain how MoE decouples parameters from per-token compute, and why FlashAttention is exact, not approximate |
+| 12. Judgment | 0023 | Reviewing someone else's model code changes, checking shapes and output exactness, settling disputed claims from the primary source | Trusted to review changes to model architecture and training loop, and to explain what a change costs or risks rather than accepting the description |
 
 ## Lessons
 
@@ -71,6 +73,7 @@ Work through these in order.
 | [0020](lessons/0020-mixed-precision-and-gradient-accumulation.md) | Mixed Precision and Gradient Accumulation | Both techniques exist to fit a bigger effective training run into hardware smaller than the run seems to need, one by shrinking every number's footprint, the other by simulating a batch larger than memory could ever hold at once |
 | [0021](lessons/0021-encoder-decoder-and-encoder-only-architectures.md) | Encoder-Decoder and Encoder-Only Architectures | This workspace built one stream with a causal mask because it only ever needed to do one thing, generate the next token, and the other two architecture shapes exist because BERT and the original translation model needed a structurally different guarantee instead |
 | [0022](lessons/0022-mixture-of-experts-and-flashattention.md) | Mixture-of-Experts and FlashAttention | MoE grows a model's total parameters without growing what any single token actually pays to be processed, and FlashAttention computes lesson 1's exact same equation faster by rewriting how it touches memory, not what it computes |
+| [0023](lessons/0023-reviewing-a-change-to-model-code.md) | Reviewing a Change to Model Code | Review someone else's change to model code and name what it breaks or costs, not trust the description |
 
 ## Reference
 

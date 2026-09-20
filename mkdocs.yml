@@ -1,5 +1,5 @@
 site_name: teach
-site_description: "Учебные материалы: уроки и справочники для самостоятельного изучения"
+site_description: "Educational materials: lessons and reference guides for self-study"
 # Without this, every `<loc>` in sitemap.xml is written as "None" and no page
 # gets a canonical link, so the seven locales compete as duplicates of each
 # other. The theme emits no per-page hreflang tags either way; the sitemap
@@ -10,11 +10,17 @@ repo_url: https://github.com/TokenCemetery/teach
 # `edit/master/docs/` for a GitHub repository, and this one has neither that
 # branch nor that directory, so every link would 404.
 edit_uri: edit/main/learning/
+copyright: Copyright &copy; 2026 Token Cemetery
 docs_dir: learning
 site_dir: site
 
 theme:
   name: primer
+  # The footer's social row, on this site so that the option is exercised by
+  # every build rather than only described in the reference.
+  social:
+    - service: github
+      link: https://github.com/TokenCemetery/teach
 
 # Corrects mkdocs-section-index: drops one false-positive warning so
 # `--strict` stays usable, stops the plugin folding the first page of a
@@ -58,12 +64,17 @@ markdown_extensions:
       permalink_leading: true
 
 plugins:
-  - search
+  - search:
+      # MkDocs does not ship wordcut.js, required by its Hindi Lunr adapter.
+      # Keep Hindi pages in the shared index without loading the broken adapter.
+      # lang: [en, es, zh, pt, ru, fr]
   # Nav comes from learning/.nav.yml. Must run before section-index, which
   # rewrites the nav it produces.
   - awesome-nav
   - i18n:
       docs_structure: suffix
+      # Do not let i18n re-add Hindi to the search adapter list above.
+      reconfigure_search: false
       # `theme.locale` per language is what switches the theme's own chrome
       # (Search, Back to top, Previous/Next) to that language. The plugin sets
       # it automatically only for the themes MkDocs itself ships, so a
@@ -126,6 +137,7 @@ plugins:
   - git-revision-date-localized:
       # A shallow clone has no log for a page; fall back rather than fail.
       fallback_to_build_date: true
+      enable_creation_date: true
   # Draws the ```mermaid fences. Listed last because it injects its loader in
   # `on_post_page`, and i18n rebuilds the page once per language above.
   #
@@ -135,6 +147,12 @@ plugins:
   # verifies the URL resolves at build time, so a bump is a visible change.
   - mermaid2:
       version: 10.4.0
+
+  # Last: it rewrites the HTML every other plugin produced.
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
 
 exclude_docs: |
   **/NOTES.md

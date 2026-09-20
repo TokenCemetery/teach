@@ -34,7 +34,7 @@ jobs:
           python-version: "3.x"
       # The theme is pinned: its layout, sidebar width and navigation change
       # between releases, and this site is checked against one of them.
-      - run: pip install mkdocs mkdocs-primer==0.4.0 mkdocs-static-i18n mkdocs-awesome-nav mkdocs-section-index mkdocs-git-revision-date-localized-plugin mkdocs-mermaid2-plugin pymdown-extensions Pygments
+      - run: pip install mkdocs mkdocs-primer==0.4.0 mkdocs-static-i18n mkdocs-awesome-nav mkdocs-section-index mkdocs-git-revision-date-localized-plugin mkdocs-mermaid2-plugin mkdocs-minify-plugin pymdown-extensions Pygments
       # Same command AGENTS.md requires locally, so CI cannot pass on a build
       # that would fail there.
       - run: mkdocs build --strict

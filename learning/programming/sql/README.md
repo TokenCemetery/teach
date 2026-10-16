@@ -32,10 +32,10 @@ Become the engineer a team trusts with its database: able to express a question 
 
 ## Out of scope
 
-- Database administration as a subject: backups and recovery, replication, failover, connection pooling, version upgrades.
+- Database administration as a subject: backups and recovery, replication, failover, connection pooling, version upgrades. See [`data/postgres`](../../data/postgres/), which owns the running instance.
 - ORMs and query builders as subjects in their own right. Their output is read and criticised in stage 7; how to configure one is not taught.
 - Analytical warehouses and their dialects: BigQuery, Snowflake, Redshift, Spark SQL. Columnar execution changes the performance advice, and the arc does not chase it.
-- Non-relational stores as alternatives to compare against.
+- Non-relational stores as alternatives to compare against. The one with a track of its own is [`data/redis`](../../data/redis/).
 - Engine internals past the point where they stop explaining query and transaction behaviour: on-disk formats, write-ahead log internals, the planner's source code.
 
 ## The arc

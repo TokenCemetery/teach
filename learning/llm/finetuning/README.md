@@ -32,11 +32,10 @@ Be the person who can take a base model and a task, decide whether adapter fine-
 
 ## Out of scope
 
-- Full fine-tuning at scale, and pretraining.
-- RLHF, DPO and preference optimisation: adjacent, and a separate workspace later.
-- Inference quantisation and distillation as topics in their own right; touched only where QLoRA needs them.
-- Building serving infrastructure, beyond running an adapter through an existing stack.
-- Training a model from scratch.
+- Full fine-tuning at scale, pretraining, and training a model from scratch: see [`llm/pretraining`](../../llm/pretraining/).
+- RLHF, DPO and preference optimisation: see [`llm/post-training`](../../llm/post-training/). This track owns how a change is applied to fewer parameters; that track owns the training objective.
+- Inference quantisation and distillation as topics in their own right; touched only where QLoRA needs them. Quantization at serve time is covered in [`llm/inference`](../../llm/inference/).
+- Building serving infrastructure, beyond running an adapter through an existing stack: see [`llm/inference`](../../llm/inference/).
 
 ## The arc
 

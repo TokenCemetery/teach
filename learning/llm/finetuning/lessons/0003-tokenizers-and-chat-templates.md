@@ -86,7 +86,7 @@ print(exact(prompt))
 print(exact(full))
 ```
 
-Printing the exact string, not a summarised view, matters. The difference between a correct and a broken template is often one whitespace character, and an ordinary print can hide it — in Python that means `repr`, not `print`, on the string.
+Printing the exact string, not a summarised view, matters. The difference between a correct and a broken template is often one whitespace character, and an ordinary print can hide it. In Python that means `repr`, not `print`, on the string.
 
 ### The one rule
 

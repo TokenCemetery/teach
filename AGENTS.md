@@ -57,6 +57,7 @@ gh issue create --title "..." --body-file body.md --label "bug,P2"
 - Label from what `.github/workflows/labels.yml` declares. That workflow is the source of truth, since it creates and updates every label this repository is meant to have, so a label it does not declare is not one to reach for.
 - Give every issue one type and one priority. Type is `bug`, `feature`, `refactor`, `chore`, `docs` or `security`. Priority runs `P0` for critical through `P3` for low, and an issue without one is an issue nobody can order against the rest. Add any of `needs-triage`, `needs-repro`, `blocked`, `declined`, `stale` and `help-wanted` that apply.
 - Every issue in the tracker carries both, including the closed ones, so a query by type or by priority returns the whole history rather than the part that happened to be labelled that way.
+- An issue for a new track closes only when the track is complete: every file the `teach` skill defines, every lesson the arc names written and listed in the lesson table, and the `reference/` sheets those lessons send readers back to. A scaffold, or an arc with only its first lessons written, leaves the issue open. Say so in the issue's "Done when".
 - Record progress on the issue as you go, commenting on what you found and what you tried, so the next person does not repeat the investigation.
 - Reference the issue from the commit or pull request that fixes it (`Fixes #12`), so it closes together with the change.
 

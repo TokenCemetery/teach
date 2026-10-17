@@ -79,7 +79,7 @@ Suppose your task is to debug a failing test. A well-informed human might write 
 
 Now suppose you build an agent loop instead:
 
-- The agent reads the test (1,000 tokens), reads the code (2,000 tokens), reasons about the error (500 tokens) = 3,500 tokens on turn 1. Re-sending those 3,500 tokens plus tool definitions (2,000 tokens) on turn 2 = 5,500 tokens. After 10 turns debugging, you have spent roughly 3,500 * 10 + (tool definitions * 10) = 55,000 tokens, because every turn re-sends the test, the code, and the tool definitions.
+- The agent reads the test (1,000 tokens), reads the code (2,000 tokens), reasons about the error (500 tokens) = 3,500 tokens on turn 1. Re-sending those 3,500 tokens plus tool definitions (2,000 tokens) on turn 2 = 5,500 tokens. After 10 turns debugging, you have spent roughly 3,500 \* 10 + (tool definitions \* 10) = 55,000 tokens, because every turn re-sends the test, the code, and the tool definitions.
 - The agent's first attempt guesses the wrong root cause. The harness generates a reflection and re-runs the agent. Now you have two full 10-turn runs, so roughly 110,000 tokens, not 55,000.
 - The second attempt succeeds.
 
@@ -135,7 +135,7 @@ Total: (35,000 * 3) + 3,000 = 108,000 tokens. The multi-agent system is actually
 ## Real-world reps
 
 - [ ] Take a task you have done with an agent (or a trajectory you have seen). Walk through one loop iteration of that agent and count the tokens: transcript size, tool definitions size, model output size. Multiply by the number of turns. Now estimate what a single well-informed prompt to the model would have cost, and compare the two numbers. Record the multiplier.
-- [ ] Design a small agent task (something you could run yourself). Estimate the cost per completed task by guessing: number of turns needed, number of retries, any fan-out workers. Add up the full budget using the formula (transcript_regrowth_factor) * (number_of_attempts) * (number_of_workers) * (tokens_per_turn).
+- [ ] Design a small agent task (something you could run yourself). Estimate the cost per completed task by guessing: number of turns needed, number of retries, any fan-out workers. Add up the full budget using the formula (transcript_regrowth_factor) \* (number_of_attempts) \* (number_of_workers) \* (tokens_per_turn).
 - [ ] Tomorrow: Find or generate a trajectory from an agent run (at least 10 turns). Calculate the cost-per-task in tokens by summing all token costs across all turns and all attempts. Then find the cost per successful API call (only the final successful turn). Write down how much larger the cost-per-task is than the cost-per-successful-call, and explain why the difference matters for budgeting.
 
 ## Going further

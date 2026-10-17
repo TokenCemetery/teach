@@ -1,0 +1,28 @@
+# Markdown lint rules. CI runs markdownlint-cli2 with this file
+# (.github/workflows/markdown.yml); run the same check locally with:
+#   npx --yes markdownlint-cli2@0.23.3 "**/*.md" "#.venv" "#site"
+default: true
+# Prose is written one paragraph per line.
+MD013: false
+# Lessons use <details> for collapsed answers (see PUBLISHING.md).
+MD033: false
+# Shell examples show a "$ " prompt even when they print nothing.
+MD014: false
+# Tables are not padded to align their pipes.
+MD060: false
+# A lesson's numbered steps are separate lists split by code and prose,
+# so each one keeps its own number.
+MD029: false
+# Some code spans quote a token or output with its meaningful space,
+# such as ` the` or `Error: `.
+MD038: false
+# A heading may end in an abbreviation such as "et al.".
+MD026:
+  punctuation: ",;:!"
+# Front matter "title" is the navigation label; the page's own title is
+# its "# " heading.
+MD025:
+  front_matter_title: ""
+# Go and Makefile examples need real tabs.
+MD010:
+  code_blocks: false

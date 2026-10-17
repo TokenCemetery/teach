@@ -32,7 +32,7 @@ FROM orders o
 ORDER BY o.id;
 ```
 
-```
+```text
 id  | customer_id | amount | total
 ----+-------------+--------+--------
 101 | 1           | 120.00 | 2406.49
@@ -63,7 +63,7 @@ FROM orders o
 ORDER BY o.customer_id, o.id;
 ```
 
-```
+```text
 customer_id | id  | amount | cust_total
 ------------+-----+--------+-----------
 1           | 101 | 120.00 | 215.50
@@ -95,7 +95,7 @@ FROM orders o
 ORDER BY o.customer_id, o.amount DESC, o.id;
 ```
 
-```
+```text
 customer_id | id  | amount | rn | rk | drk
 ------------+-----+--------+----+----+----
 4           | 106 | 999.99 | 1  | 1  | 1
@@ -117,7 +117,7 @@ ORDER BY o.amount, o.id
 LIMIT 4;
 ```
 
-```
+```text
 id  | amount | rn | rk | drk
 ----+--------+----+----+----
 107 | 10.00  | 2  | 1  | 1
@@ -139,7 +139,7 @@ FROM orders o
 ORDER BY o.amount, o.id;
 ```
 
-```
+```text
 id  | amount | rn
 ----+--------+---
 107 | 10.00  | 1
@@ -156,7 +156,7 @@ FROM orders o
 WHERE row_number() OVER (ORDER BY o.amount DESC) <= 3;
 ```
 
-```
+```text
 ERROR:  window functions are not allowed in WHERE
 SQLSTATE: 42P20
 ```
@@ -189,7 +189,7 @@ GROUP BY customer_id
 ORDER BY customer_id;
 ```
 
-```
+```text
 customer_id | count | n_orders
 ------------+-------+---------
 1           | 3     | 12

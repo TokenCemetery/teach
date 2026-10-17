@@ -55,6 +55,7 @@ flowchart LR
     A["handler 1<br>runs"] --> B["handler 2<br>throws"]
     B -- "uncaught exception" --> C["propagates to caller;<br>handler 3 never runs"]
 ```
+
 - **If the delegate has a return value or `out` parameters, you get those of the last method invoked.** Every earlier return value is discarded, which is why a multicast delegate with a return type is almost always a design mistake.
 - Reference parameters are passed to each method in turn, so a change made by one is visible to the next.
 

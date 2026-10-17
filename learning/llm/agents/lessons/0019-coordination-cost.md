@@ -63,12 +63,14 @@ The primary source from Cognition argues that most multi-agent systems are not c
 Apply this decision principle:
 
 **Multi-agent makes sense when:**
+
 - The sub-tasks are truly independent (no shared context, no dependency on each other's results mid-task).
 - The sub-tasks are each simpler than the original task (each worker solves a genuinely narrower problem, so the sum of workers' efficiency gain outweighs the duplication cost).
 - You need the parallelism speed-up (the time savings justify the token multiplier; you have a wall-clock deadline you cannot meet with one agent and more turns).
 - The tools for each worker are specialized enough that a shared tool suite would slow each worker down with irrelevant options.
 
 **Single agent with more resources usually wins when:**
+
 - The sub-tasks share context or refine each other (a single agent keeps all its reasoning connected; a multi-agent system has to re-derive or re-communicate).
 - You have room in the context budget (give the single agent a bigger context window, better retrieval, more tools, more turns).
 - The sub-tasks are interdependent or require back-and-forth refinement between multiple lines of thinking.

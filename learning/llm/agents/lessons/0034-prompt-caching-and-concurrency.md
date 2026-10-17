@@ -138,7 +138,7 @@ No, the cache is invalid. On turn 1, the prefix contains "tools: A, B, C". On tu
 
 <details markdown="1"><summary>Check</summary>
 
-Option A: 10 tasks * 60,000 tokens per task = 600,000 tokens total. Option B: 10 tasks * 100,000 tokens per task = 1,000,000 tokens total, even though they run in parallel. Concurrency increases speed (Option B completes in the time of one task, whereas Option A completes in 10 times that duration serially) but not cost. Option A is cheaper in tokens. If you need to complete 10 tasks as fast as possible, you would combine both: optimize each agent to 60,000 tokens (Option A's approach) and run 10 optimized agents in parallel, for a total of 600,000 tokens and the shortest wall-clock time.
+Option A: 10 tasks \* 60,000 tokens per task = 600,000 tokens total. Option B: 10 tasks \* 100,000 tokens per task = 1,000,000 tokens total, even though they run in parallel. Concurrency increases speed (Option B completes in the time of one task, whereas Option A completes in 10 times that duration serially) but not cost. Option A is cheaper in tokens. If you need to complete 10 tasks as fast as possible, you would combine both: optimize each agent to 60,000 tokens (Option A's approach) and run 10 optimized agents in parallel, for a total of 600,000 tokens and the shortest wall-clock time.
 
 </details>
 

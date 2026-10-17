@@ -54,7 +54,7 @@ class Upper(str):
 Upper("abc")        # 'ABC'
 ```
 
-![The call running __new__ and then __init__, with a dashed line between them marking where the value comes into existence. The stretch covering __new__ is accented as the only place the value can still be chosen.](images/before-the-value-exists.svg)
+![The call running \_\_new\_\_ and then \_\_init\_\_, with a dashed line between them marking where the value comes into existence. The stretch covering \_\_new\_\_ is accented as the only place the value can still be chosen.](images/before-the-value-exists.svg)
 
 The two methods sit on opposite sides of one line. `__new__` is the only one that runs while the value is still undecided, which is why it is the only one that can decide it.
 

@@ -33,7 +33,7 @@ WHERE customer_id IN (1, 4)
 ORDER BY customer_id, id;
 ```
 
-```
+```text
 customer_id | amount | partition_total
 ------------+--------+----------------
 1           | 120.00 | 215.50
@@ -56,7 +56,7 @@ FROM orders
 ORDER BY amount, id;
 ```
 
-```
+```text
 id  | amount | running_total
 ----+--------+--------------
 107 | 10.00  | 20.00
@@ -82,7 +82,7 @@ FROM orders
 ORDER BY amount, id;
 ```
 
-```
+```text
 id  | amount | running_total
 ----+--------+--------------
 107 | 10.00  | 20.00
@@ -114,7 +114,7 @@ FROM orders
 ORDER BY amount, id;
 ```
 
-```
+```text
 id  | amount | by_rows | by_range | by_groups
 ----+--------+---------+----------+----------
 107 | 10.00  | 20.00   | 20.00    | 20.00
@@ -146,7 +146,7 @@ FROM orders
 ORDER BY id;
 ```
 
-```
+```text
 id  | amount | running_total
 ----+--------+--------------
 101 | 120.00 | 120.00
@@ -172,7 +172,7 @@ FROM orders
 ORDER BY id;
 ```
 
-```
+```text
 id  | amount | moving_avg
 ----+--------+----------------------
 101 | 120.00 | 100.2500000000000000
@@ -198,7 +198,7 @@ FROM orders
 ORDER BY id;
 ```
 
-```
+```text
 id  | amount | still_to_come
 ----+--------+--------------
 101 | 120.00 | 2406.49
@@ -228,7 +228,7 @@ WHERE amount <= 15
 ORDER BY amount, id;
 ```
 
-```
+```text
 id  | amount | default_frame | everyone_else
 ----+--------+---------------+--------------
 107 | 10.00  | 20.00         | 10.00
@@ -250,7 +250,7 @@ WHERE shipped_at IS NOT NULL
 ORDER BY shipped_at;
 ```
 
-```
+```text
 id  | amount | shipped_at             | trailing_7d
 ----+--------+------------------------+------------
 101 | 120.00 | 2026-01-05 09:00:00+00 | 120.00

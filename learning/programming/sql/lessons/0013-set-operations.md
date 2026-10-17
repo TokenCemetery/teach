@@ -44,7 +44,7 @@ UNION
 SELECT customer_id AS cust, amount FROM orders WHERE id = 104;
 ```
 
-```
+```text
 order_id | amount
 ---------+-------
 2        | 200.00
@@ -67,7 +67,7 @@ UNION
 SELECT id FROM orders WHERE id = 104;
 ```
 
-```
+```text
 ERROR:  each UNION query must have the same number of columns
 SQLSTATE: 42601
 ```
@@ -82,7 +82,7 @@ UNION
 SELECT email FROM customers WHERE id = 1;
 ```
 
-```
+```text
 ERROR:  UNION types bigint and text cannot be matched
 SQLSTATE: 42804
 ```
@@ -99,7 +99,7 @@ UNION
 SELECT id FROM orders WHERE shipped_at IS NULL;
 ```
 
-```
+```text
 ERROR:  syntax error at or near "UNION"
 SQLSTATE: 42601
 ```
@@ -164,7 +164,7 @@ HAVING coalesce(sum(o.amount), 0) < 100
 ORDER BY total;
 ```
 
-```
+```text
 id | email               | total
 ---+---------------------+------
 6  | barbara@example.com | 0

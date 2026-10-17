@@ -83,7 +83,7 @@ Work through these in order.
 | [0022](lessons/0022-attribute-lookup.md) | Attribute Lookup | Where dot notation actually looks, and why a class attribute is shared by every instance |
 | [0023](lessons/0023-properties-and-descriptors.md) | Properties and Descriptors | Turning an attribute into code without changing a single caller |
 | [0024](lessons/0024-dunder-methods.md) | Dunder Methods | Which protocols a type should implement, and which ones fall back to others |
-| [0025](lessons/0025-construction.md) | Construction | What __init__ does not control, when __new__ is required, and naming your constructors |
+| [0025](lessons/0025-construction.md) | Construction | What `__init__` does not control, when `__new__` is required, and naming your constructors |
 | [0026](lessons/0026-inheritance-and-mro.md) | Inheritance and the MRO | What super actually does, why the order is computed, and when composition wins |
 | [0027](lessons/0027-metaclasses-and-why-not.md) | Metaclasses, and Why Not | What a class statement actually does, and the four hooks that replace almost every metaclass |
 | [0028](lessons/0028-what-a-test-asserts.md) | What a Test Asserts | One behaviour per test, a failure message that needs no debugger, and plain assert |

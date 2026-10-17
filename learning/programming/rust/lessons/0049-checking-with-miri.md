@@ -36,7 +36,7 @@ Miri is not a linter reading your source for suspicious patterns. It executes th
 
 That machinery is not on the stable toolchain: **Miri requires a nightly toolchain installed alongside stable**. Install it once:
 
-```
+```bash
 rustup toolchain install nightly --component miri
 ```
 

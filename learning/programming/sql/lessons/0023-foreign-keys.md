@@ -33,7 +33,7 @@ INSERT INTO parent0 (id, name) VALUES (1, 'a');
 INSERT INTO child0 (id, parent_id) VALUES (1, 999);
 ```
 
-```
+```text
 ERROR:  insert or update on table "child0" violates foreign key constraint "child0_parent_id_fkey"
 DETAIL:  Key (parent_id)=(999) is not present in table "parent0".
 SQLSTATE: 23503
@@ -60,7 +60,7 @@ INSERT INTO childA (id, na_id, sn_id, ca_id) VALUES (1, 1, 2, 3);
 
 Deleting parent 1 refuses:
 
-```
+```text
 ERROR:  update or delete on table "parenta" violates foreign key constraint "childa_na_id_fkey" on table "childa"
 DETAIL:  Key (id)=(1) is still referenced from table "childa".
 SQLSTATE: 23503
@@ -82,7 +82,7 @@ INSERT INTO childB (id, re_id, sd_id) VALUES (1, 4, 5);
 DELETE FROM parentB WHERE id = 4;
 ```
 
-```
+```text
 ERROR:  update or delete on table "parentb" violates RESTRICT setting of foreign key constraint "childb_re_id_fkey" on table "childb"
 DETAIL:  Key (id)=(4) is referenced from table "childb".
 SQLSTATE: 23001
@@ -117,7 +117,7 @@ BEGIN;
 DELETE FROM parentD WHERE id = 1;
 ```
 
-```
+```text
 ERROR:  update or delete on table "parentd" violates RESTRICT setting of foreign key constraint "childd_parent_id_fkey" on table "childd"
 SQLSTATE: 23001
 ```
@@ -147,7 +147,7 @@ CREATE TABLE friendF (id bigint PRIMARY KEY, best_friend_id bigint REFERENCES fr
 INSERT INTO friendF (id, best_friend_id) VALUES (1, 2);
 ```
 
-```
+```text
 ERROR:  insert or update on table "friendf" violates foreign key constraint "friendf_best_friend_id_fkey"
 DETAIL:  Key (best_friend_id)=(2) is not present in table "friendf".
 SQLSTATE: 23503
@@ -181,7 +181,7 @@ CREATE TABLE partI (id bigint PRIMARY KEY, parent_id bigint NOT NULL REFERENCES 
 INSERT INTO partI (id, parent_id, name) VALUES (1, NULL, 'bicycle');
 ```
 
-```
+```text
 ERROR:  null value in column "parent_id" of relation "parti" violates not-null constraint
 DETAIL:  Failing row contains (1, null, bicycle).
 SQLSTATE: 23502

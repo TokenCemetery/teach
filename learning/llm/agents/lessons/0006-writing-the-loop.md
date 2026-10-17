@@ -34,7 +34,7 @@ Because each tool call gets its own unique id, and the harness returns each resu
 
 At its core, an agent loop is simple. Here it is as pseudocode:
 
-```
+```text
 function run_agent(model, tools, transcript, max_turns):
     for turn_count in range(max_turns):
         response = call_model(model, transcript)
@@ -58,7 +58,7 @@ Notice the structure: **call the model, append the response, check if we're done
 
 Beginners sometimes build a loop that looks like this:
 
-```
+```text
 function run_agent_wrong(model, tools, transcript, max_turns):
     for turn_count in range(max_turns):
         response = call_model(model, transcript)
@@ -75,7 +75,7 @@ This is a bug. If you do not append the model's tool-call response to the transc
 
 The fix is to append the response **immediately** after calling the model, before doing anything else:
 
-```
+```text
 function run_agent_correct(model, tools, transcript, max_turns):
     for turn_count in range(max_turns):
         response = call_model(model, transcript)
@@ -105,7 +105,7 @@ An agent loop needs to stop. There are several places to choose:
 
 These are not mutually exclusive. A production harness might check all of them:
 
-```
+```text
 function run_agent_with_guards(model, tools, transcript, max_turns, max_errors):
     error_count = 0
 

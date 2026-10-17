@@ -21,11 +21,15 @@ Fix: check or capture immediately (`command; status=$?`), or branch directly (`i
 
 ## `set -euo pipefail`: the unofficial strict mode
 
+<!-- markdownlint-disable MD056 -->
+
 | Flag | Changes | Real exception |
 |---|---|---|
 | `set -e` (`errexit`) | Exits immediately on any command's nonzero status, instead of continuing | Not fatal inside an `if`/`while` condition, negated with `!`, or on the left of `&&`/`||`, since those contexts are already checking the status themselves |
 | `set -u` (`nounset`) | Referencing an unset variable is an error, instead of silently substituting an empty string | None; this is the one flag without a documented exception |
 | `set -o pipefail` | A pipeline's exit status becomes the rightmost nonzero status among all stages, instead of always the last one | None on its own, but a deliberately ignored stage (`grep pattern file \|\| true`) still lets the pipeline continue by design |
+
+<!-- markdownlint-enable MD056 -->
 
 **Why `set -u` matters concretely.** `rm -rf "$dir/"` with `$dir` unset (a typo, a variable that was supposed to be set earlier) silently becomes `rm -rf /` without `set -u`; with it, referencing the unset variable is an immediate, loud error before the dangerous command runs.
 

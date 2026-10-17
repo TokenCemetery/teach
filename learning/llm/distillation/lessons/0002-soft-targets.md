@@ -138,7 +138,7 @@ Each term is the teacher's probability times the negative natural log of the stu
 
 <details markdown="1"><summary>Check</summary>
 
-The 2's term is -1.0 * ln(0.98), about 0.0202. The 3's term is -10^-6 * ln(0.01), about 0.0000046. The ratio is about 4,400, so over 4,000 times smaller. This is why raising the temperature, not simply trusting the loss, is the paper's route to making these entries count.
+The 2's term is -1.0 \* ln(0.98), about 0.0202. The 3's term is -10^-6 \* ln(0.01), about 0.0000046. The ratio is about 4,400, so over 4,000 times smaller. This is why raising the temperature, not simply trusting the loss, is the paper's route to making these entries count.
 
 </details>
 

@@ -34,7 +34,7 @@ The model cannot reliably tell them apart, so it may call the wrong one or call 
 
 Every message in the transcript consumes tokens. When a tool returns a result, that result gets appended to the transcript, and the model sees it on every subsequent turn until the run ends or the transcript is truncated. A tool that returns a small focused answer costs a little. A tool that returns five thousand database rows costs real tokens on every turn for the rest of the run, whether or not the model needed all of them.
 
-```
+```text
 Bad:
 Tool: fetch_user_records
 Returns: [complete User record, complete User record, ...]
@@ -47,7 +47,7 @@ After the tool returns, the transcript balloons. The model now has to process al
 
 Instead of returning everything the underlying system has, design a return shape that gives the model what it needs to decide the next step.
 
-```
+```text
 Better: Option 1 - Return a summary
 Tool: fetch_user_records
 Returns:
@@ -61,7 +61,7 @@ Returns:
 
 The model can now see that the query was too broad and knows what to do next: it can call the tool again with better filters. This returns a tenth of the tokens of the full dump.
 
-```
+```text
 Better: Option 2 - Let the model ask for more
 Tool: fetch_user_records
 Returns:
@@ -81,7 +81,7 @@ Adding a tool to an agent is not free. Every tool the model can choose from make
 
 With three tools, the model picks correctly most of the time:
 
-```
+```text
 Tools:
 - search_documentation
 - read_file
@@ -90,7 +90,7 @@ Tools:
 
 With ten tools, the model starts second-guessing itself, calling multiple tools when one would do:
 
-```
+```text
 Tools:
 - search_documentation
 - search_issues
@@ -112,7 +112,7 @@ The cost is real: more tool calls, more tokens in the transcript, more turns was
 
 When you are tempted to add a tool, first ask: could this be a parameter on an existing tool?
 
-```
+```text
 Bad: Two tools
 - name: list_files
 - name: list_directories
@@ -120,7 +120,7 @@ Bad: Two tools
 
 Better: One tool with a parameter
 
-```
+```text
 Good: One tool with a parameter
 - name: list_contents
   parameters:
@@ -134,7 +134,7 @@ The model chooses the type it wants, and you have not added noise to the tool se
 
 But sometimes a new tool makes sense. If the tools are fundamentally different (they are called in different situations, they return different shapes, they require different permissions), then a new tool with a clear name is better than an overloaded parameter:
 
-```
+```text
 Good: Two specialized tools
 - name: search_database_by_id
   parameters:

@@ -46,7 +46,7 @@ The model now has to decide which tool to call in which order. It might call rea
 
 Instead, give the model one tool: a sandboxed code interpreter. The model writes a short Python program:
 
-```
+```python
 import pandas as pd
 
 data = pd.read_csv('data.csv')

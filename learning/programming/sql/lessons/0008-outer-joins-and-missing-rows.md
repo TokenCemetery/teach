@@ -30,7 +30,7 @@ Lesson 7's inner join of `customers` and `orders` returns 12 rows and drops cust
 SELECT count(*) FROM customers c LEFT JOIN orders o ON o.customer_id = c.id;
 ```
 
-```
+```text
 count
 -----
 13
@@ -44,7 +44,7 @@ FROM customers c LEFT JOIN orders o ON o.customer_id = c.id
 WHERE c.id = 6;
 ```
 
-```
+```text
 id | email               | id | amount | shipped_at
 ---+---------------------+----+--------+-----------
 6  | barbara@example.com |    |        |
@@ -62,7 +62,7 @@ FROM customers c LEFT JOIN orders o ON o.customer_id = c.id
 WHERE o.amount > 100;
 ```
 
-```
+```text
 count
 -----
 5
@@ -77,7 +77,7 @@ SELECT count(*)
 FROM customers c LEFT JOIN orders o ON o.customer_id = c.id AND o.amount > 100;
 ```
 
-```
+```text
 count
 -----
 8
@@ -97,7 +97,7 @@ FROM customers c LEFT JOIN orders o ON o.customer_id = c.id
 GROUP BY c.id ORDER BY c.id;
 ```
 
-```
+```text
 id | count | count
 ---+-------+------
 1  | 3     | 3
@@ -120,7 +120,7 @@ FROM customers c LEFT JOIN orders o ON o.customer_id = c.id
 WHERE o.id IS NULL;
 ```
 
-```
+```text
 id | email
 ---+--------------------
 6  | barbara@example.com
@@ -136,7 +136,7 @@ Against `countries`:
 SELECT count(*) FROM customers c RIGHT JOIN countries n ON n.code = c.country;
 ```
 
-```
+```text
 count
 -----
 10
@@ -148,7 +148,7 @@ count
 SELECT count(*) FROM customers c FULL JOIN countries n ON n.code = c.country;
 ```
 
-```
+```text
 count
 -----
 13
@@ -162,7 +162,7 @@ Swapping which table is named first turns the `RIGHT JOIN` above into a `LEFT JO
 SELECT count(*) FROM countries n LEFT JOIN customers c ON c.country = n.code;
 ```
 
-```
+```text
 count
 -----
 10
@@ -181,7 +181,7 @@ WHERE n.code IS NULL OR c.id IS NULL
 ORDER BY c.id NULLS LAST, n.code;
 ```
 
-```
+```text
 id | country | code
 ---+---------+-----
 2  |         |

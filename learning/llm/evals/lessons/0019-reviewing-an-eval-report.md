@@ -53,6 +53,7 @@ Ask: Why is this metric being used for this task? If the report says "accuracy,"
 **Stages 3 and 6: If an LLM judge is used, is it actually trustworthy?**
 
 Ask three things:
+
 - **Design:** What is the judge prompt, and what did the team do to calibrate it before running it at scale? Does the prompt give the judge a reference answer when one is available? Lesson 5 teaches calibration; if the report doesn't mention it, the judge may be suffering from score compression or other uncalibrated failure modes.
 - **Bias checks:** Was the judge checked for position bias (does the same pairwise comparison flip if you swap the order)? Was verbosity bias checked (does the judge prefer length independent of correctness)? Lesson 6 covers these biases; if the report doesn't mention checking for them, they could be silently inflating or deflating numbers.
 - **Human agreement:** What is the judge's agreement rate with human raters on a sample, and what is the human-versus-human agreement on the same sample? A judge at 82% agreement sounds weak until you learn human raters agree at 80% with each other, in which case the judge is performing about as well as another human would. A report that claims an LLM judge without measuring it against human judgment is claiming a shortcut without evidence it works.

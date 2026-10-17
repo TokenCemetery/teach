@@ -49,6 +49,7 @@ Rather than memorising methods, learn the axes. Almost every variant modifies on
 **The learning rates.** LoRA+ ([arXiv:2402.12354](https://arxiv.org/abs/2402.12354)) uses a higher learning rate for `B` than `A`, arguing the two factors should not share one rate given their different roles and scales. Cheap, and a genuinely different knob from anything in Lesson 9.
 
 **The initialisation.** Instead of random `A` and zero `B`:
+
 - **PiSSA** ([arXiv:2404.02948](https://arxiv.org/abs/2404.02948)) initialises from the principal singular components of `W₀`, so the adapter starts aligned with the weight's dominant directions.
 - **OLoRA** initialises via QR decomposition of `W₀`.
 - **LoftQ** ([arXiv:2310.08659](https://arxiv.org/abs/2310.08659)) initialises the adapter to compensate for quantisation error, specifically for the QLoRA setting.
@@ -56,6 +57,7 @@ Rather than memorising methods, learn the axes. Almost every variant modifies on
 Note that these all give up the zero-initialisation property from Lesson 9: the model no longer starts identical to the base. That is a deliberate trade, and it is the thing to scrutinise.
 
 **The structure.**
+
 - **AdaLoRA** ([arXiv:2303.10512](https://arxiv.org/abs/2303.10512)) allocates rank adaptively across layers instead of using one rank everywhere, on the grounds that layers differ in how much adaptation they need.
 - **VeRA** ([arXiv:2310.11454](https://arxiv.org/abs/2310.11454)) shares frozen random `A` and `B` across layers and trains only small scaling vectors, cutting adapter size drastically.
 - **DoRA** decouples magnitude from direction, as in Lesson 18.

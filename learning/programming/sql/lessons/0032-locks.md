@@ -78,7 +78,7 @@ A: COMMIT;
 B: ROLLBACK;
 ```
 
-```
+```text
 ERROR: could not obtain lock on row in relation "accounts"
 ```
 
@@ -110,7 +110,7 @@ B: ROLLBACK;
 A: ROLLBACK;
 ```
 
-```
+```text
 ERROR: canceling statement due to lock timeout
 ```
 
@@ -123,7 +123,7 @@ B: SELECT pg_sleep(1);
 B: ROLLBACK;
 ```
 
-```
+```text
 ERROR: canceling statement due to statement timeout
 ```
 

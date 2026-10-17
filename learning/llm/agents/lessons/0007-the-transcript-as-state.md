@@ -63,7 +63,7 @@ Imagine this scenario:
 
 The agent is supposed to look up a price, then apply a discount, then confirm. On turn two, the model calls a tool to fetch the price. The tool returns "Item XYZ costs $100". The harness executes the tool, gets the result, and appends it to the transcript:
 
-```
+```text
 Agent turn 1: "I will find the price of item XYZ"
 Agent turn 1 tool call: fetch_price(item="XYZ")
 Tool result: "Item XYZ costs $100"
@@ -76,7 +76,7 @@ This works. The model saw the result and reasoned correctly.
 
 Now imagine a variant: the harness is logging results to a database for monitoring. The log insert fails. The harness logs the error to a file, but the developer never appended anything to the transcript. The next turn starts like this:
 
-```
+```text
 Agent turn 1: "I will find the price of item XYZ"
 Agent turn 1 tool call: fetch_price(item="XYZ")
 
@@ -88,7 +88,7 @@ The model asks for the price again. It is not being stubborn or stupid. The tran
 
 The fix is to always append to the transcript before moving on, even if side effects fail:
 
-```
+```text
 Tool result (appended immediately): "Item XYZ costs $100"
 
 [Later, harness logs to database, but the append already happened]

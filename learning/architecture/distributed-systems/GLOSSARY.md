@@ -51,7 +51,7 @@ The failure mode unique to distributed systems: a request produces no response, 
 _Avoid_: network error (too specific; partial failure includes cases with no error at all, just silence)
 
 **Partitioning**:
-Splitting a dataset across multiple nodes so no single node holds all of it, the counterpart to replication (which copies the *same* data across nodes rather than dividing *different* data among them).
+Splitting a dataset across multiple nodes so no single node holds all of it, the counterpart to replication (which copies the _same_ data across nodes rather than dividing _different_ data among them).
 _Avoid_: sharding (used interchangeably in this workspace and elsewhere; no distinction is drawn between the two terms here)
 
 **Quorum**:

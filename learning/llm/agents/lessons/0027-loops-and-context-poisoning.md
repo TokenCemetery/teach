@@ -92,7 +92,7 @@ The mitigation is diagnostic and preventive:
 
 ## Practice
 
-1. ▢ You read an agent trajectory and see the same tool call, get_user_by_email(email="bob@example.com"), repeated on turns 3, 5, 7, and 9. Each time, the result is "user not found". On turn 10, the model calls send_email(recipient="bob@example.com"). Is this a repetitive loop?
+1. ▢ You read an agent trajectory and see the same tool call, `get_user_by_email(email="bob@example.com")`, repeated on turns 3, 5, 7, and 9. Each time, the result is "user not found". On turn 10, the model calls `send_email(recipient="bob@example.com")`. Is this a repetitive loop?
 
 <details markdown="1"><summary>Check</summary>
 

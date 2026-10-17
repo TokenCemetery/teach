@@ -14,11 +14,15 @@ Any shell implementing it (dash, bash's `sh` mode, ksh, others) supports the sam
 
 ## Bash-only features with no POSIX `sh` equivalent
 
+<!-- markdownlint-disable MD056 -->
+
 | Bash feature | POSIX `sh` fallback |
 |---|---|
 | Arrays (`arr=(a b c)`, `${arr[@]}`) | A space-separated string (with lesson 4's word-splitting care), or positional parameters |
 | `[[ ... ]]` (extended test, `==` pattern matching, `&&`/`||` without chaining) | `[ ... ]` (or `test`), chained with `[ ... ] && [ ... ]` |
 | `${var,,}` (lowercase), `${var/pattern/replacement}` | `tr` or `sed` for the same job |
+
+<!-- markdownlint-enable MD056 -->
 
 ## The discipline is declaring the dependency, not avoiding bash
 

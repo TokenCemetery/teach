@@ -39,6 +39,12 @@ State your plan first when a change touches behavior, several files, shared conv
 .venv/bin/mkdocs build --strict
 ```
 
+After any change to a Markdown file anywhere in the repository, run the same lint CI runs. Its rules live in `.markdownlint.yaml`:
+
+```bash
+npx --yes markdownlint-cli2@0.23.3 "**/*.md" "#.venv" "#site"
+```
+
 The build checks front matter and navigation. It does not check that a collapsed answer rendered. Read `.agents/skills/teach/PUBLISHING.md` for the checks the build cannot do.
 
 ## Track work in GitHub Issues

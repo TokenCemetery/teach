@@ -35,7 +35,7 @@ WITH RECURSIVE countdown(n) AS (
 SELECT n FROM countdown;
 ```
 
-```
+```text
 n
 -
 5
@@ -64,7 +64,7 @@ WITH RECURSIVE counter(n) AS (
 SELECT n FROM counter LIMIT 5;
 ```
 
-```
+```text
 n
 -
 1
@@ -87,7 +87,7 @@ WITH RECURSIVE dedup(n) AS (
 SELECT n FROM dedup;
 ```
 
-```
+```text
 n
 -
 1
@@ -132,7 +132,7 @@ WITH RECURSIVE descend(id, name, depth) AS (
 SELECT id, name, depth FROM descend ORDER BY depth, id;
 ```
 
-```
+```text
 id | name  | depth
 ---+-------+------
 1  | bike  | 1
@@ -156,7 +156,7 @@ WITH RECURSIVE ascend(id, name, parent) AS (
 SELECT id, name FROM ascend;
 ```
 
-```
+```text
 id | name
 ---+------
 6  | valve
@@ -178,7 +178,7 @@ WITH RECURSIVE descend(id, name, path) AS (
 SELECT id, path FROM descend ORDER BY id;
 ```
 
-```
+```text
 id | path
 ---+----------------------------
 1  | bike
@@ -210,7 +210,7 @@ WITH RECURSIVE descend(id, name, path) AS (
 SELECT id, path FROM descend LIMIT 4;
 ```
 
-```
+```text
 id | path
 ---+---------------------------------------------
 7  | left-bracket
@@ -233,7 +233,7 @@ CYCLE id SET is_cycle USING visited
 SELECT id, name, path, is_cycle FROM descend;
 ```
 
-```
+```text
 id | name          | path                                        | is_cycle
 ---+---------------+---------------------------------------------+---------
 7  | left-bracket  | left-bracket                                | f
@@ -273,7 +273,7 @@ returns only 2 rows, `bike` and `wheel`: the anchor walks from the top, but the 
 
 SQLite supports `WITH RECURSIVE` with the same anchor, `UNION` or `UNION ALL`, recursive term shape, and its own documentation's "Recursive Common Table Expressions" section works through a hierarchy example much like this lesson's. The parts table and the descent query above run there unchanged:
 
-```
+```text
 1|bike|1
 2|wheel|2
 3|frame|2

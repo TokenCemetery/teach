@@ -39,7 +39,7 @@ A: SELECT balance FROM accounts WHERE id = 1;                -- 99.00
 A: SELECT balance FROM accounts WHERE id = 2;                -- 99.00
 ```
 
-```
+```text
 ERROR: deadlock detected
 SQLSTATE 40P01
 ```
@@ -90,7 +90,7 @@ A: SELECT owner FROM accounts WHERE id = 3;               -- a-first
 A: SELECT owner FROM accounts WHERE id = 4;               -- a-second
 ```
 
-```
+```text
 ERROR: deadlock detected
 SQLSTATE 40P01
 ```

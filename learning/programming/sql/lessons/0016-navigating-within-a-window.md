@@ -34,7 +34,7 @@ FROM orders
 ORDER BY customer_id, id;
 ```
 
-```
+```text
 customer_id | id  | amount | prev_amount | next_amount
 ------------+-----+--------+-------------+------------
 1           | 101 | 120.00 |             | 80.50
@@ -77,7 +77,7 @@ FROM orders
 ORDER BY customer_id, amount;
 ```
 
-```
+```text
 customer_id | id  | amount | first_amount | last_amount
 ------------+-----+--------+--------------+------------
 1           | 103 | 15.00  | 15.00        | 15.00
@@ -116,7 +116,7 @@ Both return `double precision`, and rounding one directly fails:
 SELECT round(percent_rank() OVER (ORDER BY amount), 3) FROM orders LIMIT 1;
 ```
 
-```
+```text
 ERROR:  function round(double precision, integer) does not exist
 HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
 SQLSTATE: 42883

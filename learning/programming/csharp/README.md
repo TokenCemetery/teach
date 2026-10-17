@@ -27,6 +27,7 @@ Become the engineer trusted to own a C# service on a team: able to model a domai
 
 - Unity and game development with C#: a different enough context that it is not covered here.
 - JIT internals, and writing or hand-tuning a garbage collector: stage 8 covers the generational heap, GC modes and profiling at the level a service owner needs to measure and defend a choice, not at the level of implementing one.
+- Container images: putting a published service into an image, and running, securing and debugging that container, is [`infrastructure/containers`](../../infrastructure/containers/).
 
 ## The arc
 

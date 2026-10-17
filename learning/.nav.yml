@@ -3,6 +3,7 @@ nav:
   - LLM: llm
   - Data: data
   - Architecture: architecture
+  - Infrastructure: infrastructure
   - Programming: programming
   - glob: "*"
     ignore_no_matches: true

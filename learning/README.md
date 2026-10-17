@@ -36,6 +36,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained track
 | data | [Redis](data/redis/) | Use Redis for what it is: the memory model, eviction, persistence, and the patterns that quietly misuse it | 17 |
 | architecture | [Distributed Systems](architecture/distributed-systems/) | Reason about partial failure: what a network can do to you, which consistency you are actually buying, and why consensus is expensive | 19 |
 | architecture | [API Design](architecture/api-design/) | Design an interface others depend on: the contract, its errors, and how it changes without breaking them | 19 |
+| infrastructure | [Containers](infrastructure/containers/) | Package a service as a container image and own it: kernel primitives, Dockerfiles, running, securing and debugging one container | 24 |
 
 ## Starting a topic
 

@@ -25,6 +25,7 @@ Be able to build an eval that catches a regression a vibe check would miss, and 
 ## Out of scope
 
 - Judging a variant, held-out design, metrics and the regression suite as taught inside one fine-tuning arc: see [`llm/finetuning`](../../llm/finetuning/) (lessons 0020-0024), subordinated to fine-tuning specifically. This workspace owns evaluation as the subject and links back rather than restating.
+- Quantizing a model and judging what the quantization cost: see [`llm/quantization`](../../llm/quantization/). That track uses an eval to measure quantization loss; this one teaches how the eval is built.
 - Writing and versioning the prompt under test: see [`llm/prompting`](../../llm/prompting/). That track uses an eval to measure a prompt change; this one teaches how the eval is built.
 
 ## The arc

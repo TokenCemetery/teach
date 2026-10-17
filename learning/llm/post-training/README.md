@@ -34,6 +34,7 @@ Be able to take a pretrained base model to an aligned, instruction-following ass
 - LLM-as-judge mechanics and human evaluation methodology: see [`llm/evals`](../../llm/evals/). Carried here only as the one capability an aligned model needs, to judge whether alignment training helped, and linked to rather than restated.
 - Prompting a reasoning model, or building an agent around one: see [`llm/agents`](../../llm/agents/) (lesson 0017). This track covers how the reasoning behavior is produced by RL training, not how to use it from outside.
 - Training a model from random initialization: see [`llm/pretraining`](../../llm/pretraining/).
+- Distillation in general, beyond the reasoning-model case: see [`llm/distillation`](../../llm/distillation/). Lesson 0014 here stays as the reasoning-model case and links there for the general method.
 - Using instruction-following and reasoning from outside, by prompting: see [`llm/prompting`](../../llm/prompting/). This track covers how those behaviours are trained in.
 
 ## The arc

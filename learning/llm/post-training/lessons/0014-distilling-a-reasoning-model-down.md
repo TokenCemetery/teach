@@ -94,6 +94,7 @@ Because DeepSeek-R1-Zero's reasoning came with poor readability and language mix
 ## Going further
 
 - [Paper: "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning", DeepSeek-AI, 2025](https://arxiv.org/abs/2501.12948)
+- [Distillation: Sequence and Synthetic Data](../../distillation/reference/sequence-and-synthetic-data.md): distillation in general, of which this lesson is the reasoning-model case
 - [Resources](../RESOURCES.md)
 
 ---

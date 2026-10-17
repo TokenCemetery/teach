@@ -13,5 +13,4 @@ The whole arc was written upfront in one change, not one lesson per interactive 
 ## Open threads
 
 - The first interactive session should calibrate before teaching forward: take a practice item from lesson 5 or 13 and check whether the level is right.
-- The sibling track `infrastructure/ci-cd` (#159) does not exist yet. When it lands, replace the issue link in `## Out of scope` with a link to its glossary or a reference sheet.
 - Version-sensitive features move between releases: sidecar containers, in-place pod resize, Gateway API resources, kube-proxy modes. Recheck lessons 4, 10, 15 and 27 against the cited docs before relying on them.

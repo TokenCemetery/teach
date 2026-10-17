@@ -31,7 +31,7 @@ Package any service as a container image and own what happens to it on one host:
 
 - Building the runnable artifact for one language. The language tracks own that and this track puts their output into an image: [Go: Toolchain Commands](../../programming/golang/reference/toolchain-commands.md) for static binaries, [Java: Testing and Build](../../programming/java/reference/testing-and-build.md) and [The Module System](../../programming/java/reference/the-module-system.md) for runnable artifacts and `jlink`, [C#: Shipping the Service](../../programming/csharp/reference/shipping-the-service.md), and [Python: Project and Packaging](../../programming/python/reference/project-and-packaging.md) for wheels.
 - Orchestrating containers across a cluster: scheduling, services, rollouts, probes as a cluster feature. That is the [Kubernetes track](../kubernetes/README.md). This track stops at one container, or a handful, on one host.
-- Building and publishing images in a pipeline. That is a planned `infrastructure/ci-cd` track ([#159](https://github.com/TokenCemetery/teach/issues/159)). This track builds images by hand so that what a pipeline automates is understood first.
+- Building and publishing images in a pipeline. That is the [CI/CD track](../ci-cd/README.md), whose [Artifacts and Versioning](../ci-cd/reference/artifacts-and-versioning.md) sheet covers tagging and publishing by digest. This track builds images by hand so that what a pipeline automates is understood first.
 - Windows containers, and writing a container runtime.
 
 ## The arc

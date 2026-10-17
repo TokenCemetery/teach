@@ -39,6 +39,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained track
 | architecture | [API Design](architecture/api-design/) | Design an interface others depend on: the contract, its errors, and how it changes without breaking them | 19 |
 | infrastructure | [Containers](infrastructure/containers/) | Package a service as a container image and own it: kernel primitives, Dockerfiles, running, securing and debugging one container | 24 |
 | infrastructure | [Kubernetes](infrastructure/kubernetes/) | Run services on a Kubernetes cluster and own them: the reconciliation loop, workloads, networking, configuration, reliability, security, packaging and debugging | 28 |
+| infrastructure | [CI/CD](infrastructure/ci-cd/) | Build, test and deliver every change through a pipeline and own it: workflows, fast feedback, artifacts, secrets, deployments, rollback and supply-chain security | 30 |
 
 ## Starting a topic
 

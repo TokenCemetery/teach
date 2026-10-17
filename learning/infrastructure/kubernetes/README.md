@@ -35,7 +35,7 @@ Run any containerized service on a Kubernetes cluster and own what happens to it
 - Building and running one container. That is the [containers track](../containers/README.md), whose [Running Containers](../containers/reference/running-containers.md) sheet is the single-host version of stage 5 here.
 - Making a service observable and stoppable from inside its own code: health endpoints, signal handling, graceful shutdown. The language tracks own that, for example Go's [Graceful Shutdown](../../programming/golang/lessons/0025-graceful-shutdown.md) and C#'s [Logging and Health Checks](../../programming/csharp/lessons/0039-logging-and-health-checks.md). This track teaches what the cluster does with those signals.
 - Consensus and partial failure as theory. That is [Distributed Systems](../../architecture/distributed-systems/README.md), whose [Consensus](../../architecture/distributed-systems/reference/consensus.md) sheet explains what etcd is doing underneath. This track teaches what reconciliation and etcd mean for someone running workloads.
-- Delivering a change to the cluster from a pipeline, and GitOps tools. That is a planned `infrastructure/ci-cd` track ([#159](https://github.com/TokenCemetery/teach/issues/159)).
+- Delivering a change to the cluster from a pipeline, and GitOps tools. That is the [CI/CD track](../ci-cd/README.md), whose [Deployments](../ci-cd/reference/deployments.md) sheet covers deployment strategies, rollback and choosing between a push deploy and GitOps.
 - Installing and operating the control plane itself (etcd backups, certificate rotation, building a cluster from scratch), writing controllers or operators, and service meshes.
 
 ## The arc

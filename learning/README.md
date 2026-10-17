@@ -31,6 +31,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained track
 | llm | [Agents](llm/agents/) | Build the loop yourself: tools, context, memory, and knowing when an agent is the wrong answer | 37 |
 | llm | [Quantization](llm/quantization/) | Quantize an LLM and defend it: number formats, PTQ and QAT methods, what runs faster, and measuring what it cost | 27 |
 | llm | [Prompting](llm/prompting/) | Write, version and ship prompts for an LLM feature, prove a prompt change helped, and review someone else's production prompt | 24 |
+| llm | [Distillation](llm/distillation/) | Distill a large model into a smaller one and defend it: soft targets, logit and sequence-level losses, synthetic data, on-policy training, and what the student lost | 27 |
 | data | [Postgres](data/postgres/) | Operate Postgres: the WAL, vacuum and bloat, replication, and what an index costs to keep | 18 |
 | data | [Kafka](data/kafka/) | Own the log: partitions, consumer groups, delivery guarantees, and what "exactly once" actually costs | 16 |
 | data | [Redis](data/redis/) | Use Redis for what it is: the memory model, eviction, persistence, and the patterns that quietly misuse it | 17 |

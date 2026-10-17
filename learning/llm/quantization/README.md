@@ -34,7 +34,7 @@ Take a trained LLM and make it smaller and faster with quantization, knowing wha
 - QLoRA, training an adapter through a 4-bit base: see [`llm/finetuning`](../../llm/finetuning/), stage 4 (lessons 0014 to 0017). This track teaches the general theory those lessons apply, and links to them rather than restating QLoRA.
 - Picking a scheme for a serving latency budget and running it in vLLM or llama.cpp: see [`llm/inference`](../../llm/inference/), stage 3 (lessons 0007 to 0009) and its [Quantization at Serve Time sheet](../../llm/inference/reference/quantization-at-serve-time.md). This track teaches how the methods work and how to judge them; the serving decision stays there.
 - Building an eval: see [`llm/evals`](../../llm/evals/) and its [go/no-go sheet](../../llm/evals/reference/go-no-go.md). This track uses an eval to measure quantization loss and does not re-teach how to build one.
-- Pruning, sparsity and distillation, the other ways to shrink a model. They combine with quantization but are separate topics.
+- Pruning, sparsity and distillation, the other ways to shrink a model. They combine with quantization but are separate topics. Distillation has its own track, [`llm/distillation`](../../llm/distillation/), which compares it with quantization in its judgment stage.
 - Writing quantization kernels. Stage 7 teaches what a kernel must do for a scheme to run faster, not how to write one.
 
 The boundary with the two neighbours was settled when this track was written: the finetuning and inference lessons stay as they are, each teaching the slice its use case needs, and link here for the foundations.

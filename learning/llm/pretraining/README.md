@@ -34,6 +34,7 @@ Be able to plan and run a pretraining job from random initialization: build the 
 - Parallelism and quantization at serve time: see [`llm/inference`](../../llm/inference/). This track covers the training-time versions of parallelism (gradient synchronization, activation and optimizer sharding), not serving.
 - Evaluation methodology and held-out data design: see [`llm/evals`](../../llm/evals/). Carried here only as the one capability a pretraining run needs, to validate a checkpoint mid-run, and linked to rather than restated.
 - Aligning a pretrained model into an assistant: see [`llm/post-training`](../../llm/post-training/).
+- Distillation as a training signal, including a teacher's distribution used during pretraining: see [`llm/distillation`](../../llm/distillation/). That track teaches the loss and the data choice; running the pretraining job stays here.
 
 ## The arc
 

@@ -77,12 +77,14 @@ The core mitigation is to make hallucinated arguments fail faster and more clear
 **Echo back the resolved value**: After a tool call succeeds, do not just return "success". Return what was actually acted on. Example:
 
 Instead of:
-```
+
+```text
 Tool result: Success
 ```
 
 Return:
-```
+
+```text
 Tool result: Successfully updated order 12345. Order status is now CONFIRMED.
 ```
 

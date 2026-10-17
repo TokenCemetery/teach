@@ -5,6 +5,7 @@ type: lesson
 ---
 
 # Lesson 11. Subqueries, and Which Kind Answers the Question
+
 **Mission link:** A report that filters customers by their orders, or picks out the largest order, needs a query nested inside a query. Four shapes exist and answer four different questions; reaching for the wrong one, especially `NOT IN`, produces a query silently wrong on data it has never seen.
 **Primary source:** [PostgreSQL, 9.24 Subquery Expressions](https://www.postgresql.org/docs/current/functions-subquery.html)
 **Prerequisites:** [Lesson 3](0003-null-and-three-valued-logic.md), [Lesson 9](0009-aggregation-and-group-by.md)
@@ -36,7 +37,7 @@ The order with the largest amount, found without a separate query to look up the
 SELECT id, customer_id, amount FROM orders WHERE amount = (SELECT max(amount) FROM orders);
 ```
 
-```
+```text
 id  | customer_id | amount
 ----+-------------+-------
 106 | 4           | 999.99
@@ -48,7 +49,7 @@ The parenthesised subquery is treated as a single value, `999.99`, and the outer
 SELECT id FROM orders WHERE amount = (SELECT amount FROM orders WHERE customer_id = 4);
 ```
 
-```
+```text
 ERROR:  more than one row returned by a subquery used as an expression
 SQLSTATE: 21000
 ```
@@ -64,7 +65,7 @@ SELECT c.id, (SELECT count(*) FROM orders o WHERE o.customer_id = c.id) AS n
 FROM customers c ORDER BY c.id;
 ```
 
-```
+```text
 id | n
 ---+--
 1  | 3
@@ -95,7 +96,7 @@ Both return the same six ids: 1, 2, 4, 5, 7, 8. Now the join version of the same
 SELECT c.id, count(*) FROM customers c JOIN orders o ON o.customer_id = c.id WHERE o.amount > 50 GROUP BY c.id ORDER BY c.id;
 ```
 
-```
+```text
 id | count
 ---+------
 1  | 2
@@ -116,7 +117,7 @@ Without the `GROUP BY`, that join returns 7 rows, not 6, because customer 1 has 
 SELECT id FROM customers WHERE id NOT IN (SELECT customer_id FROM orders);
 ```
 
-```
+```text
 id
 --
 6
@@ -128,7 +129,7 @@ That subquery has no `NULL` in it, `orders.customer_id` being `NOT NULL`, so `NO
 SELECT id FROM customers WHERE id NOT IN (SELECT customer_id FROM orders UNION SELECT NULL);
 ```
 
-```
+```text
 id
 --
 ```
@@ -139,7 +140,7 @@ Zero rows. Customer 6 disappears with everyone else, and nothing says why. The `
 SELECT id FROM customers c WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id);
 ```
 
-```
+```text
 id
 --
 6
@@ -155,7 +156,7 @@ A subquery in `FROM` is a **derived table**, and it is queried exactly like any 
 SELECT * FROM (SELECT customer_id, count(*) AS n FROM orders GROUP BY customer_id) t WHERE t.n > 2;
 ```
 
-```
+```text
 customer_id | n
 ------------+--
 4           | 3
@@ -170,7 +171,7 @@ JOIN (SELECT customer_id, count(*) AS n FROM orders GROUP BY customer_id) t ON t
 WHERE t.n > 2 ORDER BY c.email;
 ```
 
-```
+```text
 email                  | n
 -----------------------+--
 ada@example.com        | 3

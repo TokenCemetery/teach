@@ -34,7 +34,7 @@ Because the model only ever sees the transcript. Any fact the harness knows but 
 
 A mistake every builder makes once: write a tool description the way you would write a REST endpoint docstring.
 
-```
+```text
 Bad:
 name: fetch_user
 description: Fetches user data
@@ -44,7 +44,7 @@ This is too terse for a model deciding among several tools. The model has no con
 
 Here is the same tool described for a model:
 
-```
+```text
 Better:
 name: fetch_user
 description: Look up a user profile by their numeric ID. Returns the user's name, email, account status, and the current version number of their profile. Use this before calling update_user, since update_user requires you to pass the profile's current version number to prevent write conflicts. Returns null if the user ID does not exist.
@@ -58,7 +58,7 @@ The difference is this: a REST docstring tells a human programmer how to use a t
 
 The model picks among tools by reading their names and descriptions with no other signal. If two tools sound similar, the model will call the wrong one or call both to be safe.
 
-```
+```text
 Bad:
 - name: list_files
   description: Lists files in a directory
@@ -68,7 +68,7 @@ Bad:
 
 The model might confuse these or call both when it only needs one. The names are too close.
 
-```
+```text
 Better:
 - name: list_directory
   description: List all files and subdirectories in a directory. Shows names and file sizes. Does not show file contents.
@@ -84,7 +84,7 @@ The rule: a tool's name should say what it does in a way that cannot be confused
 
 The top-level tool description gets the most attention, but parameter descriptions are just as important for correctness.
 
-```
+```text
 Bad:
 name: create_issue
 description: Creates a GitHub issue
@@ -99,7 +99,7 @@ parameters:
 
 The model does not know what format the title should be, how long it can be, whether it should be a question or a statement. The body is even worse: is it Markdown? Plain text? How detailed? Does the model describe the problem or the solution?
 
-```
+```text
 Better:
 name: create_issue
 description: Create a new issue in the repository
@@ -118,7 +118,7 @@ Now the model knows what kind of title to write and what level of detail to incl
 
 The worst case is when two tools are similar enough that the model cannot tell them apart, even with descriptions.
 
-```
+```text
 Very bad:
 - name: update_user
   description: Update user information
@@ -130,7 +130,7 @@ These names and descriptions say almost the same thing. The model might call bot
 
 The fix is to make the names and descriptions so different that only one makes sense for the task at hand:
 
-```
+```text
 Better:
 - name: update_user_profile
   description: Change a user's displayed name, email, or profile picture. Requires the profile version number to prevent conflicts.

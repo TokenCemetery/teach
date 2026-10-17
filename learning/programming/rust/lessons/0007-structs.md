@@ -72,7 +72,7 @@ struct Request {
 
 That alone does not compile:
 
-```
+```text
 error[E0106]: missing lifetime specifier
  --> src/bin/l7_borrowed.rs:2:11
   |
@@ -120,7 +120,7 @@ impl Request {
 
 The receiver is not a suggestion. Change `mark_seen` to take `&self` while it still assigns to `self.status` and the compiler refuses it:
 
-```
+```text
 error[E0594]: cannot assign to `self.status`, which is behind a `&` reference
   --> src/bin/l7_immut_fail.rs:13:9
    |
@@ -132,7 +132,7 @@ help: consider changing this to be a mutable reference
 
 And calling a `self`-consuming method a second time is rejected too, because the first call moved the value away:
 
-```
+```text
 error[E0382]: use of moved value: `r`
   --> src/bin/l7_consume_fail.rs:16:14
    |
@@ -159,7 +159,7 @@ struct Request {
 
 `Debug` is what `{:?}` needs to print a value; without it, printing fails to compile rather than at run time:
 
-```
+```text
 error[E0277]: `Request` doesn't implement `Debug`
  --> src/bin/l7_derive_fail.rs:8:15
   |
@@ -188,7 +188,7 @@ let new = Summary { requests: 4, ..old };
 
 `..old` fills `path` in from `old`. If `path` were `Copy`, `old` would still be usable afterwards, the way lesson 2 describes for plain data. `String` is not `Copy`, so `path` is moved out of `old` into `new`, and using `old` afterwards fails:
 
-```
+```text
 error[E0382]: borrow of partially moved value: `old`
   --> src/bin/l7_update_move.rs:11:16
    |

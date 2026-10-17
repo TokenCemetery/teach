@@ -38,7 +38,7 @@ JOIN (
 ) AS top ON true;
 ```
 
-```
+```text
 ERROR:  invalid reference to FROM-clause entry for table "c"
 DETAIL:  There is an entry for table "c", but it cannot be referenced from this part of the query.
 HINT:  To reference that table, you must mark this subquery with LATERAL.
@@ -80,7 +80,7 @@ FROM
   customers c;
 ```
 
-```
+```text
 ERROR:  missing FROM-clause entry for table "c"
 SQLSTATE: 42P01
 ```

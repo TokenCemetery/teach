@@ -92,7 +92,7 @@ _Avoid_: an average for duration (a mean is dragged toward the bulk of fast requ
 
 **ResponseRecorder**:
 An `http.ResponseWriter` implementation from `httptest.NewRecorder()` that records a handler's writes for inspection instead of sending them over a network. Satisfies the interface implicitly, so a handler called with one runs its real logic with no listener and no port involved at all.
-_Avoid_: `httptest.NewServer` for the same job (that starts a real, loopback server for testing an HTTP *client*, the reverse direction from testing a handler directly)
+_Avoid_: `httptest.NewServer` for the same job (that starts a real, loopback server for testing an HTTP _client_, the reverse direction from testing a handler directly)
 
 **Rune**:
 An alias for `int32` holding a Unicode code point. Ranging a string yields runes with their byte offsets; indexing a string yields a byte.

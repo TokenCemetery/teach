@@ -31,7 +31,7 @@ SELECT '{"a": 1, "a": 2}'::jsonb::text AS jsonb_dup,
        '{"a": 1, "a": 2}'::json::text  AS json_dup;
 ```
 
-```
+```text
 jsonb_dup | json_dup
 ----------+-----------------
 {"a": 2}  | {"a": 1, "a": 2}
@@ -44,7 +44,7 @@ SELECT '{"b":1,"a":2}'::jsonb::text AS jsonb_order,
        '{"b":1,"a":2}'::json::text  AS json_order;
 ```
 
-```
+```text
 jsonb_order      | json_order
 -----------------+-------------
 {"a": 2, "b": 1}  | {"b":1,"a":2}
@@ -62,7 +62,7 @@ SELECT pg_typeof(payload -> 'channel')  AS arrow,
 FROM events WHERE id = 1;
 ```
 
-```
+```text
 arrow | arrow2
 ------+-------
 jsonb | text
@@ -74,7 +74,7 @@ That is why `->` chains, each step handing another `jsonb` value to the next `->
 SELECT id, payload -> 'items' -> 0 ->> 'sku' AS first_sku FROM events ORDER BY id;
 ```
 
-```
+```text
 id | first_sku
 ---+----------
 1  | A1
@@ -107,7 +107,7 @@ CROSS JOIN LATERAL jsonb_array_elements(e.payload -> 'items') AS i
 ORDER BY event_id, sku;
 ```
 
-```
+```text
 event_id | sku | qty
 ---------+-----+----
 1        | A1  | 2
@@ -144,7 +144,7 @@ gives `8`, and summing `jt.qty` from the `JSON_TABLE` form above gives the same 
 SELECT id, jsonb_path_query_array(payload, '$.items[*].qty')::text AS qtys FROM events ORDER BY id;
 ```
 
-```
+```text
 id | qtys
 ---+------
 1  | [2, 1]

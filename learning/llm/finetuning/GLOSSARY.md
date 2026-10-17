@@ -13,7 +13,7 @@ Canonical terms for this workspace. A term lands here once it can be used correc
 Three words are used loosely across the field in ways that would make later lessons ambiguous, so they are pinned from the start:
 
 **Fine-tuning**:
-Training a small set of added or selected parameters on a task while the base model's weights stay frozen. When all weights are trained instead, this workspace always says *full fine-tuning* explicitly.
+Training a small set of added or selected parameters on a task while the base model's weights stay frozen. When all weights are trained instead, this workspace always says _full fine-tuning_ explicitly.
 _Avoid_: training, retraining, teaching the model
 
 **Adapter**:
@@ -21,7 +21,7 @@ The small set of trainable weights added alongside a frozen base model, together
 _Avoid_: fine-tune (as a noun), LoRA (when the method is not specifically LoRA), checkpoint
 
 **Quantisation**:
-Storing weights at lower numeric precision than they were trained in. In this workspace it always refers to the *frozen base* unless stated otherwise: adapters stay at higher precision, and quantisation for inference is a separate concern.
+Storing weights at lower numeric precision than they were trained in. In this workspace it always refers to the _frozen base_ unless stated otherwise: adapters stay at higher precision, and quantisation for inference is a separate concern.
 _Avoid_: compression, shrinking, optimisation
 
 ## Terms

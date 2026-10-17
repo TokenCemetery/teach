@@ -53,6 +53,7 @@ MCP defines three kinds of capabilities a server can expose to a client:
 A client connects to a server. They negotiate capabilities: which of tools, resources, and prompts this particular server actually supports. The server advertises what it has; the client decides what to use.
 
 Then, depending on what the client supports and what the harness needs:
+
 - The client can list available tools and fetch their schemas, then present them to the model.
 - The client can list available resources and fetch data proactively, using what it learns to inform the agent's decisions.
 - The client can list available prompt templates and use them to construct instructions or reflection steps.

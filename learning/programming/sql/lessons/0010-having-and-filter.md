@@ -36,7 +36,7 @@ HAVING count(*) > 2
 ORDER BY c.country;
 ```
 
-```
+```text
 country | n | total
 --------+---+--------
 GB      | 4 | 260.75
@@ -53,7 +53,7 @@ GROUP BY c.country
 ORDER BY c.country;
 ```
 
-```
+```text
 country | n | total
 --------+---+-------
 GB      | 2 | 200.50
@@ -73,7 +73,7 @@ An aggregate in `WHERE`:
 SELECT customer_id FROM orders WHERE count(*) > 1;
 ```
 
-```
+```text
 ERROR:  aggregate functions are not allowed in WHERE
 SQLSTATE: 42803
 ```
@@ -89,7 +89,7 @@ GROUP BY c.country
 HAVING o.amount > 100;
 ```
 
-```
+```text
 ERROR:  column "o.amount" must appear in the GROUP BY clause or be used in an aggregate function
 SQLSTATE: 42803
 ```
@@ -104,7 +104,7 @@ FROM customers c JOIN orders o ON o.customer_id = c.id
 GROUP BY c.country;
 ```
 
-```
+```text
 ERROR:  aggregate function calls cannot be nested
 SQLSTATE: 42803
 ```
@@ -119,7 +119,7 @@ An aggregate consumes a set of rows and produces one scalar. Feeding that scalar
 select count(*) from orders having count(*) > 5;
 ```
 
-```
+```text
 count
 -----
 12
@@ -131,7 +131,7 @@ Twelve passes, so the one group's row prints. Ask for something the data cannot 
 select count(*) from orders having count(*) > 500;
 ```
 
-```
+```text
 (0 rows)
 ```
 
@@ -151,7 +151,7 @@ GROUP BY c.country
 ORDER BY c.country;
 ```
 
-```
+```text
 country | all_orders | shipped | total_over_100
 --------+------------+---------+---------------
 GB      | 4          | 2       | 120.00
@@ -188,7 +188,7 @@ GROUP BY GROUPING SETS ((country), ())
 ORDER BY country;
 ```
 
-```
+```text
 country | n
 --------+--
 GB      | 2
@@ -208,7 +208,7 @@ GROUP BY ROLLUP (country)
 ORDER BY country;
 ```
 
-```
+```text
 country | n | g
 --------+---+--
 GB      | 2 | 0

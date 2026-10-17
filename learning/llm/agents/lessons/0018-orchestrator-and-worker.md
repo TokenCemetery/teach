@@ -39,6 +39,7 @@ Think of it like a team lead who doesn't do the work directly but coordinates: t
 ### What workers do
 
 Workers are not interchangeable. Each worker typically has:
+
 - A bounded, specific mission (e.g., "research this one angle", "evaluate this candidate approach")
 - Tools tailored to that mission (e.g., retrieval for a research worker, code execution for an evaluation worker)
 - Its own agent loop and transcript, insulated from other workers
@@ -48,6 +49,7 @@ Because workers run their own loops, they can explore independently. A worker do
 ### Fan-out: parallel exploration
 
 Fan-out is a sub-case of orchestrator-worker where the orchestrator spawns multiple workers on variations of the same question. For example:
+
 - One worker researches angle A, another researches angle B, a third researches angle C, all in parallel, to get broader coverage faster than one agent working through them serially.
 - Three workers each try to solve the same coding problem with different strategies, and the orchestrator picks the best solution or combines insights.
 
@@ -56,6 +58,7 @@ The speed-up is real: instead of a single agent spending 10 turns on problem-A t
 ### Handoff: sequential specialization
 
 Handoff is a different multi-agent pattern, also using sub-agents but with sequential phases instead of parallel workers. In handoff:
+
 1. Agent A finishes its portion of the task.
 2. Agent A hands off to Agent B by giving it a clean, bounded context: typically just the task definition and Agent A's final findings, not Agent A's full trajectory.
 3. Agent B picks up from there, using its own specialized tools and reasoning.

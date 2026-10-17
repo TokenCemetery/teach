@@ -107,7 +107,7 @@ The credential grants UPDATE permission on the entire table, which means the too
 
 </details>
 
-2. ▢ An agent has access to a send_email tool scoped to send only from support@company.com and only to email addresses matching the pattern *@customer-*.com. An injection tries to trick it into sending a message to attacker@evil.com. What stops the attack?
+2. ▢ An agent has access to a send_email tool scoped to send only from `support@company.com` and only to email addresses matching the pattern `*@customer-*.com`. An injection tries to trick it into sending a message to `attacker@evil.com`. What stops the attack?
 
 <details markdown="1"><summary>Hint</summary>
 
@@ -117,7 +117,7 @@ The tool itself enforces the scope. Think about where this check happens and why
 
 <details markdown="1"><summary>Check</summary>
 
-The tool's validation, which runs in the harness before the message is sent. The tool validates the recipient against its allowed pattern and refuses to send because attacker@evil.com does not match. The injection succeeded in changing the agent's behavior (the agent intended to send), but it failed because the tool's permission boundary prevented the harmful action. This is a tool-level control, not a prompting-level control, so it is reliable.
+The tool's validation, which runs in the harness before the message is sent. The tool validates the recipient against its allowed pattern and refuses to send because `attacker@evil.com` does not match. The injection succeeded in changing the agent's behavior (the agent intended to send), but it failed because the tool's permission boundary prevented the harmful action. This is a tool-level control, not a prompting-level control, so it is reliable.
 
 </details>
 

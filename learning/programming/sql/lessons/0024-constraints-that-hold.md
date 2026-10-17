@@ -37,7 +37,7 @@ INSERT INTO design.c_demo VALUES (1, 10.00);  -- ok
 INSERT INTO design.c_demo VALUES (2, -1);
 ```
 
-```
+```text
 ERROR:  new row for relation "c_demo" violates check constraint "c_demo_amount_check"
 DETAIL:  Failing row contains (2, -1.00).
 SQLSTATE: 23514
@@ -83,7 +83,7 @@ INSERT INTO design.u_demo VALUES ('x', 'y');
 INSERT INTO design.u_demo VALUES ('x', 'y');
 ```
 
-```
+```text
 ERROR:  duplicate key value violates unique constraint "u_demo_a_b_key"
 DETAIL:  Key (a, b)=(x, y) already exists.
 SQLSTATE: 23505
@@ -110,7 +110,7 @@ INSERT INTO design.nv VALUES (1, 10.00), (2, -5.00);
 ALTER TABLE design.nv ADD CONSTRAINT amount_positive CHECK (amount > 0);
 ```
 
-```
+```text
 ERROR:  check constraint "amount_positive" of relation "nv" is violated by some row
 SQLSTATE: 23514
 ```
@@ -122,7 +122,7 @@ ALTER TABLE design.nv ADD CONSTRAINT amount_positive CHECK (amount > 0) NOT VALI
 INSERT INTO design.nv VALUES (3, -1.00);
 ```
 
-```
+```text
 ERROR:  new row for relation "nv" violates check constraint "amount_positive"
 DETAIL:  Failing row contains (3, -1.00).
 SQLSTATE: 23514
@@ -150,7 +150,7 @@ CREATE TABLE design.signups (id bigint PRIMARY KEY, email design.email_address);
 INSERT INTO design.signups VALUES (2, 'not-an-email');
 ```
 
-```
+```text
 ERROR:  value for domain design.email_address violates check constraint "email_address_check"
 SQLSTATE: 23514
 ```
@@ -171,7 +171,7 @@ CREATE TABLE design.bookings (
 
 On a fresh database, this fails:
 
-```
+```text
 ERROR:  data type text has no default operator class for access method "gist"
 HINT:  You must specify an operator class for the index or define a default operator class for the data type.
 SQLSTATE: 42704
@@ -179,7 +179,7 @@ SQLSTATE: 42704
 
 `CREATE EXTENSION btree_gist`, which ships with PostgreSQL, supplies that operator class, and the same `CREATE TABLE` then succeeds. Two bookings for the same room with overlapping ranges now collide:
 
-```
+```text
 ERROR:  conflicting key value violates exclusion constraint "bookings_room_during_excl"
 DETAIL:  Key (room, during)=(101, [2026-01-04,2026-01-09)) conflicts with existing key (room, during)=(101, [2026-01-01,2026-01-05)).
 SQLSTATE: 23P01
@@ -199,7 +199,7 @@ INSERT INTO design.reservations VALUES ('101', daterange('2026-01-01', '2026-01-
 INSERT INTO design.reservations VALUES ('101', daterange('2026-01-04', '2026-01-09'));
 ```
 
-```
+```text
 ERROR:  conflicting key value violates exclusion constraint "reservations_pkey"
 DETAIL:  Key (room, during)=(101, [2026-01-04,2026-01-09)) conflicts with existing key (room, during)=(101, [2026-01-01,2026-01-05)).
 SQLSTATE: 23P01

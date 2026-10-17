@@ -30,7 +30,7 @@ The small fixture has eight customers and twelve orders. A `CROSS JOIN` pairs ev
 SELECT count(*) FROM customers CROSS JOIN orders;
 ```
 
-```
+```text
 count
 -----
 96
@@ -42,7 +42,7 @@ Eight customers times twelve orders is ninety-six, and that is exactly what come
 SELECT count(*) FROM customers c JOIN orders o ON c.id = o.customer_id;
 ```
 
-```
+```text
 count
 -----
 12
@@ -64,7 +64,7 @@ gives 12, as above. Written as an implicit cross product filtered in `WHERE`:
 SELECT count(*) FROM customers, orders WHERE customers.id = orders.customer_id;
 ```
 
-```
+```text
 count
 -----
 12
@@ -80,7 +80,7 @@ Also 12. For an inner join, `ON` and `WHERE` are two spellings of the same filte
 SELECT id FROM customers c JOIN orders o ON c.id = o.customer_id;
 ```
 
-```
+```text
 ERROR:  column reference "id" is ambiguous
 SQLSTATE: 42702
 ```
@@ -93,7 +93,7 @@ FROM orders o JOIN customers c ON o.customer_id = c.id
 ORDER BY o.id LIMIT 3;
 ```
 
-```
+```text
 id  | id | email           | country
 ----+----+-----------------+--------
 101 | 1  | ada@example.com | GB
@@ -116,7 +116,7 @@ JOIN orders o ON o.customer_id = c.id
 JOIN countries n ON n.code = c.country;
 ```
 
-```
+```text
 count
 -----
 9
@@ -132,7 +132,7 @@ A table can join to itself, useful for a relationship between two rows of the sa
 SELECT count(*) FROM orders o1 JOIN orders o2 ON o1.customer_id = o2.customer_id;
 ```
 
-```
+```text
 count
 -----
 26
@@ -145,7 +145,7 @@ SELECT count(*) FROM orders o1 JOIN orders o2
 ON o1.customer_id = o2.customer_id AND o1.id <> o2.id;
 ```
 
-```
+```text
 count
 -----
 14
@@ -158,7 +158,7 @@ SELECT count(*) FROM orders o1 JOIN orders o2
 ON o1.customer_id = o2.customer_id AND o1.id < o2.id;
 ```
 
-```
+```text
 count
 -----
 7
@@ -174,7 +174,7 @@ When both sides of a join name the shared column identically, `USING` says the s
 SELECT count(*) FROM orders o1 JOIN orders o2 USING (customer_id) WHERE o1.id < o2.id;
 ```
 
-```
+```text
 count
 -----
 7
@@ -186,7 +186,7 @@ Same seven pairs, and `customer_id` appears once in a `SELECT *` rather than twi
 SELECT count(*) FROM customers NATURAL JOIN orders;
 ```
 
-```
+```text
 count
 -----
 0

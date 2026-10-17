@@ -86,7 +86,7 @@ Both arrived at 80.00. The floor is on the same line as the two outcomes, so whi
 
 A retry loop that gets this right has four properties, none specific to any driver:
 
-```
+```text
 attempts = 0
 while attempts < max_attempts:
     attempts += 1

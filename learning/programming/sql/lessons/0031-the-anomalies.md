@@ -131,7 +131,7 @@ B: COMMIT;                                        -- fails, see below
 A: SELECT sum(balance) FROM accounts;             -- 140.00, only A's withdrawal landed
 ```
 
-```
+```text
 ERROR: could not serialize access due to read/write dependencies among transactions
 DETAIL: Reason code: Canceled on identification as a pivot, during commit attempt.
 HINT: The transaction might succeed if retried.

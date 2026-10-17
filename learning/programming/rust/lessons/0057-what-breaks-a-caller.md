@@ -219,7 +219,7 @@ Checked 196 checks: 196 pass, 58 skip
 Summary no semver update required
 ```
 
-Calling it on bad input now panics, `called `Result::unwrap()` on an `Err` value: ParseIntError { kind: InvalidDigit }`, where it used to return `0`; nothing in the signature said it would never panic. The same blindness covers an invariant quietly weakened or a promise living only in a doc comment: the tool checks the shape a signature exposes, not the behaviour behind it, and has never read your documentation. Tests catch behaviour a signature cannot express; the tool catches a shape tests might never exercise. Neither replaces the other.
+Calling it on bad input now panics, ``called `Result::unwrap()` on an `Err` value: ParseIntError { kind: InvalidDigit }``, where it used to return `0`; nothing in the signature said it would never panic. The same blindness covers an invariant quietly weakened or a promise living only in a doc comment: the tool checks the shape a signature exposes, not the behaviour behind it, and has never read your documentation. Tests catch behaviour a signature cannot express; the tool catches a shape tests might never exercise. Neither replaces the other.
 
 ### 6. The habit worth forming
 

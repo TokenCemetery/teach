@@ -34,31 +34,31 @@ Caching stable context (tool definitions, system prompt) so repeated tasks do no
 
 When you review a proposed or existing agent design, walk it through the stages of this track in order, asking the same question at each stage: is this choice justified, and is it documented?
 
-**Stage 1-2: Autonomy spectrum and control flow**
+#### Stage 1-2: Autonomy spectrum and control flow
 
 Where does this system sit on the autonomy spectrum? Is it a single prompt, a developer-fixed workflow, or a model-directed agent? Look for the claim in the proposal or documentation. If the claim is just "this is an agent" without explaining why the autonomy is necessary, ask what the fixed-path alternative would have cost. A good design does not just name the choice; it defends it.
 
-**Stage 3-4: Tool surface and schema**
+#### Stage 3-4: Tool surface and schema
 
 Are the tools named and described in a way a model's reasoning will find useful? Lesson 8 taught that tool descriptions are prompt surface, not API documentation. Tool names should describe what the tool does from the model's perspective, not the underlying endpoint. Parameter descriptions should help the model decide what to pass, not just document the technical schema. Is the tool set tight (avoiding bloat from Lesson 9), or has it accreted tools that are rarely used?
 
-**Stage 5-6: Context and memory strategy**
+#### Stage 5-6: Context and memory strategy
 
 For a long-running task, what is the strategy? Does the design distinguish between scratchpad (the running transcript within one turn) and across-run memory (facts persisted between runs)? Lesson 11 taught compaction; does the design have a plan for how to shorten the transcript as it grows? If the task involves learning facts and carrying them forward, is there a memory mechanism named, or is the design relying on the transcript alone?
 
-**Stage 7: Reflection and retries**
+#### Stage 7: Reflection and retries
 
 When a step fails, does the design plan a retry, and does it include explicit reflection (the agent reasoning about why it failed in natural language before trying again)? Or does it just loop and hope the model corrects itself? Lesson 17 taught that silence does not equal learning; a well-designed agent reflects after failure.
 
-**Stage 8: Multi-agent decision**
+#### Stage 8: Multi-agent decision
 
 If the design is multi-agent, does it justify that choice against the single-agent alternative? Lesson 19 taught the coordination cost: an orchestrator-worker system multiplies tokens and fragments context between workers. The design should name the specific benefit that justifies this cost. Is the benefit parallelism (wall-clock time), context isolation (each worker's transcript stays clean), or genuine sub-task independence? And does that benefit apply to this specific task?
 
-**Stage 14: Security and the trifecta**
+#### Stage 14: Security and the trifecta
 
 Does the agent read untrusted content? Does it access private data? Does it have external communication? Lesson 31 taught that all three conditions together make it exploitable. The design should name which conditions are present and which are not, or how the design deliberately removes at least one. If the design has all three but does not acknowledge it, that is a red flag.
 
-**Stage 15: Cost and durability**
+#### Stage 15: Cost and durability
 
 Has anyone estimated the token cost per completed task? Is that cost acceptable? If the system uses a framework, is the framework choice justified, or was it picked by default? Lesson 33 taught that real cost per task includes retries and token amplification. A good design names a cost estimate, even if the estimate is rough.
 

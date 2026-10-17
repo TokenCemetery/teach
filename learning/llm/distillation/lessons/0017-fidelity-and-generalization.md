@@ -45,7 +45,7 @@ Stanton et al. separate two quantities that the distillation literature usually 
 | Metric | What it measures |
 |---|---|
 | Average top-1 agreement | The fraction of inputs where student and teacher pick the same top label |
-| Average predictive KL | The mean KL(teacher || student), sensitive to every class, not only the top one |
+| Average predictive KL | The mean KL(teacher \|\| student), sensitive to every class, not only the top one |
 
 Accuracy cannot stand in for agreement. The paper's own example: three independent models with 55%, 75% and 95% test accuracy. The first and third can agree on at most 60% of inputs, while the second and third agree on at least 70%, yet no one would say the 75% model is a better distillation of the 95% model, since they were trained independently.
 

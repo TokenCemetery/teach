@@ -108,11 +108,14 @@ pub fn split_at_mut_unchecked<T>(slice: &mut [T], mid: usize) -> (&mut [T], &mut
 ```
 
 The same five non-panicking tests still all say `ok`: deleting the check breaks nothing a valid caller was doing, because none of those tests ever pass a `mid` greater than the length. That is the trap in one sentence: "the tests still pass" describes the inputs the tests chose, not the function. Calling it with a `mid` past the end looks fine too, at first. A debug build's overflow check gets there first, panicking with `attempt to subtract with overflow` on `len - mid`, three times out of three, before the unsafe code runs, a different mechanism catching a different symptom, not evidence of soundness. A release build has that check compiled out, and that is the fair test: five runs out of five, `len` five and `mid` seven, printed
+
 ```text
 a.len() = 7, first = 1
 b.len() = 18446744073709551614
 ```
+
 without crashing or warning. Only then does Miri speak:
+
 ```text
 error: Undefined Behavior: constructing invalid value of type &mut [i32]: encountered a dangling reference (going beyond the bounds of its allocation)
   --> src/lib.rs:30:13
@@ -122,6 +125,7 @@ error: Undefined Behavior: constructing invalid value of type &mut [i32]: encoun
    |
    = help: this indicates a bug in the program: it performed an invalid operation, and caused Undefined Behavior
 ```
+
 Five clean release runs, zero warnings, one Miri run, one diagnosis, at the very first line of pointer work.
 
 ### What a sound boundary needs

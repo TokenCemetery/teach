@@ -37,6 +37,7 @@ MCP is a protocol between an agent harness and external tools or data sources. I
 At the same time, the model has a provider, and that provider has a specific way of representing tool calls. Anthropic's API accepts tools in one shape. OpenAI's API accepts them in another. This wire format is a separate layer between the harness and the model.
 
 These two layers are independent:
+
 - The MCP client (harness side) speaks MCP to the MCP server. The MCP server is agnostic about which model will eventually use these tools.
 - The harness then translates the MCP tool definitions into whichever provider's wire format the model expects. Anthropic? Use `input_schema`. OpenAI? Use `function.parameters`.
 
@@ -55,6 +56,7 @@ This is the tool discovery problem at scale: you can connect to many servers, bu
 The Anthropic Engineering article "Code Execution with MCP" proposes a solution: instead of loading tool definitions into context, present the available tools as code the agent can discover and call programmatically.
 
 For example:
+
 - The harness defines a helper function list_available_tools() that queries the connected MCP servers and returns a directory of callable functions: their names, descriptions, and parameters.
 - The harness defines a helper function call_tool(name, args) that takes a tool name and arguments, finds the tool on the connected servers, and invokes it.
 - Instead of giving the model fifty tool definitions up front, the harness tells the model: "You can call list_available_tools() to see what you can do, or call_tool(name, args) to do something specific."
@@ -66,11 +68,13 @@ This trades eager loading for lazy discovery. The model has to spend a turn call
 ### When to use each approach
 
 Eager loading (put every tool in context at startup) works when:
+
 - You have a small fixed set of tools (two to ten).
 - The tools are relevant to every agent task.
 - Context is not constrained.
 
 Lazy loading (define list_available_tools() and call_tool() and let the model discover what it needs) works when:
+
 - You have many tools (dozens or more).
 - Tools are specialized and not all relevant to every task.
 - Context is constrained and every token matters.

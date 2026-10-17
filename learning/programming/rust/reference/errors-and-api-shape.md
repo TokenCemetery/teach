@@ -79,6 +79,7 @@ A `pub fn` returning a private type compiles with a warning, `private_interfaces
 ## What the public API is
 
 A caller can reach:
+
 - Every `pub` item reachable from the crate root, directly or through a `pub use` re-export.
 - Every field of every `pub` struct that is itself marked `pub`.
 - Every variant of a `pub` enum, and every named field on a variant that lacks `#[non_exhaustive]`.

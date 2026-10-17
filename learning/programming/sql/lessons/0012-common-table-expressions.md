@@ -69,7 +69,7 @@ ORDER BY ct.total DESC;
 
 Both return the same three rows on the fixture:
 
-```
+```text
 email                 | total   | name
 ----------------------+---------+--------------
 katherine@example.com | 1019.99 | United States
@@ -89,7 +89,7 @@ WITH a AS (SELECT 1 AS x),
 SELECT * FROM b;
 ```
 
-```
+```text
 y
 -
 2
@@ -112,7 +112,7 @@ SELECT count(*) FROM recent;
 
 Both give the same plan, with no `CTE` node anywhere:
 
-```
+```text
 QUERY PLAN
 -----------------------------------------
 Aggregate
@@ -128,7 +128,7 @@ WITH recent AS MATERIALIZED (SELECT * FROM orders WHERE amount > 100)
 SELECT count(*) FROM recent;
 ```
 
-```
+```text
 QUERY PLAN
 -------------------------------------------
 Aggregate
@@ -147,7 +147,7 @@ SELECT (SELECT count(*) FROM recent) AS a,
        (SELECT count(*) FROM recent WHERE shipped_at IS NOT NULL) AS b;
 ```
 
-```
+```text
 QUERY PLAN
 ------------------------------------------------
 Result
@@ -180,7 +180,7 @@ WITH moved AS (
 SELECT count(*) FROM moved;
 ```
 
-```
+```text
 count
 -----
 1

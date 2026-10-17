@@ -34,6 +34,7 @@ Three migrations follow, each with one defect, each run against a real table so 
 -- Migration 1: add a column that records when each row was created
 1. ALTER TABLE accounts ADD COLUMN created_at timestamptz NOT NULL DEFAULT clock_timestamp();  -- one deploy, one statement
 ```
+
 ```text
 pg_relation_filenode('accounts') before this statement, then after: changed
 -- a rewrite, exactly as ALTER TABLE's own documentation warns for a volatile default such as
@@ -47,6 +48,7 @@ Review: this rewrites the table for the volatile default; the lock is brief on a
 -- Migration 2: index a column that a report now filters on
 1. CREATE INDEX idx_payments_status ON payments (status);  -- one deploy, inside the migration framework's default transaction
 ```
+
 ```text
 a second session's concurrent UPDATE against payments: blocked until this statement's transaction commits
 -- matches CREATE INDEX's own documentation on what CONCURRENTLY exists to avoid: "a standard index
@@ -62,6 +64,7 @@ Review: either this blocks every write to `payments` for as long as the build ta
 -- Migration 3: a plan a customer must always have gets enforced
 1. ALTER TABLE subscriptions ALTER COLUMN plan_id SET NOT NULL;  -- one deploy, one statement
 ```
+
 ```text
 ERROR:  column "plan_id" of relation "subscriptions" contains null values
 SQLSTATE: 23502
@@ -99,6 +102,7 @@ Run this way, `pg_index` reports the index valid and ready. Nothing here touches
 3. ALTER TABLE subscriptions ALTER COLUMN plan_id SET NOT NULL;
    ALTER TABLE subscriptions DROP CONSTRAINT plan_id_not_null;                                        -- deploy 2
 ```
+
 ```text
 step 1: a concurrent SELECT returns the moment this statement's own transaction closes -- ACCESS EXCLUSIVE,
         but held for an instant, since NOT VALID skips checking existing rows, not a scan

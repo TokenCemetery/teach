@@ -333,7 +333,7 @@ prints `true` then `false`; it takes a pattern, an optional guard, and gives bac
 
 <details markdown="1"><summary>Check</summary>
 
-It does not compile: `error[E0004]: non-exhaustive patterns: `&Shape::Triangle(_, _, _)` not covered`, with a note pointing at `Triangle`'s definition. Adding the third arm, rather than a `_`, is the honest fix: a triangle's area needs its own formula, and a wildcard would hide that rather than handle it.
+It does not compile: ``error[E0004]: non-exhaustive patterns: `&Shape::Triangle(_, _, _)` not covered``, with a note pointing at `Triangle`'s definition. Adding the third arm, rather than a `_`, is the honest fix: a triangle's area needs its own formula, and a wildcard would hide that rather than handle it.
 
 </details>
 
@@ -379,7 +379,7 @@ It does not compile: `error[E0004]: non-exhaustive patterns: `&Shape::Triangle(_
 
 <details markdown="1"><summary>Check</summary>
 
-`error[E0382]: borrow of partially moved value: `job``. Matching `job` by value moves the enum into the match, and binding `name` moves the `String` payload out of it, so nothing is left to print. Matching `&job` instead, so `name` binds a `&String`, fixes it without cloning.
+``error[E0382]: borrow of partially moved value: `job` ``. Matching `job` by value moves the enum into the match, and binding `name` moves the `String` payload out of it, so nothing is left to print. Matching `&job` instead, so `name` binds a `&String`, fixes it without cloning.
 
 </details>
 

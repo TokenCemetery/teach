@@ -31,7 +31,7 @@ SELECT count(*) AS n, count(shipped_at) AS shipped, sum(amount) AS total, avg(am
 FROM orders;
 ```
 
-```
+```text
 n  | shipped | total   | mean
 ---+---------+---------+---------------------
 12 | 8       | 2406.49 | 200.5408333333333333
@@ -44,7 +44,7 @@ SELECT avg(x) AS mean, count(*) AS n, count(x) AS present
 FROM (VALUES (10), (20), (NULL)) AS v(x);
 ```
 
-```
+```text
 mean                | n | present
 --------------------+---+--------
 15.0000000000000000 | 3 | 2
@@ -59,7 +59,7 @@ SELECT count(*) AS n, sum(amount) AS total, avg(amount) AS mean
 FROM orders WHERE amount > 100000;
 ```
 
-```
+```text
 n | total | mean
 --+-------+-----
 0 |       |
@@ -71,7 +71,7 @@ n | total | mean
 SELECT coalesce(sum(amount), 0) AS total FROM orders WHERE amount > 100000;
 ```
 
-```
+```text
 total
 -----
 0
@@ -89,7 +89,7 @@ GROUP BY c.country
 ORDER BY c.country;
 ```
 
-```
+```text
 country | n | total
 --------+---+--------
 GB      | 4 | 260.75
@@ -110,7 +110,7 @@ JOIN orders o ON o.customer_id = c.id
 GROUP BY c.country;
 ```
 
-```
+```text
 ERROR:  column "c.email" must appear in the GROUP BY clause or be used in an aggregate function
 SQLSTATE: 42803
 ```
@@ -128,7 +128,7 @@ ORDER BY c.id
 LIMIT 3;
 ```
 
-```
+```text
 id | email             | count
 ---+-------------------+------
 1  | ada@example.com   | 3
@@ -143,7 +143,7 @@ SELECT c.country AS ctry, count(*) FROM customers c JOIN orders o ON o.customer_
 SELECT c.country AS ctry, count(*) FROM customers c JOIN orders o ON o.customer_id = c.id GROUP BY ctry;
 ```
 
-```
+```text
 ctry | count
 -----+------
 GB   | 4
@@ -166,7 +166,7 @@ JOIN orders o ON o.customer_id = c.id
 JOIN countries n ON n.region = 'Europe';
 ```
 
-```
+```text
 n  | total
 ---+--------
 36 | 7219.47
@@ -187,7 +187,7 @@ JOIN orders o ON o.customer_id = c.id
 JOIN countries n ON n.region = 'Europe';
 ```
 
-```
+```text
 wrong
 -------
 2396.49
@@ -206,7 +206,7 @@ FROM (
 ) pre;
 ```
 
-```
+```text
 grand_total
 -----------
 2406.49
@@ -224,7 +224,7 @@ FROM (
 ) d;
 ```
 
-```
+```text
 n  | total
 ---+-------
 12 | 2406.49
@@ -244,7 +244,7 @@ GROUP BY n.region
 ORDER BY n.region;
 ```
 
-```
+```text
 region   | star | cid
 ---------+------+----
 Africa   | 1    | 0

@@ -80,7 +80,7 @@ cosign sign --key cosign.key registry.example.com/myapp@sha256:4f3c...
 cosign verify --key cosign.pub registry.example.com/myapp@sha256:4f3c...
 ```
 
-Cosign also supports keyless signing, where a short-lived certificate is issued for an identity such as an email address or a CI workload, and the verifier checks that identity and its issuer instead of a public key. Keyless suits pipelines, which the planned CI/CD track ([#159](https://github.com/TokenCemetery/teach/issues/159)) covers.
+Cosign also supports keyless signing, where a short-lived certificate is issued for an identity such as an email address or a CI workload, and the verifier checks that identity and its issuer instead of a public key. Keyless suits pipelines, which the CI/CD track's [Pipeline Security](../../ci-cd/reference/pipeline-security.md) sheet covers, provenance included.
 
 ### Provenance
 

@@ -21,8 +21,8 @@ GGUF carries llama.cpp's own quantization family, separate from GPU-oriented GPT
 | Part | Meaning |
 |---|---|
 | `Q4` | Bit width: roughly 4 bits per weight (also `Q5`, `Q8`, and others) |
-| `K` | A **k-quant** method: mixes precision within a tensor rather than quantizing every weight uniformly, spending more bits where it matters more |
-| `M` | The preset among that method's size/quality configurations: `S` (small), `M` (medium), `L` (large) |
+| `K` | A **k-quant** type: one bit width per tensor, with super-blocks of 256 weights whose sub-blocks each carry their own scale |
+| `M` | The recipe that mixes types across tensors, giving some tensors a higher-bit type: `S` (small), `M` (medium), `L` (large). See the [quantization track's Measuring and Storing sheet](../../quantization/reference/measuring-and-storing.md) |
 
 ## ggml: one codebase, many backends
 

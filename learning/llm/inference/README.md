@@ -25,6 +25,7 @@ Be able to stand up an inference server for a real model, on GPU and on CPU/edge
 
 - Training or fine-tuning a model or adapter: see [`llm/finetuning`](../../llm/finetuning/) (lessons 0025, serving adapters, and 0026, cost, latency and throughput), linked back to rather than restated.
 - Judging output quality or building an eval for a served model: see [`llm/evals`](../../llm/evals/) for that boundary.
+- Asking for structured output from the prompt side: see [`llm/prompting`](../../llm/prompting/). This track owns constrained decoding, the serving side of the same goal.
 
 ## The arc
 

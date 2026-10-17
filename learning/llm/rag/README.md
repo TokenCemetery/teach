@@ -25,7 +25,7 @@ Be able to design a retrieval pipeline for a real corpus and use case, and to di
 
 ## Out of scope
 
-- Prompt-engineering technique and generation quality in general: touched only for how retrieved context reaches the generation step, not restated as its own topic.
+- Prompt-engineering technique and generation quality in general: see [`llm/prompting`](../../llm/prompting/). Touched here only for how retrieved context reaches the generation step, not restated as its own topic.
 - How the retrieval metric itself is built and defended: see [`llm/evals`](../../llm/evals/), linked to rather than restated.
 - What a vector index costs the database operationally: see [`data/postgres`](../../data/postgres/), linked to rather than restated.
 

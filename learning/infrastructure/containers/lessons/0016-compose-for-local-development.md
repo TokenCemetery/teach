@@ -110,7 +110,7 @@ $ docker compose down -v        # also remove the volumes
 
 ### Scope
 
-Compose here is a local-development and single-host tool: one file, one machine, one command. It does not schedule across hosts, roll out updates or probe and replace containers. Those are the planned Kubernetes track ([#158](https://github.com/TokenCemetery/teach/issues/158)). A Compose file that works is a good first description of what a cluster deployment will need to express, which is the main reason to write it down.
+Compose here is a local-development and single-host tool: one file, one machine, one command. It does not schedule across hosts, roll out updates or probe and replace containers. Those are the [Kubernetes track](../../kubernetes/README.md). A Compose file that works is a good first description of what a cluster deployment will need to express, which is the main reason to write it down.
 
 ## Practice
 

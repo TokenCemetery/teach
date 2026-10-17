@@ -37,7 +37,7 @@ Become the engineer trusted to own a Java service on a team: able to model a dom
 - Android, and mobile targets generally.
 - Build-tool comparison. The arc teaches the tasks a build has to perform and uses one tool to do them, rather than arguing about which.
 - JVM internals past the point where they stop predicting program behaviour: JIT implementation, bytecode engineering, writing a garbage collector.
-- Kubernetes and infrastructure beyond what one service needs to run. Putting the runnable artifact into a container image, and running, securing and debugging that container, is [`infrastructure/containers`](../../infrastructure/containers/).
+- Kubernetes and infrastructure beyond what one service needs to run. Putting the runnable artifact into a container image, and running, securing and debugging that container, is [`infrastructure/containers`](../../infrastructure/containers/). Running it on a cluster is [`infrastructure/kubernetes`](../../infrastructure/kubernetes/).
 
 ## The arc
 

@@ -31,7 +31,7 @@ Become the engineer trusted to own Go on a team: able to design, ship and operat
 - Other languages as subjects in their own right. Comparisons appear only where they stop a habit from being carried into Go.
 - Third-party frameworks as subjects in their own right: routers, ORMs, dependency-injection containers, CLI toolkits. The standard library covers routing, structured logging and database access directly, so lessons build on it; where a team has already chosen a framework, judging whether it earns its place is a review skill and belongs in stage 6.
 - Frontend, WASM, and mobile targets.
-- Kubernetes and infrastructure beyond what one Go service needs to run. Putting the binary into a container image, and running, securing and debugging that container, is [`infrastructure/containers`](../../infrastructure/containers/).
+- Kubernetes and infrastructure beyond what one Go service needs to run. Putting the binary into a container image, and running, securing and debugging that container, is [`infrastructure/containers`](../../infrastructure/containers/). Running it on a cluster, including what the cluster does with its health checks and shutdown signal, is [`infrastructure/kubernetes`](../../infrastructure/kubernetes/).
 - Compiler and runtime internals past the point where they stop predicting program behaviour.
 
 ## The arc

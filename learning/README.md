@@ -29,6 +29,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained track
 | llm | [RAG](llm/rag/) | Own retrieval: chunking, embeddings, hybrid search, reranking, and measuring whether the right thing was retrieved | 19 |
 | llm | [Transformers](llm/transformers/) | Build attention from scratch, so the architecture stops being a black box behind the training script | 22 |
 | llm | [Agents](llm/agents/) | Build the loop yourself: tools, context, memory, and knowing when an agent is the wrong answer | 37 |
+| llm | [Prompting](llm/prompting/) | Write, version and ship prompts for an LLM feature, prove a prompt change helped, and review someone else's production prompt | 24 |
 | data | [Postgres](data/postgres/) | Operate Postgres: the WAL, vacuum and bloat, replication, and what an index costs to keep | 18 |
 | data | [Kafka](data/kafka/) | Own the log: partitions, consumer groups, delivery guarantees, and what "exactly once" actually costs | 16 |
 | data | [Redis](data/redis/) | Use Redis for what it is: the memory model, eviction, persistence, and the patterns that quietly misuse it | 17 |

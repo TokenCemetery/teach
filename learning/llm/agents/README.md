@@ -34,6 +34,7 @@ Be able to build an agent loop yourself, decide whether a given task needs an ag
 - Serving and inference internals: see [`llm/inference`](../../llm/inference/) for latency, batching and constrained decoding.
 - Training a model to use tools: see [`llm/finetuning`](../../llm/finetuning/).
 - Retries, idempotency and partial failure as distributed-systems problems: see [`architecture/distributed-systems`](../../architecture/distributed-systems/). Covered here only for what makes a tool call different from an ordinary remote call.
+- Prompting as a subject (instructions, examples, reasoning, structured output, templates and measuring a prompt change): see [`llm/prompting`](../../llm/prompting/). This track keeps tool descriptions, injection with tools and caching under concurrency, and links there for prompting in general.
 
 ## The arc
 

@@ -14,6 +14,8 @@ type: resources
   The PagedAttention paper: why the KV cache fragments ordinary memory allocators and how paging it fixes that, with the throughput numbers that motivate vLLM's design. Use for: understanding what the KV cache costs and why vLLM's memory manager exists.
 - [Repo: llama.cpp, ggml-org](https://github.com/ggml-org/llama.cpp)
   Official repo for the CPU/edge serving stack this workspace stands up second: build instructions, supported quantization formats (GGUF), and the server binary's flags. Use for: how to run and configure llama.cpp itself.
+- [Pull request: "k-quants", ikawrakow, llama.cpp, 2023](https://github.com/ggml-org/llama.cpp/pull/1684)
+  Introduces the k-quant types, their super-block layout, and the `S`, `M` and `L` recipes that mix types across tensors. Use for: what a GGUF name such as `Q4_K_M` actually stores.
 - [Paper: "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers", Frantar et al., 2023](https://arxiv.org/abs/2210.17323)
   One-shot post-training weight quantization down to 3-4 bits with a measured accuracy cost. Use for: what quantizing a model for serving actually trades away, and how the trade is measured.
   Read the [transformers guide](https://huggingface.co/docs/transformers/main/en/llm_optims) below first if the linear algebra here is the sticking point.

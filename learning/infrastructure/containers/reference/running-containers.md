@@ -53,7 +53,7 @@ HEALTHCHECK --interval=10s --timeout=3s --start-period=20s --retries=3 \
 - Exit status 0 is healthy, 1 is unhealthy, 2 is reserved.
 - States: `starting`, then `healthy`, then `unhealthy` after `retries` consecutive failures. One success returns it to `healthy`.
 - Read it: `docker ps` (status text) or `docker inspect --format '{{json .State.Health}}' <c>`.
-- **Docker reports health and does not restart on it.** Compose can wait on it with `service_healthy`. Cluster probes are outside this track (planned Kubernetes track, issue 158).
+- **Docker reports health and does not restart on it.** Compose can wait on it with `service_healthy`. Cluster probes are outside this track, see the Kubernetes track's [Running Reliably](../../kubernetes/reference/running-reliably.md) sheet.
 - The check runs inside the container, so its tool must be in the image. A minimal image needs a check in your own binary.
 - Check what a request needs, not the services behind it.
 
@@ -194,4 +194,4 @@ volumes:
 - One network per project, and each service is reachable by its service name.
 - The project name defaults to the directory name and prefixes volumes and networks.
 - Make the application retry its first connection as well as using `service_healthy`.
-- Compose is for one host. Scheduling, rollouts and probes belong to the planned Kubernetes track (issue 158).
+- Compose is for one host. Scheduling, rollouts and probes belong to the [Kubernetes track](../../kubernetes/README.md).

@@ -24,6 +24,7 @@ Be able to choose and defend a consistency model for a system you are designing,
 ## Out of scope
 
 - Concurrency inside one process (goroutines, threads, `Send`/`Sync`): owned by the language workspaces. This workspace starts where the process boundary is crossed.
+- Running workloads on a cluster orchestrator: owned by [`infrastructure/kubernetes`](../../infrastructure/kubernetes/), which teaches what etcd and reconciliation mean in practice and links back here for the theory.
 
 ## The arc
 

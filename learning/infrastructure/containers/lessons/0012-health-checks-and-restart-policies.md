@@ -68,7 +68,7 @@ $ docker inspect --format '{{json .State.Health}}' web
 
 ### What Docker does with the result, which is nothing
 
-**Docker reports health and does not restart on it.** An unhealthy container keeps running, `docker ps` says so, and nothing is stopped or replaced. Something else has to act: a person reading `docker ps`, a script, or Compose, which can hold a dependent service back until a dependency is healthy (lesson 16). Clusters have their own probes with their own behaviour. That belongs to the planned Kubernetes track ([#158](https://github.com/TokenCemetery/teach/issues/158)) and this lesson mentions it only as the boundary.
+**Docker reports health and does not restart on it.** An unhealthy container keeps running, `docker ps` says so, and nothing is stopped or replaced. Something else has to act: a person reading `docker ps`, a script, or Compose, which can hold a dependent service back until a dependency is healthy (lesson 16). Clusters have their own probes with their own behaviour. They belong to the Kubernetes track, whose [Running Reliably](../../kubernetes/reference/running-reliably.md) sheet covers them, and this lesson mentions them only as the boundary.
 
 The check runs inside the container, as a process in the container's namespaces, so what it uses must be in the image. A `curl` check fails on an image without `curl`, which is exactly what a distroless or minimal image has (lesson 9). The usual fix is a small `healthcheck` mode in your own binary, or a static binary copied in.
 
@@ -184,7 +184,7 @@ With the start period, `starting`. Failures during the first 30 seconds do not c
 
 <details markdown="1"><summary>Check</summary>
 
-Docker reports health and does not act on it, and `--restart` reacts only to the process exiting, so the combination restarts nothing on a hang. Options: make the application exit when it detects it is broken, so the restart policy applies; run something that watches health and restarts containers; or move to an orchestrator, whose probes are built to act on health (outside this track, see the Kubernetes track, [#158](https://github.com/TokenCemetery/teach/issues/158)). Making the process exit on a fatal error is the cheapest and usually the right first move.
+Docker reports health and does not act on it, and `--restart` reacts only to the process exiting, so the combination restarts nothing on a hang. Options: make the application exit when it detects it is broken, so the restart policy applies; run something that watches health and restarts containers; or move to an orchestrator, whose probes are built to act on health (outside this track, see the Kubernetes track's [Running Reliably](../../kubernetes/reference/running-reliably.md) sheet). Making the process exit on a fatal error is the cheapest and usually the right first move.
 
 </details>
 

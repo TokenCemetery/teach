@@ -75,7 +75,7 @@ Retry तब बेहतर काम करता है जब उसमे�
 
 Prompt एक अनुरोध है। Model आमतौर पर मानता है और कभी-कभी नहीं मानता, इसलिए parse-validate-retry का चक्र डिज़ाइन का हिस्सा है, कोई पैबंद नहीं।
 
-कुछ providers इसके बजाय schema लागू करने की सुविधा देते हैं। Anthropic का structured outputs फ़ीचर `output_config.format` में JSON schema लेता है और उससे मेल खाता JSON लौटाता है। यह एक vendor का फ़ीचर है, और यह माँगने से अलग तंत्र है: schema generation को बाँधता है। उस विचार का serving वाला पक्ष [Serve समय पर Sampling और Constrained Decoding](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md) में है।
+कुछ providers इसके बजाय schema लागू करने की सुविधा देते हैं। Anthropic का structured outputs फ़ीचर `output_config.format` में JSON schema लेता है और उससे मेल खाता JSON लौटाता है। यह एक vendor का फ़ीचर है, और यह माँगने से अलग तंत्र है: schema generation को बाँधता है। उस विचार का serving वाला पक्ष [Serve Time पर Sampling और Constrained Decoding](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md) में है।
 
 तब भी उसी पेज पर ऐसे मामले गिनाए गए हैं जहाँ output मेल न खाए: इनकार, token सीमा पर कटा हुआ reply, और enum मान जिनके capitalization अलग हो सकते हैं। इसलिए दोनों सूरतों में validate करें।
 

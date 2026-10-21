@@ -136,7 +136,7 @@ Embedding model internet से text के व्यापक वितरण �
 ## आगे बढ़ने के लिए
 
 - [पेपर: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-- [पाठ 24: Serve के समय Long Context](../../inference/lessons/0024-long-context-at-serve-time.md): long-context तकनीकें retrieval की लागत की जगह serving की लागत के साथ असल में क्या करती हैं
+- [पाठ 24: Serve Time पर Long Context](../../inference/lessons/0024-long-context-at-serve-time.md): long-context तकनीकें retrieval की लागत की जगह serving की लागत के साथ असल में क्या करती हैं
 - [संसाधन](../RESOURCES.md)
 
 ---

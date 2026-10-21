@@ -37,7 +37,7 @@ flowchart TD
 | गारंटी | कोई नहीं, इसलिए validate और retry करें | ज़्यादातर मामलों में schema का मेल |
 | फिर भी जाँचें | सब कुछ | इनकार, token सीमा पर कटे replies, enum capitalization |
 
-Enforcement का serving वाला पक्ष: [Serve समय पर Sampling और Constrained Decoding](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md)।
+Enforcement का serving वाला पक्ष: [Serve Time पर Sampling और Constrained Decoding](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md)।
 
 ## Format constraints और reasoning
 

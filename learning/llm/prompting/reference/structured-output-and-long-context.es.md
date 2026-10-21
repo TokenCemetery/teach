@@ -37,7 +37,7 @@ flowchart TD
 | Garantía | Ninguna, así que valida y reintenta | Coincidencia con el esquema en la mayoría de los casos |
 | Aun así comprueba | Todo | Rechazos, respuestas cortadas en el límite de tokens, mayúsculas en los enum |
 
-El lado del servicio de la imposición: [Muestreo y decodificación restringida en tiempo de servicio](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
+El lado del servicio de la imposición: [Muestreo y decodificación restringida al servir](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
 
 ## Restricciones de formato y razonamiento
 

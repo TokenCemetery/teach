@@ -37,7 +37,7 @@ flowchart TD
 | Garantia | Nenhuma, então valide e tente de novo | Correspondência ao schema na maioria dos casos |
 | Ainda verifique | Tudo | Recusas, respostas cortadas no limite de tokens, capitalização de enum |
 
-O lado do serving da imposição: [Amostragem e decodificação restrita no momento do serviço](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
+O lado do serving da imposição: [Amostragem e decodificação restrita no serving](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
 
 ## Restrições de formato e raciocínio
 

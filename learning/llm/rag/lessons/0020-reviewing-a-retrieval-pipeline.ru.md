@@ -136,7 +136,7 @@ type: lesson
 ## Что почитать дальше
 
 - [Научная статья: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-- [Урок 24: Длинный контекст на этапе обслуживания](../../inference/lessons/0024-long-context-at-serve-time.md): что приёмы длинного контекста на самом деле делают со стоимостью обслуживания, а не поиска
+- [Урок 24: Длинный контекст при обслуживании](../../inference/lessons/0024-long-context-at-serve-time.md): что приёмы длинного контекста на самом деле делают со стоимостью обслуживания, а не поиска
 - [Ресурсы](../RESOURCES.md)
 
 ---

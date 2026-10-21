@@ -75,7 +75,7 @@ Un reintento funciona mejor cuando lleva consigo el fallo: la respuesta anterior
 
 Un prompt es una petición. El modelo suele cumplirla y a veces no, así que un bucle de interpretar, validar y reintentar forma parte del diseño, no es un parche.
 
-Algunos proveedores ofrecen imponer el esquema en su lugar. La función de structured outputs de Anthropic recibe un esquema JSON en `output_config.format` y devuelve un JSON que lo cumple. Esa es una función de un solo proveedor, y es un mecanismo distinto de pedir: el esquema restringe la generación. El lado del servicio de esa idea se cubre en [Muestreo y decodificación restringida en tiempo de servicio](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
+Algunos proveedores ofrecen imponer el esquema en su lugar. La función de structured outputs de Anthropic recibe un esquema JSON en `output_config.format` y devuelve un JSON que lo cumple. Esa es una función de un solo proveedor, y es un mecanismo distinto de pedir: el esquema restringe la generación. El lado del servicio de esa idea se cubre en [Muestreo y decodificación restringida al servir](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
 
 Aun así, la misma página enumera casos en que la salida puede no coincidir: un rechazo, una respuesta cortada en el límite de tokens y valores de enum cuyas mayúsculas y minúsculas pueden variar. Por eso se valida en ambos casos.
 

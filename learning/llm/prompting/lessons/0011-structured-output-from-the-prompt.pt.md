@@ -75,7 +75,7 @@ Uma nova tentativa funciona melhor quando leva a falha junto: a resposta anterio
 
 Um prompt é um pedido. O modelo geralmente atende e às vezes não, então um loop de interpretar, validar e tentar de novo faz parte do projeto, não é um remendo.
 
-Alguns provedores oferecem impor o schema em vez disso. O recurso de saídas estruturadas da Anthropic recebe um schema JSON em `output_config.format` e devolve um JSON que corresponde a ele. Esse é um recurso de um único fornecedor, e é um mecanismo diferente de pedir: o schema restringe a geração. O lado de serviço dessa ideia é tratado em [Amostragem e decodificação restrita no momento do serviço](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
+Alguns provedores oferecem impor o schema em vez disso. O recurso de saídas estruturadas da Anthropic recebe um schema JSON em `output_config.format` e devolve um JSON que corresponde a ele. Esse é um recurso de um único fornecedor, e é um mecanismo diferente de pedir: o schema restringe a geração. O lado de serviço dessa ideia é tratado em [Amostragem e decodificação restrita no serving](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
 
 Mesmo assim, a mesma página lista casos em que a saída pode não corresponder: uma recusa, uma resposta cortada no limite de tokens e valores de enum cuja capitalização pode diferir. Portanto valide nos dois casos.
 

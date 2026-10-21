@@ -136,7 +136,7 @@ Dos razones: (1) El corpus es grande y cambia constantemente, así que reenviar 
 ## Para profundizar
 
 - [Paper: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-- [Lección 24: Contexto largo en el momento del serving](../../inference/lessons/0024-long-context-at-serve-time.md): qué hacen realmente las técnicas de contexto largo con el costo de serving, en lugar del costo de recuperación
+- [Lección 24: Contexto largo al servir](../../inference/lessons/0024-long-context-at-serve-time.md): qué hacen realmente las técnicas de contexto largo con el costo de serving, en lugar del costo de recuperación
 - [Recursos](../RESOURCES.md)
 
 ---

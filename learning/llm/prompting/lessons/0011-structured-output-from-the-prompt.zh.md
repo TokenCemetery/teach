@@ -75,7 +75,7 @@ flowchart TD
 
 提示词只是一个请求。模型通常会照做，偶尔不会，所以“解析、校验、重试”的循环是设计的一部分，而不是补丁。
 
-有些服务商提供强制执行 schema 的功能。Anthropic 的结构化输出功能在 `output_config.format` 中接收一个 JSON schema，并返回与之匹配的 JSON。这是一家厂商的功能，与单纯提出要求是不同的机制：schema 约束的是生成过程。这个思路在服务端的实现见[推理服务系列第 19 课：服务端的采样与约束解码](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md)。
+有些服务商提供强制执行 schema 的功能。Anthropic 的结构化输出功能在 `output_config.format` 中接收一个 JSON schema，并返回与之匹配的 JSON。这是一家厂商的功能，与单纯提出要求是不同的机制：schema 约束的是生成过程。这个思路在服务端的实现见[服务时的采样与约束解码](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md)。
 
 即便如此，同一页文档仍然列出了输出可能不匹配的情况：拒绝回答、在 token 上限处被截断的回复，以及大小写可能不同的枚举值。所以两种情况下都要校验。
 

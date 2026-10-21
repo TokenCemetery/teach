@@ -37,7 +37,7 @@ flowchart TD
 | 保证 | 没有，所以要验证并重试 | 大多数情况下与 schema 匹配 |
 | 仍需检查 | 一切 | 拒答、因 token 上限被截断的回复、枚举值的大小写 |
 
-强制在服务端的实现：[推理服务系列第 19 课：服务端的采样与约束解码](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md)。
+强制在服务端的实现：[服务时的采样与约束解码](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md)。
 
 ## 格式约束与推理
 

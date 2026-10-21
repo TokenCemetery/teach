@@ -37,7 +37,7 @@ flowchart TD
 | Гарантия | Нет, поэтому валидируйте и повторяйте | Соответствие схеме в большинстве случаев |
 | Что всё равно проверять | Всё | Отказы, ответы, обрезанные на лимите токенов, регистр значений enum |
 
-Серверная сторона принудительного вывода: [Sampling and Constrained Decoding at Serve Time](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
+Серверная сторона принудительного вывода: [Сэмплирование и ограниченное декодирование при обслуживании](../../inference/lessons/0019-sampling-and-constrained-decoding-at-serve-time.md).
 
 ## Ограничения формата и рассуждение
 

@@ -148,7 +148,7 @@ Triez les 30 par cause : fait manquant, instruction peu claire, sortie mal form√
 - [Liste de contr√¥le de relecture d'un prompt](../reference/prompt-review-checklist.md)
 - [Article : "Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs", Ovadia et al., 2023](https://arxiv.org/abs/2312.05934)
 - [Doc : "Prompt engineering overview", Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)
-- [Parcours fine-tuning par adaptateurs](../../finetuning/README.md)
+- [Parcours fine-tuning avec adapters](../../finetuning/README.md)
 - [Parcours RAG](../../rag/README.md)
 - [Ressources](../RESOURCES.md)
 

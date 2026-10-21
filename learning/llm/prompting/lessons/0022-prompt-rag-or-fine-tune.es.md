@@ -63,7 +63,7 @@ Para el caso de la recuperación, consulta el [track de RAG](../../rag/README.md
 
 ### El comportamiento a escala es donde el fine-tuning merece una mirada
 
-El [track de fine-tuning con adaptadores](../../finetuning/README.md) pone un mejor prompt en primer lugar entre las opciones y enumera el fine-tuning como lo que resuelve "comportamiento consistente, costo del prompt, suficiencia de un modelo pequeño", al costo de datos, evaluación y mantenimiento. Su propia lección 27 se titula "When Not to Fine-Tune" y dice que la mayoría de quienes quieren hacer fine-tuning tienen un problema que una opción anterior resuelve más rápido. Lee ese track antes de comprometerte, ya que es la autoridad sobre el lado del fine-tuning de esta elección.
+El [track de fine-tuning con adapters](../../finetuning/README.md) pone un mejor prompt en primer lugar entre las opciones y enumera el fine-tuning como lo que resuelve "comportamiento consistente, costo del prompt, suficiencia de un modelo pequeño", al costo de datos, evaluación y mantenimiento. Su propia lección 27 se titula "When Not to Fine-Tune" y dice que la mayoría de quienes quieren hacer fine-tuning tienen un problema que una opción anterior resuelve más rápido. Lee ese track antes de comprometerte, ya que es la autoridad sobre el lado del fine-tuning de esta elección.
 
 Las señales del lado del prompt que conviene registrar antes de ir allí:
 
@@ -148,7 +148,7 @@ Clasifica los 30 por causa: hecho que falta, instrucción poco clara, salida mal
 - [Lista de revisión de prompts](../reference/prompt-review-checklist.md)
 - [Paper: "Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs", Ovadia et al., 2023](https://arxiv.org/abs/2312.05934)
 - [Docs: "Prompt engineering overview", Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)
-- [track de fine-tuning con adaptadores](../../finetuning/README.md)
+- [track de fine-tuning con adapters](../../finetuning/README.md)
 - [track de RAG](../../rag/README.md)
 - [Recursos](../RESOURCES.md)
 

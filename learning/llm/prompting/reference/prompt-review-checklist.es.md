@@ -49,7 +49,7 @@ flowchart TD
     H -->|No| J[Measure again, or change model]
 ```
 
-La recuperación superó al fine-tuning no supervisado tanto para conocimiento nuevo como existente en [Ovadia et al.](https://arxiv.org/abs/2312.05934). Es un resultado sobre conocimiento, no sobre comportamiento. Consulta el [track de RAG](../../rag/README.md) y el [track de fine-tuning con adaptadores](../../finetuning/README.md). Ni la recuperación ni el fine-tuning eliminan la inyección de prompt, y la recuperación añade una vía indirecta.
+La recuperación superó al fine-tuning no supervisado tanto para conocimiento nuevo como existente en [Ovadia et al.](https://arxiv.org/abs/2312.05934). Es un resultado sobre conocimiento, no sobre comportamiento. Consulta el [track de RAG](../../rag/README.md) y el [track de fine-tuning con adapters](../../finetuning/README.md). Ni la recuperación ni el fine-tuning eliminan la inyección de prompt, y la recuperación añade una vía indirecta.
 
 ## Cambiar un prompt del que otros dependen
 

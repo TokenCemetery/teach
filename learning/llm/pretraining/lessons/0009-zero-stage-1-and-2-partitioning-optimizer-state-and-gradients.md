@@ -1,5 +1,5 @@
 ---
-title: 9. ZeRO Stage 1 and 2: Partitioning Optimizer State and Gradients
+title: "9. ZeRO Stage 1 and 2: Partitioning Optimizer State and Gradients"
 description: Removing data parallelism's redundant copies for free, before communication cost has to grow at all
 type: lesson
 ---

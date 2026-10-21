@@ -1,5 +1,5 @@
 ---
-title: 15. Mixed Precision at Scale: bfloat16 and Stochastic Rounding
+title: "15. Mixed Precision at Scale: bfloat16 and Stochastic Rounding"
 description: A numeric format with fp32's range but less precision, and what it costs to update parameters in it directly
 type: lesson
 ---

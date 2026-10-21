@@ -1,5 +1,5 @@
 ---
-title: 15. ACLs and Quotas: Authorization and Multi-Tenancy
+title: "15. ACLs and Quotas: Authorization and Multi-Tenancy"
 description: An authenticated principal still isn't authorized to do anything until an ACL says so, and a principal allowed to act still isn't protected from starving every other tenant of the cluster's capacity
 type: lesson
 ---

@@ -25,7 +25,9 @@ theme:
 # Corrects mkdocs-section-index: drops one false-positive warning so
 # `--strict` stays usable, stops the plugin folding the first page of a
 # section that has no overview page to fold, and keeps a folded page's own
-# front-matter title. See the docstrings in hooks.py.
+# front-matter title. Also fails `--strict` on front matter that is not
+# valid YAML, which MkDocs would otherwise render as page text. See the
+# docstrings in hooks.py.
 hooks:
   - hooks.py
 

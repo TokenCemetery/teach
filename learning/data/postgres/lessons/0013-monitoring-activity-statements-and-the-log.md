@@ -1,5 +1,5 @@
 ---
-title: 13. Monitoring: Activity, Statements, and the Log
+title: "13. Monitoring: Activity, Statements, and the Log"
 description: A live view of what every backend is doing right now, an aggregate view of what's actually costing the server the most over time, and a log that names exactly what a stuck query is blocked behind, are three different questions
 type: lesson
 ---

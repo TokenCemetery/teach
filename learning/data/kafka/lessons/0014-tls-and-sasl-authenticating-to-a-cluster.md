@@ -1,5 +1,5 @@
 ---
-title: 14. TLS and SASL: Authenticating to a Cluster
+title: "14. TLS and SASL: Authenticating to a Cluster"
 description: Encrypting the channel and authenticating the client are two separate jobs that security.protocol combines in one setting, and conflating them is where most confusion starts
 type: lesson
 ---

@@ -1,5 +1,5 @@
 ---
-title: 16. RLAIF: How Well AI Feedback Actually Matches Human Feedback
+title: "16. RLAIF: How Well AI Feedback Actually Matches Human Feedback"
 description: A model judging its own outputs, at its own size, still beat plain supervised fine-tuning
 type: lesson
 ---

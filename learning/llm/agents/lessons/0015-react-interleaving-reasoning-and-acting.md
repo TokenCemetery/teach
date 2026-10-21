@@ -1,5 +1,5 @@
 ---
-title: 15. ReAct: Interleaving Reasoning and Acting
+title: "15. ReAct: Interleaving Reasoning and Acting"
 description: Pattern of pairing short reasoning steps with each action, so the model can observe and adapt
 type: lesson
 ---

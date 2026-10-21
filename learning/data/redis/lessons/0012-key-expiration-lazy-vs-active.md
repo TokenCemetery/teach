@@ -1,5 +1,5 @@
 ---
-title: 12. Key Expiration: Lazy vs Active Expiry
+title: "12. Key Expiration: Lazy vs Active Expiry"
 description: Why a key's TTL reaching zero doesn't remove it from memory by itself, and the two mechanisms that eventually do
 type: lesson
 ---

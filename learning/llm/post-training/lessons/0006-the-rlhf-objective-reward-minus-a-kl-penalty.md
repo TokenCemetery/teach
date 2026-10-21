@@ -1,5 +1,5 @@
 ---
-title: 6. The RLHF Objective: Reward Minus a KL Penalty
+title: "6. The RLHF Objective: Reward Minus a KL Penalty"
 description: One term chases the reward model's score; a second term is the leash that keeps the policy from running off with it
 type: lesson
 ---

@@ -1,5 +1,5 @@
 ---
-title: 11. GRPO: Group-Relative Advantage Instead of a Value Function
+title: "11. GRPO: Group-Relative Advantage Instead of a Value Function"
 description: Sample several answers to the same question, and let the group's own spread of rewards say which ones were better
 type: lesson
 ---

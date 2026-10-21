@@ -86,7 +86,7 @@ flowchart LR
 
 ### यह कहाँ रुकता है
 
-यह उस prompt के लिए prompting technique है जिसे आप ख़ुद जोड़ते हैं, उन documents से जो आपके पास हैं। जब documents किसी retrieval चरण से आते हैं, तो कितने passages भेजने हैं और सही retrieval के बाद कौन-सी विफलताएँ बचती हैं जैसे अतिरिक्त सवाल retrieval track के हैं: [Generation from Retrieval](../../rag/reference/generation-from-retrieval.md) देखें।
+यह उस prompt के लिए prompting technique है जिसे आप ख़ुद जोड़ते हैं, उन documents से जो आपके पास हैं। जब documents किसी retrieval चरण से आते हैं, तो कितने passages भेजने हैं और सही retrieval के बाद कौन-सी विफलताएँ बचती हैं जैसे अतिरिक्त सवाल retrieval track के हैं: [Retrieval से Generation](../../rag/reference/generation-from-retrieval.md) देखें।
 
 Quote चरण output tokens की क़ीमत लेता है, और मार्गदर्शिका एक सिफ़ारिश है, हर task के लिए मापी हुई गारंटी नहीं। अगर यह मायने रखता है, तो अपने cases पर इसके साथ और इसके बिना उत्तरों की तुलना करें।
 
@@ -144,7 +144,7 @@ Quote गढ़ा गया या बदला गया था, इसलि�
 ## आगे बढ़ने के लिए
 
 - [Docs: "Prompting best practices", Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)
-- [Generation from Retrieval](../../rag/reference/generation-from-retrieval.md)
+- [Retrieval से Generation](../../rag/reference/generation-from-retrieval.md)
 - [Structured Output और लंबा Context](../reference/structured-output-and-long-context.md)
 - [संसाधन](../RESOURCES.md)
 

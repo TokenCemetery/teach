@@ -86,7 +86,7 @@ flowchart LR
 
 ### 它的适用边界
 
-这是一种提示词技巧，适用于你自己拼装的提示词，文档也在你手里。当文档来自检索步骤时，还会多出几个问题：该传入多少段文字，以及检索正确之后哪些失败仍然存在。这些属于检索那个系列：参见[检索后生成速查表](../../rag/reference/generation-from-retrieval.md)。
+这是一种提示词技巧，适用于你自己拼装的提示词，文档也在你手里。当文档来自检索步骤时，还会多出几个问题：该传入多少段文字，以及检索正确之后哪些失败仍然存在。这些属于检索那个系列：参见[基于检索的生成速查表](../../rag/reference/generation-from-retrieval.md)。
 
 引用这一步会消耗输出 token，而且这条指导是一个建议，不是对每项任务都实测过的保证。如果它很重要，就在你自己的案例上比较有这一步和没有这一步的答案。
 
@@ -144,7 +144,7 @@ b。文档说先引用有助于模型聚焦相关内容，而且引文可以对�
 ## 延伸阅读
 
 - [文档：“Prompting best practices”，Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)
-- [检索后生成速查表](../../rag/reference/generation-from-retrieval.md)
+- [基于检索的生成速查表](../../rag/reference/generation-from-retrieval.md)
 - [结构化输出与长上下文](../reference/structured-output-and-long-context.md)
 - [资源](../RESOURCES.md)
 

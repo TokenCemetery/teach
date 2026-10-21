@@ -29,7 +29,7 @@ LLM फ़ीचर के पीछे के prompts इस तरह लि�
 
 ## दायरे से बाहर
 
-- Retrieve किए गए context पर prompt बनाना और context-window का budget: [`llm/rag`](../../llm/rag/) और उसकी [generation-from-retrieval sheet](../../llm/rag/reference/generation-from-retrieval.md) देखें। यह track सामान्य prompting सिखाता है और retrieval के मामले के लिए वहाँ link करता है।
+- Retrieve किए गए context पर prompt बनाना और context-window का budget: [`llm/rag`](../../llm/rag/) और उसकी [Retrieval से Generation शीट](../../llm/rag/reference/generation-from-retrieval.md) देखें। यह track सामान्य prompting सिखाता है और retrieval के मामले के लिए वहाँ link करता है।
 - Prompt की सतह के रूप में tool descriptions, tools वाले agent में prompt injection, और concurrency में prompt caching: [`llm/agents`](../../llm/agents/) देखें। यह track बिना tools की prompting को कवर करता है और उन पाठों को दोहराने के बजाय link करता है।
 - Judge-prompt का डिज़ाइन और eval की methodology: [`llm/evals`](../../llm/evals/) और उसकी [go/no-go sheet](../../llm/evals/reference/go-no-go.md) देखें। यह track prompt में बदलाव मापने के लिए eval का इस्तेमाल करता है, eval बनाना नहीं सिखाता।
 - Constrained decoding, यानी structured output का serving वाला पक्ष: [`llm/inference`](../../llm/inference/) देखें। यह track prompt की ओर से structure माँगता है।

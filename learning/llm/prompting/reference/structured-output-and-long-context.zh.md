@@ -79,4 +79,4 @@ Then answer using only those quotes, in <answer> tags.
 ```
 
 - 用字符串搜索把每条引文与文档核对；引文找不到，说明回复没有依据。
-- 检索到的段落：[检索后生成速查表](../../rag/reference/generation-from-retrieval.md)。
+- 检索到的段落：[基于检索的生成速查表](../../rag/reference/generation-from-retrieval.md)。

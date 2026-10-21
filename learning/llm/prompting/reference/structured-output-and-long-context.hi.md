@@ -79,4 +79,4 @@ Then answer using only those quotes, in <answer> tags.
 ```
 
 - हर quote को documents के विरुद्ध string search से जाँचें; ग़ायब quote का मतलब है कि reply आधारित नहीं है।
-- Retrieve किए गए passages: [Generation from Retrieval](../../rag/reference/generation-from-retrieval.md)।
+- Retrieve किए गए passages: [Retrieval से Generation](../../rag/reference/generation-from-retrieval.md)।

@@ -59,11 +59,11 @@ Prompt सिर्फ़ उसे नए क्रम में रख सक�
 
 इसे इस्तेमाल करते समय दो सावधानियाँ। अध्ययन ज्ञान के लिए unsupervised fine-tuning के बारे में है, व्यवहार के लिए fine-tuning के बारे में नहीं, इसलिए वह यह नहीं कहता कि fine-tuning आम तौर पर बुरा उपाय है। और वह accuracy मापता है, इसलिए लागत पर चुप है, जहाँ बदलता data retrieval की ओर और झुकाव देता है: जो तथ्य हर हफ़्ते बदलता है उसका मतलब हर हफ़्ते दोबारा training होता।
 
-Retrieval के मामले के लिए, [RAG track](../../rag/README.md) और उसकी [generation-from-retrieval sheet](../../rag/reference/generation-from-retrieval.md) देखें।
+Retrieval के मामले के लिए, [RAG ट्रैक](../../rag/README.md) और उसकी [Retrieval से Generation शीट](../../rag/reference/generation-from-retrieval.md) देखें।
 
 ### बड़े पैमाने पर व्यवहार वह जगह है जहाँ fine-tuning पर नज़र डालना बनता है
 
-[Fine-tuning track](../../finetuning/README.md) विकल्पों में बेहतर prompt को पहले रखता है और fine-tuning को उस चीज़ के रूप में गिनाता है जो "consistent behaviour, prompt cost, small-model sufficiency" हल करती है, data, मूल्यांकन और रखरखाव की क़ीमत पर। उसका अपना पाठ 27 "When Not to Fine-Tune" शीर्षक का है और कहता है कि fine-tune करना चाहने वाले ज़्यादातर लोगों की समस्या को पहले का कोई विकल्प तेज़ी से हल कर देता है। प्रतिबद्ध होने से पहले वह track पढ़ें, क्योंकि इस चुनाव के fine-tuning वाले पक्ष का अधिकार वही है।
+[Fine-tuning ट्रैक](../../finetuning/README.md) विकल्पों में बेहतर prompt को पहले रखता है और fine-tuning को उस चीज़ के रूप में गिनाता है जो "consistent behaviour, prompt cost, small-model sufficiency" हल करती है, data, मूल्यांकन और रखरखाव की क़ीमत पर। उसका अपना पाठ 27 "When Not to Fine-Tune" शीर्षक का है और कहता है कि fine-tune करना चाहने वाले ज़्यादातर लोगों की समस्या को पहले का कोई विकल्प तेज़ी से हल कर देता है। प्रतिबद्ध होने से पहले वह track पढ़ें, क्योंकि इस चुनाव के fine-tuning वाले पक्ष का अधिकार वही है।
 
 वहाँ जाने से पहले दर्ज करने लायक prompt-पक्ष के संकेत:
 
@@ -148,8 +148,8 @@ b)। Ovadia et al. ने पाया कि retrieval ने मौजूद�
 - [Prompt Review Checklist](../reference/prompt-review-checklist.md)
 - [Paper: "Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs", Ovadia et al., 2023](https://arxiv.org/abs/2312.05934)
 - [Docs: "Prompt engineering overview", Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)
-- [Adapter Fine-Tuning track](../../finetuning/README.md)
-- [RAG track](../../rag/README.md)
+- [Adapter Fine-Tuning ट्रैक](../../finetuning/README.md)
+- [RAG ट्रैक](../../rag/README.md)
 - [संसाधन](../RESOURCES.md)
 
 ---

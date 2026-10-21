@@ -49,7 +49,7 @@ flowchart TD
     H -->|No| J[Measure again, or change model]
 ```
 
-[Ovadia et al.](https://arxiv.org/abs/2312.05934) में retrieval ने नए और मौजूदा ज्ञान, दोनों के लिए unsupervised fine-tuning को हराया। यह ज्ञान के बारे में नतीजा है, व्यवहार के बारे में नहीं। [RAG track](../../rag/README.md) और [fine-tuning track](../../finetuning/README.md) देखें। न retrieval और न fine-tuning prompt injection को हटाता है, और retrieval एक indirect रास्ता जोड़ता है।
+[Ovadia et al.](https://arxiv.org/abs/2312.05934) में retrieval ने नए और मौजूदा ज्ञान, दोनों के लिए unsupervised fine-tuning को हराया। यह ज्ञान के बारे में नतीजा है, व्यवहार के बारे में नहीं। [RAG ट्रैक](../../rag/README.md) और [Fine-tuning ट्रैक](../../finetuning/README.md) देखें। न retrieval और न fine-tuning prompt injection को हटाता है, और retrieval एक indirect रास्ता जोड़ता है।
 
 ## जिस prompt पर दूसरे निर्भर हैं उसे बदलना
 

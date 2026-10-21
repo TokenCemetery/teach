@@ -32,11 +32,11 @@ type: lesson
 
 ### 本课用到什么，不教什么
 
-本课应用的是评测系列的内容。如何对照噪声来解读差距，以及为什么成对比较是更锐利的工具，见[评测系列第 9 课：统计显著性与噪声](../../evals/lessons/0009-statistical-significance-vs-noise.md)和它的[通过与否速查表](../../evals/reference/go-no-go.md)。这里把它应用到两个提示词上。Anthropic 的评测构建指南也把与基线或早期版本对比列为一种标准方法。
+本课应用的是评测系列的内容。如何对照噪声来解读差距，以及为什么成对比较是更锐利的工具，见[评测系列第 9 课：统计显著性与噪声](../../evals/lessons/0009-statistical-significance-vs-noise.md)和它的[上线与否速查表](../../evals/reference/go-no-go.md)。这里把它应用到两个提示词上。Anthropic 的评测构建指南也把与基线或早期版本对比列为一种标准方法。
 
 ### 相同的用例，相同的模型，只有一处不同
 
-在同一个回归集、同一个固定的模型上运行提示词 A 和提示词 B，只改变提示词。记录每个用例的通过或失败，而不只是总数。如果由模型来给输出评分，要先校准这个评分器：[评测系列第 5 课：评判提示词的设计与校准](../../evals/lessons/0005-judge-prompt-design-and-calibration.md)。
+在同一个回归集、同一个固定的模型上运行提示词 A 和提示词 B，只改变提示词。记录每个用例的通过或失败，而不只是总数。如果由模型来给输出评分，要先校准这个评分器：[评测系列第 5 课：裁判提示词的设计与校准](../../evals/lessons/0005-judge-prompt-design-and-calibration.md)。
 
 ### 数一数分歧
 
@@ -123,7 +123,7 @@ flowchart LR
 ## 延伸阅读
 
 - [评测系列第 9 课：统计显著性与噪声](../../evals/lessons/0009-statistical-significance-vs-noise.md)
-- [通过与否速查表](../../evals/reference/go-no-go.md)
+- [上线与否速查表](../../evals/reference/go-no-go.md)
 - [文档：“Define success criteria and build evaluations”，Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 - [生产环境中的提示词](../reference/prompts-in-production.md)
 - [资源](../RESOURCES.md)

@@ -32,7 +32,7 @@ type: lesson
 
 ### Что этот урок использует и чему не учит
 
-Этот урок применяет трек про оценки. Как читать разрыв на фоне шума и почему парное сравнение является более острым инструмент, объясняет [урок 9 того трека](../../evals/lessons/0009-statistical-significance-vs-noise.md) и его [лист go/no-go](../../evals/reference/go-no-go.md). Здесь это применяется к двум промптам. Руководство Anthropic по построению оценок тоже называет стандартным методом сравнение с базовой или предыдущей версией.
+Этот урок применяет трек про оценки. Как читать разрыв на фоне шума и почему парное сравнение является более острым инструмент, объясняет [урок 9 того трека](../../evals/lessons/0009-statistical-significance-vs-noise.md) и его [шпаргалку «Выпускать или нет»](../../evals/reference/go-no-go.md). Здесь это применяется к двум промптам. Руководство Anthropic по построению оценок тоже называет стандартным методом сравнение с базовой или предыдущей версией.
 
 ### Те же случаи, та же модель, одно отличие
 
@@ -123,7 +123,7 @@ flowchart LR
 ## Что почитать дальше
 
 - [Урок 9 трека про оценки: Статистическая значимость и шум](../../evals/lessons/0009-statistical-significance-vs-noise.md)
-- [Go/No-Go](../../evals/reference/go-no-go.md)
+- [Выпускать или нет](../../evals/reference/go-no-go.md)
 - [Документация: «Define success criteria and build evaluations», Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 - [Промпты в продакшене](../reference/prompts-in-production.md)
 - [Ресурсы](../RESOURCES.md)

@@ -78,7 +78,7 @@ Agent और concurrency के मामले के लिए, [agents track 
 | Noise | A को A के सामने चलाएँ: वे असहमतियाँ शून्य से ज़्यादा temperature पर noise हैं |
 | अनिर्णायक | ज़्यादा runs या cases, या असहमतियों पर significance test |
 
-सांख्यिकी evals track की है: [go/no-go sheet](../../evals/reference/go-no-go.md)। अगर कोई model outputs को grade करता है, तो पहले उसे calibrate करें: [पाठ 5, judge-prompt का डिज़ाइन और calibration](../../evals/lessons/0005-judge-prompt-design-and-calibration.md)।
+सांख्यिकी evals track की है: [Go/No-Go शीट](../../evals/reference/go-no-go.md)। अगर कोई model outputs को grade करता है, तो पहले उसे calibrate करें: [पाठ 5, judge-prompt का डिज़ाइन और calibration](../../evals/lessons/0005-judge-prompt-design-and-calibration.md)।
 
 ## स्रोत
 

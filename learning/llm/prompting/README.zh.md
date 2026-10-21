@@ -31,7 +31,7 @@ type: topic
 
 - 基于检索到的上下文构造提示词，以及上下文窗口的预算：见 [`llm/rag`](../../llm/rag/) 及其[基于检索的生成速查表](../../llm/rag/reference/generation-from-retrieval.md)。本系列讲通用的提示词工程，涉及检索的情形则链接到那里。
 - 作为提示词一部分的工具描述、带工具的智能体中的提示词注入，以及并发下的提示词缓存：见 [`llm/agents`](../../llm/agents/)。本系列只讲不带工具的提示词，并链接到那些课程，而不重复其内容。
-- 评判提示词（judge prompt）的设计与评测方法：见 [`llm/evals`](../../llm/evals/) 及其[通过与否速查表](../../llm/evals/reference/go-no-go.md)。本系列用评测来衡量提示词改动，不教如何构建评测。
+- 评判提示词（judge prompt）的设计与评测方法：见 [`llm/evals`](../../llm/evals/) 及其[上线与否速查表](../../llm/evals/reference/go-no-go.md)。本系列用评测来衡量提示词改动，不教如何构建评测。
 - 约束解码，即结构化输出在服务端的实现：见 [`llm/inference`](../../llm/inference/)。本系列从提示词一侧去要求结构。
 - 指令遵循和推理能力是如何训练进模型的：见 [`llm/post-training`](../../llm/post-training/)。本系列讲如何从外部使用它们。
 

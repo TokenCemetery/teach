@@ -78,7 +78,7 @@ flowchart LR
 | 噪声 | 让 A 与 A 对比：在温度不为零时，这些不一致就是噪声 |
 | 无定论 | 增加运行次数或用例，或对这些不一致做显著性检验 |
 
-统计方法属于评测课程：[通过与否速查表](../../evals/reference/go-no-go.md)。如果由模型给输出打分，先校准它：[评测系列第 5 课：评判提示词的设计与校准](../../evals/lessons/0005-judge-prompt-design-and-calibration.md)。
+统计方法属于评测课程：[上线与否速查表](../../evals/reference/go-no-go.md)。如果由模型给输出打分，先校准它：[评测系列第 5 课：裁判提示词的设计与校准](../../evals/lessons/0005-judge-prompt-design-and-calibration.md)。
 
 ## 来源
 

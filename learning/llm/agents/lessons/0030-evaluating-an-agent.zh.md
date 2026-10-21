@@ -58,7 +58,7 @@ type: lesson
 
 ### 交给更深入的内容
 
-本课给你的是词汇：结果与轨迹、pass^k、任务成功。构建智能体评测的完整讲解，见 llm/evals 系列的第 13 课“评估智能体与工具使用”。那一课涵盖指标、评判者的设计、如何构建留出的测试集、统计显著性意味着什么，以及如何避免不小心评估了错误的东西。本系列的任务，只是确保你一开始就知道该衡量什么。读本课了解这些概念；读 llm/evals 的第 13 课了解深入的内容。
+本课给你的是词汇：结果与轨迹、pass^k、任务成功。构建智能体评测的完整讲解，见 llm/evals 系列的第 13 课“评测智能体与工具使用”。那一课涵盖指标、评判者的设计、如何构建留出的测试集、统计显著性意味着什么，以及如何避免不小心评估了错误的东西。本系列的任务，只是确保你一开始就知道该衡量什么。读本课了解这些概念；读 llm/evals 的第 13 课了解深入的内容。
 
 ## 练习
 
@@ -115,7 +115,7 @@ type: lesson
 
 ## 延伸阅读
 
-- [评测系列第 13 课：评估智能体与工具使用](../../evals/lessons/0013-evaluating-agents-and-tool-use.md)
+- [评测系列第 13 课：评测智能体与工具使用](../../evals/lessons/0013-evaluating-agents-and-tool-use.md)
 - [论文：“tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains”，Yao 等，2024](https://arxiv.org/abs/2406.12045)
 - [资源](../RESOURCES.md)
 

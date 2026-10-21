@@ -32,7 +32,7 @@ type: lesson
 
 ### यह पाठ क्या इस्तेमाल करता है, और क्या नहीं सिखाता
 
-यह पाठ evals track को लागू करता है। अंतर को उसके noise के सामने कैसे पढ़ें, और paired comparison ज़्यादा तेज़ औज़ार क्यों है, यह [उस track का पाठ 9](../../evals/lessons/0009-statistical-significance-vs-noise.md) और उसकी [go/no-go sheet](../../evals/reference/go-no-go.md) है। यहाँ उसे दो prompts पर लागू किया गया है। Evaluations बनाने पर Anthropic की गाइड भी baseline या पहले के version से तुलना को एक मानक विधि के रूप में गिनाती है।
+यह पाठ evals track को लागू करता है। अंतर को उसके noise के सामने कैसे पढ़ें, और paired comparison ज़्यादा तेज़ औज़ार क्यों है, यह [उस track का पाठ 9](../../evals/lessons/0009-statistical-significance-vs-noise.md) और उसकी [Go/No-Go शीट](../../evals/reference/go-no-go.md) है। यहाँ उसे दो prompts पर लागू किया गया है। Evaluations बनाने पर Anthropic की गाइड भी baseline या पहले के version से तुलना को एक मानक विधि के रूप में गिनाती है।
 
 ### वही cases, वही model, एक फ़र्क़
 

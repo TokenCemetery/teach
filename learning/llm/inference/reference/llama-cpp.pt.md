@@ -22,7 +22,7 @@ O GGUF carrega a família de quantização própria do llama.cpp, separada de GP
 |---|---|
 | `Q4` | Largura de bits: aproximadamente 4 bits por peso (também `Q5`, `Q8` e outros) |
 | `K` | Um tipo **k-quant**: uma largura de bits por tensor, com super-blocos de 256 pesos cujos sub-blocos carregam, cada um, a sua própria escala |
-| `M` | A receita que mistura tipos entre tensores, dando a alguns tensores um tipo de mais bits: `S` (small), `M` (medium), `L` (large). Veja a [folha Measuring and Storing da trilha de quantização](../../quantization/reference/measuring-and-storing.md) |
+| `M` | A receita que mistura tipos entre tensores, dando a alguns tensores um tipo de mais bits: `S` (small), `M` (medium), `L` (large). Veja a [folha Medindo e Armazenando da trilha de quantização](../../quantization/reference/measuring-and-storing.md) |
 
 ## ggml: uma base de código, vários backends
 

@@ -15,7 +15,7 @@ Posez les questions dans cet ordre. Chaque question écarte des options avant la
 | # | Question | Si oui | Si non |
 |---|---|---|---|
 | 1 | Le modèle tient-il dans le budget tel quel ? | Le laisser tel quel | Continuer |
-| 2 | Le quantifier tient-il dans le budget et atteint-il la barre de qualité ? | Quantifier, puis mesurer par rapport à l'original ([liste de contrôle de relecture de la quantification](../../quantization/reference/quantization-review-checklist.md)) | Continuer |
+| 2 | Le quantifier tient-il dans le budget et atteint-il la barre de qualité ? | Quantifier, puis mesurer par rapport à l'original ([liste de contrôle de relecture d'une quantification](../../quantization/reference/quantization-review-checklist.md)) | Continuer |
 | 3 | Existe-t-il un enseignant nettement meilleur qu'un petit modèle sur votre tâche, et avez-vous le droit d'entraîner sur ses sorties ? | Continuer | Faire le fine-tuning d'un petit modèle sur vos données de tâche ([parcours de fine-tuning](../../finetuning/)) |
 | 4 | Y a-t-il beaucoup de bonnes données de tâche ? | Entraîner directement le petit modèle comme référence, ne distiller que si l'enseignant le bat | Distiller, avec le coût de l'enseignant compté |
 | 5 | Encore trop gros ? | Quantifier le gagnant et mesurer l'empilement | Terminé |
@@ -87,7 +87,7 @@ Dites aussi ce qui est bien et doit rester. Une relecture qui ne liste que des f
 | L'élève peut l'absorber | La tâche exige une connaissance qu'il ne peut pas contenir | Gudibande et al. |
 | Fine-tuning sur les sorties de l'enseignant | L'entraînement on-policy fait mieux | Agarwal et al., sections 4.1 et 4.3 |
 | La KL directe est standard | La métrique est la qualité de suivi d'instructions, pas la loss sur du texte | Busbridge et al., tableau 7, Minitron, tableau 16, MiniLLM, Agarwal et al., section 4.4 |
-| Distiller, pas quantifier | La quantification tient dans le budget | [Liste de contrôle de relecture de la quantification](../../quantization/reference/quantization-review-checklist.md) |
+| Distiller, pas quantifier | La quantification tient dans le budget | [Liste de contrôle de relecture d'une quantification](../../quantization/reference/quantization-review-checklist.md) |
 
 ## Trancher un différend à partir de la source
 

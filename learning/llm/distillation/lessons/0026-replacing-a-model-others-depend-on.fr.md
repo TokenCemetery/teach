@@ -81,7 +81,7 @@ Le trafic en shadow donne des entrées réelles sans exposer aucun utilisateur a
 
 Quatre habitudes rendent le déploiement sûr. Fixer chaque barrière avant le début de l'étape, comme le dit la fiche Go/No-Go. Garder l'enseignant déployable jusqu'à ce que le canary ait vu le trafic qui vous importe, pour que le retour en arrière soit un changement de configuration. Versionner ensemble le checkpoint, le gabarit de prompt, les réglages de décodage et la pile de service, parce qu'un élève n'est reproductible que sous forme de ce lot. Nommer un responsable qui peut dire stop.
 
-Les étapes de déploiement du parcours de quantification sont la même séquence pour un autre changement, avec une référence épinglée et du shadow avant le canary : voir sa [liste de contrôle de relecture de la quantification](../../quantization/reference/quantization-review-checklist.md). Ce qui diffère pour un élève, c'est que le modèle est un autre jeu de poids, si bien que le désaccord avec l'enseignant est plus grand et que les tests des dépendants comptent davantage.
+Les étapes de déploiement du parcours de quantification sont la même séquence pour un autre changement, avec une référence épinglée et du shadow avant le canary : voir sa [liste de contrôle de relecture d'une quantification](../../quantization/reference/quantization-review-checklist.md). Ce qui diffère pour un élève, c'est que le modèle est un autre jeu de poids, si bien que le désaccord avec l'enseignant est plus grand et que les tests des dépendants comptent davantage.
 
 ### Prévenir ceux qui dépendent de vous
 
@@ -156,7 +156,7 @@ Les dépendants dont les entrées diffèrent de ces prompts : une autre langue, 
 
 - [Liste de contrôle de relecture d'une distillation](../reference/distillation-review-checklist.md)
 - [Evals : Go/No-Go](../../evals/reference/go-no-go.md)
-- [Liste de contrôle de relecture de la quantification](../../quantization/reference/quantization-review-checklist.md)
+- [Liste de contrôle de relecture d'une quantification](../../quantization/reference/quantization-review-checklist.md)
 - [Article : "Does Knowledge Distillation Really Work?", Stanton et al., 2021](https://arxiv.org/abs/2106.05945)
 - [Article : "The False Promise of Imitating Proprietary LLMs", Gudibande et al., 2023](https://arxiv.org/abs/2305.15717)
 - [Article : "MiniLLM: On-Policy Distillation of Large Language Models", Gu et al., 2023](https://arxiv.org/abs/2306.08543)

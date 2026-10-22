@@ -48,7 +48,7 @@ Vous avez un modèle qui fait la tâche mais coûte trop cher à exécuter. Troi
 | Distiller | Moins de paramètres, entraînés à imiter un enseignant | Un enseignant que vous avez le droit d'utiliser, des données, du calcul d'entraînement | Un élève qui copie le style plus vite que la capacité (leçon 18) |
 | Fine-tuning d'un petit modèle | Moins de paramètres, entraînés sur les seules données de la tâche | De bonnes données de tâche, du calcul d'entraînement | Un petit modèle qui ne voit jamais ce que sait un plus grand |
 
-La quantification est la moins chère à essayer. La quantification post-entraînement n'exige aucun run d'entraînement, c'est donc la première question quand le modèle tient presque. Le parcours de quantification garde sa propre [liste de contrôle de relecture de la quantification](../../quantization/reference/quantization-review-checklist.md) pour cette branche, y compris la règle de rester en bf16 quand cela tient déjà dans le budget.
+La quantification est la moins chère à essayer. La quantification post-entraînement n'exige aucun run d'entraînement, c'est donc la première question quand le modèle tient presque. Le parcours de quantification garde sa propre [liste de contrôle de relecture d'une quantification](../../quantization/reference/quantization-review-checklist.md) pour cette branche, y compris la règle de rester en bf16 quand cela tient déjà dans le budget.
 
 Les deux autres partent toutes deux d'une architecture plus petite. Elles diffèrent par ce dont apprend le petit modèle : les sorties de l'enseignant, ou vos données de tâche.
 
@@ -162,7 +162,7 @@ La leçon 13 décide si vous en avez le droit : les conditions du fournisseur pe
 ## Pour aller plus loin
 
 - [Liste de contrôle de relecture d'une distillation](../reference/distillation-review-checklist.md)
-- [Liste de contrôle de relecture de la quantification](../../quantization/reference/quantization-review-checklist.md)
+- [Liste de contrôle de relecture d'une quantification](../../quantization/reference/quantization-review-checklist.md)
 - [Article : "Distillation Scaling Laws", Busbridge et al., 2025](https://arxiv.org/abs/2502.08606)
 - [Article : "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning", DeepSeek-AI, 2025](https://arxiv.org/abs/2501.12948)
 - [Article : "Compact Language Models via Pruning and Knowledge Distillation", Muralidharan et al., 2024](https://arxiv.org/abs/2407.14679)

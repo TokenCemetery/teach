@@ -22,7 +22,7 @@ GGUF llama.cpp का अपना quantization परिवार ढोता 
 |---|---|
 | `Q4` | Bit width: लगभग 4 bits प्रति weight (`Q5`, `Q8` और दूसरे भी) |
 | `K` | **k-quant** प्रकार: प्रति tensor एक bit width, 256 weights के super-blocks के साथ जिनके हर sub-block का अपना scale होता है |
-| `M` | वह नुस्ख़ा जो tensors में प्रकार मिलाता है, कुछ tensors को ऊँची-bit का प्रकार देता है: `S` (छोटा), `M` (मध्यम), `L` (बड़ा)। देखें [quantization ट्रैक की मापना और सहेजना शीट](../../quantization/reference/measuring-and-storing.md) |
+| `M` | वह नुस्ख़ा जो tensors में प्रकार मिलाता है, कुछ tensors को ऊँची-bit का प्रकार देता है: `S` (छोटा), `M` (मध्यम), `L` (बड़ा)। देखें [quantization ट्रैक की मापना और Store करना शीट](../../quantization/reference/measuring-and-storing.md) |
 
 ## ggml: एक codebase, कई backends
 

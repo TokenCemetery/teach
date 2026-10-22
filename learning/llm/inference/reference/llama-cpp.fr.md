@@ -22,7 +22,7 @@ GGUF porte la propre famille de quantification de llama.cpp, distincte de GPTQ e
 |---|---|
 | `Q4` | Largeur de bits : à peu près 4 bits par poids (aussi `Q5`, `Q8` et d'autres) |
 | `K` | Un type **k-quant** : une largeur de bits par tenseur, avec des super-blocs de 256 poids dont les sous-blocs portent chacun leur propre échelle |
-| `M` | La recette qui mélange les types selon les tenseurs, en donnant à certains tenseurs un type à plus de bits : `S` (small), `M` (medium), `L` (large). Voir [la fiche Measuring and Storing du parcours sur la quantification](../../quantization/reference/measuring-and-storing.md) |
+| `M` | La recette qui mélange les types selon les tenseurs, en donnant à certains tenseurs un type à plus de bits : `S` (small), `M` (medium), `L` (large). Voir [la fiche Mesurer et stocker du parcours sur la quantification](../../quantization/reference/measuring-and-storing.md) |
 
 ## ggml : une base de code, de nombreux backends
 

@@ -84,7 +84,7 @@ Said plainly: a single agent with better tools, a longer context, and more turns
 
 <details markdown="1"><summary>Check</summary>
 
-This is a trap. In most circumstances, Option B costs more in tokens because you are paying the full agent cost three times, plus orchestrator overhead. Option B's token cost becomes cheaper than Option A only if the specialization gain is enormous, or if the three workers can each finish so quickly (fewer turns) that 3x cheap beats 1x expensive. More likely: Option A (one agent with multiple tools) is more expensive in tokens than either option, because the single agent has to deliberate about which tool to use. Option B could beat Option C (a slower agent) but rarely beats a single agent of equal quality and tool access. The trade-off is wall-clock time (Option B is faster due to parallelism) vs. tokens (Option A is cheaper). You choose Option B for speed, not cost.
+This is a trap. In most circumstances, Option B costs more in tokens: you pay for three full agent runs plus the orchestrator's overhead, as in this lesson's example of 26,000 tokens against 10,000. Option B becomes cheaper only in a narrow case: the three sub-tasks are truly independent, and each is so much simpler than the whole question that the three workers and the orchestrator together use fewer tokens than the single agent (for example, three workers at 2,500 tokens each plus a 2,000-token orchestrator, 9,500 in total, against a single agent at 10,000). That happens only when the single agent wastes many turns on the combined problem. Otherwise Option A is cheaper. The trade-off is wall-clock time (Option B is faster due to parallelism) vs. tokens (Option A is cheaper). You choose Option B for speed, not cost.
 
 </details>
 

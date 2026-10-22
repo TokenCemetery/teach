@@ -105,7 +105,7 @@ flowchart LR
 
 <details markdown="1"><summary>जाँचें</summary>
 
-नहीं। मिली हुई standard error लगभग 0.067 है, इसलिए 0.06 का फ़ासला एक standard error से छोटा है। यह इसका सबूत नहीं कि student बेहतर नहीं है, बस यह कि 100 items नहीं बता सकते। फ़ासला पढ़ने से पहले ज़्यादा items या उन्हीं items पर paired comparison इस्तेमाल करें, जैसा go/no-go शीट बताती है।
+नहीं। मिली हुई standard error लगभग 0.068 है, इसलिए 0.06 का फ़ासला एक standard error से छोटा है। यह इसका सबूत नहीं कि student बेहतर नहीं है, बस यह कि 100 items नहीं बता सकते। फ़ासला पढ़ने से पहले ज़्यादा items या उन्हीं items पर paired comparison इस्तेमाल करें, जैसा go/no-go शीट बताती है।
 
 </details>
 

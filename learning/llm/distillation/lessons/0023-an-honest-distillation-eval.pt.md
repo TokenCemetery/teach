@@ -105,7 +105,7 @@ Combine os dois erros padrão como a raiz quadrada da soma dos seus quadrados e 
 
 <details markdown="1"><summary>Verificação</summary>
 
-Não. O erro padrão combinado é cerca de 0,067, então a diferença de 0,06 é menor do que um erro padrão. Isso não é evidência de que o aluno não é melhor, apenas de que 100 itens não conseguem dizer. Use mais itens ou uma comparação pareada nos mesmos itens, como a folha de go/no-go descreve, antes de ler a diferença.
+Não. O erro padrão combinado é cerca de 0,068, então a diferença de 0,06 é menor do que um erro padrão. Isso não é evidência de que o aluno não é melhor, apenas de que 100 itens não conseguem dizer. Use mais itens ou uma comparação pareada nos mesmos itens, como a folha de go/no-go descreve, antes de ler a diferença.
 
 </details>
 

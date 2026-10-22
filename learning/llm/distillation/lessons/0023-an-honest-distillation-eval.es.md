@@ -105,7 +105,7 @@ Combina los dos errores estándar como la raíz cuadrada de la suma de sus cuadr
 
 <details markdown="1"><summary>Comprobación</summary>
 
-No. El error estándar combinado es de unos 0.067, así que la brecha de 0.06 es menor que un error estándar. Eso no es evidencia de que el estudiante no sea mejor, solo de que 100 elementos no pueden decirlo. Usa más elementos o una comparación pareada sobre los mismos elementos, como describe la hoja de go/no-go, antes de leer la brecha.
+No. El error estándar combinado es de unos 0.068, así que la brecha de 0.06 es menor que un error estándar. Eso no es evidencia de que el estudiante no sea mejor, solo de que 100 elementos no pueden decirlo. Usa más elementos o una comparación pareada sobre los mismos elementos, como describe la hoja de go/no-go, antes de leer la brecha.
 
 </details>
 

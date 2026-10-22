@@ -54,7 +54,7 @@ El ajuste es bueno dentro del rango estudiado: un error relativo de predicción 
 
 La conclusión del paper es condicional, y las condiciones son el contenido de esta lección. La destilación no puede alcanzar una entropía cruzada menor que el aprendizaje supervisado cuando a ambos se les da suficientes datos o cómputo. Es más eficiente que el aprendizaje supervisado cuando se cumplen ambas cosas (sección 1):
 
-1. El cómputo o los tokens totales usados para el estudiante no superan un umbral que depende del tamaño del estudiante, dado por la ley de escalado (sección 5.1).
+1. El cómputo o los tokens totales usados para el estudiante no superan un umbral que depende del tamaño del estudiante, dado por la ley de escalado (sección 5.1; la sección 5.3 muestra que ese umbral crece con el tamaño del estudiante).
 2. Ya existe un profesor, o el profesor que se va a entrenar tiene usos más allá de una única destilación (sección 5.3).
 
 La segunda condición trata del dinero que ya has gastado. La sección 5.3 enuncia directamente el otro lado: cuando el entrenamiento del profesor se cuenta en el presupuesto, la mejor pérdida del estudiante es siempre peor que el resultado supervisado, así que si quieres un modelo de un tamaño y no tienes profesor, entrena el modelo directamente. Si pretendes destilar una familia de modelos, o el profesor además atiende tráfico, la destilación puede ser más barata.

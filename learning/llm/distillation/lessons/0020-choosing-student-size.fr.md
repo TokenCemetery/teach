@@ -54,7 +54,7 @@ L'ajustement est bon dans la plage étudiée : erreur de prédiction relative d'
 
 La conclusion de l'article est conditionnelle, et les conditions sont le contenu de cette leçon. La distillation ne peut pas atteindre une entropie croisée plus basse que l'apprentissage supervisé quand les deux disposent d'assez de données ou de calcul. Elle est plus efficace que l'apprentissage supervisé quand ces deux conditions tiennent (section 1) :
 
-1. Le calcul total ou les tokens utilisés pour l'élève ne dépassent pas un seuil qui dépend de la taille de l'élève, donné par la loi d'échelle (section 5.1).
+1. Le calcul total ou les tokens utilisés pour l'élève ne dépassent pas un seuil qui dépend de la taille de l'élève, donné par la loi d'échelle (section 5.1 ; la section 5.3 montre que ce seuil croît avec la taille de l'élève).
 2. Un enseignant existe déjà, ou l'enseignant à entraîner a des usages au-delà d'une seule distillation (section 5.3).
 
 La seconde condition concerne de l'argent déjà dépensé. La section 5.3 énonce directement l'autre côté : quand l'entraînement de l'enseignant est compté dans le budget, la meilleure loss d'élève est toujours pire que le résultat supervisé, donc si vous voulez un seul modèle d'une seule taille et n'avez pas d'enseignant, entraînez le modèle directement. Si vous comptez distiller une famille de modèles, ou si l'enseignant sert aussi du trafic, la distillation peut être moins chère.

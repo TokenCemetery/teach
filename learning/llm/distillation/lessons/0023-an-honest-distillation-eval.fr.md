@@ -105,7 +105,7 @@ Combinez les deux erreurs standard comme la racine carrée de la somme de leurs 
 
 <details markdown="1"><summary>Vérifier</summary>
 
-Non. L'erreur standard combinée est d'environ 0.067, donc l'écart de 0.06 est plus petit qu'une erreur standard. Ce n'est pas la preuve que l'élève n'est pas meilleur, seulement que 100 éléments ne permettent pas de trancher. Utilisez plus d'éléments ou une comparaison appariée sur les mêmes éléments, comme la décrit la fiche Go/No-Go, avant de lire l'écart.
+Non. L'erreur standard combinée est d'environ 0.068, donc l'écart de 0.06 est plus petit qu'une erreur standard. Ce n'est pas la preuve que l'élève n'est pas meilleur, seulement que 100 éléments ne permettent pas de trancher. Utilisez plus d'éléments ou une comparaison appariée sur les mêmes éléments, comme la décrit la fiche Go/No-Go, avant de lire l'écart.
 
 </details>
 

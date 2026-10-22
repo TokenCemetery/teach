@@ -54,7 +54,7 @@ Fit अध्ययन किए गए दायरे के भीतर अ�
 
 पेपर का निष्कर्ष सशर्त है, और शर्तें ही इस पाठ की सामग्री हैं। जब दोनों को पर्याप्त data या compute दिया जाए तो distillation, supervised learning से कम cross-entropy तक नहीं पहुँच सकता। वह supervised learning से ज़्यादा कुशल तब है जब ये दोनों सच हों (section 1):
 
-1. Student के लिए इस्तेमाल हुआ कुल compute या tokens उस threshold से बड़ा न हो जो student के आकार पर निर्भर है और scaling law से मिलती है (section 5.1)।
+1. Student के लिए इस्तेमाल हुआ कुल compute या tokens उस threshold से बड़ा न हो जो student के आकार पर निर्भर है और scaling law से मिलती है (section 5.1; section 5.3 दिखाता है कि यह threshold student के आकार के साथ बढ़ती है)।
 2. कोई teacher पहले से मौजूद है, या जिस teacher को train करना है उसके एक अकेले distillation से परे उपयोग हैं (section 5.3)।
 
 दूसरी शर्त उस पैसे के बारे में है जो आप पहले ही ख़र्च कर चुके हैं। Section 5.3 दूसरा पक्ष सीधे कहता है: जब teacher की training बजट में गिनी जाए, तो student का सबसे अच्छा loss हमेशा supervised नतीजे से बदतर होता है, इसलिए अगर आपको एक आकार का एक model चाहिए और आपके पास teacher नहीं है, तो model को सीधे train करें। अगर आप models का परिवार distil करना चाहते हैं, या teacher traffic भी सँभालता है, तो distillation सस्ता हो सकता है।

@@ -54,7 +54,7 @@ O ajuste é bom dentro da faixa estudada: erro relativo de previsão de cerca de
 
 A conclusão do artigo é condicional, e as condições são o conteúdo desta lição. A destilação não consegue chegar a uma cross-entropy menor do que o aprendizado supervisionado quando ambos recebem dados ou compute suficientes. Ela é mais eficiente do que o aprendizado supervisionado quando ambas as condições a seguir valem (seção 1):
 
-1. O compute total ou os tokens usados para o aluno não são maiores do que um limiar que depende do tamanho do aluno, dado pela lei de escala (seção 5.1).
+1. O compute total ou os tokens usados para o aluno não são maiores do que um limiar que depende do tamanho do aluno, dado pela lei de escala (seção 5.1; a seção 5.3 mostra esse limiar crescendo com o tamanho do aluno).
 2. Já existe um professor, ou o professor a ser treinado tem usos além de uma única destilação (seção 5.3).
 
 A segunda condição é sobre dinheiro que você já gastou. A seção 5.3 enuncia o outro lado diretamente: quando o treinamento do professor é contado no orçamento, a melhor loss do aluno é sempre pior do que o resultado supervisionado, então, se você quer um modelo de um tamanho e não tem professor, treine o modelo diretamente. Se você pretende destilar uma família de modelos, ou o professor também atende tráfego, a destilação pode ser mais barata.

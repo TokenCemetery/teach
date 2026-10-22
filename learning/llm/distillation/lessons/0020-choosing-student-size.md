@@ -54,7 +54,7 @@ The fit is good inside the range studied: relative prediction error of about 1% 
 
 The paper's conclusion is conditional, and the conditions are the content of this lesson. Distillation cannot reach a lower cross-entropy than supervised learning when both are given enough data or compute. It is more efficient than supervised learning when both of these hold (section 1):
 
-1. The total compute or tokens used for the student is not larger than a threshold that depends on student size, given by the scaling law (section 5.1).
+1. The total compute or tokens used for the student is not larger than a threshold that depends on student size, given by the scaling law (section 5.1; section 5.3 shows that threshold growing with student size).
 2. A teacher already exists, or the teacher to be trained has uses beyond a single distillation (section 5.3).
 
 The second condition is about money you have already spent. Section 5.3 states the other side directly: when teacher training is counted in the budget, the best student loss is always worse than the supervised result, so if you want one model of one size and have no teacher, train the model directly. If you intend to distil a family of models, or the teacher also serves traffic, distillation may be cheaper.

@@ -105,7 +105,7 @@ Combine the two standard errors as the square root of the sum of their squares, 
 
 <details markdown="1"><summary>Check</summary>
 
-No. The combined standard error is about 0.067, so the 0.06 gap is smaller than one standard error. That is not evidence that the student is no better, only that 100 items cannot tell. Use more items or a paired comparison on the same items, as the go/no-go sheet describes, before reading the gap.
+No. The combined standard error is about 0.068, so the 0.06 gap is smaller than one standard error. That is not evidence that the student is no better, only that 100 items cannot tell. Use more items or a paired comparison on the same items, as the go/no-go sheet describes, before reading the gap.
 
 </details>
 

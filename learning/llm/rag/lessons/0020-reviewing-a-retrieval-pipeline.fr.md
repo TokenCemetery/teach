@@ -129,7 +129,7 @@ Deux raisons : (1) Le corpus est grand et change constamment, donc renvoyer tous
 
 ## Exercices en situation réelle
 
-- [ ] Trouvez un pipeline de récupération que vous avez construit ou relu. Parcourez-lui les cinq questions de la liste de contrôle. Pour chaque étape, écrivez une phrase : ce choix a-t-il été mesuré par rapport à une métrique de récupération, ou retenu par défaut ? Demandez-vous ensuite : que changeriez-vous si vous deviez l'améliorer ?
+- [ ] Trouvez un pipeline de récupération que vous avez construit ou relu. Parcourez-lui les six questions de la liste de contrôle. Pour chaque étape, écrivez une phrase : ce choix a-t-il été mesuré par rapport à une métrique de récupération, ou retenu par défaut ? Demandez-vous ensuite : que changeriez-vous si vous deviez l'améliorer ?
 - [ ] Choisissez un corpus (le vôtre, un corpus public que vous connaissez, ou un corpus synthétique). Appliquez le cadre en trois questions : taille du corpus et fréquence de mise à jour, forme des requêtes, coût réel d'un renvoi complet par rapport à la récupération. Notez la réponse : la récupération ou le long contexte conviendrait-il le mieux, et pourquoi ?
 - [ ] Demain : lisez la section des résultats de l'article « Lost in the Middle » et notez l'écart de performance précis entre l'information au début, au milieu et à la fin d'un contexte de 4K tokens. Estimez ensuite : si la forme de vos requêtes exigeait une synthèse sur 100 documents, combien tiendraient dans les zones de « haute qualité » du début et de la fin ?
 

@@ -129,7 +129,7 @@ Dois motivos: (1) O corpus é grande e muda o tempo todo, então reenviar todos 
 
 ## Prática no mundo real
 
-- [ ] Encontre um pipeline de recuperação que você construiu ou revisou. Percorra contra ele as cinco perguntas do checklist. Para cada etapa, escreva uma frase: essa escolha foi medida contra uma métrica de recuperação, ou escolhida por padrão? Depois pergunte: o que você mudaria se tivesse de melhorá-lo?
+- [ ] Encontre um pipeline de recuperação que você construiu ou revisou. Percorra contra ele as seis perguntas do checklist. Para cada etapa, escreva uma frase: essa escolha foi medida contra uma métrica de recuperação, ou escolhida por padrão? Depois pergunte: o que você mudaria se tivesse de melhorá-lo?
 - [ ] Escolha um corpus (o seu, um público que você conheça ou um sintético). Resolva o framework de três perguntas: tamanho do corpus e frequência de atualização, padrão de consultas, custo real de reenviá-lo inteiro contra a recuperação. Anote a resposta: a recuperação ou o contexto longo seria o melhor ajuste, e por quê?
 - [ ] Amanhã: leia a seção de resultados do artigo "Lost in the Middle" e anote a diferença específica de desempenho entre a informação no início, no meio e no fim de um contexto de 4K tokens. Depois estime: se o seu padrão de consultas precisasse de síntese sobre 100 documentos, quantos caberiam nas zonas de "alta qualidade" do início e do fim?
 

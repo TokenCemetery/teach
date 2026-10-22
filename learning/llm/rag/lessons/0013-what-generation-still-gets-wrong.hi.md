@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 13. Generation अब भी क्या ग़लत करता है
 
-**मिशन से संबंध:** यह मिशन का अंतिम पाठ है: retrieval (चरण 1 से 6) और prompt construction (पाठ 12) दोनों सफल हो सकते हैं और अंतिम उत्तर फिर भी ग़लत हो सकता है, क्योंकि generation ख़ुद ऐसी विफलताएँ लाता है जिन्हें पहले का कोई चरण ठीक नहीं कर सकता, पकड़ भी नहीं सकता।
+**मिशन से संबंध:** यह generation पर अंतिम पाठ है: retrieval (चरण 1 से 6) और prompt construction (पाठ 12) दोनों सफल हो सकते हैं और अंतिम उत्तर फिर भी ग़लत हो सकता है, क्योंकि generation ख़ुद ऐसी विफलताएँ लाता है जिन्हें पहले का कोई चरण ठीक नहीं कर सकता, पकड़ भी नहीं सकता।
 **मुख्य स्रोत:** [पेपर: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
 **पूर्व-आवश्यकताएँ:** [पाठ 12](0012-prompt-construction-and-context-budget.md), [Chunk](../GLOSSARY.md)
 

@@ -29,7 +29,7 @@ type: resources
 - [Paper: "The Probabilistic Relevance Framework: BM25 and Beyond", Robertson and Zaragoza, 2009](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf)
   The definitive reference for BM25, the lexical ranking function behind term-frequency, inverse-document-frequency, and length-normalization scoring, with the reasoning behind each of its parameters. Use for: understanding what lexical search actually scores, as the complement to vector search's semantic similarity.
 - [Paper: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-  Shows that models use information placed at the beginning or end of a long context far more reliably than information buried in the middle, even when everything is technically within the context window. Use for: understanding why chunk placement in an assembled prompt matters as much as whether a chunk was retrieved at all.
+  Shows that models use information placed at the beginning or end of a long context far more reliably than information buried in the middle, even when everything is technically within the context window. Use for: understanding why chunk placement in an assembled prompt matters as much as whether a chunk was retrieved at all, and why retrieval that places relevant chunks near the top of the context outperforms resending an entire corpus where the relevant parts sink into the middle.
 - [Paper: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
   Defines faithfulness (whether a generated claim is actually supported by the retrieved context) as a metric distinct from retrieval quality, and how to check it without needing new human-labeled ground truth for every generated answer. Use for: evaluating whether the generation step stayed grounded in what was retrieved, once retrieval itself is confirmed correct.
 
@@ -45,8 +45,6 @@ type: resources
   Trains a model to decide whether retrieval is needed at all and to critique retrieved passages, rather than retrieving a fixed number of passages indiscriminately every time. Use for: agentic retrieval's other axis, whether to retrieve at all, distinct from how many hops a multi-step question needs.
 - [Guide: "RAG Observability: How Coralogix Helps You Trace Retrieval-to-Generation Quality", Coralogix, 2026](https://coralogix.com/guides/rag-observability/)
   Covers why ordinary infrastructure monitoring (latency, throughput, error rate) stays green through silent retrieval and context-window failures, and the reference-free, context-window-utilization, and embedding-drift signals that catch them instead. Use for: what to actually monitor once a pipeline is live, beyond the offline metrics lesson 10 covers.
-- [Paper: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-  Shows that models use information placed at the beginning or end of a long context far more reliably than information buried in the middle, even when everything is technically within the context window. Use for: understanding why retrieval that places relevant chunks near the top of the context outperforms resending an entire corpus where the relevant parts sink into the middle.
 
 ## Gaps
 

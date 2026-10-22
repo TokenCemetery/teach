@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 13. What Generation Still Gets Wrong
 
-**Mission link:** This is the mission's final lesson: retrieval (stages 1 to 6) and prompt construction (lesson 12) can both succeed and the final answer can still be wrong, because generation itself introduces failure modes none of the earlier stages can fix or even detect.
+**Mission link:** This is the last lesson on generation: retrieval (stages 1 to 6) and prompt construction (lesson 12) can both succeed and the final answer can still be wrong, because generation itself introduces failure modes none of the earlier stages can fix or even detect.
 **Primary source:** [Paper: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
 **Prerequisites:** [Lesson 12](0012-prompt-construction-and-context-budget.md), [Chunk](../GLOSSARY.md)
 

@@ -29,7 +29,7 @@ type: resources
 - [पेपर: "The Probabilistic Relevance Framework: BM25 and Beyond", Robertson and Zaragoza, 2009](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf)
   BM25 का निर्णायक संदर्भ, वह lexical ranking function जो term-frequency, inverse-document-frequency और length-normalization scoring के पीछे है, और उसके हर parameter के पीछे का तर्क। इस्तेमाल: यह समझना कि lexical search असल में क्या score करता है, vector search की semantic similarity के पूरक के रूप में।
 - [पेपर: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-  दिखाता है कि models लंबे context की शुरुआत या अंत में रखी जानकारी को बीच में दबी जानकारी से कहीं ज़्यादा भरोसे से इस्तेमाल करते हैं, तब भी जब सब कुछ तकनीकी रूप से context window के भीतर हो। इस्तेमाल: यह समझना कि जोड़े गए prompt में chunk की जगह उतनी ही मायने क्यों रखती है जितना यह कि chunk retrieve हुआ या नहीं।
+  दिखाता है कि models लंबे context की शुरुआत या अंत में रखी जानकारी को बीच में दबी जानकारी से कहीं ज़्यादा भरोसे से इस्तेमाल करते हैं, तब भी जब सब कुछ तकनीकी रूप से context window के भीतर हो। इस्तेमाल: यह समझना कि जोड़े गए prompt में chunk की जगह उतनी ही मायने क्यों रखती है जितना यह कि chunk retrieve हुआ या नहीं, और जो retrieval प्रासंगिक chunks को context के ऊपर के पास रखता है, वह पूरे corpus को दोबारा भेजने से बेहतर क्यों है, जहाँ प्रासंगिक हिस्से बीच में डूब जाते हैं।
 - [पेपर: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
   Faithfulness (यानी generate किया गया दावा retrieved context से असल में समर्थित है या नहीं) को retrieval की गुणवत्ता से अलग metric के रूप में परिभाषित करता है, और बताता है कि हर generate किए उत्तर के लिए नया मानव-labeled ground truth चाहे बिना उसे कैसे जाँचें। इस्तेमाल: retrieval ख़ुद सही पुष्ट हो जाने के बाद यह मूल्यांकन करना कि generation चरण retrieve की गई चीज़ों पर टिका रहा या नहीं।
 
@@ -45,8 +45,6 @@ type: resources
   Model को यह तय करना सिखाता है कि retrieval की ज़रूरत है भी या नहीं और retrieve किए passages की आलोचना करना, बजाय हर बार बिना सोचे-समझे तय संख्या में passages retrieve करने के। इस्तेमाल: agentic retrieval का दूसरा आयाम, कि retrieve करना भी है या नहीं, जो इससे अलग है कि बहु-चरण सवाल को कितने hops चाहिए।
 - [गाइड: "RAG Observability: How Coralogix Helps You Trace Retrieval-to-Generation Quality", Coralogix, 2026](https://coralogix.com/guides/rag-observability/)
   बताता है कि आम infrastructure monitoring (latency, throughput, error rate) चुप retrieval और context-window विफलताओं के बीच भी हरी क्यों रहती है, और वे reference-free, context-window-utilization और embedding-drift संकेत जो उन्हें पकड़ते हैं। इस्तेमाल: pipeline live होने के बाद असल में क्या monitor करें, पाठ 10 की offline metrics से आगे।
-- [पेपर: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-  दिखाता है कि models लंबे context की शुरुआत या अंत में रखी जानकारी को बीच में दबी जानकारी से कहीं ज़्यादा भरोसे से इस्तेमाल करते हैं, तब भी जब सब कुछ तकनीकी रूप से context window के भीतर हो। इस्तेमाल: यह समझना कि जो retrieval प्रासंगिक chunks को context के ऊपर के पास रखता है, वह पूरे corpus को दोबारा भेजने से बेहतर क्यों है, जहाँ प्रासंगिक हिस्से बीच में डूब जाते हैं।
 
 ## कमियाँ
 

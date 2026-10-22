@@ -29,7 +29,7 @@ type: resources
 - [Artigo científico: "The Probabilistic Relevance Framework: BM25 and Beyond", Robertson e Zaragoza, 2009](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf)
   A referência definitiva sobre o BM25, a função de ranking lexical por trás da pontuação por frequência de termo, frequência inversa de documento e normalização de tamanho, com o raciocínio por trás de cada um de seus parâmetros. Use para: entender o que a busca lexical de fato pontua, como complemento à similaridade semântica da busca vetorial.
 - [Artigo científico: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-  Mostra que os modelos usam a informação colocada no início ou no fim de um contexto longo de forma muito mais confiável do que a informação enterrada no meio, mesmo quando tudo está tecnicamente dentro da janela de contexto. Use para: entender por que a posição de um chunk em um prompt montado importa tanto quanto ele ter sido recuperado.
+  Mostra que os modelos usam a informação colocada no início ou no fim de um contexto longo de forma muito mais confiável do que a informação enterrada no meio, mesmo quando tudo está tecnicamente dentro da janela de contexto. Use para: entender por que a posição de um chunk em um prompt montado importa tanto quanto ele ter sido recuperado, e por que uma recuperação que coloca os chunks relevantes perto do topo do contexto supera reenviar um corpus inteiro, no qual as partes relevantes afundam no meio.
 - [Artigo científico: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
   Define a fidelidade (se uma afirmação gerada é de fato sustentada pelo contexto recuperado) como uma métrica distinta da qualidade da recuperação, e como verificá-la sem precisar de uma nova verdade de referência rotulada por humanos para cada resposta gerada. Use para: avaliar se a etapa de geração se manteve ancorada no que foi recuperado, depois de confirmado que a própria recuperação está correta.
 
@@ -45,8 +45,6 @@ type: resources
   Treina um modelo para decidir se a recuperação é necessária e para criticar as passagens recuperadas, em vez de recuperar indiscriminadamente um número fixo de passagens toda vez. Use para: o outro eixo da recuperação agêntica, se vale recuperar, distinto de quantos hops uma pergunta de vários passos exige.
 - [Guia: "RAG Observability: How Coralogix Helps You Trace Retrieval-to-Generation Quality", Coralogix, 2026](https://coralogix.com/guides/rag-observability/)
   Cobre por que o monitoramento comum de infraestrutura (latência, throughput, taxa de erro) continua verde diante de falhas silenciosas de recuperação e de janela de contexto, e os sinais sem referência, de utilização da janela de contexto e de drift de embeddings que as detectam. Use para: o que de fato monitorar depois que um pipeline está no ar, além das métricas offline que a lição 10 cobre.
-- [Artigo científico: "Lost in the Middle: How Language Models Use Long Contexts", Liu et al., 2023](https://arxiv.org/abs/2307.03172)
-  Mostra que os modelos usam a informação colocada no início ou no fim de um contexto longo de forma muito mais confiável do que a informação enterrada no meio, mesmo quando tudo está tecnicamente dentro da janela de contexto. Use para: entender por que uma recuperação que coloca os chunks relevantes perto do topo do contexto supera reenviar um corpus inteiro, no qual as partes relevantes afundam no meio.
 
 ## Lacunas
 

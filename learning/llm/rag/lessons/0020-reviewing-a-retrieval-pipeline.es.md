@@ -129,7 +129,7 @@ Dos razones: (1) El corpus es grande y cambia constantemente, así que reenviar 
 
 ## Prácticas en el mundo real
 
-- [ ] Encuentra un pipeline de recuperación que hayas construido o revisado. Recorre sobre él las cinco preguntas de la lista de revisión. Para cada etapa, escribe una oración: ¿esta decisión se midió contra una métrica de recuperación o se eligió por defecto? Luego pregúntate: ¿qué cambiarías si tuvieras que mejorarlo?
+- [ ] Encuentra un pipeline de recuperación que hayas construido o revisado. Recorre sobre él las seis preguntas de la lista de revisión. Para cada etapa, escribe una oración: ¿esta decisión se midió contra una métrica de recuperación o se eligió por defecto? Luego pregúntate: ¿qué cambiarías si tuvieras que mejorarlo?
 - [ ] Elige un corpus (el tuyo, uno público que conozcas o uno sintético). Resuelve el marco de tres preguntas: tamaño del corpus y frecuencia de actualización, patrón de consultas, costo real de reenviarlo entero frente a la recuperación. Anota la respuesta: ¿qué encajaría mejor, la recuperación o el contexto largo, y por qué?
 - [ ] Mañana: lee la sección de resultados del paper "Lost in the Middle" y anota la diferencia concreta de rendimiento entre la información al principio, en medio y al final de un contexto de 4K tokens. Luego estima: si tu patrón de consultas necesitara síntesis de 100 documentos, ¿cuántos cabrían en las zonas de "alta calidad" del principio y del final?
 

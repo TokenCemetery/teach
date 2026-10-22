@@ -29,7 +29,7 @@ type: resources
 - [论文：“The Probabilistic Relevance Framework: BM25 and Beyond”，Robertson 和 Zaragoza，2009](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf)
   BM25 的权威参考。BM25 是词法排序函数，其背后是词频、逆文档频率和长度归一化的打分，论文还给出了每个参数背后的道理。用途：理解词法检索实际在给什么打分，它与向量检索的语义相似度正好互补。
 - [论文：“Lost in the Middle: How Language Models Use Long Contexts”，Liu 等，2023](https://arxiv.org/abs/2307.03172)
-  表明即使所有内容在技术上都在上下文窗口之内，模型对放在长上下文开头或结尾的信息的利用，也比埋在中间的信息可靠得多。用途：理解为什么文本块在组装好的提示词中放在哪里，与它有没有被检索到同样重要。
+  表明即使所有内容在技术上都在上下文窗口之内，模型对放在长上下文开头或结尾的信息的利用，也比埋在中间的信息可靠得多。用途：理解为什么文本块在组装好的提示词中放在哪里，与它有没有被检索到同样重要；也用于理解为什么把相关文本块放在上下文靠前位置的检索，胜过把整个语料库重新发送过去，因为那样相关的部分会沉到中间。
 - [论文：“RAGAS: Automated Evaluation of Retrieval Augmented Generation”，Es 等，2023](https://arxiv.org/abs/2309.15217)
   把忠实性（生成的论断是否确实有检索到的上下文支持）定义为一个区别于检索质量的指标，并说明如何在不必为每个生成的答案重新人工标注真值的情况下检查它。用途：在确认检索本身正确之后，评估生成步骤是否始终以检索到的内容为依据。
 
@@ -45,8 +45,6 @@ type: resources
   训练模型自己决定是否需要检索，并对检索到的段落做评判，而不是每次都不加区分地检索固定数量的段落。用途：智能体式检索的另一条轴线，即是否要检索，区别于一个多步问题需要几跳。
 - [指南：“RAG Observability: How Coralogix Helps You Trace Retrieval-to-Generation Quality”，Coralogix，2026](https://coralogix.com/guides/rag-observability/)
   讲述了为什么普通的基础设施监控（延迟、吞吐量、错误率）在检索和上下文窗口悄悄出问题时依然一片绿色，以及能抓住这些问题的无参照信号、上下文窗口利用率信号和嵌入漂移信号。用途：流水线上线之后到底该监控什么，这超出了第 10 课所讲的离线指标。
-- [论文：“Lost in the Middle: How Language Models Use Long Contexts”，Liu 等，2023](https://arxiv.org/abs/2307.03172)
-  表明即使所有内容在技术上都在上下文窗口之内，模型对放在长上下文开头或结尾的信息的利用，也比埋在中间的信息可靠得多。用途：理解为什么把相关文本块放在上下文靠前位置的检索，胜过把整个语料库重新发送过去，因为那样相关的部分会沉到中间。
 
 ## 空白
 

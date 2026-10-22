@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 13. O que a geração ainda erra
 
-**Ligação com a missão:** Esta é a lição final da missão: a recuperação (etapas 1 a 6) e a construção de prompt (lição 12) podem ambas ter sucesso e a resposta final ainda assim estar errada, porque a própria geração introduz modos de falha que nenhuma das etapas anteriores consegue corrigir nem sequer detectar.
+**Ligação com a missão:** Esta é a última lição sobre geração: a recuperação (etapas 1 a 6) e a construção de prompt (lição 12) podem ambas ter sucesso e a resposta final ainda assim estar errada, porque a própria geração introduz modos de falha que nenhuma das etapas anteriores consegue corrigir nem sequer detectar.
 **Fonte principal:** [Artigo científico: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
 **Pré-requisitos:** [Lição 12](0012-prompt-construction-and-context-budget.md), [Chunk](../GLOSSARY.md)
 

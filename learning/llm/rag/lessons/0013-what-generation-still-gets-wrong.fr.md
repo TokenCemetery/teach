@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 13. Ce que la génération peut encore rater
 
-**Lien avec la mission :** C'est la dernière leçon de la mission : la récupération (étapes 1 à 6) et la construction du prompt (leçon 12) peuvent toutes deux réussir et la réponse finale peut quand même être fausse, parce que la génération introduit elle-même des modes de défaillance qu'aucune des étapes précédentes ne peut corriger ni même détecter.
+**Lien avec la mission :** C'est la dernière leçon sur la génération : la récupération (étapes 1 à 6) et la construction du prompt (leçon 12) peuvent toutes deux réussir et la réponse finale peut quand même être fausse, parce que la génération introduit elle-même des modes de défaillance qu'aucune des étapes précédentes ne peut corriger ni même détecter.
 **Source primaire :** [Article : "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
 **Prérequis :** [Leçon 12](0012-prompt-construction-and-context-budget.md), [Chunk](../GLOSSARY.md)
 

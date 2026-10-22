@@ -129,7 +129,7 @@ Two reasons: (1) The corpus is large and constantly changing, so resending all d
 
 ## Real-world reps
 
-- [ ] Find a retrieval pipeline you built or reviewed. Walk the five questions from the checklist against it. For each stage, write one sentence: was this choice measured against a retrieval metric, or picked by default? Then ask: what would you change if you had to improve it?
+- [ ] Find a retrieval pipeline you built or reviewed. Walk the six questions from the checklist against it. For each stage, write one sentence: was this choice measured against a retrieval metric, or picked by default? Then ask: what would you change if you had to improve it?
 - [ ] Pick one corpus (your own, a public one you know, or a synthetic one). Work out the three-question framework: corpus size and update frequency, query pattern, actual cost of resending it whole versus retrieval. Write down the answer: would retrieval or long-context be the better fit, and why?
 - [ ] Tomorrow: read the "Lost in the Middle" paper's results section and note the specific performance gap between information at the beginning, middle, and end of a 4K-token context. Then estimate: if your query pattern needed synthesis across 100 documents, how many would fit in the "high-quality" zones at the beginning and end?
 

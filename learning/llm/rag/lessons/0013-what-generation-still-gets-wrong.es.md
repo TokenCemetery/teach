@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 13. Lo que la generación todavía hace mal
 
-**Vínculo con la misión:** Esta es la última lección de la misión: la recuperación (etapas 1 a 6) y la construcción del prompt (lección 12) pueden tener éxito ambas y la respuesta final seguir siendo errónea, porque la propia generación introduce modos de fallo que ninguna de las etapas anteriores puede corregir ni siquiera detectar.
+**Vínculo con la misión:** Esta es la última lección sobre la generación: la recuperación (etapas 1 a 6) y la construcción del prompt (lección 12) pueden tener éxito ambas y la respuesta final seguir siendo errónea, porque la propia generación introduce modos de fallo que ninguna de las etapas anteriores puede corregir ni siquiera detectar.
 **Fuente principal:** [Paper: "RAGAS: Automated Evaluation of Retrieval Augmented Generation", Es et al., 2023](https://arxiv.org/abs/2309.15217)
 **Requisitos previos:** [Lección 12](0012-prompt-construction-and-context-budget.md), [Chunk](../GLOSSARY.md)
 

@@ -6,7 +6,7 @@ type: lesson
 
 # 第 10 课：为上线与否的决定辩护
 
-**使命关联:** 这是使命的最后一课：证明模型的改动有效，最终落到上线或不上线的判断，而为这个判断辩护，意味着要指出一个在看到结果之前就设定好的阈值，并引用每一个上游的选择，从留出数据到统计显著性，正是它们让这个判断背后的数字可信。
+**使命关联:** 本课结束第 5 阶段，即上线与否的判断，第 6 到 13 阶段会在此基础上继续扩展：证明模型的改动有效，最终落到上线或不上线的判断，而为这个判断辩护，意味着要指出一个在看到结果之前就设定好的阈值，并引用每一个上游的选择，从留出数据到统计显著性，正是它们让这个判断背后的数字可信。
 **主要来源:** [文档：“Define success criteria and build evaluations”，Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 **前置知识:** [第 9 课](0009-statistical-significance-vs-noise.md)、[数据污染](../GLOSSARY.md)
 

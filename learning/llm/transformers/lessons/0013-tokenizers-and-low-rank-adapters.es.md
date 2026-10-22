@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 13. Tokenizers y adapters de bajo rango
 
-**Vínculo con la misión:** Esta es la lección final del arco: `llm/finetuning` nombra de pasada los tokenizers y la idea de bajo rango, y este espacio de trabajo los deriva, el algoritmo del tokenizer en sí y el lugar exacto donde una actualización de bajo rango se acopla a una matriz de pesos que este espacio de trabajo construyó a partir de tensores en bruto.
+**Vínculo con la misión:** Esta lección cierra la etapa 5: `llm/finetuning` nombra de pasada los tokenizers y la idea de bajo rango, y este espacio de trabajo los deriva, el algoritmo del tokenizer en sí y el lugar exacto donde una actualización de bajo rango se acopla a una matriz de pesos que este espacio de trabajo construyó a partir de tensores en bruto.
 **Fuente principal:** [Paper: "Neural Machine Translation of Rare Words with Subword Units", Sennrich, Haddow, and Birch, 2016](https://arxiv.org/abs/1508.07909)
 **Requisitos previos:** [Lección 12](0012-reading-real-model-code.md), [Scaled dot-product attention](../GLOSSARY.md)
 

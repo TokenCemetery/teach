@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 10. Défendre le go/no-go
 
-**Lien avec la mission :** C'est la dernière leçon de la mission : prouver qu'une modification de modèle a aidé aboutit à une décision de livrer ou non, et défendre cette décision suppose de nommer un seuil fixé avant que le résultat soit connu et de citer chaque choix en amont, des données held-out à la significativité statistique, qui rend digne de confiance le chiffre qui la sous-tend.
+**Lien avec la mission :** Cette leçon clôt l'étape 5, la décision de livrer ou non que les étapes 6 à 13 prolongent ensuite : prouver qu'une modification de modèle a aidé aboutit à une décision de livrer ou non, et défendre cette décision suppose de nommer un seuil fixé avant que le résultat soit connu et de citer chaque choix en amont, des données held-out à la significativité statistique, qui rend digne de confiance le chiffre qui la sous-tend.
 **Source primaire :** [Doc : "Define success criteria and build evaluations", Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 **Prérequis :** [Leçon 9](0009-statistical-significance-vs-noise.md), [Contamination des données](../GLOSSARY.md)
 

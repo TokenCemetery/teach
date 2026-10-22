@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 13. Tokenizers और Low-Rank Adapters
 
-**मिशन से संबंध:** यह इस रूपरेखा का अंतिम पाठ है: `llm/finetuning` tokenizers और low-rank विचार का बस नाम लेता है, यह workspace उन्हें निकालता है, यानी tokenizer का अपना algorithm और वह सटीक जगह जहाँ low-rank update, raw tensors से बने weight matrix से जुड़ता है।
+**मिशन से संबंध:** यह पाठ चरण 5 पूरा करता है: `llm/finetuning` tokenizers और low-rank विचार का बस नाम लेता है, यह workspace उन्हें निकालता है, यानी tokenizer का अपना algorithm और वह सटीक जगह जहाँ low-rank update, raw tensors से बने weight matrix से जुड़ता है।
 **मुख्य स्रोत:** [पेपर: "Neural Machine Translation of Rare Words with Subword Units", Sennrich, Haddow, and Birch, 2016](https://arxiv.org/abs/1508.07909)
 **पूर्व-आवश्यकताएँ:** [पाठ 12](0012-reading-real-model-code.md), [Scaled dot-product attention](../GLOSSARY.md)
 

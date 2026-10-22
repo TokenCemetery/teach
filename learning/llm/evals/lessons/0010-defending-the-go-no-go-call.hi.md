@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 10. Go/No-Go Call का बचाव
 
-**मिशन से संबंध:** यह मिशन का अंतिम पाठ है: यह साबित करना कि model में बदलाव काम आया, ship करो या मत करो वाले फ़ैसले पर ख़त्म होता है, और उस फ़ैसले का बचाव करने का मतलब है नतीजा देखने से पहले तय किया गया threshold बताना और उसके पीछे की संख्या को भरोसेमंद बनाने वाला हर पिछला चुनाव cite करना, held-out data से लेकर statistical significance तक।
+**मिशन से संबंध:** यह पाठ चरण 5 पूरा करता है, यानी ship या don't-ship का फ़ैसला, जिसे चरण 6 से 13 आगे बढ़ाते हैं: यह साबित करना कि model में बदलाव काम आया, ship करो या मत करो वाले फ़ैसले पर ख़त्म होता है, और उस फ़ैसले का बचाव करने का मतलब है नतीजा देखने से पहले तय किया गया threshold बताना और उसके पीछे की संख्या को भरोसेमंद बनाने वाला हर पिछला चुनाव cite करना, held-out data से लेकर statistical significance तक।
 **मुख्य स्रोत:** [दस्तावेज़: "Define success criteria and build evaluations", Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 **पूर्व-आवश्यकताएँ:** [पाठ 9](0009-statistical-significance-vs-noise.md), [Data contamination](../GLOSSARY.md)
 

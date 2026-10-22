@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 10. Defender la decisión de go/no-go
 
-**Vínculo con la misión:** Esta es la última lección de la misión: demostrar que un cambio en un modelo ayudó termina en una decisión de lanzar o no lanzar, y defender esa decisión significa nombrar un umbral fijado antes de ver el resultado y citar cada elección previa, desde los datos held-out hasta la significancia estadística, que hace fiable el número que la sustenta.
+**Vínculo con la misión:** Esta lección cierra la etapa 5, la decisión de lanzar o no lanzar que las etapas 6 a 13 amplían después: demostrar que un cambio en un modelo ayudó termina en una decisión de lanzar o no lanzar, y defender esa decisión significa nombrar un umbral fijado antes de ver el resultado y citar cada elección previa, desde los datos held-out hasta la significancia estadística, que hace fiable el número que la sustenta.
 **Fuente principal:** [Docs: "Define success criteria and build evaluations", Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 **Requisitos previos:** [Lección 9](0009-statistical-significance-vs-noise.md), [Contaminación de datos](../GLOSSARY.md)
 

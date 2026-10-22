@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 12. Reading Real Model Code
 
-**Mission link:** Stage 5 is the final leg: everything derived from raw tensors in stages 1 to 4 exists inside real, production code, under different names and with a handful of small, standard deviations from the original paper, and this lesson is how to translate between what was built here and what's actually running in practice.
+**Mission link:** Stage 5 moves from derivation to real code: everything derived from raw tensors in stages 1 to 4 exists inside real, production code, under different names and with a handful of small, standard deviations from the original paper, and this lesson is how to translate between what was built here and what's actually running in practice.
 **Primary source:** [Repo: transformers, Hugging Face](https://github.com/huggingface/transformers)
 **Prerequisites:** [Lesson 11](0011-adamw-optimizer.md), [Scaled dot-product attention](../GLOSSARY.md)
 

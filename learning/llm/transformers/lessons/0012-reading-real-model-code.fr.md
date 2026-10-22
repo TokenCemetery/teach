@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 12. Lire du vrai code de modèle
 
-**Lien avec la mission :** L'étape 5 est la dernière ligne droite : tout ce qui a été dérivé à partir de tenseurs bruts aux étapes 1 à 4 existe dans du vrai code de production, sous d'autres noms et avec une poignée de petits écarts standard par rapport à l'article d'origine, et cette leçon montre comment passer de ce qui a été construit ici à ce qui tourne réellement en pratique.
+**Lien avec la mission :** L'étape 5 passe de la dérivation au code réel : tout ce qui a été dérivé à partir de tenseurs bruts aux étapes 1 à 4 existe dans du vrai code de production, sous d'autres noms et avec une poignée de petits écarts standard par rapport à l'article d'origine, et cette leçon montre comment passer de ce qui a été construit ici à ce qui tourne réellement en pratique.
 **Source primaire :** [Dépôt : transformers, Hugging Face](https://github.com/huggingface/transformers)
 **Prérequis :** [Leçon 11](0011-adamw-optimizer.md), [Scaled dot-product attention](../GLOSSARY.md)
 

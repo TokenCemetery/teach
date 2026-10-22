@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 12. Lendo código real de modelos
 
-**Ligação com a missão:** A etapa 5 é a perna final: tudo o que foi derivado a partir de tensores brutos nas etapas 1 a 4 existe dentro de código real, de produção, com nomes diferentes e com um punhado de pequenos desvios padrão em relação ao artigo original, e esta lição é como traduzir entre o que foi construído aqui e o que de fato roda na prática.
+**Ligação com a missão:** A etapa 5 passa da derivação ao código real: tudo o que foi derivado a partir de tensores brutos nas etapas 1 a 4 existe dentro de código real, de produção, com nomes diferentes e com um punhado de pequenos desvios padrão em relação ao artigo original, e esta lição é como traduzir entre o que foi construído aqui e o que de fato roda na prática.
 **Fonte principal:** [Repositório: transformers, Hugging Face](https://github.com/huggingface/transformers)
 **Pré-requisitos:** [Lição 11](0011-adamw-optimizer.md), [Scaled dot-product attention](../GLOSSARY.md)
 

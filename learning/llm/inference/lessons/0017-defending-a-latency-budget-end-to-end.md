@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 17. Defending a Latency Budget End to End
 
-**Mission link:** This is the mission's final lesson: quoting and defending a p99 latency budget end to end means diagnosing a miss by walking back through cache, batching, and quantization in the right order, and defending the fix with the numbers each of those lessons taught how to measure.
+**Mission link:** This lesson closes stage 6, the latency budget that stages 7 to 14 then extend: quoting and defending a p99 latency budget end to end means diagnosing a miss by walking back through cache, batching, and quantization in the right order, and defending the fix with the numbers each of those lessons taught how to measure.
 **Primary source:** [Docs: vLLM Documentation, vLLM Project](https://docs.vllm.ai/en/latest/)
 **Prerequisites:** [Lesson 16](0016-p99-latency-methodology.md), [Lesson 9](0009-picking-a-quantization-scheme.md), [Lesson 2](0002-capacity-and-batch-size.md), [KV cache](../GLOSSARY.md)
 

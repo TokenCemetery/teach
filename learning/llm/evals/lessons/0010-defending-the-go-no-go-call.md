@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 10. Defending the Go/No-Go Call
 
-**Mission link:** This is the mission's final lesson: proving a model change helped ends in a ship or don't-ship call, and defending that call means naming a threshold set before the result was seen and citing every upstream choice, from held-out data to statistical significance, that makes the number behind it trustworthy.
+**Mission link:** This lesson closes stage 5, the go/no-go call that stages 6 to 13 then extend: proving a model change helped ends in a ship or don't-ship call, and defending that call means naming a threshold set before the result was seen and citing every upstream choice, from held-out data to statistical significance, that makes the number behind it trustworthy.
 **Primary source:** [Docs: "Define success criteria and build evaluations", Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 **Prerequisites:** [Lesson 9](0009-statistical-significance-vs-noise.md), [Data contamination](../GLOSSARY.md)
 

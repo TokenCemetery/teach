@@ -6,7 +6,7 @@ type: lesson
 
 # 第 17 课：端到端地为延迟预算辩护
 
-**使命关联:** 这是使命的最后一课：端到端地给出并辩护 p99 延迟预算，意味着按正确的顺序，回头走过缓存、批处理和量化来诊断一次未达标，并用这些课各自教你如何度量的数字，为修复辩护。
+**使命关联:** 本课结束第 6 阶段，即延迟预算，第 7 到 14 阶段会在此基础上继续扩展：端到端地给出并辩护 p99 延迟预算，意味着按正确的顺序，回头走过缓存、批处理和量化来诊断一次未达标，并用这些课各自教你如何度量的数字，为修复辩护。
 **主要来源:** [文档：vLLM Documentation，vLLM Project](https://docs.vllm.ai/en/latest/)
 **前置知识:** [第 16 课](0016-p99-latency-methodology.md)、[第 9 课](0009-picking-a-quantization-scheme.md)、[第 2 课](0002-capacity-and-batch-size.md)、[KV 缓存](../GLOSSARY.md)
 

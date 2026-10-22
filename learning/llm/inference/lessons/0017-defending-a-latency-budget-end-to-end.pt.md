@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 17. Defendendo um orçamento de latência de ponta a ponta
 
-**Ligação com a missão:** Esta é a lição final da missão: citar e defender um orçamento de latência p99 de ponta a ponta significa diagnosticar uma falha voltando por cache, batching e quantização na ordem certa, e defender a correção com os números que cada uma dessas lições ensinou a medir.
+**Ligação com a missão:** Esta lição fecha a etapa 6, o orçamento de latência que as etapas 7 a 14 depois ampliam: citar e defender um orçamento de latência p99 de ponta a ponta significa diagnosticar uma falha voltando por cache, batching e quantização na ordem certa, e defender a correção com os números que cada uma dessas lições ensinou a medir.
 **Fonte principal:** [Documentação: vLLM Documentation, vLLM Project](https://docs.vllm.ai/en/latest/)
 **Pré-requisitos:** [Lição 16](0016-p99-latency-methodology.md), [Lição 9](0009-picking-a-quantization-scheme.md), [Lição 2](0002-capacity-and-batch-size.md), [KV cache](../GLOSSARY.md)
 

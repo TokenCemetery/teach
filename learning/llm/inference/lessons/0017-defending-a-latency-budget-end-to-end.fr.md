@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 17. Défendre un budget de latence de bout en bout
 
-**Lien avec la mission :** C'est la dernière leçon de la mission : annoncer et défendre de bout en bout un budget de latence p99, c'est diagnostiquer un dépassement en remontant le cache, le batching et la quantification dans le bon ordre, et défendre le correctif avec les chiffres que chacune de ces leçons a appris à mesurer.
+**Lien avec la mission :** Cette leçon clôt l'étape 6, le budget de latence que les étapes 7 à 14 prolongent ensuite : annoncer et défendre de bout en bout un budget de latence p99, c'est diagnostiquer un dépassement en remontant le cache, le batching et la quantification dans le bon ordre, et défendre le correctif avec les chiffres que chacune de ces leçons a appris à mesurer.
 **Source primaire :** [Doc : vLLM Documentation, vLLM Project](https://docs.vllm.ai/en/latest/)
 **Prérequis :** [Leçon 16](0016-p99-latency-methodology.md), [Leçon 9](0009-picking-a-quantization-scheme.md), [Leçon 2](0002-capacity-and-batch-size.md), [KV cache](../GLOSSARY.md)
 

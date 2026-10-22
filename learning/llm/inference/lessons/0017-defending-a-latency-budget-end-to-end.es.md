@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 17. Defender un presupuesto de latencia de extremo a extremo
 
-**Vínculo con la misión:** Esta es la última lección de la misión: citar y defender un presupuesto de latencia p99 de extremo a extremo significa diagnosticar un incumplimiento recorriendo hacia atrás la caché, el batching y la cuantización en el orden correcto, y defender la corrección con las cifras que cada una de esas lecciones enseñó a medir.
+**Vínculo con la misión:** Esta lección cierra la etapa 6, el presupuesto de latencia que las etapas 7 a 14 amplían después: citar y defender un presupuesto de latencia p99 de extremo a extremo significa diagnosticar un incumplimiento recorriendo hacia atrás la caché, el batching y la cuantización en el orden correcto, y defender la corrección con las cifras que cada una de esas lecciones enseñó a medir.
 **Fuente principal:** [Docs: vLLM Documentation, vLLM Project](https://docs.vllm.ai/en/latest/)
 **Requisitos previos:** [Lección 16](0016-p99-latency-methodology.md), [Lección 9](0009-picking-a-quantization-scheme.md), [Lección 2](0002-capacity-and-batch-size.md), [KV cache](../GLOSSARY.md)
 

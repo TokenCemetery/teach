@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 13. Tokenizers and Low-Rank Adapters
 
-**Mission link:** This is the final lesson of the arc: `llm/finetuning` names tokenizers and the low-rank idea in passing, this workspace derives them, the tokenizer's algorithm itself and the exact place a low-rank update attaches to a weight matrix this workspace built from raw tensors.
+**Mission link:** This lesson closes stage 5: `llm/finetuning` names tokenizers and the low-rank idea in passing, this workspace derives them, the tokenizer's algorithm itself and the exact place a low-rank update attaches to a weight matrix this workspace built from raw tensors.
 **Primary source:** [Paper: "Neural Machine Translation of Rare Words with Subword Units", Sennrich, Haddow, and Birch, 2016](https://arxiv.org/abs/1508.07909)
 **Prerequisites:** [Lesson 12](0012-reading-real-model-code.md), [Scaled dot-product attention](../GLOSSARY.md)
 

@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 10. Defendendo a decisão de go/no-go
 
-**Ligação com a missão:** Esta é a lição final da missão: provar que uma mudança no modelo ajudou termina em uma decisão de lançar ou não lançar, e defender essa decisão significa nomear um limiar definido antes de o resultado ser visto e citar cada escolha anterior, dos dados held-out à significância estatística, que torna confiável o número por trás dela.
+**Ligação com a missão:** Esta lição fecha a etapa 5, a decisão de lançar ou não que as etapas 6 a 13 depois ampliam: provar que uma mudança no modelo ajudou termina em uma decisão de lançar ou não lançar, e defender essa decisão significa nomear um limiar definido antes de o resultado ser visto e citar cada escolha anterior, dos dados held-out à significância estatística, que torna confiável o número por trás dela.
 **Fonte principal:** [Docs: "Define success criteria and build evaluations", Claude Platform Docs](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
 **Pré-requisitos:** [Lição 9](0009-statistical-significance-vs-noise.md), [Contaminação de dados](../GLOSSARY.md)
 

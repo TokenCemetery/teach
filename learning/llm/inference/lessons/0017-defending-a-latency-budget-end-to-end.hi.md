@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 17. Latency Budget का शुरू से अंत तक बचाव
 
-**मिशन से संबंध:** यह मिशन का आख़िरी पाठ है: p99 latency budget को शुरू से अंत तक बताने और उसका बचाव करने का मतलब है चूक का निदान करना, cache, batching और quantization से सही क्रम में वापस गुज़रकर, और सुधार का बचाव उन संख्याओं से करना जिन्हें नापना इनमें से हर पाठ ने सिखाया।
+**मिशन से संबंध:** यह पाठ चरण 6 पूरा करता है, यानी latency budget, जिसे चरण 7 से 14 आगे बढ़ाते हैं: p99 latency budget को शुरू से अंत तक बताने और उसका बचाव करने का मतलब है चूक का निदान करना, cache, batching और quantization से सही क्रम में वापस गुज़रकर, और सुधार का बचाव उन संख्याओं से करना जिन्हें नापना इनमें से हर पाठ ने सिखाया।
 **मुख्य स्रोत:** [दस्तावेज़: vLLM Documentation, vLLM Project](https://docs.vllm.ai/en/latest/)
 **पूर्व-आवश्यकताएँ:** [पाठ 16](0016-p99-latency-methodology.md), [पाठ 9](0009-picking-a-quantization-scheme.md), [पाठ 2](0002-capacity-and-batch-size.md), [KV cache](../GLOSSARY.md)
 

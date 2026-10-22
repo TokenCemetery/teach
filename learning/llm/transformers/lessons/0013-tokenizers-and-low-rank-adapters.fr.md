@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 13. Tokenizers et adapters de faible rang
 
-**Lien avec la mission :** C'est la dernière leçon du parcours : `llm/finetuning` nomme en passant les tokenizers et l'idée de faible rang, cet espace de travail les dérive, l'algorithme du tokenizer lui-même et l'endroit exact où une mise à jour de faible rang se rattache à une matrice de poids que cet espace de travail a construite à partir de tenseurs bruts.
+**Lien avec la mission :** Cette leçon clôt l'étape 5 : `llm/finetuning` nomme en passant les tokenizers et l'idée de faible rang, cet espace de travail les dérive, l'algorithme du tokenizer lui-même et l'endroit exact où une mise à jour de faible rang se rattache à une matrice de poids que cet espace de travail a construite à partir de tenseurs bruts.
 **Source primaire :** [Article : "Neural Machine Translation of Rare Words with Subword Units", Sennrich, Haddow et Birch, 2016](https://arxiv.org/abs/1508.07909)
 **Prérequis :** [Leçon 12](0012-reading-real-model-code.md), [Scaled dot-product attention](../GLOSSARY.md)
 

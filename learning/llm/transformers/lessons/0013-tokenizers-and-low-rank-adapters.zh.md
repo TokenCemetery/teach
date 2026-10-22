@@ -6,7 +6,7 @@ type: lesson
 
 # 第 13 课：分词器与低秩适配器
 
-**使命关联:** 这是整个路线的最后一课：`llm/finetuning` 只是顺带提到了分词器和低秩的思路，本工作区则把它们推导出来，既有分词器算法本身，也有低秩更新附着在这个工作区用原始张量搭建的权重矩阵上的确切位置。
+**使命关联:** 本课结束第 5 阶段：`llm/finetuning` 只是顺带提到了分词器和低秩的思路，本工作区则把它们推导出来，既有分词器算法本身，也有低秩更新附着在这个工作区用原始张量搭建的权重矩阵上的确切位置。
 **主要来源:** [论文：“Neural Machine Translation of Rare Words with Subword Units”，Sennrich、Haddow 和 Birch，2016](https://arxiv.org/abs/1508.07909)
 **前置知识:** [第 12 课](0012-reading-real-model-code.md)、[缩放点积注意力](../GLOSSARY.md)
 

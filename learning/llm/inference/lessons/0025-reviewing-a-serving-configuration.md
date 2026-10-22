@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Check</summary>
 
-Batch size. A larger batch amortizes the prefill cost across more requests (raising throughput) but forces each individual request to wait longer for its tokens since they share GPU time with more neighbors (raising latency). Which of the two numbers matters more depends on the workload's stated SLO.
+Batch size. A larger batch spreads each decode step's weight reads across more requests (raising throughput) but forces each individual request to wait longer for its tokens since they share GPU time with more neighbors (raising latency). Which of the two numbers matters more depends on the workload's stated SLO.
 
 </details>
 
@@ -82,7 +82,7 @@ The vLLM documentation states this directly: "Speculative Decoding... to reduce 
 
 To settle which is true for your configuration:
 
-1. **Measure your system's current bottleneck** at your actual batch size and QPS: Is memory bandwidth or arithmetic the limiting factor? Lesson 23's metrics (TTFT, ITL, queue depth) tell you. If the system is CPU-limited (high queue depth, low memory utilization, all GPUs pegged at 100% utilization), compute is the bottleneck and speculative decoding is likely to hurt. If the system is memory-limited (high memory utilization, GPUs underutilized), memory bandwidth is the bottleneck and speculative decoding is likely to help.
+1. **Measure your system's current bottleneck** at your actual batch size and QPS: Is memory bandwidth or arithmetic the limiting factor? Lesson 23's metrics (TTFT, ITL, queue depth) tell you. If the system is compute-bound (high queue depth, low memory utilization, all GPUs pegged at 100% utilization), compute is the bottleneck and speculative decoding is likely to hurt. If the system is memory-limited (high memory utilization, GPUs underutilized), memory bandwidth is the bottleneck and speculative decoding is likely to help.
 2. **Compare two measurements:** measure end-to-end throughput (total tokens/sec across all requests) and per-request latency with speculative decoding on and off, at your actual batch size and concurrency.
 3. **Cite what you measured.** A configuration should say: "Speculative decoding is disabled because this workload runs at 256-request batch size and QPS is 80 requests/sec, which is high-concurrency and compute-bound. We measured throughput at 3,200 tokens/sec with spec decode on and 3,400 tokens/sec with it off. Per-request latency is slightly higher with spec decode off (258ms vs 245ms) but fleet throughput is the bottleneck for this SLO, not per-request latency."
 

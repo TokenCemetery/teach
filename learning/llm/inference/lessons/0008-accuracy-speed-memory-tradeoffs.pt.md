@@ -24,7 +24,7 @@ O decode é limitado pela largura de banda de memória: cada passo lê os pesos 
 
 <details markdown="1"><summary>Verificação</summary>
 
-Cerca de um quarto, já que o int4 empacota dois pesos por byte onde o fp16 usava dois bytes por peso, uma redução de 8x: a um quarto do fp16, e depois reduzida pela metade de novo em relação ao int8.
+Cerca de um quarto: o int4 empacota dois pesos por byte onde o fp16 usava dois bytes por peso, uma redução de 4x, que é metade do tamanho do int8.
 
 </details>
 

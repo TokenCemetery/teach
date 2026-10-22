@@ -24,7 +24,7 @@ Decode memory-bandwidth bound है: हर step weights को memory से �
 
 <details markdown="1"><summary>जाँचें</summary>
 
-लगभग चौथाई, क्योंकि int4 हर byte में दो weights पैक करता है जबकि fp16 हर weight के लिए दो bytes लेता था, 8 गुना की कमी: fp16 के चौथाई तक, फिर int8 से दोबारा आधा।
+लगभग चौथाई: int4 हर byte में दो weights पैक करता है जबकि fp16 हर weight के लिए दो bytes लेता था, यानी 4 गुना की कमी, जो int8 के आकार का आधा है।
 
 </details>
 

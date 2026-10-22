@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>जाँचें</summary>
 
-`Q4`: लगभग 4 bits प्रति weight। `K`: k-quant विधि जो एक tensor के भीतर precision मिलाती है। `M`: उस विधि की आकार/गुणवत्ता configurations में से मध्यम preset।
+`Q4`: लगभग 4 bits प्रति weight। `K`: एक k-quant type, tensor के हर weight के लिए एक ही bit width, 256 के super-blocks के भीतर हर sub-block का अपना scale। `M`: medium recipe, जो अलग-अलग tensors में k-quant types मिलाती है।
 
 </details>
 

@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>जाँचें</summary>
 
-Batch size। बड़ा batch prefill की लागत को ज़्यादा requests में बाँटता है (throughput बढ़ाता है) पर हर अकेली request को अपने tokens के लिए ज़्यादा इंतज़ार करवाता है क्योंकि वे GPU का समय ज़्यादा पड़ोसियों के साथ साझा करते हैं (latency बढ़ाता है)। दोनों संख्याओं में से कौन ज़्यादा मायने रखती है यह workload के बताए SLO पर निर्भर करता है।
+Batch size। बड़ा batch हर decode step में weights पढ़ने की लागत को ज़्यादा requests में बाँटता है (throughput बढ़ाता है) पर हर अकेली request को अपने tokens के लिए ज़्यादा इंतज़ार करवाता है क्योंकि वे GPU का समय ज़्यादा पड़ोसियों के साथ साझा करते हैं (latency बढ़ाता है)। दोनों संख्याओं में से कौन ज़्यादा मायने रखती है यह workload के बताए SLO पर निर्भर करता है।
 
 </details>
 
@@ -82,7 +82,7 @@ vLLM का दस्तावेज़ यह सीधे कहता है:
 
 यह तय करने के लिए कि आपकी configuration के लिए क्या सच है:
 
-1. **अपने असली batch size और QPS पर system की मौजूदा अड़चन नापें**: सीमित करने वाला कारक memory bandwidth है या arithmetic? पाठ 23 के metrics (TTFT, ITL, queue depth) आपको बताते हैं। अगर system CPU-limited है (ऊँची queue depth, कम memory utilization, सभी GPUs 100% utilization पर अटके), तो compute अड़चन है और speculative decoding के नुक़सान करने की संभावना है। अगर system memory-limited है (ऊँचा memory utilization, GPUs कम इस्तेमाल हुए), तो memory bandwidth अड़चन है और speculative decoding के मदद करने की संभावना है।
+1. **अपने असली batch size और QPS पर system की मौजूदा अड़चन नापें**: सीमित करने वाला कारक memory bandwidth है या arithmetic? पाठ 23 के metrics (TTFT, ITL, queue depth) आपको बताते हैं। अगर system compute-bound है (ऊँची queue depth, कम memory utilization, सभी GPUs 100% utilization पर अटके), तो compute अड़चन है और speculative decoding के नुक़सान करने की संभावना है। अगर system memory-limited है (ऊँचा memory utilization, GPUs कम इस्तेमाल हुए), तो memory bandwidth अड़चन है और speculative decoding के मदद करने की संभावना है।
 2. **दो मापों की तुलना करें:** अपने असली batch size और concurrency पर speculative decoding चालू और बंद करके end-to-end throughput (सभी requests में कुल tokens/sec) और प्रति-request latency नापें।
 3. **जो नापा उसका हवाला दें।** Configuration को कहना चाहिए: "Speculative decoding बंद है क्योंकि यह workload 256-request के batch size पर चलता है और QPS 80 requests/sec है, जो high-concurrency और compute-bound है। हमने spec decode चालू होने पर throughput 3,200 tokens/sec और बंद होने पर 3,400 tokens/sec नापा। Spec decode बंद होने पर प्रति-request latency थोड़ी ज़्यादा है (258ms बनाम 245ms) पर इस SLO के लिए fleet throughput अड़चन है, प्रति-request latency नहीं।"
 

@@ -24,7 +24,7 @@ Decode is memory-bandwidth bound: each step reads the weights back from memory, 
 
 <details markdown="1"><summary>Check</summary>
 
-About a quarter, since int4 packs two weights per byte where fp16 used two bytes per weight, an 8x reduction: to a quarter of fp16, then halved again from int8.
+About a quarter: int4 packs two weights per byte where fp16 used two bytes per weight, a 4x reduction, which is half of int8's size.
 
 </details>
 

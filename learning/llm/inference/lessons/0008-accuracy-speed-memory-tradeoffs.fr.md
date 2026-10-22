@@ -24,7 +24,7 @@ Le decode est limité par la bande passante mémoire : chaque étape relit les p
 
 <details markdown="1"><summary>Vérifier</summary>
 
-Environ un quart, puisque int4 empaquette deux poids par octet là où fp16 utilisait deux octets par poids, une réduction de 8x : jusqu'au quart de fp16, puis divisée de nouveau par deux à partir de int8.
+Environ un quart : int4 empaquette deux poids par octet là où fp16 utilisait deux octets par poids, une réduction de 4x, soit la moitié de la taille de int8.
 
 </details>
 

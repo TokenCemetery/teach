@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>检查</summary>
 
-大约四分之一，因为 int4 每字节装两个权重，而 fp16 每个权重用两个字节，也就是 8 倍的缩减：缩到 fp16 的四分之一，再从 int8 起又减半。
+大约四分之一：int4 每字节装两个权重，而 fp16 每个权重用两个字节，也就是 4 倍的缩减，相当于 int8 大小的一半。
 
 </details>
 

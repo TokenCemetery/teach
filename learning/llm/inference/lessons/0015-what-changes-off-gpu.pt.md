@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Verificação</summary>
 
-`Q4`: aproximadamente 4 bits por peso. `K`: um método k-quant que mistura precisão dentro de um tensor. `M`: o preset medium entre as configurações de tamanho/qualidade desse método.
+`Q4`: aproximadamente 4 bits por peso. `K`: um tipo k-quant, uma única largura de bits para todos os pesos de um tensor, com escalas por sub-bloco dentro de superblocos de 256. `M`: a receita medium, que mistura tipos k-quant entre tensores.
 
 </details>
 

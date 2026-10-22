@@ -24,7 +24,7 @@ El decode está limitado por el ancho de banda de memoria: cada paso vuelve a le
 
 <details markdown="1"><summary>Comprobación</summary>
 
-Aproximadamente una cuarta parte, ya que int4 empaqueta dos pesos por byte donde fp16 usaba dos bytes por peso, una reducción de 8x: a una cuarta parte de fp16, y luego a la mitad otra vez desde int8.
+Aproximadamente una cuarta parte: int4 empaqueta dos pesos por byte donde fp16 usaba dos bytes por peso, una reducción de 4x, que es la mitad del tamaño de int8.
 
 </details>
 

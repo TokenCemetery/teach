@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Comprobación</summary>
 
-El tamaño de lote. Un lote mayor amortiza el costo del prefill entre más solicitudes (lo que aumenta el throughput) pero obliga a cada solicitud individual a esperar más sus tokens, ya que comparten tiempo de GPU con más vecinas (lo que aumenta la latencia). Cuál de las dos cifras importa más depende del SLO declarado de la carga de trabajo.
+El tamaño de lote. Un lote mayor reparte la lectura de pesos de cada paso de decode entre más solicitudes (lo que aumenta el throughput) pero obliga a cada solicitud individual a esperar más sus tokens, ya que comparten tiempo de GPU con más vecinas (lo que aumenta la latencia). Cuál de las dos cifras importa más depende del SLO declarado de la carga de trabajo.
 
 </details>
 
@@ -82,7 +82,7 @@ La documentación de vLLM lo dice directamente: "Speculative Decoding... para re
 
 Para resolver qué es verdad en tu configuración:
 
-1. **Mide el cuello de botella actual de tu sistema** con tu tamaño de lote y QPS reales: ¿es el factor limitante el ancho de banda de memoria o la aritmética? Las métricas de la lección 23 (TTFT, ITL, profundidad de cola) te lo dicen. Si el sistema está limitado por CPU (profundidad de cola alta, utilización de memoria baja, todas las GPU al 100% de utilización), el cuello de botella es el cómputo y es probable que el speculative decoding perjudique. Si el sistema está limitado por memoria (utilización de memoria alta, GPU infrautilizadas), el cuello de botella es el ancho de banda de memoria y es probable que el speculative decoding ayude.
+1. **Mide el cuello de botella actual de tu sistema** con tu tamaño de lote y QPS reales: ¿es el factor limitante el ancho de banda de memoria o la aritmética? Las métricas de la lección 23 (TTFT, ITL, profundidad de cola) te lo dicen. Si el sistema está limitado por el cómputo (profundidad de cola alta, utilización de memoria baja, todas las GPU al 100% de utilización), el cuello de botella es el cómputo y es probable que el speculative decoding perjudique. Si el sistema está limitado por memoria (utilización de memoria alta, GPU infrautilizadas), el cuello de botella es el ancho de banda de memoria y es probable que el speculative decoding ayude.
 2. **Compara dos mediciones:** mide el throughput de extremo a extremo (total de tokens/s entre todas las solicitudes) y la latencia por solicitud con el speculative decoding activado y desactivado, con tu tamaño de lote y concurrencia reales.
 3. **Cita lo que mediste.** Una configuración debería decir: "El speculative decoding está desactivado porque esta carga de trabajo se ejecuta con un tamaño de lote de 256 solicitudes y un QPS de 80 solicitudes/s, que es de alta concurrencia y está limitada por cómputo. Medimos un throughput de 3,200 tokens/s con spec decode activado y de 3,400 tokens/s con él desactivado. La latencia por solicitud es ligeramente mayor con spec decode desactivado (258 ms frente a 245 ms), pero el throughput de la flota es el cuello de botella para este SLO, no la latencia por solicitud".
 

@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Verificação</summary>
 
-O batch size. Um batch maior amortiza o custo de prefill entre mais requisições (elevando o throughput), mas obriga cada requisição individual a esperar mais pelos seus tokens, já que eles dividem o tempo de GPU com mais vizinhas (elevando a latência). Qual dos dois números importa mais depende do SLO declarado da carga de trabalho.
+O batch size. Um batch maior distribui a leitura dos pesos de cada passo de decode entre mais requisições (elevando o throughput), mas obriga cada requisição individual a esperar mais pelos seus tokens, já que eles dividem o tempo de GPU com mais vizinhas (elevando a latência). Qual dos dois números importa mais depende do SLO declarado da carga de trabalho.
 
 </details>
 
@@ -82,7 +82,7 @@ A documentação do vLLM afirma isso diretamente: "Speculative Decoding... para 
 
 Para resolver qual das duas é verdadeira para a sua configuração:
 
-1. **Meça o gargalo atual do seu sistema** no seu batch size e QPS reais: a largura de banda de memória ou a aritmética é o fator limitante? As métricas da lição 23 (TTFT, ITL, profundidade de fila) dizem isso. Se o sistema é limitado por CPU (profundidade de fila alta, utilização de memória baixa, todas as GPUs cravadas em 100% de utilização), o compute é o gargalo e a speculative decoding provavelmente vai prejudicar. Se o sistema é limitado por memória (utilização de memória alta, GPUs subutilizadas), a largura de banda de memória é o gargalo e a speculative decoding provavelmente vai ajudar.
+1. **Meça o gargalo atual do seu sistema** no seu batch size e QPS reais: a largura de banda de memória ou a aritmética é o fator limitante? As métricas da lição 23 (TTFT, ITL, profundidade de fila) dizem isso. Se o sistema é limitado por compute (profundidade de fila alta, utilização de memória baixa, todas as GPUs cravadas em 100% de utilização), o compute é o gargalo e a speculative decoding provavelmente vai prejudicar. Se o sistema é limitado por memória (utilização de memória alta, GPUs subutilizadas), a largura de banda de memória é o gargalo e a speculative decoding provavelmente vai ajudar.
 2. **Compare duas medições:** meça o throughput de ponta a ponta (total de tokens/s entre todas as requisições) e a latência por requisição com a speculative decoding ligada e desligada, no seu batch size e concorrência reais.
 3. **Cite o que você mediu.** Uma configuração deveria dizer: "A speculative decoding está desabilitada porque esta carga de trabalho roda com batch size de 256 requisições e o QPS é de 80 requisições/s, o que é alta concorrência e limitado por compute. Medimos o throughput em 3.200 tokens/s com a speculative decoding ligada e 3.400 tokens/s com ela desligada. A latência por requisição é um pouco maior com a speculative decoding desligada (258 ms vs 245 ms), mas o throughput da frota é o gargalo para este SLO, e não a latência por requisição."
 

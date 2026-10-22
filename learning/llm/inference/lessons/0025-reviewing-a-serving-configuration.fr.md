@@ -24,7 +24,7 @@ type: lesson
 
 <details markdown="1"><summary>Vérifier</summary>
 
-La taille de batch. Un batch plus grand amortit le coût du prefill sur davantage de requêtes (ce qui augmente le débit) mais force chaque requête individuelle à attendre plus longtemps ses tokens puisqu'ils partagent le temps GPU avec davantage de voisines (ce qui augmente la latence). Lequel des deux chiffres compte le plus dépend du SLO annoncé de la charge de travail.
+La taille de batch. Un batch plus grand répartit la lecture des poids de chaque étape de decode sur davantage de requêtes (ce qui augmente le débit) mais force chaque requête individuelle à attendre plus longtemps ses tokens puisqu'ils partagent le temps GPU avec davantage de voisines (ce qui augmente la latence). Lequel des deux chiffres compte le plus dépend du SLO annoncé de la charge de travail.
 
 </details>
 
@@ -82,7 +82,7 @@ La documentation de vLLM l'énonce directement : "Speculative Decoding... to red
 
 Pour trancher ce qui est vrai pour votre configuration :
 
-1. **Mesurez le goulot d'étranglement actuel de votre système** à votre taille de batch et votre QPS réels : est-ce la bande passante mémoire ou l'arithmétique qui est le facteur limitant ? Les métriques de la leçon 23 (TTFT, ITL, profondeur de file) vous le disent. Si le système est limité par le CPU (profondeur de file élevée, faible utilisation de la mémoire, tous les GPU à 100 % d'utilisation), le calcul est le goulot d'étranglement et le décodage spéculatif risque de nuire. Si le système est limité par la mémoire (utilisation élevée de la mémoire, GPU sous-utilisés), la bande passante mémoire est le goulot d'étranglement et le décodage spéculatif risque d'aider.
+1. **Mesurez le goulot d'étranglement actuel de votre système** à votre taille de batch et votre QPS réels : est-ce la bande passante mémoire ou l'arithmétique qui est le facteur limitant ? Les métriques de la leçon 23 (TTFT, ITL, profondeur de file) vous le disent. Si le système est limité par le calcul (profondeur de file élevée, faible utilisation de la mémoire, tous les GPU à 100 % d'utilisation), le calcul est le goulot d'étranglement et le décodage spéculatif risque de nuire. Si le système est limité par la mémoire (utilisation élevée de la mémoire, GPU sous-utilisés), la bande passante mémoire est le goulot d'étranglement et le décodage spéculatif risque d'aider.
 2. **Comparez deux mesures :** mesurez le débit de bout en bout (total de tokens/s sur toutes les requêtes) et la latence par requête avec le décodage spéculatif activé et désactivé, à votre taille de batch et votre concurrence réelles.
 3. **Citez ce que vous avez mesuré.** Une configuration devrait dire : « Le décodage spéculatif est désactivé parce que cette charge de travail tourne à une taille de batch de 256 requêtes et un QPS de 80 requêtes/s, ce qui est une forte concurrence et un régime limité par le calcul. Nous avons mesuré un débit de 3 200 tokens/s avec le décodage spéculatif activé et de 3 400 tokens/s avec lui désactivé. La latence par requête est légèrement plus élevée avec le décodage spéculatif désactivé (258 ms contre 245 ms) mais le débit de la flotte est le goulot d'étranglement pour ce SLO, pas la latence par requête. »
 

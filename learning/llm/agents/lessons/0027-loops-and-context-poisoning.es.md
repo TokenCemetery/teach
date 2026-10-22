@@ -49,7 +49,7 @@ Cómo detectar un bucle repetitivo en una trayectoria:
 3. Comprueba los resultados: ¿son idénticos, sin cambios o todos fallos?
 4. Busca texto de razonamiento repetido: ¿usa el modelo la misma redacción y el mismo razonamiento en varios turnos?
 
-Si las tres condiciones se cumplen, el agente está en un bucle repetitivo.
+Si se cumplen las tres primeras comprobaciones, el agente está en un bucle repetitivo. El texto de razonamiento repetido (comprobación 4) lo confirma, pero no es obligatorio.
 
 ### Envenenamiento del contexto: cuando las afirmaciones falsas se convierten en verdad establecida
 

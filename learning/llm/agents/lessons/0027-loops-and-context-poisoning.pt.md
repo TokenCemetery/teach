@@ -49,7 +49,7 @@ Como identificar um loop repetitivo em uma trajetória:
 3. Confira os resultados: são idênticos, inalterados ou todos falhas?
 4. Procure texto de raciocínio repetido: o modelo usa a mesma redação e o mesmo raciocínio ao longo de vários turnos?
 
-Se as três condições são verdadeiras, o agente está em um loop repetitivo.
+Se as três primeiras verificações são verdadeiras, o agente está em um loop repetitivo. O texto de raciocínio repetido (verificação 4) confirma isso, mas não é obrigatório.
 
 ### Envenenamento de contexto: quando afirmações falsas viram verdade absoluta
 

@@ -49,7 +49,7 @@ Comment repérer une boucle répétitive dans une trajectoire :
 3. Vérifier les résultats : sont-ils identiques, inchangés ou tous des échecs ?
 4. Chercher du texte de raisonnement répété : le modèle emploie-t-il la même formulation et le même raisonnement sur plusieurs tours ?
 
-Si les trois points sont vrais, l'agent est dans une boucle répétitive.
+Si les trois premières vérifications sont vraies, l'agent est dans une boucle répétitive. Un texte de raisonnement répété (vérification 4) le confirme, mais n'est pas requis.
 
 ### Empoisonnement du contexte : quand des affirmations fausses deviennent la vérité de référence
 

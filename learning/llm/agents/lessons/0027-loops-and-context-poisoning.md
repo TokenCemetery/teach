@@ -49,7 +49,7 @@ How to spot a repetitive loop in a trajectory:
 3. Check the results: are they identical, unchanged, or all failures?
 4. Look for repeated reasoning text: does the model use the same phrasing and reasoning across multiple turns?
 
-If all three are true, the agent is in a repetitive loop.
+If the first three checks are true, the agent is in a repetitive loop. Repeated reasoning text (check 4) confirms it but is not required.
 
 ### Context Poisoning: When False Claims Become Ground Truth
 

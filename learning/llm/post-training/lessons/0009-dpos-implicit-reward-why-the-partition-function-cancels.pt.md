@@ -56,7 +56,7 @@ Isso expressa a recompensa implicada por qualquer policy `π_r`, em termos dessa
 
 ### A recompensa implícita
 
-Isso é exatamente o que o termo do glossário da lição 4, **recompensa implícita**, nomeia: a função de recompensa `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (o termo da função de partição pode ser descartado quando só as diferenças importam) que uma policy define matematicamente, só por ser a policy que é, em relação a uma referência. Nenhum reward model separado foi treinado para produzi-la; ela decorre diretamente da mesma relação de policy ótima sobre a qual o RLHF já era construído. Treinar uma policy para satisfazer diretamente os dados de preferência humana, usando essa recompensa implícita no lugar de uma treinada separadamente, é toda a ideia que dá nome ao DPO.
+Isso é exatamente o que o termo do glossário **recompensa implícita** nomeia: a função de recompensa `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (o termo da função de partição pode ser descartado quando só as diferenças importam) que uma policy define matematicamente, só por ser a policy que é, em relação a uma referência. Nenhum reward model separado foi treinado para produzi-la; ela decorre diretamente da mesma relação de policy ótima sobre a qual o RLHF já era construído. Treinar uma policy para satisfazer diretamente os dados de preferência humana, usando essa recompensa implícita no lugar de uma treinada separadamente, é toda a ideia que dá nome ao DPO.
 
 ## Prática
 

@@ -56,7 +56,7 @@ r(x, y) = β · log( π_r(y|x) / π_ref(y|x) ) + β · log Z(x)
 
 ### Implicit reward
 
-पाठ 4 की शब्दावली का शब्द **implicit reward** ठीक यही नाम देता है: reward function `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (partition-function वाला term छोड़ा जा सकता है जब सिर्फ़ अंतर मायने रखते हों) जिसे कोई policy गणितीय रूप से तय करती है, बस वह policy होने भर से, एक reference के सापेक्ष। इसे पैदा करने के लिए कभी कोई अलग reward model train नहीं किया गया; यह उसी optimal-policy रिश्ते से सीधे निकल आता है जिस पर RLHF पहले से बना था। Human preference data को पूरा करने के लिए policy को सीधे train करना, अलग से train किए reward की जगह इस implicit reward का इस्तेमाल करते हुए, वही पूरा विचार है जिसके लिए DPO का नाम पड़ा।
+शब्दावली का शब्द **implicit reward** ठीक यही नाम देता है: reward function `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (partition-function वाला term छोड़ा जा सकता है जब सिर्फ़ अंतर मायने रखते हों) जिसे कोई policy गणितीय रूप से तय करती है, बस वह policy होने भर से, एक reference के सापेक्ष। इसे पैदा करने के लिए कभी कोई अलग reward model train नहीं किया गया; यह उसी optimal-policy रिश्ते से सीधे निकल आता है जिस पर RLHF पहले से बना था। Human preference data को पूरा करने के लिए policy को सीधे train करना, अलग से train किए reward की जगह इस implicit reward का इस्तेमाल करते हुए, वही पूरा विचार है जिसके लिए DPO का नाम पड़ा।
 
 ## अभ्यास
 

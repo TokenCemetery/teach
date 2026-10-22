@@ -56,7 +56,7 @@ This is where the Bradley-Terry loss (Lesson 4) does real work. Bradley-Terry pr
 
 ### The implicit reward
 
-This is exactly what Lesson 4's glossary term **implicit reward** names: the reward function `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (the partition-function term can be dropped once only differences matter) that a policy mathematically defines, just by being the policy it is, relative to a reference. No separate reward model was ever trained to produce it; it falls directly out of the same optimal-policy relationship RLHF was already built on. Training a policy to satisfy human preference data directly, using this implicit reward in place of a separately trained one, is the entire idea DPO is named for.
+This is exactly what the glossary term **implicit reward** names: the reward function `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (the partition-function term can be dropped once only differences matter) that a policy mathematically defines, just by being the policy it is, relative to a reference. No separate reward model was ever trained to produce it; it falls directly out of the same optimal-policy relationship RLHF was already built on. Training a policy to satisfy human preference data directly, using this implicit reward in place of a separately trained one, is the entire idea DPO is named for.
 
 ## Practice
 

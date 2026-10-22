@@ -84,7 +84,7 @@ No. Defender una elección frente a la que se descartó significa nombrar una ra
 
 - [ ] Busca un informe técnico de post-training publicado e identifica cuál de SFT, DPO, PPO o GRPO usó, y si da una razón para esa elección frente a una alternativa más barata.
 - [ ] Para una tarea que conozcas (del trabajo, de un proyecto o hipotética), recórrela por la escalera de esta lección un paso a la vez: ¿bastaría SFT solo, y si no, por qué no; bastaría DPO, y si no, por qué no?
-- [ ] Mañana: sin mirar adelante, escribe una predicción de una frase para la lección 20: dado que el arco de este track ha cubierto diez decisiones distintas (enmascarado de datos, diseño de la recompensa, compromisos de KL, ventaja relativa al grupo, recompensas verificables, medición del impuesto de alineación), ¿qué tendría que comprobar realmente la revisión de la receta de alineación terminada de otra persona, etapa por etapa?
+- [ ] Mañana: sin mirar adelante, escribe una predicción de una frase para la lección 20: dado que el arco de este track ha cubierto seis decisiones distintas (enmascarado de datos, diseño de la recompensa, compromisos de KL, ventaja relativa al grupo, recompensas verificables, medición del impuesto de alineación), ¿qué tendría que comprobar realmente la revisión de la receta de alineación terminada de otra persona, etapa por etapa?
 
 ## Para profundizar
 

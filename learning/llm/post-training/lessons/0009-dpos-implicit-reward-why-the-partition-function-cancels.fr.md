@@ -56,7 +56,7 @@ C'est là que la loss de Bradley-Terry (leçon 4) fait un vrai travail. Les prob
 
 ### La récompense implicite
 
-C'est exactement ce que nomme le terme du glossaire de la leçon 4, **récompense implicite** : la fonction de récompense `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (le terme de fonction de partition peut être abandonné dès que seules les différences comptent) qu'une policy définit mathématiquement, du simple fait d'être la policy qu'elle est, par rapport à une référence. Aucun reward model séparé n'a jamais été entraîné pour la produire ; elle découle directement de la même relation de policy optimale sur laquelle RLHF était déjà construit. Entraîner une policy à satisfaire directement des données de préférence humaines, en utilisant cette récompense implicite à la place d'une récompense entraînée séparément, c'est toute l'idée qui donne son nom à DPO.
+C'est exactement ce que nomme le terme du glossaire **récompense implicite** : la fonction de récompense `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (le terme de fonction de partition peut être abandonné dès que seules les différences comptent) qu'une policy définit mathématiquement, du simple fait d'être la policy qu'elle est, par rapport à une référence. Aucun reward model séparé n'a jamais été entraîné pour la produire ; elle découle directement de la même relation de policy optimale sur laquelle RLHF était déjà construit. Entraîner une policy à satisfaire directement des données de préférence humaines, en utilisant cette récompense implicite à la place d'une récompense entraînée séparément, c'est toute l'idée qui donne son nom à DPO.
 
 ## Pratique
 

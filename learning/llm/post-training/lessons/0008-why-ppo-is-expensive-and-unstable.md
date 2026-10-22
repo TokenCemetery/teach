@@ -32,7 +32,7 @@ The KL penalty limits how far the policy drifts from the fixed SFT reference mod
 
 ### Four models, not one
 
-RLHF via PPO is not one model being trained; it requires several models present at once, each doing a different job: the **policy** being trained (initialized from the SFT model); a frozen copy of the **SFT model** itself, kept around purely to compute the KL penalty (Lesson 6) against; the **reward model** (Lesson 4), which scores the policy's sampled outputs; and a **value function**, used to produce the advantage estimates PPO's clipped objective (Lesson 7) depends on. Ouyang et al. state directly that their value function is initialized from the reward model, making it a fifth full copy of a large model's worth of parameters in its own right, distinct from the reward model itself despite sharing its starting point. Four to five large models occupying memory and consuming compute simultaneously, rather than one, is a real, structural cost that has nothing to do with how well or badly training happens to be going.
+RLHF via PPO is not one model being trained; it requires several models present at once, each doing a different job: the **policy** being trained (initialized from the SFT model); a frozen copy of the **SFT model** itself, kept around purely to compute the KL penalty (Lesson 6) against; the **reward model** (Lesson 4), which scores the policy's sampled outputs; and a **value function**, used to produce the advantage estimates PPO's clipped objective (Lesson 7) depends on. Ouyang et al. state directly that their value function is initialized from the reward model, making it a full copy of a large model's worth of parameters in its own right, distinct from the reward model itself despite sharing its starting point. Four large models occupying memory and consuming compute simultaneously, rather than one, is a real, structural cost that has nothing to do with how well or badly training happens to be going.
 
 ### Where the instability specifically comes from
 
@@ -44,7 +44,7 @@ This is a genuinely counterintuitive result worth holding onto: a smaller reward
 
 ## Practice
 
-1. ▢ Name the four models (or five, counting the value function separately from the reward model it is initialized from) involved in a PPO training step for RLHF, and what each one is used for.
+1. ▢ Name the four models involved in a PPO training step for RLHF, and what each one is used for.
 
 <details markdown="1"><summary>Check</summary>
 

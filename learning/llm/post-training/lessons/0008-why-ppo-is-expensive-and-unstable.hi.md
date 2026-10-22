@@ -32,7 +32,7 @@ KL penalty सीमित करती है कि पूरे training run 
 
 ### चार models, एक नहीं
 
-PPO के ज़रिए RLHF में एक model train नहीं होता; उसमें एक साथ कई models मौजूद चाहिए, हर एक अलग काम करता है: train हो रही **policy** (SFT model से initialize की गई); **SFT model** की एक frozen copy, जो सिर्फ़ KL penalty (पाठ 6) निकालने के लिए रखी जाती है; **reward model** (पाठ 4), जो policy के sample किए outputs को score करता है; और एक **value function**, जिसका इस्तेमाल उन advantage estimates के लिए होता है जिन पर PPO का clip किया objective (पाठ 7) टिका है। Ouyang et al. सीधे कहते हैं कि उनका value function reward model से initialize होता है, जिससे वह अपने-आप में एक बड़े model के parameters की पाँचवीं पूरी copy बन जाता है, reward model से अलग भले ही उसका शुरुआती बिंदु वही हो। एक के बजाय चार से पाँच बड़े models का एक साथ memory घेरना और compute खाना असली, संरचनात्मक लागत है, जिसका इससे कोई लेना-देना नहीं कि training कितनी अच्छी या बुरी चल रही है।
+PPO के ज़रिए RLHF में एक model train नहीं होता; उसमें एक साथ कई models मौजूद चाहिए, हर एक अलग काम करता है: train हो रही **policy** (SFT model से initialize की गई); **SFT model** की एक frozen copy, जो सिर्फ़ KL penalty (पाठ 6) निकालने के लिए रखी जाती है; **reward model** (पाठ 4), जो policy के sample किए outputs को score करता है; और एक **value function**, जिसका इस्तेमाल उन advantage estimates के लिए होता है जिन पर PPO का clip किया objective (पाठ 7) टिका है। Ouyang et al. सीधे कहते हैं कि उनका value function reward model से initialize होता है, जिससे वह अपने-आप में एक बड़े model के parameters की एक पूरी copy बन जाता है, reward model से अलग भले ही उसका शुरुआती बिंदु वही हो। एक के बजाय चार बड़े models का एक साथ memory घेरना और compute खाना असली, संरचनात्मक लागत है, जिसका इससे कोई लेना-देना नहीं कि training कितनी अच्छी या बुरी चल रही है।
 
 ### अस्थिरता ख़ास तौर पर कहाँ से आती है
 
@@ -44,7 +44,7 @@ Ouyang et al. बताते हैं कि इस setup में पैम�
 
 ## अभ्यास
 
-1. ▢ RLHF के लिए PPO training step में शामिल चार models (या पाँच, अगर value function को उस reward model से अलग गिनें जिससे वह initialize होता है) के नाम बताएँ, और हर एक किस काम आता है।
+1. ▢ RLHF के लिए PPO training step में शामिल चार models के नाम बताएँ, और हर एक किस काम आता है।
 
 <details markdown="1"><summary>जाँचें</summary>
 

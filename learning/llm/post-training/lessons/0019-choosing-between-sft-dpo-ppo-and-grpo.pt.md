@@ -84,7 +84,7 @@ Não. Defender uma escolha contra a rejeitada significa nomear uma razão espec�
 
 - [ ] Encontre um relatório técnico de pós-treinamento publicado e identifique qual entre SFT, DPO, PPO ou GRPO ele usou, e se ele declara uma razão para essa escolha em vez de uma alternativa mais barata.
 - [ ] Para uma tarefa com a qual você esteja familiarizado (do trabalho, de um projeto ou hipotética), passe-a pela escada desta lição um degrau por vez: o SFT sozinho bastaria e, se não, por quê; o DPO bastaria e, se não, por quê.
-- [ ] Amanhã: sem olhar adiante, escreva uma previsão de uma frase para a lição 20: dado que o arco desta trilha cobriu dez decisões distintas (mascaramento de dados, design de recompensa, trocas do KL, vantagem relativa ao grupo, recompensas verificáveis, medição do alignment tax), o que revisar a receita de alinhamento já pronta de outra pessoa precisaria de fato checar, etapa por etapa?
+- [ ] Amanhã: sem olhar adiante, escreva uma previsão de uma frase para a lição 20: dado que o arco desta trilha cobriu seis decisões distintas (mascaramento de dados, design de recompensa, trocas do KL, vantagem relativa ao grupo, recompensas verificáveis, medição do alignment tax), o que revisar a receita de alinhamento já pronta de outra pessoa precisaria de fato checar, etapa por etapa?
 
 ## Para ir além
 

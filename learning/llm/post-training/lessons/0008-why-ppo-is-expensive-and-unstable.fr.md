@@ -32,7 +32,7 @@ La pénalité KL limite la distance dont la policy dérive du modèle de référ
 
 ### Quatre modèles, pas un
 
-RLHF via PPO n'est pas un seul modèle qu'on entraîne ; il exige la présence simultanée de plusieurs modèles, chacun faisant un travail différent : la **policy** entraînée (initialisée à partir du modèle SFT) ; une copie figée du **modèle SFT** lui-même, gardée uniquement pour calculer la pénalité KL (leçon 6) ; le **reward model** (leçon 4), qui note les sorties échantillonnées de la policy ; et une **value function**, utilisée pour produire les estimations d'avantage dont dépend l'objectif clippé de PPO (leçon 7). Ouyang et al. indiquent directement que leur value function est initialisée à partir du reward model, ce qui en fait une cinquième copie complète des paramètres d'un grand modèle, distincte du reward model lui-même malgré son point de départ commun. Quatre à cinq grands modèles qui occupent la mémoire et consomment du calcul simultanément, au lieu d'un seul, c'est un coût réel et structurel, sans rapport avec le bon ou le mauvais déroulement de l'entraînement.
+RLHF via PPO n'est pas un seul modèle qu'on entraîne ; il exige la présence simultanée de plusieurs modèles, chacun faisant un travail différent : la **policy** entraînée (initialisée à partir du modèle SFT) ; une copie figée du **modèle SFT** lui-même, gardée uniquement pour calculer la pénalité KL (leçon 6) ; le **reward model** (leçon 4), qui note les sorties échantillonnées de la policy ; et une **value function**, utilisée pour produire les estimations d'avantage dont dépend l'objectif clippé de PPO (leçon 7). Ouyang et al. indiquent directement que leur value function est initialisée à partir du reward model, ce qui en fait une copie complète des paramètres d'un grand modèle, distincte du reward model lui-même malgré son point de départ commun. Quatre grands modèles qui occupent la mémoire et consomment du calcul simultanément, au lieu d'un seul, c'est un coût réel et structurel, sans rapport avec le bon ou le mauvais déroulement de l'entraînement.
 
 ### D'où vient précisément l'instabilité
 
@@ -44,7 +44,7 @@ C'est un résultat réellement contre-intuitif qui mérite d'être retenu : un r
 
 ## Pratique
 
-1. ▢ Nommez les quatre modèles (ou cinq, si l'on compte la value function séparément du reward model dont elle est initialisée) impliqués dans un pas d'entraînement PPO pour RLHF, et à quoi sert chacun.
+1. ▢ Nommez les quatre modèles impliqués dans un pas d'entraînement PPO pour RLHF, et à quoi sert chacun.
 
 <details markdown="1"><summary>Vérifier</summary>
 

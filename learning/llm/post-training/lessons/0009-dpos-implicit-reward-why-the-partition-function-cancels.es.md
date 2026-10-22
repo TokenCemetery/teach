@@ -56,7 +56,7 @@ Aquí es donde la pérdida de Bradley-Terry (lección 4) hace un trabajo real. L
 
 ### La recompensa implícita
 
-Esto es exactamente lo que nombra el término del glosario de la lección 4 **recompensa implícita**: la función de recompensa `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (el término de la función de partición puede descartarse una vez que solo importan las diferencias) que una policy define matemáticamente, solo por ser la policy que es, relativa a una referencia. Nunca se entrenó un reward model aparte para producirla; sale directamente de la misma relación de policy óptima sobre la que ya se construía RLHF. Entrenar una policy para satisfacer directamente los datos de preferencia humana, usando esta recompensa implícita en lugar de una entrenada por separado, es la idea completa que da nombre a DPO.
+Esto es exactamente lo que nombra el término del glosario **recompensa implícita**: la función de recompensa `r(x, y) = β · log(π_r(y|x) / π_ref(y|x))` (el término de la función de partición puede descartarse una vez que solo importan las diferencias) que una policy define matemáticamente, solo por ser la policy que es, relativa a una referencia. Nunca se entrenó un reward model aparte para producirla; sale directamente de la misma relación de policy óptima sobre la que ya se construía RLHF. Entrenar una policy para satisfacer directamente los datos de preferencia humana, usando esta recompensa implícita en lugar de una entrenada por separado, es la idea completa que da nombre a DPO.
 
 ## Práctica
 

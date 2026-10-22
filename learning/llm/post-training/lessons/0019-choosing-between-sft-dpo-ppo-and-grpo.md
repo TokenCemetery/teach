@@ -84,7 +84,7 @@ No. Defending a choice against the one rejected means naming a specific reason D
 
 - [ ] Find a published post-training technical report and identify which of SFT, DPO, PPO, or GRPO it used, and whether it states a reason for that choice over a cheaper alternative.
 - [ ] For a task you are familiar with (from work, a project, or a hypothetical), walk it through this lesson's ladder one step at a time: would SFT alone suffice, and if not, why not; would DPO suffice, and if not, why not.
-- [ ] Tomorrow: without looking ahead, write a one-sentence prediction for Lesson 20: given that this track's arc has covered ten distinct decisions (data masking, reward design, KL tradeoffs, group-relative advantage, verifiable rewards, alignment-tax measurement), what would reviewing someone else's finished alignment recipe actually need to check, stage by stage?
+- [ ] Tomorrow: without looking ahead, write a one-sentence prediction for Lesson 20: given that this track's arc has covered six distinct decisions (data masking, reward design, KL tradeoffs, group-relative advantage, verifiable rewards, alignment-tax measurement), what would reviewing someone else's finished alignment recipe actually need to check, stage by stage?
 
 ## Going further
 

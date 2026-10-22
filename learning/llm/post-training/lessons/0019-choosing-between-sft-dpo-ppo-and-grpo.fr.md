@@ -84,7 +84,7 @@ Non. Défendre un choix face à celui qui a été écarté signifie nommer une r
 
 - [ ] Trouvez un rapport technique de post-training publié et identifiez lequel de SFT, DPO, PPO ou GRPO il a utilisé, et s'il donne une raison de ce choix plutôt que d'une alternative moins chère.
 - [ ] Pour une tâche que vous connaissez (issue du travail, d'un projet, ou hypothétique), faites-la passer par l'échelle de cette leçon un échelon à la fois : le SFT seul suffirait-il, et sinon pourquoi ; DPO suffirait-il, et sinon pourquoi.
-- [ ] Demain : sans regarder la suite, écrivez une prédiction d'une phrase pour la leçon 20 : sachant que l'arc de ce parcours a couvert dix décisions distinctes (masquage des données, conception de la récompense, compromis KL, avantage relatif au groupe, récompenses vérifiables, mesure de la taxe d'alignement), que devrait réellement vérifier la relecture de la recette d'alignement terminée de quelqu'un d'autre, étape par étape ?
+- [ ] Demain : sans regarder la suite, écrivez une prédiction d'une phrase pour la leçon 20 : sachant que l'arc de ce parcours a couvert six décisions distinctes (masquage des données, conception de la récompense, compromis KL, avantage relatif au groupe, récompenses vérifiables, mesure de la taxe d'alignement), que devrait réellement vérifier la relecture de la recette d'alignement terminée de quelqu'un d'autre, étape par étape ?
 
 ## Pour aller plus loin
 

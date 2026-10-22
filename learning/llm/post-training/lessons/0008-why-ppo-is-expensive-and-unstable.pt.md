@@ -32,7 +32,7 @@ A penalidade de KL limita o quanto a policy se afasta do modelo de referência S
 
 ### Quatro modelos, e não um
 
-O RLHF via PPO não é um modelo sendo treinado; ele exige vários modelos presentes ao mesmo tempo, cada um com um trabalho diferente: a **policy** sendo treinada (inicializada a partir do modelo SFT); uma cópia congelada do próprio **modelo SFT**, mantida apenas para calcular a penalidade de KL (lição 6); o **reward model** (lição 4), que pontua as saídas amostradas da policy; e uma **função de valor**, usada para produzir as estimativas de vantagem de que o objetivo cortado do PPO (lição 7) depende. Ouyang et al. afirmam diretamente que a sua função de valor é inicializada a partir do reward model, o que a torna uma quinta cópia completa de um modelo grande em termos de parâmetros, distinta do próprio reward model apesar de compartilhar o seu ponto de partida. Quatro a cinco modelos grandes ocupando memória e consumindo compute ao mesmo tempo, em vez de um, é um custo real e estrutural que não tem nada a ver com o quão bem ou mal o treinamento esteja indo.
+O RLHF via PPO não é um modelo sendo treinado; ele exige vários modelos presentes ao mesmo tempo, cada um com um trabalho diferente: a **policy** sendo treinada (inicializada a partir do modelo SFT); uma cópia congelada do próprio **modelo SFT**, mantida apenas para calcular a penalidade de KL (lição 6); o **reward model** (lição 4), que pontua as saídas amostradas da policy; e uma **função de valor**, usada para produzir as estimativas de vantagem de que o objetivo cortado do PPO (lição 7) depende. Ouyang et al. afirmam diretamente que a sua função de valor é inicializada a partir do reward model, o que a torna uma cópia completa de um modelo grande em termos de parâmetros, distinta do próprio reward model apesar de compartilhar o seu ponto de partida. Quatro modelos grandes ocupando memória e consumindo compute ao mesmo tempo, em vez de um, é um custo real e estrutural que não tem nada a ver com o quão bem ou mal o treinamento esteja indo.
 
 ### De onde a instabilidade vem especificamente
 
@@ -44,7 +44,7 @@ Este é um resultado genuinamente contraintuitivo que vale a pena guardar: um re
 
 ## Prática
 
-1. ▢ Cite os quatro modelos (ou cinco, contando a função de valor separadamente do reward model a partir do qual ela é inicializada) envolvidos em um passo de treinamento de PPO para RLHF, e para que cada um é usado.
+1. ▢ Cite os quatro modelos envolvidos em um passo de treinamento de PPO para RLHF, e para que cada um é usado.
 
 <details markdown="1"><summary>Verificação</summary>
 

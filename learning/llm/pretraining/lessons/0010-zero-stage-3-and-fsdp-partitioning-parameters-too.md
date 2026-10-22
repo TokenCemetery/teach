@@ -1,5 +1,5 @@
 ---
-title: 10. ZeRO Stage 3 and FSDP: Partitioning Parameters Too
+title: "10. ZeRO Stage 3 and FSDP: Partitioning Parameters Too"
 description: Sharding the parameters themselves means reconstructing them on demand, which is the first thing this costs
 type: lesson
 ---

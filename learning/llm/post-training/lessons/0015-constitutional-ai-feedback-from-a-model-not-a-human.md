@@ -1,5 +1,5 @@
 ---
-title: 15. Constitutional AI: Feedback From a Model, Not a Human
+title: "15. Constitutional AI: Feedback From a Model, Not a Human"
 description: Zero human labels for harm, a written list of principles instead, and an assistant that explains its objections rather than deflecting
 type: lesson
 ---

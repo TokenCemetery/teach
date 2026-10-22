@@ -1,6 +1,6 @@
 ---
 title: Judgment
-description: The stage 8 reference sheet: what a public API commits to, what breaks a caller, the release procedure, and where to look when nothing is written down
+description: "The stage 8 reference sheet: what a public API commits to, what breaks a caller, the release procedure, and where to look when nothing is written down"
 type: reference
 ---
 

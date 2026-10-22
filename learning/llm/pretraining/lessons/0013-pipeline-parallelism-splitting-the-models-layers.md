@@ -1,5 +1,5 @@
 ---
-title: 13. Pipeline Parallelism: Splitting the Model's Layers
+title: "13. Pipeline Parallelism: Splitting the Model's Layers"
 description: Assigning consecutive layers to different devices, and the idle time that costs at the start and end of every batch
 type: lesson
 ---

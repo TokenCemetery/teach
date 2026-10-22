@@ -1,5 +1,5 @@
 ---
-title: 4. Training a Reward Model: The Bradley-Terry Loss
+title: "4. Training a Reward Model: The Bradley-Terry Loss"
 description: A reward model never sees an absolute score in training, only which of two completions a human liked more
 type: lesson
 ---

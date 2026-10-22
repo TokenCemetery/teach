@@ -1,5 +1,5 @@
 ---
-title: 7. PPO: Why the Update Gets Clipped
+title: "7. PPO: Why the Update Gets Clipped"
 description: A big win on one batch of sampled data is not trustworthy evidence for a big step; PPO refuses to fully believe it
 type: lesson
 ---

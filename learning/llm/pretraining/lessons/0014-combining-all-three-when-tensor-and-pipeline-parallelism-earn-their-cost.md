@@ -1,5 +1,5 @@
 ---
-title: 14. Combining All Three: When Tensor and Pipeline Parallelism Earn Their Cost
+title: "14. Combining All Three: When Tensor and Pipeline Parallelism Earn Their Cost"
 description: Matching each parallelism strategy to the interconnect it tolerates, and when sharding alone is not enough
 type: lesson
 ---

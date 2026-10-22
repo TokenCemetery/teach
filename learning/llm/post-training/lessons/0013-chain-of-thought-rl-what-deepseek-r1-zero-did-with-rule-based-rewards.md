@@ -1,5 +1,5 @@
 ---
-title: 13. Chain-of-Thought RL: What DeepSeek-R1-Zero Did With Rule-Based Rewards
+title: "13. Chain-of-Thought RL: What DeepSeek-R1-Zero Did With Rule-Based Rewards"
 description: No learned reward model, no SFT step first, and extended reasoning emerged anyway because it kept getting more answers right
 type: lesson
 ---

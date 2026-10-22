@@ -1,5 +1,5 @@
 ---
-title: 5. Scaling Laws: What Kaplan Predicted
+title: "5. Scaling Laws: What Kaplan Predicted"
 description: An empirical power law lets you forecast a training run's loss before paying for it, and what that predicted for how to spend a compute budget
 type: lesson
 ---

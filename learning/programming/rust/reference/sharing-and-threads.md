@@ -1,6 +1,6 @@
 ---
 title: Sharing and threads
-description: The stage 5 reference sheet: the strategy decision, what each sharing type costs, and the failures that follow from choosing by habit
+description: "The stage 5 reference sheet: the strategy decision, what each sharing type costs, and the failures that follow from choosing by habit"
 type: reference
 ---
 

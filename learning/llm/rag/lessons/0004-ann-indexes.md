@@ -1,5 +1,5 @@
 ---
-title: 4. ANN Indexes: HNSW and IVF
+title: "4. ANN Indexes: HNSW and IVF"
 description: Why vector search trades exactness for speed, and how IVF and HNSW each expose that trade-off as a tunable knob
 type: lesson
 ---

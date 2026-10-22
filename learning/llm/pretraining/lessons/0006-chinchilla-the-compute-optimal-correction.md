@@ -1,5 +1,5 @@
 ---
-title: 6. Chinchilla: The Compute-Optimal Correction
+title: "6. Chinchilla: The Compute-Optimal Correction"
 description: Why model size and token count should scale together, and how to turn a compute budget into a token count
 type: lesson
 ---

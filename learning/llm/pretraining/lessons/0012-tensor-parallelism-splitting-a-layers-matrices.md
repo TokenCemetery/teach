@@ -1,5 +1,5 @@
 ---
-title: 12. Tensor Parallelism: Splitting a Layer's Matrices
+title: "12. Tensor Parallelism: Splitting a Layer's Matrices"
 description: Choosing which axis to split a weight matrix along so an entire transformer block needs only one all-reduce
 type: lesson
 ---

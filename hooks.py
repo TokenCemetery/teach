@@ -1,6 +1,9 @@
 """MkDocs hooks for building this site.
 
-Both hooks here correct mkdocs-section-index, which `mkdocs.yml` enables so a
+The last hook fails `mkdocs build --strict` on front matter that does not
+parse, which MkDocs would otherwise render as page text without a warning.
+
+The other two correct mkdocs-section-index, which `mkdocs.yml` enables so a
 workspace's label in the navigation links to its `README.md` overview instead
 of sitting beside it as a second row. One hook keeps
 `mkdocs build --strict`, which AGENTS.md requires after any change under
@@ -15,6 +18,7 @@ from mkdocs.structure.nav import Section
 from mkdocs.structure.pages import Page
 from mkdocs_section_index import SectionPage
 
+_LOG = logging.getLogger("mkdocs.hooks")
 _SECTION_INDEX_LOGGER = "mkdocs.plugins.mkdocs_section_index.plugin"
 _UNDETECTED_THEME = "couldn't detect a supported theme to adapt"
 
@@ -110,3 +114,21 @@ def on_nav(nav, config, files):
     """Correct the navigation mkdocs-section-index just rewrote."""
     _correct_folded_pages(nav.items, None)
     return nav
+
+
+def on_page_markdown(markdown, page, config, files):
+    """Fail the strict build on front matter that is not valid YAML.
+
+    MkDocs strips front matter only when it parses. When it does not, for
+    example `title: 15. ReAct: Interleaving` with an unquoted second colon,
+    MkDocs logs nothing and renders the block as page text, and the page
+    loses its title, description and type. The markdown this hook receives
+    then still starts with the `---` fence, which never happens otherwise.
+    """
+    if markdown.startswith("---\n"):
+        _LOG.warning(
+            "Front matter in '%s' is not valid YAML and renders as text; "
+            "quote any value that contains ': '.",
+            page.file.src_uri,
+        )
+    return markdown

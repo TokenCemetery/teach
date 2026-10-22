@@ -1,6 +1,6 @@
 ---
 title: Traits and Lifetimes
-description: The stage 4 reference sheet: the trait and dispatch decisions, the coherence rules, and how to read a lifetime error
+description: "The stage 4 reference sheet: the trait and dispatch decisions, the coherence rules, and how to read a lifetime error"
 type: reference
 ---
 

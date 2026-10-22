@@ -1,6 +1,6 @@
 ---
 title: Async
-description: The stage 6 reference sheet: the poll model, what a runtime adds, the failures that arrive without an error, and where cancel safety is documented
+description: "The stage 6 reference sheet: the poll model, what a runtime adds, the failures that arrive without an error, and where cancel safety is documented"
 type: reference
 ---
 

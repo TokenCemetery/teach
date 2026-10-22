@@ -1,5 +1,5 @@
 ---
-title: 20. MCP: Tools, Resources, and Prompts
+title: "20. MCP: Tools, Resources, and Prompts"
 description: Model Context Protocol as a standardized interface for agent harnesses to discover and invoke external tools, read data, and use templates
 type: lesson
 ---

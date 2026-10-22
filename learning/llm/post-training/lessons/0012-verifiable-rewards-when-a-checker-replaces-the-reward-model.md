@@ -1,5 +1,5 @@
 ---
-title: 12. Verifiable Rewards: When a Checker Replaces the Reward Model
+title: "12. Verifiable Rewards: When a Checker Replaces the Reward Model"
 description: A trained reward model is a guess at what a human would prefer; a unit test or a matched answer is not a guess at all
 type: lesson
 ---

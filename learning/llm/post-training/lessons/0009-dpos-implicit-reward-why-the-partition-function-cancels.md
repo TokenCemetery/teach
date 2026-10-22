@@ -1,5 +1,5 @@
 ---
-title: 9. DPO's Implicit Reward: Why the Partition Function Cancels
+title: "9. DPO's Implicit Reward: Why the Partition Function Cancels"
 description: An intractable normalizing term stands between a reward and its optimal policy, until a difference of two rewards makes it vanish
 type: lesson
 ---

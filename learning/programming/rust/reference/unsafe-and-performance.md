@@ -1,6 +1,6 @@
 ---
 title: Unsafe and performance
-description: The stage 7 reference sheet: what unsafe promises, the undefined-behaviour list, how each claim gets checked, and the measurement discipline
+description: "The stage 7 reference sheet: what unsafe promises, the undefined-behaviour list, how each claim gets checked, and the measurement discipline"
 type: reference
 ---
 

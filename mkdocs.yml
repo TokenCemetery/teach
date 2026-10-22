@@ -25,7 +25,9 @@ theme:
 # Corrects mkdocs-section-index: drops one false-positive warning so
 # `--strict` stays usable, stops the plugin folding the first page of a
 # section that has no overview page to fold, and keeps a folded page's own
-# front-matter title. See the docstrings in hooks.py.
+# front-matter title. Also fails `--strict` on front matter that is not
+# valid YAML, which MkDocs would otherwise render as page text. See the
+# docstrings in hooks.py.
 hooks:
   - hooks.py
 
@@ -92,36 +94,36 @@ plugins:
         # the build cost for no translation value. Commented out, not
         # removed: uncomment a locale once its content is actually
         # translated.
-        # - locale: es
-        #   name: Spanish
-        #   build: true
-        #   theme:
-        #     locale: es
-        # - locale: zh
-        #   name: Chinese
-        #   build: true
-        #   theme:
-        #     locale: zh
-        # - locale: hi
-        #   name: Hindi
-        #   build: true
-        #   theme:
-        #     locale: hi
-        # - locale: pt
-        #   name: Portuguese
-        #   build: true
-        #   theme:
-        #     locale: pt
-        # - locale: ru
-        #   name: Russian
-        #   build: true
-        #   theme:
-        #     locale: ru
-        # - locale: fr
-        #   name: French
-        #   build: true
-        #   theme:
-        #     locale: fr
+        - locale: es
+          name: Spanish
+          build: true
+          theme:
+            locale: es
+        - locale: zh
+          name: Chinese
+          build: true
+          theme:
+            locale: zh
+        - locale: hi
+          name: Hindi
+          build: true
+          theme:
+            locale: hi
+        - locale: pt
+          name: Portuguese
+          build: true
+          theme:
+            locale: pt
+        - locale: ru
+          name: Russian
+          build: true
+          theme:
+            locale: ru
+        - locale: fr
+          name: French
+          build: true
+          theme:
+            locale: fr
         - locale: en
           default: true
           name: English

@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 15. Mixed Precision at Scale: bfloat16 and Stochastic Rounding
 
-**Mission link:** "Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint" is the closest Success looks like bullet this stage serves, and it starts with the numeric format the training run is even running in. Lesson 16 covers loss spikes directly; Lesson 17 covers the learning-rate schedule.
+**Mission link:** "Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint" is the "Done when" cell of this stage in The arc, and it starts with the numeric format the training run is even running in. Lesson 16 covers loss spikes directly; Lesson 17 covers the learning-rate schedule.
 **Primary source:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prerequisites:** [Lesson 14](0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md)
 

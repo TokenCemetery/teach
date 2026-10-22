@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 19. Sobrevivir a la falla de un nodo
 
-**Vínculo con la misión:** "Puedes diseñar un esquema de checkpointing que acote el progreso perdido tras la falla de un nodo" es el punto de Cómo se ve el éxito al que sirve esta etapa. La Lección 18 cubrió qué tiene que guardar un checkpoint y cada cuánto guardar uno; esta lección cubre qué ocurre realmente cuando llega una falla.
+**Vínculo con la misión:** "Puedes diseñar un esquema de checkpointing que acote el progreso perdido tras la falla de un nodo" es la celda "Terminada cuando" de esta etapa en El arco. La Lección 18 cubrió qué tiene que guardar un checkpoint y cada cuánto guardar uno; esta lección cubre qué ocurre realmente cuando llega una falla.
 **Fuente principal:** [Paper: "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
 **Requisitos previos:** [Lección 18](0018-what-a-checkpoint-has-to-hold.md)
 

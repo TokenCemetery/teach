@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 21. समय-समय पर Held-Out Evaluation
 
-**मिशन से संबंध:** "Training dashboard पढ़कर बता सकें कि run सही राह पर है या नहीं" "सफलता कैसी दिखती है" का वह बिंदु है जिसे यह चरण पूरा करता है। पाठ 20 ने training run के अपने भीतरी signals को देखना कवर किया; यह पाठ सहेजे checkpoints को उस चीज़ के विरुद्ध परखना कवर करता है जो training loss नहीं बता सकता, और उस माप को वहाँ सौंप देता है जहाँ वह पूरी तरह सिखाया जाता है।
+**मिशन से संबंध:** "Training dashboard पढ़कर बता सकें कि run सही राह पर है या नहीं" "पूरी रूपरेखा" में इस चरण के "कब पूरा माना जाए" खाने में लिखा है। पाठ 20 ने training run के अपने भीतरी signals को देखना कवर किया; यह पाठ सहेजे checkpoints को उस चीज़ के विरुद्ध परखना कवर करता है जो training loss नहीं बता सकता, और उस माप को वहाँ सौंप देता है जहाँ वह पूरी तरह सिखाया जाता है।
 **मुख्य स्रोत:** [पेपर: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **पूर्व-आवश्यकताएँ:** [पाठ 20](0020-reading-a-loss-curve.md), [Held-out data](../../evals/GLOSSARY.md)
 

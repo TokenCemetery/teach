@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 16. Loss spikes e as instabilidades do próprio otimizador
 
-**Ligação com a missão:** "Dada uma curva de loss, consegue dizer se um spike é recuperável ou exige recomeçar de um checkpoint anterior" é o item de O sucesso se parece com isto que esta etapa atende. Esta lição cobre de onde um loss spike pode realmente vir e a mitigação padrão; a Lição 17 cobre o schedule que molda o treinamento em torno dele.
+**Ligação com a missão:** "Dada uma curva de loss, consegue dizer se um spike é recuperável ou exige recomeçar de um checkpoint anterior" é a célula "Concluída quando" desta etapa em O arco. Esta lição cobre de onde um loss spike pode realmente vir e a mitigação padrão; a Lição 17 cobre o schedule que molda o treinamento em torno dele.
 **Fonte principal:** [Artigo científico: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Pré-requisitos:** [Lição 15](0015-mixed-precision-at-scale-bfloat16-and-stochastic-rounding.md), [Loss spike](../GLOSSARY.md)
 

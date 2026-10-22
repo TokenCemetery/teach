@@ -6,7 +6,7 @@ type: lesson
 
 # 第 15 课：大规模混合精度：bfloat16 与随机舍入
 
-**使命关联:** “给定一条损失曲线，能判断尖峰是可以恢复的，还是需要从更早的检查点重新开始”是“成功的标准”中本阶段所服务的最接近的一条，而它要从训练运行究竟在用什么数值格式讲起。第 16 课直接讲损失尖峰；第 17 课讲学习率调度。
+**使命关联:** “给定一条损失曲线，能判断尖峰是可以恢复的，还是需要从更早的检查点重新开始”是“学习路线”中本阶段“完成的标志”一栏的内容，而它要从训练运行究竟在用什么数值格式讲起。第 16 课直接讲损失尖峰；第 17 课讲学习率调度。
 **主要来源:** [论文：“Scaling Language Models: Methods, Analysis & Insights from Training Gopher”，Rae 等，2021](https://arxiv.org/abs/2112.11446)
 **前置知识:** [第 14 课](0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md)
 

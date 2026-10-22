@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 16. Loss Spikes और Optimizer की अपनी अस्थिरताएँ
 
-**मिशन से संबंध:** "Loss curve देखकर बता सकें कि spike recover होने लायक़ है या पुराने checkpoint से restart चाहिए" "सफलता कैसी दिखती है" का वह बिंदु है जिसे यह चरण पूरा करता है। यह पाठ कवर करता है कि loss spike असल में कहाँ से आ सकता है, और मानक उपाय; पाठ 17 उस schedule को कवर करता है जो training को उसके इर्द-गिर्द ढालता है।
+**मिशन से संबंध:** "Loss curve देखकर बता सकें कि spike recover होने लायक़ है या पुराने checkpoint से restart चाहिए" "पूरी रूपरेखा" में इस चरण के "कब पूरा माना जाए" खाने में लिखा है। यह पाठ कवर करता है कि loss spike असल में कहाँ से आ सकता है, और मानक उपाय; पाठ 17 उस schedule को कवर करता है जो training को उसके इर्द-गिर्द ढालता है।
 **मुख्य स्रोत:** [पेपर: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **पूर्व-आवश्यकताएँ:** [पाठ 15](0015-mixed-precision-at-scale-bfloat16-and-stochastic-rounding.md), [Loss spike](../GLOSSARY.md)
 

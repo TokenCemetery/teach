@@ -83,7 +83,7 @@ Porque cada dispositivo solo calcula con su propia porción de la matriz de peso
 ## Prácticas en el mundo real
 
 - [ ] Lee la descripción del tensor parallelism en el paper de Megatron-LM (enlazado arriba) y busca la figura que muestra las divisiones de los bloques MLP y de atención. Sigue, con tus propias palabras, dónde se sitúa cada operador `f` y `g` (la notación del paper para el par identidad frente a all-reduce en forward/backward) en el diagrama.
-- [ ] Esboza en papel una matriz de pesos `A` de 4 filas por 2 columnas y una entrada `X` de 2 filas por 4 columnas, y calcula a mano cómo es `X @ A` cuando `A` se divide por columnas en dos piezas de 4 filas por 1 columna, frente a dividirla por filas en dos piezas de 2 filas por 4 columnas. Confirma qué división da a cada dispositivo una respuesta completa.
+- [ ] Esboza en papel una matriz de pesos `A` de 4 filas por 2 columnas y una entrada `X` de 2 filas por 4 columnas, y calcula a mano cómo es `X @ A` cuando `A` se divide por columnas en dos piezas de 4 filas por 1 columna, frente a dividirla por filas en dos piezas de 2 filas por 2 columnas. Confirma qué división da a cada dispositivo una respuesta completa.
 - [ ] Mañana: sin adelantarte, escribe una predicción de una oración para la Lección 13: si el tensor parallelism necesita un all-reduce por cada capa del transformer, ¿qué tipo de interconexión requeriría probablemente entre dispositivos, y esperarías que funcionara igual de bien entre dispositivos de racks de servidores físicamente distintos?
 
 ## Para profundizar

@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 21. Évaluation held-out périodique
 
-**Lien avec la mission :** « Savoir lire un tableau de bord d'entraînement et dire si le run est sur la bonne voie » est le point d'Objectif que sert cette étape. La leçon 20 a couvert la surveillance des signaux internes du run d'entraînement ; cette leçon couvre le contrôle de checkpoints sauvegardés sur quelque chose que la loss d'entraînement ne peut pas vous dire, et confie cette mesure à l'endroit où elle est enseignée en entier.
+**Lien avec la mission :** « Savoir lire un tableau de bord d'entraînement et dire si le run est sur la bonne voie » est la case « Terminée quand » de cette étape dans « Le fil conducteur ». La leçon 20 a couvert la surveillance des signaux internes du run d'entraînement ; cette leçon couvre le contrôle de checkpoints sauvegardés sur quelque chose que la loss d'entraînement ne peut pas vous dire, et confie cette mesure à l'endroit où elle est enseignée en entier.
 **Source primaire :** [Article : "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prérequis :** [Leçon 20](0020-reading-a-loss-curve.md), [Données held-out](../../evals/GLOSSARY.md)
 

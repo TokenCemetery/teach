@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 21. Periodic Held-Out Evaluation
 
-**Mission link:** "Can read a training dashboard and say whether the run is on track" is the Success looks like bullet this stage serves. Lesson 20 covered watching the training run's own internal signals; this lesson covers checking saved checkpoints against something training loss cannot tell you, and hands that measurement off to where it is taught in full.
+**Mission link:** "Can read a training dashboard and say whether the run is on track" is the "Done when" cell of this stage in The arc. Lesson 20 covered watching the training run's own internal signals; this lesson covers checking saved checkpoints against something training loss cannot tell you, and hands that measurement off to where it is taught in full.
 **Primary source:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prerequisites:** [Lesson 20](0020-reading-a-loss-curve.md), [Held-out data](../../evals/GLOSSARY.md)
 

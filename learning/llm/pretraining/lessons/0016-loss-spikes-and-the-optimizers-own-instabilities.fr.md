@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 16. Pics de loss et instabilités propres à l'optimizer
 
-**Lien avec la mission :** « Étant donné une courbe de loss, savoir dire si un pic est récupérable ou impose un redémarrage depuis un checkpoint antérieur » est le point d'Objectif que sert cette étape. Cette leçon couvre ce dont un pic de loss peut réellement provenir, et la mitigation standard ; la leçon 17 couvre le schéma qui organise l'entraînement autour.
+**Lien avec la mission :** « Étant donné une courbe de loss, savoir dire si un pic est récupérable ou impose un redémarrage depuis un checkpoint antérieur » est la case « Terminée quand » de cette étape dans « Le fil conducteur ». Cette leçon couvre ce dont un pic de loss peut réellement provenir, et la mitigation standard ; la leçon 17 couvre le schéma qui organise l'entraînement autour.
 **Source primaire :** [Article : "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prérequis :** [Leçon 15](0015-mixed-precision-at-scale-bfloat16-and-stochastic-rounding.md), [Pic de loss](../GLOSSARY.md)
 

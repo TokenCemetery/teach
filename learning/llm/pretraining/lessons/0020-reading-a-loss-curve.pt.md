@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 20. Lendo uma curva de loss
 
-**Ligação com a missão:** "Consegue ler um dashboard de treinamento e dizer se a execução está no caminho certo" é o item de O sucesso se parece com isto que esta etapa atende. Esta lição cobre o que de fato acompanhar em um dashboard ao vivo; a Lição 21 cobre a avaliação de checkpoints salvos contra dados held-out.
+**Ligação com a missão:** "Consegue ler um dashboard de treinamento e dizer se a execução está no caminho certo" é a célula "Concluída quando" desta etapa em O arco. Esta lição cobre o que de fato acompanhar em um dashboard ao vivo; a Lição 21 cobre a avaliação de checkpoints salvos contra dados held-out.
 **Fonte principal:** [Artigo científico: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Pré-requisitos:** [Lição 19](0019-surviving-a-node-failure.md)
 

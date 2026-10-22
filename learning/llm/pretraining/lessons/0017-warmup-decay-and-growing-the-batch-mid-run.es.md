@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 17. Warmup, decay y aumentar el batch a mitad de la ejecución
 
-**Vínculo con la misión:** "Dada una curva de loss, puedes decir si un spike es recuperable o exige reiniciar desde un checkpoint anterior" es el punto de Cómo se ve el éxito al que sirve esta etapa. La Lección 16 cubrió los spikes y el clipping que protege contra ellos; esta lección cubre el programa que da forma a la ejecución en torno a esa protección.
+**Vínculo con la misión:** "Dada una curva de loss, puedes decir si un spike es recuperable o exige reiniciar desde un checkpoint anterior" es la celda "Terminada cuando" de esta etapa en El arco. La Lección 16 cubrió los spikes y el clipping que protege contra ellos; esta lección cubre el programa que da forma a la ejecución en torno a esa protección.
 **Fuente principal:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Requisitos previos:** [Lección 16](0016-loss-spikes-and-the-optimizers-own-instabilities.md)
 

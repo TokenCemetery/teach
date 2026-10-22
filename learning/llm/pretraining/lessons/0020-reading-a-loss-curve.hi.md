@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 20. Loss Curve पढ़ना
 
-**मिशन से संबंध:** "Training dashboard पढ़कर बता सकें कि run सही राह पर है या नहीं" "सफलता कैसी दिखती है" का वह बिंदु है जिसे यह चरण पूरा करता है। यह पाठ कवर करता है कि live dashboard पर असल में क्या देखना है; पाठ 21 कवर करता है कि सहेजे checkpoints को held-out data के विरुद्ध कैसे परखा जाए।
+**मिशन से संबंध:** "Training dashboard पढ़कर बता सकें कि run सही राह पर है या नहीं" "पूरी रूपरेखा" में इस चरण के "कब पूरा माना जाए" खाने में लिखा है। यह पाठ कवर करता है कि live dashboard पर असल में क्या देखना है; पाठ 21 कवर करता है कि सहेजे checkpoints को held-out data के विरुद्ध कैसे परखा जाए।
 **मुख्य स्रोत:** [पेपर: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **पूर्व-आवश्यकताएँ:** [पाठ 19](0019-surviving-a-node-failure.md)
 

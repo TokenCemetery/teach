@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 17. Warm-up, decaimento e aumento do batch no meio da execução
 
-**Ligação com a missão:** "Dada uma curva de loss, consegue dizer se um spike é recuperável ou exige recomeçar de um checkpoint anterior" é o item de O sucesso se parece com isto que esta etapa atende. A Lição 16 cobriu os spikes e o clipping que protege contra eles; esta lição cobre o schedule que molda a execução em torno dessa proteção.
+**Ligação com a missão:** "Dada uma curva de loss, consegue dizer se um spike é recuperável ou exige recomeçar de um checkpoint anterior" é a célula "Concluída quando" desta etapa em O arco. A Lição 16 cobriu os spikes e o clipping que protege contra eles; esta lição cobre o schedule que molda a execução em torno dessa proteção.
 **Fonte principal:** [Artigo científico: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Pré-requisitos:** [Lição 16](0016-loss-spikes-and-the-optimizers-own-instabilities.md)
 

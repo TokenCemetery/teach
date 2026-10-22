@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 20. Leer una curva de loss
 
-**Vínculo con la misión:** "Puedes leer un dashboard de entrenamiento y decir si la ejecución va bien encaminada" es el punto de Cómo se ve el éxito al que sirve esta etapa. Esta lección cubre qué vigilar realmente en un dashboard en vivo; la Lección 21 cubre cómo evaluar con datos held-out los checkpoints guardados.
+**Vínculo con la misión:** "Puedes leer un dashboard de entrenamiento y decir si la ejecución va bien encaminada" es la celda "Terminada cuando" de esta etapa en El arco. Esta lección cubre qué vigilar realmente en un dashboard en vivo; la Lección 21 cubre cómo evaluar con datos held-out los checkpoints guardados.
 **Fuente principal:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Requisitos previos:** [Lección 19](0019-surviving-a-node-failure.md)
 

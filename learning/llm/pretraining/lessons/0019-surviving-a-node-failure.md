@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 19. Surviving a Node Failure
 
-**Mission link:** "Can design a checkpointing scheme that bounds lost progress after a node failure" is the Success looks like bullet this stage serves. Lesson 18 covered what a checkpoint has to hold and how often to save one; this lesson covers what actually happens once a failure hits.
+**Mission link:** "Can design a checkpointing scheme that bounds lost progress after a node failure" is the "Done when" cell of this stage in The arc. Lesson 18 covered what a checkpoint has to hold and how often to save one; this lesson covers what actually happens once a failure hits.
 **Primary source:** [Paper: "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
 **Prerequisites:** [Lesson 18](0018-what-a-checkpoint-has-to-hold.md)
 

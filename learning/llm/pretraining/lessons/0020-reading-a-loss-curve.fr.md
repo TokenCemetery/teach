@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 20. Lire une courbe de loss
 
-**Lien avec la mission :** « Savoir lire un tableau de bord d'entraînement et dire si le run est sur la bonne voie » est le point d'Objectif que sert cette étape. Cette leçon couvre ce qu'il faut réellement surveiller sur un tableau de bord en direct ; la leçon 21 couvre l'évaluation de checkpoints sauvegardés sur des données held-out.
+**Lien avec la mission :** « Savoir lire un tableau de bord d'entraînement et dire si le run est sur la bonne voie » est la case « Terminée quand » de cette étape dans « Le fil conducteur ». Cette leçon couvre ce qu'il faut réellement surveiller sur un tableau de bord en direct ; la leçon 21 couvre l'évaluation de checkpoints sauvegardés sur des données held-out.
 **Source primaire :** [Article : "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prérequis :** [Leçon 19](0019-surviving-a-node-failure.md)
 

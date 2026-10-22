@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 15. Précision mixte à grande échelle : bfloat16 et arrondi stochastique
 
-**Lien avec la mission :** « Étant donné une courbe de loss, savoir dire si un pic est récupérable ou impose un redémarrage depuis un checkpoint antérieur » est le point d'Objectif le plus proche que sert cette étape, et elle commence par le format numérique dans lequel le run d'entraînement tourne. La leçon 16 couvre directement les pics de loss ; la leçon 17 couvre le schéma de learning rate.
+**Lien avec la mission :** « Étant donné une courbe de loss, savoir dire si un pic est récupérable ou impose un redémarrage depuis un checkpoint antérieur » est la case « Terminée quand » de cette étape dans « Le fil conducteur », et elle commence par le format numérique dans lequel le run d'entraînement tourne. La leçon 16 couvre directement les pics de loss ; la leçon 17 couvre le schéma de learning rate.
 **Source primaire :** [Article : "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prérequis :** [Leçon 14](0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md)
 

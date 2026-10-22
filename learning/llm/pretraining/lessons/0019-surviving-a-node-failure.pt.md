@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 19. Sobrevivendo à falha de um nó
 
-**Ligação com a missão:** "Consegue projetar um esquema de checkpointing que limita o progresso perdido após a falha de um nó" é o item de O sucesso se parece com isto que esta etapa atende. A Lição 18 cobriu o que um checkpoint precisa guardar e com que frequência salvar um; esta lição cobre o que de fato acontece quando uma falha acontece.
+**Ligação com a missão:** "Consegue projetar um esquema de checkpointing que limita o progresso perdido após a falha de um nó" é a célula "Concluída quando" desta etapa em O arco. A Lição 18 cobriu o que um checkpoint precisa guardar e com que frequência salvar um; esta lição cobre o que de fato acontece quando uma falha acontece.
 **Fonte principal:** [Artigo científico: "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
 **Pré-requisitos:** [Lição 18](0018-what-a-checkpoint-has-to-hold.md)
 

@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 18. O que um checkpoint precisa guardar
 
-**Ligação com a missão:** "Consegue projetar um esquema de checkpointing que limita o progresso perdido após a falha de um nó" é o item de O sucesso se parece com isto que esta etapa atende. Esta lição cobre o que um checkpoint precisa conter e com que frequência salvar um; a Lição 19 cobre o que de fato acontece quando um nó falha no meio da execução.
+**Ligação com a missão:** "Consegue projetar um esquema de checkpointing que limita o progresso perdido após a falha de um nó" é a célula "Concluída quando" desta etapa em O arco. Esta lição cobre o que um checkpoint precisa conter e com que frequência salvar um; a Lição 19 cobre o que de fato acontece quando um nó falha no meio da execução.
 **Fonte principal:** [Artigo científico: "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
 **Pré-requisitos:** [Lição 17](0017-warmup-decay-and-growing-the-batch-mid-run.md)
 

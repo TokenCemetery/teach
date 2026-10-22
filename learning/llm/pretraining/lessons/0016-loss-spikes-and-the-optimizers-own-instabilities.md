@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 16. Loss Spikes and the Optimizer's Own Instabilities
 
-**Mission link:** "Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint" is the Success looks like bullet this stage serves. This lesson covers what a loss spike can actually come from, and the standard mitigation; Lesson 17 covers the schedule that shapes training around it.
+**Mission link:** "Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint" is the "Done when" cell of this stage in The arc. This lesson covers what a loss spike can actually come from, and the standard mitigation; Lesson 17 covers the schedule that shapes training around it.
 **Primary source:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prerequisites:** [Lesson 15](0015-mixed-precision-at-scale-bfloat16-and-stochastic-rounding.md), [Loss spike](../GLOSSARY.md)
 

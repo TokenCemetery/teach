@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 17. Warmup, Decay, और Run के बीच Batch बढ़ाना
 
-**मिशन से संबंध:** "Loss curve देखकर बता सकें कि spike recover होने लायक़ है या पुराने checkpoint से restart चाहिए" "सफलता कैसी दिखती है" का वह बिंदु है जिसे यह चरण पूरा करता है। पाठ 16 ने spikes और उनसे बचाने वाली clipping को कवर किया; यह पाठ उस schedule को कवर करता है जो run को उस सुरक्षा के इर्द-गिर्द ढालता है।
+**मिशन से संबंध:** "Loss curve देखकर बता सकें कि spike recover होने लायक़ है या पुराने checkpoint से restart चाहिए" "पूरी रूपरेखा" में इस चरण के "कब पूरा माना जाए" खाने में लिखा है। पाठ 16 ने spikes और उनसे बचाने वाली clipping को कवर किया; यह पाठ उस schedule को कवर करता है जो run को उस सुरक्षा के इर्द-गिर्द ढालता है।
 **मुख्य स्रोत:** [पेपर: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **पूर्व-आवश्यकताएँ:** [पाठ 16](0016-loss-spikes-and-the-optimizers-own-instabilities.md)
 

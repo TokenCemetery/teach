@@ -83,7 +83,7 @@ Parce que chaque appareil ne calcule jamais qu'avec sa propre tranche de la matr
 ## Exercices en situation réelle
 
 - [ ] Lisez la description du parallélisme tensoriel dans l'article Megatron-LM (lié plus haut), et trouvez la figure qui montre les découpages des blocs MLP et d'attention. Retracez, avec vos propres mots, où se situe chaque opérateur `f` et `g` (la notation de l'article pour la paire identité/all-reduce en passe avant/arrière) dans le schéma.
-- [ ] Esquissez sur le papier une matrice de poids `A` de 4 lignes sur 2 colonnes et une entrée `X` de 2 lignes sur 4 colonnes, et calculez à la main à quoi ressemble `X @ A` quand `A` est découpée par colonnes en deux morceaux de 4 lignes sur 1 colonne, par opposition à découpée par lignes en deux morceaux de 2 lignes sur 4 colonnes. Confirmez quel découpage donne à chaque appareil une réponse complète.
+- [ ] Esquissez sur le papier une matrice de poids `A` de 4 lignes sur 2 colonnes et une entrée `X` de 2 lignes sur 4 colonnes, et calculez à la main à quoi ressemble `X @ A` quand `A` est découpée par colonnes en deux morceaux de 4 lignes sur 1 colonne, par opposition à découpée par lignes en deux morceaux de 2 lignes sur 2 colonnes. Confirmez quel découpage donne à chaque appareil une réponse complète.
 - [ ] Demain : sans regarder la suite, écrivez une prédiction d'une phrase pour la leçon 13 : si le parallélisme tensoriel a besoin d'un all-reduce pour chaque couche du transformer, quel genre d'interconnexion cela exigerait-il probablement entre les appareils, et vous attendriez-vous à ce qu'il fonctionne aussi bien entre des appareils situés dans des baies de serveurs physiques différentes ?
 
 ## Pour aller plus loin

@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 21. Avaliação held-out periódica
 
-**Ligação com a missão:** "Consegue ler um dashboard de treinamento e dizer se a execução está no caminho certo" é o item de O sucesso se parece com isto que esta etapa atende. A Lição 20 cobriu o acompanhamento dos sinais internos da própria execução de treinamento; esta lição cobre a verificação de checkpoints salvos contra algo que a loss de treinamento não consegue dizer e entrega essa medição para onde ela é ensinada por inteiro.
+**Ligação com a missão:** "Consegue ler um dashboard de treinamento e dizer se a execução está no caminho certo" é a célula "Concluída quando" desta etapa em O arco. A Lição 20 cobriu o acompanhamento dos sinais internos da própria execução de treinamento; esta lição cobre a verificação de checkpoints salvos contra algo que a loss de treinamento não consegue dizer e entrega essa medição para onde ela é ensinada por inteiro.
 **Fonte principal:** [Artigo científico: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Pré-requisitos:** [Lição 20](0020-reading-a-loss-curve.md), [Dados held-out](../../evals/GLOSSARY.md)
 

@@ -6,7 +6,7 @@ type: lesson
 
 # 第 16 课：损失尖峰与优化器自身的不稳定
 
-**使命关联:** “给定一条损失曲线，能判断尖峰是可以恢复的，还是需要从更早的检查点重新开始”是“成功的标准”中本阶段所服务的那一条。本课讲损失尖峰实际可能来自哪里，以及标准的缓解办法；第 17 课讲围绕它来安排训练的调度。
+**使命关联:** “给定一条损失曲线，能判断尖峰是可以恢复的，还是需要从更早的检查点重新开始”是“学习路线”中本阶段“完成的标志”一栏的内容。本课讲损失尖峰实际可能来自哪里，以及标准的缓解办法；第 17 课讲围绕它来安排训练的调度。
 **主要来源:** [论文：“Scaling Language Models: Methods, Analysis & Insights from Training Gopher”，Rae 等，2021](https://arxiv.org/abs/2112.11446)
 **前置知识:** [第 15 课](0015-mixed-precision-at-scale-bfloat16-and-stochastic-rounding.md)、[损失尖峰](../GLOSSARY.md)
 

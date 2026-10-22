@@ -6,7 +6,7 @@ type: lesson
 
 # पाठ 15. बड़े पैमाने पर Mixed Precision: bfloat16 और Stochastic Rounding
 
-**मिशन से संबंध:** "Loss curve देखकर बता सकें कि spike recover होने लायक़ है या पुराने checkpoint से restart चाहिए" "सफलता कैसी दिखती है" का वह सबसे क़रीबी बिंदु है जिसे यह चरण पूरा करता है, और यह उस numeric format से शुरू होता है जिसमें training run चल ही रहा है। पाठ 16 loss spikes को सीधे कवर करता है; पाठ 17 learning-rate schedule को कवर करता है।
+**मिशन से संबंध:** "Loss curve देखकर बता सकें कि spike recover होने लायक़ है या पुराने checkpoint से restart चाहिए" "पूरी रूपरेखा" में इस चरण के "कब पूरा माना जाए" खाने में लिखा है, और यह उस numeric format से शुरू होता है जिसमें training run चल ही रहा है। पाठ 16 loss spikes को सीधे कवर करता है; पाठ 17 learning-rate schedule को कवर करता है।
 **मुख्य स्रोत:** [पेपर: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **पूर्व-आवश्यकताएँ:** [पाठ 14](0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md)
 

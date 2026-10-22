@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 17. Warmup, décroissance et croissance du batch en cours de run
 
-**Lien avec la mission :** « Étant donné une courbe de loss, savoir dire si un pic est récupérable ou impose un redémarrage depuis un checkpoint antérieur » est le point d'Objectif que sert cette étape. La leçon 16 a couvert les pics et le clipping qui s'en protège ; cette leçon couvre le schéma qui organise le run autour de cette protection.
+**Lien avec la mission :** « Étant donné une courbe de loss, savoir dire si un pic est récupérable ou impose un redémarrage depuis un checkpoint antérieur » est la case « Terminée quand » de cette étape dans « Le fil conducteur ». La leçon 16 a couvert les pics et le clipping qui s'en protège ; cette leçon couvre le schéma qui organise le run autour de cette protection.
 **Source primaire :** [Article : "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prérequis :** [Leçon 16](0016-loss-spikes-and-the-optimizers-own-instabilities.md)
 

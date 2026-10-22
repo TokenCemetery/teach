@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 15. Precisión mixta a escala: bfloat16 y redondeo estocástico
 
-**Vínculo con la misión:** "Dada una curva de loss, puedes decir si un spike es recuperable o exige reiniciar desde un checkpoint anterior" es el punto de Cómo se ve el éxito más cercano al que sirve esta etapa, y empieza por el formato numérico en el que se ejecuta siquiera el entrenamiento. La Lección 16 cubre directamente los loss spikes; la Lección 17 cubre el programa del learning rate.
+**Vínculo con la misión:** "Dada una curva de loss, puedes decir si un spike es recuperable o exige reiniciar desde un checkpoint anterior" es la celda "Terminada cuando" de esta etapa en El arco, y empieza por el formato numérico en el que se ejecuta siquiera el entrenamiento. La Lección 16 cubre directamente los loss spikes; la Lección 17 cubre el programa del learning rate.
 **Fuente principal:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Requisitos previos:** [Lección 14](0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md)
 

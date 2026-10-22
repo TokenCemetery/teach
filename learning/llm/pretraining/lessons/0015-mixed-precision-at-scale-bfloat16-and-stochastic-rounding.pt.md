@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 15. Precisão mista em escala: bfloat16 e stochastic rounding
 
-**Ligação com a missão:** "Dada uma curva de loss, consegue dizer se um spike é recuperável ou exige recomeçar de um checkpoint anterior" é o item de O sucesso se parece com isto mais próximo que esta etapa atende, e começa pelo formato numérico em que a execução de treinamento sequer está rodando. A Lição 16 cobre diretamente os loss spikes; a Lição 17 cobre o schedule de learning rate.
+**Ligação com a missão:** "Dada uma curva de loss, consegue dizer se um spike é recuperável ou exige recomeçar de um checkpoint anterior" é a célula "Concluída quando" desta etapa em O arco, e começa pelo formato numérico em que a execução de treinamento sequer está rodando. A Lição 16 cobre diretamente os loss spikes; a Lição 17 cobre o schedule de learning rate.
 **Fonte principal:** [Artigo científico: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Pré-requisitos:** [Lição 14](0014-combining-all-three-when-tensor-and-pipeline-parallelism-earn-their-cost.md)
 

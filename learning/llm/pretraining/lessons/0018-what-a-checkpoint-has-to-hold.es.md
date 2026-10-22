@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 18. Qué tiene que guardar un checkpoint
 
-**Vínculo con la misión:** "Puedes diseñar un esquema de checkpointing que acote el progreso perdido tras la falla de un nodo" es el punto de Cómo se ve el éxito al que sirve esta etapa. Esta lección cubre qué necesita contener un checkpoint y cada cuánto guardar uno; la Lección 19 cubre qué ocurre realmente cuando falla un nodo a mitad de una ejecución.
+**Vínculo con la misión:** "Puedes diseñar un esquema de checkpointing que acote el progreso perdido tras la falla de un nodo" es la celda "Terminada cuando" de esta etapa en El arco. Esta lección cubre qué necesita contener un checkpoint y cada cuánto guardar uno; la Lección 19 cubre qué ocurre realmente cuando falla un nodo a mitad de una ejecución.
 **Fuente principal:** [Paper: "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
 **Requisitos previos:** [Lección 17](0017-warmup-decay-and-growing-the-batch-mid-run.md)
 

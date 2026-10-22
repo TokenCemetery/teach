@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 17. Warmup, Decay, and Growing the Batch Mid-Run
 
-**Mission link:** "Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint" is the Success looks like bullet this stage serves. Lesson 16 covered spikes and the clipping that guards against them; this lesson covers the schedule that shapes the run around that guard.
+**Mission link:** "Given a loss curve, can say whether a spike is recoverable or needs a restart from an earlier checkpoint" is the "Done when" cell of this stage in The arc. Lesson 16 covered spikes and the clipping that guards against them; this lesson covers the schedule that shapes the run around that guard.
 **Primary source:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prerequisites:** [Lesson 16](0016-loss-spikes-and-the-optimizers-own-instabilities.md)
 

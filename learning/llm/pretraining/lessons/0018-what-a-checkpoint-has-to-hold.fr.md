@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 18. Ce qu'un checkpoint doit contenir
 
-**Lien avec la mission :** « Concevoir un schéma de checkpointing qui borne la progression perdue après la panne d'un nœud » est le point d'Objectif que sert cette étape. Cette leçon couvre ce qu'un checkpoint doit contenir et à quelle fréquence en sauvegarder un ; la leçon 19 couvre ce qui se passe réellement quand un nœud tombe en panne en cours de run.
+**Lien avec la mission :** « Concevoir un schéma de checkpointing qui borne la progression perdue après la panne d'un nœud » est la case « Terminée quand » de cette étape dans « Le fil conducteur ». Cette leçon couvre ce qu'un checkpoint doit contenir et à quelle fréquence en sauvegarder un ; la leçon 19 couvre ce qui se passe réellement quand un nœud tombe en panne en cours de run.
 **Source primaire :** [Article : "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
 **Prérequis :** [Leçon 17](0017-warmup-decay-and-growing-the-batch-mid-run.md)
 

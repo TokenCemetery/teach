@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 16. Loss spikes y las inestabilidades propias del optimizador
 
-**Vínculo con la misión:** "Dada una curva de loss, puedes decir si un spike es recuperable o exige reiniciar desde un checkpoint anterior" es el punto de Cómo se ve el éxito al que sirve esta etapa. Esta lección cubre de dónde puede venir realmente un loss spike, y la mitigación estándar; la Lección 17 cubre el programa que da forma al entrenamiento en torno a él.
+**Vínculo con la misión:** "Dada una curva de loss, puedes decir si un spike es recuperable o exige reiniciar desde un checkpoint anterior" es la celda "Terminada cuando" de esta etapa en El arco. Esta lección cubre de dónde puede venir realmente un loss spike, y la mitigación estándar; la Lección 17 cubre el programa que da forma al entrenamiento en torno a él.
 **Fuente principal:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Requisitos previos:** [Lección 15](0015-mixed-precision-at-scale-bfloat16-and-stochastic-rounding.md), [Loss spike](../GLOSSARY.md)
 

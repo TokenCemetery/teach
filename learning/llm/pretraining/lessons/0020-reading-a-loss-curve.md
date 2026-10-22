@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 20. Reading a Loss Curve
 
-**Mission link:** "Can read a training dashboard and say whether the run is on track" is the Success looks like bullet this stage serves. This lesson covers what to actually watch on a live dashboard; Lesson 21 covers evaluating saved checkpoints against held-out data.
+**Mission link:** "Can read a training dashboard and say whether the run is on track" is the "Done when" cell of this stage in The arc. This lesson covers what to actually watch on a live dashboard; Lesson 21 covers evaluating saved checkpoints against held-out data.
 **Primary source:** [Paper: "Scaling Language Models: Methods, Analysis & Insights from Training Gopher", Rae et al., 2021](https://arxiv.org/abs/2112.11446)
 **Prerequisites:** [Lesson 19](0019-surviving-a-node-failure.md)
 

@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 18. What a Checkpoint Has to Hold
 
-**Mission link:** "Can design a checkpointing scheme that bounds lost progress after a node failure" is the Success looks like bullet this stage serves. This lesson covers what a checkpoint needs to contain and how often to save one; Lesson 19 covers what actually happens when a node fails mid-run.
+**Mission link:** "Can design a checkpointing scheme that bounds lost progress after a node failure" is the "Done when" cell of this stage in The arc. This lesson covers what a checkpoint needs to contain and how often to save one; Lesson 19 covers what actually happens when a node fails mid-run.
 **Primary source:** [Paper: "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
 **Prerequisites:** [Lesson 17](0017-warmup-decay-and-growing-the-batch-mid-run.md)
 

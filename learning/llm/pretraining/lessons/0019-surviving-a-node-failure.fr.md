@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 19. Survivre à la panne d'un nœud
 
-**Lien avec la mission :** « Concevoir un schéma de checkpointing qui borne la progression perdue après la panne d'un nœud » est le point d'Objectif que sert cette étape. La leçon 18 a couvert ce qu'un checkpoint doit contenir et à quelle fréquence en sauvegarder un ; cette leçon couvre ce qui se passe réellement une fois qu'une panne survient.
+**Lien avec la mission :** « Concevoir un schéma de checkpointing qui borne la progression perdue après la panne d'un nœud » est la case « Terminée quand » de cette étape dans « Le fil conducteur ». La leçon 18 a couvert ce qu'un checkpoint doit contenir et à quelle fréquence en sauvegarder un ; cette leçon couvre ce qui se passe réellement une fois qu'une panne survient.
 **Source primaire :** [Article : "OPT: Open Pre-trained Transformer Language Models", Zhang et al., 2022](https://arxiv.org/abs/2205.01068)
 **Prérequis :** [Leçon 18](0018-what-a-checkpoint-has-to-hold.md)
 

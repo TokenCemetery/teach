@@ -83,7 +83,7 @@ Multi-head attention में बाँटने के लिए पहले 
 ## असली दुनिया का अभ्यास
 
 - [ ] Megatron-LM पेपर (ऊपर linked) में tensor parallelism का वर्णन पढ़ें, और वह figure खोजें जो MLP और attention block के बँटवारे दिखाती है। अपने शब्दों में पता लगाएँ कि हर `f` और `g` operator (पेपर का forward/backward में identity-बनाम-all-reduce जोड़ी के लिए संकेतन) diagram में कहाँ बैठता है।
-- [ ] काग़ज़ पर 4-rows-गुना-2-columns की weight matrix `A` और 2-rows-गुना-4-columns का input `X` बनाएँ, और हाथ से हल करें कि `X @ A` कैसा दिखता है जब `A` को columns से दो 4-rows-गुना-1-column टुकड़ों में बाँटा जाए, बनाम rows से दो 2-rows-गुना-4-columns टुकड़ों में। पुष्टि करें कि किस बँटवारे में हर device को पूरा उत्तर मिलता है।
+- [ ] काग़ज़ पर 4-rows-गुना-2-columns की weight matrix `A` और 2-rows-गुना-4-columns का input `X` बनाएँ, और हाथ से हल करें कि `X @ A` कैसा दिखता है जब `A` को columns से दो 4-rows-गुना-1-column टुकड़ों में बाँटा जाए, बनाम rows से दो 2-rows-गुना-2-columns टुकड़ों में। पुष्टि करें कि किस बँटवारे में हर device को पूरा उत्तर मिलता है।
 - [ ] कल: आगे देखे बिना, पाठ 13 के लिए एक वाक्य में अनुमान लिखें: अगर tensor parallelism को हर transformer layer के लिए all-reduce चाहिए, तो devices के बीच किस तरह का interconnect चाहिए होगा, और क्या आप उम्मीद करेंगे कि वह अलग-अलग भौतिक server racks के devices के बीच भी उतना ही अच्छा चलेगा?
 
 ## आगे बढ़ने के लिए

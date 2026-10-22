@@ -83,7 +83,7 @@ Because each device only ever computes with its own slice of the weight matrix; 
 ## Real-world reps
 
 - [ ] Read the description of tensor parallelism in the Megatron-LM paper (linked above), and find the figure showing the MLP and attention block splits. Trace, in your own words, where each `f` and `g` operator (the paper's notation for the forward/backward identity-versus-all-reduce pair) sits in the diagram.
-- [ ] Sketch, on paper, a 4-row-by-2-column weight matrix `A` and a 2-row-by-4-column input `X`, and work out by hand what `X @ A` looks like when `A` is split by columns into two 4-row-by-1-column pieces, versus split by rows into two 2-row-by-4-column pieces. Confirm which split gives each device a complete answer.
+- [ ] Sketch, on paper, a 4-row-by-2-column weight matrix `A` and a 2-row-by-4-column input `X`, and work out by hand what `X @ A` looks like when `A` is split by columns into two 4-row-by-1-column pieces, versus split by rows into two 2-row-by-2-column pieces. Confirm which split gives each device a complete answer.
 - [ ] Tomorrow: without looking ahead, write a one-sentence prediction for Lesson 13: if tensor parallelism needs an all-reduce for every transformer layer, what kind of interconnect would that likely require between devices, and would you expect it to work equally well between devices in different physical server racks?
 
 ## Going further

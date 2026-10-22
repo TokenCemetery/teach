@@ -92,8 +92,10 @@ Les jeux held-out sont généralement trop petits pour soutenir les conclusions 
 | Différence que vous voulez détecter | Échelle approximative nécessaire |
 |---|---|
 | 10 points de pourcentage | Quelques centaines |
-| 5 points de pourcentage | Plusieurs centaines à mille |
-| 1 à 2 points de pourcentage | Des milliers |
+| 5 points de pourcentage | Environ un millier |
+| 1 à 2 points de pourcentage | Des milliers à des dizaines de milliers |
+
+Les chiffres sont par modèle, pour une exactitude autour de 70 %, en comparant deux échantillons indépendants au seuil de significativité habituel de 5 % avec une puissance de 80 % : environ 290 exemples pour 10 points, environ 1 250 pour 5 et environ 8 000 pour 2. Une comparaison appariée sur les mêmes exemples (plus bas) en demande moins.
 
 Un jeu held-out de 50 exemples peut donc vous dire si le modèle fonctionne tout court. Il ne peut pas vous dire si le rank 32 a battu le rank 16 de deux points, et le traiter comme s'il le pouvait est une erreur très courante.
 
@@ -143,7 +145,7 @@ Le jeu de test est intact jusqu'à la fin, donc il donne une estimation non biai
 
 <details markdown="1"><summary>Vérifier</summary>
 
-Pas à moins que la différence soit très grande. Quatre-vingts exemples peuvent permettre de détecter un écart de dix points ou plus ; la différence entre deux rank raisonnables est généralement de quelques points au plus.
+Pas à moins que la différence soit très grande. Avec les hypothèses du tableau, quatre-vingts exemples ne permettent de détecter qu'un écart d'environ vingt points ; la différence entre deux rank raisonnables est généralement de quelques points au plus.
 
 Obtenez plus de données held-out ou acceptez que cette question n'ait pas de réponse avec ce que vous avez. Y répondre quand même produit une décision fausse prise avec assurance.
 

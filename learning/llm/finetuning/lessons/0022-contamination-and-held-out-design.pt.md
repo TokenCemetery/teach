@@ -92,8 +92,10 @@ Conjuntos held-out costumam ser pequenos demais para sustentar as conclusões ti
 | Diferença que você quer detectar | Escala aproximada necessária |
 |---|---|
 | 10 pontos percentuais | Algumas centenas |
-| 5 pontos percentuais | Várias centenas a mil |
-| 1 a 2 pontos percentuais | Milhares |
+| 5 pontos percentuais | Cerca de mil |
+| 1 a 2 pontos percentuais | De milhares a dezenas de milhares |
+
+Os números são por modelo, para uma acurácia em torno de 70%, comparando duas amostras independentes com o nível de significância usual de 5% e poder de 80%: cerca de 290 exemplos para 10 pontos, cerca de 1.250 para 5 e cerca de 8.000 para 2. Uma comparação pareada nos mesmos exemplos (abaixo) precisa de menos.
 
 Então um conjunto held-out de 50 exemplos pode dizer se o modelo funciona, e só isso. Ele não consegue dizer se o rank 32 superou o rank 16 por dois pontos, e tratá-lo como se conseguisse é um erro muito comum.
 
@@ -143,7 +145,7 @@ O conjunto de teste fica intocado até o fim, então dá uma estimativa não env
 
 <details markdown="1"><summary>Verificação</summary>
 
-Não, a menos que a diferença seja muito grande. Oitenta exemplos podem sustentar a detecção de uma oscilação de dez pontos ou mais; a diferença entre dois ranks razoáveis costuma ser de poucos pontos, no máximo.
+Não, a menos que a diferença seja muito grande. Com as premissas da tabela, oitenta exemplos só conseguem detectar uma oscilação de cerca de vinte pontos; a diferença entre dois ranks razoáveis costuma ser de poucos pontos, no máximo.
 
 Consiga mais dados held-out ou aceite que esta pergunta não pode ser respondida com o que você tem. Respondê-la mesmo assim produz uma decisão errada com confiança.
 

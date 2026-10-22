@@ -92,8 +92,10 @@ Held-out sets are usually too small to support the conclusions drawn from them. 
 | Difference you want to detect | Rough scale needed |
 |---|---|
 | 10 percentage points | Low hundreds |
-| 5 percentage points | Several hundred to a thousand |
-| 1 to 2 percentage points | Thousands |
+| 5 percentage points | About a thousand |
+| 1 to 2 percentage points | Thousands to tens of thousands |
+
+The figures are per model, for accuracy around 70%, comparing two independent samples at the usual 5% significance level with 80% power: about 290 examples for 10 points, about 1,250 for 5, and about 8,000 for 2. A paired comparison on the same examples (below) needs fewer.
 
 So a 50-example held-out set can tell you whether the model works at all. It cannot tell you whether rank 32 beat rank 16 by two points, and treating it as though it can is a very common error.
 
@@ -143,7 +145,7 @@ The test set is untouched until the end, so it gives an unbiased estimate. With 
 
 <details markdown="1"><summary>Check</summary>
 
-Not unless the difference is very large. Eighty examples can support detecting a swing of ten points or more; the difference between two reasonable ranks is usually a few points at most.
+Not unless the difference is very large. Under the table's assumptions, eighty examples can detect only a swing of about twenty points; the difference between two reasonable ranks is usually a few points at most.
 
 Either get more held-out data or accept that this question is unanswerable with what you have. Answering it anyway produces a confidently wrong decision.
 

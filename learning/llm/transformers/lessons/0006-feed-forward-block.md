@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 6. The Position-Wise Feed-Forward Block
 
-**Mission link:** This is stage 2's capstone: attention (stages 1) and layer norm plus residuals (lesson 5) still leave one job undone, giving each position real nonlinear computing capacity of its own, which is exactly what this lesson's sublayer does.
+**Mission link:** This is stage 2's capstone: attention (stage 1) and layer norm plus residuals (lesson 5) still leave one job undone, giving each position real nonlinear computing capacity of its own, which is exactly what this lesson's sublayer does.
 **Primary source:** [Paper: "Attention Is All You Need", Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)
 **Prerequisites:** [Lesson 5](0005-layer-norm-and-residuals.md), [Scaled dot-product attention](../GLOSSARY.md)
 

@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 5. Layer norm y conexiones residuales
 
-**Vínculo con la misión:** La atención por sí sola (etapas 1) no se apila por sí misma en una red profunda y entrenable; las conexiones residuales y la layer normalization son las dos piezas que hacen práctico, y no inestable, apilar muchos bloques transformer (etapa 3).
+**Vínculo con la misión:** La atención por sí sola (etapa 1) no se apila por sí misma en una red profunda y entrenable; las conexiones residuales y la layer normalization son las dos piezas que hacen práctico, y no inestable, apilar muchos bloques transformer (etapa 3).
 **Fuente principal:** [Paper: "Layer Normalization", Ba, Kiros, and Hinton, 2016](https://arxiv.org/abs/1607.06450)
 **Requisitos previos:** [Lección 4](0004-positional-encoding.md), [Scaled dot-product attention](../GLOSSARY.md)
 

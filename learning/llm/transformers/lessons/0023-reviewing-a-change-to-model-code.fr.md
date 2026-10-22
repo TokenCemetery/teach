@@ -94,7 +94,7 @@ En relisant une modification du code d'un modèle, un ingénieur senior nomme pr
 
 **Au lieu de :** « Ça devrait marcher. »
 
-**Mieux :** « La modification supprime un facteur `residual_scale` avant de rajouter les résiduels. La leçon 7 a montré que mettre à l'échelle le résiduel est la façon dont la variante pre-norm de la leçon 5 évite le gonflement des activations dans les modèles profonds. Je voudrais voir les histogrammes de gradient à chaque couche pendant l'entraînement, ou comprendre pourquoi ce modèle précis reste stable sans mise à l'échelle. »
+**Mieux :** « La modification déplace la layer norm de `x + Sublayer(LayerNorm(x))` vers `LayerNorm(x + Sublayer(x))`, ce qui fait passer le bloc de pre-norm à post-norm. La leçon 5 a montré que pre-norm laisse le chemin résiduel propre à travers tout le réseau, et c'est pourquoi il s'entraîne de façon plus stable dans les empilements profonds. Je voudrais voir les normes des gradients à chaque couche pendant l'entraînement, ou comprendre pourquoi ce modèle précis reste stable avec post-norm. »
 
 **Au lieu de :** « Les auteurs disent que ça marche. »
 

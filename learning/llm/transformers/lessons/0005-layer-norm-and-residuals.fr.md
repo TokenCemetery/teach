@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 5. Layer norm et connexions résiduelles
 
-**Lien avec la mission :** L'attention seule (étapes 1) ne s'empile pas d'elle-même en un réseau profond et entraînable ; les connexions résiduelles et la layer normalization sont les deux pièces qui rendent l'empilement de nombreux blocs transformer (étape 3) praticable plutôt qu'instable.
+**Lien avec la mission :** L'attention seule (étape 1) ne s'empile pas d'elle-même en un réseau profond et entraînable ; les connexions résiduelles et la layer normalization sont les deux pièces qui rendent l'empilement de nombreux blocs transformer (étape 3) praticable plutôt qu'instable.
 **Source primaire :** [Article : "Layer Normalization", Ba, Kiros et Hinton, 2016](https://arxiv.org/abs/1607.06450)
 **Prérequis :** [Leçon 4](0004-positional-encoding.md), [Scaled dot-product attention](../GLOSSARY.md)
 

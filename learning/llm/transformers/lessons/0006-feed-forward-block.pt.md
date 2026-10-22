@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 6. O bloco feed-forward por posição
 
-**Ligação com a missão:** Esta é a lição de fechamento da etapa 2: a atenção (etapas 1) e a layer norm mais as residuais (lição 5) ainda deixam um trabalho por fazer, dar a cada posição uma capacidade própria e real de computação não linear, que é exatamente o que a subcamada desta lição faz.
+**Ligação com a missão:** Esta é a lição de fechamento da etapa 2: a atenção (etapa 1) e a layer norm mais as residuais (lição 5) ainda deixam um trabalho por fazer, dar a cada posição uma capacidade própria e real de computação não linear, que é exatamente o que a subcamada desta lição faz.
 **Fonte principal:** [Artigo científico: "Attention Is All You Need", Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)
 **Pré-requisitos:** [Lição 5](0005-layer-norm-and-residuals.md), [Scaled dot-product attention](../GLOSSARY.md)
 

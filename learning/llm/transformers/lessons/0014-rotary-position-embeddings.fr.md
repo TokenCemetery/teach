@@ -8,7 +8,7 @@ type: lesson
 
 **Lien avec la mission :** La leçon 4 a établi que la position doit entrer par les vecteurs qui produisent `Q`, `K` et `V`, puisque l'équation de l'attention n'a aucun autre canal pour elle, et elle a enseigné la seule façon dont l'article d'origine s'y prend : ajouter un vecteur sinusoïdal fixe à l'embedding du token avant même que l'attention s'exécute. Les **embeddings de position rotatifs (RoPE, rotary position embeddings)** sont le mécanisme que presque tous les modèles ouverts actuels utilisent réellement à la place, et ils injectent la position par le même canal que celui identifié à la leçon 4, mais par une opération réellement différente : faire tourner `Q` et `K` eux-mêmes, à l'intérieur du calcul d'attention, au lieu d'ajouter quoi que ce soit à l'embedding au préalable.
 **Source primaire :** [Article : "RoFormer: Enhanced Transformer with Rotary Position Embedding", Su et al., 2021](https://arxiv.org/abs/2104.09864)
-**Prérequis :** [Leçon 4](0004-positional-encoding.md), [Encodage positionnel](../GLOSSARY.md)
+**Prérequis :** [Leçon 4](0004-positional-encoding.md)
 
 ## Échauffement
 

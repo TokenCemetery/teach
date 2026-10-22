@@ -94,7 +94,7 @@ Model-code के बदलाव की समीक्षा करते स�
 
 **इसके बजाय:** "यह चलना चाहिए।"
 
-**बेहतर:** "बदलाव residuals को वापस जोड़ने से पहले का `residual_scale` गुणक हटा देता है। पाठ 7 ने दिखाया था कि residual को scale करना ही वह तरीक़ा है जिससे पाठ 5 का pre-norm variant गहरे models में activation फूलने से बचता है। मैं training के दौरान हर layer पर gradient histograms देखना चाहूँगा, या समझना चाहूँगा कि यह ख़ास model बिना scaling के स्थिर क्यों रहता है।"
+**बेहतर:** "बदलाव layer norm को `x + Sublayer(LayerNorm(x))` से हटाकर `LayerNorm(x + Sublayer(x))` पर ले जाता है, यानी block को pre-norm से post-norm में बदल देता है। पाठ 5 ने दिखाया था कि pre-norm residual path को पूरे network में साफ़ छोड़ता है, और इसी वजह से गहरे stacks में training ज़्यादा स्थिर रहती है। मैं training के दौरान हर layer पर gradient norms देखना चाहूँगा, या यह समझना कि यह ख़ास model post-norm के साथ भी स्थिर क्यों रहता है।"
 
 **इसके बजाय:** "लेखक कहते हैं कि यह काम करता है।"
 

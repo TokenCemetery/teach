@@ -8,7 +8,7 @@ type: lesson
 
 **Vínculo con la misión:** La lección 4 estableció que la posición tiene que entrar a través de los vectores que producen `Q`, `K` y `V`, ya que la ecuación de la atención no tiene otro canal para ella, y enseñó la única manera en que lo hace el paper original: sumar un vector sinusoidal fijo al embedding del token antes de que la atención corra siquiera. Los **rotary position embeddings (RoPE)** son el mecanismo que casi todos los modelos abiertos actuales usan realmente en su lugar, e inyectan la posición por el mismo canal que identificó la lección 4, pero con una operación genuinamente distinta: rotar `Q` y `K` mismas, dentro del cálculo de atención, en lugar de sumar nada al embedding de antemano.
 **Fuente principal:** [Paper: "RoFormer: Enhanced Transformer with Rotary Position Embedding", Su et al., 2021](https://arxiv.org/abs/2104.09864)
-**Requisitos previos:** [Lección 4](0004-positional-encoding.md), [Codificación posicional](../GLOSSARY.md)
+**Requisitos previos:** [Lección 4](0004-positional-encoding.md)
 
 ## Calentamiento
 

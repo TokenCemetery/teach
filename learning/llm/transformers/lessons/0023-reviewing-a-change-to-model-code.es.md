@@ -94,7 +94,7 @@ Al revisar un cambio en el código de un modelo, una ingeniera sénior nombra co
 
 **En lugar de:** "Debería funcionar."
 
-**Mejor:** "El cambio elimina un factor `residual_scale` antes de volver a sumar los residuales. La lección 7 mostró que escalar el residual es como la variante pre-norm de la lección 5 evita la hinchazón de las activaciones en modelos profundos. Querría ver histogramas de gradientes en cada capa durante el entrenamiento, o entender por qué este modelo concreto se mantiene estable sin escalado."
+**Mejor:** "El cambio mueve la layer norm de `x + Sublayer(LayerNorm(x))` a `LayerNorm(x + Sublayer(x))`, lo que pasa el bloque de pre-norm a post-norm. La lección 5 mostró que pre-norm deja limpio el camino residual a lo largo de toda la red, y por eso entrena de forma más estable en pilas profundas. Querría ver las normas de los gradientes en cada capa durante el entrenamiento, o entender por qué este modelo concreto se mantiene estable con post-norm."
 
 **En lugar de:** "Los autores dicen que funciona."
 

@@ -6,7 +6,7 @@ type: lesson
 
 # Lección 6. El bloque feed-forward por posición
 
-**Vínculo con la misión:** Esta es la pieza final de la etapa 2: la atención (etapas 1) y la layer norm más los residuales (lección 5) todavía dejan sin hacer un trabajo, dar a cada posición una capacidad real de cómputo no lineal propia, que es exactamente lo que hace la subcapa de esta lección.
+**Vínculo con la misión:** Esta es la pieza final de la etapa 2: la atención (etapa 1) y la layer norm más los residuales (lección 5) todavía dejan sin hacer un trabajo, dar a cada posición una capacidad real de cómputo no lineal propia, que es exactamente lo que hace la subcapa de esta lección.
 **Fuente principal:** [Paper: "Attention Is All You Need", Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)
 **Requisitos previos:** [Lección 5](0005-layer-norm-and-residuals.md), [Scaled dot-product attention](../GLOSSARY.md)
 

@@ -8,7 +8,7 @@ type: lesson
 
 **Mission link:** Lesson 4 established that position has to enter through the vectors that produce `Q`, `K`, and `V`, since attention's equation has no other channel for it, and it taught the one way the original paper does this: adding a fixed sinusoidal vector to the token embedding before attention runs at all. **Rotary position embeddings (RoPE)** are the mechanism nearly every current open model actually uses instead, and they inject position through the same channel lesson 4 identified, but by a genuinely different operation: rotating `Q` and `K` themselves, inside the attention computation, rather than adding anything to the embedding beforehand.
 **Primary source:** [Paper: "RoFormer: Enhanced Transformer with Rotary Position Embedding", Su et al., 2021](https://arxiv.org/abs/2104.09864)
-**Prerequisites:** [Lesson 4](0004-positional-encoding.md), [Positional encoding](../GLOSSARY.md)
+**Prerequisites:** [Lesson 4](0004-positional-encoding.md)
 
 ## Warm-up
 

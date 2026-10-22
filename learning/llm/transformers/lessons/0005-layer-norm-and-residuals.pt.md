@@ -6,7 +6,7 @@ type: lesson
 
 # Lição 5. Layer Norm e conexões residuais
 
-**Ligação com a missão:** A atenção sozinha (etapas 1) não se empilha por si só em uma rede profunda e treinável; as conexões residuais e a layer normalization são as duas peças que tornam prático, e não instável, empilhar muitos blocos transformer (etapa 3).
+**Ligação com a missão:** A atenção sozinha (etapa 1) não se empilha por si só em uma rede profunda e treinável; as conexões residuais e a layer normalization são as duas peças que tornam prático, e não instável, empilhar muitos blocos transformer (etapa 3).
 **Fonte principal:** [Artigo científico: "Layer Normalization", Ba, Kiros e Hinton, 2016](https://arxiv.org/abs/1607.06450)
 **Pré-requisitos:** [Lição 4](0004-positional-encoding.md), [Scaled dot-product attention](../GLOSSARY.md)
 

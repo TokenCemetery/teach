@@ -8,7 +8,7 @@ type: lesson
 
 **使命关联:** 第 4 课确立了位置必须通过产生 `Q`、`K` 和 `V` 的那些向量进入，因为注意力的方程没有别的渠道，它还讲了原始论文做这件事的唯一办法：在注意力运行之前，给 token 嵌入加上一个固定的正弦向量。**旋转位置嵌入**（RoPE）则是当前几乎所有开源模型实际使用的替代机制，它通过第 4 课指出的同一个渠道注入位置，但用的是一种真正不同的运算：旋转 `Q` 和 `K` 本身，发生在注意力计算内部，而不是事先给嵌入加上任何东西。
 **主要来源:** [论文：“RoFormer: Enhanced Transformer with Rotary Position Embedding”，Su 等，2021](https://arxiv.org/abs/2104.09864)
-**前置知识:** [第 4 课](0004-positional-encoding.md)、[位置编码](../GLOSSARY.md)
+**前置知识:** [第 4 课](0004-positional-encoding.md)
 
 ## 热身
 

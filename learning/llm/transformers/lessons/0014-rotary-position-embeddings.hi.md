@@ -8,7 +8,7 @@ type: lesson
 
 **मिशन से संबंध:** पाठ 4 ने स्थापित किया कि position को उन vectors के ज़रिए आना होगा जो `Q`, `K` और `V` बनाते हैं, क्योंकि attention के समीकरण के पास इसके लिए कोई और रास्ता नहीं है, और उसने वह एक तरीक़ा सिखाया जो मूल पेपर अपनाता है: attention चलने से पहले ही token embedding में एक तय sinusoidal vector जोड़ना। **Rotary position embeddings (RoPE)** वह तंत्र है जिसे लगभग हर मौजूदा open model असल में इसके बजाय इस्तेमाल करता है, और वह position उसी रास्ते से डालता है जो पाठ 4 ने पहचाना था, पर एक सचमुच अलग operation से: embedding में पहले से कुछ जोड़ने के बजाय attention computation के अंदर `Q` और `K` को ही घुमाकर।
 **मुख्य स्रोत:** [पेपर: "RoFormer: Enhanced Transformer with Rotary Position Embedding", Su et al., 2021](https://arxiv.org/abs/2104.09864)
-**पूर्व-आवश्यकताएँ:** [पाठ 4](0004-positional-encoding.md), [Positional encoding](../GLOSSARY.md)
+**पूर्व-आवश्यकताएँ:** [पाठ 4](0004-positional-encoding.md)
 
 ## वार्म-अप
 

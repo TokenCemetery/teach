@@ -94,7 +94,7 @@ When reviewing a model-code change, a senior engineer names specifically what a 
 
 **Instead of:** "It should work."
 
-**Better:** "The change removes a `residual_scale` factor before adding residuals back. Lesson 7 showed that scaling the residual is how lesson 5's pre-norm variant avoids activation bloat in deep models. I'd want to see gradient histograms at each layer during training, or understand why this particular model stays stable without scaling."
+**Better:** "The change moves layer norm from `x + Sublayer(LayerNorm(x))` to `LayerNorm(x + Sublayer(x))`, switching the block from pre-norm to post-norm. Lesson 5 showed that pre-norm leaves the residual path clean all the way through the network, which is why it trains more stably in deep stacks. I'd want to see gradient norms at each layer during training, or understand why this particular model stays stable with post-norm."
 
 **Instead of:** "The authors say it works."
 

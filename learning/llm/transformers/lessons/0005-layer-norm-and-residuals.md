@@ -6,7 +6,7 @@ type: lesson
 
 # Lesson 5. Layer Norm and Residual Connections
 
-**Mission link:** Attention alone (stages 1) doesn't stack into a deep, trainable network by itself; residual connections and layer normalization are the two pieces that make stacking many transformer blocks (stage 3) practical rather than unstable.
+**Mission link:** Attention alone (stage 1) doesn't stack into a deep, trainable network by itself; residual connections and layer normalization are the two pieces that make stacking many transformer blocks (stage 3) practical rather than unstable.
 **Primary source:** [Paper: "Layer Normalization", Ba, Kiros, and Hinton, 2016](https://arxiv.org/abs/1607.06450)
 **Prerequisites:** [Lesson 4](0004-positional-encoding.md), [Scaled dot-product attention](../GLOSSARY.md)
 

@@ -6,7 +6,7 @@ type: lesson
 
 # Leçon 6. Le bloc feed-forward position par position
 
-**Lien avec la mission :** C'est la leçon de clôture de l'étape 2 : l'attention (étapes 1) et la layer norm avec les connexions résiduelles (leçon 5) laissent encore une tâche inachevée, donner à chaque position une vraie capacité de calcul non linéaire qui lui soit propre, et c'est exactement ce que fait la sous-couche de cette leçon.
+**Lien avec la mission :** C'est la leçon de clôture de l'étape 2 : l'attention (étape 1) et la layer norm avec les connexions résiduelles (leçon 5) laissent encore une tâche inachevée, donner à chaque position une vraie capacité de calcul non linéaire qui lui soit propre, et c'est exactement ce que fait la sous-couche de cette leçon.
 **Source primaire :** [Article : "Attention Is All You Need", Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)
 **Prérequis :** [Leçon 5](0005-layer-norm-and-residuals.md), [Scaled dot-product attention](../GLOSSARY.md)
 

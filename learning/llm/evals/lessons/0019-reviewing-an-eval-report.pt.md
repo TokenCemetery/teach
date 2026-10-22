@@ -153,7 +153,7 @@ Não sem mais informação. Com N=50 e p=0,68, o erro padrão é de aproximadame
 
 <details markdown="1"><summary>Verificação</summary>
 
-**b)** e **c)** são sinais de alerta. (b) está incompleta: sem verificações de viés nem medição de concordância humana, não dá para saber se o juiz é confiável. (c) é uma falha em medir o que importa: uma posição em leaderboard não é um sinal de go/no-go específico da tarefa. (a) acerta todas as notas: uma métrica específica da tarefa, amostra grande, teste de significância. (d) é boa prática, e não motivo para ceticismo. O sinal de alerta mais cético é um relatório que não responde às perguntas que esta lição ensina a fazer.
+**c)** é a que mais desperta ceticismo. Uma posição no leaderboard do MMLU como evidência principal mede a coisa errada: não é um sinal de go/no-go específico da tarefa, e um benchmark público estático pode estar contaminado ou saturado, então nenhum rigor em torno do número o transforma em evidência desta mudança. (b) também é um sinal de alerta, mas menor: o juiz pode estar pontuando a tarefa certa, e a verificação de viés de posição e a medição de concordância humana que faltam ainda podem ser feitas para descobrir se ele é confiável. (a) acerta todas as notas: uma métrica específica da tarefa, amostra grande, teste de significância. (d) é boa prática, e não motivo para ceticismo.
 
 </details>
 

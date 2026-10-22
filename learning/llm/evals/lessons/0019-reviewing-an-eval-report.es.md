@@ -153,7 +153,7 @@ No sin más información. Con N=50 y p=0.68, el error estándar es aproximadamen
 
 <details markdown="1"><summary>Comprobación</summary>
 
-**b)** y **c)** son señales de alerta. (b) está incompleta: sin comprobaciones de sesgo ni medición del acuerdo humano, no puedes saber si el juez es fiable. (c) es no medir lo que importa: una posición en una tabla de clasificación no es una señal de go/no-go específica de la tarea. (a) acierta en todo: una métrica específica de la tarea, una muestra grande, una prueba de significancia. (d) es una buena práctica, no un motivo de escepticismo. La señal de alerta más fuerte es un informe que no responde las preguntas que esta lección enseña a hacer.
+**c)** es la que más escepticismo despierta. Una posición en la tabla de clasificación de MMLU como prueba principal mide lo que no es: no es una señal de go/no-go específica de la tarea, y un benchmark público estático puede estar contaminado o saturado, así que ningún rigor alrededor del número lo convierte en prueba de este cambio. (b) también es una señal de alerta, pero menor: el juez puede estar puntuando la tarea correcta, y la comprobación de sesgo de posición y la medición del acuerdo humano que faltan todavía se pueden hacer para saber si es fiable. (a) acierta en todo: una métrica específica de la tarea, una muestra grande, una prueba de significancia. (d) es una buena práctica, no un motivo de escepticismo.
 
 </details>
 

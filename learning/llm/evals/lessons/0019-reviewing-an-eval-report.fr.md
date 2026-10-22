@@ -153,7 +153,7 @@ Pas sans plus d'information. À N = 50 et p = 0,68, l'erreur standard vaut envir
 
 <details markdown="1"><summary>Vérifier</summary>
 
-**b)** et **c)** sont des signaux d'alerte. (b) est incomplet : sans contrôles de biais ni mesure de l'accord humain, impossible de dire si le juge est digne de confiance. (c) est un défaut de mesure de ce qui compte : un rang de classement n'est pas un signal de go/no-go propre à la tâche. (a) coche toutes les bonnes cases : une métrique propre à la tâche, un grand échantillon, un test de significativité. (d) est une bonne pratique, pas une raison d'être sceptique. Le signal d'alerte le plus fort est un rapport qui ne répond pas aux questions que cette leçon enseigne à poser.
+**c)** est celle qui doit vous rendre le plus sceptique. Un rang au classement MMLU comme preuve principale mesure la mauvaise chose : ce n'est pas un signal de go/no-go propre à la tâche, et un benchmark public statique peut être contaminé ou saturé, si bien qu'aucune rigueur autour du chiffre n'en fait une preuve de ce changement. (b) est aussi un signal d'alerte, mais moindre : le juge note peut-être la bonne tâche, et le contrôle du biais de position et la mesure de l'accord humain qui manquent peuvent encore être faits pour savoir s'il est digne de confiance. (a) coche toutes les bonnes cases : une métrique propre à la tâche, un grand échantillon, un test de significativité. (d) est une bonne pratique, pas une raison d'être sceptique.
 
 </details>
 

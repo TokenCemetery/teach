@@ -153,7 +153,7 @@ Not without more information. At N=50 and p=0.68, the standard error is roughly 
 
 <details markdown="1"><summary>Check</summary>
 
-**b)** and **c)** are red flags. (b) is incomplete: without bias checks or human-agreement measurement, you can't tell if the judge is trustworthy. (c) is a failure to measure what matters: a leaderboard rank isn't a task-specific go/no-go signal. (a) hits all the right notes: a task-specific metric, large sample, significance test. (d) is good practice, not a reason to be skeptical. The most skeptical flag is a report that doesn't answer the questions this lesson teaches to ask.
+**c)** makes you most skeptical. A leaderboard rank on MMLU as the main evidence measures the wrong thing: it is not a task-specific go/no-go signal, and a static public benchmark can be contaminated or saturated, so no rigor around the number turns it into evidence for this change. (b) is also a red flag, but a smaller one: the judge may be scoring the right task, and the missing position-bias check and human-agreement measurement can still be run to find out whether it is trustworthy. (a) hits all the right notes: a task-specific metric, large sample, significance test. (d) is good practice, not a reason to be skeptical.
 
 </details>
 

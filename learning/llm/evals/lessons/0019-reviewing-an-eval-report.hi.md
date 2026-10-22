@@ -153,7 +153,7 @@ Zheng et al. 2023 का पेपर "Judging LLM-as-a-Judge" स्थाप�
 
 <details markdown="1"><summary>जाँचें</summary>
 
-**b)** और **c)** चेतावनी के संकेत हैं। (b) अधूरा है: bias जाँचों या मानव-सहमति के माप के बिना, आप नहीं बता सकते कि judge भरोसेमंद है या नहीं। (c) उसे मापने में विफलता है जो मायने रखता है: leaderboard rank task-specific go/no-go संकेत नहीं है। (a) सारी सही बातें छूता है: task-specific metric, बड़ा नमूना, significance test। (d) अच्छी प्रथा है, शक का कारण नहीं। सबसे बड़ा शक का संकेत वह report है जो उन सवालों का जवाब नहीं देती जिन्हें पूछना यह पाठ सिखाता है।
+**c)** पर सबसे ज़्यादा शक होना चाहिए। MMLU leaderboard rank को मुख्य सबूत मानना ग़लत चीज़ मापता है: यह task-specific go/no-go संकेत नहीं है, और कोई static public benchmark contaminated या saturated हो सकता है, इसलिए उस संख्या के आसपास कितनी भी सख़्ती उसे इस बदलाव का सबूत नहीं बनाती। (b) भी चेतावनी का संकेत है, पर छोटा: judge शायद सही task को ही score कर रहा है, और छूटी हुई position-bias जाँच और मानव-सहमति का माप अब भी किया जा सकता है, ताकि पता चले कि judge भरोसेमंद है या नहीं। (a) सारी सही बातें छूता है: task-specific metric, बड़ा नमूना, significance test। (d) अच्छी प्रथा है, शक का कारण नहीं।
 
 </details>
 

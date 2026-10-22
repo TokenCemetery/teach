@@ -36,7 +36,7 @@ Cada iteração do loop do agente anexa algo à transcrição. Depois que um age
 
 Isso significa que dois custos crescem com o comprimento da trajetória mesmo quando nada de novo está acontecendo:
 
-- **Custo em tokens**: Cada mensagem ao modelo reenvia todos os turnos antigos. Uma trajetória de cinco turnos custa 5x menos tokens por chamada do que uma trajetória de 100 turnos. Em um agente de longa duração, isso se torna o custo dominante.
+- **Custo em tokens**: Cada mensagem ao modelo reenvia todos os turnos antigos. Com turnos de tamanho parecido, uma chamada no turno 5 leva cerca de 20x menos tokens do que uma chamada no turno 100, e somada ao longo de toda a execução a diferença cresce ainda mais rápido. Em um agente de longa duração, isso se torna o custo dominante.
 - **Latência**: Um contexto mais longo significa mais tokens para processar, o que é mais lento. O agente espera mais por cada resposta.
 
 ### Context rot: a atenção do modelo se degrada conforme o lixo se acumula

@@ -36,7 +36,7 @@ Agent loop का हर iteration transcript में कुछ जोड़�
 
 इसका मतलब है कि दोनों costs trajectory की लंबाई के साथ बढ़ती हैं, तब भी जब कुछ नया नहीं हो रहा:
 
-- **Token cost**: Model को भेजा हर message सारे पुराने turns फिर भेजता है। पाँच turns की trajectory की हर call में 100 turns की trajectory से 5 गुना कम tokens लगते हैं। लंबे चलने वाले agent में यही सबसे बड़ी cost बन जाती है।
+- **Token cost**: Model को भेजा हर message सारे पुराने turns फिर भेजता है। Turns लगभग बराबर आकार के हों तो turn 5 की call में turn 100 की call से लगभग 20 गुना कम tokens जाते हैं, और पूरे run पर जोड़ें तो फ़र्क़ और भी तेज़ी से बढ़ता है। लंबे चलने वाले agent में यही सबसे बड़ी cost बन जाती है।
 - **Latency**: लंबा context मतलब process करने को ज़्यादा tokens, जो धीमा है। Agent हर response के लिए ज़्यादा इंतज़ार करता है।
 
 ### Context rot: कचरा जमा होने पर model का ध्यान बिगड़ता है

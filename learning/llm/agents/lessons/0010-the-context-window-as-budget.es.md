@@ -36,7 +36,7 @@ Cada iteración del bucle del agente añade algo a la transcripción. Después d
 
 Esto significa que dos costos crecen con la longitud de la trayectoria incluso cuando no está pasando nada nuevo:
 
-- **Costo en tokens**: Cada mensaje al modelo vuelve a enviar todos los turnos antiguos. Una trayectoria de cinco turnos cuesta 5 veces menos tokens por llamada que una trayectoria de 100 turnos. En un agente de larga duración, esto se convierte en el costo dominante.
+- **Costo en tokens**: Cada mensaje al modelo vuelve a enviar todos los turnos antiguos. Con turnos de tamaño parecido, una llamada en el turno 5 lleva unas 20 veces menos tokens que una llamada en el turno 100, y sumada sobre toda la ejecución la diferencia crece aún más rápido. En un agente de larga duración, esto se convierte en el costo dominante.
 - **Latencia**: Un contexto más largo significa más tokens que procesar, lo que es más lento. El agente espera más tiempo cada respuesta.
 
 ### Degradación del contexto (context rot): la atención del modelo se deteriora a medida que se acumula basura

@@ -36,7 +36,7 @@ Every iteration of the agent loop appends to the transcript. After an agent runs
 
 This means two costs both grow with trajectory length even when nothing new is happening:
 
-- **Token cost**: Every message to the model re-sends all the old turns. A five-turn trajectory costs 5x fewer tokens per call than a 100-turn trajectory. On a long-running agent, this becomes the dominant cost.
+- **Token cost**: Every message to the model re-sends all the old turns. With turns of similar size, a call at turn 5 carries about 20x fewer tokens than a call at turn 100, and summed over the whole run the gap grows faster still. On a long-running agent, this becomes the dominant cost.
 - **Latency**: Longer context means more tokens to process, which is slower. The agent waits longer for each response.
 
 ### Context rot: model attention degrades as cruft accumulates

@@ -36,7 +36,7 @@ Chaque itération de la boucle d'agent ajoute au transcript. Après 10, 20 ou 10
 
 Cela signifie que deux coûts croissent tous deux avec la longueur de la trajectoire, même quand rien de nouveau ne se passe :
 
-- **Coût en tokens** : chaque message au modèle renvoie tous les anciens tours. Une trajectoire de cinq tours coûte 5 fois moins de tokens par appel qu'une trajectoire de 100 tours. Sur un agent de longue durée, cela devient le coût dominant.
+- **Coût en tokens** : chaque message au modèle renvoie tous les anciens tours. Avec des tours de taille comparable, un appel au tour 5 transporte environ 20 fois moins de tokens qu'un appel au tour 100, et, cumulé sur toute l'exécution, l'écart croît encore plus vite. Sur un agent de longue durée, cela devient le coût dominant.
 - **Latence** : un contexte plus long signifie plus de tokens à traiter, donc plus lent. L'agent attend plus longtemps chaque réponse.
 
 ### Dégradation du contexte : l'attention du modèle se détériore à mesure que le fatras s'accumule

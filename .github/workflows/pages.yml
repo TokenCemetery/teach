@@ -7,6 +7,7 @@ on:
       - "learning/**"
       - "mkdocs.yml"
       - "hooks.py"
+      - "pyproject.toml"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -25,16 +26,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # git-revision-date-localized reads each page's last commit. The
-          # default shallow clone has no such log, so every page would fall
-          # back to the build date.
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      # The theme is pinned: its layout, sidebar width and navigation change
-      # between releases, and this site is checked against one of them.
-      - run: pip install mkdocs mkdocs-primer==0.4.0 mkdocs-static-i18n mkdocs-awesome-nav mkdocs-section-index mkdocs-git-revision-date-localized-plugin mkdocs-mermaid2-plugin mkdocs-minify-plugin pymdown-extensions Pygments
+      - run: pip install .
       # Same command AGENTS.md requires locally, so CI cannot pass on a build
       # that would fail there.
       - run: mkdocs build --strict

@@ -1,14 +1,9 @@
 site_name: teach
 site_description: "Educational materials: lessons and reference guides for self-study"
-# Without this, every `<loc>` in sitemap.xml is written as "None" and no page
-# gets a canonical link, so the seven locales compete as duplicates of each
-# other. The theme emits no per-page hreflang tags either way; the sitemap
-# carries the alternates.
+# Without this, sitemap.xml has "None" locs and no page gets a canonical link.
 site_url: https://tokencemetery.github.io/teach/
 repo_url: https://github.com/TokenCemetery/teach
-# The theme footer links each page back to its source. MkDocs guesses
-# `edit/master/docs/` for a GitHub repository, and this one has neither that
-# branch nor that directory, so every link would 404.
+# MkDocs would guess `edit/master/docs/`, which 404s here.
 edit_uri: edit/main/learning/
 copyright: Copyright &copy; 2026 Token Cemetery
 docs_dir: learning
@@ -16,50 +11,30 @@ site_dir: site
 
 theme:
   name: primer
-  # The footer's social row, on this site so that the option is exercised by
-  # every build rather than only described in the reference.
   social:
     - service: github
       link: https://github.com/TokenCemetery/teach
 
-# Corrects mkdocs-section-index: drops one false-positive warning so
-# `--strict` stays usable, stops the plugin folding the first page of a
-# section that has no overview page to fold, and keeps a folded page's own
-# front-matter title. Also fails `--strict` on front matter that is not
-# valid YAML, which MkDocs would otherwise render as page text. See the
-# docstrings in hooks.py.
+# Patches for mkdocs-section-index and front-matter checks; see hooks.py.
 hooks:
   - hooks.py
 
 markdown_extensions:
-  # Lessons collapse their answer keys into `<details markdown="1">`. Without
-  # this, Python-Markdown passes the block through raw and the answer renders
-  # as literal markdown: backticks, bold and all.
+  # Renders markdown inside the `<details markdown="1">` answer keys.
   - md_in_html
-  # A `<details>` block interrupts the surrounding ordered list, so every
-  # Practice item restarted at "1.". This carries the number across the break.
+  # Keeps list numbering across an interrupting `<details>` block.
   - sane_lists
-  # GitHub renders a single newline as a line break; Python-Markdown folds it
-  # into the paragraph. That collapsed every lesson's header block, every
-  # glossary definition and the worked calculations in answer keys. Match
-  # GitHub, since the same files are read in both places. Safe here because no
-  # prose in `learning/` is hard-wrapped, checked before enabling.
+  # Match GitHub, where single newlines are line breaks. Safe because no prose
+  # in `learning/` is hard-wrapped.
   - nl2br
-  # The theme ships Pygments stylesheets but nothing was emitting Pygments
-  # markup, so every code block rendered unhighlighted.
   - pymdownx.highlight
-  # Without the custom fence, superfences claims every ```mermaid block and
-  # hands it to Pygments, so the diagram ships as highlighted source. The
-  # `div` formatter is the one for a non-Material theme, and the class it
-  # emits is what the theme's own `.markdown-body .mermaid` rules style.
+  # Without the custom fence, ```mermaid blocks render as highlighted source.
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:mermaid2.fence_mermaid
-  # GitHub puts a hover anchor beside every heading, and the same files are
-  # read there. The theme draws the octicon itself, so the permalink text
-  # stays empty and no stray glyph reaches the search index.
+  # Empty permalink text: the theme draws the anchor icon itself.
   - toc:
       permalink: ""
       permalink_class: anchor
@@ -67,33 +42,16 @@ markdown_extensions:
 
 plugins:
   - search:
-      # MkDocs does not ship wordcut.js, required by its Hindi Lunr adapter.
-      # Keep Hindi pages in the shared index without loading the broken adapter.
-      # lang: [en, es, zh, pt, ru, fr]
-  # Nav comes from learning/.nav.yml. Must run before section-index, which
-  # rewrites the nav it produces.
+      # No `lang`: MkDocs lacks wordcut.js, which its Hindi Lunr adapter needs.
+  # Must run before section-index, which rewrites its nav.
   - awesome-nav
   - i18n:
       docs_structure: suffix
-      # Do not let i18n re-add Hindi to the search adapter list above.
       reconfigure_search: false
-      # `theme.locale` per language is what switches the theme's own chrome
-      # (Search, Back to top, Previous/Next) to that language. The plugin sets
-      # it automatically only for the themes MkDocs itself ships, so a
-      # third-party theme needs it spelled out.
-      #
-      # `en` is listed last on purpose. One build pass runs per language, and
-      # the two pages that exist once for the whole site, 404.html and
-      # search.html, are rewritten by every pass, so the last language wins
-      # them. Putting the default language last leaves those two in English.
-      # The theme sorts the language selector itself, so this does not affect
-      # its order.
+      # `theme.locale` must be set per language for a third-party theme.
+      # `en` is last so 404.html and search.html, rewritten by every language
+      # pass, end up in English.
       languages:
-        # No translated content exists yet (no *.es.md etc. files), so these
-        # locales only re-render the English pages once per language at ~9x
-        # the build cost for no translation value. Commented out, not
-        # removed: uncomment a locale once its content is actually
-        # translated.
         - locale: es
           name: Spanish
           build: true
@@ -130,26 +88,18 @@ plugins:
           build: true
           theme:
             locale: en
-  # Every workspace's overview lives in its README.md. Without this the
-  # section label and the overview are two separate nav rows; with it the
-  # label itself links to the overview.
+  # Makes each section label link to its README.md overview.
   - section-index
-  # Sets page.meta.git_revision_date_localized, which the theme footer prints
-  # as "Last updated". Nothing in `learning/` carries a hand-written date.
+  # Feeds the theme footer's "Last updated".
   - git-revision-date-localized:
-      # A shallow clone has no log for a page; fall back rather than fail.
+      # A shallow clone has no log for a page.
       fallback_to_build_date: true
       enable_creation_date: true
-  # Draws the ```mermaid fences. Listed last because it injects its loader in
-  # `on_post_page`, and i18n rebuilds the page once per language above.
-  #
-  # The version is pinned for the same reason the theme is: mermaid changes
-  # its default layout between releases, and the diagrams here are checked
-  # against one of them. The plugin fetches this exact build from unpkg and
-  # verifies the URL resolves at build time, so a bump is a visible change.
+  # After i18n: it injects its loader in `on_post_page`, and i18n rebuilds
+  # each page per language. Pinned because mermaid's default layout changes
+  # between releases.
   - mermaid2:
       version: 10.4.0
-
   # Last: it rewrites the HTML every other plugin produced.
   - minify:
       minify_html: true

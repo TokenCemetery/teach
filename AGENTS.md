@@ -11,8 +11,6 @@ Keep all state in files. No session remembers the last one, so write every durab
 - What is true about the user: that topic's `NOTES.md`.
 - What a future session needs to know about this repository: this file, or the teach skill.
 
-Never leave a durable fact in a scratch file or in the conversation.
-
 ## Teaching
 
 Read `.agents/skills/teach/SKILL.md` before you create or edit any file under `learning/`. It defines every path and the teaching workflow. It points to two more files:
@@ -24,12 +22,7 @@ Follow that skill. Do not invent your own workflow. A personal skill named `teac
 
 ## Editing rules
 
-- The repository is the source of truth. Read the files before you act. Do not trust old notes or what an earlier session reported.
-- Change as little as possible.
-- Do not restructure, reformat, or improve unrelated content unless asked.
-- If your change makes a project document wrong, fix that document in the same change.
-
-State your plan first when a change touches behavior, several files, shared conventions, structure, dependencies, or project docs. Say what you will change, how you will check it, and any real ambiguity. Ask one short question if the answer would change the scope. Writing one lesson into an existing track needs no plan.
+If your change makes a project document wrong, fix that document in the same change.
 
 ## Checking your work
 
@@ -60,28 +53,13 @@ gh issue create --title "..." --body-file body.md --label "bug,P2"
 - The exception is a defect that exists only in changes you have not committed yet. Correcting your own work in progress is part of the task at hand, not project history, so fix it and file nothing.
 - Title states what is wrong or what should exist. Body gives the steps to reproduce, or what "done" looks like, plus the files involved.
 - Write the body to a file and pass `--body-file`. Inline in double quotes, the shell runs every backtick in it as a command, which silently deletes the path or the identifier you were quoting.
-- Label from what `.github/workflows/labels.yml` declares. That workflow is the source of truth, since it creates and updates every label this repository is meant to have, so a label it does not declare is not one to reach for.
-- Give every issue one type and one priority. Type is `bug`, `feature`, `refactor`, `chore`, `docs` or `security`. Priority runs `P0` for critical through `P3` for low, and an issue without one is an issue nobody can order against the rest. Add any of `needs-triage`, `needs-repro`, `blocked`, `declined`, `stale` and `help-wanted` that apply.
-- Every issue in the tracker carries both, including the closed ones, so a query by type or by priority returns the whole history rather than the part that happened to be labelled that way.
+- Label only from what `.github/workflows/labels.yml` declares.
+- Give every issue, open or closed, one type and one priority. Type is `bug`, `feature`, `refactor`, `chore`, `docs` or `security`. Priority runs `P0` for critical through `P3` for low. Add any of `needs-triage`, `needs-repro`, `blocked`, `declined`, `stale` and `help-wanted` that apply.
 - An issue for a new track closes only when the track is complete: every file the `teach` skill defines, every lesson the arc names written and listed in the lesson table, and the `reference/` sheets those lessons send readers back to. A scaffold, or an arc with only its first lessons written, leaves the issue open. Say so in the issue's "Done when".
 - Record progress on the issue as you go, commenting on what you found and what you tried, so the next person does not repeat the investigation.
 - Reference the issue from the commit or pull request that fixes it (`Fixes #12`), so it closes together with the change.
 
-## Quality bar for anything you write
+## Writing rules
 
-- Be complete and specific, and stay consistent with yourself.
 - Write no placeholders. One exception: `templates/learning-workspace/` keeps its `{placeholder}` markers.
-- Make no claim you cannot support.
 - Use no em dashes in prose. Rewrite the sentence with a comma, colon, period, parentheses, or a conjunction. Pick the one the sentence wants. Never swap the character mechanically.
-- Delete any section or example that does not serve the goal.
-- Keep examples short and complete. Match how this repository actually works.
-- Choose the simplest version that fully solves the task. Add no abstraction, option, or feature nobody asked for.
-- Re-read your work before you show it. Fix contradictions, placeholders, and anything outside the request.
-
-## Final answer
-
-End the task by stating:
-
-1. What you changed.
-2. What you checked, and how.
-3. Anything still risky or unverified.

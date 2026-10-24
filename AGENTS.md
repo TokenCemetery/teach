@@ -35,7 +35,19 @@ If your change makes a project document wrong, fix that document in the same cha
 After any change to a Markdown file anywhere in the repository, run the same lint CI runs. Its rules live in `.markdownlint.yaml`:
 
 ```bash
-npx --yes markdownlint-cli2@0.23.3 "**/*.md" "#.venv" "#site"
+npx --yes markdownlint-cli2@0.23.3 "**/*.md" "#.venv" "#site" "#**/node_modules"
+```
+
+After any change to a ```` ```mermaid ```` fence, or to the `mermaid2` version in `mkdocs.yml`, parse every diagram with the Mermaid version the site pins, as CI does. Neither the build nor the lint looks inside the fence:
+
+```bash
+npm ci --prefix .agents/tools && node .agents/tools/check-mermaid.mjs
+```
+
+A valid fence can still break in the build. After any change to `mkdocs.yml`, `hooks.py` or `pyproject.toml`, build, then check the diagrams as the browser receives them. CI runs this before every deploy:
+
+```bash
+node .agents/tools/check-mermaid.mjs --site site
 ```
 
 The build checks front matter and navigation. It does not check that a collapsed answer rendered. Read `.agents/skills/teach/PUBLISHING.md` for the checks the build cannot do.

@@ -22,4 +22,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npx --yes markdownlint-cli2@0.23.3 "**/*.md" "#.venv" "#site"
+      - run: npx --yes markdownlint-cli2@0.23.3 "**/*.md" "#.venv" "#site" "#**/node_modules"

@@ -8,8 +8,9 @@ workspace's label in the navigation links to its `README.md` overview instead
 of sitting beside it as a second row. One hook keeps
 `properdocs build --strict`, which AGENTS.md requires after any change under
 `learning/`, usable with the plugin enabled. The other stops the plugin
-folding a section that has no overview to fold, and gives every page it does
-fold its own front-matter title back.
+folding a section that has no overview to fold, folds a translated overview
+the plugin passed over, and gives every page it does fold its own
+front-matter title back.
 """
 
 import logging
@@ -92,11 +93,22 @@ def _correct_folded_pages(items: list, parent: Section | None) -> None:
         # never be the lesson list the reader expects. That list is the
         # `## Lessons` table on the topic page.
         #
-        # The plugin moved the page's former peers onto it. Hand them to a
-        # fresh section, with the page itself back in front of them, and put
-        # that section where the page now stands.
-        section = Section(title=section_title, children=[item, *item.children])
-        section.parent = parent
+        # A translated topic does have an overview, just not first. In a
+        # locale's pass it is `README.<locale>.md`, which mkdocs-awesome-nav
+        # does not list first the way it lists `README.md`, so the plugin
+        # folded `GLOSSARY.<locale>.md` instead. mkdocs-static-i18n still
+        # names the overview `index`, so it can be found among the peers.
+        peers = item.children
+        overview = next(
+            (
+                peer
+                for peer in peers
+                if isinstance(peer, Page)
+                and not isinstance(peer, SectionPage)
+                and peer.file.name == "index"
+            ),
+            None,
+        )
         # `is_section` and `is_page` are class attributes on `Page`, and the
         # plugin set both to True on the instance, so deleting those two
         # restores the class values.
@@ -104,6 +116,19 @@ def _correct_folded_pages(items: list, parent: Section | None) -> None:
         del item.is_section
         del item.is_page
         item.children = None
+        if overview is None:
+            # The plugin moved the page's former peers onto it. Hand them to a
+            # fresh section, with the page itself back in front of them, and
+            # put that section where the page now stands.
+            section = Section(title=section_title, children=[item, *peers])
+        else:
+            # Fold the overview the way the plugin would have, so the topic is
+            # one row titled from the overview's front matter, as in English.
+            section = overview
+            section.__class__ = SectionPage
+            section.is_section = section.is_page = True
+            section.children = [item, *(peer for peer in peers if peer is not overview)]
+        section.parent = parent
         for child in section.children:
             child.parent = section
         items[i] = section

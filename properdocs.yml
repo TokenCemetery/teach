@@ -12,6 +12,9 @@ site_dir: site
 theme:
   name: primer
   custom_dir: overrides
+  # Renders only the open topic's pages, not every topic's. With all of them
+  # the nav was most of each page's HTML and of the build time (#205).
+  nav_expand: active
   social:
     - service: github
       link: https://github.com/TokenCemetery/teach

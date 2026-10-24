@@ -22,7 +22,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Same pinned command AGENTS.md gives for local runs, so a new
-      # markdownlint release cannot fail CI on files that pass locally.
-      # Rules come from .markdownlint.yaml.
       - run: npx --yes markdownlint-cli2@0.23.3 "**/*.md" "#.venv" "#site"

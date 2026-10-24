@@ -31,8 +31,6 @@ jobs:
         with:
           python-version: "3.x"
       - run: pip install .
-      # Same command AGENTS.md requires locally, so CI cannot pass on a build
-      # that would fail there.
       - run: mkdocs build --strict
       - uses: actions/upload-pages-artifact@v3
         with:

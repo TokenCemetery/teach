@@ -47,12 +47,12 @@ sequenceDiagram
     participant C as Client
     participant S as Server
     C->>S: request 1
-    S-->>C: 200 OK, RateLimit: "default";r=5;t=30
+    S-->>C: 200 OK, RateLimit: "default"#59;r=5#59;t=30
     C->>S: request 2
-    S-->>C: 200 OK, RateLimit: "default";r=4;t=30
+    S-->>C: 200 OK, RateLimit: "default"#59;r=4#59;t=30
     Note over C,S: state visible on every response, not just a failing one
     C->>S: request N (limit reached)
-    S-->>C: 429 Too Many Requests, RateLimit: "default";r=0;t=30
+    S-->>C: 429 Too Many Requests, RateLimit: "default"#59;r=0#59;t=30
 ```
 
 ### The mission's closing point: none of these are bolted on after design, they're part of it

@@ -13,7 +13,6 @@ dependencies = [
     "mkdocs-section-index",
     "mkdocs-git-revision-date-localized-plugin",
     "mkdocs-mermaid2-plugin",
-    "mkdocs-minify-plugin",
     "pymdown-extensions",
     "Pygments",
 ]

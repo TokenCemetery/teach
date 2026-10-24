@@ -79,7 +79,7 @@ Lesson 49's rubric priced a framework from the outside: its transitive graph, it
 
 ```mermaid
 flowchart TD
-    A["@Table(\"orders\")<br>on class Order"] --> B{"@Retention on<br>@Table itself?"}
+    A["@Table(#quot;orders#quot;)<br>on class Order"] --> B{"@Retention on<br>@Table itself?"}
     B -->|"SOURCE"| C["Discarded by javac;<br>never in the class file"]
     B -->|"CLASS (default,<br>no @Retention written)"| D["In the class file;<br>VM need not keep it;<br>getAnnotation sees nothing"]
     B -->|"RUNTIME"| E["In the class file<br>AND kept by the VM"]

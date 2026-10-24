@@ -8,6 +8,9 @@ on:
       - "mkdocs.yml"
       - "hooks.py"
       - "pyproject.toml"
+      - ".agents/tools/check-mermaid.mjs"
+      - ".agents/tools/package.json"
+      - ".agents/tools/package-lock.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -32,6 +35,12 @@ jobs:
           python-version: "3.x"
       - run: pip install .
       - run: mkdocs build --strict
+      # The source check in mermaid.yml cannot see a diagram the build mangles.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix .agents/tools
+      - run: node .agents/tools/check-mermaid.mjs --site site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

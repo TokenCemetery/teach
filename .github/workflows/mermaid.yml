@@ -1,0 +1,35 @@
+name: Check Mermaid
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - "mkdocs.yml"
+      - ".agents/tools/check-mermaid.mjs"
+      - ".agents/tools/package.json"
+      - ".agents/tools/package-lock.json"
+      - ".github/workflows/mermaid.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.md"
+      - "mkdocs.yml"
+      - ".agents/tools/check-mermaid.mjs"
+      - ".agents/tools/package.json"
+      - ".agents/tools/package-lock.json"
+      - ".github/workflows/mermaid.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mermaid:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix .agents/tools
+      - run: node .agents/tools/check-mermaid.mjs

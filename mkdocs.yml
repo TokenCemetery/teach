@@ -100,11 +100,6 @@ plugins:
   # between releases.
   - mermaid2:
       version: 10.4.0
-  # Last: it rewrites the HTML every other plugin produced.
-  - minify:
-      minify_html: true
-      minify_js: true
-      minify_css: true
 
 exclude_docs: |
   **/NOTES.md

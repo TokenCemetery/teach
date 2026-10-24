@@ -1,5 +1,5 @@
-// Parses Mermaid diagrams with the Mermaid version properdocs.yml pins for
-// mermaid2, so a diagram that would render as "Syntax error in text" on the
+// Parses Mermaid diagrams with the Mermaid version properdocs.yml pins in
+// `extra.mermaid_version`, so a diagram that would render as "Syntax error in text" on the
 // site fails here instead. Run `npm ci` in this directory first. Exits
 // non-zero on any problem.
 //
@@ -24,7 +24,7 @@ const { default: mermaid } = await import("mermaid");
 const root = execFileSync("git", ["rev-parse", "--show-toplevel"], { encoding: "utf8" }).trim();
 
 // Parsing with one version and rendering with another would prove nothing.
-const pinned = readFileSync(`${root}/properdocs.yml`, "utf8").match(/^\s*- mermaid2:\s*\n\s+version:\s*(\S+)/m)?.[1];
+const pinned = readFileSync(`${root}/properdocs.yml`, "utf8").match(/^\s+mermaid_version:\s*(\S+)/m)?.[1];
 const installed = createRequire(import.meta.url)("mermaid/package.json").version;
 if (pinned !== installed) {
   console.error(`properdocs.yml pins mermaid ${pinned}, but ${installed} is installed. Update package.json to match.`);
@@ -51,15 +51,20 @@ function* fromMarkdown() {
   }
 }
 
-// mermaid2 emits <div class="mermaid">, and Mermaid 10.4 reads that div's
-// innerHTML and decodes its entities, keeping tags such as <br> as text.
+// mermaid2.fence_mermaid emits <div class="mermaid"> unescaped, and Mermaid
+// 10.4 reads that div's innerHTML and decodes its entities, keeping tags such
+// as <br> as text. The div goes through an HTML parse first, as it does in the
+// browser, because that parse rewrites it: `<Project>` in a label comes back
+// as `<project>...</project>`.
 function* fromSite(dir) {
+  const holder = window.document.createElement("div");
   const decoder = window.document.createElement("textarea");
   const pages = readdirSync(dir, { recursive: true }).filter((f) => f.endsWith(".html")).sort();
   for (const page of pages) {
     const html = readFileSync(`${dir}/${page}`, "utf8");
-    for (const match of html.matchAll(/<div\b[^>]*\bclass=["']?mermaid\b["']?[^>]*>([\s\S]*?)<\/div>/g)) {
-      decoder.innerHTML = match[1];
+    for (const match of html.matchAll(/<div\b[^>]*\bclass=["']?mermaid\b["']?[^>]*>[\s\S]*?<\/div>/g)) {
+      holder.innerHTML = match[0];
+      decoder.innerHTML = holder.firstElementChild.innerHTML;
       const line = html.slice(0, match.index).split("\n").length;
       yield [`${dir}/${page}:${line}`, decoder.value.trim()];
     }

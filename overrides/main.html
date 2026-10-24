@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{#
+  The Mermaid loader the mermaid2 plugin used to append, emitted only where
+  mermaid2.fence_mermaid has drawn a diagram. A substring test on the page body
+  replaces the plugin's parse of the whole page.
+#}
+{%- block scripts %}{{ super() }}
+  {%- if page and 'class="mermaid"' in page.content %}
+    <script type="module">import mermaid from "https://unpkg.com/mermaid@{{ config.extra.mermaid_version }}/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script>
+  {%- endif %}
+{%- endblock %}

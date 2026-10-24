@@ -41,7 +41,7 @@ Conviértete en el ingeniero en quien se confía para hacerse cargo de un servic
 
 ## El arco
 
-Siete etapas, desde ningún conocimiento previo hasta el criterio de un perfil sénior. No es una lista de lecciones: una etapa abarca varias lecciones y los límites son difusos.
+Ocho etapas, desde ningún conocimiento previo hasta el criterio de un perfil sénior. No es una lista de lecciones: una etapa abarca varias lecciones y los límites son difusos.
 
 | Etapa | Lecciones | Cubre | Terminada cuando |
 |---|---|---|---|

@@ -41,7 +41,7 @@ Devenir l'ingénieur à qui l'on confie un service Java au sein d'une équipe : 
 
 ## Le fil conducteur
 
-Sept étapes, de zéro jusqu'au niveau senior. Pas une liste de leçons : une étape comprend plusieurs leçons, et les frontières sont souples.
+Huit étapes, de zéro jusqu'au niveau senior. Pas une liste de leçons : une étape comprend plusieurs leçons, et les frontières sont souples.
 
 | Étape | Leçons | Contenu | Terminée quand |
 |---|---|---|---|

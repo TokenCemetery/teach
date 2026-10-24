@@ -41,7 +41,7 @@ Become the engineer trusted to own a Java service on a team: able to model a dom
 
 ## The arc
 
-Seven stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
+Eight stages, zero to senior. Not a lesson list: a stage takes several lessons, and the boundaries are soft.
 
 | Stage | Lessons | Covers | Done when |
 |---|---|---|---|

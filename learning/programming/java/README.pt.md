@@ -41,7 +41,7 @@ Torne-se o engenheiro em quem a equipe confia para ser dono de um serviço em Ja
 
 ## O arco
 
-Sete etapas, do zero ao nível sênior. Não é uma lista de lições: uma etapa leva várias lições e as fronteiras são flexíveis.
+Oito etapas, do zero ao nível sênior. Não é uma lista de lições: uma etapa leva várias lições e as fronteiras são flexíveis.
 
 | Etapa | Lições | Cobre | Concluída quando |
 |---|---|---|---|

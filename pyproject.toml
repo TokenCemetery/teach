@@ -7,7 +7,7 @@ dependencies = [
     "properdocs",
     # The theme is pinned: its layout, sidebar width and navigation change
     # between releases, and this site is checked against one of them.
-    "mkdocs-primer==0.4.1",
+    "mkdocs-primer==0.4.2",
     "mkdocs-static-i18n",
     "mkdocs-awesome-nav",
     "mkdocs-section-index",

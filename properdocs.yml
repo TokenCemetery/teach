@@ -55,6 +55,8 @@ plugins:
       docs_structure: suffix
       reconfigure_search: false
       # `theme.locale` must be set per language for a third-party theme.
+      # `nav_translations` localizes the domain labels from `learning/.nav.yml`,
+      # which no page title can supply.
       # `en` is last so 404.html and search.html, rewritten by every language
       # pass, end up in English.
       languages:
@@ -63,31 +65,61 @@ plugins:
           build: true
           theme:
             locale: es
+          nav_translations:
+            Data: Datos
+            Architecture: Arquitectura
+            Infrastructure: Infraestructura
+            Programming: Programación
         - locale: zh
           name: Chinese
           build: true
           theme:
             locale: zh
+          nav_translations:
+            Data: 数据
+            Architecture: 架构
+            Infrastructure: 基础设施
+            Programming: 编程
         - locale: hi
           name: Hindi
           build: true
           theme:
             locale: hi
+          nav_translations:
+            Data: डेटा
+            Architecture: आर्किटेक्चर
+            Infrastructure: इन्फ्रास्ट्रक्चर
+            Programming: प्रोग्रामिंग
         - locale: pt
           name: Portuguese
           build: true
           theme:
             locale: pt
+          nav_translations:
+            Data: Dados
+            Architecture: Arquitetura
+            Infrastructure: Infraestrutura
+            Programming: Programação
         - locale: ru
           name: Russian
           build: true
           theme:
             locale: ru
+          nav_translations:
+            Data: Данные
+            Architecture: Архитектура
+            Infrastructure: Инфраструктура
+            Programming: Программирование
         - locale: fr
           name: French
           build: true
           theme:
             locale: fr
+          nav_translations:
+            Data: Données
+            Architecture: Architecture
+            Infrastructure: Infrastructure
+            Programming: Programmation
         - locale: en
           default: true
           name: English

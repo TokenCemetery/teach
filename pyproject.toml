@@ -12,8 +12,6 @@ dependencies = [
     "mkdocs-awesome-nav",
     "mkdocs-section-index",
     "mkdocs-git-revision-date-localized-plugin",
-    # Only for `mermaid2.fence_mermaid`; the plugin itself is not enabled.
-    "mkdocs-mermaid2-plugin",
     "pymdown-extensions",
     "Pygments",
 ]

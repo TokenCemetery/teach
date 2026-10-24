@@ -30,11 +30,13 @@ markdown_extensions:
   - nl2br
   - pymdownx.highlight
   # Without the custom fence, ```mermaid blocks render as highlighted source.
+  # `fence_div_format` HTML-escapes the source, and Mermaid entity-decodes the
+  # div's innerHTML, so the browser reads the diagram exactly as written.
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
   # Empty permalink text: the theme draws the anchor icon itself.
   - toc:
       permalink: ""

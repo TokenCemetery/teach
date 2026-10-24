@@ -51,11 +51,11 @@ function* fromMarkdown() {
   }
 }
 
-// mermaid2.fence_mermaid emits <div class="mermaid"> unescaped, and Mermaid
-// 10.4 reads that div's innerHTML and decodes its entities, keeping tags such
-// as <br> as text. The div goes through an HTML parse first, as it does in the
-// browser, because that parse rewrites it: `<Project>` in a label comes back
-// as `<project>...</project>`.
+// The build emits each diagram as <div class="mermaid">, and Mermaid 10.4
+// reads that div's innerHTML and decodes its entities, keeping tags such as
+// <br> as text. The div goes through an HTML parse first, as it does in the
+// browser, because an unescaped tag would be rewritten there: `<Project>` in a
+// label comes back as `<project>...</project>`.
 function* fromSite(dir) {
   const holder = window.document.createElement("div");
   const decoder = window.document.createElement("textarea");

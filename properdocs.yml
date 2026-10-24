@@ -11,6 +11,7 @@ site_dir: site
 
 theme:
   name: primer
+  custom_dir: overrides
   social:
     - service: github
       link: https://github.com/TokenCemetery/teach
@@ -29,11 +30,13 @@ markdown_extensions:
   - nl2br
   - pymdownx.highlight
   # Without the custom fence, ```mermaid blocks render as highlighted source.
+  # `fence_div_format` HTML-escapes the source, and Mermaid entity-decodes the
+  # div's innerHTML, so the browser reads the diagram exactly as written.
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
   # Empty permalink text: the theme draws the anchor icon itself.
   - toc:
       permalink: ""
@@ -95,11 +98,12 @@ plugins:
       # A shallow clone has no log for a page.
       fallback_to_build_date: true
       enable_creation_date: true
-  # After i18n: it injects its loader in `on_post_page`, and i18n rebuilds
-  # each page per language. Pinned because mermaid's default layout changes
-  # between releases.
-  - mermaid2:
-      version: 10.4.0
+
+# Read by overrides/main.html, which loads Mermaid on pages with a diagram.
+# The mermaid2 plugin did that by re-parsing every such page, which was half
+# the build. Pinned because mermaid's default layout changes between releases.
+extra:
+  mermaid_version: 10.4.0
 
 exclude_docs: |
   **/NOTES.md

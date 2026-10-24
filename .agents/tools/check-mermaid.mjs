@@ -1,4 +1,4 @@
-// Parses Mermaid diagrams with the Mermaid version mkdocs.yml pins for
+// Parses Mermaid diagrams with the Mermaid version properdocs.yml pins for
 // mermaid2, so a diagram that would render as "Syntax error in text" on the
 // site fails here instead. Run `npm ci` in this directory first. Exits
 // non-zero on any problem.
@@ -24,10 +24,10 @@ const { default: mermaid } = await import("mermaid");
 const root = execFileSync("git", ["rev-parse", "--show-toplevel"], { encoding: "utf8" }).trim();
 
 // Parsing with one version and rendering with another would prove nothing.
-const pinned = readFileSync(`${root}/mkdocs.yml`, "utf8").match(/^\s*- mermaid2:\s*\n\s+version:\s*(\S+)/m)?.[1];
+const pinned = readFileSync(`${root}/properdocs.yml`, "utf8").match(/^\s*- mermaid2:\s*\n\s+version:\s*(\S+)/m)?.[1];
 const installed = createRequire(import.meta.url)("mermaid/package.json").version;
 if (pinned !== installed) {
-  console.error(`mkdocs.yml pins mermaid ${pinned}, but ${installed} is installed. Update package.json to match.`);
+  console.error(`properdocs.yml pins mermaid ${pinned}, but ${installed} is installed. Update package.json to match.`);
   process.exit(1);
 }
 

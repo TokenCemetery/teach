@@ -4,7 +4,7 @@ version = "0.0.0"
 description = "Build dependencies for the published learning site."
 requires-python = ">=3.9"
 dependencies = [
-    "mkdocs",
+    "properdocs",
     # The theme is pinned: its layout, sidebar width and navigation change
     # between releases, and this site is checked against one of them.
     "mkdocs-primer==0.4.1",

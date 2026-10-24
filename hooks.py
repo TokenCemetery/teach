@@ -1,12 +1,12 @@
-"""MkDocs hooks for building this site.
+"""ProperDocs hooks for building this site.
 
-The last hook fails `mkdocs build --strict` on front matter that does not
-parse, which MkDocs would otherwise render as page text without a warning.
+The last hook fails `properdocs build --strict` on front matter that does not
+parse, which ProperDocs would otherwise render as page text without a warning.
 
-The other two correct mkdocs-section-index, which `mkdocs.yml` enables so a
+The other two correct mkdocs-section-index, which `properdocs.yml` enables so a
 workspace's label in the navigation links to its `README.md` overview instead
 of sitting beside it as a second row. One hook keeps
-`mkdocs build --strict`, which AGENTS.md requires after any change under
+`properdocs build --strict`, which AGENTS.md requires after any change under
 `learning/`, usable with the plugin enabled. The other stops the plugin
 folding a section that has no overview to fold, and gives every page it does
 fold its own front-matter title back.
@@ -119,9 +119,9 @@ def on_nav(nav, config, files):
 def on_page_markdown(markdown, page, config, files):
     """Fail the strict build on front matter that is not valid YAML.
 
-    MkDocs strips front matter only when it parses. When it does not, for
+    ProperDocs strips front matter only when it parses. When it does not, for
     example `title: 15. ReAct: Interleaving` with an unquoted second colon,
-    MkDocs logs nothing and renders the block as page text, and the page
+    ProperDocs logs nothing and renders the block as page text, and the page
     loses its title, description and type. The markdown this hook receives
     then still starts with the `---` fence, which never happens otherwise.
     """

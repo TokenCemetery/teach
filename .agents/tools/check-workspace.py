@@ -139,7 +139,7 @@ FORBIDDEN = [
 
 FENCE = re.compile(r"^\s*(```|~~~)", re.M)
 
-# The site's markdown extensions, kept in step with mkdocs.yml. Rendering with
+# The site's markdown extensions, kept in step with properdocs.yml. Rendering with
 # these is the only check that actually proves a collapsible block survives,
 # rather than proving it looks right in the source. Available only when the
 # project virtual environment's interpreter runs this script; without it the
@@ -486,7 +486,7 @@ class Workspace:
             self.bad(rel, "no trailing newline")
 
     def check_notes(self, path, rel):
-        """NOTES.md is unpublished: mkdocs.yml excludes it and it carries none of
+        """NOTES.md is unpublished: properdocs.yml excludes it and it carries none of
         the lesson conventions, so the structural rules must not apply. It is
         still committed, though, which is a publication channel of its own, and
         an en dash once survived in one of these files until a manual grep found

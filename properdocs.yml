@@ -3,7 +3,7 @@ site_description: "Educational materials: lessons and reference guides for self-
 # Without this, sitemap.xml has "None" locs and no page gets a canonical link.
 site_url: https://tokencemetery.github.io/teach/
 repo_url: https://github.com/TokenCemetery/teach
-# MkDocs would guess `edit/master/docs/`, which 404s here.
+# ProperDocs would guess `edit/master/docs/`, which 404s here.
 edit_uri: edit/main/learning/
 copyright: Copyright &copy; 2026 Token Cemetery
 docs_dir: learning
@@ -42,7 +42,7 @@ markdown_extensions:
 
 plugins:
   - search:
-      # No `lang`: MkDocs lacks wordcut.js, which its Hindi Lunr adapter needs.
+      # No `lang`: ProperDocs lacks wordcut.js, which its Hindi Lunr adapter needs.
   # Must run before section-index, which rewrites its nav.
   - awesome-nav
   - i18n:

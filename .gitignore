@@ -23,7 +23,7 @@ $RECYCLE.BIN/
 .history/
 *.code-workspace
 
-# MkDocs build output
+# ProperDocs build output
 /site/
 
 # Bytecode from hooks.py, compiled on every build

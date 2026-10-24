@@ -18,7 +18,7 @@ type: index | topic | lesson | reference | glossary | resources
 - **`description`** is one clause, no trailing period. For a lesson it is the same clause as its row in the workspace `README.md` table, and the front matter is canonical: change it here first, then match the table.
 - **`type`** names the shape of the page, so a reader, human or machine, knows what it is before reading it. Use exactly one of the six values.
 
-**Quote a value that starts with punctuation, or contains a colon followed by a space.** Both make the front matter invalid YAML, and the failure is silent: MkDocs drops the whole block, falls back to the filename for the page title, emits no description, and `--strict` reports nothing. A lesson whose `description` opened with `%w` shipped that way. The scripted parse below is what catches it.
+**Quote a value that starts with punctuation, or contains a colon followed by a space.** Both make the front matter invalid YAML, and the failure is silent: ProperDocs drops the whole block, falls back to the filename for the page title, emits no description, and `--strict` reports nothing. A lesson whose `description` opened with `%w` shipped that way. The scripted parse below is what catches it.
 
 Do not add a date. The `git-revision-date-localized` plugin reads each page's last commit and the theme footer prints it as "Last updated", and a hand-written date goes stale the first time someone forgets it.
 
@@ -26,7 +26,7 @@ Nothing in the front matter moves a page in the navigation. Order comes from `le
 
 ## Rendering
 
-`learning/` is the `docs_dir` of a MkDocs site, and the same files are read on GitHub. Both renderers have to be right.
+`learning/` is the `docs_dir` of a ProperDocs site, and the same files are read on GitHub. Both renderers have to be right.
 
 - Keep `markdown="1"` on every `<details>`. Python-Markdown needs it, through the `md_in_html` extension, to parse the answer inside. GitHub ignores the attribute, so the file stays correct in both.
 - Leave a blank line after `<summary>` and before `</details>`.
@@ -35,10 +35,10 @@ Nothing in the front matter moves a page in the navigation. Order comes from `le
   - One `<details>` may sit inside another when both stay at column zero and both keep `markdown="1"`. Verified on a built page: the inner block renders as HTML and its markdown becomes `<p>` and `<code>`.
   - Two blocks in a row work too, and the numbering resumes after either shape.
 - A single newline is a line break, as it is on GitHub. Lesson header blocks, glossary definitions and worked calculations rely on it. This holds only because no prose here is hard-wrapped, so keep it that way and write a paragraph on one line.
-- `mkdocs.yml` owns the extensions these rules depend on: `md_in_html`, `sane_lists`, `nl2br`, `pymdownx.highlight`, `pymdownx.superfences`. Removing one breaks every lesson at once.
-- A fenced ```mermaid``` block, see [`FORMATS.md`](FORMATS.md#lessons), needs the `mermaid2` plugin and its custom `pymdownx.superfences` fence, both in `mkdocs.yml`. GitHub renders the same fence natively, so only the site build depends on this pairing. A strict build passes a diagram that does not parse and ships Mermaid's syntax-error box in its place, so CI parses every fence with `.agents/tools/check-mermaid.mjs`, using the version `mkdocs.yml` pins. When you bump that pin, bump `.agents/tools/package.json` to match: the checker refuses to run on a mismatch. Do not minify the built HTML: mermaid2 emits each diagram as a `<div>`, an HTML minifier collapses its newlines, and every diagram on the site then shows a syntax error even though its source is valid. `check-mermaid.mjs --site site` parses the built pages for exactly this reason, and `pages.yml` runs it before it deploys.
+- `properdocs.yml` owns the extensions these rules depend on: `md_in_html`, `sane_lists`, `nl2br`, `pymdownx.highlight`, `pymdownx.superfences`. Removing one breaks every lesson at once.
+- A fenced ```mermaid``` block, see [`FORMATS.md`](FORMATS.md#lessons), needs the `mermaid2` plugin and its custom `pymdownx.superfences` fence, both in `properdocs.yml`. GitHub renders the same fence natively, so only the site build depends on this pairing. A strict build passes a diagram that does not parse and ships Mermaid's syntax-error box in its place, so CI parses every fence with `.agents/tools/check-mermaid.mjs`, using the version `properdocs.yml` pins. When you bump that pin, bump `.agents/tools/package.json` to match: the checker refuses to run on a mismatch. Do not minify the built HTML: mermaid2 emits each diagram as a `<div>`, an HTML minifier collapses its newlines, and every diagram on the site then shows a syntax error even though its source is valid. `check-mermaid.mjs --site site` parses the built pages for exactly this reason, and `pages.yml` runs it before it deploys.
 
-Not everything in a workspace is published. `mkdocs.yml` excludes `NOTES.md` and `learning-records/`: they hold the learner's state (preferences, disclosed background, corrected misconceptions) and stay out of the site whether or not the repository is public.
+Not everything in a workspace is published. `properdocs.yml` excludes `NOTES.md` and `learning-records/`: they hold the learner's state (preferences, disclosed background, corrected misconceptions) and stay out of the site whether or not the repository is public.
 
 **Excluded from the site is not the same as unchecked, and `NOTES.md` is checked on purpose.** It is committed, and a commit is a publication channel of its own, which is how an en dash once survived in one workspace's notes until somebody grepped by hand. So the checker applies the prose rules to `NOTES.md` (no em or en dash, no control characters, no trailing whitespace, a trailing newline) and the leak half of the machine rules (absolute paths, this checkout's username, a scratch directory, the author's time zone). It applies none of the structural rules: there is no front matter, no section order, no closing block and no lesson conventions in a working note, and demanding them would be inventing a format for a file whose whole value is being informal.
 
@@ -55,11 +55,11 @@ Before presenting the lesson, confirm by reading:
 - No placeholders remain.
 - The `README.md` table has a row for the new lesson, its clause is the same as the lesson's front-matter `description`, and the **Latest lesson** pointer names it.
 
-Then confirm by running `.venv/bin/mkdocs build --strict`.
+Then confirm by running `.venv/bin/properdocs build --strict`.
 
 A clean strict build proves the navigation resolves. It proves less than it looks like it proves: not that the answer keys survived, and not even that the front matter parsed. So open the built page, `site/<domain>/<topic>/lessons/<slug>/index.html`, and check three things that look fine in the source and break silently:
 
-- The `<title>` is the front matter `title`. When the YAML fails to parse, MkDocs falls back to the filename and says nothing.
+- The `<title>` is the front matter `title`. When the YAML fails to parse, ProperDocs falls back to the filename and says nothing.
 - Markdown inside each `<details>` rendered as `<p>` and `<code>`, not as literal backticks. It reverts when `markdown="1"` is missing.
 - Each Practice list resumed with `<ol start="N">` after an answer. It restarts at 1 when the `<details>` block is indented instead of sitting at column zero.
 

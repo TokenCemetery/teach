@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - "learning/**"
-      - "mkdocs.yml"
+      - "properdocs.yml"
       - "hooks.py"
       - "pyproject.toml"
       - ".agents/tools/check-mermaid.mjs"
@@ -34,7 +34,7 @@ jobs:
         with:
           python-version: "3.x"
       - run: pip install .
-      - run: mkdocs build --strict
+      - run: properdocs build --strict
       # The source check in mermaid.yml cannot see a diagram the build mangles.
       - uses: actions/setup-node@v4
         with:

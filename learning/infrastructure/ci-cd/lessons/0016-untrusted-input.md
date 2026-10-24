@@ -46,8 +46,8 @@ The danger is the order of events. In a `run` step, expressions are evaluated fi
 
 ```mermaid
 flowchart LR
-    A["Pull request title<br>x&quot;; echo INJECTED; echo &quot;"] --> B["Runner evaluates the expression<br>and pastes the value into the script"]
-    B --> C["Script file on the runner<br>title=&quot;x&quot;; echo INJECTED; echo &quot;&quot;"]
+    A["Pull request title<br>x#quot;; echo INJECTED; echo #quot;"] --> B["Runner evaluates the expression<br>and pastes the value into the script"]
+    B --> C["Script file on the runner<br>title=#quot;x#quot;; echo INJECTED; echo #quot;#quot;"]
     C --> D["Shell runs three commands,<br>not one assignment"]
 ```
 

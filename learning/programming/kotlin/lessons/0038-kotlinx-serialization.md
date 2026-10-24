@@ -45,7 +45,7 @@ A type needing custom serialization logic (the documented example: a `Color` con
 ```mermaid
 flowchart TD
     A["@Serializable data class Project(...)"] --> B["Kotlin compiler plugin:<br>generates visitor code<br>at compile time"]
-    B --> C["Json.encodeToString(data) /<br>decodeFromString<Project>(str)"]
+    B --> C["Json.encodeToString(data) /<br>decodeFromString#lt;Project#gt;(str)"]
     B --> D["No runtime reflection<br>on this class at all"]
     D --> E["Works identically on<br>JVM, JS, and Native"]
 ```

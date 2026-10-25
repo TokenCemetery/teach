@@ -35,7 +35,7 @@ type: topic
 - 作为主题的数据库管理：备份与恢复、复制、故障转移、连接池、版本升级。见 [`data/postgres`](../../data/postgres/)，它负责运行中的实例。
 - 作为独立主题的 ORM 和查询构建器。它们的输出会在第 7 阶段被阅读和批评；如何配置它们则不讲。
 - 从部署流水线运行迁移：迁移相对于需要它的代码何时运行，以及扩展与收缩模式如何把一次改动分摊到多次部署中。这属于 [`infrastructure/ci-cd`](../../infrastructure/ci-cd/)，它的 [部署](../../infrastructure/ci-cd/reference/deployments.md) 速查表记录了迁移的顺序。
-- 分析型数据仓库及其方言：BigQuery、Snowflake、Redshift、Spark SQL。列式执行会改变性能建议，而本学习路线不去追逐它。
+- 分析型数据仓库及其方言：BigQuery、Snowflake、Redshift、Spark SQL。列式执行会改变性能建议，而本学习路线不去追逐它。见 [`data/warehouses`](../../data/warehouses/)，它负责列式执行及其带来的变化。
 - 作为对比对象的非关系型存储。其中有自己专门课程系列的是 [`data/redis`](../../data/redis/)。
 - 超出能解释查询和事务行为这一程度的引擎内部机制：磁盘格式、预写日志的内部机制、规划器的源代码。
 

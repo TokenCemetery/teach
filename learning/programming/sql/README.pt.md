@@ -35,7 +35,7 @@ Torne-se o engenheiro a quem um time confia seu banco de dados: capaz de express
 - Administração de banco de dados como assunto: backups e recuperação, replicação, failover, connection pooling, upgrades de versão. Veja [`data/postgres`](../../data/postgres/), que cuida da instância em execução.
 - ORMs e query builders como assuntos por si só. A saída deles é lida e criticada na etapa 7; como configurar um não é ensinado.
 - Executar migrações a partir de um pipeline de deploy: quando uma migração roda em relação ao código que precisa dela, e como expand and contract distribui uma mudança por vários deploys. Isso é [`infrastructure/ci-cd`](../../infrastructure/ci-cd/), cuja folha [Deployments](../../infrastructure/ci-cd/reference/deployments.md) guarda a ordem das migrações.
-- Data warehouses analíticos e seus dialetos: BigQuery, Snowflake, Redshift, Spark SQL. A execução colunar muda as recomendações de desempenho, e o arco não vai atrás disso.
+- Data warehouses analíticos e seus dialetos: BigQuery, Snowflake, Redshift, Spark SQL. A execução colunar muda as recomendações de desempenho, e o arco não vai atrás disso. Veja [`data/warehouses`](../../data/warehouses/), que é dona da execução colunar e do que ela muda.
 - Stores não relacionais como alternativas de comparação. O que tem trilha própria é [`data/redis`](../../data/redis/).
 - Internos do motor além do ponto em que deixam de explicar o comportamento de consultas e transações: formatos em disco, internos do write-ahead log, o código-fonte do planner.
 

@@ -35,7 +35,7 @@ Become the engineer a team trusts with its database: able to express a question 
 - Database administration as a subject: backups and recovery, replication, failover, connection pooling, version upgrades. See [`data/postgres`](../../data/postgres/), which owns the running instance.
 - ORMs and query builders as subjects in their own right. Their output is read and criticised in stage 7; how to configure one is not taught.
 - Running migrations from a deploy pipeline: when a migration runs relative to the code that needs it, and how expand and contract spreads a change over several deploys. That is [`infrastructure/ci-cd`](../../infrastructure/ci-cd/), whose [Deployments](../../infrastructure/ci-cd/reference/deployments.md) sheet holds the migration order.
-- Analytical warehouses and their dialects: BigQuery, Snowflake, Redshift, Spark SQL. Columnar execution changes the performance advice, and the arc does not chase it.
+- Analytical warehouses and their dialects: BigQuery, Snowflake, Redshift, Spark SQL. Columnar execution changes the performance advice, and the arc does not chase it. See [`data/warehouses`](../../data/warehouses/), which owns columnar execution and what it changes.
 - Non-relational stores as alternatives to compare against. The one with a track of its own is [`data/redis`](../../data/redis/).
 - Engine internals past the point where they stop explaining query and transaction behaviour: on-disk formats, write-ahead log internals, the planner's source code.
 

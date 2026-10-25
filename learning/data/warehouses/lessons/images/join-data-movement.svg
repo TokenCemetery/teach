@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" width="480" height="220" role="img" aria-labelledby="title desc">
+  <title id="title">Three ways a two-node warehouse joins orders to customers: co-located, broadcast, and shuffle</title>
+  <desc id="desc">Three panels, each with two nodes. Left, co-located: both tables are distributed by customer_id, so node 1 holds orders and customers for customers 1 to 50 and node 2 for 51 to 100; every match is already local and nothing moves. Middle, broadcast: orders stay where they are, and a full copy of the small customers table is sent to every node, highlighted; the bytes moved are the small table times the node count. Right, shuffle: orders are spread round robin and customers by another key, so both tables are rehashed on customer_id and rows cross between the nodes in both directions, highlighted; the bytes moved are most of both tables.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="80" y="14" text-anchor="middle">co-located</text>
+    <text x="240" y="14" text-anchor="middle">broadcast</text>
+    <text x="400" y="14" text-anchor="middle">shuffle</text>
+  </g>
+
+  <g fill="none" stroke="#7a828c" stroke-width="1.5">
+    <rect x="15" y="30" width="130" height="60"/>
+    <rect x="15" y="110" width="130" height="60"/>
+    <rect x="175" y="30" width="130" height="60"/>
+    <rect x="175" y="110" width="130" height="60"/>
+    <rect x="335" y="30" width="130" height="60"/>
+    <rect x="335" y="110" width="130" height="60"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="22" y="42">node 1</text>
+    <text x="22" y="58">orders c1 to c50</text>
+    <text x="22" y="72">customers c1 to c50</text>
+    <text x="22" y="122">node 2</text>
+    <text x="22" y="138">orders c51 to c100</text>
+    <text x="22" y="152">customers c51 to c100</text>
+
+    <text x="182" y="42">node 1</text>
+    <text x="182" y="58">orders, half</text>
+    <text x="182" y="122">node 2</text>
+    <text x="182" y="138">orders, other half</text>
+
+    <text x="342" y="42">node 1</text>
+    <text x="342" y="58">orders, round robin</text>
+    <text x="342" y="72">customers, by region</text>
+    <text x="342" y="122">node 2</text>
+    <text x="342" y="138">orders, round robin</text>
+    <text x="342" y="152">customers, by region</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="182" y="72">+ all customers (copy)</text>
+    <text x="182" y="152">+ all customers (copy)</text>
+  </g>
+  <rect x="180" y="64" width="110" height="11" fill="#bf7d1a" fill-opacity="0.2" stroke="none"/>
+  <rect x="180" y="144" width="110" height="11" fill="#bf7d1a" fill-opacity="0.2" stroke="none"/>
+
+  <g stroke="#bf7d1a" stroke-width="1.5" fill="none">
+    <line x1="385" y1="90" x2="385" y2="110"/>
+    <polyline points="381,104 385,110 389,104"/>
+    <line x1="415" y1="110" x2="415" y2="90"/>
+    <polyline points="411,96 415,90 419,96"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="80" y="190" text-anchor="middle">nothing moves</text>
+    <text x="240" y="190" text-anchor="middle">moves: small table x nodes</text>
+    <text x="400" y="190" text-anchor="middle">moves: most of both tables</text>
+    <text x="80" y="204" text-anchor="middle">DS_DIST_NONE</text>
+    <text x="240" y="204" text-anchor="middle">DS_BCAST_INNER / EACH WITH ALL</text>
+    <text x="400" y="204" text-anchor="middle">DS_DIST_BOTH / EACH WITH EACH</text>
+  </g>
+</svg>

@@ -35,6 +35,7 @@ Agrupadas por domínio, um diretório por tópico. Cada tópico é uma trilha au
 | data | [Postgres](data/postgres/) | Opere o Postgres: o WAL, vacuum e bloat, replicação e quanto custa manter um índice | 18 |
 | data | [Kafka](data/kafka/) | Domine o log: partições, consumer groups, garantias de entrega e quanto "exactly once" realmente custa | 16 |
 | data | [Redis](data/redis/) | Use o Redis pelo que ele é: o modelo de memória, eviction, persistência e os padrões que o usam mal em silêncio | 17 |
+| data | [Warehouses](data/warehouses/) | Domine o data warehouse analítico: armazenamento e execução colunar, armazenamento separado do processamento e por que as recomendações de desempenho de um armazenamento por linhas deixam de valer | 20 |
 | architecture | [Sistemas Distribuídos](architecture/distributed-systems/) | Raciocine sobre falha parcial: o que uma rede pode fazer com você, qual consistência você está de fato comprando e por que o consenso é caro | 19 |
 | architecture | [Design de APIs](architecture/api-design/) | Projete uma interface da qual outros dependem: o contrato, os seus erros e como ele muda sem quebrá-los | 19 |
 | infrastructure | [Contêineres](infrastructure/containers/) | Empacote um serviço como imagem de contêiner e seja dono dela: primitivas do kernel, Dockerfiles, executar, proteger e depurar um contêiner | 24 |

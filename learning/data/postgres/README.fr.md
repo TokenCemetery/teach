@@ -25,6 +25,7 @@ Savoir exploiter une instance Postgres en fonctionnement, auto-hébergée ou man
 ## Hors périmètre
 
 - Les requêtes, les plans de requête, la conception de schéma et la sémantique d'isolation : voir [`programming/sql`](../../programming/sql/), auquel on renvoie sans le répéter. Ce parcours prend en charge l'instance en fonctionnement, pas le langage.
+- Les charges analytiques sur un entrepôt en colonnes, et quand il doit les reprendre à Postgres : voir [`data/warehouses`](../../data/warehouses/), dont l'étape de jugement tranche cette question.
 
 ## Le fil conducteur
 

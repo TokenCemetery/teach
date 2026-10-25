@@ -25,6 +25,7 @@ type: topic
 ## दायरे से बाहर
 
 - Queries, query plans, schema design और isolation semantics: [`programming/sql`](../../programming/sql/) देखें, यहाँ दोहराने के बजाय link किया गया है। यह workspace चलते हुए instance का मालिक है, भाषा का नहीं।
+- Columnar warehouse पर analytical workloads, और कब उसे Postgres से ये workloads ले लेने चाहिए: [`data/warehouses`](../../data/warehouses/) देखें, जिसका judgment चरण यह निर्णय लेता है।
 
 ## पूरी रूपरेखा
 

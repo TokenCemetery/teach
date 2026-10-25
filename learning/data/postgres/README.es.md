@@ -25,6 +25,7 @@ Sé capaz de operar una instancia de Postgres en marcha, autoalojada o gestionad
 ## Fuera de alcance
 
 - Consultas, planes de consulta, diseño de esquemas y semántica de aislamiento: consulta [`programming/sql`](../../programming/sql/), enlazado en lugar de repetido. Este espacio de trabajo se ocupa de la instancia en marcha, no del lenguaje.
+- Las cargas analíticas en un almacén columnar, y cuándo debería asumirlas en lugar de Postgres: consulta [`data/warehouses`](../../data/warehouses/), cuya etapa de criterio toma esa decisión.
 
 ## El arco
 

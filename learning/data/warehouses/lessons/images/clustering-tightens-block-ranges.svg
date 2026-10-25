@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 210" width="480" height="210" role="img" aria-labelledby="title desc">
+  <title id="title">The same rows in four blocks, in arrival order and clustered by customer_id, filtered on customer_id 42</title>
+  <desc id="desc">Top row, arrival order: four blocks, each holding customer_id values from 1 to 100, so each block's minimum and maximum span the whole range. A filter on customer_id 42 cannot rule out any of them, and all four are read, highlighted. The ranges overlap completely, a clustering depth of 4. Bottom row, the same rows clustered by customer_id: the blocks hold 1 to 25, 26 to 50, 51 to 75 and 76 to 100. Only the block holding 26 to 50 can contain 42, so one block is read, highlighted, and three are skipped. No ranges overlap, a clustering depth of 1.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="240" y="14" text-anchor="middle">filter: WHERE customer_id = 42</text>
+    <text x="20" y="36">arrival order: every block spans 1 to 100, depth 4</text>
+    <text x="20" y="126">clustered by customer_id: narrow ranges, depth 1</text>
+  </g>
+
+  <rect x="20" y="44" width="100" height="44" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="135" y="44" width="100" height="44" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="250" y="44" width="100" height="44" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="365" y="44" width="100" height="44" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">
+    <text x="70" y="62" text-anchor="middle">block 1</text>
+    <text x="70" y="78" text-anchor="middle">min 1, max 100</text>
+    <text x="185" y="62" text-anchor="middle">block 2</text>
+    <text x="185" y="78" text-anchor="middle">min 1, max 100</text>
+    <text x="300" y="62" text-anchor="middle">block 3</text>
+    <text x="300" y="78" text-anchor="middle">min 1, max 100</text>
+    <text x="415" y="62" text-anchor="middle">block 4</text>
+    <text x="415" y="78" text-anchor="middle">min 1, max 100</text>
+  </g>
+  <text x="240" y="104" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">4 of 4 blocks read: none can be ruled out</text>
+
+  <rect x="20" y="134" width="100" height="44" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="135" y="134" width="100" height="44" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="250" y="134" width="100" height="44" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="365" y="134" width="100" height="44" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="70" y="152" text-anchor="middle">block 1</text>
+    <text x="70" y="168" text-anchor="middle">min 1, max 25</text>
+    <text x="300" y="152" text-anchor="middle">block 3</text>
+    <text x="300" y="168" text-anchor="middle">min 51, max 75</text>
+    <text x="415" y="152" text-anchor="middle">block 4</text>
+    <text x="415" y="168" text-anchor="middle">min 76, max 100</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">
+    <text x="185" y="152" text-anchor="middle">block 2</text>
+    <text x="185" y="168" text-anchor="middle">min 26, max 50</text>
+  </g>
+  <text x="240" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">1 of 4 blocks read: three skipped by their min and max</text>
+</svg>

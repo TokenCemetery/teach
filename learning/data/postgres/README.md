@@ -25,6 +25,7 @@ Be able to operate a running Postgres instance, self-hosted or managed, and to d
 ## Out of scope
 
 - Queries, query plans, schema design and isolation semantics: see [`programming/sql`](../../programming/sql/), linked to rather than restated. This workspace owns the running instance, not the language.
+- Analytical workloads on a columnar warehouse, and when one should take them over from Postgres: see [`data/warehouses`](../../data/warehouses/), whose judgment stage makes that call.
 
 ## The arc
 

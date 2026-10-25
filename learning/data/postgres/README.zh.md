@@ -25,6 +25,7 @@ type: topic
 ## 范围之外
 
 - 查询、查询计划、schema 设计和隔离语义：见 [`programming/sql`](../../programming/sql/)，只链接过去，不再重述。本主题负责运行中的实例，而不是语言。
+- 列式数据仓库上的分析负载，以及何时应由它从 Postgres 接手：见 [`data/warehouses`](../../data/warehouses/)，其判断阶段会做出这个决定。
 
 ## 学习路线
 

@@ -35,7 +35,7 @@ Conviértete en el ingeniero al que un equipo le confía su base de datos: capaz
 - La administración de bases de datos como tema: backups y recuperación, replicación, failover, pooling de conexiones, actualizaciones de versión. Consulta [`data/postgres`](../../data/postgres/), que se ocupa de la instancia en marcha.
 - Los ORM y los query builders como temas propios. Su salida se lee y se critica en la etapa 7; no se enseña a configurar uno.
 - Ejecutar migraciones desde un pipeline de despliegue: cuándo se ejecuta una migración respecto al código que la necesita, y cómo expand and contract reparte un cambio entre varios despliegues. Eso es [`infrastructure/ci-cd`](../../infrastructure/ci-cd/), cuya hoja [Despliegues](../../infrastructure/ci-cd/reference/deployments.md) contiene el orden de las migraciones.
-- Los almacenes analíticos y sus dialectos: BigQuery, Snowflake, Redshift, Spark SQL. La ejecución columnar cambia los consejos de rendimiento, y el arco no la persigue.
+- Los almacenes analíticos y sus dialectos: BigQuery, Snowflake, Redshift, Spark SQL. La ejecución columnar cambia los consejos de rendimiento, y el arco no la persigue. Consulta [`data/warehouses`](../../data/warehouses/), que se ocupa de la ejecución columnar y de lo que cambia.
 - Los almacenes no relacionales como alternativas con las que comparar. El que tiene un track propio es [`data/redis`](../../data/redis/).
 - Los detalles internos del motor más allá del punto en que dejan de explicar el comportamiento de las consultas y las transacciones: formatos en disco, detalles internos del write-ahead log, el código fuente del planificador.
 

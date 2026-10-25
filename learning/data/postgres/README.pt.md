@@ -25,6 +25,7 @@ Seja capaz de operar uma instância do Postgres em execução, auto-hospedada ou
 ## Fora do escopo
 
 - Consultas, planos de consulta, design de schema e semântica de isolamento: veja [`programming/sql`](../../programming/sql/), referenciado em vez de repetido. Esta trilha é dona da instância em execução, não da linguagem.
+- Cargas analíticas em um data warehouse colunar, e quando ele deve assumi-las no lugar do Postgres: veja [`data/warehouses`](../../data/warehouses/), cuja etapa de julgamento toma essa decisão.
 
 ## O arco
 

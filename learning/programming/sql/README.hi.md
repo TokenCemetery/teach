@@ -35,7 +35,7 @@ type: topic
 - विषय के रूप में database administration: backups और recovery, replication, failover, connection pooling, version upgrades। [`data/postgres`](../../data/postgres/) देखें, जो चलते हुए instance का मालिक है।
 - ORMs और query builders अपने-आप में विषय के रूप में। चरण 7 में उनका output पढ़ा और परखा जाता है; उन्हें configure करना नहीं सिखाया जाता।
 - Deploy pipeline से migrations चलाना: migration उस code के सापेक्ष कब चलता है जिसे उसकी ज़रूरत है, और expand और contract किसी बदलाव को कई deploys में कैसे फैलाता है। यह [`infrastructure/ci-cd`](../../infrastructure/ci-cd/) है, जिसकी [Deployments](../../infrastructure/ci-cd/reference/deployments.md) sheet में migrations का क्रम है।
-- Analytical warehouses और उनकी बोलियाँ: BigQuery, Snowflake, Redshift, Spark SQL। Columnar execution performance की सलाह बदल देता है, और रूपरेखा उसके पीछे नहीं जाती।
+- Analytical warehouses और उनकी बोलियाँ: BigQuery, Snowflake, Redshift, Spark SQL। Columnar execution performance की सलाह बदल देता है, और रूपरेखा उसके पीछे नहीं जाती। [`data/warehouses`](../../data/warehouses/) देखें, जो columnar execution और उससे बदलने वाली बातों का मालिक है।
 - तुलना के लिए विकल्प के रूप में non-relational stores। जिसका अपना track है वह [`data/redis`](../../data/redis/) है।
 - Engine के भीतरी हिस्से, उस बिंदु से आगे जहाँ वे query और transaction के व्यवहार को समझाना बंद कर देते हैं: on-disk formats, write-ahead log के भीतरी हिस्से, planner का source code।
 

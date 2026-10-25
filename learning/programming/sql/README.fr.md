@@ -35,7 +35,7 @@ Devenir l'ingénieur à qui une équipe confie sa base de données : capable d'e
 - L'administration de bases de données en tant que sujet : sauvegardes et restauration, réplication, basculement, pooling de connexions, mises à niveau de version. Voir [`data/postgres`](../../data/postgres/), qui prend en charge l'instance en fonctionnement.
 - Les ORM et les query builders en tant que sujets à part entière. Leur sortie est lue et critiquée à l'étape 7 ; la façon d'en configurer un n'est pas enseignée.
 - L'exécution des migrations depuis un pipeline de déploiement : quand une migration s'exécute par rapport au code qui en a besoin, et comment expand and contract répartit une modification sur plusieurs déploiements. C'est le rôle de [`infrastructure/ci-cd`](../../infrastructure/ci-cd/), dont la fiche [Déploiements](../../infrastructure/ci-cd/reference/deployments.md) contient l'ordre des migrations.
-- Les entrepôts analytiques et leurs dialectes : BigQuery, Snowflake, Redshift, Spark SQL. L'exécution en colonnes change les conseils de performance, et le fil conducteur ne s'y aventure pas.
+- Les entrepôts analytiques et leurs dialectes : BigQuery, Snowflake, Redshift, Spark SQL. L'exécution en colonnes change les conseils de performance, et le fil conducteur ne s'y aventure pas. Voir [`data/warehouses`](../../data/warehouses/), qui prend en charge l'exécution en colonnes et ce qu'elle change.
 - Les stockages non relationnels comme alternatives à comparer. Celui qui a son propre parcours est [`data/redis`](../../data/redis/).
 - Le fonctionnement interne des moteurs au-delà du point où il cesse d'expliquer le comportement des requêtes et des transactions : formats sur disque, fonctionnement interne du write-ahead log, code source du planificateur.
 

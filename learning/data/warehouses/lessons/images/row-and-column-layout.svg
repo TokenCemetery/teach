@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 210" width="480" height="210" role="img" aria-labelledby="title desc">
+  <title id="title">The same four orders stored row by row on pages, and column by column in chunks</title>
+  <desc id="desc">On the left, a row store: page 1 holds orders 1 and 2 with all four of their columns (id, date, region, amount) side by side, and page 2 holds orders 3 and 4 the same way. A query summing amount by region has to read both pages whole, all sixteen values, highlighted. On the right, a column store: four chunks, one per column, each holding that column's four values. The same query reads only the region chunk and the amount chunk, eight values, highlighted, and never touches id or date. A lookup of order 3 goes the other way: one page on the left, but one value from each of the four chunks on the right.</desc>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" fill="#7a828c">
+    <text x="115" y="14" text-anchor="middle">row store: whole rows on a page</text>
+    <text x="355" y="14" text-anchor="middle">column store: one column per chunk</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="20" y="40">page 1</text>
+    <text x="20" y="110">page 2</text>
+  </g>
+  <rect x="20" y="46" width="190" height="50" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="20" y="116" width="190" height="50" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#bf7d1a">
+    <text x="30" y="66">1 | 2026-01-03 | EU | 40</text>
+    <text x="30" y="84">2 | 2026-01-03 | US | 15</text>
+    <text x="30" y="136">3 | 2026-01-04 | EU | 22</text>
+    <text x="30" y="154">4 | 2026-01-05 | APAC | 9</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7.5" fill="#7a828c">
+    <text x="275" y="40" text-anchor="middle">id</text>
+    <text x="330" y="40" text-anchor="middle">date</text>
+    <text x="385" y="40" text-anchor="middle">region</text>
+    <text x="440" y="40" text-anchor="middle">amount</text>
+  </g>
+  <rect x="250" y="46" width="50" height="120" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="305" y="46" width="50" height="120" fill="none" stroke="#7a828c" stroke-width="1.5"/>
+  <rect x="360" y="46" width="50" height="120" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <rect x="415" y="46" width="50" height="120" fill="#bf7d1a" fill-opacity="0.3" stroke="#bf7d1a" stroke-width="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c" text-anchor="middle">
+    <text x="275" y="70">1</text>
+    <text x="275" y="96">2</text>
+    <text x="275" y="122">3</text>
+    <text x="275" y="148">4</text>
+    <text x="330" y="70">01-03</text>
+    <text x="330" y="96">01-03</text>
+    <text x="330" y="122">01-04</text>
+    <text x="330" y="148">01-05</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a" text-anchor="middle">
+    <text x="385" y="70">EU</text>
+    <text x="385" y="96">US</text>
+    <text x="385" y="122">EU</text>
+    <text x="385" y="148">APAC</text>
+    <text x="440" y="70">40</text>
+    <text x="440" y="96">15</text>
+    <text x="440" y="122">22</text>
+    <text x="440" y="148">9</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#bf7d1a">
+    <text x="115" y="184" text-anchor="middle">SUM(amount) BY region reads 16 values</text>
+    <text x="355" y="184" text-anchor="middle">SUM(amount) BY region reads 8 values</text>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="7" fill="#7a828c">
+    <text x="115" y="200" text-anchor="middle">lookup of order 3 reads 1 page</text>
+    <text x="355" y="200" text-anchor="middle">lookup of order 3 touches all 4 chunks</text>
+  </g>
+</svg>

@@ -35,6 +35,7 @@ type: index
 | data | [Postgres](data/postgres/) | 运维 Postgres：WAL、vacuum 与膨胀、复制，以及维护一个索引的代价 | 18 |
 | data | [Kafka](data/kafka/) | 掌握日志：分区、消费者组、投递保证，以及“恰好一次”实际的代价 | 16 |
 | data | [Redis](data/redis/) | 按 Redis 的本来面目使用它：内存模型、淘汰、持久化，以及那些悄悄误用它的模式 | 17 |
+| data | [Warehouses](data/warehouses/) | 掌握分析型数据仓库：列式存储与执行、存储与计算分离，以及为什么行存储的性能建议在这里不再适用 | 20 |
 | architecture | [分布式系统](architecture/distributed-systems/) | 对部分失败进行推理：网络能对你做什么，你实际买到的是哪种一致性，以及共识为什么昂贵 | 19 |
 | architecture | [API 设计](architecture/api-design/) | 设计别人依赖的接口：契约、它的错误，以及如何在不破坏使用方的前提下演进 | 19 |
 | infrastructure | [容器](infrastructure/containers/) | 把服务打包成容器镜像并对它负责：内核原语、Dockerfile，以及运行、加固和调试单个容器 | 24 |

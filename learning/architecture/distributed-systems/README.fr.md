@@ -25,6 +25,7 @@ Savoir choisir et défendre un modèle de cohérence pour un système que vous c
 
 - La concurrence au sein d'un seul processus (goroutines, threads, `Send`/`Sync`) : prise en charge par les parcours de langages. Ce parcours commence là où la frontière du processus est franchie.
 - L'exécution de charges de travail sur un orchestrateur de cluster : prise en charge par [`infrastructure/kubernetes`](../../infrastructure/kubernetes/), qui enseigne ce que etcd et la réconciliation signifient en pratique et renvoie ici pour la théorie.
+- Le traitement de flux au-dessus d'un log : pris en charge par [`data/stream-processing`](../../data/stream-processing/), qui enseigne ce que la reprise des state stores et le rebalancing changent pour une application Kafka Streams et renvoie ici pour la théorie.
 
 ## Le fil conducteur
 

@@ -25,6 +25,7 @@ Seja capaz de escolher e defender um modelo de consistência para um sistema que
 
 - Concorrência dentro de um único processo (goroutines, threads, `Send`/`Sync`): fica com as trilhas de linguagem. Esta trilha começa onde a fronteira do processo é atravessada.
 - Executar workloads em um orquestrador de cluster: fica com [`infrastructure/kubernetes`](../../infrastructure/kubernetes/), que ensina o que etcd e reconciliação significam na prática e aponta de volta para cá para a teoria.
+- Processamento de streams sobre um log: fica com [`data/stream-processing`](../../data/stream-processing/), que ensina o que a recuperação de state stores e o rebalanceamento mudam para uma aplicação Kafka Streams e aponta de volta para cá para a teoria.
 
 ## O arco
 

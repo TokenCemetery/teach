@@ -25,6 +25,7 @@ Sé capaz de elegir y defender un modelo de consistencia para un sistema que est
 
 - La concurrencia dentro de un proceso (goroutines, hilos, `Send`/`Sync`): corresponde a los espacios de trabajo de cada lenguaje. Este espacio de trabajo empieza donde se cruza el límite del proceso.
 - Ejecutar cargas de trabajo en un orquestador de clústeres: corresponde a [`infrastructure/kubernetes`](../../infrastructure/kubernetes/), que enseña lo que significan en la práctica etcd y la reconciliación y enlaza aquí para la teoría.
+- El procesamiento de streams sobre un log: corresponde a [`data/stream-processing`](../../data/stream-processing/), que enseña lo que la recuperación de los state stores y el rebalanceo cambian para una aplicación de Kafka Streams y enlaza aquí para la teoría.
 
 ## El arco
 

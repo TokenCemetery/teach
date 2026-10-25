@@ -25,7 +25,7 @@ type: topic
 ## 范围之外
 
 - 投递保证背后的失败模型本身：见 [`architecture/distributed-systems`](../../architecture/distributed-systems/)，只链接过去，不在这里重新推导。
-- 作为独立主题的 ksqlDB 和 Kafka Streams。
+- Kafka Streams 以及基于日志的计算（拓扑、状态、窗口、连接）：见 [`data/stream-processing`](../../data/stream-processing/)，投递语义部分则链接回这里。作为独立主题的 ksqlDB。
 
 ## 学习路线
 

@@ -25,7 +25,7 @@ type: topic
 ## За рамками курса
 
 - Модель отказов, лежащая в основе самих гарантий доставки: см. [`architecture/distributed-systems`](../../architecture/distributed-systems/), здесь только ссылка без повторного вывода.
-- ksqlDB и Kafka Streams как самостоятельные темы.
+- Kafka Streams и вычисления поверх журнала (топологии, состояние, окна, соединения): см. [`data/stream-processing`](../../data/stream-processing/), который ссылается сюда за семантиками доставки. ksqlDB как самостоятельная тема.
 
 ## Структура курса
 

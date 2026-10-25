@@ -36,6 +36,7 @@ Agrupados por dominio, un directorio por tema. Cada tema es un track autoconteni
 | data | [Kafka](data/kafka/) | Hazte cargo del log: particiones, grupos de consumidores, garantías de entrega y lo que realmente cuesta "exactly once" | 16 |
 | data | [Redis](data/redis/) | Usa Redis para lo que es: el modelo de memoria, la expulsión, la persistencia y los patrones que lo usan mal sin que se note | 17 |
 | data | [Warehouses](data/warehouses/) | Domina el almacén analítico: almacenamiento y ejecución columnar, almacenamiento separado del cómputo y por qué los consejos de rendimiento de un almacén por filas dejan de valer | 20 |
+| data | [Stream Processing](data/stream-processing/) | Calcula sobre un stream con Kafka Streams: topologías, estado, ventanas y joins, y lo que cuesta una topología antes de llegar a producción | 20 |
 | architecture | [Sistemas distribuidos](architecture/distributed-systems/) | Razona sobre el fallo parcial: lo que una red te puede hacer, qué consistencia estás comprando de verdad y por qué el consenso es caro | 19 |
 | architecture | [Diseño de APIs](architecture/api-design/) | Diseña una interfaz de la que otros dependen: el contrato, sus errores y cómo cambia sin romperlos | 19 |
 | infrastructure | [Contenedores](infrastructure/containers/) | Empaqueta un servicio como imagen de contenedor y hazte cargo de ella: primitivas del kernel, Dockerfiles, ejecutar, asegurar y depurar un contenedor | 24 |

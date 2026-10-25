@@ -36,6 +36,7 @@ Grouped by domain, one directory per topic. Each topic is a self-contained track
 | data | [Kafka](data/kafka/) | Own the log: partitions, consumer groups, delivery guarantees, and what "exactly once" actually costs | 16 |
 | data | [Redis](data/redis/) | Use Redis for what it is: the memory model, eviction, persistence, and the patterns that quietly misuse it | 17 |
 | data | [Warehouses](data/warehouses/) | Own the analytical warehouse: columnar storage and execution, storage separated from compute, and why row-store performance advice stops applying | 20 |
+| data | [Stream Processing](data/stream-processing/) | Compute over a stream with Kafka Streams: topologies, state, windows and joins, and what a topology costs before it reaches production | 20 |
 | architecture | [Distributed Systems](architecture/distributed-systems/) | Reason about partial failure: what a network can do to you, which consistency you are actually buying, and why consensus is expensive | 19 |
 | architecture | [API Design](architecture/api-design/) | Design an interface others depend on: the contract, its errors, and how it changes without breaking them | 19 |
 | infrastructure | [Containers](infrastructure/containers/) | Package a service as a container image and own it: kernel primitives, Dockerfiles, running, securing and debugging one container | 24 |

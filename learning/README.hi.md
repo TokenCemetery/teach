@@ -36,6 +36,7 @@ Domain के हिसाब से समूहों में, हर वि
 | data | [Kafka](data/kafka/) | Log को अपने हाथ में लें: partitions, consumer groups, delivery guarantees, और "exactly once" की असली क़ीमत | 16 |
 | data | [Redis](data/redis/) | Redis का उपयोग उसी के लिए करें जो वह है: memory model, eviction, persistence, और वे patterns जो चुपचाप उसका दुरुपयोग करते हैं | 17 |
 | data | [Warehouses](data/warehouses/) | Analytical warehouse के मालिक बनें: columnar storage और execution, compute से अलग storage, और row store की performance सलाह यहाँ क्यों लागू नहीं होती | 20 |
+| data | [Stream Processing](data/stream-processing/) | Kafka Streams के साथ stream पर computation करें: topologies, state, windows और joins, और production तक पहुँचने से पहले किसी topology की क़ीमत क्या है | 20 |
 | architecture | [Distributed Systems](architecture/distributed-systems/) | Partial failure पर तर्क करें: network आपके साथ क्या कर सकता है, आप असल में कौन-सी consistency ख़रीद रहे हैं, और consensus महँगा क्यों है | 19 |
 | architecture | [API Design](architecture/api-design/) | ऐसा interface डिज़ाइन करें जिस पर दूसरे निर्भर हों: contract, उसकी errors, और उन्हें तोड़े बिना वह कैसे बदलता है | 19 |
 | infrastructure | [Containers](infrastructure/containers/) | किसी service को container image के रूप में package करें और उसे अपने हाथ में लें: kernel primitives, Dockerfiles, एक container को चलाना, सुरक्षित करना और debug करना | 24 |

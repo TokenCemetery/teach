@@ -25,7 +25,7 @@ type: topic
 ## दायरे से बाहर
 
 - Delivery guarantees के पीछे का failure model ख़ुद: [`architecture/distributed-systems`](../../architecture/distributed-systems/) देखें, यहाँ फिर से निकालने के बजाय link किया गया है।
-- ksqlDB और Kafka Streams अपने-आप में विषय के रूप में।
+- Kafka Streams और log के ऊपर computation (topologies, state, windows, joins): [`data/stream-processing`](../../data/stream-processing/) देखें, जो delivery semantics के लिए यहाँ वापस link करता है। ksqlDB अपने-आप में विषय के रूप में।
 
 ## पूरी रूपरेखा
 

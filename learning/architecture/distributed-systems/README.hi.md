@@ -25,6 +25,7 @@ type: topic
 
 - एक process के भीतर concurrency (goroutines, threads, `Send`/`Sync`): यह भाषा वाले workspaces का हिस्सा है। यह workspace वहाँ से शुरू होता है जहाँ process की सीमा पार होती है।
 - Cluster orchestrator पर workloads चलाना: यह [`infrastructure/kubernetes`](../../infrastructure/kubernetes/) का हिस्सा है, जो सिखाता है कि etcd और reconciliation का व्यवहार में क्या मतलब है और सिद्धांत के लिए यहाँ वापस link करता है।
+- Log के ऊपर stream processing: यह [`data/stream-processing`](../../data/stream-processing/) का हिस्सा है, जो सिखाता है कि state-store recovery और rebalancing किसी Kafka Streams app के लिए क्या बदलते हैं और सिद्धांत के लिए यहाँ वापस link करता है।
 
 ## पूरी रूपरेखा
 

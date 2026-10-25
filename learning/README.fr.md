@@ -36,6 +36,7 @@ Regroupés par domaine, un répertoire par sujet. Chaque sujet est un parcours a
 | data | [Kafka](data/kafka/) | Maîtriser le log : partitions, consumer groups, garanties de livraison, et ce que coûte réellement « exactly once » | 16 |
 | data | [Redis](data/redis/) | Utiliser Redis pour ce qu'il est : le modèle mémoire, l'éviction, la persistance, et les usages qui le détournent sans bruit | 17 |
 | data | [Warehouses](data/warehouses/) | Maîtriser l'entrepôt analytique : stockage et exécution en colonnes, stockage séparé du calcul, et pourquoi les conseils de performance d'un stockage en lignes cessent de s'appliquer | 20 |
+| data | [Stream Processing](data/stream-processing/) | Calculer sur un flux avec Kafka Streams : topologies, état, fenêtres et jointures, et ce que coûte une topologie avant d'arriver en production | 20 |
 | architecture | [Systèmes distribués](architecture/distributed-systems/) | Raisonner sur la défaillance partielle : ce qu'un réseau peut vous faire, quelle cohérence vous achetez réellement, et pourquoi le consensus coûte cher | 19 |
 | architecture | [Conception d'API](architecture/api-design/) | Concevoir une interface dont d'autres dépendent : le contrat, ses erreurs, et comment il évolue sans les casser | 19 |
 | infrastructure | [Conteneurs](infrastructure/containers/) | Empaqueter un service sous forme d'image de conteneur et la maîtriser : primitives du noyau, Dockerfiles, exécution, sécurisation et débogage d'un conteneur | 24 |

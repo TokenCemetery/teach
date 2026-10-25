@@ -25,7 +25,7 @@ Seja capaz de projetar um layout de tópicos e partições para uma carga de tra
 ## Fora do escopo
 
 - O modelo de falhas por trás das próprias garantias de entrega: veja [`architecture/distributed-systems`](../../architecture/distributed-systems/), referenciado em vez de derivado de novo aqui.
-- ksqlDB e Kafka Streams como tópicos por si sós.
+- Kafka Streams e a computação sobre o log (topologias, estado, janelas, joins): veja [`data/stream-processing`](../../data/stream-processing/), que aponta de volta para cá para a semântica de entrega. ksqlDB como tópico por si só.
 
 ## O arco
 

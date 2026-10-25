@@ -25,7 +25,7 @@ Sé capaz de diseñar la disposición de topics y particiones para una carga de 
 ## Fuera de alcance
 
 - El modelo de fallos que hay detrás de las propias garantías de entrega: consulta [`architecture/distributed-systems`](../../architecture/distributed-systems/), enlazado en lugar de volver a derivarlo aquí.
-- ksqlDB y Kafka Streams como temas propios.
+- Kafka Streams y el cálculo sobre el log (topologías, estado, ventanas, joins): consulta [`data/stream-processing`](../../data/stream-processing/), que enlaza aquí para las semánticas de entrega. ksqlDB como tema propio.
 
 ## El arco
 

@@ -25,7 +25,7 @@ Savoir concevoir la disposition des topics et des partitions pour une vraie char
 ## Hors périmètre
 
 - Le modèle de défaillance derrière les garanties de livraison elles-mêmes : voir [`architecture/distributed-systems`](../../architecture/distributed-systems/), auquel on renvoie sans le redériver ici.
-- ksqlDB et Kafka Streams en tant que sujets à part entière.
+- Kafka Streams et le calcul au-dessus du log (topologies, état, fenêtres, jointures) : voir [`data/stream-processing`](../../data/stream-processing/), qui renvoie ici pour les sémantiques de livraison. ksqlDB en tant que sujet à part entière.
 
 ## Le fil conducteur
 

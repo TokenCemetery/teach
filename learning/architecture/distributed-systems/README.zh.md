@@ -25,6 +25,7 @@ type: topic
 
 - 单个进程内的并发（goroutine、线程、`Send`/`Sync`）：归各语言主题负责。本主题从跨越进程边界的地方开始。
 - 在集群编排器上运行工作负载：归 [`infrastructure/kubernetes`](../../infrastructure/kubernetes/) 负责，它讲 etcd 和调和在实践中意味着什么，理论部分则链接回这里。
+- 基于日志的流处理：归 [`data/stream-processing`](../../data/stream-processing/) 负责，它讲状态存储的恢复和再均衡对 Kafka Streams 应用意味着什么，理论部分则链接回这里。
 
 ## 学习路线
 
